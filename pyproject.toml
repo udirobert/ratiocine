@@ -26,6 +26,7 @@ ignore = [
 # training and dataset scripts legitimately print progress
 "hf-pipeline/train.py" = ["T20"]
 "hf-pipeline/dataset.py" = ["T20"]
+"hf-pipeline/test_local.py" = ["T20"]
 
 [tool.ruff.format]
 quote-style = "double"

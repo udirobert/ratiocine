@@ -13,6 +13,7 @@ Ship your fine-tuned model weights in the same HF repo and load from ".".
 
 import json
 import os
+import re
 
 os.environ["HF_HUB_OFFLINE"] = "1"
 os.environ["TRANSFORMERS_OFFLINE"] = "1"
@@ -22,11 +23,7 @@ import pandas as pd
 import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 
-SYSTEM_PROMPT = (
-    "You solve International Linguistics Olympiad problems. "
-    "Answer every numbered item. Put each answer on its own line, "
-    "in order, with no numbering and no extra text."
-)
+from prompts import SYSTEM_PROMPT, USER_TEMPLATE, parse_answers, count_query_items
 
 
 def load_model():
@@ -55,12 +52,16 @@ def solve_problem(
     model,
     context: str,
     query: str,
-    max_new_tokens: int = 512,
+    max_new_tokens: int = 1024,
 ) -> list[str]:
-    """Generate answers for one IOL problem."""
+    """Generate answers for one IOL problem with chain-of-thought reasoning."""
+    n_items = count_query_items(query)
+
     messages = [
         {"role": "system", "content": SYSTEM_PROMPT},
-        {"role": "user", "content": f"{context}\n\n{query}"},
+        {"role": "user", "content": USER_TEMPLATE.format(
+            context=context.strip(), query=query.strip()
+        )},
     ]
 
     ids = tokenizer.apply_chat_template(
@@ -72,12 +73,14 @@ def solve_problem(
             ids,
             max_new_tokens=max_new_tokens,
             do_sample=False,  # greedy decoding for reproducibility
+            temperature=1.0,  # ignored with do_sample=False but avoids warnings
+            pad_token_id=tokenizer.eos_token_id,
         )
 
     text = tokenizer.decode(out[0][ids.shape[-1] :], skip_special_tokens=True).strip()
-    answers = [ln.strip() for ln in text.splitlines() if ln.strip()]
+    answers = parse_answers(text, n_expected=n_items)
 
-    return answers if answers else [""]
+    return answers
 
 
 def main():
@@ -101,7 +104,7 @@ def main():
             "pred": json.dumps(answers, ensure_ascii=False),
         })
 
-        if (idx + 1) % 5 == 0:
+        if (idx + 1) % 5 == 0 or idx == 0:
             print(f"[submit] {idx + 1}/{len(df)} done", flush=True)
 
     output = pd.DataFrame(rows)
