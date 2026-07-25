@@ -8,6 +8,7 @@ import os
 import torch
 from dataset import load_synthetic_data
 from datasets import Dataset
+from dotenv import load_dotenv
 from peft import LoraConfig
 from transformers import (
     AutoModelForCausalLM,
@@ -16,6 +17,8 @@ from transformers import (
     TrainingArguments,
 )
 from trl import SFTTrainer
+
+load_dotenv()
 
 MODEL_NAME = os.getenv("MODEL_NAME", "Qwen/Qwen2.5-7B-Instruct")
 DATASET_PATH = os.getenv("DATASET_PATH", "data/synthetic/iol_train.jsonl")
