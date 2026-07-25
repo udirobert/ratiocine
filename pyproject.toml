@@ -27,6 +27,7 @@ ignore = [
 "hf-pipeline/train.py" = ["T20"]
 "hf-pipeline/dataset.py" = ["T20"]
 "hf-pipeline/test_local.py" = ["T20"]
+"hf-pipeline/train_modal.py" = ["T20", "B007"]
 
 [tool.ruff.format]
 quote-style = "double"
