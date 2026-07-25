@@ -1,0 +1,97 @@
+# --- Secrets / env ---
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+credentials.json
+hf_token.txt
+
+# --- Node / TypeScript ---
+node_modules/
+dist/
+.arkor/
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# --- Virtualenvs ---
+.venv/
+venv/
+env/
+ENV/
+.python-version
+
+# --- Tooling caches ---
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# --- Jupyter ---
+notebooks/.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# --- Hugging Face / model artifacts ---
+# Ship final weights in the HF submission repo, not here.
+*.bin
+*.safetensors
+*.gguf
+*.pt
+*.pth
+*.onnx
+*.ot
+*.msgpack
+*.h5
+hf_cache/
+hub_cache/
+wandb/
+runs/
+mlruns/
+outputs/
+
+# --- Data artifacts (keep synthetic training data, ignore large/raw) ---
+data/raw/
+data/cache/
+*.parquet
+*.arrow
+*.feather
+
+# --- Editor / OS ---
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# --- Misc ---
+coverage/
+.coverage
+htmlcov/
+.tox/
+nox/

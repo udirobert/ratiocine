@@ -1,0 +1,16 @@
+{
+  "name": "ratiocine",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Logical reasoning from linguistic fragments — IOL-AI 2026 solver",
+  "type": "module",
+  "scripts": {
+    "dev": "arkor dev",
+    "build": "arkor build",
+    "start": "arkor start"
+  },
+  "devDependencies": {
+    "arkor": "^0.0.1",
+    "typescript": "^5.8.0"
+  }
+}

@@ -1,0 +1,16 @@
+[
+  {
+    "messages": [
+      {"role": "system", "content": "You solve International Linguistics Olympiad problems. Answer every numbered item. Put each answer on its own line, in order, with no numbering and no extra text."},
+      {"role": "user", "content": "Here are sentences in Hakhun with English:\nŋa ka kɤ ne | Do I go?\nnɤ ʒip tuʔ ne | Did you sleep?\nŋa ʒip kɤ ne | I sleep.\nnɤ ka tuʔ ne | Did you go?\n\nTranslate into English:\n1. nɤ ʒip ku ne\n2. ŋa ka tuʔ ne\n3. nɤ ʒip tuʔ ne"},
+      {"role": "assistant", "content": "Do you sleep?\nDid I go?\nDid you sleep?"}
+    ]
+  },
+  {
+    "messages": [
+      {"role": "system", "content": "You solve International Linguistics Olympiad problems. Answer every numbered item. Put each answer on its own line, in order, with no numbering and no extra text."},
+      {"role": "user", "content": "Squares of 1–10 in Ndom, in arbitrary order:\nmer an thef abo thonith\nnif thef abo tondor abo mer abo thonith\nmer an thef abo tondor abo ithin\nnif abo ithin\nnif abo tondor abo mer abo thonith\nmer an thef abo tondor abo tondor abo thonith\nmer abo thonith\nnif thef abo tondor abo tondor abo thonith\nnif thef abo mer abo thonith\nmer an thef abo tondor abo tondor abo ithin\n\nWrite in numerals:\n1. nif ithin abo ithin\n2. nif thef abo tondor abo mer abo thonith\n3. mer an thef abo tondor abo tondor abo ithin"},
+      {"role": "assistant", "content": "111\n784\n100"}
+    ]
+  }
+]
