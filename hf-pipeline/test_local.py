@@ -40,6 +40,7 @@ from prompts import (
     SYSTEM_PROMPT_SIMPLE,
     USER_TEMPLATE,
     count_query_items,
+    get_system_prompt,
     parse_answers,
 )
 
@@ -152,6 +153,7 @@ def call_model(
     api_key: str,
     system_prompt: str = SYSTEM_PROMPT,
     max_tokens: int = 2048,
+    task_type: str = "",
 ) -> str:
     """Call an OpenAI-compatible chat completions endpoint."""
     import urllib.request
@@ -212,9 +214,9 @@ def main():
     )
     parser.add_argument(
         "--prompt",
-        choices=["cot", "simple"],
-        default="cot",
-        help="Prompt strategy: cot (chain-of-thought) or simple",
+        choices=["cot", "simple", "task"],
+        default="task",
+        help="Prompt strategy: cot, simple, or task (task-specific)",
     )
     args = parser.parse_args()
 
@@ -248,8 +250,6 @@ def main():
     print(f"[test] Prompt: {args.prompt}, max_tokens: {args.max_tokens}", flush=True)
     print()
 
-    system_prompt = SYSTEM_PROMPT if args.prompt == "cot" else SYSTEM_PROMPT_SIMPLE
-
     all_em = []
     all_chrf = []
     by_type = {}
@@ -265,6 +265,14 @@ def main():
 
             gold = ast.literal_eval(gold)
 
+        # Select prompt per problem
+        if args.prompt == "task":
+            prob_system_prompt = get_system_prompt(task_type)
+        elif args.prompt == "cot":
+            prob_system_prompt = SYSTEM_PROMPT
+        else:
+            prob_system_prompt = SYSTEM_PROMPT_SIMPLE
+
         try:
             t0 = time.time()
             output = call_model(
@@ -273,8 +281,9 @@ def main():
                 args.model,
                 endpoint,
                 api_key,
-                system_prompt=system_prompt,
+                system_prompt=prob_system_prompt,
                 max_tokens=args.max_tokens,
+                task_type=task_type,
             )
             elapsed = time.time() - t0
 
@@ -282,7 +291,9 @@ def main():
             if not n_expected:
                 n_expected = len(gold) if isinstance(gold, list) else 1
 
-            pred_answers = parse_answers(output, n_expected=n_expected)
+            pred_answers = parse_answers(
+                output, n_expected=n_expected, task_type=task_type
+            )
             results = score_item(pred_answers, gold)
 
             all_em.extend(results["em"])

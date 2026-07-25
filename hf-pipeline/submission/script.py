@@ -23,7 +23,7 @@ import pandas as pd
 import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 
-from prompts import SYSTEM_PROMPT, USER_TEMPLATE, parse_answers, count_query_items
+from prompts import get_system_prompt, USER_TEMPLATE, parse_answers, count_query_items
 
 
 def load_model():
@@ -52,13 +52,15 @@ def solve_problem(
     model,
     context: str,
     query: str,
+    task_type: str = "",
     max_new_tokens: int = 1024,
 ) -> list[str]:
-    """Generate answers for one IOL problem with chain-of-thought reasoning."""
+    """Generate answers for one IOL problem with task-specific prompting."""
     n_items = count_query_items(query)
+    system_prompt = get_system_prompt(task_type)
 
     messages = [
-        {"role": "system", "content": SYSTEM_PROMPT},
+        {"role": "system", "content": system_prompt},
         {"role": "user", "content": USER_TEMPLATE.format(
             context=context.strip(), query=query.strip()
         )},
@@ -78,7 +80,7 @@ def solve_problem(
         )
 
     text = tokenizer.decode(out[0][ids.shape[-1] :], skip_special_tokens=True).strip()
-    answers = parse_answers(text, n_expected=n_items)
+    answers = parse_answers(text, n_expected=n_items, task_type=task_type)
 
     return answers
 
@@ -98,6 +100,7 @@ def main():
             model,
             context=row["context"],
             query=row["query"],
+            task_type=row.get("task_type", ""),
         )
         rows.append({
             "id": row["id"],
