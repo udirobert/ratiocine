@@ -54,7 +54,7 @@ vol = modal.Volume.from_name("ratiocine-models", create_if_missing=True)
 
 @app.function(
     image=image,
-    gpu="A100-80GB",
+    gpu="L4",
     volumes={"/root/models": vol},
     timeout=1800,  # 30 min max
     secrets=[modal.Secret.from_name("huggingface")],
@@ -84,7 +84,6 @@ def train(
         AutoModelForCausalLM,
         AutoTokenizer,
         BitsAndBytesConfig,
-        TrainingArguments,
     )
     from trl import SFTTrainer
 
@@ -101,7 +100,7 @@ def train(
     print(f"[train] Output: {output_dir}")
     print(f"[train] Epochs: {num_epochs}, LoRA r={lora_r}, lr={learning_rate}")
 
-    # --- Load and format dataset ---
+    # --- Load dataset (already in conversational messages format) ---
     from dataset import load_synthetic_data
 
     raw_examples = load_synthetic_data(dataset_path)
@@ -110,7 +109,7 @@ def train(
     # --- 4-bit quantization ---
     bnb_config = BitsAndBytesConfig(
         load_in_4bit=True,
-        bnb_4bit_compute_dtype=torch.float16,
+        bnb_4bit_compute_dtype=torch.bfloat16,
         bnb_4bit_quant_type="nf4",
         bnb_4bit_use_double_quant=True,
     )
@@ -119,7 +118,6 @@ def train(
     tokenizer = AutoTokenizer.from_pretrained(
         model_name, trust_remote_code=True, token=hf_token
     )
-    tokenizer.padding_side = "right"
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
 
@@ -128,19 +126,13 @@ def train(
         quantization_config=bnb_config,
         device_map="auto",
         trust_remote_code=True,
-        torch_dtype=torch.float16,
+        torch_dtype=torch.bfloat16,
         token=hf_token,
     )
     print(f"[train] Model loaded. Memory: {torch.cuda.memory_allocated() / 1e9:.1f} GB")
 
-    # --- Format chat template ---
-    def format_chat_template(example):
-        messages = example["messages"]
-        text = tokenizer.apply_chat_template(messages, tokenize=False)
-        return {"text": text}
-
+    # --- Build dataset (messages format — SFTTrainer auto-applies chat template) ---
     dataset = Dataset.from_list(raw_examples)
-    dataset = dataset.map(format_chat_template)
 
     # 80/20 train/test split for generalization check
     train_test = dataset.train_test_split(test_size=0.2, seed=42)
@@ -156,8 +148,10 @@ def train(
         task_type="CAUSAL_LM",
     )
 
-    # --- Training ---
-    training_args = TrainingArguments(
+    # --- Training (TRL 1.9+ API: SFTConfig, not TrainingArguments) ---
+    from trl import SFTConfig
+
+    training_args = SFTConfig(
         output_dir=output_dir,
         per_device_train_batch_size=2,
         gradient_accumulation_steps=4,
@@ -168,11 +162,14 @@ def train(
         save_steps=50,
         eval_strategy="steps",
         eval_steps=50,
-        fp16=True,
+        fp16=False,
+        bf16=True,
         report_to="none",
         save_total_limit=2,
         remove_unused_columns=False,
         gradient_checkpointing=True,
+        max_length=max_seq_length,
+        dataset_text_field="text",
     )
 
     trainer = SFTTrainer(
@@ -180,10 +177,8 @@ def train(
         args=training_args,
         train_dataset=train_test["train"],
         eval_dataset=train_test["test"],
-        tokenizer=tokenizer,
+        processing_class=tokenizer,
         peft_config=lora_config,
-        max_seq_length=max_seq_length,
-        dataset_text_field="text",
     )
 
     print("[train] Starting training...")
@@ -207,7 +202,7 @@ def train(
         merged_model = PeftModel.from_pretrained(
             AutoModelForCausalLM.from_pretrained(
                 model_name,
-                torch_dtype=torch.float16,
+                torch_dtype=torch.bfloat16,
                 device_map="auto",
                 trust_remote_code=True,
                 token=hf_token,
@@ -215,15 +210,15 @@ def train(
             output_dir,
         )
         merged_model = merged_model.merge_and_unload()
-        merged_model.save_pretrained(f"{output_dir}-merged", torch_dtype=torch.float16)
+        merged_model.save_pretrained(f"{output_dir}-merged", torch_dtype=torch.bfloat16)
         tokenizer.save_pretrained(f"{output_dir}-merged")
 
         merged_model.push_to_hub(hf_repo_id, token=hf_token)
         tokenizer.push_to_hub(hf_repo_id, token=hf_token)
         print(f"[train] Pushed merged model to {hf_repo_id}")
 
-    # Print final eval metrics
-    if trainer.eval_metrics:
+    # Print final eval metrics if available
+    if hasattr(trainer, "eval_metrics") and trainer.eval_metrics:
         print("[train] Final eval metrics:")
         for k, v in trainer.eval_metrics.items():
             print(f"  {k}: {v}")

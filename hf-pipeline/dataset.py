@@ -85,7 +85,9 @@ def load_linguini() -> list[dict[str, Any]]:
 def load_synthetic_data(path: str | Path) -> list[dict[str, Any]]:
     """Load synthetic IOL problems from a local JSONL file.
 
-    Each line: { "context": str, "query": str, "answers": [str, ...] }
+    Supports two formats:
+    1. Chat format: { "messages": [{"role": ..., "content": ...}, ...] }
+    2. Raw format: { "context": str, "query": str, "answers": [str, ...] }
     """
     examples = []
     path = Path(path)
@@ -97,10 +99,20 @@ def load_synthetic_data(path: str | Path) -> list[dict[str, Any]]:
     with open(path) as f:
         for line in f:
             item = json.loads(line)
-            task_type = item.get("task_type", "")
-            examples.append(
-                format_chat(item["context"], item["query"], item["answers"], task_type)
-            )
+            if "messages" in item:
+                # Already in chat format — use as-is
+                examples.append(item)
+            else:
+                # Raw format — convert to chat
+                task_type = item.get("task_type", "")
+                examples.append(
+                    format_chat(
+                        item["context"],
+                        item["query"],
+                        item["answers"],
+                        task_type,
+                    )
+                )
 
     print(f"[dataset] loaded {len(examples)} examples from {path}")
     return examples
