@@ -57,29 +57,61 @@ ratiocine/
 
 - [x] Project scaffolded (Arkor prototype + HF pipeline + synthetic data)
 - [x] Git repo initialized and pushed to [github.com/udirobert/ratiocine](https://github.com/udirobert/ratiocine)
-- [x] `.gitignore` covering Node, Python, HF model artifacts, secrets, caches
-- [x] Pre-commit hooks: `detect-secrets` (baseline), `ruff` lint+format, file hygiene (large-file guard, private-key detection)
+- [x] Pre-commit hooks: `detect-secrets` (baseline), `ruff` lint+format, file hygiene
 - [x] `pyproject.toml` with ruff config
-- [x] Arkor live endpoint verified working (`ARKOR_API_KEY` + `ARKOR_ENDPOINT_URL` in `.env`)
-- [x] `train.py` auto-loads `.env` via `python-dotenv`
-- [ ] **Add HF token to `.env`** (`HF_TOKEN=` is blank)
-- [ ] Fix model name in `trainer.ts` (`gemma-4-E4B-it` → `google/gemma-4-31b-it`)
-- [ ] Generate substantially more synthetic training data (currently only 2 examples)
-- [ ] Run Arkor prototyping to validate prompt/data format
-- [ ] Fine-tune Qwen2.5-7B on a GPU node
-- [ ] Test `script.py` end-to-end with the workshop Colab
-- [ ] Push model weights to HF Hub and submit
+- [x] Arkor live endpoint verified working
+- [x] HF token added to `.env`; Modal token configured (workspace: `papaandthejimjams`)
+- [x] Fixed model name in `trainer.ts` (`google/gemma-4-31b-it`)
+- [x] Built task-specific prompting system (5 task types: translation, fill_blanks, text_to_num, num_to_text, match_letters)
+- [x] Built local test harness (`test_local.py`) against the 160-problem Linguini benchmark
+- [x] Zero-shot baseline: Score 0.235 (Gemma 4 31B, task-specific prompts, 160 Linguini problems)
+- [x] Converted all 160 Linguini problems to training data (`data/synthetic/iol_train.jsonl`)
+- [x] Fine-tuned Qwen2.5-7B-Instruct with LoRA on Modal L4 GPU (3 epochs, 128 train / 32 eval split)
+- [x] Merged LoRA adapter and pushed to [Papajams/ratiocine](https://huggingface.co/Papajams/ratiocine) (public HF repo)
+- [x] Uploaded `script.py` and `prompts.py` to the HF repo
+- [x] **Submitted to the competition** (9 submissions remaining today)
+
+## Submission
+
+- **HF repo**: [Papajams/ratiocine](https://huggingface.co/Papajams/ratiocine)
+- **Model**: Qwen2.5-7B-Instruct, LoRA fine-tuned on 128 Linguini problems (3 epochs, r=16)
+- **Script**: Task-specific prompting with robust answer parsing (letters, numbers, translations)
+- **Eval**: Loads model with 4-bit bitsandbytes (fits T4 16GB), reads `/tmp/data/test.csv`, writes `submission.csv`
+
+## Honest Assessment
+
+### What could go right
+- Task-specific prompts significantly outperformed generic prompts in our Linguini testing
+- The fine-tuned model should follow the output format better than stock Qwen2.5-7B (which scores 0.000 on the leaderboard)
+- 4-bit quantization is well-tested and the model fits comfortably in T4 16GB
+- We have 9 remaining submissions to iterate
+
+### What could go wrong
+1. **No end-to-end test**: We never ran `script.py` with the fine-tuned model on a real GPU. There may be runtime errors, OOM, or timing issues (30 min limit).
+2. **Small training set**: Only 128 examples (80% of 160 Linguini problems). This is very few for SFT. The model may not have learned enough to generalize to unseen IOL 2026 problems.
+3. **Data contamination uncertainty**: Linguini is public and derived from past IOL problems. The competition test set is the IOL 2026 individual contest (novel problems). Our zero-shot Linguini scores (0.235) are likely inflated vs. what the hidden test set will show.
+4. **Model size**: Qwen2.5-7B is smaller than the models used by top leaderboard teams. The stock baseline scores 0.000, so we are entirely dependent on fine-tuning to make it competitive.
+5. **No hold-out score**: We trained on 80% and evaluated on 20% during training, but we never checked the eval loss or measured the fine-tuned model's actual Linguini score. We are flying blind.
+
+### Chances
+- **Top 3 (podium)**: Low. The current leaders score 0.17-0.20 with likely larger or more sophisticated approaches.
+- **Top 15 (respectable)**: Moderate. If the fine-tuning improved output formatting and task-following, we could be competitive. The task-specific prompts alone brought Gemma 4 to 0.235 on Linguini.
+- **Scoring above zero**: Likely. Even if the model struggles with novel problems, the task-specific prompts and robust parsing should produce some non-zero output.
+
+### What to do with remaining submissions
+1. **Check the score** from this first submission to calibrate expectations.
+2. **If score is low**: The most likely culprit is the model not following the format. Try submitting the stock Qwen2.5-7B with just our task-specific prompts (no fine-tuning) to isolate whether fine-tuning helped or hurt.
+3. **If score is zero**: There may be a runtime error in `script.py`. Check the competition Space for error logs.
+4. **If score is decent (> 0.10)**: Iterate on the prompt (especially match_letters and text_to_num), and consider training with more epochs or a different LoRA rank.
 
 ## Next Steps (priority order)
 
-1. **Add HF token** — create a token at https://huggingface.co/settings/tokens with read+write scope, paste into `.env`.
-2. **Fix the Arkor model name** — `trainer.ts` references `gemma-4-E4B-it`; the verified live-endpoint ID is `google/gemma-4-31b-it`.
-3. **Expand synthetic data** — only 2 training examples exist. Past IOL problems (from ioling.org archives) can be reformatted via `dataset.py` into the instruction format. Target: 50-100+ examples covering translation, text_to_num, num_to_text, fill_blanks, and match_letters task types.
-4. **Validate with Arkor** — run `pnpm dev`, kick off a training run, and check whether the checkpoint can solve the sample IOL problem in the `onCheckpoint` callback.
-5. **Baseline the HF pipeline** — before fine-tuning, run `script.py` with a stock Qwen2.5 model to get a baseline score on the workshop Colab. The current leaderboard shows the Qwen2.5-7B baseline scores ~0.000 EM / ~0.147 chrF, so there is a lot of room to improve.
-6. **Fine-tune** — run `train.py` on a GPU (Colab T4 or a rented GPU). Start with Qwen2.5-7B-Instruct, 3 epochs, LoRA r=16.
-7. **Test locally with Linguini** — use the [workshop Colab](https://github.com/rita-berrada/iolai-2026-workshop) to run `script.py` on real Linguini problems and see the score before submitting.
-8. **Submit** — push weights + `script.py` to a public HF repo, enter the repo ID in the [competition Space](https://huggingface.co/spaces/iol-ai-challenge/iol-ai-2026). You get 3 submissions/day and pick 2 for the private leaderboard.
+1. **Monitor the first submission score** at the [competition Space](https://huggingface.co/spaces/iol-ai-challenge/iol-ai-2026).
+2. **If runtime errors**: Debug `script.py` end-to-end on Colab T4 using the [workshop notebook](https://github.com/rita-berrada/iolai-2026-workshop).
+3. **Test the fine-tuned model locally** via the Arkor endpoint or by loading it on Colab.
+4. **Iterate on prompts** — especially match_letters (near-zero chrF) and text_to_num (weak number reasoning).
+5. **Consider a second training run** with more data (augment Linguini with past IOL problems from ioling.org) or different hyperparameters.
+6. **Pick 2 final submissions** before the deadline (July 26, 23:59 UTC).
 
 ## References
 

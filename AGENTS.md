@@ -6,16 +6,22 @@ Guidance for AI agents (and humans) working on this project.
 
 An IOL-AI 2026 competitor. The goal: submit a `script.py` to a public Hugging Face repo that solves International Linguistics Olympiad problems. Deadline: **July 26, 2026, 23:59 UTC** (the competition is only a few days long).
 
-## Current status (as of 2025-07-25)
+## Current status (as of 2026-07-25)
 
-- Git repo initialized and pushed to `github.com/udirobert/ratiocine` (branch `main`)
-- Pre-commit hooks installed: `detect-secrets` (with baseline), `ruff` lint+format, and `pre-commit-hooks` (large-file guard, private-key check, YAML/TOML/JSON validation, whitespace hygiene)
-- `pyproject.toml` configures ruff (py310 target, isort/bugbear/simplify; RUF001/002/003 disabled because linguistic data legitimately uses glottal stops, IPA, en dashes)
-- Local `.env` (gitignored) holds credentials; `.env.example` (tracked) documents the variables
-- Arkor live endpoint verified working: `https://rationcine.arkor.app/v1/chat/completions` with key `ARKOR_API_KEY`
-- Available models on the Arkor endpoint: `anthropic/claude-opus-5`, `google/gemini-3-1-pro-preview`, `google/gemini-3-5-flash-lite`, `google/gemini-3-6-flash`, `google/gemma-4-31b-it`, `openai/gpt-5-6-sol`
-- **HF token still needed** in `.env` (`HF_TOKEN=` is blank) — required before training or pushing the submission repo
-- Only 2 synthetic training examples exist in `data/synthetic/iol_train.jsonl` — far too few for real fine-tuning
+- Git repo at `github.com/udirobert/ratiocine` (branch `main`), pushed and up to date
+- Pre-commit hooks: `detect-secrets`, `ruff` lint+format, file hygiene
+- `pyproject.toml` configures ruff (py310, isort/bugbear/simplify; RUF001/002/003 disabled for linguistic data)
+- Local `.env` holds: `HF_TOKEN`, `ARKOR_API_KEY`, `ARKOR_ENDPOINT_URL` (all gitignored)
+- `.env.example` documents all env vars; Modal token configured (`~/.modal.toml`, workspace `papaandthejimjams`)
+- Arkor endpoint verified: 6 models available (Gemma 4 31B, Gemini 3.6 Flash, GPT-5, etc.)
+- 160 Linguini problems converted to training data in `data/synthetic/iol_train.jsonl`
+- Task-specific prompting system in `hf-pipeline/submission/prompts.py` (5 task types)
+- Local test harness in `hf-pipeline/test_local.py` (tests against Linguini via Arkor API)
+- Zero-shot baseline: Score 0.235 (Gemma 4 31B, task-specific prompts, 160 Linguini problems)
+- **Fine-tuned Qwen2.5-7B-Instruct** with LoRA (r=16, 3 epochs) on Modal L4 GPU
+- Merged model pushed to [Papajams/ratiocine](https://huggingface.co/Papajams/ratiocine) (public HF repo)
+- `script.py` and `prompts.py` uploaded to the HF repo
+- **Submitted to IOL-AI 2026** (9 submissions remaining today, deadline July 26 23:59 UTC)
 
 ## Two-track approach
 
