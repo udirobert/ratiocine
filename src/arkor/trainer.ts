@@ -6,7 +6,7 @@ import { createTrainer, infer } from "arkor";
 
 export const trainer = createTrainer({
   name: "ratiocine-v0",
-  model: "gemma-4-E4B-it",
+  model: "google/gemma-4-31b-it",
 
   dataset: {
     type: "huggingface",
