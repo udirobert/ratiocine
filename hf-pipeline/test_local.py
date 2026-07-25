@@ -168,14 +168,23 @@ def call_model(
         },
     ]
 
-    payload = json.dumps(
-        {
-            "model": model,
-            "messages": messages,
-            "max_tokens": max_tokens,
-            "temperature": 0,
-        }
-    ).encode()
+    # Build payload — GPT-5/o-series models don't support max_tokens or temperature
+    if any(m in model for m in ["gpt-5", "o1", "o3"]):
+        payload = json.dumps(
+            {
+                "model": model,
+                "messages": messages,
+            }
+        ).encode()
+    else:
+        payload = json.dumps(
+            {
+                "model": model,
+                "messages": messages,
+                "max_tokens": max_tokens,
+                "temperature": 0,
+            }
+        ).encode()
 
     req = urllib.request.Request(
         endpoint_url,
