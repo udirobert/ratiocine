@@ -27,10 +27,29 @@ from prompts import get_system_prompt, USER_TEMPLATE, parse_answers, count_query
 
 
 def load_model():
-    """Load the fine-tuned model with 4-bit quantization."""
+    """Load the model with quantization for T4 16GB.
+
+    Tries AWQ first (faster, better quality), falls back to bitsandbytes 4-bit.
+    """
+    # Try AWQ quantized model (pre-installed on eval T4 via autoawq)
+    try:
+        tokenizer = AutoTokenizer.from_pretrained(MODEL_ID)
+        model = AutoModelForCausalLM.from_pretrained(
+            MODEL_ID,
+            device_map="auto",
+            torch_dtype=torch.float16,
+            trust_remote_code=True,
+        )
+        model.eval()
+        print("[submit] Loaded model (AWQ/native)", flush=True)
+        return tokenizer, model
+    except Exception as awq_err:
+        print(f"[submit] AWQ load failed ({awq_err}), trying bitsandbytes 4-bit...", flush=True)
+
+    # Fallback: bitsandbytes 4-bit
     bnb_config = BitsAndBytesConfig(
         load_in_4bit=True,
-        bnb_4bit_compute_dtype=torch.float16,
+        bnb_4bit_compute_dtype=torch.bfloat16,
         bnb_4bit_quant_type="nf4",
         bnb_4bit_use_double_quant=True,
     )
@@ -40,9 +59,10 @@ def load_model():
         MODEL_ID,
         quantization_config=bnb_config,
         device_map="auto",
-        torch_dtype=torch.float16,
+        torch_dtype=torch.bfloat16,
     )
     model.eval()
+    print("[submit] Loaded model (bitsandbytes 4-bit)", flush=True)
 
     return tokenizer, model
 
@@ -53,9 +73,13 @@ def solve_problem(
     context: str,
     query: str,
     task_type: str = "",
-    max_new_tokens: int = 1024,
+    max_new_tokens: int = 512,
 ) -> list[str]:
-    """Generate answers for one IOL problem with task-specific prompting."""
+    """Generate answers for one IOL problem with task-specific prompting.
+
+    max_new_tokens=512 keeps inference fast enough for the 30-min T4 limit
+    across ~160 problems (~2-3s per problem for short answers).
+    """
     n_items = count_query_items(query)
     system_prompt = get_system_prompt(task_type)
 
@@ -68,7 +92,11 @@ def solve_problem(
 
     ids = tokenizer.apply_chat_template(
         messages, add_generation_prompt=True, return_tensors="pt"
-    ).to(model.device)
+    )
+    # Ensure we get a raw tensor, not BatchEncoding
+    if hasattr(ids, "input_ids"):
+        ids = ids.input_ids
+    ids = ids.to(model.device)
 
     with torch.no_grad():
         out = model.generate(
