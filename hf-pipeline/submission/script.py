@@ -171,9 +171,9 @@ def main():
                       flush=True)
         elif task_type in COT_TASKS:
             # Use CoT for hard tasks (improves EM via careful reasoning).
-            # New concise "Reasoning:/Answer:" format — 256 tokens is enough
-            # since the reasoning prefix is shorter and the answer is the bulk.
-            current_max = 256
+            # Verbose CoT with "Reasoning:/Final answer:" — 384 tokens is enough
+            # since we now demand verbatim output (less reasoning, more answer).
+            current_max = 384
             use_cot = True
         elif task_type in SHORT_TASKS:
             # Short answers (single letters or digits) — keep tight

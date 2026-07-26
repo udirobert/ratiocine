@@ -26,18 +26,21 @@ You solve International Linguistics Olympiad translation problems. \
 Bilingual examples from an unfamiliar language are given. \
 Deduce the vocabulary and grammar, then translate each numbered item.
 
-Think briefly, then write the EXACT answer. Be literal — preserve notation like You_{sg}, You_{pl} exactly.
+Think step by step about the language's vocabulary and grammar. \
+After reasoning, output the EXACT translation VERBATIM — preserve every word form, \
+case marker, and notation like You_{sg}, You_{pl} exactly as used in the examples.
 
 Format:
-Reasoning: <1-2 sentences identifying key vocabulary/grammar>
-Answer:
+Reasoning: <1-3 sentences identifying key vocabulary, word order, and any grammar>
+Final answer:
 <translation 1>
 <translation 2>
 ...
 
 Rules:
-- The Answer section is the ONLY thing that is scored — be exact.
-- One answer per line, in order, no numbering, no labels.
+- After "Final answer:", output ONLY the translations — nothing else.
+- One translation per line, in order, no numbering, no labels, no commentary.
+- Use the EXACT words and forms from the problem's examples.
 - Always give your best guess — never leave an item blank.""",
 
     "fill_blanks": """\
@@ -45,19 +48,20 @@ You solve International Linguistics Olympiad fill-in-the-blank problems. \
 Morphological or syntactic paradigms from an unfamiliar language are given. \
 Deduce the pattern, then fill each blank.
 
-Think briefly, then write the EXACT form.
+Think step by step about the morphological pattern. \
+After reasoning, output the EXACT form VERBATIM — preserve notation like 1sg, 2pl.
 
 Format:
-Reasoning: <1-2 sentences identifying the pattern>
-Answer:
+Reasoning: <1-3 sentences identifying the pattern and any irregularities>
+Final answer:
 <form 1>
 <form 2>
 ...
 
 Rules:
-- The Answer section is the ONLY thing that is scored — be exact.
-- Preserve notation like 1sg, 2pl exactly.
-- One answer per line, in order, no numbering, no labels.
+- After "Final answer:", output ONLY the filled forms — nothing else.
+- One form per line, in order, no numbering, no labels, no commentary.
+- Use the EXACT form as it would appear in the problem's paradigm.
 - Always give your best guess — never leave an item blank.""",
 
     "text_to_num": """\
@@ -164,13 +168,14 @@ def parse_answers(text: str, n_expected: int = 0, task_type: str = "") -> list[s
         raw = ans_match.group(1)
         answers = [ln.strip() for ln in raw.splitlines() if ln.strip()]
 
-    # 2. Try "Answer:" section (new concise format)
+    # 2. Try "Final answer:" / "Answer:" section (concise CoT formats)
     if not answers:
-        # Match "Answer:" possibly followed by content; capture everything after
+        # Match "Final answer:" or "Answer:" possibly followed by content;
+        # capture everything after, stopping at any next section header.
         ans_match = re.search(
-            r"(?:^|\n)\s*Answer\s*:\s*\n(.*?)(?:\n\s*(?:Reasoning|Explanation|Analysis)\s*:|$)",
+            r"(?:^|\n)\s*(?:Final\s+)?[Aa]nswers?\s*:\s*\n(.*?)(?:\n\s*(?:Reasoning|Explanation|Analysis|Final)\s*:|$)",
             text,
-            re.DOTALL | re.IGNORECASE,
+            re.DOTALL,
         )
         if ans_match:
             tail = ans_match.group(1).strip()
@@ -255,7 +260,7 @@ def extract_analysis(text: str) -> str:
 
     # Try "Reasoning:" line (new concise CoT format)
     m = re.search(
-        r"(?:^|\n)\s*Reasoning\s*:\s*(.+?)(?:\n\s*Answer\s*:|$)",
+        r"(?:^|\n)\s*Reasoning\s*:\s*(.+?)(?:\n\s*(?:Final\s+)?[Aa]nswers?\s*:|$)",
         text,
         re.DOTALL | re.IGNORECASE,
     )
