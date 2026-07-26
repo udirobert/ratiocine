@@ -109,6 +109,13 @@ B
 D
 
 Now match each item. Output ONLY letters, nothing else.""",
+    # Generic task type used as fallback for unknown types
+    "_generic": """\
+You solve International Linguistics Olympiad problems. \
+Answer every numbered item in the query, one per line, in order, with no numbering, \
+no bullet points, no commentary, no explanations — only the answer itself. \
+If unsure, give your best guess rather than leaving a blank. \
+Always emit exactly one answer per numbered item, in the same order as the query.""",
 }
 
 # Fallback for unknown task types
@@ -117,7 +124,9 @@ You are an expert linguistic analyst competing in the International Linguistics 
 You are given data from a language you have never seen, plus enough examples to deduce its rules. \
 Answer every numbered item in the query. Put each answer on its own line, \
 in order, with no numbering, no bullet points, and no extra text. \
-If unsure, give your best guess rather than leaving a blank."""
+Always emit exactly one answer per numbered item, in the same order as the query. \
+Partial credit is given for roughly-right answers, so always give your best guess — \
+never leave an item blank."""
 
 # Legacy aliases
 SYSTEM_PROMPT = _DEFAULT_PROMPT

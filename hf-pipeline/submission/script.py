@@ -136,9 +136,10 @@ def main():
     print(f"[submit] Loaded {n_problems} problems", flush=True)
 
     # Estimate time per problem type for adaptive budget
-    # CoT tasks: ~30s each (512 tokens); direct tasks: ~5s each (256 tokens)
+    # CoT tasks: ~20s each (512 tokens); direct tasks: ~5s each (256 tokens)
     COT_TASKS = {"translation", "fill_blanks"}
     DIRECT_TASKS = {"match_letters", "text_to_num", "num_to_text"}
+    SHORT_TASKS = {"match_letters", "text_to_num"}  # single char / digits
 
     rows = []
     for idx, row in df.iterrows():
@@ -148,9 +149,9 @@ def main():
         task_type = row.get("task_type", "")
 
         # Adaptive max_new_tokens based on time remaining and task type
-        if remaining < problems_left * 2 and remaining > 0:
+        if remaining < problems_left * 3 and remaining > 0:
             # Very low on time — minimal tokens, direct mode
-            current_max = 96
+            current_max = 64
             use_cot = False
             if idx % 10 == 0:
                 print(f"[submit] FAST MODE at {idx+1}/{n_problems} "
@@ -159,8 +160,12 @@ def main():
             # Use CoT for hard tasks (improves EM via careful reasoning)
             current_max = 512
             use_cot = True
+        elif task_type in SHORT_TASKS:
+            # Short answers (single letters or digits) — keep tight
+            current_max = 128
+            use_cot = False
         else:
-            # Direct for easy tasks (fast pattern matching)
+            # Direct for easy tasks (num_to_text, etc.)
             current_max = 256
             use_cot = False
 
