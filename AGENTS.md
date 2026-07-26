@@ -19,12 +19,12 @@ An IOL-AI 2026 competitor. The goal: submit a `script.py` to a public Hugging Fa
 - Task-specific prompting system in `hf-pipeline/submission/prompts.py` (5 task types + hybrid CoT for translation/fill_blanks)
 - Local test harness in `hf-pipeline/test_local.py` (tests against Linguini via Arkor API)
 - Zero-shot baseline: Score 0.235 (Gemma 4 31B, task-specific prompts, 160 Linguini problems)
-- **Submitted to IOL-AI 2026** (3 submissions used today)
+- **Submitted to IOL-AI 2026** (8 submissions total)
 - **Linguini validation**: Qwen2.5-14B-Instruct-AWQ + parser fix + hybrid CoT = **0.1255** (beats baseline 0.1227)
-- **Competition score**: 0.0755 (chrF=0.2279, EM=0.025) — chrF beats baseline but EM lags (model is "almost right" but not exact)
-- Fine-tuned Qwen2.5-14B with CoT data trained successfully (loss 0.59, acc 86%) but couldn't be AWQ-quantized for T4 deployment
+- **Best public score: 0.1141** (chrF=0.2314, EM=0.0563) — verbose `<analysis>/<answers>` CoT, 512 tokens, greedy decoding
+- **Selected for private leaderboard**: 0.1141 (verbose CoT, high EM) + 0.0755 (direct, high chrF) — diversification strategy
 - Submission config: hybrid CoT for translation/fill_blanks (512 tokens), direct for others (128-256 tokens), tiered max_new_tokens per task type, aggressive time guard fallback at 64 tokens
-- Public/private split: can select up to 2 submissions for private leaderboard; defaults to top 2 public
+- Public/private split: 2 submissions selected for private leaderboard for hedging
 
 ## Two-track approach
 

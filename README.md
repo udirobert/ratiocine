@@ -73,7 +73,8 @@ ratiocine/
 - [x] Verified Linguini benchmark score: **0.1255** (beats baseline 0.1227, 66% better than previous 0.075)
 - [x] Fixed `script.py` to write to `/tmp/model/submission.csv` (absolute path the eval system requires)
 - [x] Included `explanation` column for IOL 2026 Human Evaluation Challenge
-- [x] **Submitted to the competition**
+- [x] **Submitted to the competition** — best public score **0.1141** (chrF=0.2314, EM=0.0563) — rank ~25-28 from initial #35
+- [x] **Private leaderboard**: 2 submissions selected for diversity (0.1141 verbose CoT + 0.0755 direct)
 
 ## Submission
 
@@ -91,9 +92,13 @@ ratiocine/
 
 2. **Fix the parser before fine-tuning.** The v1 `parse_answers` had a `_looks_like_analysis` filter that dropped any answer starting with "The", "We", "There", "Where", "What", etc. This silently killed ~5% of correct translation answers. Removing it was the single biggest free win.
 
-3. **Direct prompts beat CoT for this competition.** Qwen3 thinking mode (70s/problem) was too slow and produced lower chrF than Qwen2.5 direct prompting (5-8s/problem). The T4 30-min limit and chrF-heavy scoring favor fast direct answers over reasoning.
+3. **Verbose CoT (`<analysis>/<answers>` format) won the public leaderboard.** Verbose CoT scored 0.0872 (EM=0.0458) on its first try and 0.1141 on a different public subset (EM=0.0563, chrF=0.2314). The longer reasoning helps the model produce exact answers — concise reasoning lost EM in our tests.
 
 4. **Task-specific prompts help.** Gemma 4 31B with simple system prompts hit 0.235 on Linguini (vs ~0.12 for generic prompts). Each task type benefits from format-specific instructions.
+
+5. **Tiered max_new_tokens per task type.** 512 for CoT (translation/fill_blanks), 256 for num_to_text, 128 for short (match_letters/text_to_num). Fits 160 problems in 30 min comfortably.
+
+6. **Private leaderboard diversification.** Selecting 0.1141 (high-EM verbose CoT) + 0.0755 (high-chrF direct) hedges against private-test differences.
 
 ### What didn't work
 
@@ -101,6 +106,10 @@ ratiocine/
 2. **AWQ quantization of fine-tuned model** — OOM on T4/L4 for 14B bf16 → AWQ. Needs A100 40GB+ which requires payment method.
 3. **GPT-5 rate limiting on Arkor** — consistently returns 429 on the free tier. Use the second Arkor endpoint or switch models.
 4. **Claude Opus 5** — listed on the Arkor endpoint but returns "Upstream service error" on every call. Not actually serving.
+5. **Verbatim output instructions** — counterintuitive: telling the model "output VERBATIM, preserve every word form" consistently reduced EM from 0.0458 to 0.025 (3 consecutive submissions). Made the model too literal, hurting exact matches.
+6. **Beam search (num_beams=2)** — catastrophic failure (0.0 score, 22% missing explanations). The 2x slowdown caused timeouts that left 35+ problems with empty outputs.
+7. **Concise CoT** — 1-2 sentence reasoning gave up the EM gains from verbose CoT (0.071 score, EM=0.025).
+8. **GPTQ quantization** — `auto-gptq` build failed on Modal (dependency conflict with newer transformers).
 
 ### Critical submission gotchas
 
@@ -108,31 +117,47 @@ ratiocine/
 
 2. **Tokenizer compatibility**: If you fine-tune with a newer transformers version and save the tokenizer, the saved `tokenizer.json` may use a format that the sandbox's older transformers can't parse ("data did not match any variant of untagged enum ModelWrapper"). Solution: keep the tokenizer from the base AWQ repo, don't replace it with one from a fresh `tokenizer.save_pretrained()`.
 
-3. **Human jury track**: Always include an `explanation` column (short, human-readable) in `submission.csv`. Makes you eligible for IOL 2026 jury review on equal footing with human contestants. No effect on automatic score.
+3. **Human jury track**: Always include an `explanation` column (short, human-readable) in `submission.csv`. Makes you eligible for IOL 2026 jury review on equal footing with human contestants. No effect on automatic score. `explanation_rate=100%` is required for jury consideration.
 
-4. **Submission columns**: `id` (echo back unchanged), `pred` (JSON-serialized list of answer strings), optional `explanation` for human jury track.
+4. **Submission columns**: `id` (echo back unchanged), `pred` (JSON-serialized list of answer strings, one entry per numbered query item IN ORDER), optional `explanation` for human jury track. Missing or extra entries in `pred` score zero for those items.
 
-5. **T4 16GB limit**: Use 4-bit quantized models. 14B-AWQ (~10GB) fits. Full bf16 14B (~28GB) does not.
+5. **T4 16GB limit + Turing GPU**: Use 4-bit quantized models. 14B-AWQ (~10GB) fits. Full bf16 14B (~28GB) does not. **Use float16, NOT bfloat16** — T4 is Turing architecture with no native bfloat16 support.
 
-6. **Time guard**: Always include a fallback for slow problems. Use `do_sample=False` (greedy) for reproducibility. If running low on time, reduce `max_new_tokens` to avoid the 30-min timeout.
+6. **Time guard**: Always include a fallback for slow problems. Use `do_sample=False` (greedy) for reproducibility. With 160 problems and a 30-min limit, average ~10s per problem. If running low on time, reduce `max_new_tokens` to avoid timeout. Beam search breaks the time budget — stick with greedy.
+
+7. **Daily submission limit**: **3 submissions per day per team.** Reset at UTC midnight. The deadline is 23:59 UTC. Plan submissions carefully.
+
+8. **Private leaderboard selection**: **Pick up to 2 submissions for private leaderboard** before the deadline. If you don't pick, your best 2 public submissions are used automatically. Diversify: pick your highest public score + one with different behavior (e.g., high-EM verbose CoT + high-chrF direct).
+
+9. **Always emit your best guess**: The official docs tip: "Partial credit (chrF) means a roughly-right answer beats a blank, so always emit your best guess for every item." Never leave an item blank.
+
+10. **PyPI is reachable**: The sandbox has no internet for HF Hub, but `pip install` still works. Useful for installing bitsandbytes for 4-bit inference if needed.
+
+11. **Public leaderboard uses subsets**: Different submissions evaluate on different problem subsets, so the same code can produce different public scores. Don't over-fit to a single public score.
 
 ## Honest Assessment
 
+### Final result
+- **Public score: 0.1141** (chrF=0.2314, EM=0.0563) — rank ~25-28 from initial #35 (0.0755)
+- **Private leaderboard**: 0.1141 (verbose CoT) + 0.0755 (direct) selected for diversification
+- **+51% improvement over initial public score** (0.0755 → 0.1141)
+
 ### What could go right
-- Task-specific prompts significantly outperformed generic prompts in our Linguini testing
+- Verbose CoT reasoning produced both higher EM AND higher chrF on the final subset
 - The Qwen2.5-14B-AWQ base model (0.1255 on Linguini) is stronger than the fine-tuned 7B (0.075)
 - Parser fix recovers ~5% of correct answers that v1 was silently dropping
 - The `explanation` column makes us eligible for the Human Evaluation Challenge
+- Diversified private LB picks hedge against private-test differences
 
 ### What could go wrong
-1. **Linguini is public data** — the IOL 2026 hidden test set will have novel problems. Our Linguini scores (0.1255) are likely inflated vs. what the hidden test set will show. Expect scores to drop 30-50%.
-2. **chrF-heavy scoring** — the geometric mean means a low chrF caps the score even with high EM. Single-letter answers (match_letters) have near-zero chrF unless exactly right.
-3. **Model size** — Qwen2.5-14B is smaller than what top leaderboard teams likely used. Top scorers may be running 32B-70B models.
+1. **Hidden test set is harder** — our Linguini scores (0.1255) are on public data; the IOL 2026 hidden test had novel problems where we scored 0.0755-0.1141. Private LB could go either way.
+2. **chrF-heavy scoring** — the geometric mean means a low chrF caps the score even with high EM. Our 0.1141 (chrF=0.2314, EM=0.0563) has chrF close to direct mode but EM above direct.
+3. **Model size** — Qwen2.5-14B is smaller than what top leaderboard teams likely used. Top scorers (0.2245) may be running 32B-70B models.
 
 ### Chances
-- **Top 10 (score > 0.161)**: Moderate. Our 0.1255 is close to the gap. Top 10 cutoff may drop as the public leaderboard evolves.
-- **Scoring above zero**: Very likely. The task-specific prompts + parser fix + Qwen2.5-14B-AWQ is a solid baseline.
-- **Human jury track**: Eligible. Our `explanation` column is properly formatted.
+- **Top 20 (score > 0.1409)**: Unlikely from rank 25-28, but possible if private subset favors our diversified pick.
+- **Top 30**: Likely with 0.1141.
+- **Human jury track**: Eligible. Our `explanation` column is properly formatted with reasoning extracted from CoT output.
 
 ## References
 
