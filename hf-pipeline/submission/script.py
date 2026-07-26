@@ -97,10 +97,15 @@ def solve_problem(
     input_ids = inputs["input_ids"].to(model.device)
 
     with torch.no_grad():
+        # Beam search num_beams=2: explores 2 hypotheses in parallel.
+        # Often gives 5-10% EM boost over greedy at modest compute cost.
+        # Reduce max_new_tokens to keep total time within 30-min budget.
         out = model.generate(
             input_ids,
             max_new_tokens=max_new_tokens,
             do_sample=False,
+            num_beams=2,
+            early_stopping=True,
             pad_token_id=tokenizer.eos_token_id,
         )
 
@@ -170,18 +175,17 @@ def main():
                       f"({remaining:.0f}s left, {remaining/problems_left:.1f}s/problem)",
                       flush=True)
         elif task_type in COT_TASKS:
-            # Use CoT for hard tasks (improves EM via careful reasoning).
-            # Verbose CoT with <analysis>/<answers> + VERBATIM instruction — 512 tokens
-            # (matches original verbose CoT that scored 0.0872, plus verbatim emphasis).
-            current_max = 512
+            # Verbose CoT for EM (matches 0.0872 baseline format) — 384 tokens
+            # (reduced from 512 to compensate for 2x beam search cost).
+            current_max = 384
             use_cot = True
         elif task_type in SHORT_TASKS:
             # Short answers (single letters or digits) — keep tight
-            current_max = 128
+            current_max = 96
             use_cot = False
         else:
             # Direct for easy tasks (num_to_text, etc.)
-            current_max = 256
+            current_max = 192
             use_cot = False
 
         try:
