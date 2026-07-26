@@ -22,53 +22,43 @@ USER_TEMPLATE = """\
 
 _PROMPTS = {
     "translation": """\
-You are an expert linguistic analyst solving International Linguistics Olympiad translation problems. \
-You are given bilingual examples from a language you have never seen. \
-Deduce the vocabulary and grammar from the examples, then translate the requested items.
+You solve International Linguistics Olympiad translation problems. \
+Bilingual examples from an unfamiliar language are given. \
+Deduce the vocabulary and grammar, then translate each numbered item.
 
-Output format (REQUIRED):
-<analysis>
-Step 1: Identify the source word for each numbered item and look up its meaning from the examples.
-Step 2: Note any grammar (case, tense, agreement) that must be applied.
-Step 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.
-</analysis>
-<answers>
-[translation 1]
-[translation 2]
+Think briefly, then write the EXACT answer. Be literal — preserve notation like You_{sg}, You_{pl} exactly.
+
+Format:
+Reasoning: <1-2 sentences identifying key vocabulary/grammar>
+Answer:
+<translation 1>
+<translation 2>
 ...
-</answers>
 
 Rules:
-- Work out word meanings, affixes, and word order from the examples.
-- Do NOT use outside knowledge. Everything you need is in the problem data.
-- Answer every numbered item in the <answers> section, one per line, in order.
-- Preserve notation like You_{sg}, You_{pl} exactly as used in the examples.
-- The <answers> section is the ONLY thing that gets scored — be exact.
-- If unsure, give your best guess rather than leaving a blank.""",
+- The Answer section is the ONLY thing that is scored — be exact.
+- One answer per line, in order, no numbering, no labels.
+- Always give your best guess — never leave an item blank.""",
 
     "fill_blanks": """\
-You are an expert linguistic analyst solving International Linguistics Olympiad fill-in-the-blank problems. \
-You are given morphological or syntactic paradigms from a language you have never seen. \
+You solve International Linguistics Olympiad fill-in-the-blank problems. \
+Morphological or syntactic paradigms from an unfamiliar language are given. \
 Deduce the pattern, then fill each blank.
 
-Output format (REQUIRED):
-<analysis>
-Step 1: Identify the pattern (prefix, suffix, stem change, or syntactic rule).
-Step 2: Apply the pattern to each blank, noting any irregularities.
-Step 3: Write the EXACT filled form, preserving notation like 1sg, 2pl.
-</analysis>
-<answers>
-[form 1]
-[form 2]
+Think briefly, then write the EXACT form.
+
+Format:
+Reasoning: <1-2 sentences identifying the pattern>
+Answer:
+<form 1>
+<form 2>
 ...
-</answers>
 
 Rules:
-- Identify prefixes, suffixes, stem changes, or syntactic patterns from the examples.
-- Do NOT use outside knowledge. Everything you need is in the problem data.
-- Answer every numbered item in the <answers> section, one per line, in order.
-- The <answers> section is the ONLY thing that gets scored — be exact.
-- If unsure, give your best guess rather than leaving a blank.""",
+- The Answer section is the ONLY thing that is scored — be exact.
+- Preserve notation like 1sg, 2pl exactly.
+- One answer per line, in order, no numbering, no labels.
+- Always give your best guess — never leave an item blank.""",
 
     "text_to_num": """\
 You are an expert linguistic analyst solving International Linguistics Olympiad number transliteration problems. \
@@ -168,13 +158,26 @@ def parse_answers(text: str, n_expected: int = 0, task_type: str = "") -> list[s
     if len(think_split) > 1:
         text = think_split[-1].strip()
 
-    # 1. Try <answers> tags
+    # 1. Try <answers>...</answers> tags
     ans_match = re.search(r"<answers>\s*(.*?)\s*</answers>", text, re.DOTALL)
     if ans_match:
         raw = ans_match.group(1)
         answers = [ln.strip() for ln in raw.splitlines() if ln.strip()]
 
-    # 2. If no <answers> tag, try content after </analysis> tag
+    # 2. Try "Answer:" section (new concise format)
+    if not answers:
+        # Match "Answer:" possibly followed by content; capture everything after
+        ans_match = re.search(
+            r"(?:^|\n)\s*Answer\s*:\s*\n(.*?)(?:\n\s*(?:Reasoning|Explanation|Analysis)\s*:|$)",
+            text,
+            re.DOTALL | re.IGNORECASE,
+        )
+        if ans_match:
+            tail = ans_match.group(1).strip()
+            if tail:
+                answers = [ln.strip() for ln in tail.splitlines() if ln.strip()]
+
+    # 3. Try content after </analysis> tag
     if not answers:
         post_analysis = re.split(r"</analysis>", text, flags=re.DOTALL)
         if len(post_analysis) > 1:
@@ -182,7 +185,7 @@ def parse_answers(text: str, n_expected: int = 0, task_type: str = "") -> list[s
             if tail:
                 answers = [ln.strip() for ln in tail.splitlines() if ln.strip()]
 
-    # 3. Try numbered lines, stripping numbering
+    # 4. Try numbered lines, stripping numbering
     if not answers:
         lines = [ln.strip() for ln in text.splitlines() if ln.strip()]
         numbered = []
@@ -193,7 +196,7 @@ def parse_answers(text: str, n_expected: int = 0, task_type: str = "") -> list[s
         if numbered:
             answers = numbered
 
-    # 4. Last resort: all non-empty lines, skip obvious markdown/headers
+    # 5. Last resort: all non-empty lines, skip obvious markdown/headers
     #    NOT skipping analysis prose — that was the v1 bug.
     if not answers:
         lines = [ln.strip() for ln in text.splitlines() if ln.strip()]
@@ -239,10 +242,23 @@ def extract_analysis(text: str) -> str:
     """Extract reasoning for the explanation column (human jury track).
 
     For Qwen3 thinking mode, extracts the <think>...</think> content.
+    For the new concise CoT format, extracts the "Reasoning:" line.
     For direct-prompt mode, returns a brief note.
     """
     # Try <think> tags (Qwen3)
     m = re.search(r"<think>(.*?)</think>", text, re.DOTALL)
+    if m:
+        analysis = m.group(1).strip()
+        if len(analysis) > 500:
+            analysis = analysis[:497] + "..."
+        return analysis
+
+    # Try "Reasoning:" line (new concise CoT format)
+    m = re.search(
+        r"(?:^|\n)\s*Reasoning\s*:\s*(.+?)(?:\n\s*Answer\s*:|$)",
+        text,
+        re.DOTALL | re.IGNORECASE,
+    )
     if m:
         analysis = m.group(1).strip()
         if len(analysis) > 500:

@@ -170,16 +170,18 @@ def main():
                       f"({remaining:.0f}s left, {remaining/problems_left:.1f}s/problem)",
                       flush=True)
         elif task_type in COT_TASKS:
-            # Use CoT for hard tasks (improves EM via careful reasoning)
-            current_max = 512
+            # Use CoT for hard tasks (improves EM via careful reasoning).
+            # New concise "Reasoning:/Answer:" format — 256 tokens is enough
+            # since the reasoning prefix is shorter and the answer is the bulk.
+            current_max = 256
             use_cot = True
         elif task_type in SHORT_TASKS:
             # Short answers (single letters or digits) — keep tight
-            current_max = 128
+            current_max = 96
             use_cot = False
         else:
             # Direct for easy tasks (num_to_text, etc.)
-            current_max = 256
+            current_max = 192
             use_cot = False
 
         try:
