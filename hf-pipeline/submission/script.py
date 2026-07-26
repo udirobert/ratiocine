@@ -149,13 +149,26 @@ def main():
         task_type = row.get("task_type", "")
 
         # Adaptive max_new_tokens based on time remaining and task type
-        if remaining < problems_left * 3 and remaining > 0:
-            # Very low on time — minimal tokens, direct mode
-            current_max = 64
+        # Target: average ~10s per problem to fit 160 problems in 27 min
+        # Budget per problem: 27*60 / 160 = 10.1s
+        # CoT is ~17s, direct is ~5-8s, short is ~4s
+        # Be aggressive: switch to fallback when remaining < 8s/problem
+        if remaining < problems_left * 8 and remaining > 0 and idx > 0:
+            # Tight on time — minimal tokens, direct mode (no CoT)
+            current_max = 96
             use_cot = False
             if idx % 10 == 0:
                 print(f"[submit] FAST MODE at {idx+1}/{n_problems} "
-                      f"({remaining:.0f}s left)", flush=True)
+                      f"({remaining:.0f}s left, {remaining/problems_left:.1f}s/problem)",
+                      flush=True)
+        elif remaining < problems_left * 12 and remaining > 0 and idx > 0 and task_type in COT_TASKS:
+            # Getting tight on CoT problems — reduce CoT max tokens
+            current_max = 256
+            use_cot = True
+            if idx % 10 == 0:
+                print(f"[submit] COOL DOWN at {idx+1}/{n_problems} "
+                      f"({remaining:.0f}s left, {remaining/problems_left:.1f}s/problem)",
+                      flush=True)
         elif task_type in COT_TASKS:
             # Use CoT for hard tasks (improves EM via careful reasoning)
             current_max = 512
