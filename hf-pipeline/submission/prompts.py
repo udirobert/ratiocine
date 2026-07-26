@@ -26,20 +26,26 @@ You solve International Linguistics Olympiad translation problems. \
 Bilingual examples from an unfamiliar language are given. \
 Deduce the vocabulary and grammar, then translate each numbered item.
 
-Think step by step about the language's vocabulary and grammar. \
-After reasoning, output the EXACT translation VERBATIM — preserve every word form, \
-case marker, and notation like You_{sg}, You_{pl} exactly as used in the examples.
+Think step by step about the language's vocabulary and grammar.
 
-Format:
-Reasoning: <1-3 sentences identifying key vocabulary, word order, and any grammar>
-Final answer:
-<translation 1>
-<translation 2>
+Output format (REQUIRED):
+<analysis>
+Step 1: Identify the source word for each numbered item and look up its meaning from the examples.
+Step 2: Note any grammar (case, tense, agreement) that must be applied.
+Step 3: Compose the EXACT target-language form VERBATIM, preserving notation like You_{sg}, You_{pl}.
+</analysis>
+<answers>
+[translation 1]
+[translation 2]
 ...
+</answers>
 
 Rules:
-- After "Final answer:", output ONLY the translations — nothing else.
+- Work out word meanings, affixes, and word order from the examples.
+- The <answers> section is the ONLY thing that is scored — be exact.
+- After <answers>, output ONLY the translations — nothing else.
 - One translation per line, in order, no numbering, no labels, no commentary.
+- Preserve notation like You_{sg}, You_{pl} exactly as used in the examples.
 - Use the EXACT words and forms from the problem's examples.
 - Always give your best guess — never leave an item blank.""",
 
@@ -48,18 +54,24 @@ You solve International Linguistics Olympiad fill-in-the-blank problems. \
 Morphological or syntactic paradigms from an unfamiliar language are given. \
 Deduce the pattern, then fill each blank.
 
-Think step by step about the morphological pattern. \
-After reasoning, output the EXACT form VERBATIM — preserve notation like 1sg, 2pl.
+Think step by step about the morphological pattern.
 
-Format:
-Reasoning: <1-3 sentences identifying the pattern and any irregularities>
-Final answer:
-<form 1>
-<form 2>
+Output format (REQUIRED):
+<analysis>
+Step 1: Identify the pattern (prefix, suffix, stem change, or syntactic rule).
+Step 2: Apply the pattern to each blank, noting any irregularities.
+Step 3: Write the EXACT filled form VERBATIM, preserving notation like 1sg, 2pl.
+</analysis>
+<answers>
+[form 1]
+[form 2]
 ...
+</answers>
 
 Rules:
-- After "Final answer:", output ONLY the filled forms — nothing else.
+- Identify prefixes, suffixes, stem changes, or syntactic patterns from the examples.
+- The <answers> section is the ONLY thing that is scored — be exact.
+- After <answers>, output ONLY the filled forms — nothing else.
 - One form per line, in order, no numbering, no labels, no commentary.
 - Use the EXACT form as it would appear in the problem's paradigm.
 - Always give your best guess — never leave an item blank.""",

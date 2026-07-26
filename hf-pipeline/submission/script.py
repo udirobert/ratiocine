@@ -171,17 +171,17 @@ def main():
                       flush=True)
         elif task_type in COT_TASKS:
             # Use CoT for hard tasks (improves EM via careful reasoning).
-            # Verbose CoT with "Reasoning:/Final answer:" — 384 tokens is enough
-            # since we now demand verbatim output (less reasoning, more answer).
-            current_max = 384
+            # Verbose CoT with <analysis>/<answers> + VERBATIM instruction — 512 tokens
+            # (matches original verbose CoT that scored 0.0872, plus verbatim emphasis).
+            current_max = 512
             use_cot = True
         elif task_type in SHORT_TASKS:
             # Short answers (single letters or digits) — keep tight
-            current_max = 96
+            current_max = 128
             use_cot = False
         else:
             # Direct for easy tasks (num_to_text, etc.)
-            current_max = 192
+            current_max = 256
             use_cot = False
 
         try:
