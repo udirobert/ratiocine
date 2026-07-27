@@ -79,10 +79,10 @@ export const SceneLabel = ({ current }: { current: SceneId }) => {
       transition={{ duration: 0.4 }}
       className="fixed top-5 left-5 z-50 flex items-center gap-2"
     >
-      <span className="font-mono text-xs text-white/40 tabular-nums">
+      <span className="font-mono text-xs text-white/55 tabular-nums">
         {String(scene.index + 1).padStart(2, "0")} / 03
       </span>
-      <span className="text-sm font-semibold text-white/80 tracking-wide">
+      <span className="text-sm font-semibold text-white/85 tracking-wide">
         {scene.label}
       </span>
     </motion.div>

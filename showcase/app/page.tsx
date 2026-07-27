@@ -5,6 +5,7 @@ import { useState } from "react";
 
 import { SceneLabel, SceneNav, SceneId, Wordmark } from "@/components/scene-nav";
 import { GridBackground } from "@/components/ui/grid-background";
+import { HeroOverlay } from "@/components/hero-overlay";
 
 const Problem = dynamic(
   () => import("./scenes/problem/index").then((m) => m.Problem),
@@ -35,6 +36,7 @@ const Home = () => {
       </div>
 
       <SceneNav current={scene} onChange={setScene} />
+      <HeroOverlay />
     </main>
   );
 };

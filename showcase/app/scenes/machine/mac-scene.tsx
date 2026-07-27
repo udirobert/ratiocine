@@ -8,26 +8,35 @@ import {
 } from "@react-three/drei";
 import { Canvas, useFrame, useLoader } from "@react-three/fiber";
 import { RefObject, Suspense, useEffect, useRef, useState } from "react";
-import { HTMLTexture, Mesh, type ShaderMaterial } from "three";
+import { CanvasTexture, Mesh, SRGBColorSpace, type ShaderMaterial } from "three";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 
 import { crtMaterial } from "./crt-material";
 
-type ScreenMat = ShaderMaterial & { map: HTMLTexture | null };
+type ScreenMat = ShaderMaterial & { map: CanvasTexture | null };
 const material = crtMaterial as ScreenMat;
 
-const Mac = ({ screenEl }: { screenEl: HTMLElement | null }) => {
+const Mac = ({ screenCanvas }: { screenCanvas: HTMLCanvasElement | null }) => {
   const gltf = useLoader(GLTFLoader, "/mac.glb");
   const screenRef = useRef<Mesh>(null);
+  const texRef = useRef<CanvasTexture | null>(null);
 
   useEffect(() => {
-    if (!screenEl) return;
-    const texture = new HTMLTexture(screenEl);
-    material.uniforms.map.value = texture;
-    material.map = texture;
-  }, [screenEl]);
+    if (!screenCanvas) return;
+    const tex = new CanvasTexture(screenCanvas);
+    tex.colorSpace = SRGBColorSpace;
+    material.uniforms.map.value = tex;
+    material.map = tex;
+    texRef.current = tex;
+    return () => {
+      tex.dispose();
+      material.uniforms.map.value = null;
+      material.map = null;
+    };
+  }, [screenCanvas]);
 
   useFrame(({ clock }) => {
+    if (texRef.current) texRef.current.needsUpdate = true;
     material.uniforms.uTime.value = clock.elapsedTime;
   });
 
@@ -47,18 +56,15 @@ const Mac = ({ screenEl }: { screenEl: HTMLElement | null }) => {
 };
 
 export const MacScene = ({
-  screenElRef,
+  screenCanvasRef,
 }: {
-  screenElRef: RefObject<HTMLDivElement | null>;
+  screenCanvasRef: RefObject<HTMLCanvasElement | null>;
 }) => {
-  const [el, setEl] = useState<HTMLElement | null>(null);
+  const [el, setEl] = useState<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
-    // Give the DOM a frame to paint before sampling
-    requestAnimationFrame(() => {
-      setEl(screenElRef.current);
-    });
-  }, [screenElRef]);
+    requestAnimationFrame(() => setEl(screenCanvasRef.current));
+  }, [screenCanvasRef]);
 
   return (
     <Canvas
@@ -75,7 +81,7 @@ export const MacScene = ({
           shadows={false}
           adjustCamera={false}
         >
-          <Mac screenEl={el} />
+          <Mac screenCanvas={el} />
         </Stage>
       </Suspense>
       <ContactShadows
