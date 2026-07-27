@@ -1,6 +1,0 @@
-{
-  "buildCommand": "cd showcase && next build",
-  "installCommand": "cd showcase && npm install",
-  "outputDirectory": "showcase/.next",
-  "framework": null
-}
