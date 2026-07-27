@@ -1,0 +1,9 @@
+{
+  "buildCommand": "cd showcase && npm install && npm run build",
+  "outputDirectory": "showcase/.next",
+  "installCommand": "echo skip",
+  "framework": "nextjs",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/$1" }
+  ]
+}

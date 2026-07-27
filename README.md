@@ -39,10 +39,29 @@ ratiocine/
 │   └── submission/
 │       ├── script.py       # Competition submission harness
 │       └── README.md       # Instructions for HF repo setup
+├── showcase/               # Next.js showcase site (deployed on Vercel)
+│   ├── app/
+│   │   ├── page.tsx        # Scene switcher root
+│   │   └── scenes/
+│   │       ├── problem/    # Scene 1: real IOL problem + rain refraction shader
+│   │       ├── machine/    # Scene 2: R3F Mac GLB + CRT HTMLTexture screen
+│   │       └── answer/     # Scene 3: Voronoi explosion + 3D answer reveal
+│   └── components/         # SceneNav, GridBackground, wordmark
 ├── notebooks/              # Exploration and analysis
 ├── arkor.config.ts         # Arkor CLI config
+├── vercel.json             # Vercel monorepo config (root → showcase/)
 └── package.json
 ```
+
+### Running the showcase locally
+
+```bash
+cd showcase
+npm install
+npm run dev   # → http://localhost:3000
+```
+
+Enable `chrome://flags/#canvas-draw-element` in Chrome Canary for the full HTMLTexture experience (rain shader on Scene 1, live DOM texture on the Mac screen in Scene 2). Everything works without it via fallback paths.
 
 ## Competition Details
 
@@ -75,6 +94,7 @@ ratiocine/
 - [x] Included `explanation` column for IOL 2026 Human Evaluation Challenge
 - [x] **Submitted to the competition** — best public score **0.1141** (chrF=0.2314, EM=0.0563) — rank ~25-28 from initial #35
 - [x] **Private leaderboard**: 2 submissions selected for diversity (0.1141 verbose CoT + 0.0755 direct)
+- [x] Built three-scene showcase site (`showcase/`) using React Three Fiber, html-in-canvas HTMLTexture API, and Voronoi explosion — deployed to Vercel
 
 ## Submission
 

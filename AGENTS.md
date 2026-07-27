@@ -148,11 +148,21 @@ ratiocine/
 │   └── submission/
 │       ├── script.py       # Competition submission harness
 │       └── README.md       # HF repo setup instructions
+├── showcase/               # Next.js showcase site (Vercel)
+│   ├── app/
+│   │   ├── page.tsx        # Scene switcher (problem → machine → answer)
+│   │   └── scenes/
+│   │       ├── problem/    # Real IOL problem + rain refraction shader (postprocessing)
+│   │       ├── machine/    # Mac GLB + CRT HTMLTexture screen + partner logos
+│   │       └── answer/     # Voronoi explosion + 3D answer reveal (Text3D)
+│   ├── components/         # SceneNav, GridBackground, Wordmark
+│   └── public/             # mac.glb, inter.json (font for Text3D), grid.svg
 ├── notebooks/              # Exploration
 ├── .env.example            # Tracked template for env vars
 ├── .gitignore
 ├── .pre-commit-config.yaml # Secrets + linting hooks
 ├── .secrets.baseline       # detect-secrets baseline
+├── vercel.json             # Monorepo deploy config (root → showcase/)
 ├── AGENTS.md
 ├── README.md
 ├── package.json
