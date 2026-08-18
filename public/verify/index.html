@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ration — Verify an attestation</title>
+    <meta
+      name="description"
+      content="Verify a Ration reasoning attestation against the ICP root key."
+    />
+    <style>
+      :root {
+        --bg: #0b0d0c;
+        --panel: #12171a;
+        --line: #24303a;
+        --text: #e6edf3;
+        --muted: #93a1ad;
+        --accent: #9fd7ff;
+        --green: #89e0aa;
+        --red: #e08989;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font: 16px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif;
+      }
+      main {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 72px 24px 96px;
+      }
+      .eyebrow {
+        color: var(--green);
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        font-size: 12px;
+        margin: 0 0 12px;
+      }
+      h1 {
+        font-size: clamp(32px, 5vw, 48px);
+        line-height: 1.1;
+        margin: 0 0 16px;
+        letter-spacing: -0.02em;
+      }
+      p { color: var(--muted); max-width: 60ch; }
+      .card {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 24px;
+        margin-top: 32px;
+      }
+      label {
+        display: block;
+        font-size: 13px;
+        color: var(--accent);
+        margin: 18px 0 6px;
+      }
+      textarea, input {
+        width: 100%;
+        background: #0e1418;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        color: var(--text);
+        padding: 10px 12px;
+        font: 13px/1.5 ui-monospace, "SF Mono", Menlo, monospace;
+      }
+      textarea { min-height: 110px; resize: vertical; }
+      button {
+        margin-top: 20px;
+        padding: 10px 18px;
+        border-radius: 8px;
+        border: 1px solid var(--line);
+        background: var(--panel);
+        color: var(--muted);
+        font-size: 15px;
+        cursor: not-allowed;
+      }
+      #status {
+        margin-top: 16px;
+        font-size: 14px;
+        color: var(--muted);
+      }
+      a { color: var(--accent); }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p class="eyebrow">Ration · public verifier</p>
+      <h1>Verify an attestation</h1>
+      <p>
+        Every reasoning entry in a Ration ledger is signed with a chain-key
+        assertion (ECDSA secp256k1, domain-separated per installation). A
+        certificate chain links each signature back to the ICP root key, so
+        anyone can confirm: <em>this canister attested that this answer earned
+        this grade</em> — without trusting Ration, the model, or any middleman.
+      </p>
+
+      <div class="card">
+        <label for="assertion">Assertion payload (JSON or hex)</label>
+        <textarea id="assertion" placeholder='{"problem_id":"...","grade_em":true,"grade_chrf":0.91}'></textarea>
+
+        <label for="signature">Signature (hex)</label>
+        <input id="signature" placeholder="0x…" />
+
+        <label for="pubkey">Public key (hex, compressed)</label>
+        <input id="pubkey" placeholder="0x…" />
+
+        <button id="verify" disabled>Verify (coming online)</button>
+        <p id="status">
+          Client-side secp256k1 verification ships with the certified-ledger
+          publish flow. Meanwhile, attestations can be checked against the
+          canister's certified data and the IC root key directly.
+        </p>
+      </div>
+
+      <p style="margin-top:32px;"><a href="/">&larr; Back to Ration</a></p>
+    </main>
+  </body>
+</html>

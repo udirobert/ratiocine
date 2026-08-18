@@ -1,0 +1,32 @@
+# Netlify configuration for ratiocine.trustfall.xyz
+# Brand front-end + thin API proxy in front of the Modal GPU inference engine.
+#
+# NOTE: Netlify sync-function timeouts are configured in the Netlify dashboard
+# (Site settings -> Functions -> Function timeout; default 10s, max 26s).
+# The proxy below aborts cleanly at SOLVE_TIMEOUT_MS if the engine is slow.
+
+[build]
+  publish = "public"
+  functions = "netlify/functions"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+[functions]
+  node_bundler = "esbuild"
+
+[[redirects]]
+  from = "/api/solve"
+  to = "/.netlify/functions/solve"
+  status = 200
+
+[[redirects]]
+  from = "/api/status"
+  to = "/.netlify/functions/status"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"

@@ -1,0 +1,15 @@
+{
+  "format": 2,
+  "app": "ratiocine",
+  "memory": {
+    "ratiocine": {
+      "schemas": {
+        "1": {
+          "hash": "aec26518febc8f7b1c02af0dd1cf4a3b98752f4cd184a0be85f8bfca3ff78f39",
+          "entry": "aec26518febc8f7b1c02af0dd1cf4a3b98752f4cd184a0be85f8bfca3ff78f39"
+        }
+      },
+      "migrations": {}
+    }
+  }
+}

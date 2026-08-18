@@ -23,7 +23,8 @@ ignore = [
 ]
 
 [tool.ruff.lint.per-file-ignores]
-# training and dataset scripts legitimately print progress
+# training/eval/push/quant CLI scripts legitimately print progress
+"hf-pipeline/*.py" = ["T20"]
 "hf-pipeline/train.py" = ["T20"]
 "hf-pipeline/dataset.py" = ["T20"]
 "hf-pipeline/test_local.py" = ["T20"]

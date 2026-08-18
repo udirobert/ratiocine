@@ -1,0 +1,83 @@
+{
+  "format": 3,
+  "name": "Ration",
+  "id": "ratiocine",
+  "version": 100,
+  "update_source": "233tv-xiaaa-aaaay-aacta-cai",
+  "description": "Ration: a certified reasoning logbook. Solves Linguini problems via a declared outcall, grades answers in-canister (EM + chrF), and signs every entry with a chain-key assertion.",
+  "src": "main.mo",
+  "capabilities": {
+    "https_outcalls": {
+      "api": 1,
+      "endpoints": [
+        {
+          "id": "solver",
+          "url_prefix": "https://ratiocine.trustfall.xyz/api/",
+          "methods": [
+            "post"
+          ],
+          "request_headers": [
+            "content-type"
+          ],
+          "max_request_bytes": 65536,
+          "max_response_bytes": 131072,
+          "transform": "strip_headers"
+        }
+      ]
+    },
+    "chain_key_signing": {
+      "api": 1,
+      "slots": [
+        {
+          "id": "ration_assertions",
+          "algorithm": "ecdsa_secp256k1",
+          "purpose": "Sign Ration reasoning-ledger assertions",
+          "max_assertion_bytes": 4096
+        }
+      ]
+    }
+  },
+  "backend": {
+    "capabilities": {
+      "https_outcalls": {
+        "api": 1
+      },
+      "chain_key_signing": {
+        "api": 1
+      }
+    }
+  },
+  "tiles": [
+    {
+      "id": "main",
+      "title": "Ration",
+      "path": "index.html",
+      "icon": "static/icon.png"
+    }
+  ],
+  "func": {
+    "ping_solver": {
+      "type": "update",
+      "async": "async*"
+    },
+    "sign_probe": {
+      "type": "update",
+      "async": "async*"
+    },
+    "get_pubkey": {
+      "type": "update",
+      "async": "async*"
+    }
+  },
+  "memory": {
+    "ratiocine": {
+      "version": 1,
+      "schemas": {
+        "1": {
+          "src": "memory/ratiocine/v1.mo"
+        }
+      },
+      "migrations": []
+    }
+  }
+}

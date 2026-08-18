@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ration — verifiable reasoning on ICP</title>
+    <meta
+      name="description"
+      content="Ration is a Neutron app: an AI reasoning engine whose answers are graded and chain-key signed inside your own canister."
+    />
+    <style>
+      :root {
+        --bg: #0b0d0c;
+        --panel: #12171a;
+        --line: #24303a;
+        --text: #e6edf3;
+        --muted: #93a1ad;
+        --accent: #9fd7ff;
+        --green: #89e0aa;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font: 16px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif;
+      }
+      main {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 72px 24px 96px;
+      }
+      .eyebrow {
+        color: var(--green);
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        font-size: 12px;
+        margin: 0 0 12px;
+      }
+      h1 {
+        font-size: clamp(40px, 7vw, 64px);
+        line-height: 1.05;
+        margin: 0 0 16px;
+        letter-spacing: -0.02em;
+      }
+      .tagline {
+        font-size: 19px;
+        color: var(--muted);
+        max-width: 56ch;
+      }
+      .cards { display: grid; gap: 12px; margin-top: 48px; }
+      .card {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 20px 22px;
+      }
+      .card h2 {
+        margin: 0 0 6px;
+        font-size: 16px;
+        color: var(--accent);
+      }
+      .card p { margin: 0; color: var(--muted); font-size: 15px; }
+      .steps { counter-reset: s; }
+      .steps li { margin: 10px 0; }
+      .steps li::before {
+        counter-increment: s;
+        content: counter(s);
+        display: inline-block;
+        min-width: 24px;
+        height: 24px;
+        margin-right: 10px;
+        border-radius: 50%;
+        background: var(--line);
+        color: var(--accent);
+        font-size: 13px;
+        text-align: center;
+        line-height: 24px;
+      }
+      .links { margin-top: 40px; display: flex; gap: 12px; flex-wrap: wrap; }
+      a.btn {
+        display: inline-block;
+        padding: 10px 18px;
+        border-radius: 8px;
+        border: 1px solid var(--line);
+        background: var(--panel);
+        color: var(--text);
+        text-decoration: none;
+        font-size: 15px;
+      }
+      a.btn.primary {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: #06121d;
+        font-weight: 600;
+      }
+      footer { margin-top: 64px; color: var(--muted); font-size: 13px; }
+      code {
+        background: #0e1418;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        padding: 1px 6px;
+        font-size: 13px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p class="eyebrow">Neutron app · Internet Computer</p>
+      <h1>Ration</h1>
+      <p class="tagline">
+        An AI reasoning engine that keeps receipts. Ration solves hard
+        pattern-deduction problems, grades itself against ground truth, and
+        chain-key-signs every attempt — a reasoning ledger you can verify
+        against the ICP root key.
+      </p>
+
+      <div class="cards">
+        <div class="card">
+          <h2>Provable reasoning, not vibes</h2>
+          <p>
+            Every entry in the ledger carries an exact-match + chrF grade
+            computed <em>inside the canister</em> and a threshold signature no
+            single node ever holds.
+          </p>
+        </div>
+        <div class="card">
+          <h2>User-sovereign</h2>
+          <p>
+            Ration installs into your own Neutron canister. Your problems, your
+            ledger, your consent prompts — no account, no shared server.
+          </p>
+        </div>
+        <div class="card">
+          <h2>Agent Mode native</h2>
+          <p>
+            Exposes <code>solve</code>, <code>grade</code>, and
+            <code>get_ledger</code> as typed tools any agent in your OS can
+            call.
+          </p>
+        </div>
+      </div>
+
+      <h2 style="margin-top:48px; font-size:18px;">How it works</h2>
+      <ol class="steps" style="color: var(--muted);">
+        <li>Your canister sends the problem to the engine via a declared HTTPS outcall.</li>
+        <li>The engine returns candidate answers; the canister parses them with the Linguini protocol.</li>
+        <li>Grading runs in-canister: exact match and chrF against the ground truth you supply.</li>
+        <li>The (problem, attempt, grade) tuple is chain-key-signed and appended to your ledger.</li>
+        <li>Publish the ledger as a certified asset — anyone can verify it, and absence is provable.</li>
+      </ol>
+
+      <div class="links">
+        <a class="btn primary" href="/verify">Verify an attestation</a>
+        <a class="btn" href="https://github.com/udirobert/ratiocine">Source</a>
+      </div>
+
+      <footer>
+        Ration · a <a href="https://ntron.net" style="color:var(--accent)">Neutron</a>
+        app for the Internet Computer. Engine status:
+        <code>POST /api/solve</code>
+      </footer>
+    </main>
+  </body>
+</html>
