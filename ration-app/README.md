@@ -26,7 +26,8 @@ User's Neutron canister (this app)
 ├── https_outcalls → POST {url_prefix}{path} → solve engine
 ├── grade in-canister (EM + chrF vs. ground truth)
 ├── chain_key_signing → sign (problem, attempt, grade) assertion
-└── ledger (stable memory) + certified-asset publication
+├── ledger (stable memory, v2 schema)
+└── certified_assets → publish the ledger as a public certified report
 
 Solve engine (external, GPU):
 ├── Primary: https://ratiocine.trustfall.xyz/api/solve
@@ -36,8 +37,34 @@ Solve engine (external, GPU):
 ```
 
 The canister is the **verifier, not the compute**: inference happens on a
-hosted GPU; everything provable (parsing, grading, signing, storage) happens
-inside the canister.
+hosted GPU; everything provable (parsing, grading, signing, storage,
+publishing) happens inside the canister.
+
+## Certified ledger report
+
+`publish_report` serializes the whole ledger (entries, grades, canonical
+assertions, assertion hashes, chain-key signatures) into one JSON document and
+publishes it as an **immutable, content-addressed certified asset**:
+
+```
+GET <canister-gateway>/app/ratiocine/_route/protocol/v1/ledger/report/<sha256-hex>
+```
+
+- **Content-addressed**: the URL's final segment is the SHA-256 of the report
+  body. Anyone can re-hash the downloaded bytes and check the URL.
+- **Witness-verifiable**: served through the kernel's certified HTTP layer;
+  the response is provable against the ICP root key (hash-tree witness).
+- **Idempotent**: re-publishing identical content replays cleanly (same
+  digest, same nonce); a changed ledger produces a new digest/URL.
+- **Self-contained**: each entry carries the exact signed assertion string,
+  its SHA-256, and the 64-byte ecdsa_secp256k1 signature — a verifier can
+  check `sha256(assertion) == assertion_hash` and verify the signature
+  against the slot's public key without trusting this app.
+- Reports over 60 KB fall back to `"mode":"compact"` (assertion text omitted;
+  hashes + signatures retained).
+
+Verified locally (PocketIC): publish → HTTP 200 → valid JSON with
+`em/chrf/score`, 64-byte signatures; second publish returns the same digest.
 
 ## Build & install (local PocketIC)
 
@@ -73,12 +100,21 @@ zero-arg funcs take a single `null` dispatcher argument).
 - Chain-key signing on local PocketIC: **works** (verified 2026-08-18:
   `sig_ok`, 32-byte digest, 64-byte ECDSA signature; pubkey 33-byte compressed).
 
-## Status (2026-08-18)
+## Status (2026-08-19)
 
 - ✅ Capability probes green: chain-key sign + pubkey; outcall request passes
   kernel validation (endpoint/method/path/idempotency-key all correct).
 - ✅ Solve engine deployed on Modal (`Papajams/ratiocine`, 14B-AWQ, L4,
-  scales to zero).
-- 🔲 Full backend: solve → parse → grade (EM + chrF in Motoko) → attest → ledger.
-- 🔲 Frontend: problem bank, graded-answer view, ledger/logbook UI, forge-attempt mode.
-- 🔲 Certified-asset publication of the ledger report.
+  scales to zero). Async submit/poll API; cold ~118s, warm ~40s.
+- ✅ M3 backend: `attest_entry` (grade → SHA-256 → chain-key sign → stable
+  ledger append) + `get_ledger`. Perfect answer → EM 1.0, chrF 1.0,
+  score 1.0; 64-byte secp256k1 signature per entry.
+- ✅ M4 certified report: `publish_report` → immutable content-addressed
+  certified asset, HTTP-served, idempotent re-publish.
+- ✅ Frontend: problem bank (graded mini-language problem), Deduction Theatre
+  phases, grade-&-sign flow, certified ledger table, publish-report button.
+- 🔲 Netlify DNS for `ratiocine.trustfall.xyz` (frontend falls back to direct
+  Modal URLs until live).
+- 🔲 Non-destructive upgrade run to demonstrate ledger persistence.
+- 🔲 Agent Mode: expose `attest_entry`/`get_ledger`/`publish_report` as typed
+  tools in the kernel catalog.

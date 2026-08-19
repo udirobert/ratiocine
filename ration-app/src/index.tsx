@@ -226,6 +226,9 @@ export const App = () => {
   const [error, setError] = useState("");
   const [ledger, setLedger] = useState<LedgerEntry[]>([]);
   const [ledgerErr, setLedgerErr] = useState("");
+  const [reportUrl, setReportUrl] = useState("");
+  const [reportBusy, setReportBusy] = useState(false);
+  const [reportErr, setReportErr] = useState("");
 
   const jobIdRef = useRef<string | null>(null);
   const problemRef = useRef<Problem | null>(null);
@@ -263,6 +266,29 @@ export const App = () => {
   useEffect(() => {
     if (client) void loadLedger();
   }, [client, loadLedger]);
+
+  // Publish the full ledger as a certified asset; returns a public URL.
+  const publishReport = useCallback(async () => {
+    if (!client) return;
+    setReportBusy(true);
+    setReportErr("");
+    try {
+      const raw = await client.callDialog("publish_report", [null]);
+      const s = typeof raw === "string" ? raw : String(raw);
+      const digest = s.split(":")[1];
+      if (!digest) {
+        setReportErr(s);
+      } else {
+        setReportUrl(
+          `${window.location.origin}/app/ratiocine/_route/protocol/v1/ledger/report/${digest}`,
+        );
+      }
+    } catch (e: any) {
+      setReportErr("Publish error: " + String(e?.message ?? e));
+    } finally {
+      setReportBusy(false);
+    }
+  }, [client]);
 
   // Rotate insights while solving
   useEffect(() => {
@@ -362,7 +388,7 @@ export const App = () => {
           prompt: p.query,
           pred: result.pred ?? [],
           model: result.model ?? "",
-          ground_truth: p.ground_truth ? [p.ground_truth] : [null],
+          ground_truth: p.ground_truth ?? null,
         },
       ]);
       const e = asEntry(raw);
@@ -606,7 +632,26 @@ export const App = () => {
               >
                 Refresh
               </button>
+              <button
+                className={cx(nt.button, nt.buttonSecondary, "nt-button--sm")}
+                onClick={() => void publishReport()}
+                disabled={reportBusy || !client || ledger.length === 0}
+                type="button"
+              >
+                {reportBusy ? "Publishing…" : "Publish certified report"}
+              </button>
             </div>
+            {reportErr && (
+              <div className={cx(nt.alert, nt.alertWarning)}>{reportErr}</div>
+            )}
+            {reportUrl && (
+              <div className="ration-report-link">
+                <span className={cx(nt.badge, nt.badgeSuccess)}>certified</span>
+                <a href={reportUrl} target="_blank" rel="noreferrer">
+                  {reportUrl}
+                </a>
+              </div>
+            )}
             {ledgerErr ? (
               <div className={cx(nt.alert, nt.alertWarning)}>{ledgerErr}</div>
             ) : ledger.length === 0 ? (

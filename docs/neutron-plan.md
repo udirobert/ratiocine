@@ -118,13 +118,18 @@ prompt templates. Slower and less accurate, but removes the infra dependency.
 
 ## Milestones
 
-- **M1 (day 1–2):** hosted `/solve` API live on Modal, tested with a
-  Linguini CSV row.
-- **M2 (day 2–3):** ratiocine app scaffold compiles, packages
+- **M1 (day 1–2):** ✅ hosted `/solve` API live on Modal, tested with a
+  Linguini CSV row. Async submit/poll; cold ~118s, warm ~40s.
+- **M2 (day 2–3):** ✅ ratiocine app scaffold compiles, packages
   (`ratiocine.v0.1.0.neutron`), installs into local PocketIC SushiOS.
-- **M3 (day 3–4):** end-to-end: solve → grade → sign → ledger → frontend.
-- **M4 (day 5):** Agent Mode integration + certified logbook publish +
-  forge-attempt demo polish.
+- **M3 (day 3–4):** ✅ end-to-end: solve → grade → sign → ledger → frontend.
+  `attest_entry` grades EM+chrF in-canister, SHA-256-hashes, chain-key-signs,
+  appends to the stable ledger; `get_ledger` reads it back. Verified on
+  PocketIC (perfect answer → EM 1.0 / chrF 1.0 / score 1.0, 64-byte sig).
+- **M4 (day 5):** ✅ certified logbook publish — `publish_report` publishes the
+  ledger as an immutable, content-addressed certified asset served over HTTP
+  (`/app/ratiocine/_route/protocol/v1/ledger/report/<sha256>`), idempotent.
+  🔲 Agent Mode integration + forge-attempt demo polish.
 - **M5:** hackathon submission (repo + local demo recording + optional mainnet
   deploy via the 2-ICP dispenser if time allows).
 

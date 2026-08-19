@@ -301,6 +301,21 @@
     margin-top: var(--nt-pad-3);
   }
 
+  .ration-report-link {
+    align-items: center;
+    display: flex;
+    gap: var(--nt-pad-2);
+    margin-top: var(--nt-pad-3);
+    overflow: hidden;
+
+    a {
+      font-family: var(--nt-font-mono, ui-monospace, monospace);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
   .ration-ledger {
     display: flex;
     flex-direction: column;

@@ -24,6 +24,7 @@ module {
         capabilities : {
             https_outcalls : NC.HttpsOutcallsV1;
             chain_key_signing : NC.ChainKeySigningV1;
+            certified_assets : NC.CertifiedAssetsV2;
         };
     };
 
@@ -66,6 +67,7 @@ module {
         let mem = env.stable_memory.ratiocine;
         let out = env.capabilities.https_outcalls;
         let ck = env.capabilities.chain_key_signing;
+        let cas = env.capabilities.certified_assets;
 
         // ===================== M3: grade -> sign -> ledger =====================
 
@@ -119,6 +121,170 @@ module {
         // The certified reasoning logbook.
         public func /*update*/get_ledger() : async* [LedgerEntry] {
             mem.ledger;
+        };
+
+        // ================ M4: certified ledger report publication ================
+
+        // The full ledger as one self-contained, content-addressed certified
+        // asset. Published immutably: each distinct report is a new object at
+        // /v1/ledger/report/<sha256-hex>, witness-verifiable against the ICP
+        // root key, and re-publishing identical content is an idempotent no-op.
+
+        func blobHex(b : Blob) : Text {
+            var out = "";
+            var i : Nat = 0;
+            while (i < b.size()) {
+                let n = Nat8.toNat(b[i]);
+                out #= HEX[n / 16] # HEX[n % 16];
+                i := i + 1;
+            };
+            out;
+        };
+
+        func floatText(f : ?Float) : Text {
+            switch (f) {
+                case (null) { "null" };
+                case (?v) { Float.toText(v) };
+            };
+        };
+
+        func entryJson(e : Memory.LedgerEntry, full : Bool) : Text {
+            "{" # "\"seq\":" # Nat.toText(e.seq)
+                # ",\"ts\":" # Int.toText(e.ts)
+                # ",\"problem_id\":\"" # jsonEscape(e.problem_id) # "\""
+                # ",\"pred\":[" # predJson(e.pred) # "]"
+                # ",\"model\":\"" # jsonEscape(e.model) # "\""
+                # ",\"em\":" # floatText(e.em)
+                # ",\"chrf\":" # floatText(e.chrf)
+                # ",\"score\":" # floatText(e.score)
+                # ",\"context_hash\":\"" # e.context_hash # "\""
+                # (if (full) {
+                        ",\"assertion\":\"" # jsonEscape(e.assertion) # "\""
+                    } else {
+                        ""
+                    })
+                # ",\"assertion_hash\":\"" # e.assertion_hash # "\""
+                # ",\"signature\":\"" # blobHex(e.signature) # "\""
+                # "}";
+        };
+
+        func reportBody(full : Bool) : Text {
+            var entries = "[";
+            var i : Nat = 0;
+            while (i < mem.ledger.size()) {
+                if (i > 0) { entries #= ","; };
+                entries #= entryJson(mem.ledger[i], full);
+                i := i + 1;
+            };
+            entries #= "]";
+            "{" # "\"format\":\"ration.ledger-report.v1\""
+                # ",\"app\":\"ratiocine\""
+                # (if (full) { "" } else { ",\"mode\":\"compact\"" })
+                # ",\"entry_count\":" # Nat.toText(mem.ledger.size())
+                # ",\"entries\":" # entries
+                # "}";
+        };
+
+        func casErrText(e : NC.Error) : Text {
+            switch (e) {
+                case (#invalid) { "invalid" };
+                case (#stale_scope) { "stale_scope" };
+                case (#stale_generation(_)) { "stale_generation" };
+                case (#disabled) { "disabled" };
+                case (#frozen) { "frozen" };
+                case (#not_found) { "not_found" };
+                case (#retired_key) { "retired_key" };
+                case (#conflict(_)) { "conflict" };
+                case (#quota) { "quota" };
+                case (#receipt_full) { "receipt_full" };
+                case (#aborted) { "aborted" };
+                case (#expired) { "expired" };
+                case (#incomplete(_)) { "incomplete" };
+                case (#not_ready) { "not_ready" };
+                case (#generation_exhausted) { "generation_exhausted" };
+                case (#revision_exhausted) { "revision_exhausted" };
+                case (#low_cycles) { "low_cycles" };
+                case (#busy) { "busy" };
+            };
+        };
+
+        // 16-byte idempotency nonce: hex of the first 8 digest bytes (16 ASCII
+        // bytes). Deterministic per report, so re-publishing replays cleanly.
+        func reportNonce(digest : Blob) : Blob {
+            var out = "";
+            var i : Nat = 0;
+            while (i < 8) {
+                let n = Nat8.toNat(digest[i]);
+                out #= HEX[n / 16] # HEX[n % 16];
+                i := i + 1;
+            };
+            Text.encodeUtf8(out);
+        };
+
+        public func /*update*/publish_report() : async* Text {
+            var body = reportBody(true);
+            if (Text.encodeUtf8(body).size() > 60000) {
+                body := reportBody(false);
+            };
+            let bodyBytes = Text.encodeUtf8(body);
+            let digest = SHA256.fromBlob(#sha256, bodyBytes);
+
+            let scope = switch (cas.scope_info()) {
+                case (#ok(s)) { s };
+                case (#err(e)) { return "scope_error:" # casErrText(e); };
+            };
+            var generation : Nat64 = 0;
+            var found : Bool = false;
+            var i : Nat = 0;
+            while (i < scope.collections.size()) {
+                let c = scope.collections[i];
+                if (c.id == "ledger_report") {
+                    generation := c.generation;
+                    found := true;
+                };
+                i := i + 1;
+            };
+            if (not found) { return "collection_missing" };
+
+            let receipt = cas.commit_batch({
+                nonce = reportNonce(digest);
+                operations = [
+                    #put({
+                        target = {
+                            collection = "ledger_report";
+                            collection_generation = generation;
+                            locator = #body_sha256({ digest });
+                        };
+                        condition = #absent;
+                        body = #inline(bodyBytes);
+                    })
+                ];
+                requires_present_after = [];
+            });
+            switch (receipt) {
+                case (#ok(_)) { "published:" # blobHex(digest) };
+                case (#err(#conflict(_))) { "already_published:" # blobHex(digest) };
+                case (#err(e)) { "publish_error:" # casErrText(e) };
+            };
+        };
+
+        // ================ Agent Mode entrypoints (internal:apps) ================
+        // Wrapper methods that delegate to the internal logic, exposed as typed
+        // agent tools.  The *update* modifiers control kernel routing; inside
+        // the same class the methods are simple cross-calls.
+
+        public func /*internal:apps*/ration_attest(
+            input : AttestInput,
+        ) : async* AttestResult {
+            await* attest_entry(input);
+        };
+
+        public func /*internal:apps*/ration_ledger(()) : async* [LedgerEntry] {
+            await* get_ledger();
+        };
+
+        public func /*internal:apps*/ration_report(()) : async* Text {
+            await* publish_report();
         };
 
         // Probe 1: does an HTTPS outcall reach the hosted Ration solver API

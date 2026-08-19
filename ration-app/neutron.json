@@ -35,6 +35,34 @@
           "max_assertion_bytes": 4096
         }
       ]
+    },
+    "certified_assets": {
+      "api": 2,
+      "max_entries": 256,
+      "max_committed_bytes": 1048576,
+      "max_object_bytes": 65536,
+      "max_pending_stages": 1,
+      "max_staged_bytes": 65536,
+      "max_batch_operations": 4,
+      "max_batch_bytes": 65536,
+      "max_idempotency_receipts": 64,
+      "collections": [
+        {
+          "id": "ledger_report",
+          "mount": "protocol",
+          "kind": "immutable_blob",
+          "path_prefix": "/v1/ledger/report/",
+          "max_object_bytes": 65536
+        }
+      ]
+    },
+    "agent_entrypoints": {
+      "api": 1,
+      "entrypoints": [
+        "ration_attest",
+        "ration_ledger",
+        "ration_report"
+      ]
     }
   },
   "backend": {
@@ -44,6 +72,9 @@
       },
       "chain_key_signing": {
         "api": 1
+      },
+      "certified_assets": {
+        "api": 2
       }
     }
   },
@@ -61,6 +92,10 @@
       "async": "async*"
     },
     "get_ledger": {
+      "type": "update",
+      "async": "async*"
+    },
+    "publish_report": {
       "type": "update",
       "async": "async*"
     },
@@ -96,5 +131,9 @@
         }
       ]
     }
+  },
+  "background": {
+    "path": "service.html",
+    "description": "Ration certified reasoning logbook"
   }
 }
