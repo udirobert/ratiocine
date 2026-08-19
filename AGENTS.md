@@ -42,13 +42,17 @@ An IOL-AI 2026 competitor. The goal: submit a `script.py` to a public Hugging Fa
 - Build + install: `cd neutron && npm --workspace neutron-ratiocine run package` then `npm run provision -- ration-local.ndeploy.json reinstall`.
 - Local PocketIC canister: `mqrdp-r7777-77775-qaaaq-cai` at `http://localhost:8000`. App methods are exposed namespaced as `app_ratiocine__<method>`.
 - Memory is **v2** (`LedgerEntry` ledger) with a v1→v2 migration declared in `neutron.json`.
+- **Agent Mode entrypoints**: `ration_attest`, `ration_ledger`, `ration_report` are `/*internal:apps*/` functions exposing the core logic to the kernel agent catalog. `agent_entrypoints` capability declares them.
+- **Upgrade demo**: `neutron/upgrade_demo.ts` tests in-place canister upgrade via management canister chunk API (`install_chunked_code(mode=#upgrade(#keep))`) and verifies ledger persistence.
 
-### Verified working on local PocketIC (as of 2026-07-26)
+### Verified working on local PocketIC (as of 2026-08-19)
 - Chain-key signing (`sign_probe`, 64-byte secp256k1 sig), public-key fetch, HTTPS-outcall validation.
 - **M3 backend**: `attest_entry` (grade → sign → append) and `get_ledger`. A perfect answer grades EM=1.0, chrF=1.0, score=1.0 (score = sqrt(em·chrf)), 64-byte signature, SHA-256 context + assertion hashes.
 - **M4 certified report**: `publish_report` publishes the ledger as an immutable content-addressed certified asset, served over HTTP at `/app/ratiocine/_route/protocol/v1/ledger/report/<sha256>` (HTTP 200, valid JSON, idempotent re-publish).
-- Smoke tests: `neutron/smoke_ledger.ts`, `neutron/smoke_report.ts` (raw `@dfinity/agent`, `verifyQuerySignatures:false` + `fetchRootKey()` for PocketIC; HTTP fetch needs the canister-ID subdomain URL).
-- **Blocked**: branded Netlify DNS (user to wire), and a non-destructive upgrade to demonstrate ledger persistence (reinstall is destructive and resets the ledger).
+- **Agent Mode entrypoints**: `ration_attest`, `ration_ledger`, `ration_report` declared as `/*internal:apps*/` with `agent_entrypoints` capability. Generated `_Input`/`_Output` types for kernel agent catalog.
+- **Upgrade persistence**: `neutron/upgrade_demo.ts` — in-place `install_chunked_code(mode=#upgrade(#keep))` preserves stable memory (enhanced orthogonal persistence). PocketIC 14 requires `wasm_memory_persistence` payload in the mode variant.
+- Smoke tests: `neutron/smoke_ledger.ts`, `neutron/smoke_report.ts`, `neutron/upgrade_demo.ts`.
+- **Blocked**: branded Netlify DNS (user to wire), forge-attempt UI mode, Agent Mode runtime integration test (stock Agent tile → ratiocine — requires preproduction Agent Mode runtime).
 
 ### Vendored Motoko compiler gotchas (this is NOT stock Motoko — expect surprises)
 The Neutron workspace compiles with a **patched Motoko (mo:core v2.6.0)** whose syntax differs from the Motoko most people know. Cost ~2 hours to discover; do not "fix" these back to stock syntax:

@@ -47,7 +47,7 @@ User's Neutron canister (SushiOS)
     (+ "forge attempt" mode for the demo)
 
 Hosted (ours): ratiocine inference API on Modal T4
-    Qwen2.5-14B-AWQ + task-specific prompts (hf-pipeline/submission/prompts.py)
+    Qwen3-14B-AWQ + task-specific prompts (hf-pipeline/submission/prompts.py)
     POST /solve  {context, query, work_lang, task_lang, task_type} → {pred[]}
     The canister is the verifier, not the compute. Small verify step, big
     reasoning step — exactly the shape Neutron wants.
@@ -57,6 +57,22 @@ Fallback (no hosted API): app also declares the `openrouter` connection
 provider (already in the kernel catalog — same as `apps/agent`), so the
 frontend/background can solve via a 7–14B OpenRouter model with ratiocine's
 prompt templates. Slower and less accurate, but removes the infra dependency.
+
+## Agent Mode entrypoints (internal:apps)
+
+Three functions are exposed to the kernel agent catalog via `/*internal:apps*/`
+tags and the `agent_entrypoints` capability:
+
+| Function | Input | Output | Purpose |
+|---|---|---|---|
+| `ration_attest` | `AttestInput` | `AttestResult` | Submit a solve for grading + signing |
+| `ration_ledger` | `()` | `[LedgerEntry]` | Read the full reasoning logbook |
+| `ration_report` | `()` | `Text` | Publish as certified content-addressed blob |
+
+The `/*internal:apps*/` modifier tells `mogen` to:
+1. Add the function to the `func` map with `type: "internal"` and `expose: "apps"`
+2. Generate `_Input` / `_Output` type aliases for the agent tool schema
+3. Require an `agent_entrypoints` capability declaring the exact entrypoint names
 
 ## What we build
 
@@ -97,14 +113,18 @@ prompt templates. Slower and less accurate, but removes the infra dependency.
 2. Paste a Linguini problem → "Solve" → typed answer with **EM ✓ / chrF 0.91**
    badge. Ledger entry appears; click it → subnet signature verified against
    the ICP root key.
-3. Agent Mode: open the stock Agent tile, ask "solve this problem for me" →
-   the agent discovers `ratiocine.solve` on the kernel catalog and calls it →
-   another signed ledger entry.
-4. Forge attempt: type a deliberately wrong answer through the app → logged
+3. Forge attempt: type a deliberately wrong answer through the app → logged
    **FAIL** → signed attestation shows the grade the canister computed, not
-   what the user wanted.
-5. Publish logbook → any visitor verifies the file's witness; explain
+   what the user wanted. Trust made visible.
+4. Publish logbook → any visitor verifies the file's witness; explain
    "absence is provable too."
+5. Agent Mode: the three `/*internal:apps*/` functions (`ration_attest`,
+   `ration_ledger`, `ration_report`) are declared in the manifest and listed
+   in the `agent_entrypoints` capability. A kernel agent (or the stock Agent
+   tile) can discover them on the catalog and call them cross-app.
+6. Upgrade demo: `upgrade_demo.ts` re-installs the canister in-place via
+   `install_chunked_code(mode=#upgrade(#keep))` and proves the ledger
+   survives — enhanced orthogonal persistence preserves stable memory.
 
 ## Risks & mitigations
 
@@ -129,7 +149,9 @@ prompt templates. Slower and less accurate, but removes the infra dependency.
 - **M4 (day 5):** ✅ certified logbook publish — `publish_report` publishes the
   ledger as an immutable, content-addressed certified asset served over HTTP
   (`/app/ratiocine/_route/protocol/v1/ledger/report/<sha256>`), idempotent.
-  🔲 Agent Mode integration + forge-attempt demo polish.
+- **M4b (day 5+):** 🔲 Agent Mode tool exposure — `ration_attest`,
+  `ration_ledger`, `ration_report` declared as `/*internal:apps*/` with
+  `agent_entrypoints` capability entry. 🔲 Forge-attempt demo polish.
 - **M5:** hackathon submission (repo + local demo recording + optional mainnet
   deploy via the 2-ICP dispenser if time allows).
 
