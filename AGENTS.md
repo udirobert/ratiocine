@@ -26,6 +26,43 @@ An IOL-AI 2026 competitor. The goal: submit a `script.py` to a public Hugging Fa
 - Submission config: hybrid CoT for translation/fill_blanks (512 tokens), direct for others (128-256 tokens), tiered max_new_tokens per task type, aggressive time guard fallback at 64 tokens
 - Public/private split: 2 submissions selected for private leaderboard for hedging
 
+## Neutron / Ration track (ntron.net hackathon)
+
+"Ration" = a **certified reasoning logbook**. The 14B model (hosted on Modal) solves an IOL problem; the Neutron canister then **grades it deterministically in-canister (EM + chrF), SHA-256-hashes the problem + assertion, chain-key-signs the receipt (ecdsa_secp256k1, slot `ration_assertions`), and appends it to a stable ledger**. Cold GPU start is a deliberate "Deduction Theatre / Honest Compute" feature, not a bug.
+
+### Architecture
+- **Canister = verifier, not compute.** 14B can't run in a canister. Motoko backend does grading + signing + storage only. No outcalls needed for the solve path → works on local PocketIC.
+- **Modal = invisible GPU engine.** `hf-pipeline/solve_api.py`: `POST /` (submit → instant `job_id`), `GET /?id=` (poll → live phase + result), `run_solve` (L4 GPU worker), Modal Volume `ration-model-cache` caches the 8.5GB weights. Scales to zero (~$0 idle).
+- **Frontend-driven solve, canister-verified.** Browser polls the API directly (CORS); canister only grades + signs + stores.
+- **Netlify** = brand front (`ratiocine.trustfall.xyz`) + `/api/solve` + `/api/status` proxies → Modal. Frontend auto-falls back to direct `modal.run` until the branded DNS is live.
+
+### Layout & build
+- **Canonical source: `ration-app/`** (committed). `neutron/` is a gitignored local clone of `github.com/infu/neutron`.
+- `bash scripts/sync-ration-app.sh` copies `ration-app/` → `neutron/apps/ratiocine/` and runs `mops install` on first sync.
+- Build + install: `cd neutron && npm --workspace neutron-ratiocine run package` then `npm run provision -- ration-local.ndeploy.json reinstall`.
+- Local PocketIC canister: `mqrdp-r7777-77775-qaaaq-cai` at `http://localhost:8000`. App methods are exposed namespaced as `app_ratiocine__<method>`.
+- Memory is **v2** (`LedgerEntry` ledger) with a v1→v2 migration declared in `neutron.json`.
+
+### Verified working on local PocketIC (as of 2026-07-26)
+- Chain-key signing (`sign_probe`, 64-byte secp256k1 sig), public-key fetch, HTTPS-outcall validation.
+- **M3 backend**: `attest_entry` (grade → sign → append) and `get_ledger`. A perfect answer grades EM=1.0, chrF=1.0, score=1.0 (score = sqrt(em·chrf)), 64-byte signature, SHA-256 context + assertion hashes.
+- Smoke test: `neutron/smoke_ledger.ts` (raw `@dfinity/agent`, `verifyQuerySignatures:false` + `fetchRootKey()` for PocketIC).
+- **Blocked**: branded Netlify DNS (user to wire), and a non-destructive upgrade to demonstrate ledger persistence (reinstall is destructive and resets the ledger).
+
+### Vendored Motoko compiler gotchas (this is NOT stock Motoko — expect surprises)
+The Neutron workspace compiles with a **patched Motoko (mo:core v2.6.0)** whose syntax differs from the Motoko most people know. Cost ~2 hours to discover; do not "fix" these back to stock syntax:
+1. **Reassignment is `:=`, not `=`.** Local `var` reassignment AND stable-field writes both use `:=` (`x := ...`, `mem.ledger := ...`). Declaration still uses `=` (`var x = init`). Stock Motoko uses `=` for locals — here `=` on an existing binding is a *parse error*.
+2. **`#` is text-concat only.** Vector append `vec # elem` and `vec ++ vec` are **not** defined. To append to a stable vec, use `Array.concat(v, [x])` (`import Array "mo:core/Array"`).
+3. **No `.vals()` on vec/Blob/Text.** Iterate with an index `while` loop (`for (x in v.vals())` is a type error).
+4. **`float` is not a primitive type.** Lowercase `float` is unbound; use `Float` from `import Float "mo:core/Float"` (write `?Float` / `: Float`). Same for other numerics in type positions.
+5. **Type coercion `<T> expr` is not supported** (`unexpected token '<'`). Build values in the exact target type instead. Note: structurally-identical records from different modules DO unify for assignment/`Array.concat` (so a local `LedgerEntry` can be stored into a `Memory.LedgerEntry` vec).
+6. **A record field named `query` breaks the Candid parser** (`query` is a Candid keyword). Rename to `prompt` (or anything but a Candid keyword) in both the app type and the memory schema.
+7. **Block-scoped `let` shadows by name across the whole block** even before its textual declaration — a local `let chrf = ...` shadows a same-named `func chrf`. Avoid local names that collide with helper function names.
+8. **`Nat32`/`Nat` are distinct.** `Char.toNat32` returns `Nat32`; convert with `Nat32.toNat(...)` (import it) before using as an array index. `fromNat32`/`fromNat` still work but are deprecated.
+9. **Schema tool** (`method_schema.ts`) regex-parses `public type X = ...` bodies from `main.mo` source and only understands primitives / records / variants / tuples / opt / vec inline. So a method's public wire type must be a **full record declared in main.mo**, not a reference to the memory module's type. Keep the memory `LedgerEntry` and the app `LedgerEntry` structurally identical.
+10. **`mogen.ts`** rewrites `main.mo` in place between `/*---NEUTRON GENERATED BEGIN/END---*/` markers, adding `<method>_Input`/`<method>_Output` type aliases. Don't hand-edit that block.
+11. To get a real compiler error **location** (the wrapper only prints the message), temporarily patch the diagnostic `.map(({message}) => message)` in `packages/neutron-motoko-wasm/src/index.ts` to include `d.source:d.range.start.line` — revert before committing.
+
 ## Two-track approach
 
 ### Track 1: Arkor rapid prototyping (`src/arkor/`)

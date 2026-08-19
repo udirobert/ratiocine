@@ -1,7 +1,19 @@
-import Memory "./memory/ratiocine/v1";
+import Array "mo:core/Array";
+import Blob "mo:core/Blob";
+import Char "mo:core/Char";
+import Float "mo:core/Float";
+import Int "mo:core/Int";
+import Int64 "mo:core/Int64";
+import Map "mo:core/Map";
 import Nat "mo:core/Nat";
+import Nat32 "mo:core/Nat32";
+import Nat64 "mo:core/Nat64";
+import Nat8 "mo:core/Nat8";
 import Text "mo:core/Text";
+import Time "mo:core/Time";
+import SHA256 "mo:sha2/Sha256";
 import NC "mo:neutron-capabilities";
+import Memory "./memory/ratiocine/v2";
 
 module {
 
@@ -15,10 +27,99 @@ module {
         };
     };
 
+    public type AttestInput = {
+        job_id : Text;
+        problem_id : Text;
+        context : Text;
+        prompt : Text;
+        pred : [Text];
+        model : Text;
+        ground_truth : ?[Text];
+    };
+
+    public type AttestResult = {
+        #attested : LedgerEntry;
+        #error : Text;
+    };
+
+    // Wire-visible copy of the ledger record (structurally identical to
+    // Memory.LedgerEntry; declared here so the app-method schema can resolve
+    // it without following the memory import).
+    public type LedgerEntry = {
+        seq : Nat;
+        ts : Int;
+        job_id : Text;
+        problem_id : Text;
+        context_hash : Text;
+        prompt : Text;
+        pred : [Text];
+        model : Text;
+        em : ?Float;
+        chrf : ?Float;
+        score : ?Float;
+        assertion : Text;
+        assertion_hash : Text;
+        signature : Blob;
+    };
+
     public class Init(env : AppBackendEnvironment) {
         let mem = env.stable_memory.ratiocine;
         let out = env.capabilities.https_outcalls;
         let ck = env.capabilities.chain_key_signing;
+
+        // ===================== M3: grade -> sign -> ledger =====================
+
+        // Grade a model answer deterministically in-canister, chain-key sign
+        // the assertion, and append the receipt to the stable ledger.
+        public func /*update*/attest_entry(input : AttestInput) : async* AttestResult {
+            let context_hash = sha256Hex(Text.encodeUtf8(input.context));
+            let grade = computeGrade(input.pred, input.ground_truth);
+
+            let ts = Int.abs(Time.now()) / 1_000_000_000;
+            let seq = mem.seq;
+            mem.seq := seq + 1;
+
+            // Canonical compact assertion: the exact bytes the subnet signs.
+            var assertion = buildAssertion(seq, ts, input, context_hash, grade);
+            if (Text.encodeUtf8(assertion).size() > 3800) {
+                assertion := buildCompactAssertion(seq, ts, input, context_hash, grade);
+            };
+
+            let sign = await* ck.sign_assertion({
+                slot = "ration_assertions";
+                assertion = Text.encodeUtf8(assertion);
+            });
+            switch (sign) {
+                case (#ok(s)) {
+                    let entry : LedgerEntry = {
+                        seq;
+                        ts;
+                        job_id = input.job_id;
+                        problem_id = input.problem_id;
+                        context_hash;
+                        prompt = input.prompt;
+                        pred = input.pred;
+                        model = input.model;
+                        em = grade.em;
+                        chrf = grade.chrf;
+                        score = grade.score;
+                        assertion;
+                        assertion_hash = sha256Hex(Text.encodeUtf8(assertion));
+                        signature = s.signature;
+                    };
+                    mem.ledger := Array.concat(mem.ledger, [entry]);
+                    #attested(entry);
+                };
+                case (#err(e)) {
+                    #error("sign_failed: " # showCkErr(e));
+                };
+            };
+        };
+
+        // The certified reasoning logbook.
+        public func /*update*/get_ledger() : async* [LedgerEntry] {
+            mem.ledger;
+        };
 
         // Probe 1: does an HTTPS outcall reach the hosted Ration solver API
         // from a (local PocketIC) canister?
@@ -83,6 +184,295 @@ module {
             };
         };
 
+        // ---------------- deterministic grading (EM + chrF) ----------------
+
+        type Grade = { em : ?Float; chrf : ?Float; score : ?Float };
+
+        func computeGrade(pred : [Text], ground : ?[Text]) : Grade {
+            switch (ground) {
+                case (null) {
+                    { em = null; chrf = null; score = null };
+                };
+                case (?refs) {
+                    let n = pred.size();
+                    if (n == 0) {
+                        { em = ?0.0; chrf = ?0.0; score = ?0.0 };
+                    } else {
+                        var emSum : Float = 0.0;
+                        var chrfSum : Float = 0.0;
+                        var i : Nat = 0;
+                        let m = refs.size();
+                        while (i < n) {
+                            let p = normalize(pred[i]);
+                            var matched : Bool = false;
+                            var j : Nat = 0;
+                            while (j < m) {
+                                if (p == normalize(refs[j])) { matched := true; };
+                                j := j + 1;
+                            };
+                            emSum += if (matched) 1.0 else 0.0;
+                            var best : Float = 0.0;
+                            j := 0;
+                            while (j < m) {
+                                let f = chrf(p, normalize(refs[j]));
+                                if (f > best) { best := f; };
+                                j := j + 1;
+                            };
+                            chrfSum += best;
+                            i := i + 1;
+                        };
+                        let emMean = emSum / natF(n);
+                        let chrfMean = chrfSum / natF(n);
+                        {
+                            em = ?emMean;
+                            chrf = ?chrfMean;
+                            score = ?Float.sqrt(emMean * chrfMean);
+                        };
+                    };
+                };
+            };
+        };
+
+        // chrF: character n-gram F-score averaged over n = 1..6.
+        func chrf(hyp : Text, ref : Text) : Float {
+            var sum : Float = 0.0;
+            var n : Nat = 1;
+            while (n <= 6) {
+                sum += f1AtN(hyp, ref, n);
+                n += 1;
+            };
+            sum / 6.0;
+        };
+
+        func f1AtN(hyp : Text, ref : Text, n : Nat) : Float {
+            let hm = ngramCounts(hyp, n);
+            let rm = ngramCounts(ref, n);
+            var overlap : Nat = 0;
+            var hypTotal : Nat = 0;
+            for ((g, c) in Map.entries(hm)) {
+                hypTotal += c;
+                let rc = Map.get(rm, Text.compare, g) ?? 0;
+                overlap += if (c < rc) c else rc;
+            };
+            var refTotal : Nat = 0;
+            for ((_, c) in Map.entries(rm)) {
+                refTotal += c;
+            };
+            if (hypTotal == 0 and refTotal == 0) {
+                1.0;
+            } else {
+                let p = if (hypTotal == 0) {
+                    0.0
+                } else {
+                    natF(overlap) / natF(hypTotal)
+                };
+                let r = if (refTotal == 0) {
+                    0.0
+                } else {
+                    natF(overlap) / natF(refTotal)
+                };
+                if (p + r == 0.0) {
+                    0.0
+                } else {
+                    2.0 * p * r / (p + r)
+                };
+            };
+        };
+
+        func ngramCounts(s : Text, n : Nat) : Map.Map<Text, Nat> {
+            let m : Map.Map<Text, Nat> = Map.empty();
+            let chars = Text.toArray(s);
+            let len = chars.size();
+            if (n > len) {
+                m;
+            } else {
+                var i : Nat = 0;
+                while (i + n <= len) {
+                    var g = "";
+                    var j : Nat = 0;
+                    while (j < n) {
+                        g #= Char.toText(chars[i + j]);
+                        j := j + 1;
+                    };
+                    Map.add(m, Text.compare, g, (Map.get(m, Text.compare, g) ?? 0) + 1);
+                    i := i + 1;
+                };
+                m;
+            };
+        };
+
+        // lowercase (ASCII fold), trim, collapse whitespace runs
+        func normalize(s : Text) : Text {
+            let chars = Text.toArray(s);
+            let len = chars.size();
+            var first : Nat = 0;
+            while (first < len and Char.isWhitespace(chars[first])) { first += 1; };
+            if (first == len) { return ""; };
+            var last : Nat = len - 1;
+            while (last > first and Char.isWhitespace(chars[last])) { last -= 1; };
+            var out = "";
+            var prevSpace : Bool = false;
+            var i = first;
+            while (i <= last) {
+                let c = chars[i];
+                if (Char.isWhitespace(c)) {
+                    if (not prevSpace) {
+                        out #= " ";
+                        prevSpace := true;
+                    };
+                } else {
+                    out #= Char.toText(toLowerChar(c));
+                    prevSpace := false;
+                };
+                i += 1;
+            };
+            out;
+        };
+
+        func toLowerChar(c : Char) : Char {
+            let n = Char.toNat32(c);
+            if (n >= (65 : Nat32) and n <= (90 : Nat32)) {
+                Char.fromNat32(n + (32 : Nat32));
+            } else {
+                c;
+            };
+        };
+
+        // ---------------- assertion building + hashing ----------------
+
+        let HEX : [Text] = [
+            "0", "1", "2", "3", "4", "5", "6", "7",
+            "8", "9", "a", "b", "c", "d", "e", "f",
+        ];
+
+        func sha256Hex(bytes : Blob) : Text {
+            let digest = SHA256.fromBlob(#sha256, bytes);
+            var out = "";
+            var i : Nat = 0;
+            while (i < digest.size()) {
+                let n = Nat8.toNat(digest[i]);
+                out #= HEX[n / 16] # HEX[n % 16];
+                i := i + 1;
+            };
+            out;
+        };
+
+        func natF(n : Nat) : Float {
+            Float.fromInt64(Int64.fromNat64(Nat64.fromNat(n)));
+        };
+
+        // NOTE: char literals like '"' trip a parser bug in the vendored
+        // compiler ("malformed operator"); build specials from code points.
+        let QUOTE : Char = Char.fromNat32(34);
+        let BACKSLASH : Char = Char.fromNat32(92);
+        let NEWLINE : Char = Char.fromNat32(10);
+        let TAB : Char = Char.fromNat32(9);
+        let CARRIAGE : Char = Char.fromNat32(13);
+
+        func jsonEscape(s : Text) : Text {
+            let chars = Text.toArray(s);
+            var out = "";
+            var i : Nat = 0;
+            while (i < chars.size()) {
+                let c = chars[i];
+                if (c == QUOTE) {
+                    out #= "\\\"";
+                } else if (c == BACKSLASH) {
+                    out #= "\\\\";
+                } else if (c == NEWLINE) {
+                    out #= "\\n";
+                } else if (c == TAB) {
+                    out #= "\\t";
+                } else if (c == CARRIAGE) {
+                    out #= "\\r";
+                } else {
+                    let n32 = Char.toNat32(c);
+                    if (n32 < (32 : Nat32)) {
+                        var h = "\\u00";
+                        let n = Nat32.toNat(n32);
+                        h #= HEX[n / 16];
+                        h #= HEX[n % 16];
+                        out #= h;
+                    } else {
+                        out #= Char.toText(c);
+                    };
+                };
+                i := i + 1;
+            };
+            out;
+        };
+
+        func predJson(pred : [Text]) : Text {
+            var out = "";
+            var i : Nat = 0;
+            while (i < pred.size()) {
+                if (out.size() > 0) { out #= ","; };
+                out #= "\"" # jsonEscape(pred[i]) # "\"";
+                i := i + 1;
+            };
+            out;
+        };
+
+        func gradeJson(g : Grade) : Text {
+            switch (g.em) {
+                case (null) { "null" };
+                case (?em) {
+                    switch (g.score) {
+                        case (null) { "null" };
+                        case (?score) {
+                            "{\"em\":" # Float.toText(em)
+                                # ",\"chrf\":" # Float.toText(g.chrf ?? em)
+                                # ",\"score\":" # Float.toText(score) # "}";
+                        };
+                    };
+                };
+            };
+        };
+
+        func assertionCommonHead(
+            seq : Nat, ts : Nat, input : AttestInput, context_hash : Text,
+        ) : Text {
+            "\"v\":1,\"seq\":" # Nat.toText(seq)
+                # ",\"ts\":" # Nat.toText(ts)
+                # ",\"job\":\"" # jsonEscape(input.job_id) # "\""
+                # ",\"problem\":\"" # jsonEscape(input.problem_id) # "\""
+                # ",\"ctx\":\"" # context_hash # "\""
+                # ",\"model\":\"" # jsonEscape(input.model) # "\"";
+        };
+
+        func buildAssertion(
+            seq : Nat,
+            ts : Nat,
+            input : AttestInput,
+            context_hash : Text,
+            grade : Grade,
+        ) : Text {
+            "{" # assertionCommonHead(seq, ts, input, context_hash)
+                # ",\"pred\":[" # predJson(input.pred) # "]"
+                # ",\"grade\":" # gradeJson(grade) # "}";
+        };
+
+        // Fallback when the full assertion would exceed the 4096-byte slot cap:
+        // keep the pred hash instead of the raw strings.
+        func buildCompactAssertion(
+            seq : Nat,
+            ts : Nat,
+            input : AttestInput,
+            context_hash : Text,
+            grade : Grade,
+        ) : Text {
+            var joined = "";
+            var i : Nat = 0;
+            while (i < input.pred.size()) {
+                if (joined.size() > 0) { joined #= "\\n"; };
+                joined #= input.pred[i];
+                i := i + 1;
+            };
+            "{" # assertionCommonHead(seq, ts, input, context_hash)
+                # ",\"pred_h\":\"" # sha256Hex(Text.encodeUtf8(joined)) # "\""
+                # ",\"grade\":" # gradeJson(grade) # "}";
+        };
+
         func showAlg(a : NC.ChainKeyAlgorithmV1) : Text {
             switch (a) {
                 case (#ecdsa_secp256k1) { "ecdsa_secp256k1" };
@@ -124,6 +514,12 @@ module {
     };
 
 /*---NEUTRON GENERATED BEGIN---*/
+
+public type attest_entry_Input = AttestInput;
+public type attest_entry_Output = AttestResult;
+
+public type get_ledger_Input = ();
+public type get_ledger_Output = [LedgerEntry];
 
 public type ping_solver_Input = ();
 public type ping_solver_Output = Text;

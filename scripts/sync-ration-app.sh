@@ -26,6 +26,10 @@ rsync -a --delete \
   "$SRC/" "$DEST/"
 
 echo "synced $SRC -> $DEST"
+if [ ! -d "$DEST/.mops" ]; then
+  echo "installing mops packages (first sync)..."
+  (cd "$DEST" && mops install)
+fi
 echo
 echo "Build + install locally:"
 echo "  cd neutron && npm --workspace neutron-ratiocine run package"

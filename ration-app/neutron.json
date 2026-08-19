@@ -56,6 +56,14 @@
     }
   ],
   "func": {
+    "attest_entry": {
+      "type": "update",
+      "async": "async*"
+    },
+    "get_ledger": {
+      "type": "update",
+      "async": "async*"
+    },
     "ping_solver": {
       "type": "update",
       "async": "async*"
@@ -71,13 +79,22 @@
   },
   "memory": {
     "ratiocine": {
-      "version": 1,
+      "version": 2,
       "schemas": {
         "1": {
           "src": "memory/ratiocine/v1.mo"
+        },
+        "2": {
+          "src": "memory/ratiocine/v2.mo"
         }
       },
-      "migrations": []
+      "migrations": [
+        {
+          "from": 1,
+          "to": 2,
+          "src": "memory/ratiocine/v1_to_v2.mo"
+        }
+      ]
     }
   }
 }

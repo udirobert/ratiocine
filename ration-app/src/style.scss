@@ -251,4 +251,97 @@
     white-space: pre-wrap;
     word-break: break-word;
   }
+
+  .ration-attest-err {
+    margin-top: var(--nt-pad-3);
+  }
+
+  /* ---- Attested receipt ---------------------------------------------- */
+
+  .ration-receipt {
+    border: 1px solid var(--nt-border, rgba(159, 215, 255, 0.25));
+    border-radius: 8px;
+    margin-top: var(--nt-pad-4);
+    padding: var(--nt-pad-3) var(--nt-pad-4);
+  }
+
+  .ration-receipt-head {
+    align-items: center;
+    display: flex;
+    gap: var(--nt-pad-3);
+    margin-bottom: var(--nt-pad-2);
+  }
+
+  .ration-score {
+    font-variant-numeric: tabular-nums;
+    font-weight: 700;
+  }
+
+  .ration-score-sub {
+    font-weight: 400;
+    opacity: 0.7;
+  }
+
+  .ration-receipt-kv dt {
+    opacity: 0.65;
+  }
+
+  .ration-receipt-kv dd {
+    font-family: var(--nt-font-mono, ui-monospace, monospace);
+  }
+
+  .ration-hash {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* ---- Ledger --------------------------------------------------------- */
+
+  .ration-ledger-empty {
+    margin-top: var(--nt-pad-3);
+  }
+
+  .ration-ledger {
+    display: flex;
+    flex-direction: column;
+    gap: var(--nt-pad-1);
+    list-style: none;
+    margin: var(--nt-pad-3) 0 0;
+    padding: 0;
+  }
+
+  .ration-ledger-item {
+    align-items: center;
+    border-bottom: 1px solid var(--nt-border, rgba(159, 215, 255, 0.12));
+    display: flex;
+    gap: var(--nt-pad-3);
+    padding: var(--nt-pad-2) 0;
+  }
+
+  .ration-ledger-seq {
+    font-variant-numeric: tabular-nums;
+    opacity: 0.6;
+  }
+
+  .ration-ledger-problem {
+    font-weight: 600;
+  }
+
+  .ration-ledger-pred {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    opacity: 0.85;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .ration-ledger-score {
+    font-variant-numeric: tabular-nums;
+    font-weight: 700;
+  }
+
+  .ration-ledger-ts {
+    opacity: 0.6;
+  }
 }
