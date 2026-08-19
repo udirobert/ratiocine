@@ -221,6 +221,10 @@ export const App = () => {
   const [entry, setEntry] = useState<LedgerEntry | null>(null);
   const [attestError, setAttestError] = useState("");
   const [attestBusy, setAttestBusy] = useState(false);
+  const [forgeMode, setForgeMode] = useState(false);
+  const [forgedAnswer, setForgedAnswer] = useState("");
+  const [forgeType, setForgeType] = useState<"output" | "score" | "model" | "timestamp">("output");
+  const [tamperedValue, setTamperedValue] = useState("");
   const [elapsed, setElapsed] = useState(0);
   const [insightIdx, setInsightIdx] = useState(0);
   const [error, setError] = useState("");
@@ -380,14 +384,41 @@ export const App = () => {
     setAttestError("");
     setEntry(null);
     try {
+      // In forge mode, tamper with different fields based on forgeType
+      let finalPred = result.pred ?? [];
+      let finalModel = result.model ?? "";
+      let finalContext = p.context;
+
+      if (forgeMode) {
+        switch (forgeType) {
+          case "output":
+            finalPred = tamperedValue.trim() ? [tamperedValue.trim()] : finalPred;
+            break;
+          case "score":
+            // Tamper with model name to fake a different model score
+            finalModel = tamperedValue.trim() || finalModel;
+            break;
+          case "model":
+            finalModel = tamperedValue.trim() || finalModel;
+            break;
+          case "timestamp":
+            // Can't really tamper with timestamp in attest, but we can fake the model
+            finalModel = `Qwen3-14B-AWQ (forged-timestamp: ${tamperedValue.slice(0, 30)})`;
+            break;
+        }
+      }
+
       const raw = await client.callDialog("attest_entry", [
         {
           job_id: jobIdRef.current ?? "",
           problem_id: p.id,
-          context: p.context,
+          context: finalContext,
           prompt: p.query,
-          pred: result.pred ?? [],
-          model: result.model ?? "",
+          pred: finalPred,
+          model: finalModel,
+          model_version: result.model ? `Qwen3-14B-AWQ` : null,
+          evaluator_version: "ration/v1.0",
+          task_type: p.task_type,
           ground_truth: p.ground_truth ?? null,
         },
       ]);
@@ -408,7 +439,7 @@ export const App = () => {
     } finally {
       setAttestBusy(false);
     }
-  }, [client, result, loadLedger]);
+  }, [client, result, loadLedger, forgeMode, forgedAnswer]);
 
   const activeIdx = phaseIndex(phase);
   const isRunning = ["queued", "waking", "loading", "deducing"].includes(phase);
@@ -419,8 +450,11 @@ export const App = () => {
         {/* Header */}
         <header className={nt.pageHeader}>
           <div>
-            <p className={nt.eyebrow}>Certified reasoning logbook</p>
+            <p className={nt.eyebrow}>Don't trust the AI result. Verify it.</p>
             <h1 className={nt.title}>Ration</h1>
+            <p className={cx(nt.text, nt.muted, "ration-tagline")}>
+              Cryptographic trust layer for AI evaluation.
+            </p>
             <div className={nt.tagList}>
               <span className={nt.tag}>https_outcalls</span>
               <span className={nt.tag}>chain_key_signing</span>
@@ -466,6 +500,94 @@ export const App = () => {
                 </button>
               ))}
             </div>
+
+            {/* Forge-attempt toggle */}
+            {/* Forge-attempt mode — adversarial tampering demo */}
+            <div className="ration-forge-toggle" role="group" aria-label="Forge attempt mode">
+              <label className="ration-forge-label">
+                <input
+                  type="checkbox"
+                  checked={forgeMode}
+                  onChange={(e) => setForgeMode(e.target.checked)}
+                  disabled={isRunning}
+                />
+                <span>Forge attempt</span>
+              </label>
+              <span className="ration-forge-hint">
+                Try to cheat — the chain-key signature will prove you wrong.
+              </span>
+            </div>
+
+            {/* Danger zone: forge options */}
+            {forgeMode && !isRunning && (
+              <div className="ration-danger-zone">
+                <p className="ration-danger-title">⚠ Tamper with the result</p>
+                <div className="ration-forge-options">
+                  <label className="ration-forge-option">
+                    <input
+                      type="radio"
+                      name="forge-type"
+                      value="output"
+                      checked={forgeType === "output"}
+                      onChange={() => setForgeType("output")}
+                    />
+                    Modify model output
+                  </label>
+                  <label className="ration-forge-option">
+                    <input
+                      type="radio"
+                      name="forge-type"
+                      value="model"
+                      checked={forgeType === "model"}
+                      onChange={() => setForgeType("model")}
+                    />
+                    Modify model name
+                  </label>
+                  <label className="ration-forge-option">
+                    <input
+                      type="radio"
+                      name="forge-type"
+                      value="score"
+                      checked={forgeType === "score"}
+                      onChange={() => setForgeType("score")}
+                    />
+                    Fake a different model score
+                  </label>
+                  <label className="ration-forge-option">
+                    <input
+                      type="radio"
+                      name="forge-type"
+                      value="timestamp"
+                      checked={forgeType === "timestamp"}
+                      onChange={() => setForgeType("timestamp")}
+                    />
+                    Forge a different timestamp
+                  </label>
+                </div>
+                <div className="ration-forge-input-group">
+                  <input
+                    className="ration-forge-input"
+                    type="text"
+                    placeholder={
+                      forgeType === "output"
+                        ? "Type your forged answer here…"
+                        : forgeType === "model"
+                          ? "Type fake model name…"
+                          : forgeType === "score"
+                            ? "Type fake model for fake score…"
+                            : "Type fake timestamp…"
+                    }
+                    value={tamperedValue}
+                    onChange={(e) => setTamperedValue(e.target.value)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" && tamperedValue.trim()) {
+                        if (result) void attestResult();
+                      }
+                    }}
+                  />
+                </div>
+              </div>
+            )}
             <div className="ration-actions">
               <button
                 className={cx(nt.button, "ration-solve-btn")}
@@ -556,12 +678,18 @@ export const App = () => {
                   {/* Grade + attest button */}
                   <div className="ration-actions">
                     <button
-                      className={cx(nt.button, nt.buttonSecondary)}
+                      className={cx(nt.button, nt.buttonSecondary, forgeMode && "ration-forge-btn")}
                       onClick={attestResult}
                       disabled={attestBusy || !client}
                       type="button"
                     >
-                      {attestBusy ? "Grading + signing…" : "Grade & sign receipt"}
+                      {attestBusy
+                        ? forgeMode
+                          ? "Forging + signing…"
+                          : "Grading + signing…"
+                        : forgeMode
+                          ? "Forge + sign receipt"
+                          : "Grade & sign receipt"}
                     </button>
                   </div>
 
@@ -571,43 +699,131 @@ export const App = () => {
                     </div>
                   )}
 
-                  {/* Attested receipt */}
+                  {/* Trust Receipt — official certificate card */}
                   {entry && (
                     <div className="ration-receipt">
-                      <div className="ration-receipt-head">
-                        <span className={cx(nt.badge, nt.badgeSuccess)}>
-                          Ledger #{entry.seq}
-                        </span>
+                      {/* Header */}
+                      <div className="ration-receipt-header">
+                        <div className="ration-receipt-brand">
+                          <span className="ration-receipt-logo">◆</span>
+                          <span className="ration-receipt-title">RATION RECEIPT</span>
+                        </div>
                         {entry.score !== null ? (
-                          <span className="ration-score">
-                            score {entry.score.toFixed(4)}
-                            {entry.em !== null && (
-                              <span className="ration-score-sub">
-                                {" "}· EM {entry.em.toFixed(2)} · chrF{" "}
-                                {entry.chrf?.toFixed(2)}
-                              </span>
-                            )}
+                          <span
+                            className={
+                              entry.em !== null && entry.em === 0
+                                ? "ration-receipt-badge ration-badge-fail"
+                                : "ration-receipt-badge ration-badge-certified"
+                            }
+                          >
+                            {entry.em !== null && entry.em === 0
+                              ? "✕ FORGED"
+                              : "CERTIFIED ✓"}
                           </span>
                         ) : (
-                          <span className={cx(nt.badge, nt.badgeInfo)}>
-                            attested · ungraded (no public key)
+                          <span className="ration-receipt-badge ration-badge-ungraded">
+                            UNGRADED
                           </span>
                         )}
                       </div>
-                      <dl className={cx(nt.kv, "ration-receipt-kv")}>
-                        <dt>problem</dt>
-                        <dd>{entry.problem_id}</dd>
-                        <dt>ctx hash</dt>
-                        <dd className="ration-hash">{entry.context_hash.slice(0, 24)}…</dd>
-                        <dt>assertion hash</dt>
-                        <dd className="ration-hash">
-                          {entry.assertion_hash.slice(0, 24)}…
-                        </dd>
-                        <dt>signature</dt>
-                        <dd>{sigBytes(entry.signature)} bytes · chain-key ecdsa_secp256k1</dd>
-                        <dt>recorded</dt>
-                        <dd>{new Date(entry.ts * 1000).toLocaleString()}</dd>
-                      </dl>
+
+                      {/* Evaluation event provenance */}
+                      <div className="ration-receipt-event">
+                        <h3 className="ration-receipt-event-title">Evaluation Event</h3>
+                        <div className="ration-receipt-grid">
+                          <div className="ration-receipt-field">
+                            <span className="ration-receipt-label">Task</span>
+                            <span className="ration-receipt-value">{entry.problem_id}</span>
+                          </div>
+                          <div className="ration-receipt-field">
+                            <span className="ration-receipt-label">Model</span>
+                            <span className="ration-receipt-value">{entry.model || "N/A"}</span>
+                          </div>
+                          <div className="ration-receipt-field">
+                            <span className="ration-receipt-label">Input</span>
+                            <span className="ration-receipt-value ration-hash">
+                              {entry.context_hash.slice(0, 40)}…
+                            </span>
+                          </div>
+                          <div className="ration-receipt-field">
+                            <span className="ration-receipt-label">Output</span>
+                            <span className="ration-receipt-value ration-hash">
+                              {entry.pred?.length ? entry.pred[0].slice(0, 40) + "…" : "N/A"}
+                            </span>
+                          </div>
+                          <div className="ration-receipt-field">
+                            <span className="ration-receipt-label">Evaluation</span>
+                            <span className="ration-receipt-value">
+                              {entry.em !== null ? (
+                                <>
+                                  EM{" "}
+                                  <span className={entry.em === 0 ? "ration-fail-text" : "ration-pass-text"}>
+                                    {(entry.em as number).toFixed(2)}
+                                  </span>
+                                  {entry.chrf !== null ? (
+                                    <>
+                                      {" · "}chrF{" "}
+                                      <span className="ration-pass-text">
+                                        {(entry.chrf as number).toFixed(2)}
+                                      </span>
+                                    </>
+                                  ) : ""}
+                                </>
+                              ) : (
+                                "Ungraded"
+                              )}
+                            </span>
+                          </div>
+                          <div className="ration-receipt-field">
+                            <span className="ration-receipt-label">Evaluator</span>
+                            <span className="ration-receipt-value">Ration / Neutron canister</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Cryptographic proof */}
+                      <div className="ration-receipt-crypto">
+                        <h3 className="ration-receipt-event-title">Cryptographic Proof</h3>
+                        <div className="ration-receipt-grid">
+                          <div className="ration-receipt-field">
+                            <span className="ration-receipt-label">Signature</span>
+                            <span className="ration-receipt-value">
+                              {sigBytes(entry.signature)} bytes · chain-key ecdsa_secp256k1
+                            </span>
+                          </div>
+                          <div className="ration-receipt-field">
+                            <span className="ration-receipt-label">Assertion hash</span>
+                            <span className="ration-receipt-value ration-hash">
+                              {entry.assertion_hash.slice(0, 40)}…
+                            </span>
+                          </div>
+                          <div className="ration-receipt-field">
+                            <span className="ration-receipt-label">Timestamp</span>
+                            <span className="ration-receipt-value">
+                              {new Date(entry.ts * 1000).toLocaleString()}
+                            </span>
+                          </div>
+                          <div className="ration-receipt-field">
+                            <span className="ration-receipt-label">Ledger</span>
+                            <span className="ration-receipt-value">#{entry.seq}</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Verify link */}
+                      <div className="ration-receipt-verify">
+                        <a
+                          href={`/verify?hash=${entry.assertion_hash}`}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="ration-receipt-verify-link"
+                        >
+                          Verify this receipt independently →
+                        </a>
+                        <span className="ration-receipt-verify-hint">
+                          Open in a new tab — no app required.
+                        </span>
+                      </div>
                     </div>
                   )}
                 </div>

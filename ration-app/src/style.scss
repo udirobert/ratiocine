@@ -19,6 +19,12 @@
     width: min(100%, 900px);
   }
 
+  .ration-tagline {
+    color: var(--muted, #93a1ad);
+    font-size: 0.9em;
+    margin: 8px 0 0;
+  }
+
   .ration-context {
     grid-template-columns: auto 1fr;
   }
@@ -259,40 +265,154 @@
   /* ---- Attested receipt ---------------------------------------------- */
 
   .ration-receipt {
-    border: 1px solid var(--nt-border, rgba(159, 215, 255, 0.25));
-    border-radius: 8px;
+    border: 1px solid var(--nt-border, rgba(159, 215, 255, 0.3));
+    border-radius: 12px;
     margin-top: var(--nt-pad-4);
+    overflow: hidden;
+  }
+
+  /* Header */
+  .ration-receipt-header {
+    align-items: center;
+    background: var(--nt-accent-muted);
+    display: flex;
+    justify-content: space-between;
     padding: var(--nt-pad-3) var(--nt-pad-4);
   }
 
-  .ration-receipt-head {
+  .ration-receipt-brand {
     align-items: center;
     display: flex;
-    gap: var(--nt-pad-3);
-    margin-bottom: var(--nt-pad-2);
+    gap: var(--nt-pad-2);
   }
 
-  .ration-score {
-    font-variant-numeric: tabular-nums;
+  .ration-receipt-logo {
+    color: var(--ration-glow);
+    font-size: 1.2em;
+  }
+
+  .ration-receipt-title {
+    font-size: 0.85em;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* Badges */
+  .ration-receipt-badge {
+    border-radius: 6px;
+    font-size: 0.75em;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    padding: 4px 10px;
+    text-transform: uppercase;
+  }
+
+  .ration-badge-certified {
+    background: rgba(137, 224, 170, 0.15);
+    border: 1px solid rgba(137, 224, 170, 0.4);
+    color: var(--green);
+  }
+
+  .ration-badge-fail {
+    background: rgba(224, 137, 137, 0.15);
+    border: 1px solid rgba(224, 137, 137, 0.4);
+    color: var(--red);
+  }
+
+  .ration-badge-ungraded {
+    background: rgba(159, 215, 255, 0.1);
+    border: 1px solid rgba(159, 215, 255, 0.3);
+    color: var(--accent);
+  }
+
+  /* Sections */
+  .ration-receipt-event,
+  .ration-receipt-crypto {
+    padding: var(--nt-pad-3) var(--nt-pad-4);
+  }
+
+  .ration-receipt-event {
+    border-bottom: 1px solid var(--nt-border, rgba(159, 215, 255, 0.15));
+  }
+
+  .ration-receipt-event-title {
+    color: var(--accent);
+    font-size: 0.7em;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    margin: 0 0 var(--nt-pad-3);
+    text-transform: uppercase;
+  }
+
+  /* Grid layout */
+  .ration-receipt-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: var(--nt-pad-3);
+  }
+
+  .ration-receipt-field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .ration-receipt-label {
+    color: var(--muted, #93a1ad);
+    font-size: 0.7em;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .ration-receipt-value {
+    font-size: 0.9em;
+    line-height: 1.4;
+  }
+
+  .ration-fail-text {
+    color: var(--red);
     font-weight: 700;
   }
 
-  .ration-score-sub {
-    font-weight: 400;
-    opacity: 0.7;
+  .ration-pass-text {
+    color: var(--green);
+    font-weight: 700;
   }
 
-  .ration-receipt-kv dt {
-    opacity: 0.65;
+  /* Verify link */
+  .ration-receipt-verify {
+    background: rgba(159, 215, 255, 0.05);
+    border-top: 1px solid var(--nt-border, rgba(159, 215, 255, 0.15));
+    display: flex;
+    gap: var(--nt-pad-2);
+    justify-content: space-between;
+    padding: var(--nt-pad-3) var(--nt-pad-4);
   }
 
-  .ration-receipt-kv dd {
-    font-family: var(--nt-font-mono, ui-monospace, monospace);
+  .ration-receipt-verify-link {
+    color: var(--accent);
+    font-size: 0.85em;
+    font-weight: 600;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .ration-receipt-verify-hint {
+    color: var(--muted, #93a1ad);
+    font-size: 0.75em;
   }
 
   .ration-hash {
+    font-family: var(--nt-font-mono, ui-monospace, monospace);
+    font-size: 0.85em;
     overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   /* ---- Ledger --------------------------------------------------------- */
@@ -358,5 +478,150 @@
 
   .ration-ledger-ts {
     opacity: 0.6;
+  }
+}
+
+/* ---- Forge-attempt mode ---------------------------------------------- */
+
+.ration-forge-toggle {
+  align-items: center;
+  display: flex;
+  gap: var(--nt-pad-2);
+  margin-top: var(--nt-pad-4);
+  padding-top: var(--nt-pad-3);
+  border-top: 1px solid var(--nt-border, rgba(255, 100, 100, 0.25));
+}
+
+.ration-forge-label {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  gap: var(--nt-pad-1);
+  font-size: 0.85em;
+  font-weight: 600;
+  color: #ff9f9f;
+
+  input[type="checkbox"] {
+    accent-color: #ff6b6b;
+    cursor: pointer;
+  }
+}
+
+.ration-forge-hint {
+  font-size: 0.8em;
+  opacity: 0.7;
+}
+
+.ration-danger-zone {
+  background: rgba(255, 80, 80, 0.08);
+  border: 1px dashed rgba(255, 100, 100, 0.4);
+  border-radius: 8px;
+  margin-top: var(--nt-pad-3);
+  padding: var(--nt-pad-3);
+}
+
+.ration-danger-title {
+  color: #ff9f9f;
+  font-size: 0.85em;
+  font-weight: 700;
+  margin: 0 0 var(--nt-pad-2);
+}
+
+.ration-forge-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--nt-pad-2);
+  margin-bottom: var(--nt-pad-2);
+}
+
+.ration-forge-option {
+  align-items: center;
+  color: #ff9f9f;
+  cursor: pointer;
+  display: flex;
+  font-size: 0.8em;
+  gap: var(--nt-pad-1);
+
+  input[type="radio"] {
+    accent-color: #ff6b6b;
+    cursor: pointer;
+  }
+}
+
+.ration-forge-input-group {
+  margin-top: var(--nt-pad-2);
+}
+
+.ration-forge-input {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 100, 100, 0.3);
+  border-radius: 6px;
+  color: inherit;
+  font-family: var(--nt-font-mono, ui-monospace, monospace);
+  font-size: 0.95em;
+  padding: var(--nt-pad-2) var(--nt-pad-3);
+  width: 100%;
+
+  &:focus {
+    border-color: #ff6b6b;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(255, 107, 107, 0.2);
+  }
+
+  &::placeholder {
+    color: rgba(255, 159, 159, 0.4);
+  }
+}
+
+.ration-fail-badge {
+  background: rgba(255, 80, 80, 0.15);
+  border: 1px solid rgba(255, 100, 100, 0.4);
+  border-radius: 4px;
+  color: #ff9f9f;
+  font-size: 0.8em;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  padding: var(--nt-pad-1) var(--nt-pad-2);
+  text-transform: uppercase;
+}
+
+.ration-forge-comparison {
+  background: rgba(255, 80, 80, 0.06);
+  border-left: 3px solid rgba(255, 100, 100, 0.5);
+  border-radius: 0 6px 6px 0;
+  margin-top: var(--nt-pad-3);
+  padding: var(--nt-pad-3);
+}
+
+.ration-forge-comp-label {
+  color: rgba(255, 159, 159, 0.8);
+  font-size: 0.75em;
+  font-weight: 600;
+  margin: 0 0 var(--nt-pad-1);
+  text-transform: uppercase;
+}
+
+.ration-forge-comp-val {
+  font-family: var(--nt-font-mono, ui-monospace, monospace);
+  font-size: 0.95em;
+  font-style: italic;
+  color: #ff9f9f;
+  margin: 0 0 var(--nt-pad-2);
+}
+
+.ration-forge-comp-verdict {
+  font-size: 0.85em;
+  color: rgba(255, 159, 159, 0.9);
+  margin: 0;
+  font-weight: 700;
+}
+
+.ration-forge-btn {
+  border-color: rgba(255, 100, 100, 0.4);
+  color: #ff9f9f;
+
+  &:hover:not(:disabled) {
+    background: rgba(255, 100, 100, 0.12);
+    border-color: rgba(255, 100, 100, 0.6);
   }
 }

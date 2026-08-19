@@ -35,6 +35,9 @@ module {
         prompt : Text;
         pred : [Text];
         model : Text;
+        model_version : ?Text;
+        evaluator_version : Text;
+        task_type : ?Text;
         ground_truth : ?[Text];
     };
 

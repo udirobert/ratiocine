@@ -1,10 +1,19 @@
 # Ration (`ratiocine`) — Neutron app
 
-A **certified reasoning logbook**: an AI agent solves hard pattern-deduction
-problems (IOL/Linguini format), the canister grades the answers in-canister
-(exact match + chrF), and every entry is chain-key-signed under an
-installation-isolated slot — so anyone can verify *"this agent solved problem X
-and earned grade Y"* against the ICP root key.
+**Don't trust the AI result. Verify it.**
+
+Ration is a cryptographic trust layer for AI evaluation. It turns AI outputs into
+signed, tamper-evident, verifiable claims. The workflow:
+
+> **AI produces → Ration evaluates → cryptography certifies.**
+
+Every evaluation is:
+1. **Evaluated** in-canister with deterministic metrics (EM + chrF)
+2. **Signed** with a chain-key (threshold, installation-isolated)
+3. **Published** as a certified asset (witness-verifiable against ICP root key)
+
+The result: a receipt anyone can verify — without trusting the AI provider, the
+benchmark server, or Ration itself.
 
 This directory is the **canonical source**. It syncs into a local clone of
 [infu/neutron](https://github.com/infu/neutron) for building/packaging.
