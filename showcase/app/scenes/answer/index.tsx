@@ -37,32 +37,58 @@ export const Answer = () => {
           initial={{ opacity: 0, y: 20, scale: 0.96 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
-          className="relative max-w-md w-full rounded-2xl border border-[#34d399]/30 bg-[#0a1210]/60 px-8 py-8 text-center shadow-2xl backdrop-blur"
+          className="relative max-w-md w-full rounded-2xl border border-[#34d399]/30 bg-[#0a1210]/60 px-7 py-7 text-center shadow-2xl backdrop-blur"
         >
-          <p className="font-mono text-3xl font-bold tracking-tight text-[#34d399]">
-            kaakutaka
+          <p className="font-mono text-xs text-white/50 uppercase tracking-widest">
+            IOL-AI 2026 · result
           </p>
-          <p className="mt-2 text-base text-white/80">
-            — "we (incl.) are eating"
+          <p className="mt-1 text-sm text-white/80">
+            the model decoded Apurinã's agreement
           </p>
 
-          <div className="mt-5 grid grid-cols-3 gap-1.5 text-xs">
+          {/* all three query answers */}
+          <div className="mt-4 space-y-1.5 text-left">
             {[
-              ["kaa-", "we (incl.)"],
-              ["-kuta-", "eat"],
-              ["-ka", "progressive"],
-            ].map(([morph, gloss]) => (
+              ["1", "we (incl.) are eating", "kaakutaka"],
+              ["2", "you (sg.) are speaking", "ãnykataka"],
+              ["3", "we (incl.) are speaking", "kaanykataka"],
+            ].map(([n, q, ans]) => (
               <div
-                key={morph}
-                className="rounded-lg border border-white/10 bg-white/5 px-2 py-2"
+                key={n}
+                className="flex items-center justify-between gap-3 rounded-lg border border-white/10 bg-white/5 px-3 py-2"
               >
-                <p className="font-mono font-semibold text-white/90">{morph}</p>
-                <p className="mt-0.5 text-[10px] text-white/50">{gloss}</p>
+                <span className="font-mono text-[11px] text-white/45">{n}</span>
+                <span className="flex-1 text-sm text-white/70">{q}</span>
+                <span className="font-mono text-sm font-semibold text-[#34e399]">
+                  {ans}
+                </span>
               </div>
             ))}
           </div>
 
-          <p className="mt-5 text-[10px] uppercase tracking-widest text-white/35">
+          {/* derived reasoning — points back at the context rows */}
+          <div className="mt-4 rounded-lg border border-white/10 bg-[#0a0f2e]/60 px-4 py-3 text-left">
+            <p className="font-mono text-[10px] uppercase tracking-widest text-white/45">
+              Here's how
+            </p>
+            <ul className="mt-2 space-y-1.5 text-xs text-white/70">
+              <li>
+                <span className="text-white/50">row 10</span>{" "}
+                <span className="font-mono">kaa·pita·ka</span> = "we incl. are
+                going"
+              </li>
+              <li>
+                <span className="text-white/50">rows 4–6</span>{" "}
+                <span className="font-mono">·kuta·</span> = "eat" root
+              </li>
+              <li>
+                <span className="text-white/50">every row</span> ending{" "}
+                <span className="font-mono">·ka</span> = progressive
+              </li>
+            </ul>
+          </div>
+
+          <p className="mt-4 text-[10px] uppercase tracking-widest text-white/35">
             committed · graded · chain-key signed
           </p>
         </motion.div>
