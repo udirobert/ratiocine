@@ -21,7 +21,7 @@ const Answer = dynamic(
 );
 
 const Home = () => {
-  const [scene, setScene] = useState<SceneId>("problem");
+  const [scene, setScene] = useState<SceneId>("machine");
 
   return (
     <main className="relative h-screen w-screen overflow-hidden bg-[#0a0f2e]">

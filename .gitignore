@@ -97,5 +97,8 @@ htmlcov/
 .tox/
 nox/
 
+# --- Generated brand/OG source (products are committed in public/) ---
+/brand-assets/
+
 # --- Local Neutron monorepo clone (app source of truth lives in ration-app/) ---
 /neutron/

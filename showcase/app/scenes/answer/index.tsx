@@ -46,26 +46,50 @@ export const Answer = () => {
         <VoronoiScene canvasRef={canvasRef} exploded={exploded} />
       )}
 
-      {/* hint overlay when not yet exploded */}
+      {/* locked state — clear, intentional CTA before reveal */}
       {!exploded && (
-        <div className="pointer-events-none absolute inset-0 z-10 flex flex-col items-center justify-center">
-          <div className="pointer-events-none absolute inset-x-0 top-8 z-10 flex justify-center px-6">
-            <div className="max-w-xl text-center">
-              <p className="font-mono text-xs text-white/50 uppercase tracking-widest mb-2">
-                IOL-AI 2026 · result
-              </p>
-              <h2 className="text-2xl font-bold text-white leading-tight">
-                The Answer
-              </h2>
-              <p className="mt-2 text-sm text-white/60 leading-relaxed">
-                The solver reasons through morphology, then commits its best
-                answer — graded and signed in-canister.
-              </p>
-            </div>
+        <div className="pointer-events-none absolute inset-0 z-10 flex flex-col items-center justify-center px-6">
+          <div className="max-w-sm text-center">
+            <p className="font-mono text-xs text-white/50 uppercase tracking-widest">
+              IOL-AI 2026 · result
+            </p>
+            <h2 className="mt-2 text-xl font-bold text-white leading-tight">
+              The Answer
+            </h2>
+            <p className="mt-2 text-sm text-white/60 leading-relaxed">
+              10 bilingual pairs. The model locked onto Apurinã's morphology.
+              Ready to see what it committed?
+            </p>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setExploded(true);
+              }}
+              className="pointer-events-auto mt-6 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-6 py-2.5 text-sm font-medium text-white/90 transition-colors hover:bg-white/20 hover:border-white/40"
+            >
+              Reveal the answer
+            </button>
           </div>
-          <p className="font-mono text-xs text-white/50 animate-pulse">
-            click to reveal answer
-          </p>
+        </div>
+      )}
+
+      {/* revealed state — explain the floating word so it has meaning */}
+      {exploded && (
+        <div className="pointer-events-none absolute inset-x-0 bottom-10 z-10 flex justify-center px-6">
+          <div className="max-w-md text-center">
+            <p className="font-mono text-2xl font-bold tracking-tight text-[#34d399]">
+              kaakutaka
+            </p>
+            <p className="mt-1 text-sm text-white/70">
+              — "we (incl.) are eating"
+            </p>
+            <p className="mt-1 text-xs text-white/50">
+              kaa- (we incl.) · -kuta- (eat) · -ka (progressive)
+            </p>
+            <p className="mt-2 text-[10px] uppercase tracking-widest text-white/35">
+              committed · graded · chain-key signed
+            </p>
+          </div>
         </div>
       )}
     </div>

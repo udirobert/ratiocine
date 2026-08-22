@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ratiocine.trustfall.xyz/sitemap.xml

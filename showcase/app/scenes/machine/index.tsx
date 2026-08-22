@@ -72,12 +72,7 @@ export const Machine = () => {
       {/* 3D Mac */}
       <MacScene screenCanvasRef={canvasRef} />
 
-      {/* drag hint — centered above partner strip */}
-      <p className="pointer-events-none absolute inset-x-0 bottom-16 z-20 text-center font-mono text-xs text-white/35">
-        drag to rotate ↗
-      </p>
-
-      {/* partner list — centered bottom strip */}
+      {/* partner list — left/right flanking columns (desktop) */}
       <PartnerLogos />
 
       {/* headline — centered overlay */}
@@ -94,6 +89,9 @@ export const Machine = () => {
             <br className="hidden sm:block" />
             Best public:{" "}
             <span className="text-[#34d399] font-mono font-bold">0.1141</span>
+          </p>
+          <p className="mt-3 text-[11px] text-white/35">
+            drag to rotate · scroll to zoom
           </p>
         </div>
       </div>

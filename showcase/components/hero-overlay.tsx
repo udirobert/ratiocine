@@ -65,7 +65,7 @@ export const HeroOverlay = () => {
             </button>
 
             <p className="mt-4 text-xs text-white/35">
-              Three scenes: the problem · the machine · the answer
+              Three scenes: the machine · the problem · the answer
             </p>
           </motion.div>
         </motion.div>

@@ -74,15 +74,16 @@ function cellGeo(poly: P2[], cx: number, cy: number, hw: number, hh: number, dep
 interface Frag {
   geo: THREE.BufferGeometry;
   x0: number; y0: number;
-  vx: number; vy: number; vz: number;
+  sx: number; sy: number;
   rx: number; ry: number; rz: number;
 }
 
 const PLANE_W = 1.6;
 const PLANE_H = 1.0;
 const SEED_COUNT = 80;
-const GRAVITY = 1.2;
-const FADE_SPEED = 0.3;
+// "assemble" animation: fragments start spread out and converge inward
+const START_RADIUS = 1.5;
+const ASSEMBLE_TIME = 1.6;
 const FRAG_DEPTH = 0.025;
 
 // ─── 3D answer text ───────────────────────────────────────────────────────────
@@ -95,13 +96,17 @@ const AnswerText = ({ active }: { active: boolean }) => {
     if (!group.current) return;
     if (!active) return;
     if (t0.current === null) t0.current = clock.elapsedTime;
-    const t = clock.elapsedTime;
-    group.current.rotation.y = t * 0.6;
-    group.current.rotation.x = Math.sin(t * 0.9) * 0.1;
-    group.current.position.y = Math.sin(t * 1.4) * 0.05;
+    const t = clock.elapsedTime - t0.current;
+    // scale in, then hold
     group.current.scale.setScalar(
       THREE.MathUtils.damp(group.current.scale.x, 1, 4, delta),
     );
+    // lock into a settled pose (no endless spin): ease a breath of rotation
+    const settle = 1 - Math.exp(-t * 2.2);
+    group.current.rotation.z = (Math.PI / 2 - 0.32) * settle + 0.12 * Math.sin(t * 1.2);
+    group.current.rotation.y = 0.22 * settle + 0.05 * Math.sin(t * 0.8);
+    group.current.rotation.x = 0.06 * Math.sin(t * 1.7);
+    group.current.position.y = 0.03 + 0.03 * Math.sin(t * 1.1);
   });
 
   if (!active) return null;
@@ -137,7 +142,7 @@ const AnswerText = ({ active }: { active: boolean }) => {
   );
 };
 
-// ─── Explosion mesh ───────────────────────────────────────────────────────────
+// ─── Assemble mesh ────────────────────────────────────────────────────────────
 
 const VoronoiExplosion = ({
   canvasEl,
@@ -178,16 +183,16 @@ const VoronoiExplosion = ({
       const geo = cellGeo(poly, cx, cy, hw, hh, FRAG_DEPTH);
       const dist = Math.hypot(cx, cy);
       const base = dist < 1e-4 ? Math.random() * Math.PI * 2 : Math.atan2(cy, cx);
-      const jitter = (Math.random() - 0.5) * 0.7;
-      const speed = 0.4 + Math.random() * 0.6;
+      const jitter = (Math.random() - 0.5) * 1.1;
+      // each fragment starts scattered outward, then converges to its home cell
+      const spread = START_RADIUS + Math.random() * 0.8;
       frags.push({
         geo, x0: cx, y0: cy,
-        vx: Math.cos(base + jitter) * speed,
-        vy: Math.sin(base + jitter) * speed,
-        vz: (Math.random() - 0.5) * 0.4,
-        rx: (Math.random() - 0.5) * 6,
-        ry: (Math.random() - 0.5) * 6,
-        rz: (Math.random() - 0.5) * 10,
+        sx: Math.cos(base + jitter) * spread,
+        sy: Math.sin(base + jitter) * spread,
+        rx: (Math.random() - 0.5) * 1.2,
+        ry: (Math.random() - 0.5) * 1.2,
+        rz: (Math.random() - 0.5) * 1.6,
       });
     }
     return { frags, canvasTex, mat };
@@ -199,16 +204,19 @@ const VoronoiExplosion = ({
     if (t0.current === null) t0.current = performance.now();
     const t = (performance.now() - t0.current) / 1000;
     if (canvasTex) canvasTex.needsUpdate = true;
-    mat.opacity = Math.max(0, 1 - t * FADE_SPEED);
+    // ease the fragments together (assemble), then settle
+    const p = Math.min(t / ASSEMBLE_TIME, 1);
+    const ease = 1 - Math.pow(1 - p, 3); // easeOutCubic
+    mat.opacity = Math.min(1, p * 2); // fade in as pieces arrive
     frags.forEach((f, i) => {
       const mesh = meshRefs.current[i];
       if (!mesh) return;
       mesh.position.set(
-        f.x0 + f.vx * t,
-        f.y0 + f.vy * t - 0.5 * GRAVITY * t * t,
-        f.vz * t,
+        f.sx + (f.x0 - f.sx) * ease,
+        f.sy + (f.y0 - f.sy) * ease,
+        0,
       );
-      mesh.rotation.set(f.rx * t, f.ry * t, f.rz * t);
+      mesh.rotation.set(f.rx * (1 - ease), f.ry * (1 - ease), f.rz * (1 - ease));
     });
   });
 
@@ -227,7 +235,7 @@ const VoronoiExplosion = ({
           ref={(el) => { meshRefs.current[i] = el; }}
           geometry={f.geo}
           material={mat}
-          position={[f.x0, f.y0, 0]}
+          position={[f.sx, f.sy, 0]}
           renderOrder={999}
         />
       ))}
