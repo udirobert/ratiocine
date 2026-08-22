@@ -30,7 +30,7 @@ export const Answer = () => {
 
   return (
     <div
-      className="relative h-screen w-screen overflow-hidden bg-[#0a0f2e]"
+      className="scene-stage"
       onClick={() => !exploded && setExploded(true)}
     >
       {/* offscreen 2D canvas with the answer card drawn into it */}
@@ -48,7 +48,21 @@ export const Answer = () => {
 
       {/* hint overlay when not yet exploded */}
       {!exploded && (
-        <div className="absolute inset-0 flex items-end justify-center pb-24 z-10 pointer-events-none">
+        <div className="pointer-events-none absolute inset-0 z-10 flex flex-col items-center justify-center">
+          <div className="pointer-events-none absolute inset-x-0 top-8 z-10 flex justify-center px-6">
+            <div className="max-w-xl text-center">
+              <p className="font-mono text-xs text-white/50 uppercase tracking-widest mb-2">
+                IOL-AI 2026 · result
+              </p>
+              <h2 className="text-2xl font-bold text-white leading-tight">
+                The Answer
+              </h2>
+              <p className="mt-2 text-sm text-white/60 leading-relaxed">
+                The solver reasons through morphology, then commits its best
+                answer — graded and signed in-canister.
+              </p>
+            </div>
+          </div>
           <p className="font-mono text-xs text-white/50 animate-pulse">
             click to reveal answer
           </p>

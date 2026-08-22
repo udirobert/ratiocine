@@ -68,6 +68,21 @@
   }
 }
 
+/* shared scene stage: normalize sizing + a soft bottom fade so 3D objects
+   don't feel like they're floating off the bottom edge */
+.scene-stage {
+  @apply relative h-svh w-full overflow-hidden bg-[#0a0f2e];
+}
+.scene-stage::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 96px;
+  background: linear-gradient(to top, rgba(5, 8, 25, 0.6), transparent);
+  pointer-events: none;
+  z-index: 5;
+}
+
 /* ─── Rain overlay (Problem scene) ─────────────────────────────────────────── */
 
 @keyframes rain-fall {

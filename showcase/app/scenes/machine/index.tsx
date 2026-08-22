@@ -60,7 +60,7 @@ export const Machine = () => {
   }, []);
 
   return (
-    <div className="relative h-screen w-screen overflow-hidden bg-[#0a0f2e]">
+    <div className="scene-stage">
       {/* offscreen 2D canvas sampled by the 3D Mac screen */}
       <canvas
         ref={canvasRef}
@@ -72,26 +72,30 @@ export const Machine = () => {
       {/* 3D Mac */}
       <MacScene screenCanvasRef={canvasRef} />
 
-      {/* partner list */}
+      {/* drag hint — centered above partner strip */}
+      <p className="pointer-events-none absolute inset-x-0 bottom-16 z-20 text-center font-mono text-xs text-white/35">
+        drag to rotate ↗
+      </p>
+
+      {/* partner list — centered bottom strip */}
       <PartnerLogos />
 
-      {/* headline */}
-      <div className="absolute left-5 top-1/2 -translate-y-1/2 z-20 max-w-xs">
-        <p className="font-mono text-xs text-white/50 uppercase tracking-widest mb-2">
-          IOL-AI 2026 · stack
-        </p>
-        <h2 className="text-2xl font-bold text-white leading-tight">
-          The Machine
-        </h2>
-        <p className="mt-2 text-sm text-white/60 leading-relaxed">
-          Qwen2.5-14B-AWQ on a T4.
-          <br />
-          Hybrid CoT. Adaptive time guard.
-          <br />
-          Best public:{" "}
-          <span className="text-[#34d399] font-mono font-bold">0.1141</span>
-        </p>
-        <p className="mt-3 text-xs text-white/40">Drag to rotate ↗</p>
+      {/* headline — centered overlay */}
+      <div className="pointer-events-none absolute inset-x-0 top-5 z-20 flex justify-center px-6">
+        <div className="max-w-xl text-center">
+          <p className="font-mono text-xs text-white/50 uppercase tracking-widest mb-2">
+            IOL-AI 2026 · stack
+          </p>
+          <h2 className="text-2xl font-bold text-white leading-tight">
+            The Machine
+          </h2>
+          <p className="mt-2 text-sm text-white/60 leading-relaxed">
+            Qwen2.5-14B-AWQ on a T4. Hybrid CoT. Adaptive time guard.
+            <br className="hidden sm:block" />
+            Best public:{" "}
+            <span className="text-[#34d399] font-mono font-bold">0.1141</span>
+          </p>
+        </div>
       </div>
     </div>
   );

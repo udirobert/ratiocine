@@ -4,7 +4,7 @@
 export const ProblemContent = () => (
   <div className="relative flex h-svh w-full flex-col overflow-hidden bg-[#0a0f2e] text-white selection:bg-white/20">
     {/* top strip */}
-    <div className="flex items-center justify-between px-8 pt-8 pb-4 border-b border-white/10">
+    <div className="mx-auto flex w-full max-w-5xl items-center justify-between px-6 pt-8 pb-4 border-b border-white/10">
       <div>
         <p className="font-mono text-xs text-white/55 tracking-widest uppercase">
           IOL-AI 2026 · task_type: translation
@@ -19,8 +19,8 @@ export const ProblemContent = () => (
       </div>
     </div>
 
-    {/* context block */}
-    <div className="flex-1 overflow-auto px-8 py-6 space-y-6">
+    {/* context block — centered reading column */}
+    <div className="mx-auto w-full max-w-3xl flex-1 overflow-auto px-6 py-6 space-y-6">
       <section>
         <p className="font-mono text-xs text-white/55 uppercase tracking-widest mb-3">
           Context — study these pairs
@@ -99,8 +99,8 @@ export const ProblemContent = () => (
         </p>
       </section>
 
-      {/* the hook */}
-      <div className="pt-2 pb-8">
+      {/* the hook — centered */}
+      <div className="flex flex-col items-center pt-4 pb-8 text-center">
         <p className="text-2xl font-bold text-white/90 leading-snug">
           Can your AI solve this?
         </p>

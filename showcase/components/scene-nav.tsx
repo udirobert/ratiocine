@@ -22,7 +22,7 @@ export const SceneNav = ({ current, onChange }: SceneNavProps) => {
   const next = SCENES[currentIndex + 1];
 
   return (
-    <nav className="fixed bottom-6 inset-x-0 z-50 flex items-center justify-center gap-6 pointer-events-none">
+    <nav className="fixed bottom-6 inset-x-0 z-40 flex items-center justify-center gap-6 pointer-events-none">
       {/* prev arrow */}
       <button
         onClick={() => prev && onChange(prev.id)}
@@ -34,22 +34,29 @@ export const SceneNav = ({ current, onChange }: SceneNavProps) => {
       </button>
 
       {/* dots */}
-      <div className="pointer-events-auto flex items-center gap-3">
+      <div className="pointer-events-auto flex items-center gap-4">
         {SCENES.map((scene) => (
           <button
             key={scene.id}
             onClick={() => onChange(scene.id)}
             aria-label={scene.label}
             title={scene.label}
-            className="relative flex items-center justify-center"
+            className="relative flex flex-col items-center gap-1.5 group"
           >
             <span
               className={`block rounded-full transition-all duration-300 ${
                 scene.id === current
                   ? "w-6 h-2 bg-white"
-                  : "w-2 h-2 bg-white/40 hover:bg-white/70"
+                  : "w-2 h-2 bg-white/40 group-hover:bg-white/70"
               }`}
             />
+            <span
+              className={`font-mono text-[10px] tracking-wide transition-colors ${
+                scene.id === current ? "text-white/70" : "text-white/30"
+              }`}
+            >
+              {scene.label.replace("The ", "")}
+            </span>
           </button>
         ))}
       </div>
