@@ -4,9 +4,8 @@
 
 @layer app {
   .nt-app.ration-app {
-    --nt-accent: #9fd7ff;
-    --nt-accent-muted: #12283a;
-    --ration-glow: rgba(159, 215, 255, 0.55);
+    --nt-accent: #8adf9d;
+    --nt-accent-muted: #122a1e;
     container-type: inline-size;
     min-height: 100dvh;
     padding: var(--nt-pad-5);
@@ -20,7 +19,7 @@
   }
 
   .ration-tagline {
-    color: var(--muted, #93a1ad);
+    color: var(--nt-text-muted);
     font-size: 0.9em;
     margin: 8px 0 0;
   }
@@ -48,8 +47,8 @@
   .ration-problem-card {
     align-items: center;
     background: transparent;
-    border: 1px solid var(--nt-border, rgba(159, 215, 255, 0.18));
-    border-radius: 8px;
+    border: 1px solid var(--nt-border, rgba(138, 223, 157, 0.18));
+    border-radius: 5px;
     color: inherit;
     cursor: pointer;
     display: flex;
@@ -62,12 +61,12 @@
   }
 
   .ration-problem-card:hover:not(:disabled) {
-    border-color: var(--ration-glow);
+    border-color: var(--nt-accent);
   }
 
   .ration-problem-card--active {
     background: var(--nt-accent-muted);
-    border-color: var(--ration-glow);
+    border-color: var(--nt-accent);
   }
 
   .ration-problem-card:disabled {
@@ -87,8 +86,8 @@
   }
 
   .ration-solve-btn {
-    background: var(--ration-glow);
-    border-color: var(--ration-glow);
+    background: var(--nt-accent);
+    border-color: var(--nt-accent);
     color: #05121e;
     font-weight: 700;
   }
@@ -145,7 +144,6 @@
   .ration-timeline-step--active .ration-timeline-icon {
     animation: ration-pulse 1.1s ease-in-out infinite;
     color: var(--nt-accent);
-    text-shadow: 0 0 12px var(--ration-glow);
   }
 
   .ration-timeline-step--active .ration-timeline-label {
@@ -177,8 +175,8 @@
 
   .ration-insight {
     animation: ration-insight-in 500ms ease both;
-    border: 1px dashed var(--nt-border, rgba(159, 215, 255, 0.25));
-    border-radius: 8px;
+    border: 1px dashed var(--nt-border, rgba(138, 223, 157, 0.25));
+    border-radius: 5px;
     margin-top: var(--nt-pad-4);
     padding: var(--nt-pad-3) var(--nt-pad-4);
   }
@@ -221,7 +219,7 @@
 
   .ration-pred-item {
     background: var(--nt-accent-muted);
-    border-radius: 6px;
+    border-radius: 5px;
     display: flex;
     gap: var(--nt-pad-2);
     padding: var(--nt-pad-2) var(--nt-pad-3);
@@ -265,8 +263,8 @@
   /* ---- Attested receipt ---------------------------------------------- */
 
   .ration-receipt {
-    border: 1px solid var(--nt-border, rgba(159, 215, 255, 0.3));
-    border-radius: 12px;
+    border: 1px solid var(--nt-border, rgba(138, 223, 157, 0.3));
+    border-radius: 5px;
     margin-top: var(--nt-pad-4);
     overflow: hidden;
   }
@@ -287,7 +285,7 @@
   }
 
   .ration-receipt-logo {
-    color: var(--ration-glow);
+    color: var(--nt-accent);
     font-size: 1.2em;
   }
 
@@ -300,7 +298,7 @@
 
   /* Badges */
   .ration-receipt-badge {
-    border-radius: 6px;
+    border-radius: 5px;
     font-size: 0.75em;
     font-weight: 800;
     letter-spacing: 0.06em;
@@ -311,19 +309,19 @@
   .ration-badge-certified {
     background: rgba(137, 224, 170, 0.15);
     border: 1px solid rgba(137, 224, 170, 0.4);
-    color: var(--green);
+    color: var(--nt-success);
   }
 
   .ration-badge-fail {
     background: rgba(224, 137, 137, 0.15);
     border: 1px solid rgba(224, 137, 137, 0.4);
-    color: var(--red);
+    color: var(--nt-danger);
   }
 
   .ration-badge-ungraded {
-    background: rgba(159, 215, 255, 0.1);
-    border: 1px solid rgba(159, 215, 255, 0.3);
-    color: var(--accent);
+    background: rgba(138, 223, 157, 0.08);
+    border: 1px solid rgba(138, 223, 157, 0.28);
+    color: var(--nt-accent);
   }
 
   /* Sections */
@@ -333,11 +331,11 @@
   }
 
   .ration-receipt-event {
-    border-bottom: 1px solid var(--nt-border, rgba(159, 215, 255, 0.15));
+    border-bottom: 1px solid var(--nt-border, rgba(138, 223, 157, 0.15));
   }
 
   .ration-receipt-event-title {
-    color: var(--accent);
+    color: var(--nt-accent);
     font-size: 0.7em;
     font-weight: 700;
     letter-spacing: 0.12em;
@@ -359,7 +357,7 @@
   }
 
   .ration-receipt-label {
-    color: var(--muted, #93a1ad);
+    color: var(--nt-text-muted);
     font-size: 0.7em;
     font-weight: 600;
     letter-spacing: 0.06em;
@@ -372,19 +370,19 @@
   }
 
   .ration-fail-text {
-    color: var(--red);
+    color: var(--nt-danger);
     font-weight: 700;
   }
 
   .ration-pass-text {
-    color: var(--green);
+    color: var(--nt-success);
     font-weight: 700;
   }
 
   /* Verify link */
   .ration-receipt-verify {
-    background: rgba(159, 215, 255, 0.05);
-    border-top: 1px solid var(--nt-border, rgba(159, 215, 255, 0.15));
+    background: rgba(138, 223, 157, 0.04);
+    border-top: 1px solid var(--nt-border, rgba(138, 223, 157, 0.15));
     display: flex;
     gap: var(--nt-pad-2);
     justify-content: space-between;
@@ -392,7 +390,7 @@
   }
 
   .ration-receipt-verify-link {
-    color: var(--accent);
+    color: var(--nt-accent);
     font-size: 0.85em;
     font-weight: 600;
     text-decoration: none;
@@ -403,7 +401,7 @@
   }
 
   .ration-receipt-verify-hint {
-    color: var(--muted, #93a1ad);
+    color: var(--nt-text-muted);
     font-size: 0.75em;
   }
 
@@ -447,7 +445,7 @@
 
   .ration-ledger-item {
     align-items: center;
-    border-bottom: 1px solid var(--nt-border, rgba(159, 215, 255, 0.12));
+    border-bottom: 1px solid var(--nt-border, rgba(138, 223, 157, 0.12));
     display: flex;
     gap: var(--nt-pad-3);
     padding: var(--nt-pad-2) 0;
@@ -499,10 +497,10 @@
   gap: var(--nt-pad-1);
   font-size: 0.85em;
   font-weight: 600;
-  color: #ff9f9f;
+  color: var(--nt-danger);
 
   input[type="checkbox"] {
-    accent-color: #ff6b6b;
+    accent-color: var(--nt-danger);
     cursor: pointer;
   }
 }
@@ -515,13 +513,13 @@
 .ration-danger-zone {
   background: rgba(255, 80, 80, 0.08);
   border: 1px dashed rgba(255, 100, 100, 0.4);
-  border-radius: 8px;
+  border-radius: 5px;
   margin-top: var(--nt-pad-3);
   padding: var(--nt-pad-3);
 }
 
 .ration-danger-title {
-  color: #ff9f9f;
+  color: var(--nt-danger);
   font-size: 0.85em;
   font-weight: 700;
   margin: 0 0 var(--nt-pad-2);
@@ -536,14 +534,14 @@
 
 .ration-forge-option {
   align-items: center;
-  color: #ff9f9f;
+  color: var(--nt-danger);
   cursor: pointer;
   display: flex;
   font-size: 0.8em;
   gap: var(--nt-pad-1);
 
   input[type="radio"] {
-    accent-color: #ff6b6b;
+    accent-color: var(--nt-danger);
     cursor: pointer;
   }
 }
@@ -555,7 +553,7 @@
 .ration-forge-input {
   background: rgba(0, 0, 0, 0.3);
   border: 1px solid rgba(255, 100, 100, 0.3);
-  border-radius: 6px;
+  border-radius: 5px;
   color: inherit;
   font-family: var(--nt-font-mono, ui-monospace, monospace);
   font-size: 0.95em;
@@ -563,7 +561,7 @@
   width: 100%;
 
   &:focus {
-    border-color: #ff6b6b;
+    border-color: var(--nt-danger);
     outline: none;
     box-shadow: 0 0 0 2px rgba(255, 107, 107, 0.2);
   }
@@ -577,7 +575,7 @@
   background: rgba(255, 80, 80, 0.15);
   border: 1px solid rgba(255, 100, 100, 0.4);
   border-radius: 4px;
-  color: #ff9f9f;
+  color: var(--nt-danger);
   font-size: 0.8em;
   font-weight: 800;
   letter-spacing: 0.05em;
@@ -588,7 +586,7 @@
 .ration-forge-comparison {
   background: rgba(255, 80, 80, 0.06);
   border-left: 3px solid rgba(255, 100, 100, 0.5);
-  border-radius: 0 6px 6px 0;
+  border-radius: 0 5px 5px 0;
   margin-top: var(--nt-pad-3);
   padding: var(--nt-pad-3);
 }
@@ -605,7 +603,7 @@
   font-family: var(--nt-font-mono, ui-monospace, monospace);
   font-size: 0.95em;
   font-style: italic;
-  color: #ff9f9f;
+  color: var(--nt-danger);
   margin: 0 0 var(--nt-pad-2);
 }
 
@@ -618,7 +616,7 @@
 
 .ration-forge-btn {
   border-color: rgba(255, 100, 100, 0.4);
-  color: #ff9f9f;
+  color: var(--nt-danger);
 
   &:hover:not(:disabled) {
     background: rgba(255, 100, 100, 0.12);
