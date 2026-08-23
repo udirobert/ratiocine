@@ -2,7 +2,7 @@
   "format": 3,
   "name": "Ration",
   "id": "ratiocine",
-  "version": 100,
+  "version": 200,
   "update_source": "233tv-xiaaa-aaaay-aacta-cai",
   "description": "Ration: a certified reasoning logbook. Solves Linguini problems via a declared outcall, grades answers in-canister (EM + chrF), and signs every entry with a chain-key assertion.",
   "src": "main.mo",
