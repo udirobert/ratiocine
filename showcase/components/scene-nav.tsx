@@ -3,12 +3,13 @@
 import { ArrowLeftIcon, ArrowRightIcon } from "@phosphor-icons/react";
 import { motion } from "motion/react";
 
-export type SceneId = "problem" | "machine" | "answer";
+export type SceneId = "problem" | "machine" | "answer" | "play";
 
 const SCENES: { id: SceneId; label: string; index: number }[] = [
   { id: "problem", label: "The Problem", index: 0 },
   { id: "machine", label: "The Machine", index: 1 },
   { id: "answer", label: "The Answer", index: 2 },
+  { id: "play", label: "Play", index: 3 },
 ];
 
 interface SceneNavProps {
@@ -87,7 +88,7 @@ export const SceneLabel = ({ current }: { current: SceneId }) => {
       className="fixed top-5 left-5 z-50 flex items-center gap-2"
     >
       <span className="font-mono text-xs text-white/55 tabular-nums">
-        {String(scene.index + 1).padStart(2, "0")} / 03
+        {String(scene.index + 1).padStart(2, "0")} / {String(SCENES.length).padStart(2, "0")}
       </span>
       <span className="text-sm font-semibold text-white/85 tracking-wide">
         {scene.label}
