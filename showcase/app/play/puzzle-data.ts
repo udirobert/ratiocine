@@ -34,6 +34,8 @@ export interface LanguageLore {
   culturalNote: string; // something human and vivid
   endangerment: string; // UNESCO/Ethnologue status
   funFact: string; // memorable hook
+  briefingHook: string; // one-sentence emotional hook for pre-solve
+  lineageNote: string; // surprising connection to another language/culture
   coordinates: [number, number]; // lat, lng for map display
 }
 
@@ -175,6 +177,10 @@ export const APURINA_PUZZLE: Puzzle = {
       "Classified as 'Severely Endangered' by UNESCO. Active documentation projects exist (notably by Sidney da Silva Facundes at UFPA), but intergenerational transmission is declining.",
     funFact:
       "Apurinã has a complex system of evidentiality — speakers grammatically mark whether they witnessed an event, heard about it, or inferred it. You can't say 'it rained' without revealing whether you saw the rain yourself.",
+    briefingHook:
+      "A language where you cannot describe an event without revealing how you know it happened.",
+    lineageNote:
+      "Related to Taíno — the first indigenous language Columbus encountered in the Caribbean. Same family, 4,000 km apart.",
     coordinates: [-6.73, -64.45],
   },
 

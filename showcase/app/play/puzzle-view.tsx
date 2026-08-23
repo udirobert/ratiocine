@@ -47,7 +47,7 @@ function generateShareText(
 
 // ─── Types ──────────────────────────────────────────────────────────────────
 
-type Phase = "study" | "solve" | "result";
+type Phase = "briefing" | "study" | "solve" | "result";
 
 interface SlotData {
   morpheme: string | null;
@@ -64,7 +64,7 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
   const puzzle = useMemo(() => getTodaysPuzzle(), []);
 
   // Phase
-  const [phase, setPhase] = useState<Phase>("study");
+  const [phase, setPhase] = useState<Phase>("briefing");
   const [currentQ, setCurrentQ] = useState(0); // which query (0-indexed)
 
   // Per-query answers
@@ -96,12 +96,15 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
   const startRef = useRef(Date.now());
 
   useEffect(() => {
+    // Don't start timer during briefing
+    if (phase === "briefing") return;
+    if (timerRef.current) return; // already running
     startRef.current = Date.now();
     timerRef.current = setInterval(() => {
       setElapsed(Math.floor((Date.now() - startRef.current) / 1000));
     }, 1000);
     return () => { if (timerRef.current) clearInterval(timerRef.current); };
-  }, []);
+  }, [phase]);
 
   useEffect(() => { setProgress(loadProgress()); }, []);
 
@@ -250,7 +253,9 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
           </div>
         </div>
         <div className="flex items-center gap-3">
-          <span className="font-mono text-xs text-white/40 tabular-nums">{timeStr}</span>
+          {phase !== "briefing" && (
+            <span className="font-mono text-xs text-white/40 tabular-nums">{timeStr}</span>
+          )}
           {phase === "solve" && (
             <button
               onClick={handleHint}
@@ -266,6 +271,93 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
       {/* ═══ Main frame (fixed, no scroll) ═══ */}
       <div className="flex-1 flex flex-col min-h-0">
         <AnimatePresence mode="wait">
+
+          {/* ─── BRIEFING PHASE ─── */}
+          {phase === "briefing" && (
+            <motion.div
+              key="briefing"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0, scale: 0.96 }}
+              transition={{ duration: 0.4 }}
+              className="flex-1 flex flex-col items-center justify-center px-6 min-h-0"
+              onClick={() => setPhase("study")}
+            >
+              <div className="max-w-sm w-full text-center space-y-5">
+                {/* Language name — large, atmospheric */}
+                <motion.h2
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
+                  className="text-3xl sm:text-4xl font-bold tracking-tight text-white"
+                >
+                  {puzzle.language}
+                </motion.h2>
+
+                {/* Region + coordinates */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.5 }}
+                  className="flex items-center justify-center gap-2 text-[12px] text-white/40 font-mono"
+                >
+                  <span>📍</span>
+                  <span>{puzzle.region}</span>
+                </motion.div>
+
+                {/* Vital stats */}
+                <motion.div
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.7 }}
+                  className="space-y-2"
+                >
+                  <p className="text-sm text-white/60">
+                    <span className="text-amber-300/80 font-mono text-[12px]">~2,800</span> speakers remaining
+                  </p>
+                  <p className="text-[11px] text-red-300/50 font-mono uppercase tracking-wider">
+                    Severely Endangered
+                  </p>
+                </motion.div>
+
+                {/* Hook — the emotional line */}
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 1.0 }}
+                  className="text-sm text-white/70 leading-relaxed italic"
+                >
+                  "{puzzle.lore.briefingHook}"
+                </motion.p>
+
+                {/* Lineage connection */}
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 1.3 }}
+                  className="text-[12px] text-white/40 leading-relaxed"
+                >
+                  {puzzle.lore.lineageNote}
+                </motion.p>
+
+                {/* CTA */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 1.6 }}
+                  className="pt-3"
+                >
+                  <button
+                    onClick={(e) => { e.stopPropagation(); setPhase("study"); }}
+                    className="px-6 py-2.5 rounded-md bg-amber-500/90 text-sm font-bold text-black hover:bg-amber-400 transition-colors"
+                  >
+                    Begin decipherment
+                  </button>
+                  <p className="mt-3 text-[10px] text-white/20">tap anywhere to skip</p>
+                </motion.div>
+              </div>
+            </motion.div>
+          )}
 
           {/* ─── STUDY PHASE ─── */}
           {phase === "study" && (
@@ -319,6 +411,11 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
                       </motion.p>
                     )}
                   </AnimatePresence>
+
+                  {/* Flavour — linguistic context while studying */}
+                  <p className="mt-3 text-[11px] text-white/25 italic leading-relaxed">
+                    {puzzle.lore.funFact.split("—")[0].trim()}
+                  </p>
                 </div>
               </div>
 
