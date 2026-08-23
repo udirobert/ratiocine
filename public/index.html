@@ -35,157 +35,445 @@
       content="AI answers, graded exact-match + chrF, chain-key signed, and certified — in your own Neutron canister."
     />
     <meta name="twitter:image" content="https://ratiocine.trustfall.xyz/og-image.png" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
     <style>
       :root {
-        --bg: #0b0d0c;
-        --panel: #12171a;
-        --line: #24303a;
-        --text: #e6edf3;
-        --muted: #93a1ad;
-        --accent: #9fd7ff;
-        --green: #89e0aa;
+        --bg: #050505;
+        --surface: #0a0a0a;
+        --border: #1a1a1a;
+        --border-bright: #2a2a2a;
+        --text: #c8c8c8;
+        --text-dim: #666;
+        --text-faint: #333;
+        --accent: #00e5ff;
+        --accent-dim: rgba(0, 229, 255, 0.15);
+        --accent-glow: rgba(0, 229, 255, 0.4);
+        --green: #00c853;
+        --mono: "JetBrains Mono", "SF Mono", "Fira Code", monospace;
       }
-      * { box-sizing: border-box; }
-      body {
+
+      * {
+        box-sizing: border-box;
         margin: 0;
+        padding: 0;
+      }
+
+      body {
         background: var(--bg);
         color: var(--text);
-        font: 16px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif;
+        font: 14px/1.7 var(--mono);
+        -webkit-font-smoothing: antialiased;
+        min-height: 100vh;
       }
-      main {
-        max-width: 760px;
-        margin: 0 auto;
-        padding: 72px 24px 96px;
+
+      /* ─── Status Bar ─── */
+      .status-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        padding: 6px 20px;
+        background: var(--surface);
+        border-bottom: 1px solid var(--border);
+        font-size: 11px;
+        color: var(--text-dim);
+        letter-spacing: 0.04em;
       }
-      .eyebrow {
-        color: var(--green);
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        font-size: 12px;
-        margin: 0 0 12px;
-      }
-      h1 {
-        font-size: clamp(40px, 7vw, 64px);
-        line-height: 1.05;
-        margin: 0 0 16px;
-        letter-spacing: -0.02em;
-      }
-      .tagline {
-        font-size: 19px;
-        color: var(--muted);
-        max-width: 56ch;
-      }
-      .cards { display: grid; gap: 12px; margin-top: 48px; }
-      .card {
-        background: var(--panel);
-        border: 1px solid var(--line);
-        border-radius: 12px;
-        padding: 20px 22px;
-      }
-      .card h2 {
-        margin: 0 0 6px;
-        font-size: 16px;
-        color: var(--accent);
-      }
-      .card p { margin: 0; color: var(--muted); font-size: 15px; }
-      .steps { counter-reset: s; }
-      .steps li { margin: 10px 0; }
-      .steps li::before {
-        counter-increment: s;
-        content: counter(s);
-        display: inline-block;
-        min-width: 24px;
-        height: 24px;
-        margin-right: 10px;
+
+      .status-bar .led {
+        width: 6px;
+        height: 6px;
         border-radius: 50%;
-        background: var(--line);
-        color: var(--accent);
-        font-size: 13px;
-        text-align: center;
-        line-height: 24px;
+        background: var(--green);
+        box-shadow: 0 0 4px var(--green);
+        animation: pulse-led 3s ease-in-out infinite;
       }
-      .links { margin-top: 40px; display: flex; gap: 12px; flex-wrap: wrap; }
+
+      @keyframes pulse-led {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.4; }
+      }
+
+      .status-bar span {
+        white-space: nowrap;
+      }
+
+      .status-bar .accent {
+        color: var(--accent);
+      }
+
+      /* ─── Trace Animation ─── */
+      .trace-container {
+        position: fixed;
+        top: 29px;
+        left: 0;
+        right: 0;
+        height: 1px;
+        overflow: hidden;
+        pointer-events: none;
+      }
+
+      .trace-line {
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 60%;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent 0%,
+          var(--accent-glow) 40%,
+          var(--accent) 80%,
+          transparent 100%
+        );
+        animation: trace-sweep 8s linear infinite;
+      }
+
+      @keyframes trace-sweep {
+        0% { left: -60%; }
+        100% { left: 100%; }
+      }
+
+      /* ─── Main Layout ─── */
+      main {
+        max-width: 640px;
+        margin: 0 auto;
+        padding: 96px 24px 80px;
+      }
+
+      /* ─── Hero ─── */
+      .hero {
+        margin-bottom: 64px;
+      }
+
+      .hero-label {
+        font-size: 11px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--text-dim);
+        margin-bottom: 16px;
+      }
+
+      .hero h1 {
+        font-size: clamp(48px, 10vw, 72px);
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        line-height: 1;
+        color: var(--accent);
+        margin-bottom: 8px;
+        text-shadow: 0 0 30px var(--accent-dim);
+      }
+
+      .hero-sub {
+        font-size: 12px;
+        color: var(--text-dim);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 28px;
+      }
+
+      .hero-desc {
+        font-size: 14px;
+        line-height: 1.8;
+        color: var(--text);
+        max-width: 52ch;
+      }
+
+      /* ─── Panels ─── */
+      .panels {
+        display: grid;
+        gap: 1px;
+        background: var(--border);
+        border: 1px solid var(--border);
+        margin-bottom: 64px;
+      }
+
+      .panel {
+        background: var(--surface);
+        padding: 20px 22px;
+        position: relative;
+      }
+
+      .panel-indicator {
+        position: absolute;
+        top: 12px;
+        right: 14px;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: var(--green);
+        box-shadow: 0 0 3px var(--green);
+      }
+
+      .panel h2 {
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 8px;
+      }
+
+      .panel p {
+        font-size: 13px;
+        line-height: 1.7;
+        color: var(--text-dim);
+      }
+
+      /* ─── Signal Path (Protocol) ─── */
+      .signal-path {
+        margin-bottom: 64px;
+      }
+
+      .signal-path h2 {
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--text-dim);
+        margin-bottom: 28px;
+      }
+
+      .path-steps {
+        position: relative;
+        padding-left: 32px;
+      }
+
+      /* Vertical connector line */
+      .path-steps::before {
+        content: "";
+        position: absolute;
+        top: 8px;
+        left: 7px;
+        bottom: 8px;
+        width: 1px;
+        border-left: 1px dashed var(--border-bright);
+      }
+
+      .path-step {
+        position: relative;
+        margin-bottom: 20px;
+        font-size: 13px;
+        line-height: 1.7;
+        color: var(--text-dim);
+      }
+
+      .path-step:last-child {
+        margin-bottom: 0;
+      }
+
+      /* Node dot */
+      .path-step::before {
+        content: "";
+        position: absolute;
+        left: -29px;
+        top: 8px;
+        width: 9px;
+        height: 9px;
+        border: 1.5px solid var(--accent);
+        border-radius: 50%;
+        background: var(--bg);
+      }
+
+      .path-step:first-child::before,
+      .path-step:last-child::before {
+        background: var(--accent);
+        box-shadow: 0 0 6px var(--accent-dim);
+      }
+
+      .path-step .step-label {
+        display: block;
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 2px;
+      }
+
+      /* ─── Links ─── */
+      .actions {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-bottom: 64px;
+      }
+
       a.btn {
         display: inline-block;
         padding: 10px 18px;
-        border-radius: 8px;
-        border: 1px solid var(--line);
-        background: var(--panel);
+        border: 1px solid var(--border-bright);
+        background: var(--surface);
         color: var(--text);
         text-decoration: none;
-        font-size: 15px;
+        font: 13px/1 var(--mono);
+        letter-spacing: 0.02em;
+        transition: border-color 0.2s, color 0.2s;
       }
-      a.btn.primary {
-        background: var(--accent);
+
+      a.btn:hover {
         border-color: var(--accent);
-        color: #06121d;
-        font-weight: 600;
+        color: var(--accent);
       }
-      footer { margin-top: 64px; color: var(--muted); font-size: 13px; }
-      code {
-        background: #0e1418;
-        border: 1px solid var(--line);
-        border-radius: 6px;
-        padding: 1px 6px;
-        font-size: 13px;
+
+      a.btn.primary {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+
+      a.btn.primary:hover {
+        background: var(--accent-dim);
+      }
+
+      /* ─── Footer ─── */
+      footer {
+        border-top: 1px solid var(--border);
+        padding-top: 20px;
+        font-size: 11px;
+        color: var(--text-faint);
+        line-height: 1.8;
+      }
+
+      footer a {
+        color: var(--text-dim);
+        text-decoration: none;
+      }
+
+      footer a:hover {
+        color: var(--accent);
+      }
+
+      /* ─── Responsive ─── */
+      @media (max-width: 480px) {
+        .status-bar {
+          gap: 12px;
+          font-size: 10px;
+          padding: 5px 12px;
+          overflow-x: auto;
+        }
+
+        main {
+          padding: 80px 16px 64px;
+        }
+
+        .panels {
+          gap: 1px;
+        }
       }
     </style>
   </head>
   <body>
-    <main>
-      <p class="eyebrow">Neutron app · Internet Computer</p>
-      <h1>Ration</h1>
-      <p class="tagline">
-        An AI reasoning engine that keeps receipts. Ration solves hard
-        pattern-deduction problems, grades itself against ground truth, and
-        chain-key-signs every attempt — a reasoning ledger you can verify
-        against the ICP root key.
-      </p>
+    <!-- Status Bar -->
+    <header class="status-bar" role="banner">
+      <div class="led" aria-label="System online"></div>
+      <span>canister: <span class="accent">mqrdp-r7777-77775-qaaaq-cai</span></span>
+      <span>engine: <span class="accent">ONLINE</span></span>
+      <span>protocol: <span class="accent">linguini/v1</span></span>
+    </header>
 
-      <div class="cards">
-        <div class="card">
-          <h2>Provable reasoning, not vibes</h2>
+    <!-- Trace sweep -->
+    <div class="trace-container" aria-hidden="true">
+      <div class="trace-line"></div>
+    </div>
+
+    <main>
+      <!-- Hero -->
+      <section class="hero">
+        <p class="hero-label">Neutron app / Internet Computer</p>
+        <h1>Ration</h1>
+        <p class="hero-sub">Certified reasoning ledger</p>
+        <p class="hero-desc">
+          Solves pattern-deduction problems, grades each attempt against ground
+          truth in-canister, and chain-key-signs the result &mdash; producing
+          attestations verifiable against the ICP root key.
+        </p>
+      </section>
+
+      <!-- Panels -->
+      <div class="panels" role="list">
+        <div class="panel" role="listitem">
+          <div class="panel-indicator" aria-hidden="true"></div>
+          <h2>Deterministic grading</h2>
           <p>
-            Every entry in the ledger carries an exact-match + chrF grade
-            computed <em>inside the canister</em> and a threshold signature no
-            single node ever holds.
+            Each ledger entry carries an exact-match + chrF score computed
+            entirely within the canister and a threshold signature no single
+            subnet node ever holds.
           </p>
         </div>
-        <div class="card">
+        <div class="panel" role="listitem">
+          <div class="panel-indicator" aria-hidden="true"></div>
           <h2>User-sovereign</h2>
           <p>
-            Ration installs into your own Neutron canister. Your problems, your
-            ledger, your consent prompts — no account, no shared server.
+            Installs into your own Neutron canister. Problems, ledger, and
+            consent boundaries remain local &mdash; no account, no shared
+            infrastructure.
           </p>
         </div>
-        <div class="card">
-          <h2>Agent Mode native</h2>
+        <div class="panel" role="listitem">
+          <div class="panel-indicator" aria-hidden="true"></div>
+          <h2>Agent-native</h2>
           <p>
-            Exposes <code>solve</code>, <code>grade</code>, and
-            <code>get_ledger</code> as typed tools any agent in your OS can
-            call.
+            Exposes solve, grade, and get_ledger as typed entrypoints callable
+            by any agent in your OS.
           </p>
         </div>
       </div>
 
-      <h2 style="margin-top:48px; font-size:18px;">How it works</h2>
-      <ol class="steps" style="color: var(--muted);">
-        <li>Your canister sends the problem to the engine via a declared HTTPS outcall.</li>
-        <li>The engine returns candidate answers; the canister parses them with the Linguini protocol.</li>
-        <li>Grading runs in-canister: exact match and chrF against the ground truth you supply.</li>
-        <li>The (problem, attempt, grade) tuple is chain-key-signed and appended to your ledger.</li>
-        <li>Publish the ledger as a certified asset — anyone can verify it, and absence is provable.</li>
-      </ol>
+      <!-- Signal Path -->
+      <section class="signal-path">
+        <h2>Signal Path</h2>
+        <div class="path-steps">
+          <div class="path-step">
+            <span class="step-label">Dispatch</span>
+            The canister dispatches the problem to the inference engine via a
+            declared HTTPS outcall.
+          </div>
+          <div class="path-step">
+            <span class="step-label">Parse</span>
+            The engine returns candidate answers; the canister parses them using
+            the Linguini evaluation protocol.
+          </div>
+          <div class="path-step">
+            <span class="step-label">Grade</span>
+            Grading executes in-canister: exact match and chrF against the
+            supplied ground truth.
+          </div>
+          <div class="path-step">
+            <span class="step-label">Sign</span>
+            The (problem, attempt, grade) tuple is chain-key-signed and appended
+            to the stable ledger.
+          </div>
+          <div class="path-step">
+            <span class="step-label">Certify</span>
+            The ledger is publishable as a certified asset &mdash; third-party
+            verification is possible, and absence of an entry is provable.
+          </div>
+        </div>
+      </section>
 
-      <div class="links">
-        <a class="btn primary" href="/verify">Verify an attestation</a>
+      <!-- Actions -->
+      <div class="actions">
+        <a class="btn primary" href="/verify">Verify attestation</a>
         <a class="btn" href="https://github.com/udirobert/ratiocine">Source</a>
       </div>
 
+      <!-- Footer -->
       <footer>
-        Ration · a <a href="https://ntron.net" style="color:var(--accent)">Neutron</a>
-        app for the Internet Computer. Engine status:
-        <code>POST /api/solve</code>
+        Ration &mdash; a <a href="https://ntron.net">Neutron</a> app for the
+        Internet Computer.<br />
+        Engine endpoint: POST /api/solve
       </footer>
     </main>
   </body>
