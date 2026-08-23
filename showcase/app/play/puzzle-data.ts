@@ -14,7 +14,7 @@ export interface PuzzleQuery {
   prompt: string; // English to translate
   answer: string[]; // correct morpheme sequence
   answerJoined: string; // full correct answer string
-  difficulty: "standard" | "curveball"; // curveballs require deeper inference
+  difficulty: "tutorial" | "standard" | "curveball"; // tutorial = easy win, curveballs require deeper inference
   hintOnFail?: string; // shown after first failed attempt
 }
 
@@ -92,6 +92,16 @@ export const APURINA_PUZZLE: Puzzle = {
   ],
 
   queries: [
+    // Tutorial — easy win to teach the mechanic
+    {
+      id: 0,
+      prompt: "I am eating",
+      answer: ["nhaa", "kuta", "ka"],
+      answerJoined: "nhaakutaka",
+      difficulty: "tutorial" as const,
+      hintOnFail: "Look at row 4 — it's the exact same phrase. This one is free!",
+    },
+    // Standard
     {
       id: 1,
       prompt: "we (incl.) are eating",
@@ -116,6 +126,7 @@ export const APURINA_PUZZLE: Puzzle = {
       difficulty: "standard",
       hintOnFail: "Combine what you learned about 'we (incl.)' with the 'speak' root.",
     },
+    // Curveball
     {
       id: 4,
       prompt: "he/she is going (habitual)",
