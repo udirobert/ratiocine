@@ -32,7 +32,7 @@ export const HeroOverlay = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -16, scale: 0.98 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
-            className="relative mx-6 max-w-lg rounded-2xl border border-white/15 bg-white/[0.04] px-8 py-10 text-center shadow-2xl"
+            className="relative mx-6 max-w-lg max-h-[90svh] overflow-y-auto rounded-2xl border border-white/15 bg-white/[0.04] px-8 py-10 text-center shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
             <p className="font-mono text-xs text-white/50 uppercase tracking-widest">

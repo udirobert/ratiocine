@@ -62,10 +62,19 @@
   }
   html {
     @apply h-full antialiased;
+    -webkit-tap-highlight-color: transparent;
   }
   body {
     @apply bg-background text-foreground font-sans;
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
   }
+}
+
+/* Touch behaviour: kill 300ms delay, prevent double-tap zoom on game UI */
+.touch-game {
+  touch-action: manipulation;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 /* shared scene stage: normalize sizing + a soft bottom fade so 3D objects

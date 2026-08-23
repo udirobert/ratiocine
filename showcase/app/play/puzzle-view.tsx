@@ -234,7 +234,7 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
   // ─── Render ───────────────────────────────────────────────────────────────
 
   return (
-    <div className="relative flex flex-col h-svh w-full overflow-hidden bg-[#0a0c10] text-white">
+    <div className="touch-game relative flex flex-col h-svh w-full overflow-hidden bg-[#0a0c10] text-white">
 
       {/* ═══ Top bar ═══ */}
       <header className="shrink-0 flex items-center justify-between px-4 py-2.5 border-b border-white/8 sm:px-6">
@@ -286,7 +286,7 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
                     {visiblePairs.map((pair) => (
                       <div
                         key={pair.id}
-                        className={`flex items-center gap-2 px-3 py-1.5 bg-[#0c0e13] ${
+                        className={`flex items-center gap-2 px-3 py-2.5 min-h-[44px] bg-[#0c0e13] ${
                           highlightedRows.has(pair.id) ? "bg-amber-400/[0.04]" : ""
                         }`}
                       >
@@ -347,12 +347,12 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
               <div className="flex-1 flex flex-col justify-center max-w-lg mx-auto w-full">
 
                 {/* Query progress dots */}
-                <div className="flex items-center justify-center gap-2 mb-5">
+                <div className="flex items-center justify-center gap-1 mb-5">
                   {puzzle.queries.map((q, i) => (
                     <button
                       key={q.id}
                       onClick={() => { if (!locked[i] || true) setCurrentQ(i); }}
-                      className={`w-7 h-7 rounded-full text-[11px] font-mono font-bold flex items-center justify-center transition-all ${
+                      className={`w-11 h-11 rounded-full text-[11px] font-mono font-bold flex items-center justify-center transition-all ${
                         i === currentQ
                           ? "bg-amber-400/20 border-2 border-amber-400 text-amber-300"
                           : locked[i] && grades.get(q.id)?.isCorrect
@@ -383,7 +383,7 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
                       layout
                       onClick={() => handleSlotTap(i)}
                       whileTap={{ scale: 0.9 }}
-                      className={`min-w-[48px] h-11 px-3 rounded-md font-mono text-sm font-medium
+                      className={`min-w-[48px] min-h-[44px] h-11 px-3 rounded-md font-mono text-sm font-medium
                         border-2 transition-all ${
                         slot.grade
                           ? gradeClass(slot.grade)
@@ -411,7 +411,7 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
                           setSelected(null);
                         }
                       }}
-                      className="w-8 h-11 rounded-md border border-dashed border-white/10 text-white/20 hover:text-white/40 text-lg"
+                      className="w-11 min-h-[44px] rounded-md border border-dashed border-white/10 text-white/20 hover:text-white/40 text-lg"
                     >
                       +
                     </button>
@@ -449,7 +449,7 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
                         <button
                           key={`${m}-${i}`}
                           onClick={() => setSelected((p) => (p === m ? null : m))}
-                          className={`relative px-2.5 py-1.5 rounded font-mono text-[13px] border transition-all ${
+                          className={`relative px-3 py-2.5 min-h-[44px] rounded font-mono text-[13px] border transition-all ${
                             isSelected
                               ? "border-amber-400 bg-amber-400/15 text-amber-300 shadow-[0_0_8px_rgba(229,168,75,0.15)]"
                               : "border-white/10 bg-white/[0.03] text-white/70 hover:border-white/20"

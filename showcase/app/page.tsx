@@ -29,7 +29,7 @@ const Home = () => {
   const [scene, setScene] = useState<SceneId>("machine");
 
   return (
-    <main className="relative h-screen w-screen overflow-hidden bg-[#0a0f2e]">
+    <main className="relative h-svh w-screen overflow-hidden bg-[#0a0f2e]">
       {/* Grid + chrome hidden during play */}
       {scene !== "play" && (
         <>

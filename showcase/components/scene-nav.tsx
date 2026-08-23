@@ -23,32 +23,32 @@ export const SceneNav = ({ current, onChange }: SceneNavProps) => {
   const next = SCENES[currentIndex + 1];
 
   return (
-    <nav className="fixed bottom-6 inset-x-0 z-40 flex items-center justify-center gap-6 pointer-events-none">
+    <nav className="fixed bottom-6 inset-x-0 z-40 flex items-center justify-center gap-4 pointer-events-none pb-[env(safe-area-inset-bottom)]">
       {/* prev arrow */}
       <button
         onClick={() => prev && onChange(prev.id)}
         disabled={!prev}
         aria-label="Previous scene"
-        className="pointer-events-auto flex items-center justify-center w-10 h-10 rounded-full bg-white/10 border border-white/20 backdrop-blur text-white/60 hover:text-white hover:bg-white/20 disabled:opacity-0 disabled:pointer-events-none transition-all"
+        className="pointer-events-auto flex items-center justify-center w-11 h-11 rounded-full bg-white/10 border border-white/20 backdrop-blur text-white/60 hover:text-white hover:bg-white/20 disabled:opacity-0 disabled:pointer-events-none transition-all"
       >
         <ArrowLeftIcon weight="bold" className="size-4" />
       </button>
 
-      {/* dots */}
-      <div className="pointer-events-auto flex items-center gap-4">
+      {/* dots — 44px minimum tap targets */}
+      <div className="pointer-events-auto flex items-center gap-1">
         {SCENES.map((scene) => (
           <button
             key={scene.id}
             onClick={() => onChange(scene.id)}
             aria-label={scene.label}
             title={scene.label}
-            className="relative flex flex-col items-center gap-1.5 group"
+            className="relative flex flex-col items-center justify-center gap-1 group min-w-[44px] min-h-[44px]"
           >
             <span
               className={`block rounded-full transition-all duration-300 ${
                 scene.id === current
                   ? "w-6 h-2 bg-white"
-                  : "w-2 h-2 bg-white/40 group-hover:bg-white/70"
+                  : "w-2.5 h-2.5 bg-white/40 group-hover:bg-white/70"
               }`}
             />
             <span
@@ -67,7 +67,7 @@ export const SceneNav = ({ current, onChange }: SceneNavProps) => {
         onClick={() => next && onChange(next.id)}
         disabled={!next}
         aria-label="Next scene"
-        className="pointer-events-auto flex items-center justify-center w-10 h-10 rounded-full bg-white/10 border border-white/20 backdrop-blur text-white/60 hover:text-white hover:bg-white/20 disabled:opacity-0 disabled:pointer-events-none transition-all"
+        className="pointer-events-auto flex items-center justify-center w-11 h-11 rounded-full bg-white/10 border border-white/20 backdrop-blur text-white/60 hover:text-white hover:bg-white/20 disabled:opacity-0 disabled:pointer-events-none transition-all"
       >
         <ArrowRightIcon weight="bold" className="size-4" />
       </button>

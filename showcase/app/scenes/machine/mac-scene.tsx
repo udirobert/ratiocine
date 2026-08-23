@@ -61,16 +61,21 @@ export const MacScene = ({
   screenCanvasRef: RefObject<HTMLCanvasElement | null>;
 }) => {
   const [el, setEl] = useState<HTMLCanvasElement | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    setIsMobile(window.innerWidth < 768);
     requestAnimationFrame(() => setEl(screenCanvasRef.current));
   }, [screenCanvasRef]);
+
+  // Don't render the full 3D scene on mobile — too heavy
+  if (isMobile) return null;
 
   return (
     <Canvas
       shadows
-      dpr={[1, 2]}
-      gl={{ antialias: true }}
+      dpr={[1, 1.5]}
+      gl={{ antialias: true, powerPreference: "high-performance" }}
       camera={{ position: [0.02, 0.01, 0.05], fov: 24, near: 0.1, far: 100 }}
       className="absolute inset-0"
     >
@@ -94,6 +99,7 @@ export const MacScene = ({
       <OrbitControls
         enableDamping
         enablePan={false}
+        enableZoom={false}
         minDistance={2}
         maxDistance={8}
         minPolarAngle={Math.PI / 6}
