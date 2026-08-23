@@ -40,23 +40,24 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap"
       rel="stylesheet"
     />
 
     <style>
       :root {
-        --bg: #050505;
-        --surface: #0a0a0a;
-        --border: #1a1a1a;
-        --border-bright: #2a2a2a;
-        --text: #c8c8c8;
-        --text-dim: #666;
-        --text-faint: #333;
-        --accent: #00e5ff;
-        --accent-dim: rgba(0, 229, 255, 0.15);
-        --accent-glow: rgba(0, 229, 255, 0.4);
-        --green: #00c853;
+        --bg: #12110f;
+        --surface: #1a1815;
+        --border: #2a2520;
+        --border-bright: #3d3530;
+        --text: #f0ece4;
+        --text-dim: #a89f94;
+        --text-faint: #5c554d;
+        --accent: #e5a84b;
+        --accent-dim: rgba(229, 168, 75, 0.12);
+        --accent-glow: rgba(229, 168, 75, 0.35);
+        --green: #7ebd6a;
+        --serif: "Source Serif 4", Georgia, serif;
         --mono: "JetBrains Mono", "SF Mono", "Fira Code", monospace;
       }
 
@@ -69,7 +70,7 @@
       body {
         background: var(--bg);
         color: var(--text);
-        font: 14px/1.7 var(--mono);
+        font: 15px/1.7 var(--serif);
         -webkit-font-smoothing: antialiased;
         min-height: 100vh;
         overflow-x: hidden;
@@ -84,13 +85,13 @@
         z-index: 100;
         display: flex;
         align-items: center;
-        gap: 24px;
-        padding: 6px 20px;
+        gap: 20px;
+        padding: 7px 20px;
         background: var(--surface);
         border-bottom: 1px solid var(--border);
-        font-size: 11px;
+        font: 11px/1 var(--mono);
         color: var(--text-dim);
-        letter-spacing: 0.04em;
+        letter-spacing: 0.03em;
       }
 
       .status-bar .led {
@@ -104,7 +105,7 @@
 
       @keyframes pulse-led {
         0%, 100% { opacity: 1; }
-        50% { opacity: 0.4; }
+        50% { opacity: 0.5; }
       }
 
       .status-bar span {
@@ -125,175 +126,126 @@
         color: var(--text-dim);
       }
 
-      /* ─── Trace Animation ─── */
-      .trace-container {
+      /* ─── Scripts decoration ─── */
+      .scripts-band {
         position: fixed;
-        top: 29px;
+        top: 33px;
         left: 0;
         right: 0;
-        height: 1px;
+        height: 28px;
         overflow: hidden;
         pointer-events: none;
-      }
-
-      .trace-line {
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 60%;
-        height: 1px;
-        background: linear-gradient(
-          90deg,
-          transparent 0%,
-          var(--accent-glow) 40%,
-          var(--accent) 80%,
-          transparent 100%
-        );
-        animation: trace-sweep 8s linear infinite;
-      }
-
-      @keyframes trace-sweep {
-        0% { left: -60%; }
-        100% { left: 100%; }
-      }
-
-      /* ─── SHA-256 Watermark ─── */
-      .watermark {
-        position: fixed;
-        top: 50%;
-        left: 0;
-        transform: translateY(-50%);
-        white-space: nowrap;
-        font: 700 clamp(60px, 12vw, 140px)/1 var(--mono);
+        opacity: 0.06;
+        font: 14px/28px var(--serif);
         color: var(--accent);
-        opacity: 0.025;
-        pointer-events: none;
-        z-index: 0;
-        animation: watermark-scroll 60s linear infinite;
-        user-select: none;
+        white-space: nowrap;
+        letter-spacing: 0.3em;
       }
 
-      @keyframes watermark-scroll {
-        0% { transform: translateY(-50%) translateX(0); }
-        100% { transform: translateY(-50%) translateX(-50%); }
+      .scripts-band-inner {
+        display: inline-block;
+        animation: scroll-scripts 80s linear infinite;
       }
 
-      /* ─── Boot Sequence ─── */
-      .boot-line {
-        opacity: 0;
-        transform: translateY(4px);
-        animation: scan-in 0.08s ease-out forwards;
-      }
-
-      @keyframes scan-in {
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
+      @keyframes scroll-scripts {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
       }
 
       /* ─── Main Layout ─── */
       main {
         position: relative;
         z-index: 1;
-        max-width: 640px;
+        max-width: 620px;
         margin: 0 auto;
-        padding: 96px 24px 80px;
+        padding: 108px 24px 80px;
       }
 
       /* ─── Hero ─── */
       .hero {
-        margin-bottom: 64px;
+        margin-bottom: 72px;
       }
 
       .hero-label {
-        font-size: 11px;
-        letter-spacing: 0.16em;
+        font: 11px/1 var(--mono);
+        letter-spacing: 0.14em;
         text-transform: uppercase;
         color: var(--text-dim);
-        margin-bottom: 16px;
+        margin-bottom: 20px;
       }
 
       .hero h1 {
-        font-size: clamp(48px, 10vw, 72px);
-        font-weight: 700;
-        letter-spacing: -0.03em;
-        line-height: 1;
+        font: 600 clamp(44px, 9vw, 64px)/1.05 var(--serif);
+        letter-spacing: -0.02em;
+        color: var(--text);
+        margin-bottom: 6px;
+      }
+
+      .hero h1 .ration-mark {
         color: var(--accent);
-        margin-bottom: 8px;
-        text-shadow: 0 0 30px var(--accent-dim);
       }
 
       .hero-sub {
-        font-size: 12px;
+        font: 13px/1 var(--mono);
         color: var(--text-dim);
-        letter-spacing: 0.08em;
+        letter-spacing: 0.06em;
         text-transform: uppercase;
         margin-bottom: 28px;
       }
 
       .hero-desc {
-        font-size: 14px;
+        font-size: 16px;
         line-height: 1.8;
         color: var(--text);
-        max-width: 52ch;
+        max-width: 50ch;
+      }
+
+      .hero-desc strong {
+        color: var(--accent);
+        font-weight: 600;
       }
 
       /* ─── Panels ─── */
       .panels {
         display: grid;
-        gap: 1px;
-        background: var(--border);
-        border: 1px solid var(--border);
-        margin-bottom: 64px;
+        gap: 16px;
+        margin-bottom: 72px;
       }
 
       .panel {
         background: var(--surface);
-        padding: 20px 22px;
+        border: 1px solid var(--border);
+        padding: 22px 24px;
         position: relative;
-        transition: background 0.15s;
+        transition: border-color 0.2s;
       }
 
       .panel:hover {
-        background: #0d0d0d;
-      }
-
-      .panel-indicator {
-        position: absolute;
-        top: 12px;
-        right: 14px;
-        width: 5px;
-        height: 5px;
-        border-radius: 50%;
-        background: var(--green);
-        box-shadow: 0 0 3px var(--green);
+        border-color: var(--border-bright);
       }
 
       .panel h2 {
-        font-size: 12px;
-        font-weight: 500;
-        letter-spacing: 0.06em;
+        font: 500 13px/1 var(--mono);
+        letter-spacing: 0.05em;
         text-transform: uppercase;
         color: var(--accent);
-        margin-bottom: 8px;
+        margin-bottom: 10px;
       }
 
       .panel p {
-        font-size: 13px;
-        line-height: 1.7;
+        font-size: 14px;
+        line-height: 1.75;
         color: var(--text-dim);
       }
 
       /* ─── Signal Path (Protocol) ─── */
       .signal-path {
-        margin-bottom: 64px;
+        margin-bottom: 72px;
       }
 
       .signal-path h2 {
-        font-size: 11px;
-        font-weight: 500;
-        letter-spacing: 0.16em;
+        font: 500 11px/1 var(--mono);
+        letter-spacing: 0.14em;
         text-transform: uppercase;
         color: var(--text-dim);
         margin-bottom: 28px;
@@ -311,14 +263,14 @@
         left: 7px;
         bottom: 8px;
         width: 1px;
-        border-left: 1px dashed var(--border-bright);
+        background: var(--border-bright);
       }
 
       .path-step {
         position: relative;
-        margin-bottom: 20px;
-        font-size: 13px;
-        line-height: 1.7;
+        margin-bottom: 22px;
+        font-size: 14px;
+        line-height: 1.75;
         color: var(--text-dim);
       }
 
@@ -330,7 +282,7 @@
         content: "";
         position: absolute;
         left: -29px;
-        top: 8px;
+        top: 9px;
         width: 9px;
         height: 9px;
         border: 1.5px solid var(--accent);
@@ -346,23 +298,21 @@
 
       .path-step .step-label {
         display: block;
-        font-size: 11px;
-        font-weight: 500;
-        letter-spacing: 0.08em;
+        font: 500 11px/1 var(--mono);
+        letter-spacing: 0.06em;
         text-transform: uppercase;
         color: var(--accent);
-        margin-bottom: 2px;
+        margin-bottom: 4px;
       }
 
       /* ─── Verify Widget ─── */
       .verify-section {
-        margin-bottom: 64px;
+        margin-bottom: 72px;
       }
 
       .verify-section h2 {
-        font-size: 11px;
-        font-weight: 500;
-        letter-spacing: 0.16em;
+        font: 500 11px/1 var(--mono);
+        letter-spacing: 0.14em;
         text-transform: uppercase;
         color: var(--text-dim);
         margin-bottom: 16px;
@@ -371,7 +321,7 @@
       .verify-box {
         border: 1px solid var(--border);
         background: var(--surface);
-        padding: 16px 18px;
+        padding: 18px 20px;
       }
 
       .verify-input-row {
@@ -417,28 +367,16 @@
       }
 
       .verify-result {
-        font-size: 12px;
-        line-height: 1.6;
+        font: 12px/1.6 var(--mono);
         color: var(--text-faint);
         min-height: 20px;
-        overflow: hidden;
       }
 
-      .verify-result.success {
-        color: var(--green);
-      }
+      .verify-result.success { color: var(--green); }
+      .verify-result.fail { color: #d47272; }
+      .verify-result.scanning { color: var(--accent); }
 
-      .verify-result.fail {
-        color: #ff5252;
-      }
-
-      .verify-result.scanning {
-        color: var(--accent);
-      }
-
-      /* Typewriter for verify result */
       .verify-result .typewriter {
-        display: inline;
         border-right: 1px solid currentColor;
         animation: blink-caret 0.6s step-end infinite;
       }
@@ -452,7 +390,7 @@
         display: flex;
         gap: 12px;
         flex-wrap: wrap;
-        margin-bottom: 64px;
+        margin-bottom: 72px;
       }
 
       a.btn {
@@ -484,10 +422,9 @@
       /* ─── Footer ─── */
       footer {
         border-top: 1px solid var(--border);
-        padding-top: 20px;
-        font-size: 11px;
+        padding-top: 24px;
+        font: 12px/1.8 var(--mono);
         color: var(--text-faint);
-        line-height: 1.8;
       }
 
       footer a {
@@ -499,12 +436,26 @@
         color: var(--accent);
       }
 
+      /* ─── Boot animation ─── */
+      .boot-line {
+        opacity: 0;
+        transform: translateY(6px);
+        animation: scan-in 0.12s ease-out forwards;
+      }
+
+      @keyframes scan-in {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
       /* ─── Responsive ─── */
       @media (max-width: 480px) {
         .status-bar {
           gap: 12px;
           font-size: 10px;
-          padding: 5px 12px;
+          padding: 6px 12px;
           overflow-x: auto;
         }
 
@@ -513,14 +464,14 @@
         }
 
         main {
-          padding: 80px 16px 64px;
+          padding: 88px 16px 64px;
         }
 
         .verify-input-row {
           flex-direction: column;
         }
 
-        .watermark {
+        .scripts-band {
           display: none;
         }
       }
@@ -536,31 +487,29 @@
       <span class="ledger-count" id="ledger-count">ledger: &mdash;</span>
     </header>
 
-    <!-- Trace sweep -->
-    <div class="trace-container" aria-hidden="true">
-      <div class="trace-line"></div>
+    <!-- Multilingual scripts band — subtle cultural decoration -->
+    <div class="scripts-band" aria-hidden="true">
+      <span class="scripts-band-inner">&#x10330;&#x10331;&#x10332; &middot; &#x13000;&#x13001;&#x13002; &middot; &#x0F40;&#x0F41;&#x0F42; &middot; &#x1200;&#x1201;&#x1202; &middot; &#x10A0;&#x10A1;&#x10A2; &middot; &#x0D05;&#x0D06;&#x0D07; &middot; &#x1780;&#x1781;&#x1782; &middot; &#x1000;&#x1001;&#x1002; &middot; &#x0B85;&#x0B86;&#x0B87; &middot; &#x10330;&#x10331;&#x10332; &middot; &#x13000;&#x13001;&#x13002; &middot; &#x0F40;&#x0F41;&#x0F42; &middot; &#x1200;&#x1201;&#x1202; &middot; &#x10A0;&#x10A1;&#x10A2; &middot; &#x0D05;&#x0D06;&#x0D07; &middot; &#x1780;&#x1781;&#x1782; &middot; &#x1000;&#x1001;&#x1002; &middot; &#x0B85;&#x0B86;&#x0B87; &middot; &#x10330;&#x10331;&#x10332; &middot; &#x13000;&#x13001;&#x13002; &middot; &#x0F40;&#x0F41;&#x0F42; &middot; &#x1200;&#x1201;&#x1202; &middot; &#x10A0;&#x10A1;&#x10A2; &middot; &#x0D05;&#x0D06;&#x0D07; &middot; &#x1780;&#x1781;&#x1782; &middot; &#x1000;&#x1001;&#x1002; &middot; &#x0B85;&#x0B86;&#x0B87;</span>
     </div>
-
-    <!-- SHA-256 Watermark -->
-    <div class="watermark" aria-hidden="true">a7f3c9e1b2d84f6a0e5c1d7b3a9f2e4c8d6b0a1f3e5c7d9b2a4f6e8c0d1b3a5 a7f3c9e1b2d84f6a0e5c1d7b3a9f2e4c8d6b0a1f3e5c7d9b2a4f6e8c0d1b3a5</div>
 
     <main>
       <!-- Hero -->
       <section class="hero boot-line" style="animation-delay: 0.1s">
         <p class="hero-label">Neutron app / Internet Computer</p>
-        <h1>Ration</h1>
+        <h1><span class="ration-mark">Ration</span></h1>
         <p class="hero-sub">Certified reasoning ledger</p>
         <p class="hero-desc">
-          Solves pattern-deduction problems, grades each attempt against ground
-          truth in-canister, and chain-key-signs the result &mdash; producing
-          attestations verifiable against the ICP root key.
+          An AI engine that solves <strong>linguistics puzzles</strong> &mdash;
+          real pattern-deduction problems from the International Linguistics
+          Olympiad &mdash; then grades itself against ground truth and
+          <strong>chain-key-signs</strong> every attempt. A reasoning record
+          verifiable against the ICP root key.
         </p>
       </section>
 
       <!-- Panels -->
       <div class="panels boot-line" style="animation-delay: 0.3s" role="list">
         <div class="panel" role="listitem">
-          <div class="panel-indicator" aria-hidden="true"></div>
           <h2>Deterministic grading</h2>
           <p>
             Each ledger entry carries an exact-match + chrF score computed
@@ -569,7 +518,6 @@
           </p>
         </div>
         <div class="panel" role="listitem">
-          <div class="panel-indicator" aria-hidden="true"></div>
           <h2>User-sovereign</h2>
           <p>
             Installs into your own Neutron canister. Problems, ledger, and
@@ -578,7 +526,6 @@
           </p>
         </div>
         <div class="panel" role="listitem">
-          <div class="panel-indicator" aria-hidden="true"></div>
           <h2>Agent-native</h2>
           <p>
             Exposes solve, grade, and get_ledger as typed entrypoints callable
@@ -589,12 +536,12 @@
 
       <!-- Signal Path -->
       <section class="signal-path boot-line" style="animation-delay: 0.6s">
-        <h2>Signal Path</h2>
+        <h2>Protocol</h2>
         <div class="path-steps">
           <div class="path-step">
             <span class="step-label">Dispatch</span>
-            The canister dispatches the problem to the inference engine via a
-            declared HTTPS outcall.
+            The canister sends a linguistics problem to the inference engine via
+            a declared HTTPS outcall.
           </div>
           <div class="path-step">
             <span class="step-label">Parse</span>
@@ -654,20 +601,17 @@
 
     <script>
       // ═══════════════════════════════════════════════════════════════════════
-      // Audio Engine — Web Audio for subtle UI sounds
+      // Audio Engine
       // ═══════════════════════════════════════════════════════════════════════
       const AudioEngine = (() => {
         let ctx = null;
         let enabled = false;
 
         function getCtx() {
-          if (!ctx) {
-            ctx = new (window.AudioContext || window.webkitAudioContext)();
-          }
+          if (!ctx) ctx = new (window.AudioContext || window.webkitAudioContext)();
           return ctx;
         }
 
-        // Enable audio on first interaction (browser autoplay policy)
         function enable() {
           if (enabled) return;
           enabled = true;
@@ -675,63 +619,44 @@
           if (ac.state === "suspended") ac.resume();
         }
 
-        // Soft tick — short noise burst, very quiet
         function tick() {
           if (!enabled) return;
           const ac = getCtx();
           const osc = ac.createOscillator();
           const gain = ac.createGain();
           osc.type = "sine";
-          osc.frequency.setValueAtTime(3200, ac.currentTime);
-          osc.frequency.exponentialRampToValueAtTime(1800, ac.currentTime + 0.02);
-          gain.gain.setValueAtTime(0.03, ac.currentTime);
+          osc.frequency.setValueAtTime(2400, ac.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(1400, ac.currentTime + 0.025);
+          gain.gain.setValueAtTime(0.025, ac.currentTime);
           gain.gain.exponentialRampToValueAtTime(0.001, ac.currentTime + 0.04);
           osc.connect(gain).connect(ac.destination);
           osc.start(ac.currentTime);
           osc.stop(ac.currentTime + 0.04);
         }
 
-        // Blip — softer, lower pitched, for trace sweep
-        function blip() {
-          if (!enabled) return;
-          const ac = getCtx();
-          const osc = ac.createOscillator();
-          const gain = ac.createGain();
-          osc.type = "sine";
-          osc.frequency.setValueAtTime(880, ac.currentTime);
-          osc.frequency.exponentialRampToValueAtTime(440, ac.currentTime + 0.06);
-          gain.gain.setValueAtTime(0.015, ac.currentTime);
-          gain.gain.exponentialRampToValueAtTime(0.001, ac.currentTime + 0.08);
-          osc.connect(gain).connect(ac.destination);
-          osc.start(ac.currentTime);
-          osc.stop(ac.currentTime + 0.08);
-        }
-
-        // Success chime
         function success() {
           if (!enabled) return;
           const ac = getCtx();
-          [660, 880].forEach((freq, i) => {
+          [520, 660, 780].forEach((freq, i) => {
             const osc = ac.createOscillator();
             const gain = ac.createGain();
             osc.type = "sine";
             osc.frequency.value = freq;
-            gain.gain.setValueAtTime(0.04, ac.currentTime + i * 0.08);
-            gain.gain.exponentialRampToValueAtTime(0.001, ac.currentTime + i * 0.08 + 0.12);
+            gain.gain.setValueAtTime(0.03, ac.currentTime + i * 0.07);
+            gain.gain.exponentialRampToValueAtTime(0.001, ac.currentTime + i * 0.07 + 0.12);
             osc.connect(gain).connect(ac.destination);
-            osc.start(ac.currentTime + i * 0.08);
-            osc.stop(ac.currentTime + i * 0.08 + 0.12);
+            osc.start(ac.currentTime + i * 0.07);
+            osc.stop(ac.currentTime + i * 0.07 + 0.12);
           });
         }
 
-        // Error tone
         function error() {
           if (!enabled) return;
           const ac = getCtx();
           const osc = ac.createOscillator();
           const gain = ac.createGain();
-          osc.type = "square";
-          osc.frequency.value = 220;
+          osc.type = "triangle";
+          osc.frequency.value = 180;
           gain.gain.setValueAtTime(0.025, ac.currentTime);
           gain.gain.exponentialRampToValueAtTime(0.001, ac.currentTime + 0.15);
           osc.connect(gain).connect(ac.destination);
@@ -739,23 +664,15 @@
           osc.stop(ac.currentTime + 0.15);
         }
 
-        return { enable, tick, blip, success, error };
+        return { enable, tick, success, error };
       })();
 
-      // Enable audio on first click/key anywhere
       document.addEventListener("click", AudioEngine.enable, { once: true });
       document.addEventListener("keydown", AudioEngine.enable, { once: true });
 
-      // Hover ticks on interactive elements
       document.querySelectorAll("a.btn, button, .panel").forEach((el) => {
         el.addEventListener("mouseenter", AudioEngine.tick);
       });
-
-      // Trace sweep blip — fire when the CSS animation cycles (~every 8s)
-      const traceLine = document.querySelector(".trace-line");
-      if (traceLine) {
-        traceLine.addEventListener("animationiteration", AudioEngine.blip);
-      }
 
       // ═══════════════════════════════════════════════════════════════════════
       // Live Ledger Readout
@@ -765,40 +682,29 @@
 
       async function fetchLedgerCount() {
         try {
-          // Try the local PocketIC first, fall back to ic0.app
-          const endpoints = [
-            `http://localhost:8000/api/v2/canister/${CANISTER_ID}/query`,
+          const urls = [
+            `http://localhost:8000/app/ratiocine/_route/protocol/v1/ledger/report`,
             `https://${CANISTER_ID}.raw.icp0.io/app/ratiocine/_route/protocol/v1/ledger/report`
           ];
-
-          // Attempt a simple fetch to the certified report endpoint
-          for (const url of endpoints) {
+          for (const url of urls) {
             try {
-              const resp = await fetch(url, {
-                method: url.includes("query") ? "POST" : "GET",
-                signal: AbortSignal.timeout(3000),
-              });
-              if (url.includes("report") && resp.ok) {
+              const resp = await fetch(url, { signal: AbortSignal.timeout(3000) });
+              if (resp.ok) {
                 const data = await resp.json();
                 const count = Array.isArray(data) ? data.length : (data.entries || []).length;
                 LEDGER_EL.innerHTML = `ledger: <span class="accent">${count} entries</span>`;
                 LEDGER_EL.classList.add("loaded");
                 return;
               }
-            } catch (_) {
-              // try next
-            }
+            } catch (_) {}
           }
-
-          // If both fail, show placeholder
           LEDGER_EL.innerHTML = `ledger: <span class="accent">offline</span>`;
         } catch (_) {
-          LEDGER_EL.textContent = "ledger: —";
+          LEDGER_EL.textContent = "ledger: \u2014";
         }
       }
 
       fetchLedgerCount();
-      // Refresh every 30s
       setInterval(fetchLedgerCount, 30000);
 
       // ═══════════════════════════════════════════════════════════════════════
@@ -808,7 +714,6 @@
       const verifyBtn = document.getElementById("verify-btn");
       const verifyResult = document.getElementById("verify-result");
 
-      // Typewriter effect for result text
       function typewrite(el, text, className, callback) {
         el.className = "verify-result " + className;
         el.innerHTML = "";
@@ -843,7 +748,6 @@
         }
 
         typewrite(verifyResult, "Scanning ledger...", "scanning", async () => {
-          // Attempt to verify against the canister's certified report
           try {
             const urls = [
               `http://localhost:8000/app/ratiocine/_route/protocol/v1/ledger/report`,
@@ -862,16 +766,14 @@
                   );
                   break;
                 }
-              } catch (_) {
-                // try next
-              }
+              } catch (_) {}
             }
 
             if (found) {
               AudioEngine.success();
               typewrite(
                 verifyResult,
-                `VERIFIED. Entry found in ledger. Hash: ${hash.slice(0, 16)}...`,
+                `VERIFIED. Entry found in ledger. Hash: ${hash.slice(0, 16)}\u2026`,
                 "success",
                 null
               );
@@ -879,7 +781,7 @@
               AudioEngine.error();
               typewrite(
                 verifyResult,
-                `NOT FOUND. No ledger entry matches ${hash.slice(0, 16)}... — absence is provable.`,
+                `NOT FOUND. No entry matches ${hash.slice(0, 16)}\u2026 \u2014 absence is provable.`,
                 "fail",
                 null
               );
