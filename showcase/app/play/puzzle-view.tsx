@@ -8,6 +8,8 @@ import { MorphemeBank } from "./morpheme-bank";
 import { AnswerSlots, type SlotData } from "./answer-slots";
 import { LorePanel } from "./lore-panel";
 import { SuccessReveal } from "./success-reveal";
+import { LanguageMap } from "./language-map";
+import { AudioMoment } from "./audio-moment";
 import {
   getTodaysPuzzle,
   gradeAnswer,
@@ -390,12 +392,15 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
               </button>
             )}
             <div>
+              <p className="text-[10px] font-mono text-amber-300/50 tracking-wider">
+                SPECIMEN #{puzzle.id.slice(0, 6).toUpperCase()}
+              </p>
               <h1 className="text-base font-bold leading-tight">
                 {puzzle.language}
                 <span className="text-white/40 font-normal"> — {puzzle.title}</span>
               </h1>
-              <p className="text-[11px] text-white/40 font-mono">
-                {puzzle.family} · {puzzle.region}
+              <p className="text-[11px] text-white/35 font-mono">
+                {puzzle.family} · {puzzle.region} · {puzzle.taskType}
               </p>
             </div>
           </div>
@@ -429,9 +434,16 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
       <main className="flex-1 overflow-y-auto px-4 py-5 sm:px-6">
         <div className="max-w-2xl mx-auto space-y-6">
           {/* Instruction */}
-          <p className="text-sm text-white/60 leading-relaxed">
-            {puzzle.instruction}
-          </p>
+          <div className="rounded-lg border border-white/5 bg-white/[0.01] px-4 py-3">
+            <p className="text-[10px] font-mono text-white/30 uppercase tracking-wider mb-1.5">
+              Field Notes
+            </p>
+            <p className="text-sm text-white/60 leading-relaxed">
+              You've uncovered a fragment of <span className="text-amber-300/70">{puzzle.language}</span> morphology.
+              The specimens below show {puzzle.pairs.filter(p => !p.gated).length} verb forms with their English equivalents.
+              Deduce the structural rules, then reconstruct the missing forms by assembling morpheme tiles.
+            </p>
+          </div>
 
           {/* Hint message */}
           <AnimatePresence>
@@ -457,7 +469,7 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
                 onClick={handleRevealContext}
                 className="mt-3 w-full py-2.5 rounded-md border border-dashed border-white/15 text-[12px] font-mono text-white/40 hover:text-white/60 hover:border-white/25 transition-colors"
               >
-                Reveal {puzzle.pairs.filter((p) => p.gated).length} more examples (costs time)
+                ⛏ Excavate {puzzle.pairs.filter((p) => p.gated).length} more specimens
               </button>
             )}
           </div>
@@ -570,6 +582,25 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
               />
             )}
           </AnimatePresence>
+
+          {/* Audio moment — hear the language spoken */}
+          {allDone && allCorrect && (
+            <AudioMoment
+              audioSrc="/audio/apurina-forms.mp3"
+              language={puzzle.language}
+              transcript={puzzle.queries.map((q) => q.answerJoined).join(" · ")}
+            />
+          )}
+
+          {/* Language map — pin this location */}
+          {allDone && (
+            <LanguageMap
+              progress={progress}
+              currentLanguageCode={puzzle.languageCode}
+              currentCoordinates={puzzle.lore.coordinates}
+              currentLanguage={puzzle.language}
+            />
+          )}
 
           {/* Lore panel (after solve) */}
           <AnimatePresence>
