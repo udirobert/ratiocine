@@ -3,11 +3,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 
-import { ContextPanel } from "./context-panel";
-import { MorphemeBank } from "./morpheme-bank";
-import { AnswerSlots, type SlotData } from "./answer-slots";
-import { LorePanel } from "./lore-panel";
-import { SuccessReveal } from "./success-reveal";
 import { LanguageMap } from "./language-map";
 import { AudioMoment } from "./audio-moment";
 import {
@@ -21,57 +16,45 @@ import {
   type TileGrade,
 } from "./puzzle-data";
 
-// ─── Share card generation ──────────────────────────────────────────────────
+// ─── Share card ─────────────────────────────────────────────────────────────
 
 function generateShareText(
   puzzle: Puzzle,
   grades: Map<number, QueryGrade>,
   elapsed: number,
   hintsUsed: number,
-  contextReveals: number,
 ): string {
   const emojiMap: Record<TileGrade, string> = {
     correct: "🟩",
     misplaced: "🟨",
     wrong: "⬛",
   };
-
   const lines = puzzle.queries.map((q) => {
     const g = grades.get(q.id);
     if (!g) return "⬜⬜⬜";
-    const emoji = g.grades.map((t) => emojiMap[t]).join("");
-    const attempts = g.attempt > 1 ? ` (×${g.attempt})` : "";
-    return emoji + attempts;
+    return g.grades.map((t) => emojiMap[t]).join("") + (g.attempt > 1 ? " ×2" : "");
   });
-
   const allCorrect = puzzle.queries.every((q) => grades.get(q.id)?.isCorrect);
-  const mins = Math.floor(elapsed / 60);
-  const secs = elapsed % 60;
-  const time = `${mins}:${secs.toString().padStart(2, "0")}`;
-
-  const stats: string[] = [];
-  if (hintsUsed > 0) stats.push(`${hintsUsed} hint${hintsUsed > 1 ? "s" : ""}`);
-  if (contextReveals > 0) stats.push(`${contextReveals} reveal${contextReveals > 1 ? "s" : ""}`);
-
+  const m = Math.floor(elapsed / 60);
+  const s = elapsed % 60;
   return [
-    `🧩 Ration — ${puzzle.language} (${puzzle.title})`,
+    `🧩 Ration — ${puzzle.language}`,
     ...lines,
-    `${allCorrect ? "Cracked" : "Attempted"} in ${time}${stats.length ? " · " + stats.join(", ") : ""}`,
+    `${allCorrect ? "Cracked" : "Attempted"} in ${m}:${s.toString().padStart(2, "0")}${hintsUsed ? ` · ${hintsUsed} hints` : ""}`,
     `ratiocine.vercel.app`,
   ].join("\n");
 }
 
-// ─── Per-query state ────────────────────────────────────────────────────────
+// ─── Types ──────────────────────────────────────────────────────────────────
 
-interface QueryState {
-  slots: SlotData[];
-  attempts: number;
-  locked: boolean; // locked after 2 attempts or correct
-  grade: QueryGrade | null;
-  showHintOnFail: boolean;
+type Phase = "study" | "solve" | "result";
+
+interface SlotData {
+  morpheme: string | null;
+  grade?: TileGrade;
 }
 
-// ─── Main component ─────────────────────────────────────────────────────────
+// ─── Main ───────────────────────────────────────────────────────────────────
 
 export interface PuzzleViewProps {
   onBack?: () => void;
@@ -80,608 +63,554 @@ export interface PuzzleViewProps {
 export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
   const puzzle = useMemo(() => getTodaysPuzzle(), []);
 
-  // Per-query state
-  const [queryStates, setQueryStates] = useState<QueryState[]>(() =>
-    puzzle.queries.map(() => ({
-      slots: [{ morpheme: null }, { morpheme: null }, { morpheme: null }],
-      attempts: 0,
-      locked: false,
-      grade: null,
-      showHintOnFail: false,
-    })),
-  );
+  // Phase
+  const [phase, setPhase] = useState<Phase>("study");
+  const [currentQ, setCurrentQ] = useState(0); // which query (0-indexed)
 
-  const [selectedMorpheme, setSelectedMorpheme] = useState<string | null>(null);
-  const [activeQueryId, setActiveQueryId] = useState<number>(1); // which query is focused
+  // Per-query answers
+  const [answers, setAnswers] = useState<SlotData[][]>(() =>
+    puzzle.queries.map((q) => q.answer.map(() => ({ morpheme: null }))),
+  );
+  const [grades, setGrades] = useState<Map<number, QueryGrade>>(new Map());
+  const [attempts, setAttempts] = useState<number[]>(() => puzzle.queries.map(() => 0));
+  const [locked, setLocked] = useState<boolean[]>(() => puzzle.queries.map(() => false));
+  const [hintOnFail, setHintOnFail] = useState<string | null>(null);
+
+  // Selection
+  const [selected, setSelected] = useState<string | null>(null);
+
+  // Hints & context
   const [hintsUsed, setHintsUsed] = useState(0);
+  const [hintMsg, setHintMsg] = useState<string | null>(null);
+  const [gatedRevealed, setGatedRevealed] = useState(false);
   const [highlightedRows, setHighlightedRows] = useState<Set<number>>(new Set());
   const [revealedMorphemes, setRevealedMorphemes] = useState<Map<string, string>>(new Map());
-  const [hintMessage, setHintMessage] = useState<string | null>(null);
-  const [contextReveals, setContextReveals] = useState(0);
-  const [gatedRevealed, setGatedRevealed] = useState(false);
-  const [copied, setCopied] = useState(false);
-  const [showLore, setShowLore] = useState(false);
-  const [progress, setProgress] = useState<PuzzleProgress | null>(null);
 
-  // All queries completed?
-  const allDone = queryStates.every((qs) => qs.locked);
-  const allCorrect = queryStates.every((qs) => qs.grade?.isCorrect);
+  // Progress
+  const [progress, setProgress] = useState<PuzzleProgress | null>(null);
+  const [copied, setCopied] = useState(false);
 
   // Timer
   const [elapsed, setElapsed] = useState(0);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const startTimeRef = useRef(Date.now());
+  const startRef = useRef(Date.now());
 
   useEffect(() => {
-    startTimeRef.current = Date.now();
+    startRef.current = Date.now();
     timerRef.current = setInterval(() => {
-      setElapsed(Math.floor((Date.now() - startTimeRef.current) / 1000));
+      setElapsed(Math.floor((Date.now() - startRef.current) / 1000));
     }, 1000);
-    return () => {
-      if (timerRef.current) clearInterval(timerRef.current);
-    };
+    return () => { if (timerRef.current) clearInterval(timerRef.current); };
   }, []);
 
-  // Stop timer when all done
-  useEffect(() => {
-    if (allDone && timerRef.current) {
-      clearInterval(timerRef.current);
-      timerRef.current = null;
+  useEffect(() => { setProgress(loadProgress()); }, []);
 
-      // Record solve if all correct
-      if (allCorrect) {
-        const p = recordSolve(puzzle, elapsed);
-        setProgress(p);
-        // Show lore after a short delay
-        setTimeout(() => setShowLore(true), 1200);
-      }
-    }
-  }, [allDone, allCorrect, puzzle, elapsed]);
-
-  // Load progress on mount
-  useEffect(() => {
-    setProgress(loadProgress());
-  }, []);
-
-  // Morpheme usage tracking
-  const usedMorphemes = useMemo(() => {
-    const map = new Map<string, number>();
-    queryStates.forEach((qs) => {
-      qs.slots.forEach((slot) => {
-        if (slot.morpheme) {
-          map.set(slot.morpheme, (map.get(slot.morpheme) || 0) + 1);
-        }
-      });
-    });
-    return map;
-  }, [queryStates]);
-
-  // Grades map for share text
-  const gradesMap = useMemo(() => {
-    const map = new Map<number, QueryGrade>();
-    queryStates.forEach((qs, i) => {
-      if (qs.grade) map.set(puzzle.queries[i].id, qs.grade);
-    });
-    return map;
-  }, [queryStates, puzzle.queries]);
-
-  // ─── Handlers ───────────────────────────────────────────────────────────
-
-  const handleMorphemeSelect = useCallback((morpheme: string) => {
-    setSelectedMorpheme((prev) => (prev === morpheme ? null : morpheme));
-  }, []);
-
-  const handleSlotTap = useCallback(
-    (queryId: number, slotIndex: number) => {
-      const qIdx = queryId - 1;
-      if (queryStates[qIdx].locked || !selectedMorpheme) return;
-
-      setQueryStates((prev) => {
-        const next = [...prev];
-        const qs = { ...next[qIdx] };
-        const slots = [...qs.slots];
-
-        if (slotIndex >= slots.length) {
-          slots.push({ morpheme: selectedMorpheme });
-        } else {
-          slots[slotIndex] = { morpheme: selectedMorpheme };
-        }
-
-        qs.slots = slots;
-        // Clear any previous grade (they're retrying)
-        qs.grade = null;
-        qs.showHintOnFail = false;
-        next[qIdx] = qs;
-        return next;
-      });
-
-      setSelectedMorpheme(null);
-      setActiveQueryId(queryId);
-    },
-    [queryStates, selectedMorpheme],
-  );
-
-  const handleSlotRemove = useCallback(
-    (queryId: number, slotIndex: number) => {
-      const qIdx = queryId - 1;
-      if (queryStates[qIdx].locked) return;
-
-      setQueryStates((prev) => {
-        const next = [...prev];
-        const qs = { ...next[qIdx] };
-        const slots = [...qs.slots];
-        slots.splice(slotIndex, 1);
-        if (slots.length === 0) slots.push({ morpheme: null });
-        qs.slots = slots;
-        qs.grade = null;
-        qs.showHintOnFail = false;
-        next[qIdx] = qs;
-        return next;
-      });
-    },
-    [queryStates],
-  );
-
-  // Submit a single query
-  const handleSubmitQuery = useCallback(
-    (queryId: number) => {
-      const qIdx = queryId - 1;
-      const qs = queryStates[qIdx];
-      if (qs.locked) return;
-
-      const query = puzzle.queries[qIdx];
-      const submitted = qs.slots
-        .filter((s) => s.morpheme !== null)
-        .map((s) => s.morpheme!);
-
-      if (submitted.length === 0) return;
-
-      const attempt = qs.attempts + 1;
-      const result = gradeAnswer(query, submitted, attempt);
-
-      setQueryStates((prev) => {
-        const next = [...prev];
-        const updated = { ...next[qIdx] };
-        updated.attempts = attempt;
-        updated.grade = result;
-
-        // Apply grades to slots
-        const slots = [...updated.slots];
-        let gradeIdx = 0;
-        for (let i = 0; i < slots.length; i++) {
-          if (slots[i].morpheme !== null && gradeIdx < result.grades.length) {
-            slots[i] = { ...slots[i], grade: result.grades[gradeIdx] };
-            gradeIdx++;
-          }
-        }
-        updated.slots = slots;
-
-        // Lock if correct or 2 attempts used
-        if (result.isCorrect || attempt >= 2) {
-          updated.locked = true;
-          // If wrong after 2 attempts, show the correct answer
-        }
-
-        // Show hint on first failure
-        if (!result.isCorrect && attempt === 1) {
-          updated.showHintOnFail = true;
-        }
-
-        next[qIdx] = updated;
-        return next;
-      });
-
-      // Move to next unsolved query
-      if (result.isCorrect) {
-        const nextUnsolved = queryStates.findIndex(
-          (qs2, i) => i > qIdx && !qs2.locked,
-        );
-        if (nextUnsolved !== -1) {
-          setTimeout(() => setActiveQueryId(nextUnsolved + 1), 600);
-        }
-      }
-    },
-    [queryStates, puzzle.queries],
-  );
-
-  // Reveal gated context
-  const handleRevealContext = useCallback(() => {
-    setGatedRevealed(true);
-    setContextReveals((c) => c + 1);
-  }, []);
-
-  // Hints
-  const handleHint = useCallback(() => {
-    if (hintsUsed >= puzzle.hints.length) return;
-
-    const hint = puzzle.hints[hintsUsed];
-    setHintsUsed((h) => h + 1);
-    setHintMessage(hint.text);
-
-    if (hint.type === "highlight" && hint.highlightRows) {
-      setHighlightedRows((prev) => {
-        const next = new Set(prev);
-        hint.highlightRows!.forEach((r) => next.add(r));
-        return next;
-      });
-    }
-
-    if (hint.type === "reveal" && hint.revealMorpheme) {
-      setRevealedMorphemes((prev) => {
-        const next = new Map(prev);
-        next.set(hint.revealMorpheme!.morpheme, hint.revealMorpheme!.meaning);
-        return next;
-      });
-    }
-
-    setTimeout(() => setHintMessage(null), 6000);
-  }, [hintsUsed, puzzle.hints]);
-
-  // Share
-  const handleShare = useCallback(async () => {
-    const text = generateShareText(puzzle, gradesMap, elapsed, hintsUsed, contextReveals);
-    try {
-      await navigator.clipboard.writeText(text);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch {
-      prompt("Copy your result:", text);
-    }
-  }, [puzzle, gradesMap, elapsed, hintsUsed, contextReveals]);
-
-  // Reset
-  const handleReset = useCallback(() => {
-    setQueryStates(
-      puzzle.queries.map(() => ({
-        slots: [{ morpheme: null }, { morpheme: null }, { morpheme: null }],
-        attempts: 0,
-        locked: false,
-        grade: null,
-        showHintOnFail: false,
-      })),
-    );
-    setSelectedMorpheme(null);
-    setActiveQueryId(1);
-    setHintsUsed(0);
-    setHighlightedRows(new Set());
-    setRevealedMorphemes(new Map());
-    setHintMessage(null);
-    setContextReveals(0);
-    setGatedRevealed(false);
-    setCopied(false);
-    setShowLore(false);
-    setElapsed(0);
-    startTimeRef.current = Date.now();
-    if (!timerRef.current) {
-      timerRef.current = setInterval(() => {
-        setElapsed(Math.floor((Date.now() - startTimeRef.current) / 1000));
-      }, 1000);
-    }
-  }, [puzzle.queries]);
-
-  // ─── Derived ──────────────────────────────────────────────────────────────
-
+  // Derived
+  const allLocked = locked.every(Boolean);
+  const allCorrect = puzzle.queries.every((q) => grades.get(q.id)?.isCorrect);
+  const query = puzzle.queries[currentQ];
+  const slots = answers[currentQ];
+  const isLocked = locked[currentQ];
+  const qGrade = grades.get(query?.id);
   const mins = Math.floor(elapsed / 60);
   const secs = elapsed % 60;
   const timeStr = `${mins}:${secs.toString().padStart(2, "0")}`;
 
-  const solvedCount = queryStates.filter((qs) => qs.grade?.isCorrect).length;
   const visiblePairs = gatedRevealed
     ? puzzle.pairs
     : puzzle.pairs.filter((p) => !p.gated);
 
-  const hasAnyContent = queryStates.some((qs) =>
-    qs.slots.some((s) => s.morpheme !== null),
-  );
+  // Stop timer on all done
+  useEffect(() => {
+    if (allLocked && timerRef.current) {
+      clearInterval(timerRef.current);
+      timerRef.current = null;
+      if (allCorrect) {
+        const p = recordSolve(puzzle, elapsed);
+        setProgress(p);
+      }
+      setTimeout(() => setPhase("result"), 600);
+    }
+  }, [allLocked, allCorrect, puzzle, elapsed]);
+
+  // ─── Handlers ─────────────────────────────────────────────────────────────
+
+  const handleSlotTap = useCallback((idx: number) => {
+    if (isLocked) return;
+    if (selected) {
+      // Place
+      setAnswers((prev) => {
+        const next = [...prev];
+        const row = [...next[currentQ]];
+        row[idx] = { morpheme: selected };
+        next[currentQ] = row;
+        return next;
+      });
+      setSelected(null);
+      setHintOnFail(null);
+    } else if (slots[idx].morpheme) {
+      // Remove
+      setAnswers((prev) => {
+        const next = [...prev];
+        const row = [...next[currentQ]];
+        row[idx] = { morpheme: null, grade: undefined };
+        next[currentQ] = row;
+        return next;
+      });
+    }
+  }, [isLocked, selected, currentQ, slots]);
+
+  const handleSubmit = useCallback(() => {
+    if (isLocked) return;
+    const submitted = slots.filter((s) => s.morpheme).map((s) => s.morpheme!);
+    if (submitted.length === 0) return;
+
+    const attempt = attempts[currentQ] + 1;
+    const result = gradeAnswer(query, submitted, attempt);
+
+    // Update grades on slots
+    setAnswers((prev) => {
+      const next = [...prev];
+      const row = [...next[currentQ]];
+      let gi = 0;
+      for (let i = 0; i < row.length; i++) {
+        if (row[i].morpheme && gi < result.grades.length) {
+          row[i] = { ...row[i], grade: result.grades[gi] };
+          gi++;
+        }
+      }
+      next[currentQ] = row;
+      return next;
+    });
+
+    setAttempts((prev) => { const n = [...prev]; n[currentQ] = attempt; return n; });
+    setGrades((prev) => new Map(prev).set(query.id, result));
+
+    if (result.isCorrect || attempt >= 2) {
+      setLocked((prev) => { const n = [...prev]; n[currentQ] = true; return n; });
+      // Auto-advance after short delay
+      if (result.isCorrect && currentQ < puzzle.queries.length - 1) {
+        setTimeout(() => {
+          const nextUnlocked = locked.findIndex((l, i) => !l && i > currentQ);
+          if (nextUnlocked !== -1) setCurrentQ(nextUnlocked);
+          else {
+            const first = locked.findIndex((l) => !l);
+            if (first !== -1) setCurrentQ(first);
+          }
+        }, 500);
+      }
+      setHintOnFail(null);
+    } else {
+      // First fail — show hint
+      setHintOnFail(query.hintOnFail || null);
+    }
+  }, [isLocked, slots, attempts, currentQ, query, locked, puzzle.queries.length]);
+
+  const handleHint = useCallback(() => {
+    if (hintsUsed >= puzzle.hints.length) return;
+    const hint = puzzle.hints[hintsUsed];
+    setHintsUsed((h) => h + 1);
+    setHintMsg(hint.text);
+    if (hint.highlightRows) setHighlightedRows((p) => { const n = new Set(p); hint.highlightRows!.forEach((r) => n.add(r)); return n; });
+    if (hint.revealMorpheme) setRevealedMorphemes((p) => { const n = new Map(p); n.set(hint.revealMorpheme!.morpheme, hint.revealMorpheme!.meaning); return n; });
+    setTimeout(() => setHintMsg(null), 5000);
+  }, [hintsUsed, puzzle.hints]);
+
+  const handleShare = useCallback(async () => {
+    const text = generateShareText(puzzle, grades, elapsed, hintsUsed);
+    try { await navigator.clipboard.writeText(text); setCopied(true); setTimeout(() => setCopied(false), 2000); }
+    catch { prompt("Copy:", text); }
+  }, [puzzle, grades, elapsed, hintsUsed]);
+
+  // ─── Grade colors ─────────────────────────────────────────────────────────
+
+  const gradeClass = (g?: TileGrade) => {
+    if (g === "correct") return "border-emerald-400 bg-emerald-400/20 text-emerald-300";
+    if (g === "misplaced") return "border-amber-400 bg-amber-400/20 text-amber-300";
+    if (g === "wrong") return "border-red-400/60 bg-red-400/15 text-red-300/80";
+    return "";
+  };
 
   // ─── Render ───────────────────────────────────────────────────────────────
 
   return (
-    <div className="relative flex flex-col h-svh w-full overflow-hidden bg-[#0d0f14] text-white">
-      {/* Header */}
-      <header className="shrink-0 border-b border-white/10 px-4 py-3 sm:px-6">
-        <div className="flex items-center justify-between max-w-2xl mx-auto">
-          <div className="flex items-center gap-3">
-            {onBack && (
-              <button
-                onClick={onBack}
-                className="text-white/40 hover:text-white/70 transition-colors text-sm"
-                aria-label="Back"
-              >
-                ←
-              </button>
-            )}
-            <div>
-              <p className="text-[10px] font-mono text-amber-300/50 tracking-wider">
-                SPECIMEN #{puzzle.id.slice(0, 6).toUpperCase()}
-              </p>
-              <h1 className="text-base font-bold leading-tight">
-                {puzzle.language}
-                <span className="text-white/40 font-normal"> — {puzzle.title}</span>
-              </h1>
-              <p className="text-[11px] text-white/35 font-mono">
-                {puzzle.family} · {puzzle.region} · {puzzle.taskType}
-              </p>
-            </div>
-          </div>
+    <div className="relative flex flex-col h-svh w-full overflow-hidden bg-[#0a0c10] text-white">
 
-          <div className="flex items-center gap-3">
-            {/* Progress badge */}
-            <span className="font-mono text-[11px] text-white/30">
-              {solvedCount}/{puzzle.queries.length}
+      {/* ═══ Top bar ═══ */}
+      <header className="shrink-0 flex items-center justify-between px-4 py-2.5 border-b border-white/8 sm:px-6">
+        <div className="flex items-center gap-2.5">
+          {onBack && (
+            <button onClick={onBack} className="text-white/30 hover:text-white/60 text-lg leading-none">←</button>
+          )}
+          <div>
+            <span className="text-[10px] font-mono text-amber-400/60 tracking-wider">
+              {puzzle.language.toUpperCase()}
             </span>
-
-            {/* Timer */}
-            <span className="font-mono text-sm text-white/50 tabular-nums">
-              {timeStr}
-            </span>
-
-            {/* Hint button */}
-            {!allDone && (
-              <button
-                onClick={handleHint}
-                disabled={hintsUsed >= puzzle.hints.length}
-                className="px-2.5 py-1.5 rounded-md border border-white/15 text-[11px] font-mono text-amber-300/70 hover:text-amber-300 hover:border-amber-300/30 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
-              >
-                Hint ({puzzle.hints.length - hintsUsed})
-              </button>
-            )}
+            <span className="text-[10px] text-white/20 ml-2 font-mono">{puzzle.family}</span>
           </div>
+        </div>
+        <div className="flex items-center gap-3">
+          <span className="font-mono text-xs text-white/40 tabular-nums">{timeStr}</span>
+          {phase === "solve" && (
+            <button
+              onClick={handleHint}
+              disabled={hintsUsed >= puzzle.hints.length}
+              className="text-[10px] font-mono text-amber-300/60 hover:text-amber-300 disabled:opacity-25 transition-colors"
+            >
+              💡 {puzzle.hints.length - hintsUsed}
+            </button>
+          )}
         </div>
       </header>
 
-      {/* Main scrollable area */}
-      <main className="flex-1 overflow-y-auto px-4 py-5 sm:px-6">
-        <div className="max-w-2xl mx-auto space-y-6">
-          {/* Instruction */}
-          <div className="rounded-lg border border-white/5 bg-white/[0.01] px-4 py-3">
-            <p className="text-[10px] font-mono text-white/30 uppercase tracking-wider mb-1.5">
-              Field Notes
-            </p>
-            <p className="text-sm text-white/60 leading-relaxed">
-              You've uncovered a fragment of <span className="text-amber-300/70">{puzzle.language}</span> morphology.
-              The specimens below show {puzzle.pairs.filter(p => !p.gated).length} verb forms with their English equivalents.
-              Deduce the structural rules, then reconstruct the missing forms by assembling morpheme tiles.
-            </p>
-          </div>
+      {/* ═══ Main frame (fixed, no scroll) ═══ */}
+      <div className="flex-1 flex flex-col min-h-0">
+        <AnimatePresence mode="wait">
 
-          {/* Hint message */}
-          <AnimatePresence>
-            {hintMessage && (
-              <motion.div
-                initial={{ opacity: 0, y: -4 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -4 }}
-                className="rounded-lg border border-amber-400/20 bg-amber-400/[0.05] px-4 py-3 text-sm text-amber-200/80"
-              >
-                💡 {hintMessage}
-              </motion.div>
-            )}
-          </AnimatePresence>
-
-          {/* Context */}
-          <div>
-            <ContextPanel pairs={visiblePairs} highlightedRows={highlightedRows} />
-
-            {/* Reveal gated context button */}
-            {!gatedRevealed && puzzle.pairs.some((p) => p.gated) && (
-              <button
-                onClick={handleRevealContext}
-                className="mt-3 w-full py-2.5 rounded-md border border-dashed border-white/15 text-[12px] font-mono text-white/40 hover:text-white/60 hover:border-white/25 transition-colors"
-              >
-                ⛏ Excavate {puzzle.pairs.filter((p) => p.gated).length} more specimens
-              </button>
-            )}
-          </div>
-
-          {/* Answers — per-query with individual submit */}
-          <div className="space-y-4">
-            <span className="font-mono text-[10px] text-white/50 uppercase tracking-widest">
-              Your Answers
-            </span>
-            {puzzle.queries.map((query, i) => {
-              const qs = queryStates[i];
-              const isActive = activeQueryId === query.id;
-
-              return (
-                <div key={query.id} className="space-y-2">
-                  <div
-                    className={`transition-opacity ${isActive || qs.locked ? "opacity-100" : "opacity-60"}`}
-                  >
-                    <AnswerSlots
-                      queryId={query.id}
-                      prompt={query.prompt}
-                      slots={qs.slots}
-                      isGraded={qs.grade !== null}
-                      isCorrect={qs.grade?.isCorrect ?? false}
-                      selectedMorpheme={selectedMorpheme}
-                      onSlotTap={handleSlotTap}
-                      onSlotRemove={handleSlotRemove}
-                    />
+          {/* ─── STUDY PHASE ─── */}
+          {phase === "study" && (
+            <motion.div
+              key="study"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0, x: -20 }}
+              className="flex-1 flex flex-col px-4 py-4 sm:px-6 min-h-0"
+            >
+              {/* Compact context grid */}
+              <div className="flex-1 min-h-0 overflow-y-auto">
+                <div className="max-w-lg mx-auto">
+                  <p className="text-[10px] font-mono text-white/30 uppercase tracking-widest mb-2">
+                    Study the pattern
+                  </p>
+                  <div className="grid gap-px bg-white/5 rounded-md overflow-hidden border border-white/8">
+                    {visiblePairs.map((pair) => (
+                      <div
+                        key={pair.id}
+                        className={`flex items-center gap-2 px-3 py-1.5 bg-[#0c0e13] ${
+                          highlightedRows.has(pair.id) ? "bg-amber-400/[0.04]" : ""
+                        }`}
+                      >
+                        <span className="font-mono text-[10px] text-white/20 w-4 text-right shrink-0">{pair.id}</span>
+                        <span className="font-mono text-[13px] text-sky-300/90 flex-1">{pair.source}</span>
+                        <span className="text-[12px] text-white/50 flex-1">{pair.target}</span>
+                      </div>
+                    ))}
                   </div>
 
-                  {/* Per-query submit button */}
-                  {!qs.locked && qs.slots.some((s) => s.morpheme !== null) && (
-                    <div className="flex items-center gap-2 pl-1">
-                      <button
-                        onClick={() => handleSubmitQuery(query.id)}
-                        className="px-3 py-1.5 rounded-md bg-amber-500/80 text-[11px] font-semibold text-black hover:bg-amber-400 transition-colors"
-                      >
-                        Check Q{query.id}
-                      </button>
-                      {qs.attempts > 0 && !qs.grade?.isCorrect && (
-                        <span className="text-[11px] text-white/30 font-mono">
-                          attempt {qs.attempts}/2
-                        </span>
-                      )}
-                    </div>
+                  {!gatedRevealed && puzzle.pairs.some((p) => p.gated) && (
+                    <button
+                      onClick={() => { setGatedRevealed(true); }}
+                      className="mt-2 text-[11px] font-mono text-white/30 hover:text-white/50 transition-colors"
+                    >
+                      + {puzzle.pairs.filter((p) => p.gated).length} more rows
+                    </button>
                   )}
 
-                  {/* Hint on first failure */}
+                  {/* Hint message */}
                   <AnimatePresence>
-                    {qs.showHintOnFail && query.hintOnFail && (
+                    {hintMsg && (
                       <motion.p
-                        initial={{ opacity: 0, y: -4 }}
-                        animate={{ opacity: 1, y: 0 }}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="text-[12px] text-amber-300/70 pl-1"
+                        className="mt-3 text-[12px] text-amber-200/70 bg-amber-400/[0.05] border border-amber-400/15 rounded px-3 py-2"
                       >
-                        💡 {query.hintOnFail}
+                        💡 {hintMsg}
                       </motion.p>
                     )}
                   </AnimatePresence>
-
-                  {/* Show correct answer if locked wrong */}
-                  {qs.locked && !qs.grade?.isCorrect && (
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      className="pl-1 flex items-center gap-2"
-                    >
-                      <span className="text-[11px] text-white/30">Correct:</span>
-                      <span className="font-mono text-[12px] text-emerald-400/70">
-                        {query.answerJoined}
-                      </span>
-                      <span className="text-[10px] text-white/20">
-                        ({query.answer.join(" + ")})
-                      </span>
-                    </motion.div>
-                  )}
-
-                  {/* Curveball badge */}
-                  {query.difficulty === "curveball" && !qs.locked && (
-                    <p className="text-[10px] text-white/25 pl-1 font-mono">
-                      ⚡ curveball — this one requires an inference leap
-                    </p>
-                  )}
                 </div>
-              );
-            })}
-          </div>
+              </div>
 
-          {/* Morpheme Bank */}
-          {!allDone && (
-            <MorphemeBank
-              morphemes={puzzle.morphemeBank}
-              usedMorphemes={usedMorphemes}
-              selectedMorpheme={selectedMorpheme}
-              onSelect={handleMorphemeSelect}
-              revealedMorphemes={revealedMorphemes}
-            />
-          )}
-
-          {/* Success reveal */}
-          <AnimatePresence>
-            {allDone && allCorrect && (
-              <SuccessReveal
-                puzzle={puzzle}
-                elapsed={elapsed}
-                hintsUsed={hintsUsed}
-                contextReveals={contextReveals}
-                progress={progress}
-              />
-            )}
-          </AnimatePresence>
-
-          {/* Audio moment — hear the language spoken */}
-          {allDone && allCorrect && (
-            <AudioMoment
-              audioSrc="/audio/apurina-forms.mp3"
-              language={puzzle.language}
-              transcript={puzzle.queries.map((q) => q.answerJoined).join(" · ")}
-            />
-          )}
-
-          {/* Language map — pin this location */}
-          {allDone && (
-            <LanguageMap
-              progress={progress}
-              currentLanguageCode={puzzle.languageCode}
-              currentCoordinates={puzzle.lore.coordinates}
-              currentLanguage={puzzle.language}
-            />
-          )}
-
-          {/* Lore panel (after solve) */}
-          <AnimatePresence>
-            {showLore && (
-              <LorePanel lore={puzzle.lore} language={puzzle.language} />
-            )}
-          </AnimatePresence>
-
-          {/* Next puzzle preview (after solve) */}
-          {allDone && (
-            <motion.div
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 2 }}
-              className="rounded-lg border border-white/10 bg-white/[0.02] px-4 py-4 text-center"
-            >
-              <p className="text-[10px] font-mono text-white/40 uppercase tracking-widest mb-2">
-                Next puzzle
-              </p>
-              <p className="text-base font-bold text-white/80">
-                {puzzle.nextPreview.language}
-              </p>
-              <p className="font-mono text-sm text-sky-300/60 mt-1">
-                {puzzle.nextPreview.script}
-              </p>
-              <p className="text-[11px] text-white/30 mt-1">
-                {puzzle.nextPreview.family} · Difficulty {"★".repeat(puzzle.nextPreview.difficulty)}{"☆".repeat(5 - puzzle.nextPreview.difficulty)}
-              </p>
-              <p className="text-[10px] text-white/20 mt-3">
-                Coming soon — one new puzzle daily
-              </p>
+              {/* Start button */}
+              <div className="shrink-0 pt-4 flex justify-center">
+                <button
+                  onClick={() => setPhase("solve")}
+                  className="px-6 py-2.5 rounded-md bg-amber-500/90 text-sm font-bold text-black hover:bg-amber-400 transition-colors"
+                >
+                  I see the pattern →
+                </button>
+              </div>
             </motion.div>
           )}
-        </div>
-      </main>
 
-      {/* Bottom action bar */}
-      <footer className="shrink-0 border-t border-white/10 px-4 py-3 sm:px-6">
-        <div className="max-w-2xl mx-auto flex items-center justify-between gap-3">
-          {!allDone ? (
-            <>
-              <button
-                onClick={handleReset}
-                disabled={!hasAnyContent}
-                className="px-3 py-2 rounded-md text-sm text-white/40 hover:text-white/70 disabled:opacity-0 transition-all"
-              >
-                Reset all
-              </button>
-              <div className="flex items-center gap-2">
-                {progress && progress.puzzlesSolved > 0 && (
-                  <span className="text-[10px] font-mono text-white/25">
-                    🔥 {progress.streak} streak
-                  </span>
+          {/* ─── SOLVE PHASE ─── */}
+          {phase === "solve" && query && (
+            <motion.div
+              key={`solve-${currentQ}`}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.2 }}
+              className="flex-1 flex flex-col px-4 py-4 sm:px-6 min-h-0"
+            >
+              <div className="flex-1 flex flex-col justify-center max-w-lg mx-auto w-full">
+
+                {/* Query progress dots */}
+                <div className="flex items-center justify-center gap-2 mb-5">
+                  {puzzle.queries.map((q, i) => (
+                    <button
+                      key={q.id}
+                      onClick={() => { if (!locked[i] || true) setCurrentQ(i); }}
+                      className={`w-7 h-7 rounded-full text-[11px] font-mono font-bold flex items-center justify-center transition-all ${
+                        i === currentQ
+                          ? "bg-amber-400/20 border-2 border-amber-400 text-amber-300"
+                          : locked[i] && grades.get(q.id)?.isCorrect
+                            ? "bg-emerald-400/15 border border-emerald-400/50 text-emerald-400"
+                            : locked[i]
+                              ? "bg-red-400/10 border border-red-400/40 text-red-400/70"
+                              : "bg-white/5 border border-white/15 text-white/40"
+                      }`}
+                    >
+                      {i + 1}
+                    </button>
+                  ))}
+                </div>
+
+                {/* Current query prompt */}
+                <p className="text-center text-white/80 text-base mb-5">
+                  {query.prompt}
+                  {query.difficulty === "curveball" && (
+                    <span className="ml-2 text-[10px] text-amber-400/60 font-mono">⚡</span>
+                  )}
+                </p>
+
+                {/* Answer slots — big, centered */}
+                <div className="flex items-center justify-center gap-2 mb-5 flex-wrap">
+                  {slots.map((slot, i) => (
+                    <motion.button
+                      key={i}
+                      layout
+                      onClick={() => handleSlotTap(i)}
+                      whileTap={{ scale: 0.9 }}
+                      className={`min-w-[48px] h-11 px-3 rounded-md font-mono text-sm font-medium
+                        border-2 transition-all ${
+                        slot.grade
+                          ? gradeClass(slot.grade)
+                          : slot.morpheme
+                            ? "border-white/30 bg-white/[0.06] text-white/90"
+                            : selected
+                              ? "border-amber-400/50 bg-amber-400/[0.06] border-dashed"
+                              : "border-white/10 bg-white/[0.02] border-dashed text-white/15"
+                      }`}
+                    >
+                      {slot.morpheme || "·"}
+                    </motion.button>
+                  ))}
+                  {/* Extra slot button */}
+                  {!isLocked && (
+                    <button
+                      onClick={() => {
+                        if (selected) {
+                          setAnswers((prev) => {
+                            const next = [...prev];
+                            const row = [...next[currentQ], { morpheme: selected }];
+                            next[currentQ] = row;
+                            return next;
+                          });
+                          setSelected(null);
+                        }
+                      }}
+                      className="w-8 h-11 rounded-md border border-dashed border-white/10 text-white/20 hover:text-white/40 text-lg"
+                    >
+                      +
+                    </button>
+                  )}
+                </div>
+
+                {/* Hint on fail */}
+                <AnimatePresence>
+                  {hintOnFail && (
+                    <motion.p
+                      initial={{ opacity: 0, y: 4 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0 }}
+                      className="text-center text-[12px] text-amber-300/70 mb-4"
+                    >
+                      💡 {hintOnFail}
+                    </motion.p>
+                  )}
+                </AnimatePresence>
+
+                {/* Correct answer if locked wrong */}
+                {isLocked && !qGrade?.isCorrect && (
+                  <p className="text-center text-[12px] text-white/30 mb-4">
+                    Answer: <span className="text-emerald-400/70 font-mono">{query.answerJoined}</span>
+                  </p>
+                )}
+
+                {/* Morpheme bank — compact, horizontal */}
+                {!isLocked && (
+                  <div className="flex flex-wrap items-center justify-center gap-1.5 mb-4">
+                    {puzzle.morphemeBank.map((m, i) => {
+                      const isSelected = selected === m;
+                      const revealed = revealedMorphemes.get(m);
+                      return (
+                        <button
+                          key={`${m}-${i}`}
+                          onClick={() => setSelected((p) => (p === m ? null : m))}
+                          className={`relative px-2.5 py-1.5 rounded font-mono text-[13px] border transition-all ${
+                            isSelected
+                              ? "border-amber-400 bg-amber-400/15 text-amber-300 shadow-[0_0_8px_rgba(229,168,75,0.15)]"
+                              : "border-white/10 bg-white/[0.03] text-white/70 hover:border-white/20"
+                          }`}
+                          title={revealed || undefined}
+                        >
+                          {m}
+                          {revealed && <span className="absolute -top-1 -right-1 w-1.5 h-1.5 rounded-full bg-amber-400/70" />}
+                        </button>
+                      );
+                    })}
+                  </div>
+                )}
+
+                {/* Submit / navigation */}
+                <div className="flex items-center justify-center gap-3">
+                  {!isLocked && (
+                    <button
+                      onClick={handleSubmit}
+                      disabled={!slots.some((s) => s.morpheme)}
+                      className="px-5 py-2 rounded-md bg-amber-500/90 text-sm font-bold text-black disabled:opacity-30 hover:bg-amber-400 transition-colors"
+                    >
+                      Check
+                    </button>
+                  )}
+                  {isLocked && !allLocked && (
+                    <button
+                      onClick={() => {
+                        const next = locked.findIndex((l, i) => !l && i !== currentQ);
+                        if (next !== -1) setCurrentQ(next);
+                      }}
+                      className="px-5 py-2 rounded-md border border-white/20 text-sm text-white/70 hover:bg-white/5 transition-colors"
+                    >
+                      Next →
+                    </button>
+                  )}
+                  {/* Quick peek back at context */}
+                  <button
+                    onClick={() => setPhase("study")}
+                    className="text-[11px] text-white/30 hover:text-white/50 font-mono transition-colors"
+                  >
+                    ← context
+                  </button>
+                </div>
+
+                {/* Attempt indicator */}
+                {attempts[currentQ] > 0 && !isLocked && (
+                  <p className="text-center text-[10px] text-white/25 font-mono mt-2">
+                    attempt {attempts[currentQ]}/2
+                  </p>
                 )}
               </div>
-            </>
-          ) : (
-            <>
-              <button
-                onClick={handleReset}
-                className="px-3 py-2 rounded-md text-sm text-white/50 hover:text-white/70 transition-colors"
-              >
-                Try again
-              </button>
-              <div className="flex items-center gap-3">
+            </motion.div>
+          )}
+
+          {/* ─── RESULT PHASE ─── */}
+          {phase === "result" && (
+            <motion.div
+              key="result"
+              initial={{ opacity: 0, scale: 0.96 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="flex-1 flex flex-col px-4 py-4 sm:px-6 overflow-y-auto"
+            >
+              <div className="max-w-lg mx-auto w-full space-y-4 flex-1">
+
+                {/* Result header */}
+                <div className="text-center py-2">
+                  {allCorrect ? (
+                    <>
+                      <motion.p
+                        initial={{ scale: 0.8 }}
+                        animate={{ scale: 1 }}
+                        className="text-2xl font-bold text-emerald-400"
+                      >
+                        Cracked.
+                      </motion.p>
+                      <p className="text-sm text-white/50 mt-1">{puzzle.language} decoded in {timeStr}</p>
+                    </>
+                  ) : (
+                    <>
+                      <p className="text-xl font-bold text-white/70">Close.</p>
+                      <p className="text-sm text-white/40 mt-1">
+                        {puzzle.queries.filter((q) => grades.get(q.id)?.isCorrect).length}/{puzzle.queries.length} correct
+                      </p>
+                    </>
+                  )}
+                </div>
+
+                {/* Answers summary — compact */}
+                <div className="grid gap-1.5">
+                  {puzzle.queries.map((q) => {
+                    const g = grades.get(q.id);
+                    return (
+                      <div key={q.id} className="flex items-center gap-2 px-3 py-1.5 rounded bg-white/[0.02] border border-white/5">
+                        <span className={`text-[11px] font-mono ${g?.isCorrect ? "text-emerald-400" : "text-red-400/70"}`}>
+                          {g?.isCorrect ? "✓" : "✗"}
+                        </span>
+                        <span className="text-[12px] text-white/50 flex-1 truncate">{q.prompt}</span>
+                        <span className="font-mono text-[12px] text-white/70">{q.answerJoined}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {/* Audio moment */}
+                {allCorrect && (
+                  <AudioMoment
+                    audioSrc="/audio/apurina-forms.mp3"
+                    language={puzzle.language}
+                    transcript={puzzle.queries.map((q) => q.answerJoined).join(" · ")}
+                  />
+                )}
+
+                {/* Map */}
+                <LanguageMap
+                  progress={progress}
+                  currentLanguageCode={puzzle.languageCode}
+                  currentCoordinates={puzzle.lore.coordinates}
+                  currentLanguage={puzzle.language}
+                />
+
+                {/* Lore — collapsed by default */}
+                <details className="rounded-lg border border-white/8 bg-white/[0.01]">
+                  <summary className="px-4 py-3 text-[11px] font-mono text-white/40 uppercase tracking-wider cursor-pointer hover:text-white/60">
+                    About {puzzle.language}
+                  </summary>
+                  <div className="px-4 pb-4 space-y-2 text-[13px] text-white/55 leading-relaxed">
+                    <p><span className="text-white/30 font-mono text-[10px]">WHERE</span> {puzzle.lore.geography}</p>
+                    <p><span className="text-white/30 font-mono text-[10px]">SPEAKERS</span> {puzzle.lore.speakers}</p>
+                    <p><span className="text-white/30 font-mono text-[10px]">STATUS</span> {puzzle.lore.endangerment}</p>
+                    <p><span className="text-white/30 font-mono text-[10px]">NOTE</span> {puzzle.lore.funFact}</p>
+                  </div>
+                </details>
+
+                {/* Next preview */}
+                <div className="text-center py-2">
+                  <p className="text-[10px] font-mono text-white/25 uppercase tracking-widest">Next</p>
+                  <p className="text-sm font-bold text-white/60 mt-1">{puzzle.nextPreview.language}</p>
+                  <p className="font-mono text-[12px] text-sky-300/40">{puzzle.nextPreview.script}</p>
+                </div>
+              </div>
+
+              {/* Bottom actions */}
+              <div className="shrink-0 pt-3 flex items-center justify-center gap-3">
                 {progress && (
-                  <span className="text-[10px] font-mono text-white/30">
-                    {progress.puzzlesSolved} solved · 🔥 {progress.streak}
+                  <span className="text-[10px] font-mono text-white/25">
+                    🔥{progress.streak} · 🧩{progress.puzzlesSolved}
                   </span>
                 )}
                 <button
                   onClick={handleShare}
-                  className="px-5 py-2.5 rounded-md border border-white/20 bg-white/[0.06] text-sm font-medium text-white/80 hover:bg-white/10 transition-colors"
+                  className="px-4 py-2 rounded-md border border-white/15 text-[12px] font-mono text-white/60 hover:text-white/80 hover:bg-white/5 transition-colors"
                 >
                   {copied ? "Copied!" : "Share"}
                 </button>
               </div>
-            </>
+            </motion.div>
           )}
-        </div>
-      </footer>
+
+        </AnimatePresence>
+      </div>
     </div>
   );
 };
