@@ -608,7 +608,13 @@
         let enabled = false;
 
         function getCtx() {
-          if (!ctx) ctx = new (window.AudioContext || window.webkitAudioContext)();
+          if (!ctx) {
+            try {
+              ctx = new (window.AudioContext || window.webkitAudioContext)();
+            } catch (_) {
+              return null;
+            }
+          }
           return ctx;
         }
 
@@ -616,12 +622,13 @@
           if (enabled) return;
           enabled = true;
           const ac = getCtx();
-          if (ac.state === "suspended") ac.resume();
+          if (ac && ac.state === "suspended") ac.resume();
         }
 
         function tick() {
           if (!enabled) return;
           const ac = getCtx();
+          if (!ac) return;
           const osc = ac.createOscillator();
           const gain = ac.createGain();
           osc.type = "sine";
@@ -637,6 +644,7 @@
         function success() {
           if (!enabled) return;
           const ac = getCtx();
+          if (!ac) return;
           [520, 660, 780].forEach((freq, i) => {
             const osc = ac.createOscillator();
             const gain = ac.createGain();
@@ -653,6 +661,7 @@
         function error() {
           if (!enabled) return;
           const ac = getCtx();
+          if (!ac) return;
           const osc = ac.createOscillator();
           const gain = ac.createGain();
           osc.type = "triangle";
@@ -682,22 +691,17 @@
 
       async function fetchLedgerCount() {
         try {
-          const urls = [
-            `http://localhost:8000/app/ratiocine/_route/protocol/v1/ledger/report`,
-            `https://${CANISTER_ID}.raw.icp0.io/app/ratiocine/_route/protocol/v1/ledger/report`
-          ];
-          for (const url of urls) {
-            try {
-              const resp = await fetch(url, { signal: AbortSignal.timeout(3000) });
-              if (resp.ok) {
-                const data = await resp.json();
-                const count = Array.isArray(data) ? data.length : (data.entries || []).length;
-                LEDGER_EL.innerHTML = `ledger: <span class="accent">${count} entries</span>`;
-                LEDGER_EL.classList.add("loaded");
-                return;
-              }
-            } catch (_) {}
-          }
+          const url = `https://${CANISTER_ID}.raw.icp0.io/app/ratiocine/_route/protocol/v1/ledger/report`;
+          try {
+            const resp = await fetch(url, { signal: AbortSignal.timeout(4000) });
+            if (resp.ok) {
+              const data = await resp.json();
+              const count = Array.isArray(data) ? data.length : (data.entries || []).length;
+              LEDGER_EL.innerHTML = `ledger: <span class="accent">${count} entries</span>`;
+              LEDGER_EL.classList.add("loaded");
+              return;
+            }
+          } catch (_) {}
           LEDGER_EL.innerHTML = `ledger: <span class="accent">offline</span>`;
         } catch (_) {
           LEDGER_EL.textContent = "ledger: \u2014";
@@ -749,25 +753,18 @@
 
         typewrite(verifyResult, "Scanning ledger...", "scanning", async () => {
           try {
-            const urls = [
-              `http://localhost:8000/app/ratiocine/_route/protocol/v1/ledger/report`,
-              `https://${CANISTER_ID}.raw.icp0.io/app/ratiocine/_route/protocol/v1/ledger/report`
-            ];
-
+            const url = `https://${CANISTER_ID}.raw.icp0.io/app/ratiocine/_route/protocol/v1/ledger/report`;
             let found = false;
-            for (const url of urls) {
-              try {
-                const resp = await fetch(url, { signal: AbortSignal.timeout(4000) });
-                if (resp.ok) {
-                  const data = await resp.json();
-                  const entries = Array.isArray(data) ? data : (data.entries || []);
-                  found = entries.some(
-                    (e) => e.context_hash === hash || e.assertion_hash === hash
-                  );
-                  break;
-                }
-              } catch (_) {}
-            }
+            try {
+              const resp = await fetch(url, { signal: AbortSignal.timeout(4000) });
+              if (resp.ok) {
+                const data = await resp.json();
+                const entries = Array.isArray(data) ? data : (data.entries || []);
+                found = entries.some(
+                  (e) => e.context_hash === hash || e.assertion_hash === hash
+                );
+              }
+            } catch (_) {}
 
             if (found) {
               AudioEngine.success();
