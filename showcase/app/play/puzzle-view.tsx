@@ -6,10 +6,15 @@ import { motion, AnimatePresence } from "motion/react";
 import { ContextPanel } from "./context-panel";
 import { MorphemeBank } from "./morpheme-bank";
 import { AnswerSlots, type SlotData } from "./answer-slots";
+import { LorePanel } from "./lore-panel";
+import { SuccessReveal } from "./success-reveal";
 import {
   getTodaysPuzzle,
   gradeAnswer,
+  loadProgress,
+  recordSolve,
   type Puzzle,
+  type PuzzleProgress,
   type QueryGrade,
   type TileGrade,
 } from "./puzzle-data";
@@ -18,9 +23,10 @@ import {
 
 function generateShareText(
   puzzle: Puzzle,
-  grades: QueryGrade[],
+  grades: Map<number, QueryGrade>,
   elapsed: number,
   hintsUsed: number,
+  contextReveals: number,
 ): string {
   const emojiMap: Record<TileGrade, string> = {
     correct: "🟩",
@@ -28,21 +34,39 @@ function generateShareText(
     wrong: "⬛",
   };
 
-  const lines = grades.map(
-    (g) => g.grades.map((t) => emojiMap[t]).join(""),
-  );
+  const lines = puzzle.queries.map((q) => {
+    const g = grades.get(q.id);
+    if (!g) return "⬜⬜⬜";
+    const emoji = g.grades.map((t) => emojiMap[t]).join("");
+    const attempts = g.attempt > 1 ? ` (×${g.attempt})` : "";
+    return emoji + attempts;
+  });
 
-  const allCorrect = grades.every((g) => g.isCorrect);
+  const allCorrect = puzzle.queries.every((q) => grades.get(q.id)?.isCorrect);
   const mins = Math.floor(elapsed / 60);
   const secs = elapsed % 60;
   const time = `${mins}:${secs.toString().padStart(2, "0")}`;
 
+  const stats: string[] = [];
+  if (hintsUsed > 0) stats.push(`${hintsUsed} hint${hintsUsed > 1 ? "s" : ""}`);
+  if (contextReveals > 0) stats.push(`${contextReveals} reveal${contextReveals > 1 ? "s" : ""}`);
+
   return [
-    `🧩 Ration — ${puzzle.language}`,
+    `🧩 Ration — ${puzzle.language} (${puzzle.title})`,
     ...lines,
-    `${allCorrect ? "Solved" : "Attempted"} in ${time}${hintsUsed > 0 ? ` · ${hintsUsed} hint${hintsUsed > 1 ? "s" : ""}` : ""}`,
+    `${allCorrect ? "Cracked" : "Attempted"} in ${time}${stats.length ? " · " + stats.join(", ") : ""}`,
     `ratiocine.vercel.app`,
   ].join("\n");
+}
+
+// ─── Per-query state ────────────────────────────────────────────────────────
+
+interface QueryState {
+  slots: SlotData[];
+  attempts: number;
+  locked: boolean; // locked after 2 attempts or correct
+  grade: QueryGrade | null;
+  showHintOnFail: boolean;
 }
 
 // ─── Main component ─────────────────────────────────────────────────────────
@@ -54,20 +78,32 @@ export interface PuzzleViewProps {
 export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
   const puzzle = useMemo(() => getTodaysPuzzle(), []);
 
-  // State per query: array of slots
-  const [answers, setAnswers] = useState<SlotData[][]>(() =>
-    puzzle.queries.map(() => [{ morpheme: null }, { morpheme: null }, { morpheme: null }]),
+  // Per-query state
+  const [queryStates, setQueryStates] = useState<QueryState[]>(() =>
+    puzzle.queries.map(() => ({
+      slots: [{ morpheme: null }, { morpheme: null }, { morpheme: null }],
+      attempts: 0,
+      locked: false,
+      grade: null,
+      showHintOnFail: false,
+    })),
   );
 
   const [selectedMorpheme, setSelectedMorpheme] = useState<string | null>(null);
-  const [grades, setGrades] = useState<QueryGrade[]>([]);
-  const [isGraded, setIsGraded] = useState(false);
+  const [activeQueryId, setActiveQueryId] = useState<number>(1); // which query is focused
   const [hintsUsed, setHintsUsed] = useState(0);
   const [highlightedRows, setHighlightedRows] = useState<Set<number>>(new Set());
   const [revealedMorphemes, setRevealedMorphemes] = useState<Map<string, string>>(new Map());
   const [hintMessage, setHintMessage] = useState<string | null>(null);
-  const [showShare, setShowShare] = useState(false);
+  const [contextReveals, setContextReveals] = useState(0);
+  const [gatedRevealed, setGatedRevealed] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [showLore, setShowLore] = useState(false);
+  const [progress, setProgress] = useState<PuzzleProgress | null>(null);
+
+  // All queries completed?
+  const allDone = queryStates.every((qs) => qs.locked);
+  const allCorrect = queryStates.every((qs) => qs.grade?.isCorrect);
 
   // Timer
   const [elapsed, setElapsed] = useState(0);
@@ -84,24 +120,48 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
     };
   }, []);
 
-  // Stop timer on grade
+  // Stop timer when all done
   useEffect(() => {
-    if (isGraded && timerRef.current) {
+    if (allDone && timerRef.current) {
       clearInterval(timerRef.current);
       timerRef.current = null;
-    }
-  }, [isGraded]);
 
-  // Morpheme usage tracking (for bank display)
+      // Record solve if all correct
+      if (allCorrect) {
+        const p = recordSolve(puzzle, elapsed);
+        setProgress(p);
+        // Show lore after a short delay
+        setTimeout(() => setShowLore(true), 1200);
+      }
+    }
+  }, [allDone, allCorrect, puzzle, elapsed]);
+
+  // Load progress on mount
+  useEffect(() => {
+    setProgress(loadProgress());
+  }, []);
+
+  // Morpheme usage tracking
   const usedMorphemes = useMemo(() => {
     const map = new Map<string, number>();
-    answers.flat().forEach((slot) => {
-      if (slot.morpheme) {
-        map.set(slot.morpheme, (map.get(slot.morpheme) || 0) + 1);
-      }
+    queryStates.forEach((qs) => {
+      qs.slots.forEach((slot) => {
+        if (slot.morpheme) {
+          map.set(slot.morpheme, (map.get(slot.morpheme) || 0) + 1);
+        }
+      });
     });
     return map;
-  }, [answers]);
+  }, [queryStates]);
+
+  // Grades map for share text
+  const gradesMap = useMemo(() => {
+    const map = new Map<number, QueryGrade>();
+    queryStates.forEach((qs, i) => {
+      if (qs.grade) map.set(puzzle.queries[i].id, qs.grade);
+    });
+    return map;
+  }, [queryStates, puzzle.queries]);
 
   // ─── Handlers ───────────────────────────────────────────────────────────
 
@@ -111,63 +171,80 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
 
   const handleSlotTap = useCallback(
     (queryId: number, slotIndex: number) => {
-      if (isGraded || !selectedMorpheme) return;
+      const qIdx = queryId - 1;
+      if (queryStates[qIdx].locked || !selectedMorpheme) return;
 
-      setAnswers((prev) => {
+      setQueryStates((prev) => {
         const next = [...prev];
-        const queryIdx = queryId - 1;
-        const slots = [...next[queryIdx]];
+        const qs = { ...next[qIdx] };
+        const slots = [...qs.slots];
 
-        // If tapping beyond current slots, add a new one
         if (slotIndex >= slots.length) {
           slots.push({ morpheme: selectedMorpheme });
         } else {
           slots[slotIndex] = { morpheme: selectedMorpheme };
         }
 
-        next[queryIdx] = slots;
+        qs.slots = slots;
+        // Clear any previous grade (they're retrying)
+        qs.grade = null;
+        qs.showHintOnFail = false;
+        next[qIdx] = qs;
         return next;
       });
 
       setSelectedMorpheme(null);
+      setActiveQueryId(queryId);
     },
-    [isGraded, selectedMorpheme],
+    [queryStates, selectedMorpheme],
   );
 
   const handleSlotRemove = useCallback(
     (queryId: number, slotIndex: number) => {
-      if (isGraded) return;
+      const qIdx = queryId - 1;
+      if (queryStates[qIdx].locked) return;
 
-      setAnswers((prev) => {
+      setQueryStates((prev) => {
         const next = [...prev];
-        const queryIdx = queryId - 1;
-        const slots = [...next[queryIdx]];
+        const qs = { ...next[qIdx] };
+        const slots = [...qs.slots];
         slots.splice(slotIndex, 1);
-        // Keep at least one empty slot
-        if (slots.length === 0) {
-          slots.push({ morpheme: null });
-        }
-        next[queryIdx] = slots;
+        if (slots.length === 0) slots.push({ morpheme: null });
+        qs.slots = slots;
+        qs.grade = null;
+        qs.showHintOnFail = false;
+        next[qIdx] = qs;
         return next;
       });
     },
-    [isGraded],
+    [queryStates],
   );
 
-  const handleSubmit = useCallback(() => {
-    const results = puzzle.queries.map((query, i) => {
-      const submitted = answers[i]
+  // Submit a single query
+  const handleSubmitQuery = useCallback(
+    (queryId: number) => {
+      const qIdx = queryId - 1;
+      const qs = queryStates[qIdx];
+      if (qs.locked) return;
+
+      const query = puzzle.queries[qIdx];
+      const submitted = qs.slots
         .filter((s) => s.morpheme !== null)
         .map((s) => s.morpheme!);
-      return gradeAnswer(query, submitted);
-    });
 
-    // Apply grades back to slots
-    setAnswers((prev) => {
-      const next = [...prev];
-      results.forEach((result, qi) => {
-        const slots = [...next[qi]];
-        const filledSlots = slots.filter((s) => s.morpheme !== null);
+      if (submitted.length === 0) return;
+
+      const attempt = qs.attempts + 1;
+      const result = gradeAnswer(query, submitted, attempt);
+
+      setQueryStates((prev) => {
+        const next = [...prev];
+        const updated = { ...next[qIdx] };
+        updated.attempts = attempt;
+        updated.grade = result;
+
+        // Apply grades to slots
+        const slots = [...updated.slots];
         let gradeIdx = 0;
         for (let i = 0; i < slots.length; i++) {
           if (slots[i].morpheme !== null && gradeIdx < result.grades.length) {
@@ -175,21 +252,43 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
             gradeIdx++;
           }
         }
-        next[qi] = slots;
+        updated.slots = slots;
+
+        // Lock if correct or 2 attempts used
+        if (result.isCorrect || attempt >= 2) {
+          updated.locked = true;
+          // If wrong after 2 attempts, show the correct answer
+        }
+
+        // Show hint on first failure
+        if (!result.isCorrect && attempt === 1) {
+          updated.showHintOnFail = true;
+        }
+
+        next[qIdx] = updated;
+        return next;
       });
-      return next;
-    });
 
-    setGrades(results);
-    setIsGraded(true);
+      // Move to next unsolved query
+      if (result.isCorrect) {
+        const nextUnsolved = queryStates.findIndex(
+          (qs2, i) => i > qIdx && !qs2.locked,
+        );
+        if (nextUnsolved !== -1) {
+          setTimeout(() => setActiveQueryId(nextUnsolved + 1), 600);
+        }
+      }
+    },
+    [queryStates, puzzle.queries],
+  );
 
-    // Show share if all correct
-    const allCorrect = results.every((r) => r.isCorrect);
-    if (allCorrect) {
-      setTimeout(() => setShowShare(true), 800);
-    }
-  }, [puzzle.queries, answers]);
+  // Reveal gated context
+  const handleRevealContext = useCallback(() => {
+    setGatedRevealed(true);
+    setContextReveals((c) => c + 1);
+  }, []);
 
+  // Hints
   const handleHint = useCallback(() => {
     if (hintsUsed >= puzzle.hints.length) return;
 
@@ -213,50 +312,67 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
       });
     }
 
-    // Auto-dismiss hint message after 5s
-    setTimeout(() => setHintMessage(null), 5000);
+    setTimeout(() => setHintMessage(null), 6000);
   }, [hintsUsed, puzzle.hints]);
 
+  // Share
   const handleShare = useCallback(async () => {
-    const text = generateShareText(puzzle, grades, elapsed, hintsUsed);
+    const text = generateShareText(puzzle, gradesMap, elapsed, hintsUsed, contextReveals);
     try {
       await navigator.clipboard.writeText(text);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch {
-      // Fallback: select a textarea
       prompt("Copy your result:", text);
     }
-  }, [puzzle, grades, elapsed, hintsUsed]);
+  }, [puzzle, gradesMap, elapsed, hintsUsed, contextReveals]);
 
+  // Reset
   const handleReset = useCallback(() => {
-    setAnswers(puzzle.queries.map(() => [{ morpheme: null }, { morpheme: null }, { morpheme: null }]));
+    setQueryStates(
+      puzzle.queries.map(() => ({
+        slots: [{ morpheme: null }, { morpheme: null }, { morpheme: null }],
+        attempts: 0,
+        locked: false,
+        grade: null,
+        showHintOnFail: false,
+      })),
+    );
     setSelectedMorpheme(null);
-    setGrades([]);
-    setIsGraded(false);
+    setActiveQueryId(1);
     setHintsUsed(0);
     setHighlightedRows(new Set());
     setRevealedMorphemes(new Map());
     setHintMessage(null);
-    setShowShare(false);
+    setContextReveals(0);
+    setGatedRevealed(false);
     setCopied(false);
+    setShowLore(false);
     setElapsed(0);
     startTimeRef.current = Date.now();
-    timerRef.current = setInterval(() => {
-      setElapsed(Math.floor((Date.now() - startTimeRef.current) / 1000));
-    }, 1000);
+    if (!timerRef.current) {
+      timerRef.current = setInterval(() => {
+        setElapsed(Math.floor((Date.now() - startTimeRef.current) / 1000));
+      }, 1000);
+    }
   }, [puzzle.queries]);
 
-  // ─── Format timer ─────────────────────────────────────────────────────────
+  // ─── Derived ──────────────────────────────────────────────────────────────
 
   const mins = Math.floor(elapsed / 60);
   const secs = elapsed % 60;
   const timeStr = `${mins}:${secs.toString().padStart(2, "0")}`;
 
-  // ─── Render ───────────────────────────────────────────────────────────────
+  const solvedCount = queryStates.filter((qs) => qs.grade?.isCorrect).length;
+  const visiblePairs = gatedRevealed
+    ? puzzle.pairs
+    : puzzle.pairs.filter((p) => !p.gated);
 
-  const allCorrect = grades.length > 0 && grades.every((g) => g.isCorrect);
-  const hasContent = answers.some((a) => a.some((s) => s.morpheme !== null));
+  const hasAnyContent = queryStates.some((qs) =>
+    qs.slots.some((s) => s.morpheme !== null),
+  );
+
+  // ─── Render ───────────────────────────────────────────────────────────────
 
   return (
     <div className="relative flex flex-col h-svh w-full overflow-hidden bg-[#0d0f14] text-white">
@@ -285,13 +401,18 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
           </div>
 
           <div className="flex items-center gap-3">
+            {/* Progress badge */}
+            <span className="font-mono text-[11px] text-white/30">
+              {solvedCount}/{puzzle.queries.length}
+            </span>
+
             {/* Timer */}
             <span className="font-mono text-sm text-white/50 tabular-nums">
               {timeStr}
             </span>
 
             {/* Hint button */}
-            {!isGraded && (
+            {!allDone && (
               <button
                 onClick={handleHint}
                 disabled={hintsUsed >= puzzle.hints.length}
@@ -327,30 +448,107 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
           </AnimatePresence>
 
           {/* Context */}
-          <ContextPanel pairs={puzzle.pairs} highlightedRows={highlightedRows} />
+          <div>
+            <ContextPanel pairs={visiblePairs} highlightedRows={highlightedRows} />
 
-          {/* Answers */}
-          <div className="space-y-3">
+            {/* Reveal gated context button */}
+            {!gatedRevealed && puzzle.pairs.some((p) => p.gated) && (
+              <button
+                onClick={handleRevealContext}
+                className="mt-3 w-full py-2.5 rounded-md border border-dashed border-white/15 text-[12px] font-mono text-white/40 hover:text-white/60 hover:border-white/25 transition-colors"
+              >
+                Reveal {puzzle.pairs.filter((p) => p.gated).length} more examples (costs time)
+              </button>
+            )}
+          </div>
+
+          {/* Answers — per-query with individual submit */}
+          <div className="space-y-4">
             <span className="font-mono text-[10px] text-white/50 uppercase tracking-widest">
               Your Answers
             </span>
-            {puzzle.queries.map((query, i) => (
-              <AnswerSlots
-                key={query.id}
-                queryId={query.id}
-                prompt={query.prompt}
-                slots={answers[i]}
-                isGraded={isGraded}
-                isCorrect={grades[i]?.isCorrect ?? false}
-                selectedMorpheme={selectedMorpheme}
-                onSlotTap={handleSlotTap}
-                onSlotRemove={handleSlotRemove}
-              />
-            ))}
+            {puzzle.queries.map((query, i) => {
+              const qs = queryStates[i];
+              const isActive = activeQueryId === query.id;
+
+              return (
+                <div key={query.id} className="space-y-2">
+                  <div
+                    className={`transition-opacity ${isActive || qs.locked ? "opacity-100" : "opacity-60"}`}
+                  >
+                    <AnswerSlots
+                      queryId={query.id}
+                      prompt={query.prompt}
+                      slots={qs.slots}
+                      isGraded={qs.grade !== null}
+                      isCorrect={qs.grade?.isCorrect ?? false}
+                      selectedMorpheme={selectedMorpheme}
+                      onSlotTap={handleSlotTap}
+                      onSlotRemove={handleSlotRemove}
+                    />
+                  </div>
+
+                  {/* Per-query submit button */}
+                  {!qs.locked && qs.slots.some((s) => s.morpheme !== null) && (
+                    <div className="flex items-center gap-2 pl-1">
+                      <button
+                        onClick={() => handleSubmitQuery(query.id)}
+                        className="px-3 py-1.5 rounded-md bg-amber-500/80 text-[11px] font-semibold text-black hover:bg-amber-400 transition-colors"
+                      >
+                        Check Q{query.id}
+                      </button>
+                      {qs.attempts > 0 && !qs.grade?.isCorrect && (
+                        <span className="text-[11px] text-white/30 font-mono">
+                          attempt {qs.attempts}/2
+                        </span>
+                      )}
+                    </div>
+                  )}
+
+                  {/* Hint on first failure */}
+                  <AnimatePresence>
+                    {qs.showHintOnFail && query.hintOnFail && (
+                      <motion.p
+                        initial={{ opacity: 0, y: -4 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0 }}
+                        className="text-[12px] text-amber-300/70 pl-1"
+                      >
+                        💡 {query.hintOnFail}
+                      </motion.p>
+                    )}
+                  </AnimatePresence>
+
+                  {/* Show correct answer if locked wrong */}
+                  {qs.locked && !qs.grade?.isCorrect && (
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      className="pl-1 flex items-center gap-2"
+                    >
+                      <span className="text-[11px] text-white/30">Correct:</span>
+                      <span className="font-mono text-[12px] text-emerald-400/70">
+                        {query.answerJoined}
+                      </span>
+                      <span className="text-[10px] text-white/20">
+                        ({query.answer.join(" + ")})
+                      </span>
+                    </motion.div>
+                  )}
+
+                  {/* Curveball badge */}
+                  {query.difficulty === "curveball" && !qs.locked && (
+                    <p className="text-[10px] text-white/25 pl-1 font-mono">
+                      ⚡ curveball — this one requires an inference leap
+                    </p>
+                  )}
+                </div>
+              );
+            })}
           </div>
 
           {/* Morpheme Bank */}
-          {!isGraded && (
+          {!allDone && (
             <MorphemeBank
               morphemes={puzzle.morphemeBank}
               usedMorphemes={usedMorphemes}
@@ -360,45 +558,73 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
             />
           )}
 
-          {/* Success message */}
+          {/* Success reveal */}
           <AnimatePresence>
-            {allCorrect && (
-              <motion.div
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="text-center py-4"
-              >
-                <p className="text-lg font-bold text-emerald-400">
-                  You cracked {puzzle.language}!
-                </p>
-                <p className="text-sm text-white/50 mt-1">
-                  Solved in {timeStr} with {hintsUsed} hint{hintsUsed !== 1 ? "s" : ""}
-                </p>
-              </motion.div>
+            {allDone && allCorrect && (
+              <SuccessReveal
+                puzzle={puzzle}
+                elapsed={elapsed}
+                hintsUsed={hintsUsed}
+                contextReveals={contextReveals}
+                progress={progress}
+              />
             )}
           </AnimatePresence>
+
+          {/* Lore panel (after solve) */}
+          <AnimatePresence>
+            {showLore && (
+              <LorePanel lore={puzzle.lore} language={puzzle.language} />
+            )}
+          </AnimatePresence>
+
+          {/* Next puzzle preview (after solve) */}
+          {allDone && (
+            <motion.div
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 2 }}
+              className="rounded-lg border border-white/10 bg-white/[0.02] px-4 py-4 text-center"
+            >
+              <p className="text-[10px] font-mono text-white/40 uppercase tracking-widest mb-2">
+                Next puzzle
+              </p>
+              <p className="text-base font-bold text-white/80">
+                {puzzle.nextPreview.language}
+              </p>
+              <p className="font-mono text-sm text-sky-300/60 mt-1">
+                {puzzle.nextPreview.script}
+              </p>
+              <p className="text-[11px] text-white/30 mt-1">
+                {puzzle.nextPreview.family} · Difficulty {"★".repeat(puzzle.nextPreview.difficulty)}{"☆".repeat(5 - puzzle.nextPreview.difficulty)}
+              </p>
+              <p className="text-[10px] text-white/20 mt-3">
+                Coming soon — one new puzzle daily
+              </p>
+            </motion.div>
+          )}
         </div>
       </main>
 
       {/* Bottom action bar */}
       <footer className="shrink-0 border-t border-white/10 px-4 py-3 sm:px-6">
         <div className="max-w-2xl mx-auto flex items-center justify-between gap-3">
-          {!isGraded ? (
+          {!allDone ? (
             <>
               <button
                 onClick={handleReset}
-                disabled={!hasContent}
+                disabled={!hasAnyContent}
                 className="px-3 py-2 rounded-md text-sm text-white/40 hover:text-white/70 disabled:opacity-0 transition-all"
               >
-                Clear
+                Reset all
               </button>
-              <button
-                onClick={handleSubmit}
-                disabled={!hasContent}
-                className="px-5 py-2.5 rounded-md bg-amber-500/90 text-sm font-semibold text-black disabled:opacity-30 disabled:cursor-not-allowed hover:bg-amber-400 transition-colors"
-              >
-                Submit
-              </button>
+              <div className="flex items-center gap-2">
+                {progress && progress.puzzlesSolved > 0 && (
+                  <span className="text-[10px] font-mono text-white/25">
+                    🔥 {progress.streak} streak
+                  </span>
+                )}
+              </div>
             </>
           ) : (
             <>
@@ -408,12 +634,19 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
               >
                 Try again
               </button>
-              <button
-                onClick={handleShare}
-                className="px-5 py-2.5 rounded-md border border-white/20 bg-white/[0.06] text-sm font-medium text-white/80 hover:bg-white/10 transition-colors"
-              >
-                {copied ? "Copied!" : "Share result"}
-              </button>
+              <div className="flex items-center gap-3">
+                {progress && (
+                  <span className="text-[10px] font-mono text-white/30">
+                    {progress.puzzlesSolved} solved · 🔥 {progress.streak}
+                  </span>
+                )}
+                <button
+                  onClick={handleShare}
+                  className="px-5 py-2.5 rounded-md border border-white/20 bg-white/[0.06] text-sm font-medium text-white/80 hover:bg-white/10 transition-colors"
+                >
+                  {copied ? "Copied!" : "Share"}
+                </button>
+              </div>
             </>
           )}
         </div>
