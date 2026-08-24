@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { LanguageMap } from "./language-map";
 import { AudioMoment } from "./audio-moment";
 import { Briefing } from "./briefing";
+import { createApurinaComparisonUrl } from "./canonical-apurina";
 import {
   getTodaysPuzzle,
   gradeAnswer,
@@ -773,12 +774,18 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
                   {copied ? "Copied!" : "Share"}
                 </button>
                 <a
-                  href="https://ratiocine.trustfall.xyz/demo/"
+                  href={createApurinaComparisonUrl({
+                    answers: answers.map((answer) => answer.map((slot) => slot.morpheme ?? "").join("")),
+                    attempts,
+                    hintsUsed,
+                    elapsedSeconds: elapsed,
+                    gatedContextRevealed: gatedRevealed,
+                  })}
                   target="_blank"
                   rel="noreferrer"
                   className="px-4 py-2 rounded-md border border-emerald-400/30 bg-emerald-400/[0.06] text-[12px] font-mono text-emerald-200/80 hover:bg-emerald-400/[0.12] transition-colors min-h-[44px] flex items-center"
                 >
-                  See a verifiable AI solve ↗
+                  Compare your unsigned solve with AI ↗
                 </a>
               </div>
             </motion.div>

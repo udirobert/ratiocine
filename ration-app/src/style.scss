@@ -260,6 +260,34 @@
     margin-top: var(--nt-pad-3);
   }
 
+  .ration-comparison {
+    border: 1px solid var(--nt-border, rgba(138, 223, 157, 0.22));
+    border-radius: 5px;
+    margin-top: var(--nt-pad-4);
+    padding: var(--nt-pad-3) var(--nt-pad-4);
+  }
+
+  .ration-comparison-list {
+    display: flex;
+    flex-direction: column;
+    font-family: var(--nt-font-mono, ui-monospace, monospace);
+    font-size: 0.78em;
+    gap: var(--nt-pad-2);
+    list-style: none;
+    margin: var(--nt-pad-3) 0 0;
+    padding: 0;
+  }
+
+  .ration-comparison-list li {
+    display: grid;
+    gap: var(--nt-pad-2);
+    grid-template-columns: auto 1fr 1fr 1fr;
+  }
+
+  .ration-comparison-list code {
+    word-break: break-word;
+  }
+
   /* ---- Attested receipt ---------------------------------------------- */
 
   .ration-receipt {

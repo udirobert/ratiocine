@@ -2,7 +2,7 @@
   "format": 3,
   "name": "Ration",
   "id": "ratiocine",
-  "version": 200,
+  "version": 300,
   "update_source": "233tv-xiaaa-aaaay-aacta-cai",
   "description": "Ration: a certified reasoning logbook. Solves Linguini problems via a declared outcall, grades answers in-canister (EM + chrF), and signs every entry with a chain-key assertion.",
   "src": "main.mo",
@@ -114,13 +114,16 @@
   },
   "memory": {
     "ratiocine": {
-      "version": 2,
+      "version": 3,
       "schemas": {
         "1": {
           "src": "memory/ratiocine/v1.mo"
         },
         "2": {
           "src": "memory/ratiocine/v2.mo"
+        },
+        "3": {
+          "src": "memory/ratiocine/v3.mo"
         }
       },
       "migrations": [
@@ -128,6 +131,11 @@
           "from": 1,
           "to": 2,
           "src": "memory/ratiocine/v1_to_v2.mo"
+        },
+        {
+          "from": 2,
+          "to": 3,
+          "src": "memory/ratiocine/v2_to_v3.mo"
         }
       ]
     }

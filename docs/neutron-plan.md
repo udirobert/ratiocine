@@ -11,12 +11,14 @@ bundle publishing; PaperBench/CORE-Bench are evaluations, not tools.
 
 > **Current boundary (August 2026).** The grade → sign → ledger → certified
 > report path is verified on local PocketIC. The public Netlify page offers an
-> unsigned inference preview, while the full Ration UI is a Neutron tile. A
-> public signed-demo claim requires a deployed public canister/tile URL,
-> ordered answer grading, signed commitments to the canonical case and
-> browser-declared human outcome, an exposed chain-key public key, and a
-> certificate-aware verifier. Until those exist, a receipt proves a canister
-> evaluated submitted data—not model provenance or a person's puzzle solve.
+> unsigned inference preview, while the full Ration UI is a Neutron tile. The
+> code now includes the versioned Apurinã browser handoff, same-case
+> human-versus-AI comparison, ordered equal-cardinality grading, v3 assertion
+> commitments, raw chain-key public-key exposure, and a v2→v3 migration. A
+> public signed demo still requires a deployed public canister/tile URL and a
+> certificate-aware verifier against that live endpoint. Receipts bind a
+> canister evaluation and browser-declared data—not model provenance or a
+> person's puzzle solve.
 
 ## Why this is unique on ICP (the 3 pillars)
 

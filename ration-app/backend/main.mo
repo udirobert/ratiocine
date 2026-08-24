@@ -13,7 +13,7 @@ import Text "mo:core/Text";
 import Time "mo:core/Time";
 import SHA256 "mo:sha2/Sha256";
 import NC "mo:neutron-capabilities";
-import Memory "./memory/ratiocine/v2";
+import Memory "./memory/ratiocine/v3";
 
 module {
 
@@ -28,6 +28,16 @@ module {
         };
     };
 
+    // Browser-supplied human outcome for a canonical public case. It is bound
+    // into the signed assertion, but is intentionally not identity proof.
+    public type HumanOutcome = {
+        answers : [Text];
+        attempts : [Nat];
+        hints_used : Nat;
+        elapsed_s : Nat;
+        gated_context_revealed : Bool;
+    };
+
     public type AttestInput = {
         job_id : Text;
         problem_id : Text;
@@ -39,6 +49,9 @@ module {
         evaluator_version : Text;
         task_type : ?Text;
         ground_truth : ?[Text];
+        case_version : ?Text;
+        case_hash : ?Text;
+        human_outcome : ?HumanOutcome;
     };
 
     public type AttestResult = {
@@ -56,6 +69,12 @@ module {
         problem_id : Text;
         context_hash : Text;
         prompt : Text;
+        prompt_hash : Text;
+        ground_truth_hash : ?Text;
+        case_version : ?Text;
+        case_hash : ?Text;
+        human_outcome_hash : ?Text;
+        grading_version : Text;
         pred : [Text];
         model : Text;
         em : ?Float;
@@ -78,6 +97,9 @@ module {
         // the assertion, and append the receipt to the stable ledger.
         public func /*update*/attest_entry(input : AttestInput) : async* AttestResult {
             let context_hash = sha256Hex(Text.encodeUtf8(input.context));
+            let prompt_hash = sha256Hex(Text.encodeUtf8(input.prompt));
+            let ground_truth_hash = optHash(input.ground_truth);
+            let human_outcome_hash = optHumanOutcomeHash(input.human_outcome);
             let grade = computeGrade(input.pred, input.ground_truth);
 
             let ts = Int.abs(Time.now()) / 1_000_000_000;
@@ -85,9 +107,15 @@ module {
             mem.seq := seq + 1;
 
             // Canonical compact assertion: the exact bytes the subnet signs.
-            var assertion = buildAssertion(seq, ts, input, context_hash, grade);
+            var assertion = buildAssertion(
+                seq, ts, input, context_hash, prompt_hash, ground_truth_hash,
+                human_outcome_hash, grade,
+            );
             if (Text.encodeUtf8(assertion).size() > 3800) {
-                assertion := buildCompactAssertion(seq, ts, input, context_hash, grade);
+                assertion := buildCompactAssertion(
+                    seq, ts, input, context_hash, prompt_hash, ground_truth_hash,
+                    human_outcome_hash, grade,
+                );
             };
 
             let sign = await* ck.sign_assertion({
@@ -103,6 +131,12 @@ module {
                         problem_id = input.problem_id;
                         context_hash;
                         prompt = input.prompt;
+                        prompt_hash;
+                        ground_truth_hash;
+                        case_version = input.case_version;
+                        case_hash = input.case_hash;
+                        human_outcome_hash;
+                        grading_version = "ration/ordered-v1";
                         pred = input.pred;
                         model = input.model;
                         em = grade.em;
@@ -151,6 +185,13 @@ module {
             };
         };
 
+        func optTextJson(v : ?Text) : Text {
+            switch (v) {
+                case (null) { "null" };
+                case (?text) { "\"" # jsonEscape(text) # "\"" };
+            };
+        };
+
         func entryJson(e : Memory.LedgerEntry, full : Bool) : Text {
             "{" # "\"seq\":" # Nat.toText(e.seq)
                 # ",\"ts\":" # Int.toText(e.ts)
@@ -161,6 +202,12 @@ module {
                 # ",\"chrf\":" # floatText(e.chrf)
                 # ",\"score\":" # floatText(e.score)
                 # ",\"context_hash\":\"" # e.context_hash # "\""
+                # ",\"prompt_hash\":\"" # e.prompt_hash # "\""
+                # ",\"ground_truth_hash\":" # optTextJson(e.ground_truth_hash)
+                # ",\"case_version\":" # optTextJson(e.case_version)
+                # ",\"case_hash\":" # optTextJson(e.case_hash)
+                # ",\"human_outcome_hash\":" # optTextJson(e.human_outcome_hash)
+                # ",\"grading_version\":\"" # jsonEscape(e.grading_version) # "\""
                 # (if (full) {
                         ",\"assertion\":\"" # jsonEscape(e.assertion) # "\""
                     } else {
@@ -340,16 +387,19 @@ module {
             };
         };
 
-        // Probe 3: fetch the normalized public key for the slot.
+        // Expose raw public material as hexadecimal so an external verifier can
+        // independently verify a published assertion signature.
         public func /*update*/get_pubkey() : async* Text {
             let result = await* ck.public_key("ration_assertions");
             switch (result) {
                 case (#ok(k)) {
-                    "pubkey_ok slot=" # k.slot
-                        # " key_len=" # Nat.toText(k.public_key.size())
-                        # " fp_len=" # Nat.toText(k.key_fingerprint.size())
+                    "{\"slot\":\"" # jsonEscape(k.slot)
+                        # "\",\"algorithm\":\"" # showAlg(k.algorithm)
+                        # "\",\"public_key_hex\":\"" # blobHex(k.public_key)
+                        # "\",\"key_fingerprint_hex\":\"" # blobHex(k.key_fingerprint)
+                        # "\"}";
                 };
-                case (#err(e)) { "pubkey_err=" # showCkErr(e) };
+                case (#err(e)) { "{\"error\":\"" # showCkErr(e) # "\"}" };
             };
         };
 
@@ -357,37 +407,27 @@ module {
 
         type Grade = { em : ?Float; chrf : ?Float; score : ?Float };
 
+        // Ordered, one-to-one grade for numbered Linguini-style prompts.
+        // Missing or extra items score zero rather than being matched against a
+        // different reference answer.
         func computeGrade(pred : [Text], ground : ?[Text]) : Grade {
             switch (ground) {
                 case (null) {
                     { em = null; chrf = null; score = null };
                 };
                 case (?refs) {
-                    let n = pred.size();
-                    if (n == 0) {
+                    let n = refs.size();
+                    if (n == 0 or pred.size() != n) {
                         { em = ?0.0; chrf = ?0.0; score = ?0.0 };
                     } else {
                         var emSum : Float = 0.0;
                         var chrfSum : Float = 0.0;
                         var i : Nat = 0;
-                        let m = refs.size();
                         while (i < n) {
                             let p = normalize(pred[i]);
-                            var matched : Bool = false;
-                            var j : Nat = 0;
-                            while (j < m) {
-                                if (p == normalize(refs[j])) { matched := true; };
-                                j := j + 1;
-                            };
-                            emSum += if (matched) 1.0 else 0.0;
-                            var best : Float = 0.0;
-                            j := 0;
-                            while (j < m) {
-                                let f = chrf(p, normalize(refs[j]));
-                                if (f > best) { best := f; };
-                                j := j + 1;
-                            };
-                            chrfSum += best;
+                            let r = normalize(refs[i]);
+                            if (p == r) { emSum += 1.0; };
+                            chrfSum += chrf(p, r);
                             i := i + 1;
                         };
                         let emMean = emSum / natF(n);
@@ -526,6 +566,52 @@ module {
             out;
         };
 
+        func joinTexts(values : [Text]) : Text {
+            var joined = "";
+            var i : Nat = 0;
+            while (i < values.size()) {
+                if (i > 0) { joined #= "\n"; };
+                joined #= values[i];
+                i := i + 1;
+            };
+            joined;
+        };
+
+        func optHash(values : ?[Text]) : ?Text {
+            switch (values) {
+                case (null) { null };
+                case (?items) { ?sha256Hex(Text.encodeUtf8(joinTexts(items))) };
+            };
+        };
+
+        func natJson(values : [Nat]) : Text {
+            var out = "";
+            var i : Nat = 0;
+            while (i < values.size()) {
+                if (i > 0) { out #= ","; };
+                out #= Nat.toText(values[i]);
+                i := i + 1;
+            };
+            out;
+        };
+
+        func humanOutcomeText(outcome : HumanOutcome) : Text {
+            "{\"answers\":[" # predJson(outcome.answers) # "]"
+                # ",\"attempts\":[" # natJson(outcome.attempts) # "]"
+                # ",\"hints_used\":" # Nat.toText(outcome.hints_used)
+                # ",\"elapsed_s\":" # Nat.toText(outcome.elapsed_s)
+                # ",\"gated_context_revealed\":"
+                # (if (outcome.gated_context_revealed) { "true" } else { "false" })
+                # "}";
+        };
+
+        func optHumanOutcomeHash(outcome : ?HumanOutcome) : ?Text {
+            switch (outcome) {
+                case (null) { null };
+                case (?value) { ?sha256Hex(Text.encodeUtf8(humanOutcomeText(value))) };
+            };
+        };
+
         func natF(n : Nat) : Float {
             Float.fromInt64(Int64.fromNat64(Nat64.fromNat(n)));
         };
@@ -599,13 +685,25 @@ module {
         };
 
         func assertionCommonHead(
-            seq : Nat, ts : Nat, input : AttestInput, context_hash : Text,
+            seq : Nat,
+            ts : Nat,
+            input : AttestInput,
+            context_hash : Text,
+            prompt_hash : Text,
+            ground_truth_hash : ?Text,
+            human_outcome_hash : ?Text,
         ) : Text {
-            "\"v\":1,\"seq\":" # Nat.toText(seq)
+            "\"v\":2,\"seq\":" # Nat.toText(seq)
                 # ",\"ts\":" # Nat.toText(ts)
                 # ",\"job\":\"" # jsonEscape(input.job_id) # "\""
                 # ",\"problem\":\"" # jsonEscape(input.problem_id) # "\""
                 # ",\"ctx\":\"" # context_hash # "\""
+                # ",\"prompt_h\":\"" # prompt_hash # "\""
+                # ",\"ground_h\":" # optTextJson(ground_truth_hash)
+                # ",\"case_v\":" # optTextJson(input.case_version)
+                # ",\"case_h\":" # optTextJson(input.case_hash)
+                # ",\"human_h\":" # optTextJson(human_outcome_hash)
+                # ",\"grading\":\"ration/ordered-v1\""
                 # ",\"model\":\"" # jsonEscape(input.model) # "\"";
         };
 
@@ -614,9 +712,15 @@ module {
             ts : Nat,
             input : AttestInput,
             context_hash : Text,
+            prompt_hash : Text,
+            ground_truth_hash : ?Text,
+            human_outcome_hash : ?Text,
             grade : Grade,
         ) : Text {
-            "{" # assertionCommonHead(seq, ts, input, context_hash)
+            "{" # assertionCommonHead(
+                    seq, ts, input, context_hash, prompt_hash, ground_truth_hash,
+                    human_outcome_hash,
+                )
                 # ",\"pred\":[" # predJson(input.pred) # "]"
                 # ",\"grade\":" # gradeJson(grade) # "}";
         };
@@ -628,16 +732,16 @@ module {
             ts : Nat,
             input : AttestInput,
             context_hash : Text,
+            prompt_hash : Text,
+            ground_truth_hash : ?Text,
+            human_outcome_hash : ?Text,
             grade : Grade,
         ) : Text {
-            var joined = "";
-            var i : Nat = 0;
-            while (i < input.pred.size()) {
-                if (joined.size() > 0) { joined #= "\\n"; };
-                joined #= input.pred[i];
-                i := i + 1;
-            };
-            "{" # assertionCommonHead(seq, ts, input, context_hash)
+            let joined = joinTexts(input.pred);
+            "{" # assertionCommonHead(
+                    seq, ts, input, context_hash, prompt_hash, ground_truth_hash,
+                    human_outcome_hash,
+                )
                 # ",\"pred_h\":\"" # sha256Hex(Text.encodeUtf8(joined)) # "\""
                 # ",\"grade\":" # gradeJson(grade) # "}";
         };

@@ -57,36 +57,51 @@ candidate inference result and a local comparison only. A signed evaluation is
 created exclusively when a Ration tile calls `attest_entry` in an installed
 Neutron canister.
 
-## Seamless human-to-AI receipt journey (planned)
+## Seamless human-to-AI receipt journey
 
-The desired product sequence is:
+The code now implements the first four stages of the product sequence:
 
 ```text
 play the canonical Apurinã puzzle
-  → capture a browser-declared human result
-  → solve the exact same canonical context and five ordered prompts with AI
+  → emit a bounded browser-declared human outcome
+  → solve the exact same versioned case and five ordered prompts with AI
+  → compare human declaration, AI candidate, and reference before attestation
   → grade and sign the ordered AI evaluation in Ration
-  → publish a content-addressed certified report
-  → verify the report, assertion commitment, and chain-key signature
+  → publish a content-addressed certified report (after canister deployment)
 ```
 
+`showcase/app/play/canonical-apurina.ts` defines the allowlisted
+`apurina-verb-agreement@1` case and its SHA-256 hash. The URL handoff contains
+only a bounded human declaration—ordered answers, attempts, hint count, elapsed
+time, and gated-context state—not the context or answer key. The Ration tile
+and Netlify demo independently use the bundled canonical case after validating
+that version/hash declaration.
+
+Ration stable-memory **v3** binds new attestations to `context_hash`,
+`prompt_hash`, `ground_truth_hash`, `case_version`, `case_hash`, and
+`human_outcome_hash`. The v2→v3 migration preserves historical entries with
+those new fields marked absent. `ration/ordered-v1` requires equal answer
+counts and grades each prediction against the same-numbered reference; it does
+not use the former best-match-across-reference-set behavior. `get_pubkey`
+returns the chain-key public key and fingerprint as hexadecimal JSON.
+
+## Remaining public signed-demo work
+
 Before this can be advertised as a **true public signed demo**, the following
-production prerequisites must be completed:
+production work remains:
 
-1. Deploy Ration to a public Neutron/ICP canister and configure its stable tile
-   URL; the verified configuration in this repository is local PocketIC only.
-2. Bind a versioned canonical case to each assertion: case/context, query,
-   ground-truth, task, and browser-declared human-outcome hashes.
-3. Grade numbered answers in order with equal-cardinality checks. The current
-   generic grader's best-match behavior is not sufficient for an ordered
-   five-answer Apurinã comparison.
-4. Expose the `ration_assertions` public key through a documented raw-byte
-   method and implement a verifier that validates the certified HTTP witness
-   against the ICP root key, report content hash, assertion hash, and ECDSA
-   signature.
+1. Deploy the packaged v3 Ration app to a public Neutron/ICP canister and set
+   `NEXT_PUBLIC_RATION_TILE_URL` in Vercel to its stable tile URL. The checked-in
+   deployment manifest is PocketIC-only.
+2. Publish a report from that public canister and implement a verifier that
+   validates the certified HTTP witness against the ICP root key, report content
+   hash, assertion hash, and secp256k1 signature using the exposed public key.
+3. Keep the trust boundary visible: a receipt binds a canister evaluation and a
+   browser-declared outcome, not a person's identity or remote-model provenance.
 
-Until then, product copy must say **signed evaluation** or **certified report**,
-not “independently verified model provenance.”
+Until the public canister and verifier exist, product copy must say **signed
+evaluation** or **certified report**, not “independently verified model
+provenance.”
 
 ## Building / running Ration locally
 

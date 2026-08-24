@@ -7,6 +7,13 @@ import {
   loadTileContext,
   type NeutronCanisterClient,
 } from "neutron-tools/app";
+import {
+  APURINA_CASE,
+  APURINA_CASE_HASH,
+  APURINA_CASE_VERSION,
+  loadApurinaHandoff,
+  type HumanOutcome,
+} from "./apurina-case";
 import "./style.scss";
 
 // ---------------------------------------------------------------------------
@@ -140,6 +147,12 @@ type LedgerEntry = {
   problem_id: string;
   context_hash: string;
   prompt: string;
+  prompt_hash?: string;
+  ground_truth_hash?: string | null;
+  case_version?: string | null;
+  case_hash?: string | null;
+  human_outcome_hash?: string | null;
+  grading_version?: string;
   pred: string[];
   model: string;
   em: number | null;
@@ -213,6 +226,15 @@ function sigBytes(sig: unknown): number {
 export const App = () => {
   const [client, setClient] = useState<NeutronCanisterClient | null>(null);
   const [tileContext] = useState(() => loadTileContext());
+  const [handoff] = useState<HumanOutcome | null>(() => loadApurinaHandoff());
+  const handoffProblem: Problem = {
+    id: APURINA_CASE.id,
+    label: APURINA_CASE.label,
+    task_type: APURINA_CASE.task_type,
+    context: APURINA_CASE.context,
+    query: APURINA_CASE.query,
+    ground_truth: [...APURINA_CASE.ground_truth],
+  };
 
   const [selected, setSelected] = useState(PROBLEMS[0].id);
   const [phase, setPhase] = useState<Phase>("idle");
@@ -313,7 +335,9 @@ export const App = () => {
   }, []);
 
   const startSolve = useCallback(async () => {
-    const problem = PROBLEMS.find((p) => p.id === selected)!;
+    const problem = handoff
+      ? handoffProblem
+      : PROBLEMS.find((p) => p.id === selected)!;
     problemRef.current = problem;
     setError("");
     setResult(null);
@@ -373,7 +397,7 @@ export const App = () => {
       setError(e.message);
       setPhase("error");
     }
-  }, [selected, stopPolling]);
+  }, [selected, stopPolling, handoff, handoffProblem]);
 
   // Grade + sign + append to the certified ledger (all in-canister).
   const attestResult = useCallback(async () => {
@@ -409,6 +433,17 @@ export const App = () => {
           evaluator_version: "ration/v1.0",
           task_type: p.task_type,
           ground_truth: p.ground_truth ?? null,
+          case_version: handoff ? APURINA_CASE_VERSION : null,
+          case_hash: handoff ? APURINA_CASE_HASH : null,
+          human_outcome: handoff
+            ? {
+                answers: handoff.answers,
+                attempts: handoff.attempts,
+                hints_used: handoff.hintsUsed,
+                elapsed_s: handoff.elapsedSeconds,
+                gated_context_revealed: handoff.gatedContextRevealed,
+              }
+            : null,
         },
       ]);
       const e = asEntry(raw);
@@ -428,7 +463,7 @@ export const App = () => {
     } finally {
       setAttestBusy(false);
     }
-  }, [client, result, loadLedger, forgeMode, forgeType, tamperedValue]);
+  }, [client, result, loadLedger, forgeMode, forgeType, tamperedValue, handoff]);
 
   const activeIdx = phaseIndex(phase);
   const isRunning = ["queued", "waking", "loading", "deducing"].includes(phase);
@@ -465,22 +500,22 @@ export const App = () => {
               <div>
                 <h2 className={nt.subtitle}>Choose a problem</h2>
                 <p className={cx(nt.text, nt.muted)}>
-                  Pick a linguistics puzzle for the engine to solve. Problems
-                  marked <em>graded</em> have a known answer — the canister
-                  scores them with EM + chrF before signing.
+                  {handoff
+                    ? "This is the exact Apurinã case declared by the browser handoff. Your solve details are shown beside the AI result before any canister attestation."
+                    : "Pick a linguistics puzzle for the engine to solve. Problems marked graded have a known answer — the canister scores them with EM + chrF before signing."}
                 </p>
               </div>
             </div>
             <div className="ration-problem-list">
-              {PROBLEMS.map((p) => (
+              {(handoff ? [handoffProblem] : PROBLEMS).map((p) => (
                 <button
                   key={p.id}
                   type="button"
                   className={cx("ration-problem-card", {
-                    "ration-problem-card--active": selected === p.id,
+                    "ration-problem-card--active": handoff || selected === p.id,
                   })}
                   onClick={() => setSelected(p.id)}
-                  disabled={isRunning}
+                  disabled={isRunning || Boolean(handoff)}
                 >
                   <span className="ration-problem-label">{p.label}</span>
                   <span className={cx(nt.tag, "ration-problem-type")}>
@@ -640,6 +675,25 @@ export const App = () => {
                   <div className={cx(nt.meta, "ration-result-meta")}>
                     Model: {result.model} · {result.elapsed_s}s
                   </div>
+
+                  {handoff && (
+                    <section className="ration-comparison" aria-label="Human and AI comparison">
+                      <h3 className="ration-receipt-event-title">Same-case comparison</h3>
+                      <p className={cx(nt.text, nt.muted)}>
+                        Browser-declared human outcome versus the AI candidate. The canister signs the submitted evaluation event, not the identity or provenance of either claimant.
+                      </p>
+                      <ol className="ration-comparison-list">
+                        {APURINA_CASE.ground_truth.map((reference, index) => (
+                          <li key={reference + index}>
+                            <span>#{index + 1}</span>
+                            <span>Human: <code>{handoff.answers[index] || "—"}</code></span>
+                            <span>AI: <code>{result.pred?.[index] || "—"}</code></span>
+                            <span>Reference: <code>{reference}</code></span>
+                          </li>
+                        ))}
+                      </ol>
+                    </section>
+                  )}
 
                   {/* Grade + attest button */}
                   <div className="ration-actions">
