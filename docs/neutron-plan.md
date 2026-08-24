@@ -1,180 +1,122 @@
-# Ration — ratiocine as a Neutron app (hackathon plan)
+# Ration — Neutron Hackathon submission and deployment plan
 
-One-liner: **"A reasoning agent that keeps a certified logbook — every solve is
-parsed, graded against ground truth, and signed by the subnet under a key no
-single node ever holds. The evidence lives in *your* canister."**
+**One-line product:** Ration is a certified reasoning logbook: it grades an AI
+answer against supplied ground truth in a user's Neutron canister, hashes the
+evaluation, chain-key-signs it, retains it in stable memory, and can publish a
+certified report.
 
-ratiocine wins the demo axis (30-second, deterministic, exact-match-verifiable);
-the canister wins the trust axis (certified ledger, chain-key-signed attestation,
-user sovereignty). No on-platform rival: DeSci Labs Publish is human-centric
-bundle publishing; PaperBench/CORE-Bench are evaluations, not tools.
+The important distinction is deliberate: remote inference is useful, but it is
+not trusted. Modal proposes an answer; the canister evaluates the supplied
+attempt and records what *it* checked.
 
-> **Current boundary (August 2026).** The grade → sign → ledger → certified
-> report path is verified on local PocketIC. The public Netlify page offers an
-> unsigned inference preview, while the full Ration UI is a Neutron tile. The
-> code now includes the versioned Apurinã browser handoff, same-case
-> human-versus-AI comparison, ordered equal-cardinality grading, v3 assertion
-> commitments, raw chain-key public-key exposure, and a v2→v3 migration. A
-> public signed demo still requires a deployed public canister/tile URL and a
-> certificate-aware verifier against that live endpoint. Receipts bind a
-> canister evaluation and browser-declared data—not model provenance or a
-> person's puzzle solve.
+## Submission status
 
-## Why this is unique on ICP (the 3 pillars)
+Ration was submitted to the **AI-assisted apps for Neutron** Hackathon, Week 1,
+as **“Ration — a certified reasoning logbook.”** The submitted artifact is
+listed as `ratiocine_l.neutron`, version 1, approximately 272 KB, with five
+screenshots. This record describes the submitted package, not a public
+canister deployment.
 
-1. **Proof of reasoning, not proof of compute.** ICP's certified data makes
-   *state* provable. ratiocine is the only engine whose output has an
-   *objective machine-checkable grade* (exact match + chrF on Linguini format).
-   The canister computes the grade locally (parser + EM + chrF in Motoko) and
-   signs the (problem, attempt, grade) tuple. Anyone can verify any ledger
-   entry against the ICP root key. A "logbook of agent reasoning where every
-   entry is independently verifiable" does not exist elsewhere on ICP.
-2. **The ledger is forge-resistant by construction.** State lives in the
-   owner's canister (stable memory), every attestation is chain-key-signed
-   (threshold, installation-isolated key), and published evidence is a
-   certified asset (hash-tree root, witness-verified, absence provable).
-   Demo trick: a "forge attempt" mode that lets the user try to inject a wrong
-   answer — the canister logs it as FAIL, and the signed attestation proves
-   the grade wasn't what the user wanted. Trust made visible.
-3. **User-sovereign agent tool.** `solve_problem` / `grade_attempt` /
-   `get_ledger` are typed Agent Mode tools on the kernel catalog. The stock
-   resident Agent (or any backend agent) can call them across apps. Every
-   invocation is journaled in the owner's own canister — a personal reasoning
-   history the owner controls, with no account system and no shared server.
+The local Neutron provisioning journal records the corresponding Ration v1
+package as version `100`, 272,248 bytes. It is useful build evidence and is
+consistent with the marketplace's rounded size, but the marketplace archive
+hash has not yet been exported and independently compared.
 
-## Architecture
+## What is live and what is not
 
-```
-User's Neutron canister (SushiOS)
-├── ratiocine app (Motoko backend module, compiled INTO the canister)
-│   ├── solve(problem)        → https_outcall → hosted ratiocine API
-│   ├── grade(attempt)        → pure Motoko: Linguini parser + EM + chrF(1–2)
-│   ├── attest(entry)         → chain_key_signing: sign digest of
-│   │                            {problem_id, prompt_hash, attempt, em, chrf, ts}
-│   ├── ledger: stable memory (append-only entries + grades + sigs)
-│   └── publish(report)       → certified_assets: hash-chain logbook, public
-│                                read, verifiable against root key
-└── Frontend tile: paste problem → solve → graded answer → ledger/logbook UI
-    (+ "forge attempt" mode for the demo)
+| Component | Status | Evidence boundary |
+|---|---|---|
+| Hackathon package | Submitted in Week 1 | Package/listing evidence; not a deployed Ration service. |
+| Ration landing + solve preview | Live on Netlify at `ratiocine.trustfall.xyz` | Browser inference preview only; `/api/status` has been probed without starting a solve. |
+| Modal inference | Deployed, scale-to-zero | Idle containers are expected between requests. The app uses an L4 GPU only when a solve is dispatched. |
+| Ration attestation | Verified on local PocketIC | Ordered EM + chrF, chain-key signatures, certified report publication, and v3 migration are local proofs. |
+| Public ICP Ration canister | Not yet verified/deployed | No public principal, tile/report URL, or certificate-aware verifier result is recorded. |
 
-Hosted (ours): ratiocine inference API on Modal T4
-    Qwen3-14B-AWQ + task-specific prompts (hf-pipeline/submission/prompts.py)
-    POST /solve  {context, query, work_lang, task_lang, task_type} → {pred[]}
-    The canister is the verifier, not the compute. Small verify step, big
-    reasoning step — exactly the shape Neutron wants.
+## Product architecture
+
+```text
+browser / Ration tile
+  ├─ POST /api/solve → Netlify → Modal submit function
+  ├─ GET  /api/status ← Netlify ← Modal job status
+  └─ submit candidate answer to installed Ration
+
+Ration inside the user's Neutron canister
+  ├─ ordered deterministic grade: EM + chrF
+  ├─ SHA-256 assertion commitments
+  ├─ `ration_assertions` chain-key signature
+  ├─ stable v3 ledger append
+  └─ optional immutable certified report publication
 ```
 
-Fallback (no hosted API): app also declares the `openrouter` connection
-provider (already in the kernel catalog — same as `apps/agent`), so the
-frontend/background can solve via a 7–14B OpenRouter model with ratiocine's
-prompt templates. Slower and less accurate, but removes the infra dependency.
+The browser-first submit/poll path is intentional: local PocketIC cannot make
+real outbound HTTPS, and a canister cannot synchronously wait for Modal's
+asynchronous GPU job. A future mainnet deployment can use its declared HTTPS
+capability where appropriate, but the receipt path remains canister-verifiable
+regardless of where inference runs.
 
-## Agent Mode entrypoints (internal:apps)
+## Human interface and agent tools
 
-Three functions are exposed to the kernel agent catalog via `/*internal:apps*/`
-tags and the `agent_entrypoints` capability:
+The human path is a short, legible sequence: enter or receive a puzzle, watch
+Deduction Theatre while the browser polls the solver, inspect candidate/reference
+comparison, then grade and sign in Ration. The canonical Apurinã handoff adds a
+bounded human result—answers, attempts, hints, elapsed time, and
+gated-context state—without placing the puzzle answer key in a URL.
 
-| Function | Input | Output | Purpose |
-|---|---|---|---|
-| `ration_attest` | `AttestInput` | `AttestResult` | Submit a solve for grading + signing |
-| `ration_ledger` | `()` | `[LedgerEntry]` | Read the full reasoning logbook |
-| `ration_report` | `()` | `Text` | Publish as certified content-addressed blob |
+Ration exposes three declared Agent Mode tools:
 
-The `/*internal:apps*/` modifier tells `mogen` to:
-1. Add the function to the `func` map with `type: "internal"` and `expose: "apps"`
-2. Generate `_Input` / `_Output` type aliases for the agent tool schema
-3. Require an `agent_entrypoints` capability declaring the exact entrypoint names
+| Tool | Input / output | Purpose |
+|---|---|---|
+| `ration_attest` | `AttestInput` → `AttestResult` | Deterministically grade and sign an evaluation. |
+| `ration_ledger` | `()` → ledger entries | Retrieve the signed reasoning history. |
+| `ration_report` | `()` → report locator | Publish a certified content-addressed report. |
 
-## What we build
+The tools are in source, manifest, and generated schema. A real stock-Agent
+catalog discovery and invocation transcript is still required before claiming
+that the runtime integration has been demonstrated.
 
-### A. Hosted solve API (1–2 days)
-- Wrap the existing `hf-pipeline/submission/script.py` model loading +
-  `prompts.py` task-specific prompts in a FastAPI service.
-- Deploy on Modal (workspace `ungethe` already configured), T4, float16/AWQ.
-- Greedy decoding, tiered `max_new_tokens` per task type (from IOL-AI lessons).
-- Endpoint: `POST /solve`, returns `{"pred": [...], "model": "...", "tokens": n}`.
+## Trust statement for reviewers
 
-### B. The `.neutron` app (the hackathon deliverable, 3–5 days)
-- Work **inside a clone of `github.com/infu/neutron`** (apps install into the
-  monorepo's local PocketIC fleet; no mainnet needed per the docs).
-- Scaffold: `cp -R apps/hello apps/ratiocine`, then:
-  - `neutron.json`: id `ratiocine`, tile, `func` map for
-    `solve`/`grade`/`attest`/`get_ledger`/`list_ledger`, capabilities:
-    `https_outcalls` (exact prefix = our Modal URL, POST, size bounds),
-    `chain_key_signing` (api 1, bounded assertion), `certified_assets`,
-    optionally `connections.openrouter` for the fallback path.
-  - `backend/main.mo`:
-    - stable memory: `List` of ledger entries
-      `{id, problem_hash, problem, task_type, attempt, em: Bool, chrf: Float,
-       sig: Blob, timestamp}`
-    - Linguini parser + EM (normalized exact match) + chrF-1/2 in Motoko
-      (port from the evaluation code; both are small).
-    - `solve` → `env.capabilities.https_outcalls` POST to `/solve`.
-    - `attest` → build the assertion digest, `chain_key_signing.sign(...)`.
-    - `publish_report` → certified asset (JSON/HTML logbook).
-  - `src/index.tsx` frontend (React, `neutron-design-system` SCSS):
-    problem form, answer display with EM/chrF badge, ledger table with
-    per-entry "verify signature" button, forge-attempt toggle.
-- Local loop: `npm run build:all` → provisioner PocketIC →
-  `http://<canister>.localhost:8000` → install via launcher → demo.
+A Ration receipt attests to the canister's evaluation of caller-supplied
+problem, reference, prediction, and model label. It does not independently
+attest to a human's identity, the remote model that generated an answer, or the
+truth of caller-supplied reference data. A public verifier must validate the
+ICP-certified HTTP witness, report digest, assertion hash, and secp256k1
+signature against the deployed canister's public key.
 
-### C. Demo script (30–60s, live)
-1. Open SushiOS launcher, install **Ration** (consent prompts show the
-   declared capabilities — outcall prefix, chain-key, certified assets).
-2. Paste a Linguini problem → "Solve" → typed answer with **EM ✓ / chrF 0.91**
-   badge. Ledger entry appears; click it → subnet signature verified against
-   the ICP root key.
-3. Forge attempt: type a deliberately wrong answer through the app → logged
-   **FAIL** → signed attestation shows the grade the canister computed, not
-   what the user wanted. Trust made visible.
-4. Publish logbook → any visitor verifies the file's witness; explain
-   "absence is provable too."
-5. Agent Mode: the three `/*internal:apps*/` functions (`ration_attest`,
-   `ration_ledger`, `ration_report`) are declared in the manifest and listed
-   in the `agent_entrypoints` capability. A kernel agent (or the stock Agent
-   tile) can discover them on the catalog and call them cross-app.
-6. Upgrade demo: `upgrade_demo.ts` re-installs the canister in-place via
-   `install_chunked_code(mode=#upgrade(#keep))` and proves the ledger
-   survives — enhanced orthogonal persistence preserves stable memory.
+## Path to a true public signed demo
 
-## Risks & mitigations
+The checked-in `ration-app/deploy/neutron/` templates are intentionally
+non-runnable until an operator provides real values. Before public creation we
+need:
 
-| Risk | Mitigation |
-|---|---|
-| Neutron is preproduction; chain-key signing & certified assets are "development" with release gates | Verify both work on local PocketIC early (day 1). Fallback: ledger entries store digests + a browser-side signed receipt; still a strong story. |
-| `https_outcalls` on local PocketIC may not reach the real internet | Check `doc/provisioning-system.md` / capability docs early. Fallback 1: outcall to a local mock solver during demo. Fallback 2: OpenRouter connection path (kernel-catalogued, proven by `apps/agent`). |
-| Motoko chrF/EM port bugs | Port from the exact IOL-AI eval code; unit-test against the 160 Linguini examples with known scores. |
-| Scope creep | Ship A + B (solve → grade → sign → ledger) first. Agent Mode tools come free by exposing `func` in the manifest. vetKeys = stretch goal only. |
-| Demo model latency (14B on T4, ~5–15s/problem) | Pre-load warm container on Modal; show a cached Linguini problem live; keep the API path live for credibility. |
+1. The selected ICP subnet and verified Registry evidence policy.
+2. A funded local deployment identity and approved CMC `payment_icp` amount.
+3. Any approved backup controller principals; do not publish controller policy
+   unless the owner wants it public.
+4. Exact archive pins for `kernel.v0.3.7.neutron` and the selected Ration
+   release: path, SHA-256, bytes, id, and version.
+5. Installed `icblast` identity tooling; it is not currently available in this
+   workspace.
 
-## Milestones
+Then run `status`, run the read-only live `create` preflight, and obtain
+explicit approval before `create --execute`. That final command transfers
+funds through the CMC route, creates a stateful canister, and installs the
+Kernel and Ration.
 
-- **M1 (day 1–2):** ✅ hosted `/solve` API live on Modal, tested with a
-  Linguini CSV row. Async submit/poll; cold ~118s, warm ~40s.
-- **M2 (day 2–3):** ✅ ratiocine app scaffold compiles, packages
-  (`ratiocine.v0.1.0.neutron`), installs into local PocketIC SushiOS.
-- **M3 (day 3–4):** ✅ end-to-end: solve → grade → sign → ledger → frontend.
-  `attest_entry` grades EM+chrF in-canister, SHA-256-hashes, chain-key-signs,
-  appends to the stable ledger; `get_ledger` reads it back. Verified on
-  PocketIC (perfect answer → EM 1.0 / chrF 1.0 / score 1.0, 64-byte sig).
-- **M4 (day 5):** ✅ certified logbook publish — `publish_report` publishes the
-  ledger as an immutable, content-addressed certified asset served over HTTP
-  (`/app/ratiocine/_route/protocol/v1/ledger/report/<sha256>`), idempotent.
-- **M4b (day 5+):** 🔲 Agent Mode tool exposure — `ration_attest`,
-  `ration_ledger`, `ration_report` declared as `/*internal:apps*/` with
-  `agent_entrypoints` capability entry. 🔲 Forge-attempt demo polish.
-- **M5:** hackathon submission (repo + local demo recording + optional mainnet
-  deploy via the 2-ICP dispenser if time allows).
+After deployment, publish one report, record the public canister/tile/report
+URLs, set `NEXT_PUBLIC_RATION_TILE_URL`, and run the independent certificate
+and signature verifier. Only then should the landing page call it a public
+signed demo.
 
-## Open questions (check in the neutron repo before building)
+## Public versus private release information
 
-1. Does PocketIC support `https_outcalls` to the open internet locally?
-   (`doc/app-developer-guide.md` §Use External Connections only covers the
-   *Connections* consent path; the backend `https_outcalls` broker needs a
-   local test.)
-2. What is the exact bounded-assertion digest format for
-   `chain_key_signing` V1? (`doc/app-isolated-chain-key-signing.md`)
-3. Certified assets public-read policy + how the frontend verifies the witness
-   (`doc/kernel-http-v2-and-certified-assets.md`).
-4. Can we submit our app package (`.neutron` archive + repo fork) rather than
-   a kernel fork? (Presumably yes — that's what third-party apps are.)
+**Publish:** package title/version/checksum, source commit, public canister/tile
+and report URLs once they exist, declared capabilities, model family/revision
+when frozen, the trust boundary, verifier instructions, and a concise
+operational note that Modal is scale-to-zero with one-hour job retention.
+
+**Keep private:** deployer private keys, Modal/Netlify/HF tokens, internal
+provider account IDs, CMC funding account details, controller rationale, raw
+request/job contents, and any unapproved user data. Canister/controller
+principals are not secret cryptographically, but publish them only when there
+is a practical reviewer or verifier need.

@@ -107,35 +107,64 @@ see `probe_local.ts` patterns in the repo history — methods are exposed on the
 combined actor as `app_ratiocine__<func>` (compiler-owned `__` namespacing;
 zero-arg funcs take a single `null` dispatcher argument).
 
+## Production ICP preparation
+
+`deploy/neutron/` contains source-controlled, **fail-closed** ICP deployment
+and artifact templates. During `scripts/sync-ration-app.sh`, they copy to the
+root of the ignored local `neutron/` clone, where archive paths resolve.
+
+The templates deliberately cannot identify, fund, or install a public canister:
+the ICP owner must provide a certified subnet/evidence policy, local funded
+`identity_id`, CMC payment amount, optional backup controllers, and exact
+SHA-256/byte pins for the Kernel and freshly packed Ration archive. First run
+`npm run provision -- ration-production.ndeploy.json status`, then the
+non-executing `create` preflight. `create --execute` creates and funds a
+stateful public canister and requires explicit approval of all those values.
+
+See [`deploy/neutron/README.md`](deploy/neutron/README.md) for the operator
+sequence. After a successful deployment, set `NEXT_PUBLIC_RATION_TILE_URL` to
+the public tile URL and use the deployed report endpoint to complete the
+certificate-aware verifier.
+
 ## Known caveats
 
 - **PocketIC cannot do real outbound HTTPS** — outcall probes return
-  `management_failure` locally. Outcalls work on mainnet; local demos of the
-  solve path need a mock or a pre-canned response.
-- **Netlify sync-function timeout** is 10s default / 26s max (set in the
-  Netlify dashboard → Site settings → Functions). The proxy aborts cleanly at
-  `SOLVE_TIMEOUT_MS` (default 25000). Cold GPU starts on Modal take minutes —
-  warm the engine with one solve before live demos.
+  `management_failure` locally. The browser-driven submit/poll path is the
+  local-demo path; a mainnet canister still needs a separately approved public
+  deployment before it can issue a public receipt.
+- **Netlify is live** at `ratiocine.trustfall.xyz`; its `POST /api/solve` and
+  `GET /api/status` routes proxy the browser-facing Modal API. CORS is
+  intentionally open for the preview, and Netlify function timeouts remain a
+  practical limit for cold solves.
+- **Modal is scale-to-zero.** A dashboard showing no active containers between
+  solves is normal. Job records in the Modal dictionary expire after one hour.
+  The code defaults to `Papajams/ratiocine`; freeze and record an exact model
+  revision before making a release-level model claim.
 - **Memory schema changes** break the lock: delete `neutron.lock.json` if you
   edit `v1.mo` before release.
 - Chain-key signing on local PocketIC: **works** (verified 2026-08-18:
   `sig_ok`, 32-byte digest, 64-byte ECDSA signature; pubkey 33-byte compressed).
 
-## Status (2026-08-19)
+## Status (2026-08-24)
 
-- ✅ Capability probes green: chain-key sign + pubkey; outcall request passes
-  kernel validation (endpoint/method/path/idempotency-key all correct).
-- ✅ Solve engine deployed on Modal (`Papajams/ratiocine`, 14B-AWQ, L4,
-  scales to zero). Async submit/poll API; cold ~118s, warm ~40s.
-- ✅ M3 backend: `attest_entry` (grade → SHA-256 → chain-key sign → stable
-  ledger append) + `get_ledger`. Perfect answer → EM 1.0, chrF 1.0,
-  score 1.0; 64-byte secp256k1 signature per entry.
-- ✅ M4 certified report: `publish_report` → immutable content-addressed
-  certified asset, HTTP-served, idempotent re-publish.
-- ✅ Frontend: problem bank (graded mini-language problem), Deduction Theatre
-  phases, grade-&-sign flow, certified ledger table, publish-report button.
-- 🔲 Netlify DNS for `ratiocine.trustfall.xyz` (frontend falls back to direct
-  Modal URLs until live).
-- 🔲 Non-destructive upgrade run to demonstrate ledger persistence.
-- 🔲 Agent Mode: expose `attest_entry`/`get_ledger`/`publish_report` as typed
-  tools in the kernel catalog.
+- ✅ **Hackathon package submitted:** Week 1 listing, `ratiocine_l.neutron`,
+  v1, reported as 272 KB. The local Ration v1 deployment record is 272,248
+  bytes; retain/export the marketplace artifact checksum before claiming an
+  exact byte-for-byte match.
+- ✅ **Modal + Netlify preview:** the `ratiocine-solve` Modal app is deployed
+  with async submit/poll endpoints and an L4 worker; the Netlify landing and
+  status route have been publicly probed without dispatching a GPU solve.
+- ✅ **M3 backend:** `attest_entry` grades ordered EM + chrF, hashes and
+  chain-key-signs the bounded assertion, and appends it to stable memory.
+- ✅ **M4 report:** `publish_report` creates an immutable content-addressed
+  certified asset; local re-publication is idempotent.
+- ✅ **v3 canonical comparison:** the Apurinã human-outcome handoff, ordered
+  grader, additional commitments, and v2→v3 migration package successfully.
+- ✅ **Agent Mode declarations:** `ration_attest`, `ration_ledger`, and
+  `ration_report` are declared and schema-generated.
+- 🔲 **Agent Mode runtime proof:** record a stock Agent catalog discovery and
+  successful invocation.
+- 🔲 **Public ICP deployment:** no mainnet canister/tile/report URL or
+  certificate-aware verifier result exists yet. Use the fail-closed production
+  templates only after the operator approves target, funding, controllers, and
+  exact archive pins.

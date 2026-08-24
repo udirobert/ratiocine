@@ -1,0 +1,21 @@
+{
+  "format": 3,
+  "target": {
+    "kind": "ic",
+    "host": "https://icp-api.io",
+    "identity_id": 0,
+    "subnet": "__REQUIRED_CANONICAL_ICP_SUBNET_PRINCIPAL__",
+    "payment_icp": "__REQUIRED_CMC_ICP_AMOUNT__",
+    "controllers": [],
+    "deployment_evidence": {
+      "source": "ic_registry_certified_v1",
+      "registry_canister": "rwlgt-iiaaa-aaaaa-aaaaa-cai",
+      "root_key_sha256": "__REQUIRED_ICP_ROOT_KEY_SHA256__",
+      "pricing_profile": "application_13_node"
+    }
+  },
+  "artifacts": {
+    "kind": "file",
+    "path": "ration-production.artifacts.json"
+  }
+}

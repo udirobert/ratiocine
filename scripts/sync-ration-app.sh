@@ -25,6 +25,14 @@ rsync -a --delete \
   --exclude '.DS_Store' \
   "$SRC/" "$DEST/"
 
+# Provisioning manifests resolve archive paths from the Neutron clone root,
+# not from the app directory. Copy only fail-closed committed templates; the
+# operator creates and fills the non-example production files locally.
+DEPLOY_TEMPLATES="$SRC/deploy/neutron"
+if [ -d "$DEPLOY_TEMPLATES" ]; then
+  rsync -a "$DEPLOY_TEMPLATES/" "$ROOT/neutron/"
+fi
+
 echo "synced $SRC -> $DEST"
 if [ ! -d "$DEST/.mops" ]; then
   echo "installing mops packages (first sync)..."

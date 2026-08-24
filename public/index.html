@@ -687,32 +687,13 @@
       });
 
       // ═══════════════════════════════════════════════════════════════════════
-      // Live Ledger Readout
+      // Public-verification status
       // ═══════════════════════════════════════════════════════════════════════
-      const CANISTER_ID = "mqrdp-r7777-77775-qaaaq-cai";
+      // The recorded canister is a local PocketIC instance. Do not query it via
+      // a mainnet boundary node or present the preview as a public receipt.
       const LEDGER_EL = document.getElementById("ledger-count");
-
-      async function fetchLedgerCount() {
-        try {
-          const url = `https://${CANISTER_ID}.raw.icp0.io/app/ratiocine/_route/protocol/v1/ledger/report`;
-          try {
-            const resp = await fetch(url, { signal: AbortSignal.timeout(4000) });
-            if (resp.ok) {
-              const data = await resp.json();
-              const count = Array.isArray(data) ? data.length : (data.entries || []).length;
-              LEDGER_EL.innerHTML = `ledger: <span class="accent">${count} entries</span>`;
-              LEDGER_EL.classList.add("loaded");
-              return;
-            }
-          } catch (_) {}
-          LEDGER_EL.innerHTML = `ledger: <span class="accent">offline</span>`;
-        } catch (_) {
-          LEDGER_EL.textContent = "ledger: \u2014";
-        }
-      }
-
-      fetchLedgerCount();
-      setInterval(fetchLedgerCount, 30000);
+      LEDGER_EL.innerHTML = 'ledger: <span class="accent">public report pending</span>';
+      LEDGER_EL.classList.add("loaded");
 
       // ═══════════════════════════════════════════════════════════════════════
       // Verify Widget
@@ -740,61 +721,23 @@
         }, 18);
       }
 
-      async function verifyHash() {
+      function verifyHash() {
         const hash = verifyInput.value.trim().toLowerCase();
-
         if (!hash) {
-          typewrite(verifyResult, "No input. Paste a SHA-256 context hash.", "", null);
+          typewrite(verifyResult, "Paste a SHA-256 assertion or context hash.", "", null);
           return;
         }
-
         if (!/^[a-f0-9]{64}$/.test(hash)) {
           AudioEngine.error();
           typewrite(verifyResult, "Invalid format. Expected 64-character hex (SHA-256).", "fail", null);
           return;
         }
-
-        typewrite(verifyResult, "Scanning ledger...", "scanning", async () => {
-          try {
-            const url = `https://${CANISTER_ID}.raw.icp0.io/app/ratiocine/_route/protocol/v1/ledger/report`;
-            let found = false;
-            try {
-              const resp = await fetch(url, { signal: AbortSignal.timeout(4000) });
-              if (resp.ok) {
-                const data = await resp.json();
-                const entries = Array.isArray(data) ? data : (data.entries || []);
-                found = entries.some(
-                  (e) => e.context_hash === hash || e.assertion_hash === hash
-                );
-              }
-            } catch (_) {}
-
-            if (found) {
-              AudioEngine.success();
-              typewrite(
-                verifyResult,
-                `VERIFIED. Entry found in ledger. Hash: ${hash.slice(0, 16)}\u2026`,
-                "success",
-                null
-              );
-            } else {
-              AudioEngine.error();
-              typewrite(
-                verifyResult,
-                `NOT FOUND. No entry in the currently published ledger matches ${hash.slice(0, 16)}\u2026`,
-                "fail",
-                null
-              );
-            }
-          } catch (_) {
-            typewrite(
-              verifyResult,
-              "Canister unreachable. Verify manually against a boundary node.",
-              "fail",
-              null
-            );
-          }
-        });
+        typewrite(
+          verifyResult,
+          "Public Ration report pending. This live page is an unsigned solve preview; verification will activate after the ICP canister and certificate-aware verifier are deployed.",
+          "scanning",
+          null
+        );
       }
 
       verifyBtn.addEventListener("click", verifyHash);

@@ -9,17 +9,24 @@ languages. It ships two things:
 1. **A competition solver and playable showcase** — IOL-AI 2026 entry
    (Qwen2.5-14B, best public score 0.1141) plus the Apurinã practice puzzle at
    [`ratiocine.vercel.app`](https://ratiocine.vercel.app).
-2. **A verifiable evaluation logbook** — a Neutron app that, when installed in
-   a user's canister, deterministically grades submitted AI outputs,
-   chain-key-signs evaluation assertions, and can publish a certified report.
-   The public Ration landing and unsigned solve preview are at
+2. **Ration, a verifiable evaluation logbook** — a Neutron app that, when
+   installed in a user's canister, deterministically grades submitted AI
+   outputs, chain-key-signs evaluation assertions, and can publish a certified
+   report. Its Week 1 Neutron Hackathon package (`ratiocine_l.neutron`, v1,
+   approximately 272 KB) has been submitted; the public Ration landing and
+   unsigned solve preview are at
    [`ratiocine.trustfall.xyz`](https://ratiocine.trustfall.xyz).
+
+The submission, the live browser-to-Modal preview, and the local PocketIC
+attestation demo are verified separately. A public ICP Ration canister and
+certificate-aware verifier are not deployed yet; see the architecture record
+before treating a preview result as a public receipt.
 
 ## Quick links
 
-- **Architecture & deployments** → [`docs/architecture.md`](docs/architecture.md)
+- **Architecture, deployment evidence & trust boundaries** → [`docs/architecture.md`](docs/architecture.md)
 - **IOL-AI competition** (pipeline, results, lessons) → [`docs/iolai-competition.md`](docs/iolai-competition.md)
-- **Neutron / Ration hackathon plan** → [`docs/neutron-plan.md`](docs/neutron-plan.md)
+- **Neutron / Ration hackathon submission and plan** → [`docs/neutron-plan.md`](docs/neutron-plan.md)
 
 ## Layout
 

@@ -1,0 +1,19 @@
+{
+  "format": 1,
+  "kernel": {
+    "path": "apps/kernel/kernel.v0.3.7.neutron",
+    "sha256": "__REQUIRED_EXACT_KERNEL_ARCHIVE_SHA256__",
+    "bytes": "__REQUIRED_EXACT_KERNEL_ARCHIVE_BYTES__",
+    "id": "kernel",
+    "version": 307
+  },
+  "packages": [
+    {
+      "path": "apps/ratiocine/ratiocine.v0.3.0.neutron",
+      "sha256": "__REQUIRED_EXACT_RATION_ARCHIVE_SHA256__",
+      "bytes": "__REQUIRED_EXACT_RATION_ARCHIVE_BYTES__",
+      "id": "ratiocine",
+      "version": 300
+    }
+  ]
+}

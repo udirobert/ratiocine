@@ -1,124 +1,141 @@
-# Architecture & deployments
+# Architecture & deployment status
 
 ratiocine has two complementary product surfaces under one brand: **Ratiocine**
-teaches and tests linguistic deduction; **Ration** records a canister-evaluated
-AI attempt as a signed, publishable evaluation event.
+teaches linguistic deduction; **Ration** records a canister-evaluated AI attempt
+as a signed, publishable evaluation event.
 
-## IOL-AI solver (competition)
+## IOL-AI solver and showcase
 
-- **Code**: `src/arkor/` (rapid prototyping) + `hf-pipeline/` (production HF
-  pipeline). See [`docs/iolai-competition.md`](./iolai-competition.md).
-- **Model**: Qwen2.5-14B-Instruct-AWQ on HF
-  ([Papajams/ratiocine](https://huggingface.co/Papajams/ratiocine)).
-- **Showcase**: `showcase/` — a Next.js build story and playable Apurinã
-  deduction puzzle, deployed to **Vercel** as
-  [`ratiocine.vercel.app`](https://ratiocine.vercel.app).
+- **Code**: `src/arkor/` (rapid prototyping) and `hf-pipeline/` (production HF
+  pipeline). See [`iolai-competition.md`](./iolai-competition.md).
+- **Model artifact**: the solver code defaults to the configured
+  `Papajams/ratiocine` HF model artifact. Public model/revision claims must be
+  tied to a captured Modal deployment before being treated as release evidence.
+- **Showcase**: `showcase/` provides the Vercel-hosted Apurinã practice puzzle
+  at [`ratiocine.vercel.app`](https://ratiocine.vercel.app). Its progress,
+  attempts, and hints are browser-local unless the user explicitly hands a
+  bounded result to Ration.
 
-The showcase puzzle is practice mode: each answer is supported by the examples,
-hints are unlimited, and the timer/progress record is browser-local. It is not
-a live model execution or a durable human attestation.
+## Ration: package, preview, and attestation are separate
 
-## Ration — Neutron app (hackathon)
-
-Ration separates expensive remote inference from deterministic, canister-owned
-evaluation:
-
-1. The **browser** submits a puzzle to the solver and polls for the candidate
-   answer. The GPU engine is not inside a canister.
-2. A user's **Neutron canister** deterministically grades the submitted output
-   against supplied ground truth using EM + chrF.
-3. The canister SHA-256-hashes its evaluation assertion, chain-key-signs it,
-   appends it to stable memory, and can publish the ledger as a content-addressed
-   certified HTTP asset.
-
-The canister is the **verifier, not the compute**. A receipt attests that a
-specific canister evaluated a submitted output against supplied reference data
-at a recorded time. It does **not** independently prove which remote model
-created the output, who solved a browser puzzle, or that submitted model
-metadata is truthful. Full plan: [`docs/neutron-plan.md`](./neutron-plan.md).
+Ration separates expensive remote inference from deterministic,
+canister-owned evaluation:
 
 ```text
-Vercel showcase ──human practice result──► Ration handoff (planned)
-Browser / Neutron tile ──POST /api/solve──► Netlify ──► Modal GPU
-Browser / Neutron tile ◄──GET /api/status── Netlify ◄── Modal job status
-Neutron canister ──grade + sign + ledger──► certified report (on publication)
+browser (Vercel showcase or a Neutron tile)
+  └─ POST /api/solve → Netlify → Modal GPU worker
+       GET /api/status ← Netlify ← Modal job store
+  └─ receives a candidate answer and optional browser-declared human outcome
+
+installed Ration app in the user's Neutron canister
+  └─ ordered EM + chrF grade against supplied references
+  └─ SHA-256 commitments + chain-key signature + stable ledger append
+  └─ optional immutable certified ledger report publication
 ```
 
-## Public surfaces
+The canister is the **verifier, not the compute**. A receipt proves that the
+specific installed canister evaluated submitted data at a recorded time. It
+does **not** prove the identity of a browser user, the provenance of a remote
+model, or the truthfulness of caller-supplied ground truth/model labels.
 
-| Surface | Host | Current role |
+### Verified delivery snapshot — 24 August 2026
+
+| Surface | Verified fact | What it does **not** establish |
 |---|---|---|
-| [`ratiocine.vercel.app`](https://ratiocine.vercel.app) | Vercel | IOL-AI story and playable Apurinã practice puzzle |
-| [`ratiocine.trustfall.xyz`](https://ratiocine.trustfall.xyz) | Netlify | Ration landing, live unsigned solve preview at `/demo/`, and `/api/solve` / `/api/status` GPU proxies |
-| User's Neutron canister | ICP / Neutron | Ration tile: deterministic grade, chain-key signature, stable ledger, and certified report publication |
+| Neutron Hackathon | Week 1 package submitted as `ratiocine_l.neutron`, v1, reported as 272 KB with five screenshots. | A public Ration canister installation or a public report. |
+| Netlify | [`ratiocine.trustfall.xyz`](https://ratiocine.trustfall.xyz) returns HTTP 200; `/api/status` is live and rejects a missing job ID without dispatching a solve. | That a candidate answer is a signed receipt. |
+| Modal | `ratiocine-solve` is deployed with a scale-to-zero L4 worker and had no active containers at inspection. | An outage: zero active containers is the intended idle state. |
+| Ration attestation | The local PocketIC canister verifies ordered grades, chain-key signatures, certified report publication, and v3 stable-memory migration. | Mainnet/ICP availability. The recorded canister is local only. |
 
-The Netlify **live solve preview** intentionally is not a receipt: it displays a
-candidate inference result and a local comparison only. A signed evaluation is
-created exclusively when a Ration tile calls `attest_entry` in an installed
-Neutron canister.
+The first row is the submitted product artifact; the second and third rows are
+the live inference-preview path; the fourth row is the verified attestation
+implementation. These must not be presented as one already-public signed
+service.
 
-## Seamless human-to-AI receipt journey
+### Current browser solve path
 
-The code now implements the first four stages of the product sequence:
+The Netlify functions proxy the browser's `POST /api/solve` and `GET
+/api/status` requests to Modal. The CPU submit/status functions track jobs for
+one hour; only `run_solve` starts an L4 GPU worker. This makes a zero-activity
+Modal dashboard expected between demonstrations. The public preview uses CORS
+for browser access and has Netlify function timeouts, so it is a convenience
+surface rather than a durable or private data store.
+
+The Netlify **live solve preview** intentionally is not a receipt: it shows a
+candidate inference result and a local comparison. A signed evaluation is
+created only when an installed Ration app calls `attest_entry`.
+
+## Canonical human-to-AI comparison
+
+The code implements the product sequence below for the versioned
+`apurina-verb-agreement@1` case:
 
 ```text
 play the canonical Apurinã puzzle
   → emit a bounded browser-declared human outcome
-  → solve the exact same versioned case and five ordered prompts with AI
-  → compare human declaration, AI candidate, and reference before attestation
-  → grade and sign the ordered AI evaluation in Ration
-  → publish a content-addressed certified report (after canister deployment)
+  → solve the exact same five ordered prompts with AI
+  → compare human declaration, AI candidate, and reference
+  → attest the ordered AI evaluation in Ration
+  → publish a content-addressed certified report (after public deployment)
 ```
 
-`showcase/app/play/canonical-apurina.ts` defines the allowlisted
-`apurina-verb-agreement@1` case and its SHA-256 hash. The URL handoff contains
-only a bounded human declaration—ordered answers, attempts, hint count, elapsed
-time, and gated-context state—not the context or answer key. The Ration tile
-and Netlify demo independently use the bundled canonical case after validating
-that version/hash declaration.
+`showcase/app/play/canonical-apurina.ts` defines the allowlisted case and its
+SHA-256 hash. The handoff carries ordered answers, attempts, hints, elapsed
+time, and gated-context state—not the puzzle context or answer key. Ration
+stable-memory **v3** binds new attestations to the context, prompt, reference,
+canonical case, and human-outcome commitments. `ration/ordered-v1` requires
+equal answer counts and position-by-position matching. `get_pubkey` returns
+hex-encoded public-key material for an external verifier.
 
-Ration stable-memory **v3** binds new attestations to `context_hash`,
-`prompt_hash`, `ground_truth_hash`, `case_version`, `case_hash`, and
-`human_outcome_hash`. The v2→v3 migration preserves historical entries with
-those new fields marked absent. `ration/ordered-v1` requires equal answer
-counts and grades each prediction against the same-numbered reference; it does
-not use the former best-match-across-reference-set behavior. `get_pubkey`
-returns the chain-key public key and fingerprint as hexadecimal JSON.
+## Neutron app and Agent Mode
 
-## Remaining public signed-demo work
+The submitted source declares the following narrow Agent Mode entrypoints:
 
-Before this can be advertised as a **true public signed demo**, the following
-production work remains:
+| Tool | Purpose |
+|---|---|
+| `ration_attest` | Grade and sign a supplied evaluation input. |
+| `ration_ledger` | Read the ledger. |
+| `ration_report` | Publish a certified content-addressed report. |
 
-1. Deploy the packaged v3 Ration app to a public Neutron/ICP canister and set
-   `NEXT_PUBLIC_RATION_TILE_URL` in Vercel to its stable tile URL. The checked-in
-   deployment manifest is PocketIC-only.
-2. Publish a report from that public canister and implement a verifier that
-   validates the certified HTTP witness against the ICP root key, report content
-   hash, assertion hash, and secp256k1 signature using the exposed public key.
-3. Keep the trust boundary visible: a receipt binds a canister evaluation and a
-   browser-declared outcome, not a person's identity or remote-model provenance.
+They are present in the manifest and generated package schema. A stock-agent
+catalog discovery and cross-app invocation remain a separate runtime test; the
+documentation does not claim that proof yet.
 
-Until the public canister and verifier exist, product copy must say **signed
-evaluation** or **certified report**, not “independently verified model
-provenance.”
+## Public ICP deployment remains pending
 
-## Building / running Ration locally
+There is no verified public Ration canister principal, tile URL, certified
+report URL, or certificate-aware verifier result. The committed
+`ration-app/deploy/neutron/` templates deliberately fail closed until an owner
+supplies a target subnet, funded deployment identity, CMC payment amount,
+controller policy, and exact Kernel/Ration archive pins.
+
+The remaining sequence is:
+
+1. Produce and retain the exact release archives, checksums, byte counts, and
+   package versions.
+2. Install the Neutron production provisioner identity tooling, select/fund a
+   deployment identity, and fill the reviewed production manifest locally.
+3. Run `status` and non-executing `create` preflight.
+4. Obtain explicit approval immediately before `create --execute`, which funds,
+   creates, and installs stateful public infrastructure.
+5. Record the resulting canister/tile/report URLs, set
+   `NEXT_PUBLIC_RATION_TILE_URL`, and run a real certificate-witness plus
+   secp256k1 verification against the deployed report.
+
+Until then, say **submitted package**, **live unsigned solve preview**, or
+**locally verified attestation**—not “public signed demo” or “independently
+verified model provenance.”
+
+## Local development
 
 ```bash
-# Sync canonical source → local Neutron clone, then package for PocketIC.
 ./scripts/sync-ration-app.sh
 cd neutron
 npm --workspace neutron-ratiocine run package
-npm run provision -- ration-local.ndeploy.json serve     # terminal 1
-npm run provision -- ration-local.ndeploy.json reinstall # terminal 2
+npm run provision -- ration-local.ndeploy.json serve
+npm run provision -- ration-local.ndeploy.json reinstall
 ```
 
-Verified on local PocketIC: chain-key signing, `attest_entry` grading,
-64-byte signatures, `publish_report` over certified HTTP, and in-place
-upgrade persistence.
-
-> `ration-app/` is canonical source; `neutron/` is a gitignored local clone of
-> `github.com/infu/neutron`. Its Motoko compiler is patched—see
-> `ration-app/README.md` for syntax differences including `:=` reassignment,
-> `Array.concat` vector append, and no `.vals()`.
+`ration-app/` is canonical source; `neutron/` is an ignored local clone of
+`github.com/infu/neutron`. Its Motoko compiler is patched; see
+[`ration-app/README.md`](../ration-app/README.md) for its syntax constraints.
