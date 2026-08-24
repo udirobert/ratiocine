@@ -324,6 +324,19 @@
     color: var(--nt-accent);
   }
 
+  .ration-receipt-scope {
+    background: rgba(138, 223, 157, 0.04);
+    border-bottom: 1px solid var(--nt-border, rgba(138, 223, 157, 0.15));
+    color: var(--nt-text-muted);
+    font-size: 0.82em;
+    line-height: 1.5;
+    padding: var(--nt-pad-3) var(--nt-pad-4);
+  }
+
+  .ration-receipt-scope strong {
+    color: var(--nt-text);
+  }
+
   /* Sections */
   .ration-receipt-event,
   .ration-receipt-crypto {

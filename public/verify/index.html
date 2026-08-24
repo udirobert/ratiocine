@@ -322,8 +322,9 @@
       <p class="eyebrow">Ration · Independent Verifier</p>
       <h1>Verify a Receipt</h1>
       <p class="subtitle">
-        Enter an assertion hash to verify it was signed by the Ration canister.
-        No app required — this page verifies independently against the ICP root key.
+        Enter an assertion hash to look it up in Ration's published ledger report.
+        This page re-hashes the published assertion; use an ICP certificate-aware
+        verifier to independently validate the report's certified HTTP witness.
       </p>
 
       <!-- Input -->
@@ -423,31 +424,18 @@
         verifiedReport = null;
 
         try {
-          // Try to fetch from the Ration canister's certified assets
-          // The canister is at mqrdp-r7777-77775-qaaaq-cai on localhost:8000
-          // Try both localhost and the canister-specific hostname
+          // Read the public Ration ledger report. This browser verifies the
+          // assertion's content hash after lookup; it does not verify the ICP
+          // certificate witness or ECDSA signature itself.
           const canisterId = 'mqrdp-r7777-77775-qaaaq-cai';
-          const hostnames = [
-            `${canisterId}.localhost:8000`,
-            'localhost:8000',
-          ];
-
+          const reportUrl = `https://${canisterId}.raw.icp0.io/app/ratiocine/_route/protocol/v1/ledger/report`;
           let reportJson = null;
-          let fetchSuccess = false;
 
-          for (const hostname of hostnames) {
-            try {
-              const url = `http://${hostname}/app/ratiocine/_route/protocol/v1/ledger/report/${hashInput}`;
-              const resp = await fetch(url, { signal: AbortSignal.timeout(5000) });
-              if (resp.ok) {
-                reportJson = await resp.json();
-                fetchSuccess = true;
-                break;
-              }
-            } catch (e) {
-              // Try next hostname
-              continue;
-            }
+          try {
+            const resp = await fetch(reportUrl, { signal: AbortSignal.timeout(5000) });
+            if (resp.ok) reportJson = await resp.json();
+          } catch (e) {
+            // The status below explains how to recover when the public gateway is unavailable.
           }
 
           // Display results
@@ -456,7 +444,7 @@
           if (!reportJson) {
             // Could not fetch from canister — show hash verification only
             statusEl.className = 'status loading';
-            statusEl.textContent = '⚠ Report not found on local canister (running offline)';
+            statusEl.textContent = '⚠ Published report unavailable';
 
             receiptDataEl.innerHTML = `
               <div class="field">
@@ -465,11 +453,10 @@
               </div>
               <div class="field">
                 <div class="field-label">Status</div>
-                <div class="field-value fail">✕ Not found in local ledger</div>
+                <div class="field-value fail">✕ No published report was available</div>
               </div>
               <p class="copy-hint">
-                To verify this receipt: run Ration locally and paste the hash,
-                or check the published ledger on the ICP mainnet.
+                Check the published ledger from an ICP boundary node, then retry.
               </p>
             `;
 
@@ -484,13 +471,13 @@
                 <div class="chain-step">
                   <span class="chain-icon loading">◇</span>
                   <div class="chain-text">
-                    <strong>Verify against Ration canister:</strong> <span class="muted">Not reachable (running offline)</span>
+                    <strong>Published report:</strong> <span class="muted">Not reachable from this browser</span>
                   </div>
                 </div>
                 <div class="chain-step">
                   <span class="chain-icon loading">◇</span>
                   <div class="chain-text">
-                    <strong>ICP root key:</strong> <span class="muted">Verification requires canister access</span>
+                    <strong>Certificate witness:</strong> <span class="muted">Use an ICP certificate-aware verifier for independent verification</span>
                   </div>
                 </div>
               </div>
@@ -568,7 +555,7 @@
 
           if (hashMatches) {
             statusEl.className = 'status verified';
-            statusEl.textContent = '✓ VERIFIED';
+            statusEl.textContent = '✓ ENTRY FOUND · ASSERTION HASH MATCHES';
           } else {
             statusEl.className = 'status invalid';
             statusEl.textContent = '✕ VERIFICATION FAILED — hash mismatch';
@@ -603,8 +590,8 @@
               <div class="field-value">Ration / Neutron canister</div>
             </div>
             <div class="field">
-              <div class="field-label">Signature</div>
-              <div class="field-value">${(entry.signature?.length || 0)} bytes · chain-key ecdsa_secp256k1</div>
+              <div class="field-label">Published signature</div>
+              <div class="field-value">${(entry.signature?.length || 0)} bytes · chain-key ecdsa_secp256k1 (not verified in this browser)</div>
             </div>
             <div class="field">
               <div class="field-label">Assertion hash (expected)</div>
@@ -641,13 +628,13 @@
               <div class="chain-step">
                 <span class="chain-icon ${hashMatches ? 'verified' : 'invalid'}">${hashMatches ? '✓' : '✕'}</span>
                 <div class="chain-text">
-                  <strong>Signature intact</strong> — ${entry.signature?.length || 0}-byte chain-key ecdsa_secp256k1 signature on entry #${entry.seq}
+                  <strong>Signature is published</strong> — ${entry.signature?.length || 0}-byte chain-key ecdsa_secp256k1 signature is included with entry #${entry.seq}; this browser does not verify it.
                 </div>
               </div>
               <div class="chain-step">
                 <span class="chain-icon ${hashMatches ? 'verified' : 'invalid'}">${hashMatches ? '✓' : '✕'}</span>
                 <div class="chain-text">
-                  <strong>ICP root key</strong> — certificate chain links this canister's state to the ICP root key. Anyone can verify: <em>this canister attested this evaluation</em>.
+                  <strong>Independent certificate check:</strong> use an ICP certificate-aware verifier to validate the response witness against the ICP root key.
                 </div>
               </div>
             </div>

@@ -35,7 +35,7 @@ function generateShareText(
   const m = Math.floor(elapsed / 60);
   const s = elapsed % 60;
   return [
-    `🧩 Ration — ${puzzle.language}`,
+    `🧩 Ratiocine — ${puzzle.language}`,
     ...lines,
     `${allCorrect ? "Cracked" : "Attempted"} in ${m}:${s.toString().padStart(2, "0")}${hintsUsed ? ` · ${hintsUsed} hints` : ""}`,
     `ratiocine.vercel.app`,
@@ -204,14 +204,12 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
         }
       }, submitted.length * 100 + 800);
       setHintOnFail(null);
-    } else if (attempt >= 2) {
-      setLocked((prev) => { const n = [...prev]; n[currentQ] = true; return n; });
-      setHintOnFail(null);
     } else {
-      // Shake on wrong
+      // Practice mode never locks a player out: a wrong answer prompts another
+      // evidence-based attempt, with a contextual hint available after every miss.
       setShaking(true);
       setTimeout(() => setShaking(false), 400);
-      setHintOnFail(query.hintOnFail || null);
+      setHintOnFail(query.hintOnFail || "Recheck the examples, then try another arrangement.");
     }
   }, [isLocked, slots, attempts, currentQ, query, locked]);
 
@@ -629,7 +627,7 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
 
                 {attempts[currentQ] > 0 && !isLocked && (
                   <p className="text-center text-[10px] text-white/25 font-mono mt-2">
-                    attempt {attempts[currentQ]}/2
+                    attempt {attempts[currentQ]} · practice mode
                   </p>
                 )}
               </div>
@@ -753,19 +751,19 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
                   </div>
                 </details>
 
-                {/* Next preview */}
+                {/* Future puzzle preview */}
                 <div className="text-center py-2">
-                  <p className="text-[10px] font-mono text-white/25 uppercase tracking-widest">Next</p>
+                  <p className="text-[10px] font-mono text-white/25 uppercase tracking-widest">More puzzles</p>
                   <p className="text-sm font-bold text-white/60 mt-1">{puzzle.nextPreview.language}</p>
-                  <p className="font-mono text-[12px] text-sky-300/40">{puzzle.nextPreview.script}</p>
+                  <p className="font-mono text-[12px] text-sky-300/40">Coming soon · {puzzle.nextPreview.script}</p>
                 </div>
               </div>
 
               {/* Bottom actions */}
-              <div className="shrink-0 pt-3 flex items-center justify-center gap-3">
+              <div className="shrink-0 pt-3 flex flex-wrap items-center justify-center gap-3">
                 {progress && (
                   <span className="text-[10px] font-mono text-white/25">
-                    🔥{progress.streak} · 🧩{progress.puzzlesSolved}
+                    local record · 🔥{progress.streak} · 🧩{progress.puzzlesSolved}
                   </span>
                 )}
                 <button
@@ -774,6 +772,14 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
                 >
                   {copied ? "Copied!" : "Share"}
                 </button>
+                <a
+                  href="https://ratiocine.trustfall.xyz/demo/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="px-4 py-2 rounded-md border border-emerald-400/30 bg-emerald-400/[0.06] text-[12px] font-mono text-emerald-200/80 hover:bg-emerald-400/[0.12] transition-colors min-h-[44px] flex items-center"
+                >
+                  See a verifiable AI solve ↗
+                </a>
               </div>
             </motion.div>
           )}

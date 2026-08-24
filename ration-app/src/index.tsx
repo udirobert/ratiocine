@@ -222,8 +222,7 @@ export const App = () => {
   const [attestError, setAttestError] = useState("");
   const [attestBusy, setAttestBusy] = useState(false);
   const [forgeMode, setForgeMode] = useState(false);
-  const [forgedAnswer, setForgedAnswer] = useState("");
-  const [forgeType, setForgeType] = useState<"output" | "score" | "model" | "timestamp">("output");
+  const [forgeType, setForgeType] = useState<"output" | "model">("output");
   const [tamperedValue, setTamperedValue] = useState("");
   const [elapsed, setElapsed] = useState(0);
   const [insightIdx, setInsightIdx] = useState(0);
@@ -384,27 +383,17 @@ export const App = () => {
     setAttestError("");
     setEntry(null);
     try {
-      // In forge mode, tamper with different fields based on forgeType
+      // Demonstration mode changes only submitted fields. The canister still
+      // signs the submitted evaluation event and deterministically grades its output.
       let finalPred = result.pred ?? [];
       let finalModel = result.model ?? "";
-      let finalContext = p.context;
 
       if (forgeMode) {
-        switch (forgeType) {
-          case "output":
-            finalPred = tamperedValue.trim() ? [tamperedValue.trim()] : finalPred;
-            break;
-          case "score":
-            // Tamper with model name to fake a different model score
-            finalModel = tamperedValue.trim() || finalModel;
-            break;
-          case "model":
-            finalModel = tamperedValue.trim() || finalModel;
-            break;
-          case "timestamp":
-            // Can't really tamper with timestamp in attest, but we can fake the model
-            finalModel = `Qwen3-14B-AWQ (forged-timestamp: ${tamperedValue.slice(0, 30)})`;
-            break;
+        if (forgeType === "output" && tamperedValue.trim()) {
+          finalPred = [tamperedValue.trim()];
+        }
+        if (forgeType === "model" && tamperedValue.trim()) {
+          finalModel = tamperedValue.trim();
         }
       }
 
@@ -412,7 +401,7 @@ export const App = () => {
         {
           job_id: jobIdRef.current ?? "",
           problem_id: p.id,
-          context: finalContext,
+          context: p.context,
           prompt: p.query,
           pred: finalPred,
           model: finalModel,
@@ -439,7 +428,7 @@ export const App = () => {
     } finally {
       setAttestBusy(false);
     }
-  }, [client, result, loadLedger, forgeMode, forgedAnswer]);
+  }, [client, result, loadLedger, forgeMode, forgeType, tamperedValue]);
 
   const activeIdx = phaseIndex(phase);
   const isRunning = ["queued", "waking", "loading", "deducing"].includes(phase);
@@ -501,9 +490,8 @@ export const App = () => {
               ))}
             </div>
 
-            {/* Forge-attempt toggle */}
-            {/* Forge-attempt mode — adversarial tampering demo */}
-            <div className="ration-forge-toggle" role="group" aria-label="Forge attempt mode">
+            {/* Altered-submission demonstration */}
+            <div className="ration-forge-toggle" role="group" aria-label="Altered submission demonstration">
               <label className="ration-forge-label">
                 <input
                   type="checkbox"
@@ -511,17 +499,19 @@ export const App = () => {
                   onChange={(e) => setForgeMode(e.target.checked)}
                   disabled={isRunning}
                 />
-                <span>Forge attempt</span>
+                <span>Submit an altered claim</span>
               </label>
               <span className="ration-forge-hint">
-                Try to cheat — the chain-key signature will prove you wrong.
+                Demonstration only: Ration signs and grades submitted data; it does not prove a remote model authored it.
               </span>
             </div>
 
-            {/* Danger zone: forge options */}
             {forgeMode && !isRunning && (
               <div className="ration-danger-zone">
-                <p className="ration-danger-title">⚠ Tamper with the result</p>
+                <p className="ration-danger-title">Alter the submitted evaluation</p>
+                <p className="ration-forge-hint">
+                  Change the answer to see the deterministic grade change, or change the model label to see why model provenance is marked unverified.
+                </p>
                 <div className="ration-forge-options">
                   <label className="ration-forge-option">
                     <input
@@ -531,7 +521,7 @@ export const App = () => {
                       checked={forgeType === "output"}
                       onChange={() => setForgeType("output")}
                     />
-                    Modify model output
+                    Modify submitted output
                   </label>
                   <label className="ration-forge-option">
                     <input
@@ -541,27 +531,7 @@ export const App = () => {
                       checked={forgeType === "model"}
                       onChange={() => setForgeType("model")}
                     />
-                    Modify model name
-                  </label>
-                  <label className="ration-forge-option">
-                    <input
-                      type="radio"
-                      name="forge-type"
-                      value="score"
-                      checked={forgeType === "score"}
-                      onChange={() => setForgeType("score")}
-                    />
-                    Fake a different model score
-                  </label>
-                  <label className="ration-forge-option">
-                    <input
-                      type="radio"
-                      name="forge-type"
-                      value="timestamp"
-                      checked={forgeType === "timestamp"}
-                      onChange={() => setForgeType("timestamp")}
-                    />
-                    Forge a different timestamp
+                    Modify submitted model label
                   </label>
                 </div>
                 <div className="ration-forge-input-group">
@@ -570,18 +540,14 @@ export const App = () => {
                     type="text"
                     placeholder={
                       forgeType === "output"
-                        ? "Type your forged answer here…"
-                        : forgeType === "model"
-                          ? "Type fake model name…"
-                          : forgeType === "score"
-                            ? "Type fake model for fake score…"
-                            : "Type fake timestamp…"
+                        ? "Type a different submitted answer…"
+                        : "Type a different submitted model label…"
                     }
                     value={tamperedValue}
                     onChange={(e) => setTamperedValue(e.target.value)}
                     onKeyDown={(e) => {
-                      if (e.key === "Enter" && tamperedValue.trim()) {
-                        if (result) void attestResult();
+                      if (e.key === "Enter" && tamperedValue.trim() && result) {
+                        void attestResult();
                       }
                     }}
                   />
@@ -684,12 +650,10 @@ export const App = () => {
                       type="button"
                     >
                       {attestBusy
-                        ? forgeMode
-                          ? "Forging + signing…"
-                          : "Grading + signing…"
+                        ? "Signing evaluation…"
                         : forgeMode
-                          ? "Forge + sign receipt"
-                          : "Grade & sign receipt"}
+                          ? "Sign altered evaluation"
+                          : "Grade & sign evaluation"}
                     </button>
                   </div>
 
@@ -709,22 +673,18 @@ export const App = () => {
                           <span className="ration-receipt-title">RATION RECEIPT</span>
                         </div>
                         {entry.score !== null ? (
-                          <span
-                            className={
-                              entry.em !== null && entry.em === 0
-                                ? "ration-receipt-badge ration-badge-fail"
-                                : "ration-receipt-badge ration-badge-certified"
-                            }
-                          >
-                            {entry.em !== null && entry.em === 0
-                              ? "✕ FORGED"
-                              : "CERTIFIED ✓"}
+                          <span className="ration-receipt-badge ration-badge-certified">
+                            SIGNED EVALUATION ✓
                           </span>
                         ) : (
                           <span className="ration-receipt-badge ration-badge-ungraded">
-                            UNGRADED
+                            SIGNED · UNGRADED
                           </span>
                         )}
+                      </div>
+
+                      <div className="ration-receipt-scope">
+                        <strong>Scope:</strong> this receipt attests that this canister graded this submitted output against the supplied reference at the recorded time. The submitted model label is not independently provenance-verified.
                       </div>
 
                       {/* Evaluation event provenance */}
@@ -813,7 +773,7 @@ export const App = () => {
                       {/* Verify link */}
                       <div className="ration-receipt-verify">
                         <a
-                          href={`/verify?hash=${entry.assertion_hash}`}
+                          href={`https://ratiocine.trustfall.xyz/verify/?hash=${entry.assertion_hash}`}
                           target="_blank"
                           rel="noreferrer"
                           className="ration-receipt-verify-link"

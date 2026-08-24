@@ -126,14 +126,14 @@ export const APURINA_PUZZLE: Puzzle = {
       difficulty: "standard",
       hintOnFail: "Combine what you learned about 'we (incl.)' with the 'speak' root.",
     },
-    // Curveball
+    // Synthesis — every needed morpheme and rule appears in the evidence.
     {
       id: 4,
-      prompt: "he/she is going (habitual)",
-      answer: ["a", "pita", "na"],
-      answerJoined: "apitana",
-      difficulty: "curveball",
-      hintOnFail: "All the context examples use -ka (progressive). What if the suffix changes for a different aspect?",
+      prompt: "he/she is going",
+      answer: ["a", "pita", "ka"],
+      answerJoined: "apitaka",
+      difficulty: "standard",
+      hintOnFail: "Compare rows 1–3: the person prefix changes while the 'go' root and ending stay the same.",
     },
   ],
 
@@ -143,9 +143,8 @@ export const APURINA_PUZZLE: Puzzle = {
     "nhaa", "ã", "a", "kaa",
     // Verb roots (all appear in context)
     "pita", "kuta", "nykata",
-    // Suffixes
+    // Suffix
     "ka",   // progressive (in all context examples)
-    "na",   // habitual (the curveball — not in context, must be inferred)
     // Hard distractors — these are sub-parts of real morphemes
     "nhaa·kuta", // someone might grab the whole prefix+root as one unit
     "taka",      // looks like it could be a suffix (it's root+suffix mashed)
@@ -169,7 +168,7 @@ export const APURINA_PUZZLE: Puzzle = {
     {
       level: 3,
       type: "rule",
-      text: "Structure: [person prefix] + [verb root] + [aspect suffix]. Roots: pita=go, kuta=eat, nykata=speak. The suffix -ka marks progressive ('am doing'). Question 4 asks about a different aspect.",
+      text: "Structure: [person prefix] + [verb root] + [aspect suffix]. Roots: pita=go, kuta=eat, nykata=speak. The suffix -ka marks progressive ('am doing'). Every answer can be assembled from this evidence.",
     },
   ],
 

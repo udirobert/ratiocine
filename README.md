@@ -6,10 +6,14 @@ An AI that solves International Linguistics Olympiad (IOL) problems — deducing
 grammar, vocabulary, and structure from a handful of examples in unfamiliar
 languages. It ships two things:
 
-1. **A competition solver** — IOL-AI 2026 entry (Qwen2.5-14B, best public
-   score 0.1141).
-2. **A verifiable "reasoning logbook"** — a Neutron app for the Internet
-   Computer that grades, chain-key-signs, and certified-publishes every solve.
+1. **A competition solver and playable showcase** — IOL-AI 2026 entry
+   (Qwen2.5-14B, best public score 0.1141) plus the Apurinã practice puzzle at
+   [`ratiocine.vercel.app`](https://ratiocine.vercel.app).
+2. **A verifiable evaluation logbook** — a Neutron app that, when installed in
+   a user's canister, deterministically grades submitted AI outputs,
+   chain-key-signs evaluation assertions, and can publish a certified report.
+   The public Ration landing and unsigned solve preview are at
+   [`ratiocine.trustfall.xyz`](https://ratiocine.trustfall.xyz).
 
 ## Quick links
 

@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ration — Live solve preview</title>
+    <meta name="description" content="Run Ration's public linguistics solve preview, then learn what an in-canister signed evaluation attests." />
+    <link rel="canonical" href="https://ratiocine.trustfall.xyz/demo/" />
+    <link rel="icon" href="/favicon.ico" />
+    <style>
+      :root { --bg:#12110f; --surface:#1a1815; --line:#3d3530; --text:#f0ece4; --muted:#a89f94; --faint:#5c554d; --amber:#e5a84b; --green:#7ebd6a; --red:#d47272; --mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace; --serif:Georgia,serif; }
+      * { box-sizing:border-box; } body { background:var(--bg); color:var(--text); font:16px/1.65 var(--serif); margin:0; } main { margin:0 auto; max-width:760px; padding:56px 24px 80px; } a { color:var(--amber); } .eyebrow { color:var(--amber); font:12px/1 var(--mono); letter-spacing:.12em; text-transform:uppercase; } h1 { font-size:clamp(2.25rem,7vw,4rem); letter-spacing:-.035em; line-height:1.05; margin:16px 0 12px; } .lead { color:var(--muted); font-size:1.1rem; max-width:60ch; } .card { background:var(--surface); border:1px solid var(--line); margin-top:32px; padding:24px; } h2 { font:600 13px/1 var(--mono); letter-spacing:.08em; margin:0 0 16px; text-transform:uppercase; } .problem { border-left:2px solid var(--amber); color:var(--muted); margin:18px 0; padding:0 16px; white-space:pre-line; } button, .button { background:transparent; border:1px solid var(--amber); color:var(--amber); cursor:pointer; display:inline-block; font:13px/1 var(--mono); letter-spacing:.03em; padding:12px 16px; text-decoration:none; } button:hover, .button:hover { background:rgba(229,168,75,.1); } button:disabled { cursor:wait; opacity:.55; } .status { color:var(--muted); font:13px/1.6 var(--mono); margin:18px 0 0; min-height:2.8em; } .result { display:none; margin-top:22px; } .answers { background:#0e0d0c; border:1px solid var(--line); list-style:none; margin:12px 0; padding:0; } .answers li { border-bottom:1px solid var(--line); font:14px/1.5 var(--mono); padding:12px; } .answers li:last-child { border:0; } .notice { background:rgba(126,189,106,.08); border:1px solid rgba(126,189,106,.35); color:var(--muted); margin-top:28px; padding:18px; } .notice strong { color:var(--green); } .scope { color:var(--faint); font-size:.9rem; margin-top:36px; max-width:65ch; } .links { display:flex; flex-wrap:wrap; gap:12px; margin-top:22px; } .error { color:var(--red); } @media (max-width:480px) { main { padding:36px 16px 56px; } .card { padding:18px; } }
+    </style>
+  </head>
+  <body>
+    <main>
+      <a class="eyebrow" href="/">← Ration</a>
+      <h1>See the engine solve.</h1>
+      <p class="lead">This is a live, public preview using a small known-answer linguistics problem. It demonstrates inference first; a signed evaluation happens only inside a Ration/Neutron canister.</p>
+
+      <section class="card" aria-labelledby="problem-heading">
+        <h2 id="problem-heading">Prepared problem · graded reference available</h2>
+        <div class="problem"><strong>Evidence</strong>
+suna: sun; bade: big; suna bade: big sun; me: my; me suna: my sun
+
+<strong>Translate</strong>
+1. the sun
+2. the big sun</div>
+        <button id="solve" type="button">Run live solve preview</button>
+        <p class="status" id="status" role="status">Ready. A cold GPU can take about two minutes; warm runs are usually faster.</p>
+
+        <div class="result" id="result">
+          <h2>Candidate answer</h2>
+          <ol class="answers" id="answers"></ol>
+          <p class="status" id="grade"></p>
+        </div>
+      </section>
+
+      <section class="notice">
+        <strong>What this preview does—and does not—prove.</strong><br />
+        The answers above are live inference output. This page may compare them with the displayed reference for orientation, but that comparison is <em>not</em> a receipt. A Ration receipt is created when a Neutron canister deterministically grades the submitted output, signs the evaluation event, stores it in its ledger, and publishes a certified report.
+        <div class="links">
+          <a class="button" href="/verify/">Check a published receipt</a>
+          <a class="button" href="https://ratiocine.vercel.app">Play the human puzzle</a>
+        </div>
+      </section>
+      <p class="scope">A signed Ration receipt attests that a particular canister evaluated a particular submitted output against supplied ground truth at a recorded time. The model label is submitted metadata, not independently proven model provenance.</p>
+    </main>
+    <script>
+      const problem = {
+        context: "suna: sun; bade: big; suna bade: big sun; me: my; me suna: my sun",
+        query: "Translate into the unfamiliar language:\\n1. the sun\\n2. the big sun",
+        task_type: "translation",
+        expected: ["suna", "suna bade"]
+      };
+      const solveButton = document.getElementById("solve");
+      const status = document.getElementById("status");
+      const result = document.getElementById("result");
+      const answers = document.getElementById("answers");
+      const grade = document.getElementById("grade");
+      const normalise = (value) => String(value ?? "").trim().toLowerCase().replace(/\\s+/g, " ");
+
+      async function poll(id) {
+        const response = await fetch(`/api/status?id=${encodeURIComponent(id)}`);
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error || "Unable to read solve status.");
+        return data;
+      }
+
+      solveButton.addEventListener("click", async () => {
+        solveButton.disabled = true;
+        result.style.display = "none";
+        status.className = "status";
+        status.textContent = "Submitting the prepared problem…";
+        try {
+          const response = await fetch("/api/solve", {
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify({ context: problem.context, query: problem.query, task_type: problem.task_type })
+          });
+          const submitted = await response.json();
+          if (!response.ok) throw new Error(submitted.error || "Unable to start solve.");
+          const started = Date.now();
+          const timer = setInterval(() => {
+            status.textContent = `${submitted.phase || "queued"} · ${Math.floor((Date.now() - started) / 1000)}s elapsed`;
+          }, 1000);
+          let current;
+          do {
+            await new Promise((resolve) => setTimeout(resolve, 2500));
+            current = await poll(submitted.job_id);
+            status.textContent = `${current.phase || "working"}${current.detail ? ` · ${current.detail}` : ""} · ${Math.floor((Date.now() - started) / 1000)}s elapsed`;
+          } while (current.phase !== "done" && current.phase !== "error");
+          clearInterval(timer);
+          if (current.phase === "error") throw new Error(current.detail || "The solve engine returned an error.");
+          const predicted = Array.isArray(current.result?.pred) ? current.result.pred : [];
+          answers.innerHTML = "";
+          predicted.forEach((answer, index) => {
+            const item = document.createElement("li");
+            item.textContent = `${index + 1}. ${answer}`;
+            answers.appendChild(item);
+          });
+          const exact = predicted.length === problem.expected.length && predicted.every((answer, index) => normalise(answer) === normalise(problem.expected[index]));
+          grade.textContent = exact
+            ? "Preview comparison: exact match with the displayed reference. This is not a signed receipt."
+            : "Preview comparison: the candidate differs from the displayed reference. This is not a signed receipt.";
+          result.style.display = "block";
+          status.textContent = `Complete · ${Math.floor((Date.now() - started) / 1000)}s`;
+        } catch (error) {
+          status.className = "status error";
+          status.textContent = `Preview unavailable: ${error.message}`;
+        } finally {
+          solveButton.disabled = false;
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -9,6 +9,15 @@ the canister wins the trust axis (certified ledger, chain-key-signed attestation
 user sovereignty). No on-platform rival: DeSci Labs Publish is human-centric
 bundle publishing; PaperBench/CORE-Bench are evaluations, not tools.
 
+> **Current boundary (August 2026).** The grade → sign → ledger → certified
+> report path is verified on local PocketIC. The public Netlify page offers an
+> unsigned inference preview, while the full Ration UI is a Neutron tile. A
+> public signed-demo claim requires a deployed public canister/tile URL,
+> ordered answer grading, signed commitments to the canonical case and
+> browser-declared human outcome, an exposed chain-key public key, and a
+> certificate-aware verifier. Until those exist, a receipt proves a canister
+> evaluated submitted data—not model provenance or a person's puzzle solve.
+
 ## Why this is unique on ICP (the 3 pillars)
 
 1. **Proof of reasoning, not proof of compute.** ICP's certified data makes

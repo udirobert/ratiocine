@@ -501,9 +501,9 @@
         <p class="hero-desc">
           An AI engine that solves <strong>linguistics puzzles</strong> &mdash;
           real pattern-deduction problems from the International Linguistics
-          Olympiad &mdash; then grades itself against ground truth and
-          <strong>chain-key-signs</strong> every attempt. A reasoning record
-          verifiable against the ICP root key.
+          Olympiad &mdash; then produces a <strong>signed evaluation record</strong>.
+          Ration grades submitted output against supplied ground truth inside a
+          canister; a published ledger report can be checked against ICP-certified state.
         </p>
       </section>
 
@@ -512,9 +512,9 @@
         <div class="panel" role="listitem">
           <h2>Deterministic grading</h2>
           <p>
-            Each ledger entry carries an exact-match + chrF score computed
-            entirely within the canister and a threshold signature no single
-            subnet node ever holds.
+            A signed evaluation records the submitted problem, output, score,
+            and model label. It proves what this canister evaluated; it does not
+            independently prove which remote model authored the output.
           </p>
         </div>
         <div class="panel" role="listitem">
@@ -540,8 +540,9 @@
         <div class="path-steps">
           <div class="path-step">
             <span class="step-label">Dispatch</span>
-            The canister sends a linguistics problem to the inference engine via
-            a declared HTTPS outcall.
+            Your browser submits a puzzle to the inference engine. The canister
+            stays at the trust boundary: it evaluates the submitted answer,
+            signs the evaluation event, and stores it durably.
           </div>
           <div class="path-step">
             <span class="step-label">Parse</span>
@@ -568,7 +569,7 @@
 
       <!-- Verify Widget -->
       <section class="verify-section boot-line" style="animation-delay: 0.9s">
-        <h2>Verify Attestation</h2>
+        <h2>Find a Published Evaluation</h2>
         <div class="verify-box">
           <div class="verify-input-row">
             <input
@@ -588,6 +589,8 @@
 
       <!-- Actions -->
       <div class="actions boot-line" style="animation-delay: 1.1s">
+        <a class="btn primary" href="/demo/">Try the live solve preview</a>
+        <a class="btn" href="/verify/">Check a published receipt</a>
         <a class="btn" href="https://github.com/udirobert/ratiocine">Source</a>
       </div>
 
@@ -778,7 +781,7 @@
               AudioEngine.error();
               typewrite(
                 verifyResult,
-                `NOT FOUND. No entry matches ${hash.slice(0, 16)}\u2026 \u2014 absence is provable.`,
+                `NOT FOUND. No entry in the currently published ledger matches ${hash.slice(0, 16)}\u2026`,
                 "fail",
                 null
               );

@@ -69,7 +69,7 @@ const Home = () => {
                   onClick={() => setScene("play")}
                   className="pointer-events-auto px-6 py-3 rounded-full border border-amber-400/40 bg-amber-400/10 backdrop-blur text-amber-300 font-mono text-sm font-medium hover:bg-amber-400/20 hover:border-amber-400/60 transition-all shadow-[0_0_20px_rgba(229,168,75,0.1)]"
                 >
-                  ▶ Play today's puzzle
+                  ▶ Play the Apurinã puzzle
                 </button>
               </div>
             </motion.div>
