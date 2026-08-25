@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { motion } from "motion/react";
 
 import { GridBackground } from "@/components/ui/grid-background";
@@ -63,21 +63,20 @@ const Home = () => {
   return (
     <main className="relative h-svh w-screen overflow-hidden bg-[#0a0c10]">
 
-      {/* Layer 1: Game content (always rendered, revealed by clip) */}
+      {/* Layer 1: Game content (always mounted, hidden by clip, revealed on play) */}
       <div
         className="absolute inset-0 z-20"
         style={{
-          clipPath: `inset(${clipInset} round 8px)`,
+          clipPath: phase === "game" ? "none" : `inset(${clipInset} round 8px)`,
           transition: phase === "expanding"
             ? "clip-path 0.7s cubic-bezier(0.34, 1.56, 0.64, 1)"
-            : phase === "game"
-              ? "none"
-              : "clip-path 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
+            : phase === "landing"
+              ? "clip-path 0.5s cubic-bezier(0.4, 0, 0.2, 1)"
+              : "none",
+          pointerEvents: phase === "game" || phase === "expanding" ? "auto" : "none",
         }}
       >
-        {(phase === "expanding" || phase === "game" || phase === "pre-flash") && (
-          <PuzzleView onBack={handleBack} />
-        )}
+        <PuzzleView onBack={handleBack} />
       </div>
 
       {/* Grain edge overlay — visible during expansion */}
@@ -89,7 +88,7 @@ const Home = () => {
             transition: "clip-path 0.7s cubic-bezier(0.34, 1.56, 0.64, 1)",
           }}
         >
-          <div className="absolute inset-0 mix-blend-overlay opacity-40 grain-noise" />
+          <div className="absolute inset-0 mix-blend-overlay opacity-30 grain-noise" />
         </div>
       )}
 
@@ -115,11 +114,10 @@ const Home = () => {
             <motion.div
               className="absolute inset-0 z-40 pointer-events-none"
               initial={{ opacity: 0 }}
-              animate={{ opacity: [0, 0.8, 0.3, 0.9, 0] }}
+              animate={{ opacity: [0, 0.6, 0.2, 0.7, 0] }}
               transition={{ duration: 0.2, times: [0, 0.2, 0.5, 0.7, 1] }}
             >
               <div className="absolute inset-0 bg-white/5 grain-noise mix-blend-screen" />
-              {/* Scan line intensification */}
               <div className="absolute inset-0" style={{
                 backgroundImage: "repeating-linear-gradient(0deg, transparent 0px, transparent 2px, rgba(255,255,255,0.03) 2px, rgba(255,255,255,0.03) 4px)",
               }} />
