@@ -286,13 +286,13 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
       <header className="shrink-0 flex items-center justify-between px-4 py-2.5 border-b border-white/8 sm:px-6">
         <div className="flex items-center gap-2.5">
           {onBack && (
-            <button onClick={onBack} className="text-white/30 hover:text-white/60 text-lg leading-none min-w-[44px] min-h-[44px] flex items-center justify-center">←</button>
+            <button onClick={onBack} className="text-white/50 hover:text-white/80 text-lg leading-none min-w-[44px] min-h-[44px] flex items-center justify-center">←</button>
           )}
           <div>
             <span className="text-[10px] font-mono text-amber-400/60 tracking-wider">
               {puzzle.language.toUpperCase()}
             </span>
-            <span className="text-[10px] text-white/20 ml-2 font-mono">{puzzle.family}</span>
+            <span className="text-[10px] text-white/50 ml-2 font-mono">{puzzle.family}</span>
           </div>
         </div>
         <div className="flex items-center gap-3">
@@ -308,7 +308,7 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
             </motion.span>
           )}
           {phase !== "briefing" && (
-            <span className="font-mono text-xs text-white/40 tabular-nums">{timeStr}</span>
+            <span className="font-mono text-xs text-white/80 tabular-nums">{timeStr}</span>
           )}
           {phase === "solve" && (
             <button
@@ -351,7 +351,7 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
             >
               <div className="flex-1 min-h-0 overflow-y-auto">
                 <div className="max-w-lg mx-auto">
-                  <p className="text-[10px] font-mono text-white/30 uppercase tracking-widest mb-2">
+                  <p className="text-[10px] font-mono text-white/50 uppercase tracking-widest mb-2">
                     Study the pattern
                   </p>
                   <div className="grid gap-px bg-white/5 rounded-md overflow-hidden border border-white/8">
@@ -362,21 +362,21 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
                           highlightedRows.has(pair.id) ? "bg-amber-400/[0.04]" : ""
                         }`}
                       >
-                        <span className="font-mono text-[10px] text-white/20 w-4 text-right shrink-0">{pair.id}</span>
+                        <span className="font-mono text-[10px] text-white/40 w-4 text-right shrink-0">{pair.id}</span>
                         <span className="font-mono text-[13px] text-sky-300/90 flex-1">{pair.source}</span>
-                        <span className="text-[12px] text-white/50 flex-1">{pair.target}</span>
+                        <span className="text-[12px] text-white/85 flex-1">{pair.target}</span>
                       </div>
                     ))}
                   </div>
                   {!gatedRevealed && puzzle.pairs.some((p) => p.gated) && (
                     <button
                       onClick={() => setGatedRevealed(true)}
-                      className="mt-2 text-[11px] font-mono text-white/30 hover:text-white/50 transition-colors min-h-[44px]"
+                      className="mt-2 text-[11px] font-mono text-white/50 hover:text-white/70 transition-colors min-h-[44px]"
                     >
                       + {puzzle.pairs.filter((p) => p.gated).length} more rows
                     </button>
                   )}
-                  <p className="mt-3 text-[11px] text-white/25 italic leading-relaxed">
+                  <p className="mt-3 text-[11px] text-white/85 italic leading-relaxed">
                     {puzzle.lore.funFact.split("—")[0].trim()}
                   </p>
                 </div>
@@ -417,7 +417,7 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
                             ? "bg-emerald-400/15 border border-emerald-400/50 text-emerald-400"
                             : locked[i]
                               ? "bg-red-400/10 border border-red-400/40 text-red-400/70"
-                              : "bg-white/5 border border-white/15 text-white/40"
+                              : "bg-white/5 border border-white/15 text-white/80"
                       }`}
                     >
                       {i + 1}
@@ -474,7 +474,7 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
                               ? "border-white/30 bg-white/[0.06] text-white/90"
                               : selected
                                 ? "border-amber-400/50 bg-amber-400/[0.06] border-dashed"
-                                : "border-white/10 bg-white/[0.02] border-dashed text-white/15"
+                                : "border-white/10 bg-white/[0.02] border-dashed text-white/35"
                         }`}
                         style={{ transformStyle: "preserve-3d" }}
                       >
@@ -495,7 +495,7 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
                           setSelected(null);
                         }
                       }}
-                      className="w-11 min-h-[44px] rounded-md border border-dashed border-white/10 text-white/20 hover:text-white/40 text-lg"
+                      className="w-11 min-h-[44px] rounded-md border border-dashed border-white/10 text-white/40 hover:text-white/60 text-lg"
                     >
                       +
                     </button>
@@ -588,7 +588,7 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
 
                 {/* Correct answer if locked wrong */}
                 {isLocked && !qGrade?.isCorrect && (
-                  <p className="text-center text-[12px] text-white/30 mb-4">
+                  <p className="text-center text-[12px] text-white/85 mb-4">
                     Answer: <span className="text-emerald-400/70 font-mono">{query.answerJoined}</span>
                   </p>
                 )}
@@ -635,21 +635,21 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
                         const next = locked.findIndex((l, i) => !l && i !== currentQ);
                         if (next !== -1) setCurrentQ(next);
                       }}
-                      className="px-5 py-2 rounded-md border border-white/20 text-sm text-white/70 hover:bg-white/5 transition-colors min-h-[44px]"
+                      className="px-5 py-2 rounded-md border border-white/20 text-sm text-white/85 hover:bg-white/5 transition-colors min-h-[44px]"
                     >
                       Next →
                     </button>
                   )}
                   <button
                     onClick={() => setPhase("study")}
-                    className="text-[11px] text-white/30 hover:text-white/50 font-mono transition-colors min-h-[44px] flex items-center"
+                    className="text-[11px] text-white/50 hover:text-white/70 font-mono transition-colors min-h-[44px] flex items-center"
                   >
                     ← context
                   </button>
                 </div>
 
                 {attempts[currentQ] > 0 && !isLocked && (
-                  <p className="text-center text-[10px] text-white/25 font-mono mt-2">
+                  <p className="text-center text-[10px] text-white/50 font-mono mt-2">
                     attempt {attempts[currentQ]} · practice mode
                   </p>
                 )}
@@ -679,12 +679,12 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
                       >
                         Cracked.
                       </motion.p>
-                      <p className="text-sm text-white/50 mt-1">{puzzle.language} decoded in {timeStr}</p>
+                      <p className="text-sm text-white/85 mt-1">{puzzle.language} decoded in {timeStr}</p>
                     </>
                   ) : (
                     <>
-                      <p className="text-xl font-bold text-white/70">Close.</p>
-                      <p className="text-sm text-white/40 mt-1">
+                      <p className="text-xl font-bold text-white/85">Close.</p>
+                      <p className="text-sm text-white/80 mt-1">
                         {score}/{puzzle.queries.length} correct
                       </p>
                     </>
@@ -694,8 +694,8 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
                 {/* Solve trace — expandable per query */}
                 <div className="rounded-lg border border-white/8 bg-white/[0.01] overflow-hidden">
                   <div className="px-3 py-2 border-b border-white/5 flex items-center justify-between">
-                    <span className="text-[10px] font-mono text-white/40 uppercase tracking-widest">Solve trace</span>
-                    <span className="text-[10px] font-mono text-white/25">{score} correct · {hintsUsed} hints</span>
+                    <span className="text-[10px] font-mono text-white/60 uppercase tracking-widest">Solve trace</span>
+                    <span className="text-[10px] font-mono text-white/50">{score} correct · {hintsUsed} hints</span>
                   </div>
                   {puzzle.queries.map((q, i) => {
                     const g = grades.get(q.id);
@@ -706,10 +706,10 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
                           <span className={`text-[11px] font-mono shrink-0 ${correct ? "text-emerald-400" : "text-red-400/70"}`}>
                             {correct ? "✓" : "✗"}
                           </span>
-                          <span className="text-[12px] text-white/60 flex-1 truncate">
+                          <span className="text-[12px] text-white/80 flex-1 truncate">
                             Q{i + 1} — {q.prompt}
                           </span>
-                          <span className="text-[10px] font-mono text-white/25 shrink-0">
+                          <span className="text-[10px] font-mono text-white/85 shrink-0">
                             {g ? `${g.attempt} attempt${g.attempt > 1 ? "s" : ""}` : "—"}
                           </span>
                           {q.difficulty !== "standard" && (
@@ -721,12 +721,12 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
                           )}
                         </summary>
                         <div className="px-3 pb-2 pl-8 space-y-1">
-                          <p className="text-[11px] text-white/30">
-                            Your answer: <span className="font-mono text-white/50">
+                          <p className="text-[11px] text-white/85">
+                            Your answer: <span className="font-mono text-white/85">
                               {answers[i].filter(s => s.morpheme).map(s => s.morpheme).join(" + ") || "—"}
                             </span>
                           </p>
-                          <p className="text-[11px] text-white/30">
+                          <p className="text-[11px] text-white/85">
                             Correct: <span className="font-mono text-emerald-400/60">{q.answerJoined}</span>
                           </p>
                           {g && (
@@ -773,21 +773,21 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
 
                 {/* Lore */}
                 <details className="rounded-lg border border-white/8 bg-white/[0.01]">
-                  <summary className="px-4 py-3 text-[11px] font-mono text-white/40 uppercase tracking-wider cursor-pointer hover:text-white/60 min-h-[44px] flex items-center">
+                  <summary className="px-4 py-3 text-[11px] font-mono text-white/60 uppercase tracking-wider cursor-pointer hover:text-white/80 min-h-[44px] flex items-center">
                     About {puzzle.language}
                   </summary>
-                  <div className="px-4 pb-4 space-y-2 text-[13px] text-white/55 leading-relaxed">
-                    <p><span className="text-white/30 font-mono text-[10px]">WHERE</span> {puzzle.lore.geography}</p>
-                    <p><span className="text-white/30 font-mono text-[10px]">SPEAKERS</span> {puzzle.lore.speakers}</p>
-                    <p><span className="text-white/30 font-mono text-[10px]">STATUS</span> {puzzle.lore.endangerment}</p>
-                    <p><span className="text-white/30 font-mono text-[10px]">NOTE</span> {puzzle.lore.funFact}</p>
+                  <div className="px-4 pb-4 space-y-2 text-[13px] text-white/75 leading-relaxed">
+                    <p><span className="text-white/40 font-mono text-[10px]">WHERE</span> {puzzle.lore.geography}</p>
+                    <p><span className="text-white/40 font-mono text-[10px]">SPEAKERS</span> {puzzle.lore.speakers}</p>
+                    <p><span className="text-white/40 font-mono text-[10px]">STATUS</span> {puzzle.lore.endangerment}</p>
+                    <p><span className="text-white/40 font-mono text-[10px]">NOTE</span> {puzzle.lore.funFact}</p>
                   </div>
                 </details>
 
                 {/* Future puzzle preview */}
                 <div className="text-center py-2">
-                  <p className="text-[10px] font-mono text-white/25 uppercase tracking-widest">More puzzles</p>
-                  <p className="text-sm font-bold text-white/60 mt-1">{puzzle.nextPreview.language}</p>
+                  <p className="text-[10px] font-mono text-white/50 uppercase tracking-widest">More puzzles</p>
+                  <p className="text-sm font-bold text-white/80 mt-1">{puzzle.nextPreview.language}</p>
                   <p className="font-mono text-[12px] text-sky-300/40">Coming soon · {puzzle.nextPreview.script}</p>
                 </div>
               </div>
@@ -795,14 +795,14 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
               {/* Bottom actions */}
               <div className="shrink-0 pt-3 flex flex-wrap items-center justify-center gap-3">
                 {progress && (
-                  <span className="text-[10px] font-mono text-white/25">
+                  <span className="text-[10px] font-mono text-white/50">
                     local record · 🔥{progress.streak} · 🧩{progress.puzzlesSolved}
                   </span>
                 )}
                 <button
                   onClick={handleShare}
                   disabled={!aiSettled}
-                  className="px-4 py-2 rounded-md border border-white/15 text-[12px] font-mono text-white/60 hover:text-white/80 hover:bg-white/5 transition-colors min-h-[44px] disabled:opacity-30 disabled:cursor-not-allowed"
+                  className="px-4 py-2 rounded-md border border-white/15 text-[12px] font-mono text-white/70 hover:text-white/90 hover:bg-white/5 transition-colors min-h-[44px] disabled:opacity-30 disabled:cursor-not-allowed"
                 >
                   {!aiSettled ? "Waiting for AI..." : copied ? "Copied!" : "Share"}
                 </button>

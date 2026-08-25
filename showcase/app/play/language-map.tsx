@@ -80,7 +80,7 @@ export const LanguageMap = ({
         <p className="font-mono text-[10px] text-white/40 uppercase tracking-widest">
           Language Map
         </p>
-        <p className="font-mono text-[10px] text-white/25">
+        <p className="font-mono text-[10px] text-white/50">
           {pins.length} pinned
         </p>
       </div>
@@ -213,7 +213,7 @@ export const LanguageMap = ({
 
       {/* Footer */}
       <div className="px-4 py-2.5 border-t border-white/5 text-center">
-        <p className="text-[10px] text-white/30">
+        <p className="text-[10px] text-white/50">
           📍 {currentLanguage} — {currentCoordinates[0].toFixed(1)}°{currentCoordinates[0] >= 0 ? "N" : "S"},{" "}
           {Math.abs(currentCoordinates[1]).toFixed(1)}°{currentCoordinates[1] >= 0 ? "E" : "W"}
         </p>

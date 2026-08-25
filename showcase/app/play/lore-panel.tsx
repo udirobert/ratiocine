@@ -62,7 +62,7 @@ export const LorePanel = ({ lore, language }: LorePanelProps) => {
 
       {/* Map hint */}
       <div className="px-5 py-3 bg-white/[0.01] text-center">
-        <p className="text-[10px] text-white/25 font-mono">
+        <p className="text-[10px] text-white/50 font-mono">
           📍 {lore.coordinates[0].toFixed(2)}°, {lore.coordinates[1].toFixed(2)}° — Purus River basin, Amazonas
         </p>
       </div>

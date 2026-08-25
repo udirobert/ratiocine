@@ -104,7 +104,7 @@ export const AudioMoment = ({
 
       {/* Status */}
       {hasPlayed && !playing && (
-        <span className="text-[10px] text-white/25 shrink-0">tap to replay</span>
+        <span className="text-[10px] text-white/50 shrink-0">tap to replay</span>
       )}
     </motion.div>
   );

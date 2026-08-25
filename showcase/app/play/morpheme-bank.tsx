@@ -26,7 +26,7 @@ export const MorphemeBank = ({
         <span className="font-mono text-[10px] text-white/50 uppercase tracking-widest">
           Morpheme Bank
         </span>
-        <span className="text-[10px] text-white/30">
+        <span className="text-[10px] text-white/50">
           — tap to select, then tap a slot
         </span>
       </div>

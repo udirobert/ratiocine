@@ -285,15 +285,15 @@ export const AiComparison = ({ puzzle, humanElapsed, humanHints, humanGrades, on
     <div className="rounded-lg border border-white/8 bg-white/[0.01] overflow-hidden">
       {/* Header */}
       <div className="px-4 py-3 border-b border-white/5 flex items-center justify-between">
-        <span className="text-[10px] font-mono text-white/40 uppercase tracking-widest">
+        <span className="text-[10px] font-mono text-white/60 uppercase tracking-widest">
           Same puzzle, same grading
         </span>
         <div className="flex items-center gap-2">
           {phase === "cached" && (
-            <span className="text-[9px] font-mono text-white/20">cached</span>
+            <span className="text-[9px] font-mono text-white/60">cached</span>
           )}
           {isRunning && (
-            <span className="text-[10px] font-mono text-white/25 tabular-nums">
+            <span className="text-[10px] font-mono text-white/70 tabular-nums">
               {aiElapsed}s
             </span>
           )}
@@ -317,12 +317,12 @@ export const AiComparison = ({ puzzle, humanElapsed, humanHints, humanGrades, on
                 transition={{ duration: 1.5, repeat: Infinity }}
                 className="w-2 h-2 rounded-full bg-amber-400"
               />
-              <span className={`text-[12px] font-mono ${PHASE_ACCENTS[phase] || "text-white/50"}`}>
+              <span className={`text-[12px] font-mono ${PHASE_ACCENTS[phase] || "text-white/70"}`}>
                 {PHASE_LABELS[phase]}
               </span>
             </div>
             {detail && phase === "deducing" && (
-              <p className="text-[11px] text-white/30 font-mono">{detail}</p>
+              <p className="text-[11px] text-white/70 font-mono">{detail}</p>
             )}
           </motion.div>
         )}
@@ -336,10 +336,10 @@ export const AiComparison = ({ puzzle, humanElapsed, humanHints, humanGrades, on
             className="px-4 py-4 text-center space-y-2"
           >
             <p className="text-[12px] text-red-400/70">{error}</p>
-            <p className="text-[11px] text-white/25">The comparison is optional — your solve still counts.</p>
+            <p className="text-[11px] text-white/70">The comparison is optional — your solve still counts.</p>
             <button
               onClick={handleRetry}
-              className="mt-1 px-3 py-1.5 rounded border border-white/15 text-[11px] font-mono text-white/50 hover:text-white/80 hover:bg-white/5 transition-colors min-h-[36px]"
+              className="mt-1 px-3 py-1.5 rounded border border-white/15 text-[11px] font-mono text-white/70 hover:text-white/80 hover:bg-white/5 transition-colors min-h-[36px]"
             >
               Retry
             </button>
@@ -359,27 +359,27 @@ export const AiComparison = ({ puzzle, humanElapsed, humanHints, humanGrades, on
             <div className="grid grid-cols-3 gap-2 text-center">
               {/* Human */}
               <div className="rounded-md bg-emerald-400/[0.04] border border-emerald-400/15 px-3 py-2.5">
-                <p className="text-[9px] font-mono text-white/30 uppercase tracking-wider">You</p>
+                <p className="text-[9px] font-mono text-white/70 uppercase tracking-wider">You</p>
                 <p className="text-lg font-bold text-emerald-400 mt-0.5">
                   {humanCorrectCount}/{puzzle.queries.length}
                 </p>
-                <p className="text-[10px] font-mono text-white/30 mt-0.5">
+                <p className="text-[10px] font-mono text-white/70 mt-0.5">
                   {humanTimeStr} · {humanHints > 0 ? `${humanHints} hint${humanHints > 1 ? "s" : ""}` : "no hints"}
                 </p>
               </div>
 
               {/* VS */}
               <div className="flex items-center justify-center">
-                <span className="text-[11px] font-mono text-white/20">vs</span>
+                <span className="text-[11px] font-mono text-white/40">vs</span>
               </div>
 
               {/* AI */}
               <div className="rounded-md bg-sky-400/[0.04] border border-sky-400/15 px-3 py-2.5">
-                <p className="text-[9px] font-mono text-white/30 uppercase tracking-wider">Machine</p>
+                <p className="text-[9px] font-mono text-white/70 uppercase tracking-wider">Machine</p>
                 <p className="text-lg font-bold text-sky-400 mt-0.5">
                   {aiCorrectCount}/{puzzle.queries.length}
                 </p>
-                <p className="text-[10px] font-mono text-white/30 mt-0.5">
+                <p className="text-[10px] font-mono text-white/70 mt-0.5">
                   {aiResult.elapsed_s}s · no hints
                 </p>
               </div>
@@ -400,7 +400,7 @@ export const AiComparison = ({ puzzle, humanElapsed, humanHints, humanGrades, on
                     transition={{ delay: i * 0.12 }}
                     className="flex items-center gap-2 px-2 py-1.5 rounded bg-white/[0.015]"
                   >
-                    <span className="text-[10px] font-mono text-white/20 w-5 shrink-0">Q{i + 1}</span>
+                    <span className="text-[10px] font-mono text-white/60 w-5 shrink-0">Q{i + 1}</span>
 
                     {/* Human */}
                     <span className={`text-[11px] font-mono flex-1 truncate ${humanCorrect ? "text-emerald-400/80" : "text-red-400/60"}`}>
@@ -408,7 +408,7 @@ export const AiComparison = ({ puzzle, humanElapsed, humanHints, humanGrades, on
                     </span>
 
                     {/* Divider */}
-                    <span className="text-white/10 text-[10px]">|</span>
+                    <span className="text-white/25 text-[10px]">|</span>
 
                     {/* AI */}
                     <span className={`text-[11px] font-mono flex-1 truncate text-right ${aiCorrect ? "text-sky-400/80" : "text-red-400/60"}`}>
@@ -431,15 +431,15 @@ export const AiComparison = ({ puzzle, humanElapsed, humanHints, humanGrades, on
                 <p className="text-[12px] text-emerald-400/80 font-medium">You outperformed the machine.</p>
               )}
               {humanCorrectCount === aiCorrectCount && humanCorrectCount === puzzle.queries.length && (
-                <p className="text-[12px] text-white/50">Both perfect — but you needed {humanTimeStr}. It took {aiResult.elapsed_s}s.</p>
+                <p className="text-[12px] text-white/70">Both perfect — but you needed {humanTimeStr}. It took {aiResult.elapsed_s}s.</p>
               )}
               {humanCorrectCount === aiCorrectCount && humanCorrectCount < puzzle.queries.length && (
-                <p className="text-[12px] text-white/50">Same score. Neither cracked it fully.</p>
+                <p className="text-[12px] text-white/70">Same score. Neither cracked it fully.</p>
               )}
               {humanCorrectCount < aiCorrectCount && (
                 <p className="text-[12px] text-sky-400/70">The machine got more right — this time.</p>
               )}
-              <p className="text-[10px] font-mono text-white/20 mt-1.5">
+              <p className="text-[10px] font-mono text-white/60 mt-1.5">
                 {aiResult.model} · graded by the same EM algorithm
               </p>
             </div>

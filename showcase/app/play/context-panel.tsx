@@ -75,7 +75,7 @@ export const ContextPanel = ({ pairs, highlightedRows }: ContextPanelProps) => {
           <span className="font-mono text-[10px] text-white/50 uppercase tracking-widest">
             Context
           </span>
-          <span className="text-[10px] text-white/30">
+          <span className="text-[10px] text-white/50">
             — tap a word to trace its pattern
           </span>
         </div>
@@ -124,7 +124,7 @@ export const ContextPanel = ({ pairs, highlightedRows }: ContextPanelProps) => {
                 }}
               >
                 {/* Row number */}
-                <span className="font-mono text-[11px] text-white/30 w-5 shrink-0 text-right">
+                <span className="font-mono text-[11px] text-white/50 w-5 shrink-0 text-right">
                   {pair.id}
                 </span>
 
@@ -134,7 +134,7 @@ export const ContextPanel = ({ pairs, highlightedRows }: ContextPanelProps) => {
                 </span>
 
                 {/* Arrow */}
-                <span className="text-white/20 text-xs shrink-0">→</span>
+                <span className="text-white/40 text-xs shrink-0">→</span>
 
                 {/* Target (English) */}
                 <span className="text-sm text-white/70 flex-1 min-w-0">
@@ -166,7 +166,7 @@ export const ContextPanel = ({ pairs, highlightedRows }: ContextPanelProps) => {
           </span>
           <button
             onClick={() => setSelectedMorpheme(null)}
-            className="ml-auto text-white/30 hover:text-white/50"
+            className="ml-auto text-white/50 hover:text-white/50"
           >
             clear
           </button>

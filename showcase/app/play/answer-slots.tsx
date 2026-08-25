@@ -88,7 +88,7 @@ export const AnswerSlots = ({
                     ? "border-white/25 bg-white/[0.06] text-white/90 hover:border-red-300/40 cursor-pointer"
                     : selectedMorpheme
                       ? "border-amber-400/40 bg-amber-400/[0.04] border-dashed cursor-pointer animate-pulse"
-                      : "border-white/10 bg-white/[0.02] border-dashed text-white/20 cursor-pointer"
+                      : "border-white/10 bg-white/[0.02] border-dashed text-white/35 cursor-pointer"
               }
             `}
           >
@@ -108,7 +108,7 @@ export const AnswerSlots = ({
                   key="empty"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  className="text-white/20"
+                  className="text-white/35"
                 >
                   ·
                 </motion.span>
@@ -122,7 +122,7 @@ export const AnswerSlots = ({
           <button
             type="button"
             onClick={() => onSlotTap(queryId, slots.length)}
-            className="min-w-[36px] min-h-[36px] px-2 py-2 rounded-md border border-dashed border-white/10 text-white/20 hover:border-white/25 hover:text-white/40 transition-colors text-lg leading-none"
+            className="min-w-[36px] min-h-[36px] px-2 py-2 rounded-md border border-dashed border-white/10 text-white/35 hover:border-white/25 hover:text-white/40 transition-colors text-lg leading-none"
             aria-label="Add morpheme slot"
           >
             +

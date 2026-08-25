@@ -52,7 +52,7 @@ export const SceneNav = ({ current, onChange }: SceneNavProps) => {
             />
             <span
               className={`font-mono text-[10px] tracking-wide transition-colors ${
-                scene.id === current ? "text-white/70" : "text-white/30"
+                scene.id === current ? "text-white/80" : "text-white/50"
               }`}
             >
               {scene.label.replace("The ", "")}
@@ -86,7 +86,7 @@ export const SceneLabel = ({ current }: { current: SceneId }) => {
       transition={{ duration: 0.4 }}
       className="fixed top-5 left-5 z-50 flex items-center gap-2"
     >
-      <span className="font-mono text-xs text-white/55 tabular-nums">
+      <span className="font-mono text-xs text-white/65 tabular-nums">
         {String(scene.index + 1).padStart(2, "0")} / {String(SCENES.length).padStart(2, "0")}
       </span>
       <span className="text-sm font-semibold text-white/85 tracking-wide">
@@ -103,7 +103,7 @@ export const Wordmark = () => (
       href="https://github.com/udirobert/ratiocine"
       target="_blank"
       rel="noopener noreferrer"
-      className="font-mono text-sm font-bold tracking-tight text-white/70 hover:text-white transition-colors"
+      className="font-mono text-sm font-bold tracking-tight text-white/80 hover:text-white transition-colors"
     >
       ratiocine
     </a>

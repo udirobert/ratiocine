@@ -40,7 +40,7 @@ export const SuccessReveal = ({
             transition={{ delay: 0.2 + i * 0.3, duration: 0.4 }}
             className="flex items-center justify-center gap-2"
           >
-            <span className="text-[11px] text-white/30 font-mono w-6 text-right">
+            <span className="text-[11px] text-white/50 font-mono w-6 text-right">
               Q{query.id}
             </span>
 
@@ -69,7 +69,7 @@ export const SuccessReveal = ({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6 + i * 0.3 }}
-              className="text-white/20 text-xs"
+              className="text-white/40 text-xs"
             >
               →
             </motion.span>
@@ -102,7 +102,7 @@ export const SuccessReveal = ({
 
         {/* Personal stats */}
         {progress && (
-          <div className="flex items-center justify-center gap-4 mt-3 text-[11px] font-mono text-white/35">
+          <div className="flex items-center justify-center gap-4 mt-3 text-[11px] font-mono text-white/50">
             <span>🧩 {progress.puzzlesSolved} solved</span>
             <span>🔥 {progress.streak} streak</span>
             <span>🌍 {progress.languagesCracked.length} language{progress.languagesCracked.length !== 1 ? "s" : ""}</span>

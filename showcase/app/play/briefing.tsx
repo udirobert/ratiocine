@@ -81,7 +81,7 @@ export const Briefing = ({ puzzle, onDismiss }: BriefingProps) => {
           {/* Region */}
           <motion.p
             variants={{ hidden: { opacity: 0, x: -12 }, visible: { opacity: 1, x: 0 } }}
-            className="text-[13px] text-white/40 font-mono"
+            className="text-[13px] text-white/60 font-mono"
           >
             📍 {puzzle.region}
           </motion.p>
@@ -91,10 +91,10 @@ export const Briefing = ({ puzzle, onDismiss }: BriefingProps) => {
             variants={{ hidden: { opacity: 0, x: -12 }, visible: { opacity: 1, x: 0 } }}
             className="flex items-center justify-center gap-3"
           >
-            <span className="text-[13px] text-white/50">
-              <span className="text-amber-300/80 font-mono font-bold">~2,800</span> speakers
+            <span className="text-[13px] text-white/70">
+              <span className="text-amber-300/90 font-mono font-bold">~2,800</span> speakers
             </span>
-            <span className="text-[10px] px-2 py-0.5 rounded-full border border-red-400/30 text-red-300/60 font-mono uppercase">
+            <span className="text-[10px] px-2 py-0.5 rounded-full border border-red-400/40 text-red-300/80 font-mono uppercase">
               endangered
             </span>
           </motion.div>
@@ -103,7 +103,7 @@ export const Briefing = ({ puzzle, onDismiss }: BriefingProps) => {
           <motion.p
             variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}
             transition={{ duration: 0.6 }}
-            className="text-[15px] text-white/70 leading-relaxed italic pt-2 max-w-xs mx-auto"
+            className="text-[15px] text-white/80 leading-relaxed italic pt-2 max-w-xs mx-auto"
           >
             &ldquo;{puzzle.lore.briefingHook}&rdquo;
           </motion.p>
@@ -111,14 +111,14 @@ export const Briefing = ({ puzzle, onDismiss }: BriefingProps) => {
           {/* Lineage */}
           <motion.p
             variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}
-            className="text-[12px] text-white/35 leading-relaxed max-w-xs mx-auto"
+            className="text-[12px] text-white/55 leading-relaxed max-w-xs mx-auto"
           >
             {puzzle.lore.lineageNote}
           </motion.p>
 
           <motion.p
             variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}
-            className="text-[11px] text-amber-200/55 leading-relaxed max-w-xs mx-auto"
+            className="text-[11px] text-amber-200/70 leading-relaxed max-w-xs mx-auto"
           >
             Practice mode — every solution is supported by the examples. Hints are unlimited; your timer and solve record stay in this browser.
           </motion.p>
@@ -137,7 +137,7 @@ export const Briefing = ({ puzzle, onDismiss }: BriefingProps) => {
           >
             Begin decipherment
           </button>
-          <p className="mt-3 text-[10px] text-white/15 font-mono">tap anywhere to skip</p>
+          <p className="mt-3 text-[10px] text-white/40 font-mono">tap anywhere to skip</p>
         </motion.div>
       </div>
     </div>

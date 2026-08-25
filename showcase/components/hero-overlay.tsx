@@ -38,7 +38,7 @@ export const HeroOverlay = () => {
             <h1 className="text-4xl font-bold tracking-tight text-white">
               ratiocine
             </h1>
-            <p className="mt-4 text-[15px] leading-relaxed text-white/60">
+            <p className="mt-4 text-[15px] leading-relaxed text-white/75">
               Crack the pattern. Then watch the machine try.
             </p>
 
@@ -53,9 +53,9 @@ export const HeroOverlay = () => {
               />
             </a>
 
-            <p className="mt-6 font-mono text-[10px] text-white/30 uppercase tracking-widest">
+            <p className="mt-6 font-mono text-[10px] text-white/45 uppercase tracking-widest">
               IOL-AI 2026 Competitor · Score{" "}
-              <span className="text-emerald-400/60">0.1141</span>
+              <span className="text-emerald-400/80">0.1141</span>
             </p>
           </motion.div>
         </motion.div>
