@@ -1,91 +1,34 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import Link from "next/link";
-import { useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
 
-import { SceneLabel, SceneNav, SceneId, Wordmark } from "@/components/scene-nav";
 import { GridBackground } from "@/components/ui/grid-background";
-import { HeroOverlay } from "@/components/hero-overlay";
 
-const Problem = dynamic(
-  () => import("./scenes/problem/index").then((m) => m.Problem),
-  { ssr: false },
-);
 const Machine = dynamic(
   () => import("./scenes/machine/index").then((m) => m.Machine),
   { ssr: false },
 );
-const Answer = dynamic(
-  () => import("./scenes/answer/index").then((m) => m.Answer),
-  { ssr: false },
-);
 
 const Home = () => {
-  const [scene, setScene] = useState<SceneId>("machine");
-
   return (
     <main className="relative h-svh w-screen overflow-hidden bg-[#0a0f2e]">
-      {/* Grid + chrome */}
       <GridBackground className="bg-[#0a0f2e]" />
-      <SceneLabel current={scene} />
-      <Wordmark />
 
-      <div className="absolute inset-0">
-        <AnimatePresence mode="wait">
-          {scene === "problem" && (
-            <motion.div
-              key="problem"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="h-full w-full"
-            >
-              <Problem />
-            </motion.div>
-          )}
-          {scene === "machine" && (
-            <motion.div
-              key="machine"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="h-full w-full"
-            >
-              <Machine />
-              {/* Play CTA overlaid on Mac scene */}
-              <div className="absolute inset-x-0 bottom-24 z-30 flex justify-center pointer-events-none">
-                <Link
-                  href="/play"
-                  className="pointer-events-auto px-6 py-3 rounded-full border border-amber-400/40 bg-amber-400/10 backdrop-blur text-amber-300 font-mono text-sm font-medium hover:bg-amber-400/20 hover:border-amber-400/60 transition-all shadow-[0_0_20px_rgba(229,168,75,0.1)]"
-                >
-                  ▶ Play the Apurinã puzzle
-                </Link>
-              </div>
-            </motion.div>
-          )}
-          {scene === "answer" && (
-            <motion.div
-              key="answer"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="h-full w-full"
-            >
-              <Answer />
-            </motion.div>
-          )}
-        </AnimatePresence>
+      {/* Wordmark — top right */}
+      <div className="fixed top-5 right-5 z-50">
+        <a
+          href="https://github.com/udirobert/ratiocine"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-mono text-sm font-bold tracking-tight text-white/80 hover:text-white transition-colors"
+        >
+          ratiocine
+        </a>
       </div>
 
-      <SceneNav current={scene} onChange={setScene} />
-
-      {/* Hero overlay only on first visit */}
-      <HeroOverlay />
+      <div className="absolute inset-0">
+        <Machine />
+      </div>
     </main>
   );
 };
