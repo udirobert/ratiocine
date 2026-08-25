@@ -1,9 +1,6 @@
 # Netlify configuration for ratiocine.trustfall.xyz
-# Brand front-end + thin API proxy in front of the Modal GPU inference engine.
-#
-# NOTE: Netlify sync-function timeouts are configured in the Netlify dashboard
-# (Site settings -> Functions -> Function timeout; default 10s, max 26s).
-# The proxy below aborts cleanly at SOLVE_TIMEOUT_MS if the engine is slow.
+# API-proxy-only — all user-facing traffic redirects to the Vercel showcase.
+# The /api/* routes proxy Modal's GPU inference engine.
 
 [build]
   publish = "public"
@@ -15,6 +12,8 @@
 [functions]
   node_bundler = "esbuild"
 
+# ─── API proxy (order matters: these must come before the catch-all) ─────────
+
 [[redirects]]
   from = "/api/solve"
   to = "/.netlify/functions/solve"
@@ -24,6 +23,14 @@
   from = "/api/status"
   to = "/.netlify/functions/status"
   status = 200
+
+# ─── Catch-all: redirect everything else to the Vercel showcase ──────────────
+
+[[redirects]]
+  from = "/*"
+  to = "https://ratiocine.vercel.app/:splat"
+  status = 301
+  force = true
 
 [[headers]]
   for = "/*"

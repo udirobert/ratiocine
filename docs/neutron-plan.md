@@ -27,7 +27,8 @@ hash has not yet been exported and independently compared.
 | Component | Status | Evidence boundary |
 |---|---|---|
 | Hackathon package | Submitted in Week 1 | Package/listing evidence; not a deployed Ration service. |
-| Ration landing + solve preview | Live on Netlify at `ratiocine.trustfall.xyz` | Browser inference preview only; `/api/status` has been probed without starting a solve. |
+| Vercel showcase | Live at `ratiocine.vercel.app` | Interactive puzzle game with inline AI comparison at `/play`. |
+| Netlify API proxy | Live at `ratiocine.trustfall.xyz` | API-proxy-only (301 redirects non-API traffic to Vercel); `/api/status` probed without starting a solve. |
 | Modal inference | Deployed, scale-to-zero | Idle containers are expected between requests. The app uses an L4 GPU only when a solve is dispatched. |
 | Ration attestation | Verified on local PocketIC (v0.4) | Ordered EM + chrF, chain-key signatures, page-chunked ledger, duplicate rejection, paginated certified report publication (format v2), access control, and v3→v4 migration are local proofs. |
 | Public ICP Ration canister | Not yet verified/deployed | No public principal, tile/report URL, or certificate-aware verifier result is recorded. |

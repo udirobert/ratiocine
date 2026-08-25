@@ -11,10 +11,11 @@ as a signed, publishable evaluation event.
 - **Model artifact**: the solver code defaults to the configured
   `Papajams/ratiocine` HF model artifact. Public model/revision claims must be
   tied to a captured Modal deployment before being treated as release evidence.
-- **Showcase**: `showcase/` provides the Vercel-hosted Apurinã practice puzzle
-  at [`ratiocine.vercel.app`](https://ratiocine.vercel.app). Its progress,
-  attempts, and hints are browser-local unless the user explicitly hands a
-  bounded result to Ration.
+- **Showcase**: `showcase/` provides the Vercel-hosted interactive puzzle game
+  at [`ratiocine.vercel.app`](https://ratiocine.vercel.app). The `/play` route
+  is the primary user-facing surface — a linguistics deduction game with inline
+  AI comparison. Progress, attempts, and hints are browser-local unless the
+  user explicitly hands a bounded result to Ration.
 
 ## Ration: package, preview, and attestation are separate
 
@@ -49,7 +50,8 @@ with `from_seq`/`to_seq` tracking, and frontend delta indicators.
 | Surface | Verified fact | What it does **not** establish |
 |---|---|---|
 | Neutron Hackathon | Week 1 package submitted as `ratiocine_l.neutron`, v1, reported as 272 KB with five screenshots. | A public Ration canister installation or a public report. |
-| Netlify | [`ratiocine.trustfall.xyz`](https://ratiocine.trustfall.xyz) returns HTTP 200; `/api/status` is live and rejects a missing job ID without dispatching a solve. | That a candidate answer is a signed receipt. |
+| Vercel showcase | [`ratiocine.vercel.app`](https://ratiocine.vercel.app) serves the interactive puzzle game with inline AI comparison at `/play`. | That a candidate answer is a signed receipt. |
+| Netlify | [`ratiocine.trustfall.xyz`](https://ratiocine.trustfall.xyz) is API-proxy-only (301 redirects non-API traffic to Vercel); `/api/status` is live and rejects a missing job ID without dispatching a solve. | That a candidate answer is a signed receipt. |
 | Modal | `ratiocine-solve` is deployed with a scale-to-zero L4 worker and had no active containers at inspection. | An outage: zero active containers is the intended idle state. |
 | Ration attestation (v0.4) | Local PocketIC verifies: page-chunked ledger (O(1) append), paginated queries, token-based access control, duplicate rejection, evaluator_version passthrough, paginated reports (format v2), certified HTTP, chain-key signatures, and stable-memory persistence across upgrades. | Mainnet/ICP availability. The recorded canister is local only. |
 | Mainnet preflight | Read-only preflight passes: same deployer, subnet, archive pins, planned Wasm hash. Balance = 0 ICP. | Funded deployment. Requires 5+ ICP to proceed. |
@@ -61,16 +63,20 @@ service.
 
 ### Current browser solve path
 
-The Netlify functions proxy the browser's `POST /api/solve` and `GET
-/api/status` requests to Modal. The CPU submit/status functions track jobs for
-one hour; only `run_solve` starts an L4 GPU worker. This makes a zero-activity
-Modal dashboard expected between demonstrations. The public preview uses CORS
-for browser access and has Netlify function timeouts, so it is a convenience
-surface rather than a durable or private data store.
+Netlify at `ratiocine.trustfall.xyz` is **API-proxy-only** — it has no landing
+page. All non-API traffic (including `/`) 301-redirects to the Vercel showcase
+at `ratiocine.vercel.app`. The `/api/solve` and `/api/status` routes proxy
+requests to Modal's GPU inference engine.
 
-The Netlify **live solve preview** intentionally is not a receipt: it shows a
-candidate inference result and a local comparison. A signed evaluation is
-created only when an installed Ration app calls `attest_entry`.
+The Netlify functions track jobs for one hour; only `run_solve` starts an L4
+GPU worker. This makes a zero-activity Modal dashboard expected between
+demonstrations. The proxy uses CORS for browser access and has function
+timeouts (20s submit, 15s status), so it is a convenience surface rather than
+a durable data store.
+
+The solve preview is not a receipt: it shows a candidate inference result and a
+local comparison. A signed evaluation is created only when an installed Ration
+app calls `attest_entry`.
 
 ## Canonical human-to-AI comparison
 

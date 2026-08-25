@@ -1,13 +1,14 @@
 # DNS Setup — ratiocine.trustfall.xyz
 
-The Netlify site serves the brand landing page and the `/api/solve` + `/api/status`
-proxy functions. The showcase (game + AI comparison) lives on Vercel at
-`ratiocine.vercel.app`. These are two separate deployments intentionally:
+The Netlify site serves the `/api/solve` and `/api/status` proxy functions that
+front Modal's GPU inference engine. All other traffic (including `/`) 301-redirects
+to the Vercel showcase. The showcase (game + AI comparison) is the single
+user-facing surface.
 
 | Domain | Host | Purpose |
 |--------|------|---------|
-| `ratiocine.trustfall.xyz` | Netlify | Brand landing, solve/status API proxy to Modal |
-| `ratiocine.vercel.app` | Vercel | Next.js showcase with interactive puzzle + AI comparison |
+| `ratiocine.trustfall.xyz` | Netlify | API proxy to Modal (`/api/*`), redirects all else to Vercel |
+| `ratiocine.vercel.app` | Vercel | Next.js showcase — puzzle game, AI comparison, the build |
 
 ## Netlify custom domain setup
 
