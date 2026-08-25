@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence, LayoutGroup } from "motion/react";
 
 import { LanguageMap } from "./language-map";
 import { AudioMoment } from "./audio-moment";
@@ -202,6 +202,8 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
     if (isLocked) return;
     // Tap a placed tile → return it to the bank
     if (slots[idx].morpheme) {
+      sfx.pop();
+      if (navigator.vibrate) navigator.vibrate(5);
       setAnswers((prev) => {
         const next = [...prev];
         const row = [...next[currentQ]];
@@ -210,7 +212,7 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
         return next;
       });
     }
-  }, [isLocked, currentQ, slots]);
+  }, [isLocked, currentQ, slots, sfx]);
 
   // Tap a bank tile → auto-place into first empty slot
   const handleTilePlace = useCallback((morpheme: string) => {
@@ -218,6 +220,7 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
     const emptyIdx = slots.findIndex((s) => !s.morpheme);
     if (emptyIdx === -1) return; // all slots full
     sfx.snap();
+    if (navigator.vibrate) navigator.vibrate(10);
     setAnswers((prev) => {
       const next = [...prev];
       const row = [...next[currentQ]];
@@ -485,7 +488,8 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
                 {/* Tutorial helper */}
                 {/* Tutorial queries have a subtle glow on the prompt instead of text */}
 
-                {/* Answer slots — with flip animation */}
+                <LayoutGroup>
+                {/* Answer slots — with flip animation + layoutId fly */}
                 <div className="flex items-center justify-center gap-2 mb-5 flex-wrap perspective-[800px]">
                   {slots.map((slot, i) => {
                     const flipDelay = i * 0.1;
@@ -494,15 +498,14 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
                     return (
                       <motion.button
                         key={i}
-                        layout
                         onClick={() => handleSlotTap(i)}
-                        whileTap={!isLocked ? { scale: 0.9 } : undefined}
+                        whileTap={!isLocked && slot.morpheme ? { scale: 0.9 } : undefined}
                         animate={isFlipped ? {
                           rotateX: [0, 90, 0],
                           transition: { delay: flipDelay, duration: 0.4, times: [0, 0.5, 1] }
                         } : {}}
                         className={`min-w-[48px] min-h-[44px] h-11 px-3 rounded-md font-mono text-sm font-medium
-                          border-2 transition-colors ${
+                          border-2 transition-colors relative overflow-hidden ${
                           slot.grade
                             ? gradeColor(slot.grade)
                             : slot.morpheme
@@ -511,11 +514,19 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
                         }`}
                         style={{ transformStyle: "preserve-3d" }}
                       >
-                        {slot.morpheme || (
+                        {slot.morpheme ? (
+                          <motion.span
+                            layoutId={`tile-${slot.morpheme}-${currentQ}`}
+                            transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                            className="block"
+                          >
+                            {slot.morpheme}
+                          </motion.span>
+                        ) : (
                           // Ghost tile hint: show first correct morpheme pulsing in Q1's first slot
                           ghostVisible && currentQ === 0 && i === 0 && attempts[0] === 0
                             ? <span className="text-white/20 animate-pulse">{query.answer[0]}</span>
-                            : "·"
+                            : <span>·</span>
                         )}
                       </motion.button>
                     );
@@ -560,26 +571,38 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
                           // Check if this tile is already placed in a slot
                           const isPlaced = slots.some((s) => s.morpheme === m);
                           return (
-                            <button
+                            <motion.button
                               key={`${m}-${gi}-${i}`}
-                              onClick={() => { sfx.click(); handleTilePlace(m); }}
+                              onClick={() => !isPlaced && handleTilePlace(m)}
                               disabled={isPlaced}
                               className={`tile-physical relative px-3 py-2.5 min-h-[44px] rounded font-mono text-[13px] border transition-all ${
                                 isPlaced
-                                  ? "opacity-30 border-white/5 bg-white/[0.01] text-white/30"
+                                  ? "opacity-0 border-transparent bg-transparent pointer-events-none"
                                   : "border-white/10 bg-white/[0.03] text-white/70 hover:border-white/20"
                               }`}
+                              whileTap={!isPlaced ? { scale: 0.92 } : undefined}
                               title={revealed || undefined}
                             >
-                              {m}
-                              {revealed && <span className="absolute -top-1 -right-1 w-1.5 h-1.5 rounded-full" style={{ backgroundColor: puzzle.theme.accent }} />}
-                            </button>
+                              {!isPlaced ? (
+                                <motion.span
+                                  layoutId={`tile-${m}-${currentQ}`}
+                                  transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                                  className="block"
+                                >
+                                  {m}
+                                </motion.span>
+                              ) : (
+                                <span className="invisible">{m}</span>
+                              )}
+                              {revealed && !isPlaced && <span className="absolute -top-1 -right-1 w-1.5 h-1.5 rounded-full" style={{ backgroundColor: puzzle.theme.accent }} />}
+                            </motion.button>
                           );
                         })}
                       </div>
                     ))}
                   </div>
                 )}
+                </LayoutGroup>
 
                 {/* Submit / navigation */}
                 <div className="flex items-center justify-center gap-3">

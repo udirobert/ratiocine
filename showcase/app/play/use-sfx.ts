@@ -98,5 +98,22 @@ export const useSfx = () => {
     });
   }, [getCtx]);
 
-  return { enable, click, snap, thud, chime };
+  // Pop — tile removed from slot (short high blip)
+  const pop = useCallback(() => {
+    if (!enabledRef.current) return;
+    const ac = getCtx();
+    if (!ac) return;
+    const osc = ac.createOscillator();
+    const gain = ac.createGain();
+    osc.type = "sine";
+    osc.frequency.setValueAtTime(1400, ac.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(600, ac.currentTime + 0.06);
+    gain.gain.setValueAtTime(0.05, ac.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ac.currentTime + 0.07);
+    osc.connect(gain).connect(ac.destination);
+    osc.start(ac.currentTime);
+    osc.stop(ac.currentTime + 0.07);
+  }, [getCtx]);
+
+  return { enable, click, snap, thud, chime, pop };
 };
