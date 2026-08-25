@@ -80,6 +80,20 @@ app calls `attest_entry`.
 
 ## Canonical human-to-AI comparison
 
+The game implements a three-phase flow:
+
+1. **Study** — unified briefing + evidence presentation with parametric theming
+   (accent, sourceColor, bgTint per language). Evidence cards stagger in as
+   specimens; the Ready button appears after all cards are visible.
+2. **Solve** — morpheme tile composition with progress bar, micro-sounds (Web
+   Audio oscillator synthesis), physical tile transforms, and visual-only hints.
+3. **Result** — celebration-first (card-flip grid, big score, share button),
+   then below-the-fold: AI comparison, solve trace, map, lore.
+
+The CRT portal transition (clip-path expansion with spring ease) bridges the
+Mac landing scene into the game. The parametric theme carries the regional
+identity of each language throughout all phases.
+
 The code implements the product sequence below for the versioned
 `apurina-verb-agreement@1` case:
 
