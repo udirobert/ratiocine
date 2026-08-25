@@ -17,10 +17,20 @@ const PuzzleView = dynamic(
 
 type Phase = "landing" | "pre-flash" | "expanding" | "game";
 
+interface SolvedResult {
+  language: string;
+  score: number;
+  total: number;
+  verdict: string;
+  accentColor: string;
+  timeStr: string;
+}
+
 const Home = () => {
   const [phase, setPhase] = useState<Phase>("landing");
   const [isMobile, setIsMobile] = useState(false);
-  const [clipInset, setClipInset] = useState("50% 50% 50% 50%"); // fully closed
+  const [clipInset, setClipInset] = useState("50% 50% 50% 50%");
+  const [solvedResult, setSolvedResult] = useState<SolvedResult | null>(null);
 
   useEffect(() => {
     setIsMobile(window.innerWidth < 768);
@@ -80,7 +90,7 @@ const Home = () => {
           pointerEvents: phase === "game" || phase === "expanding" ? "auto" : "none",
         }}
       >
-        <PuzzleView onBack={handleBack} />
+        <PuzzleView onBack={handleBack} onSolved={setSolvedResult} />
       </div>
 
       {/* Grain edge overlay — visible during expansion */}
@@ -128,7 +138,7 @@ const Home = () => {
             </motion.div>
           )}
 
-          <Machine onPlay={handlePlay} zooming={phase !== "landing"} />
+          <Machine onPlay={handlePlay} zooming={phase !== "landing"} solvedResult={solvedResult} />
         </div>
       )}
     </main>

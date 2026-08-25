@@ -10,6 +10,7 @@ import { WarmupTeaser } from "./warmup-teaser";
 import { AiComparison, type AiResult } from "./ai-comparison";
 import { createApurinaComparisonUrl } from "./canonical-apurina";
 import { useSfx } from "./use-sfx";
+import { useSolveCounter } from "./use-solve-counter";
 import {
   getTodaysPuzzle,
   getPuzzleById,
@@ -81,9 +82,10 @@ interface SlotData {
 
 export interface PuzzleViewProps {
   onBack?: () => void;
+  onSolved?: (data: { language: string; score: number; total: number; verdict: string; accentColor: string; timeStr: string }) => void;
 }
 
-export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
+export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
   const puzzle = useMemo(() => {
     if (typeof window !== "undefined") {
       const params = new URLSearchParams(window.location.search);
@@ -96,6 +98,7 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
     return getTodaysPuzzle();
   }, []);
   const sfx = useSfx();
+  const { count: solveCount, increment: incrementSolveCount } = useSolveCounter();
 
   // Phase
   const [phase, setPhase] = useState<Phase>("study");
@@ -172,9 +175,27 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
         const p = recordSolve(puzzle, elapsed);
         setProgress(p);
       }
-      setTimeout(() => setPhase("result"), 800);
+      setTimeout(() => {
+        setPhase("result");
+        incrementSolveCount();
+        // Notify parent of solve result (for CRT solved state)
+        const m = Math.floor(elapsed / 60);
+        const s = elapsed % 60;
+        onSolved?.({
+          language: puzzle.language,
+          score,
+          total: puzzle.queries.length,
+          verdict: allCorrect
+            ? puzzle.verdicts.perfect
+            : score >= puzzle.queries.length * 0.6
+              ? puzzle.verdicts.good
+              : puzzle.verdicts.partial,
+          accentColor: puzzle.theme.accent,
+          timeStr: `${m}:${s.toString().padStart(2, "0")}`,
+        });
+      }, 800);
     }
-  }, [allLocked, allCorrect, puzzle, elapsed]);
+  }, [allLocked, allCorrect, puzzle, elapsed, score, onSolved, incrementSolveCount]);
 
   // ─── Handlers ─────────────────────────────────────────────────────────────
 
@@ -723,6 +744,18 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
                   >
                     Challenge a friend →
                   </motion.button>
+
+                  {/* Social proof */}
+                  {solveCount !== null && solveCount > 0 && (
+                    <motion.p
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 1.3 }}
+                      className="mt-3 text-[10px] font-mono text-white/30"
+                    >
+                      {solveCount} solved today
+                    </motion.p>
+                  )}
                 </div>
 
                 {/* ═══ Details — below the fold ═══ */}

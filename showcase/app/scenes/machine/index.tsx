@@ -4,7 +4,9 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
-import { drawScreen, setSkipTypewriter, SCREEN_H, SCREEN_W } from "./screen-canvas";
+import { drawScreen, setSkipTypewriter, setSolvedState, SCREEN_H, SCREEN_W } from "./screen-canvas";
+import type { SolvedData } from "./screen-canvas";
+import { useSolveCounter } from "../../play/use-solve-counter";
 
 const MacScene = dynamic(
   () => import("./mac-scene").then((m) => m.MacScene),
@@ -14,11 +16,13 @@ const MacScene = dynamic(
 interface MachineProps {
   onPlay?: () => void;
   zooming?: boolean;
+  solvedResult?: SolvedData | null;
 }
 
-export const Machine = ({ onPlay, zooming = false }: MachineProps) => {
+export const Machine = ({ onPlay, zooming = false, solvedResult = null }: MachineProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [isMobile, setIsMobile] = useState(false);
+  const { count } = useSolveCounter();
 
   useEffect(() => {
     setIsMobile(window.innerWidth < 768);
@@ -30,6 +34,11 @@ export const Machine = ({ onPlay, zooming = false }: MachineProps) => {
       localStorage.setItem("ration-visited", "1");
     }
   }, []);
+
+  // Set solved state on CRT when game is complete
+  useEffect(() => {
+    setSolvedState(solvedResult);
+  }, [solvedResult]);
 
   // Drive the typewriter animation on a 2D canvas,
   // then let MacScene sample it as a CanvasTexture.
@@ -113,10 +122,15 @@ export const Machine = ({ onPlay, zooming = false }: MachineProps) => {
         </div>
       )}
 
-      {/* Subtle instruction (desktop only, hidden during zoom) */}
+      {/* Footer hints (desktop only, hidden during zoom) */}
       {!isMobile && !zooming && (
-        <div className="pointer-events-none absolute inset-x-0 bottom-8 z-20 flex justify-center">
-          <p className="text-[10px] text-white/35 font-mono">
+        <div className="pointer-events-none absolute inset-x-0 bottom-8 z-20 flex flex-col items-center gap-1">
+          {count !== null && count > 0 && (
+            <p className="text-[10px] text-white/40 font-mono">
+              {count} solved today
+            </p>
+          )}
+          <p className="text-[10px] text-white/25 font-mono">
             drag to rotate
           </p>
         </div>

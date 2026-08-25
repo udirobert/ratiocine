@@ -18,11 +18,26 @@ let lastFrame = 0;
 const CHARS_PER_SEC = 18;
 let skipMode = false;
 
+// Solved state
+export interface SolvedData {
+  language: string;
+  score: number;
+  total: number;
+  verdict: string;
+  accentColor: string;
+  timeStr: string;
+}
+let solvedState: SolvedData | null = null;
+
 export function setSkipTypewriter(skip: boolean) {
   skipMode = skip;
   if (skip) {
-    charCount = 9999; // instant completion
+    charCount = 9999;
   }
+}
+
+export function setSolvedState(data: SolvedData | null) {
+  solvedState = data;
 }
 
 export const drawScreen = (
@@ -30,8 +45,15 @@ export const drawScreen = (
   _lineIndex: number,
   _scoreIndex: number,
 ): void => {
-  // Advance typewriter
   const now = performance.now();
+
+  // If solved, draw the result screen instead
+  if (solvedState) {
+    drawSolvedScreen(ctx, solvedState, now);
+    return;
+  }
+
+  // Advance typewriter
   if (lastFrame === 0) lastFrame = now;
   const dt = now - lastFrame;
   lastFrame = now;
@@ -143,6 +165,72 @@ export const drawScreen = (
 
   ctx.textAlign = "left";
 };
+
+// ─── Solved screen ──────────────────────────────────────────────────────────
+
+function drawSolvedScreen(ctx: CanvasRenderingContext2D, data: SolvedData, now: number): void {
+  const centerX = SCREEN_W / 2;
+
+  // Background
+  ctx.fillStyle = "#0a0c10";
+  ctx.fillRect(0, 0, SCREEN_W, SCREEN_H);
+
+  // Subtle scan lines
+  ctx.fillStyle = "rgba(255,255,255,0.012)";
+  for (let y = 0; y < SCREEN_H; y += 3) {
+    ctx.fillRect(0, y, SCREEN_W, 1);
+  }
+
+  // Faint accent glow at bottom
+  const grad = ctx.createRadialGradient(centerX, SCREEN_H, 20, centerX, SCREEN_H, 200);
+  grad.addColorStop(0, `${data.accentColor}15`);
+  grad.addColorStop(1, "transparent");
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, 0, SCREEN_W, SCREEN_H);
+
+  // Score — big
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.font = "bold 64px ui-sans-serif, system-ui, -apple-system, sans-serif";
+  ctx.fillStyle = data.score === data.total ? data.accentColor : "#ffffff";
+  ctx.fillText(`${data.score}/${data.total}`, centerX, 140);
+
+  // Verdict
+  ctx.font = "16px ui-sans-serif, system-ui, -apple-system, sans-serif";
+  ctx.fillStyle = "rgba(255,255,255,0.7)";
+  ctx.fillText(data.verdict, centerX, 195);
+
+  // Language
+  ctx.font = "12px ui-monospace, 'SF Mono', Menlo, monospace";
+  ctx.fillStyle = `${data.accentColor}99`;
+  ctx.fillText(data.language.toUpperCase(), centerX, 235);
+
+  // Time
+  ctx.font = "11px ui-monospace, 'SF Mono', Menlo, monospace";
+  ctx.fillStyle = "rgba(255,255,255,0.35)";
+  ctx.fillText(data.timeStr, centerX, 260);
+
+  // "Play again" prompt (pulsing)
+  const playY = 320;
+  const pulse = 0.5 + Math.sin(now / 700) * 0.2;
+
+  ctx.strokeStyle = `rgba(255, 255, 255, ${pulse * 0.3})`;
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  roundRect(ctx, centerX - 55, playY - 14, 110, 28, 14);
+  ctx.stroke();
+
+  ctx.font = "bold 11px ui-sans-serif, system-ui, -apple-system, sans-serif";
+  ctx.fillStyle = `rgba(255, 255, 255, ${pulse * 0.5 + 0.2})`;
+  ctx.fillText("P L A Y  A G A I N", centerX, playY);
+
+  // Footer
+  ctx.font = "9px ui-monospace, 'SF Mono', Menlo, monospace";
+  ctx.fillStyle = "rgba(255,255,255,0.25)";
+  ctx.fillText("ratiocine · same puzzle, same grading", centerX, SCREEN_H - 30);
+
+  ctx.textAlign = "left";
+}
 
 // ─── Helpers ────────────────────────────────────────────────────────────────
 
