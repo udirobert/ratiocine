@@ -14,8 +14,9 @@ export interface PuzzleQuery {
   prompt: string; // English to translate
   answer: string[]; // correct morpheme sequence
   answerJoined: string; // full correct answer string
-  difficulty: "tutorial" | "standard" | "curveball"; // tutorial = easy win, curveballs require deeper inference
-  hintOnFail?: string; // shown after first failed attempt
+  difficulty: "tutorial" | "standard" | "curveball";
+  hintOnFail?: string;
+  flavor?: string; // optional scenario framing e.g. "Your friend is going somewhere..."
 }
 
 export interface PuzzleHint {
@@ -67,6 +68,8 @@ export interface Puzzle {
   taskType: string;
   title: string;
   instruction: string;
+  taskFrame: string; // one-line task framing for study phase e.g. "Figure out how this language builds its verbs."
+  verdicts: { perfect: string; good: string; partial: string }; // warm human result messages
   pairs: PuzzlePair[];
   queries: PuzzleQuery[];
   morphemeBank: string[];
@@ -88,6 +91,12 @@ export const APURINA_PUZZLE: Puzzle = {
   title: "Verb Agreement",
   instruction:
     "Study the Apurinã verb forms and their English translations. Deduce the morphological rules, then translate the English phrases by composing morpheme tiles.",
+  taskFrame: "Figure out how Apurinã builds its verbs. Then prove it.",
+  verdicts: {
+    perfect: "You speak a little Apurinã now.",
+    good: "Almost there — Apurinã is starting to click.",
+    partial: "Tricky language. The rainforest keeps its secrets.",
+  },
 
   pairs: [
     // Visible from start (rows 1-6): enough to notice person prefixes + roots
@@ -113,6 +122,7 @@ export const APURINA_PUZZLE: Puzzle = {
       answerJoined: "nhaakutaka",
       difficulty: "tutorial" as const,
       hintOnFail: "Look at row 4 — it's the exact same phrase. This one is free!",
+      flavor: "You're hungry after a long walk along the Purus River.",
     },
     // Standard
     {
@@ -122,6 +132,7 @@ export const APURINA_PUZZLE: Puzzle = {
       answerJoined: "kaakutaka",
       difficulty: "standard",
       hintOnFail: "You need the 'we (incl.)' prefix. Have you revealed all the context rows?",
+      flavor: "Everyone sits down together for the meal.",
     },
     {
       id: 2,
@@ -130,6 +141,7 @@ export const APURINA_PUZZLE: Puzzle = {
       answerJoined: "ãnykataka",
       difficulty: "standard",
       hintOnFail: "The 'speak' root only appears in the gated rows 7-9.",
+      flavor: "Your companion is telling a story by the fire.",
     },
     {
       id: 3,
@@ -138,6 +150,7 @@ export const APURINA_PUZZLE: Puzzle = {
       answerJoined: "kaanykataka",
       difficulty: "standard",
       hintOnFail: "Combine what you learned about 'we (incl.)' with the 'speak' root.",
+      flavor: "The whole village is having a conversation.",
     },
     // Synthesis — every needed morpheme and rule appears in the evidence.
     {
@@ -147,6 +160,7 @@ export const APURINA_PUZZLE: Puzzle = {
       answerJoined: "apitaka",
       difficulty: "standard",
       hintOnFail: "Compare rows 1–3: the person prefix changes while the 'go' root and ending stay the same.",
+      flavor: "Someone is leaving for the next village.",
     },
   ],
 

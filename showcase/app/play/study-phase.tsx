@@ -123,6 +123,16 @@ export const StudyPhase = ({ puzzle, highlightedRows, onReady }: StudyPhaseProps
             </span>
           </motion.div>
 
+          {/* Task framing — one sentence that explains the challenge */}
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.7 }}
+            className="text-[14px] text-white/70 text-center mb-6 max-w-xs mx-auto"
+          >
+            {puzzle.taskFrame}
+          </motion.p>
+
           {/* Evidence specimens */}
           <div className="space-y-1.5">
             {pairs.slice(0, visibleCount).map((pair) => (

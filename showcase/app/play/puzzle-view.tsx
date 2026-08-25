@@ -109,8 +109,9 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
   const [attempts, setAttempts] = useState<number[]>(() => puzzle.queries.map(() => 0));
   const [locked, setLocked] = useState<boolean[]>(() => puzzle.queries.map(() => false));
   const [assembled, setAssembled] = useState<Map<number, string>>(new Map());
-  const [shaking, setShaking] = useState(false); // shake on wrong
-  const [score, setScore] = useState(0); // running score counter
+  const [shaking, setShaking] = useState(false);
+  const [score, setScore] = useState(0);
+  const [ghostVisible, setGhostVisible] = useState(true); // ghost tile hint for Q1
 
   // Selection
   const [selected, setSelected] = useState<string | null>(null);
@@ -142,6 +143,14 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
   }, [phase]);
 
   useEffect(() => { setProgress(loadProgress()); }, []);
+
+  // Ghost tile hint for Q1 — fades after 2s
+  useEffect(() => {
+    if (phase === "solve" && ghostVisible) {
+      const t = setTimeout(() => setGhostVisible(false), 2000);
+      return () => clearTimeout(t);
+    }
+  }, [phase, ghostVisible]);
 
   // Derived
   const allLocked = locked.every(Boolean);
@@ -420,6 +429,13 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
                   ))}
                 </div>
 
+                {/* Query flavor — scenario framing */}
+                {query.flavor && (
+                  <p className="text-center text-[12px] text-white/45 italic mb-1.5">
+                    {query.flavor}
+                  </p>
+                )}
+
                 {/* Query prompt — with shake animation */}
                 <motion.p
                   animate={shaking ? { x: [0, -4, 4, -4, 4, -2, 2, 0] } : { x: 0 }}
@@ -475,7 +491,12 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
                           } : {}),
                         }}
                       >
-                        {slot.morpheme || "·"}
+                        {slot.morpheme || (
+                          // Ghost tile hint: show first correct morpheme pulsing in Q1's first slot
+                          ghostVisible && currentQ === 0 && i === 0 && attempts[0] === 0
+                            ? <span className="text-white/20 animate-pulse">{query.answer[0]}</span>
+                            : "·"
+                        )}
                       </motion.button>
                     );
                   })}
@@ -611,14 +632,28 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
                     {score}/{puzzle.queries.length}
                   </motion.p>
 
-                  {/* Verdict */}
+                  {/* Warm verdict */}
                   <motion.p
                     initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3 }}
-                    className="mt-2 text-sm text-white/60"
+                    className="mt-3 text-[15px] text-white/70 text-center"
                   >
-                    {allCorrect ? `${puzzle.language} decoded in ${timeStr}` : `${timeStr} · ${hintsUsed > 0 ? `${hintsUsed} hint${hintsUsed > 1 ? "s" : ""}` : "no hints"}`}
+                    {allCorrect
+                      ? puzzle.verdicts.perfect
+                      : score >= puzzle.queries.length * 0.6
+                        ? puzzle.verdicts.good
+                        : puzzle.verdicts.partial}
+                  </motion.p>
+
+                  {/* Time + hints (smaller, secondary) */}
+                  <motion.p
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.5 }}
+                    className="mt-1 text-[11px] font-mono text-white/40"
+                  >
+                    {timeStr}{hintsUsed > 0 ? ` · ${hintsUsed} hint${hintsUsed > 1 ? "s" : ""}` : ""}
                   </motion.p>
 
                   {/* Card-flip result grid */}
