@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "motion/react";
-import { useCallback, useEffect, useMemo, useState } from "react";
-import type { Puzzle, PuzzlePair } from "./puzzle-data";
+import { useEffect, useMemo, useState } from "react";
+import type { Puzzle, PuzzlePair, PuzzleTheme } from "./puzzle-data";
 
 interface StudyPhaseProps {
   puzzle: Puzzle;
@@ -15,12 +15,13 @@ export const StudyPhase = ({ puzzle, highlightedRows, onReady }: StudyPhaseProps
   const [visibleCount, setVisibleCount] = useState(0);
   const [ready, setReady] = useState(false);
 
+  const { theme } = puzzle;
   const pairs = puzzle.pairs.filter((p) => !p.gated);
   const chars = useMemo(() => puzzle.language.split(""), [puzzle.language]);
 
   // After title animation settles, start showing rows
   useEffect(() => {
-    const titleDelay = chars.length * 40 + 600; // char stagger + pause
+    const titleDelay = chars.length * 40 + 600;
     const t = setTimeout(() => setShowRows(true), titleDelay);
     return () => clearTimeout(t);
   }, [chars.length]);
@@ -29,7 +30,6 @@ export const StudyPhase = ({ puzzle, highlightedRows, onReady }: StudyPhaseProps
   useEffect(() => {
     if (!showRows) return;
     if (visibleCount >= pairs.length) {
-      // All rows visible — show ready button
       setTimeout(() => setReady(true), 300);
       return;
     }
@@ -39,6 +39,14 @@ export const StudyPhase = ({ puzzle, highlightedRows, onReady }: StudyPhaseProps
 
   return (
     <div className="flex-1 flex flex-col min-h-0 relative">
+
+      {/* Background tint — radial gradient from theme */}
+      <div
+        className="absolute inset-0 pointer-events-none z-0"
+        style={{
+          background: `radial-gradient(ellipse at 50% 100%, ${theme.bgTint}15 0%, transparent 70%)`,
+        }}
+      />
 
       {/* CRT scan lines atmosphere */}
       <div
@@ -54,7 +62,7 @@ export const StudyPhase = ({ puzzle, highlightedRows, onReady }: StudyPhaseProps
       <div className="flex-1 flex flex-col items-center px-4 sm:px-6 overflow-y-auto relative z-10">
         <div className="max-w-lg w-full pt-8 pb-24">
 
-          {/* Language name — staggered characters, settles as header */}
+          {/* Language name — staggered characters */}
           <motion.h2
             className="text-3xl sm:text-4xl font-bold tracking-tight text-white text-center mb-2"
             initial="hidden"
@@ -91,21 +99,21 @@ export const StudyPhase = ({ puzzle, highlightedRows, onReady }: StudyPhaseProps
             </span>
             <span className="text-white/20">·</span>
             <span className="text-[12px] text-white/50 font-mono">
-              ~2,800 speakers
+              {puzzle.lore.speakers.split("—")[0].trim()}
             </span>
             <span className="text-[10px] px-1.5 py-0.5 rounded-full border border-red-400/30 text-red-300/60 font-mono">
               endangered
             </span>
           </motion.div>
 
-          {/* Evidence specimens — stagger in like a researcher laying out cards */}
+          {/* Evidence specimens */}
           <div className="space-y-1.5">
-            {pairs.slice(0, visibleCount).map((pair, i) => (
+            {pairs.slice(0, visibleCount).map((pair) => (
               <EvidenceCard
                 key={pair.id}
                 pair={pair}
-                index={i}
                 highlighted={highlightedRows.has(pair.id)}
+                theme={theme}
               />
             ))}
           </div>
@@ -124,7 +132,7 @@ export const StudyPhase = ({ puzzle, highlightedRows, onReady }: StudyPhaseProps
         </div>
       </div>
 
-      {/* Ready button — fades in after all rows visible */}
+      {/* Ready button — themed accent */}
       <motion.div
         className="absolute bottom-6 inset-x-0 flex justify-center z-20"
         initial={{ opacity: 0, y: 12 }}
@@ -134,7 +142,11 @@ export const StudyPhase = ({ puzzle, highlightedRows, onReady }: StudyPhaseProps
         <button
           onClick={onReady}
           disabled={!ready}
-          className="px-8 py-3 rounded-full bg-amber-500/90 text-sm font-bold text-black hover:bg-amber-400 transition-all shadow-[0_0_20px_rgba(229,168,75,0.15)] disabled:opacity-0"
+          className="px-8 py-3 rounded-full text-sm font-bold text-black transition-all disabled:opacity-0"
+          style={{
+            backgroundColor: theme.accent,
+            boxShadow: `0 0 20px ${theme.accent}25`,
+          }}
         >
           I see it →
         </button>
@@ -147,12 +159,12 @@ export const StudyPhase = ({ puzzle, highlightedRows, onReady }: StudyPhaseProps
 
 const EvidenceCard = ({
   pair,
-  index,
   highlighted,
+  theme,
 }: {
   pair: PuzzlePair;
-  index: number;
   highlighted: boolean;
+  theme: PuzzleTheme;
 }) => (
   <motion.div
     initial={{ opacity: 0, x: -12, scale: 0.97 }}
@@ -162,12 +174,16 @@ const EvidenceCard = ({
       flex items-center gap-3 px-4 py-3 rounded-lg
       border transition-colors
       ${highlighted
-        ? "border-amber-400/30 bg-amber-400/[0.04] shadow-[0_0_12px_rgba(229,168,75,0.08)]"
+        ? "border-white/15"
         : "border-white/6 bg-white/[0.02]"
       }
     `}
     style={{
-      boxShadow: highlighted ? undefined : "0 1px 3px rgba(0,0,0,0.3)",
+      boxShadow: highlighted
+        ? `0 0 12px ${theme.accent}15`
+        : "0 1px 3px rgba(0,0,0,0.3)",
+      backgroundColor: highlighted ? `${theme.accent}08` : undefined,
+      borderColor: highlighted ? `${theme.accent}40` : undefined,
     }}
   >
     {/* Row number */}
@@ -175,8 +191,11 @@ const EvidenceCard = ({
       {pair.id}
     </span>
 
-    {/* Source — terminal green tint */}
-    <span className="font-mono text-[13px] text-emerald-300/85 flex-1 tracking-wide">
+    {/* Source — themed color */}
+    <span
+      className="font-mono text-[13px] flex-1 tracking-wide"
+      style={{ color: `${theme.sourceColor}d9` }}
+    >
       {pair.source}
     </span>
 

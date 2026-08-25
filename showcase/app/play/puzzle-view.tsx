@@ -282,7 +282,10 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
             <button onClick={onBack} className="text-white/50 hover:text-white/80 text-lg leading-none min-w-[44px] min-h-[44px] flex items-center justify-center">←</button>
           )}
           <div>
-            <span className="text-[10px] font-mono text-amber-400/60 tracking-wider">
+            <span
+              className="text-[10px] font-mono tracking-wider"
+              style={{ color: `${puzzle.theme.accent}99` }}
+            >
               {puzzle.language.toUpperCase()}
             </span>
             <span className="text-[10px] text-white/50 ml-2 font-mono">{puzzle.family}</span>
@@ -293,7 +296,7 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
           {phase === "solve" && (
             <motion.span
               key={score}
-              initial={{ scale: 1.3, color: "#34d399" }}
+              initial={{ scale: 1.3, color: puzzle.theme.accent }}
               animate={{ scale: 1, color: "rgba(255,255,255,0.5)" }}
               className="font-mono text-xs tabular-nums"
             >
@@ -307,7 +310,8 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
             <button
               onClick={handleHint}
               disabled={hintsUsed >= puzzle.hints.length}
-              className="text-[10px] font-mono text-amber-300/60 hover:text-amber-300 disabled:opacity-25 transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
+              className="text-[10px] font-mono disabled:opacity-25 transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
+              style={{ color: `${puzzle.theme.accent}99` }}
             >
               💡 {puzzle.hints.length - hintsUsed}
             </button>
@@ -319,7 +323,8 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
       {phase === "solve" && (
         <div className="shrink-0 h-0.5 bg-white/5">
           <motion.div
-            className="h-full bg-amber-400/80 rounded-r-full"
+            className="h-full rounded-r-full"
+            style={{ backgroundColor: puzzle.theme.accent }}
             initial={{ width: "0%" }}
             animate={{ width: `${(score / puzzle.queries.length) * 100}%` }}
             transition={{ duration: 0.4, ease: "easeOut" }}
@@ -426,10 +431,16 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
                             : slot.morpheme
                               ? "border-white/30 bg-white/[0.06] text-white/90"
                               : selected
-                                ? "border-amber-400/50 bg-amber-400/[0.06] border-dashed"
+                                ? "border-dashed"
                                 : "border-white/10 bg-white/[0.02] border-dashed text-white/35"
                         }`}
-                        style={{ transformStyle: "preserve-3d" }}
+                        style={{
+                          transformStyle: "preserve-3d",
+                          ...((!slot.grade && !slot.morpheme && selected) ? {
+                            borderColor: `${puzzle.theme.accent}80`,
+                            backgroundColor: `${puzzle.theme.accent}0a`,
+                          } : {}),
+                        }}
                       >
                         {slot.morpheme || "·"}
                       </motion.button>
@@ -491,13 +502,19 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
                           onClick={() => { sfx.click(); setSelected((p) => (p === m ? null : m)); }}
                           className={`tile-physical relative px-3 py-2.5 min-h-[44px] rounded font-mono text-[13px] border transition-all ${
                             isSelected
-                              ? "border-amber-400 bg-amber-400/15 text-amber-300 shadow-[0_0_8px_rgba(229,168,75,0.15)]"
+                              ? ""
                               : "border-white/10 bg-white/[0.03] text-white/70 hover:border-white/20"
                           }`}
+                          style={isSelected ? {
+                            borderColor: puzzle.theme.accent,
+                            backgroundColor: `${puzzle.theme.accent}25`,
+                            color: puzzle.theme.sourceColor,
+                            boxShadow: `0 0 8px ${puzzle.theme.accent}25`,
+                          } : undefined}
                           title={revealed || undefined}
                         >
                           {m}
-                          {revealed && <span className="absolute -top-1 -right-1 w-1.5 h-1.5 rounded-full bg-amber-400/70" />}
+                          {revealed && <span className="absolute -top-1 -right-1 w-1.5 h-1.5 rounded-full" style={{ backgroundColor: puzzle.theme.accent }} />}
                         </button>
                       );
                     })}

@@ -46,6 +46,12 @@ export interface PuzzlePreview {
   family: string;
 }
 
+export interface PuzzleTheme {
+  accent: string;       // primary accent color (hex) — buttons, highlights, progress
+  sourceColor: string;  // tint for source language text in evidence cards
+  bgTint: string;       // subtle radial gradient color for atmosphere
+}
+
 export interface Puzzle {
   id: string;
   language: string;
@@ -57,10 +63,11 @@ export interface Puzzle {
   instruction: string;
   pairs: PuzzlePair[];
   queries: PuzzleQuery[];
-  morphemeBank: string[]; // all available morphemes (includes distractors)
+  morphemeBank: string[];
   hints: PuzzleHint[];
   lore: LanguageLore;
-  nextPreview: PuzzlePreview; // teaser for the next puzzle
+  nextPreview: PuzzlePreview;
+  theme: PuzzleTheme;
 }
 
 // ─── Apurinã Verb Agreement ────────────────────────────────────────────────
@@ -199,6 +206,12 @@ export const APURINA_PUZZLE: Puzzle = {
     script: "piriyʼ · ɨmbirʼi · kʼaniyʼ",
     difficulty: 3,
     family: "Xinkan (isolate)",
+  },
+
+  theme: {
+    accent: "#34d399",       // emerald — Amazonian green
+    sourceColor: "#6ee7b7",  // emerald-300 — lighter for text readability
+    bgTint: "#064e3b",       // emerald-950 — deep forest tint
   },
 };
 
