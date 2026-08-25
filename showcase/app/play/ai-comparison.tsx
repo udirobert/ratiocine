@@ -6,29 +6,32 @@ import type { Puzzle, QueryGrade } from "./puzzle-data";
 
 // ─── Modal API config ───────────────────────────────────────────────────────
 
-const BRANDED_BASE = "https://ratiocine.trustfall.xyz/api";
+const BRANDED_BASE = ""; // same-origin via Vercel rewrites
 const DIRECT_SOLVE = "https://ungethe--ratiocine-solve.modal.run/";
 const DIRECT_STATUS = "https://ungethe--ratiocine-status.modal.run/";
 
 async function resolveBase(): Promise<string> {
+  // With Vercel rewrites, /api/status is same-origin — no probe needed.
+  // Falls back to direct Modal if running locally without rewrites.
   try {
     const ctrl = new AbortController();
-    const t = setTimeout(() => ctrl.abort(), 2500);
-    await fetch(`${BRANDED_BASE}/status?id=ping`, { signal: ctrl.signal });
+    const t = setTimeout(() => ctrl.abort(), 2000);
+    const r = await fetch(`/api/status?id=ping`, { signal: ctrl.signal });
     clearTimeout(t);
-    return BRANDED_BASE;
-  } catch {
+    if (r.ok || r.status === 404) return ""; // same-origin works
     return "";
+  } catch {
+    return "__direct__";
   }
 }
 
 function solveUrl(base: string) {
-  return base ? `${base}/solve` : DIRECT_SOLVE;
+  return base === "__direct__" ? DIRECT_SOLVE : "/api/solve";
 }
 function statusUrl(base: string, id: string) {
-  return base
-    ? `${base}/status?id=${encodeURIComponent(id)}`
-    : `${DIRECT_STATUS}?id=${encodeURIComponent(id)}`;
+  return base === "__direct__"
+    ? `${DIRECT_STATUS}?id=${encodeURIComponent(id)}`
+    : `/api/status?id=${encodeURIComponent(id)}`;
 }
 
 // ─── localStorage cache ─────────────────────────────────────────────────────

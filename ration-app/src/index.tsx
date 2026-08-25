@@ -17,8 +17,8 @@ import {
 import "./style.scss";
 
 // ---------------------------------------------------------------------------
-// Config — swap BRANDED_BASE once ratiocine.trustfall.xyz DNS is live.
-// DIRECT_BASE is the fallback that always works today.
+// Config — ratiocine.trustfall.xyz points at Vercel which rewrites /api/* to
+// Modal. DIRECT_BASE is the fallback if the domain isn't reachable.
 // ---------------------------------------------------------------------------
 const BRANDED_BASE = "https://ratiocine.trustfall.xyz/api";
 const DIRECT_BASE = "https://ungethe--ratiocine-solve.modal.run";

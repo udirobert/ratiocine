@@ -1,67 +1,69 @@
 # DNS Setup — ratiocine.trustfall.xyz
 
-The Netlify site serves the `/api/solve` and `/api/status` proxy functions that
-front Modal's GPU inference engine. All other traffic (including `/`) 301-redirects
-to the Vercel showcase. The showcase (game + AI comparison) is the single
-user-facing surface.
+Everything runs on **Vercel** — the Next.js showcase, the puzzle game, and the
+API proxy (via `rewrites` in `next.config.ts`). Netlify is retired.
 
 | Domain | Host | Purpose |
 |--------|------|---------|
-| `ratiocine.trustfall.xyz` | Netlify | API proxy to Modal (`/api/*`), redirects all else to Vercel |
-| `ratiocine.vercel.app` | Vercel | Next.js showcase — puzzle game, AI comparison, the build |
+| `ratiocine.trustfall.xyz` | Vercel | Canonical domain — game, showcase, `/api/*` proxy to Modal |
+| `ratiocine.vercel.app` | Vercel | Default Vercel subdomain (works, but not canonical) |
 
-## Netlify custom domain setup
+## Add the custom domain in Vercel
 
-### 1. Add the custom domain in Netlify
+1. Go to Vercel dashboard → your project → **Settings** → **Domains**
+2. Add `ratiocine.trustfall.xyz`
+3. Vercel will show the required DNS record
 
-1. Go to Netlify dashboard → your site → **Domain management** → **Add a domain**
-2. Enter `ratiocine.trustfall.xyz`
-3. Netlify will show you the required DNS record
-
-### 2. Add the CNAME record at your DNS provider (for trustfall.xyz)
-
-Add a **CNAME** record:
+## Add the CNAME record at your DNS provider (trustfall.xyz)
 
 ```
 Type:  CNAME
 Name:  ratiocine
-Value: <your-netlify-site>.netlify.app
+Value: cname.vercel-dns.com
 TTL:   3600 (or "Auto")
 ```
 
-Replace `<your-netlify-site>` with your actual Netlify subdomain (visible in
-Site settings → General → Site name, e.g. `golden-arithmetic-abc123`).
+`cname.vercel-dns.com` is Vercel's universal CNAME target for custom domains.
 
-### 3. Enable HTTPS
+## HTTPS
 
-Once DNS propagates (usually < 5 minutes), Netlify will automatically provision
-a Let's Encrypt TLS certificate for `ratiocine.trustfall.xyz`. No action needed
-— just wait for the green lock to appear in the dashboard.
+Vercel provisions a TLS certificate automatically once DNS propagates (usually
+< 5 minutes). No action needed.
 
-### 4. Verify
+## Verify
 
 ```bash
-# Should return the Netlify landing page HTML
+# Should serve the showcase HTML
 curl -sI https://ratiocine.trustfall.xyz | head -5
 
-# Should return a JSON error (no job ID) — proves the proxy is live
+# Should proxy to Modal and return a JSON error (no job ID)
 curl -s https://ratiocine.trustfall.xyz/api/status?id=ping
 ```
 
-## How the code uses this domain
+## How the API proxy works
 
-- `ai-comparison.tsx` and `ration-app/src/index.tsx` both try
-  `https://ratiocine.trustfall.xyz/api/status?id=ping` as a health probe. If it
-  responds within 2.5s, they use the branded base URL for all API calls.
-  Otherwise, they fall back to direct Modal URLs.
+`showcase/next.config.ts` has rewrites:
 
-- `neutron.json` declares the HTTPS outcall capability pointing to
-  `https://ratiocine.trustfall.xyz/api/` for future canister-initiated solves.
+```
+/api/solve  → https://ungethe--ratiocine-solve.modal.run/
+/api/status → https://ungethe--ratiocine-status.modal.run/
+```
 
-## If the DNS isn't wired yet
+Same-origin from the browser's perspective — no CORS, no separate host. The
+ration-app tile (which runs in a Neutron iframe on a different origin) uses the
+absolute URL `https://ratiocine.trustfall.xyz/api/*` with a direct Modal
+fallback.
 
-Everything still works — the frontend code gracefully falls back to direct
-Modal endpoints (`https://ungethe--ratiocine-solve.modal.run/` and
-`https://ungethe--ratiocine-status.modal.run/`). The branded domain is
-cosmetic and gives a single stable identity across share cards and
-documentation.
+## Netlify (retired)
+
+The Netlify site at `ratiocine.netlify.app` is no longer needed. It previously
+served a landing page and API proxy functions. Both are now handled by Vercel.
+You can delete the Netlify site or leave it dormant — it won't receive traffic
+once the CNAME points at Vercel.
+
+## Future: ration.trustfall.xyz
+
+If you want a separate domain for the Ration protocol page (once mainnet is
+live), `ration.trustfall.xyz` is available. That would host the canister
+interaction UI (attestation, ledger viewer, report verifier). Not needed until
+the 5 ICP is funded and the canister is deployed.
