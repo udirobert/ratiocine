@@ -93,8 +93,7 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
   const [grades, setGrades] = useState<Map<number, QueryGrade>>(new Map());
   const [attempts, setAttempts] = useState<number[]>(() => puzzle.queries.map(() => 0));
   const [locked, setLocked] = useState<boolean[]>(() => puzzle.queries.map(() => false));
-  const [hintOnFail, setHintOnFail] = useState<string | null>(null);
-  const [assembled, setAssembled] = useState<Map<number, string>>(new Map()); // queryId → assembled word
+  const [assembled, setAssembled] = useState<Map<number, string>>(new Map());
   const [shaking, setShaking] = useState(false); // shake on wrong
   const [score, setScore] = useState(0); // running score counter
 
@@ -103,8 +102,6 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
 
   // Hints & context
   const [hintsUsed, setHintsUsed] = useState(0);
-  const [hintMsg, setHintMsg] = useState<string | null>(null);
-  const [hintSteps, setHintSteps] = useState<string[]>([]); // agentic hint steps
   const [gatedRevealed, setGatedRevealed] = useState(false);
   const [highlightedRows, setHighlightedRows] = useState<Set<number>>(new Set());
   const [revealedMorphemes, setRevealedMorphemes] = useState<Map<string, string>>(new Map());
@@ -170,7 +167,6 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
         return next;
       });
       setSelected(null);
-      setHintOnFail(null);
     } else if (slots[idx].morpheme) {
       setAnswers((prev) => {
         const next = [...prev];
@@ -226,13 +222,10 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
           if (first !== -1) setCurrentQ(first);
         }
       }, submitted.length * 100 + 800);
-      setHintOnFail(null);
     } else {
-      // Practice mode never locks a player out: a wrong answer prompts another
-      // evidence-based attempt, with a contextual hint available after every miss.
+      // Shake on wrong — the visual IS the feedback
       setShaking(true);
       setTimeout(() => setShaking(false), 400);
-      setHintOnFail(query.hintOnFail || "Recheck the examples, then try another arrangement.");
     }
   }, [isLocked, slots, attempts, currentQ, query, locked]);
 
@@ -241,25 +234,13 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
     const hint = puzzle.hints[hintsUsed];
     setHintsUsed((h) => h + 1);
 
-    // Agentic delivery: show "thinking" then reveal steps
-    setHintSteps([]);
-    setHintMsg("Analyzing...");
-
-    setTimeout(() => {
-      setHintMsg(null);
-      const steps: string[] = [];
-      if (hint.highlightRows) {
-        steps.push(`Looking at rows ${hint.highlightRows.join(", ")}...`);
-        setHighlightedRows((p) => { const n = new Set(p); hint.highlightRows!.forEach((r) => n.add(r)); return n; });
-      }
-      if (hint.revealMorpheme) {
-        steps.push(`Found: ${hint.revealMorpheme.morpheme} = "${hint.revealMorpheme.meaning}"`);
-        setRevealedMorphemes((p) => { const n = new Map(p); n.set(hint.revealMorpheme!.morpheme, hint.revealMorpheme!.meaning); return n; });
-      }
-      steps.push(hint.text);
-      setHintSteps(steps);
-      setTimeout(() => setHintSteps([]), 8000);
-    }, 800);
+    // Visual-only feedback: flash rows, flip morpheme tiles — no text
+    if (hint.highlightRows) {
+      setHighlightedRows((p) => { const n = new Set(p); hint.highlightRows!.forEach((r) => n.add(r)); return n; });
+    }
+    if (hint.revealMorpheme) {
+      setRevealedMorphemes((p) => { const n = new Map(p); n.set(hint.revealMorpheme!.morpheme, hint.revealMorpheme!.meaning); return n; });
+    }
   }, [hintsUsed, puzzle.hints]);
 
   const handleShare = useCallback(async () => {
@@ -351,9 +332,6 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
             >
               <div className="flex-1 min-h-0 overflow-y-auto">
                 <div className="max-w-lg mx-auto">
-                  <p className="text-[10px] font-mono text-white/50 uppercase tracking-widest mb-2">
-                    Study the pattern
-                  </p>
                   <div className="grid gap-px bg-white/5 rounded-md overflow-hidden border border-white/8">
                     {visiblePairs.map((pair) => (
                       <div
@@ -386,7 +364,7 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
                   onClick={() => setPhase("solve")}
                   className="px-6 py-2.5 rounded-md bg-amber-500/90 text-sm font-bold text-black hover:bg-amber-400 transition-colors"
                 >
-                  I see the pattern →
+                  Ready →
                 </button>
               </div>
             </motion.div>
@@ -444,11 +422,7 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
                 </motion.p>
 
                 {/* Tutorial helper */}
-                {query.difficulty === "tutorial" && !isLocked && (
-                  <p className="text-center text-[12px] text-emerald-300/50 mb-3 -mt-2">
-                    This one&apos;s free — find it in the context and tap the tiles to match.
-                  </p>
-                )}
+                {/* Tutorial queries have a subtle glow on the prompt instead of text */}
 
                 {/* Answer slots — with flip animation */}
                 <div className="flex items-center justify-center gap-2 mb-5 flex-wrap perspective-[800px]">
@@ -517,74 +491,7 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
                   )}
                 </AnimatePresence>
 
-                {/* Agentic hint delivery */}
-                <AnimatePresence>
-                  {hintMsg && (
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      className="text-center mb-3"
-                    >
-                      <span
-                        className="text-[12px] font-mono text-amber-300/70"
-                        style={{
-                          backgroundImage: "linear-gradient(90deg, rgba(229,168,75,0.4) 35%, rgba(229,168,75,0.9) 50%, rgba(229,168,75,0.4) 65%)",
-                          backgroundSize: "200% 100%",
-                          backgroundClip: "text",
-                          WebkitBackgroundClip: "text",
-                          WebkitTextFillColor: "transparent",
-                          animation: "shimmer 1.4s linear infinite",
-                        }}
-                      >
-                        💡 {hintMsg}
-                      </span>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-
-                {/* Hint steps (agentic trace) */}
-                <AnimatePresence>
-                  {hintSteps.length > 0 && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 4 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0 }}
-                      className="mb-4 rounded-md border border-amber-400/15 bg-amber-400/[0.03] px-3 py-2"
-                    >
-                      {hintSteps.map((step, i) => (
-                        <motion.div
-                          key={i}
-                          initial={{ opacity: 0, x: -8 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: i * 0.3 }}
-                          className="flex items-start gap-2 py-0.5"
-                        >
-                          <span className="text-amber-400/50 text-[10px] mt-0.5 shrink-0">
-                            {i < hintSteps.length - 1 ? "→" : "✓"}
-                          </span>
-                          <span className="text-[12px] text-amber-200/70 leading-relaxed">
-                            {step}
-                          </span>
-                        </motion.div>
-                      ))}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-
-                {/* Hint on fail (simple) */}
-                <AnimatePresence>
-                  {hintOnFail && hintSteps.length === 0 && (
-                    <motion.p
-                      initial={{ opacity: 0, y: 4 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0 }}
-                      className="text-center text-[12px] text-amber-300/70 mb-4"
-                    >
-                      💡 {hintOnFail}
-                    </motion.p>
-                  )}
-                </AnimatePresence>
+                {/* Hint on fail — subtle shake is the feedback, no text needed */}
 
                 {/* Correct answer if locked wrong */}
                 {isLocked && !qGrade?.isCorrect && (
@@ -642,17 +549,12 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
                   )}
                   <button
                     onClick={() => setPhase("study")}
-                    className="text-[11px] text-white/50 hover:text-white/70 font-mono transition-colors min-h-[44px] flex items-center"
+                    className="w-11 min-h-[44px] flex items-center justify-center text-white/40 hover:text-white/70 transition-colors rounded-md hover:bg-white/5"
+                    aria-label="Back to context"
                   >
-                    ← context
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
                   </button>
                 </div>
-
-                {attempts[currentQ] > 0 && !isLocked && (
-                  <p className="text-center text-[10px] text-white/50 font-mono mt-2">
-                    attempt {attempts[currentQ]} · practice mode
-                  </p>
-                )}
               </div>
             </motion.div>
           )}
@@ -665,147 +567,150 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
               animate={{ opacity: 1, scale: 1 }}
               className="flex-1 flex flex-col px-4 py-4 sm:px-6 overflow-y-auto"
             >
-              <div className="max-w-lg mx-auto w-full space-y-4 flex-1">
+              <div className="max-w-lg mx-auto w-full flex-1">
 
-                {/* Result header */}
-                <div className="text-center py-2">
-                  {allCorrect ? (
-                    <>
-                      <motion.p
-                        initial={{ scale: 0.8, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 1 }}
-                        transition={{ type: "spring", stiffness: 200 }}
-                        className="text-2xl font-bold text-emerald-400"
-                      >
-                        Cracked.
-                      </motion.p>
-                      <p className="text-sm text-white/85 mt-1">{puzzle.language} decoded in {timeStr}</p>
-                    </>
-                  ) : (
-                    <>
-                      <p className="text-xl font-bold text-white/85">Close.</p>
-                      <p className="text-sm text-white/80 mt-1">
-                        {score}/{puzzle.queries.length} correct
-                      </p>
-                    </>
+                {/* ═══ Celebration — visible without scrolling ═══ */}
+                <div className="flex flex-col items-center justify-center min-h-[45svh] py-6">
+
+                  {/* Big score */}
+                  <motion.p
+                    initial={{ scale: 0.5, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ type: "spring", stiffness: 200, delay: 0.1 }}
+                    className={`text-6xl font-bold tabular-nums ${allCorrect ? "text-emerald-400" : "text-white/90"}`}
+                  >
+                    {score}/{puzzle.queries.length}
+                  </motion.p>
+
+                  {/* Verdict */}
+                  <motion.p
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3 }}
+                    className="mt-2 text-sm text-white/60"
+                  >
+                    {allCorrect ? `${puzzle.language} decoded in ${timeStr}` : `${timeStr} · ${hintsUsed > 0 ? `${hintsUsed} hint${hintsUsed > 1 ? "s" : ""}` : "no hints"}`}
+                  </motion.p>
+
+                  {/* Emoji grid */}
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.5 }}
+                    className="mt-5 flex items-center justify-center gap-1"
+                  >
+                    {puzzle.queries.map((q, i) => {
+                      const g = grades.get(q.id);
+                      const correct = g?.isCorrect;
+                      return (
+                        <motion.span
+                          key={q.id}
+                          initial={{ scale: 0, rotate: -180 }}
+                          animate={{ scale: 1, rotate: 0 }}
+                          transition={{ delay: 0.5 + i * 0.1, type: "spring", stiffness: 300 }}
+                          className={`w-8 h-8 rounded-md flex items-center justify-center text-sm ${
+                            correct
+                              ? "bg-emerald-400/20 text-emerald-400"
+                              : "bg-red-400/15 text-red-400/70"
+                          }`}
+                        >
+                          {correct ? "✓" : "✗"}
+                        </motion.span>
+                      );
+                    })}
+                  </motion.div>
+
+                  {/* Share button — prominent */}
+                  <motion.button
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.9 }}
+                    onClick={handleShare}
+                    disabled={!aiSettled}
+                    className="mt-6 px-6 py-2.5 rounded-full border border-white/20 text-sm font-mono text-white/80 hover:text-white hover:bg-white/5 transition-all min-h-[44px] disabled:opacity-30 disabled:cursor-not-allowed"
+                  >
+                    {!aiSettled ? "⏳" : copied ? "Copied!" : "Share"}
+                  </motion.button>
+                </div>
+
+                {/* ═══ Details — below the fold ═══ */}
+                <div className="space-y-4 pb-6">
+
+                  {/* AI Comparison — the reward moment */}
+                  <AiComparison
+                    puzzle={puzzle}
+                    humanElapsed={elapsed}
+                    humanHints={hintsUsed}
+                    humanGrades={grades}
+                    onResult={setAiResult}
+                    onSettled={() => setAiSettled(true)}
+                  />
+
+                  {/* Solve trace — collapsed by default */}
+                  <details className="rounded-lg border border-white/8 bg-white/[0.01]">
+                    <summary className="px-4 py-3 text-[11px] font-mono text-white/60 uppercase tracking-wider cursor-pointer hover:text-white/80 min-h-[44px] flex items-center">
+                      Solve trace
+                    </summary>
+                    <div className="divide-y divide-white/5">
+                      {puzzle.queries.map((q, i) => {
+                        const g = grades.get(q.id);
+                        const correct = g?.isCorrect;
+                        return (
+                          <div key={q.id} className="px-4 py-2 flex items-center gap-2">
+                            <span className={`text-[11px] font-mono shrink-0 ${correct ? "text-emerald-400" : "text-red-400/70"}`}>
+                              {correct ? "✓" : "✗"}
+                            </span>
+                            <span className="text-[12px] text-white/70 flex-1 truncate">{q.prompt}</span>
+                            <span className="text-[11px] font-mono text-emerald-400/60 shrink-0">{q.answerJoined}</span>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </details>
+
+                  {/* Audio moment */}
+                  {allCorrect && (
+                    <AudioMoment
+                      audioSrc="/audio/apurina-forms.mp3"
+                      language={puzzle.language}
+                      transcript={puzzle.queries.map((q) => q.answerJoined).join(" · ")}
+                    />
+                  )}
+
+                  {/* Map */}
+                  <LanguageMap
+                    progress={progress}
+                    currentLanguageCode={puzzle.languageCode}
+                    currentCoordinates={puzzle.lore.coordinates}
+                    currentLanguage={puzzle.language}
+                  />
+
+                  {/* Lore */}
+                  <details className="rounded-lg border border-white/8 bg-white/[0.01]">
+                    <summary className="px-4 py-3 text-[11px] font-mono text-white/60 uppercase tracking-wider cursor-pointer hover:text-white/80 min-h-[44px] flex items-center">
+                      About {puzzle.language}
+                    </summary>
+                    <div className="px-4 pb-4 space-y-2 text-[13px] text-white/75 leading-relaxed">
+                      <p><span className="text-white/40 font-mono text-[10px]">WHERE</span> {puzzle.lore.geography}</p>
+                      <p><span className="text-white/40 font-mono text-[10px]">SPEAKERS</span> {puzzle.lore.speakers}</p>
+                      <p><span className="text-white/40 font-mono text-[10px]">STATUS</span> {puzzle.lore.endangerment}</p>
+                      <p><span className="text-white/40 font-mono text-[10px]">NOTE</span> {puzzle.lore.funFact}</p>
+                    </div>
+                  </details>
+
+                  {/* Next puzzle */}
+                  <div className="text-center py-2">
+                    <p className="text-sm font-bold text-white/80">{puzzle.nextPreview.language}</p>
+                    <p className="font-mono text-[11px] text-white/40 mt-0.5">Coming soon</p>
+                  </div>
+
+                  {/* Local record */}
+                  {progress && (
+                    <p className="text-center text-[10px] font-mono text-white/40">
+                      🔥{progress.streak} · 🧩{progress.puzzlesSolved}
+                    </p>
                   )}
                 </div>
-
-                {/* Solve trace — expandable per query */}
-                <div className="rounded-lg border border-white/8 bg-white/[0.01] overflow-hidden">
-                  <div className="px-3 py-2 border-b border-white/5 flex items-center justify-between">
-                    <span className="text-[10px] font-mono text-white/60 uppercase tracking-widest">Solve trace</span>
-                    <span className="text-[10px] font-mono text-white/50">{score} correct · {hintsUsed} hints</span>
-                  </div>
-                  {puzzle.queries.map((q, i) => {
-                    const g = grades.get(q.id);
-                    const correct = g?.isCorrect;
-                    return (
-                      <details key={q.id} className="border-b border-white/5 last:border-0">
-                        <summary className="flex items-center gap-2 px-3 py-2 cursor-pointer hover:bg-white/[0.02] transition-colors min-h-[44px]">
-                          <span className={`text-[11px] font-mono shrink-0 ${correct ? "text-emerald-400" : "text-red-400/70"}`}>
-                            {correct ? "✓" : "✗"}
-                          </span>
-                          <span className="text-[12px] text-white/80 flex-1 truncate">
-                            Q{i + 1} — {q.prompt}
-                          </span>
-                          <span className="text-[10px] font-mono text-white/85 shrink-0">
-                            {g ? `${g.attempt} attempt${g.attempt > 1 ? "s" : ""}` : "—"}
-                          </span>
-                          {q.difficulty !== "standard" && (
-                            <span className={`text-[9px] px-1.5 py-0.5 rounded-full font-mono ${
-                              q.difficulty === "tutorial" ? "bg-emerald-400/10 text-emerald-400/60" : "bg-amber-400/10 text-amber-400/60"
-                            }`}>
-                              {q.difficulty}
-                            </span>
-                          )}
-                        </summary>
-                        <div className="px-3 pb-2 pl-8 space-y-1">
-                          <p className="text-[11px] text-white/85">
-                            Your answer: <span className="font-mono text-white/85">
-                              {answers[i].filter(s => s.morpheme).map(s => s.morpheme).join(" + ") || "—"}
-                            </span>
-                          </p>
-                          <p className="text-[11px] text-white/85">
-                            Correct: <span className="font-mono text-emerald-400/60">{q.answerJoined}</span>
-                          </p>
-                          {g && (
-                            <div className="flex gap-0.5 mt-1">
-                              {g.grades.map((grade, gi) => (
-                                <span key={gi} className={`w-4 h-1.5 rounded-full ${
-                                  grade === "correct" ? "bg-emerald-400" : grade === "misplaced" ? "bg-amber-400" : "bg-red-400/60"
-                                }`} />
-                              ))}
-                            </div>
-                          )}
-                        </div>
-                      </details>
-                    );
-                  })}
-                </div>
-
-                {/* AI Comparison — the reward moment */}
-                <AiComparison
-                  puzzle={puzzle}
-                  humanElapsed={elapsed}
-                  humanHints={hintsUsed}
-                  humanGrades={grades}
-                  onResult={setAiResult}
-                  onSettled={() => setAiSettled(true)}
-                />
-
-                {/* Audio moment */}
-                {allCorrect && (
-                  <AudioMoment
-                    audioSrc="/audio/apurina-forms.mp3"
-                    language={puzzle.language}
-                    transcript={puzzle.queries.map((q) => q.answerJoined).join(" · ")}
-                  />
-                )}
-
-                {/* Map */}
-                <LanguageMap
-                  progress={progress}
-                  currentLanguageCode={puzzle.languageCode}
-                  currentCoordinates={puzzle.lore.coordinates}
-                  currentLanguage={puzzle.language}
-                />
-
-                {/* Lore */}
-                <details className="rounded-lg border border-white/8 bg-white/[0.01]">
-                  <summary className="px-4 py-3 text-[11px] font-mono text-white/60 uppercase tracking-wider cursor-pointer hover:text-white/80 min-h-[44px] flex items-center">
-                    About {puzzle.language}
-                  </summary>
-                  <div className="px-4 pb-4 space-y-2 text-[13px] text-white/75 leading-relaxed">
-                    <p><span className="text-white/40 font-mono text-[10px]">WHERE</span> {puzzle.lore.geography}</p>
-                    <p><span className="text-white/40 font-mono text-[10px]">SPEAKERS</span> {puzzle.lore.speakers}</p>
-                    <p><span className="text-white/40 font-mono text-[10px]">STATUS</span> {puzzle.lore.endangerment}</p>
-                    <p><span className="text-white/40 font-mono text-[10px]">NOTE</span> {puzzle.lore.funFact}</p>
-                  </div>
-                </details>
-
-                {/* Future puzzle preview */}
-                <div className="text-center py-2">
-                  <p className="text-[10px] font-mono text-white/50 uppercase tracking-widest">More puzzles</p>
-                  <p className="text-sm font-bold text-white/80 mt-1">{puzzle.nextPreview.language}</p>
-                  <p className="font-mono text-[12px] text-sky-300/40">Coming soon · {puzzle.nextPreview.script}</p>
-                </div>
-              </div>
-
-              {/* Bottom actions */}
-              <div className="shrink-0 pt-3 flex flex-wrap items-center justify-center gap-3">
-                {progress && (
-                  <span className="text-[10px] font-mono text-white/50">
-                    local record · 🔥{progress.streak} · 🧩{progress.puzzlesSolved}
-                  </span>
-                )}
-                <button
-                  onClick={handleShare}
-                  disabled={!aiSettled}
-                  className="px-4 py-2 rounded-md border border-white/15 text-[12px] font-mono text-white/70 hover:text-white/90 hover:bg-white/5 transition-colors min-h-[44px] disabled:opacity-30 disabled:cursor-not-allowed"
-                >
-                  {!aiSettled ? "Waiting for AI..." : copied ? "Copied!" : "Share"}
-                </button>
               </div>
             </motion.div>
           )}
@@ -813,13 +718,7 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
         </AnimatePresence>
       </div>
 
-      {/* Shimmer keyframe (inline — needed for agentic hint) */}
-      <style jsx global>{`
-        @keyframes shimmer {
-          0% { background-position: 200% 0; }
-          100% { background-position: -200% 0; }
-        }
-      `}</style>
+      {/* end of main frame */}
     </div>
   );
 };

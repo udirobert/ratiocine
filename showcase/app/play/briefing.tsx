@@ -115,13 +115,6 @@ export const Briefing = ({ puzzle, onDismiss }: BriefingProps) => {
           >
             {puzzle.lore.lineageNote}
           </motion.p>
-
-          <motion.p
-            variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}
-            className="text-[11px] text-amber-200/70 leading-relaxed max-w-xs mx-auto"
-          >
-            Practice mode — every solution is supported by the examples. Hints are unlimited; your timer and solve record stay in this browser.
-          </motion.p>
         </motion.div>
 
         {/* CTA */}
