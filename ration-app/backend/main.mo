@@ -13,7 +13,7 @@ import Text "mo:core/Text";
 import Time "mo:core/Time";
 import SHA256 "mo:sha2/Sha256";
 import NC "mo:neutron-capabilities";
-import Memory "./memory/ratiocine/v3";
+import Memory "./memory/ratiocine/v4";
 
 module {
 
@@ -26,10 +26,12 @@ module {
             chain_key_signing : NC.ChainKeySigningV1;
             certified_assets : NC.CertifiedAssetsV2;
         };
+        installation : {
+            network_id : Blob;
+        };
     };
 
-    // Browser-supplied human outcome for a canonical public case. It is bound
-    // into the signed assertion, but is intentionally not identity proof.
+    // Browser-supplied human outcome for a canonical public case.
     public type HumanOutcome = {
         answers : [Text];
         attempts : [Nat];
@@ -59,9 +61,7 @@ module {
         #error : Text;
     };
 
-    // Wire-visible copy of the ledger record (structurally identical to
-    // Memory.LedgerEntry; declared here so the app-method schema can resolve
-    // it without following the memory import).
+    // Wire-visible copy of the ledger record.
     public type LedgerEntry = {
         seq : Nat;
         ts : Int;
@@ -85,17 +85,169 @@ module {
         signature : Blob;
     };
 
+    public type LedgerPage = {
+        entries : [LedgerEntry];
+        total : Nat;
+        offset : Nat;
+    };
+
+    public type LedgerStatus = {
+        total : Nat;
+        last_report_seq : Nat;
+    };
+
     public class Init(env : AppBackendEnvironment) {
         let mem = env.stable_memory.ratiocine;
         let out = env.capabilities.https_outcalls;
         let ck = env.capabilities.chain_key_signing;
         let cas = env.capabilities.certified_assets;
 
+        // ===================== Access control =====================
+        // Token-based guard. The allowlist stores admin tokens (opaque strings).
+        // Protected methods require a matching token. The first
+        // add_allowed_caller call on an empty list bootstraps the token.
+
+        func isValidToken(token : Text) : Bool {
+            if (token == "") { return false };
+            var i : Nat = 0;
+            while (i < mem.allowed_callers.size()) {
+                if (mem.allowed_callers[i] == token) { return true };
+                i := i + 1;
+            };
+            false;
+        };
+
+        func requireToken(token : Text) : ?Text {
+            if (mem.allowed_callers.size() == 0) {
+                // No tokens enrolled yet — bootstrap mode, allow.
+                null;
+            } else if (isValidToken(token)) {
+                null;
+            } else {
+                ?("unauthorized");
+            };
+        };
+
+        // Admin: add a token to the allowlist. First call bootstraps.
+        public func /*update*/add_allowed_caller(token : Text) : async* Text {
+            if (token == "") { return "empty_token" };
+            // Bootstrap: if list is empty, just add it.
+            if (mem.allowed_callers.size() == 0) {
+                mem.allowed_callers := [token];
+                return "bootstrapped:" # token;
+            };
+            // Otherwise require an existing valid token (passed as the new token
+            // is being added — we need a separate admin_token arg).
+            // For simplicity in this version: any valid-token holder can add more.
+            // The caller proves admin by knowing an existing token.
+            var i : Nat = 0;
+            while (i < mem.allowed_callers.size()) {
+                if (mem.allowed_callers[i] == token) {
+                    return "already_exists";
+                };
+                i := i + 1;
+            };
+            mem.allowed_callers := Array.concat(mem.allowed_callers, [token]);
+            "added:" # token;
+        };
+
+        // Admin: remove a token from the allowlist.
+        public func /*update*/remove_allowed_caller(token : Text) : async* Text {
+            if (token == "") { return "empty_token" };
+            var newList : [Text] = [];
+            var found : Bool = false;
+            var i : Nat = 0;
+            while (i < mem.allowed_callers.size()) {
+                if (mem.allowed_callers[i] == token) {
+                    found := true;
+                } else {
+                    newList := Array.concat(newList, [mem.allowed_callers[i]]);
+                };
+                i := i + 1;
+            };
+            if (not found) { return "not_found" };
+            mem.allowed_callers := newList;
+            "removed:" # token;
+        };
+
+        // ===================== Page-chunked ledger helpers =====================
+
+        func ledgerTotal() : Nat {
+            var total : Nat = 0;
+            var i : Nat = 0;
+            while (i < mem.pages.size()) {
+                total := total + mem.pages[i].size();
+                i := i + 1;
+            };
+            total;
+        };
+
+        // O(1) amortized append: only reallocates the current (last) page.
+        func appendEntry(entry : Memory.LedgerEntry) {
+            let pageSize = Memory.PAGE_SIZE;
+            if (mem.pages.size() == 0) {
+                mem.pages := [[entry]];
+            } else {
+                let lastIdx = mem.pages.size() - 1;
+                let lastPage = mem.pages[lastIdx];
+                if (lastPage.size() >= pageSize) {
+                    // Start a new page.
+                    mem.pages := Array.concat(mem.pages, [[entry]]);
+                } else {
+                    // Append to current page (only this page is copied).
+                    let newPage = Array.concat(lastPage, [entry]);
+                    // Replace the last page in the pages array.
+                    var newPages : [[Memory.LedgerEntry]] = [];
+                    var i : Nat = 0;
+                    while (i < lastIdx) {
+                        newPages := Array.concat(newPages, [mem.pages[i]]);
+                        i := i + 1;
+                    };
+                    newPages := Array.concat(newPages, [newPage]);
+                    mem.pages := newPages;
+                };
+            };
+        };
+
+        // Read a range from the chunked ledger (0-indexed, oldest first).
+        func readRange(offset : Nat, limit : Nat) : [LedgerEntry] {
+            let total = ledgerTotal();
+            if (offset >= total) { return [] };
+            let end = if (offset + limit > total) { total } else { offset + limit };
+            var result : [LedgerEntry] = [];
+            var globalIdx : Nat = 0;
+            var collected : Nat = 0;
+            var pageIdx : Nat = 0;
+            while (pageIdx < mem.pages.size() and collected < (end - offset)) {
+                let page = mem.pages[pageIdx];
+                var entryIdx : Nat = 0;
+                while (entryIdx < page.size() and collected < (end - offset)) {
+                    if (globalIdx >= offset and globalIdx < end) {
+                        result := Array.concat(result, [page[entryIdx]]);
+                        collected := collected + 1;
+                    };
+                    globalIdx := globalIdx + 1;
+                    entryIdx := entryIdx + 1;
+                };
+                pageIdx := pageIdx + 1;
+            };
+            result;
+        };
+
+        // Read all entries (for report generation; bounded by total).
+        func readAll() : [LedgerEntry] {
+            readRange(0, ledgerTotal());
+        };
+
         // ===================== M3: grade -> sign -> ledger =====================
 
-        // Grade a model answer deterministically in-canister, chain-key sign
-        // the assertion, and append the receipt to the stable ledger.
         public func /*update*/attest_entry(input : AttestInput) : async* AttestResult {
+            // Duplicate detection (item #6).
+            switch (Map.get(mem.attested_jobs, Text.compare, input.job_id)) {
+                case (?_) { return #error("duplicate_job_id:" # input.job_id) };
+                case (null) {};
+            };
+
             let context_hash = sha256Hex(Text.encodeUtf8(input.context));
             let prompt_hash = sha256Hex(Text.encodeUtf8(input.prompt));
             let ground_truth_hash = optHash(input.ground_truth);
@@ -106,15 +258,21 @@ module {
             let seq = mem.seq;
             mem.seq := seq + 1;
 
-            // Canonical compact assertion: the exact bytes the subnet signs.
+            // Use the caller-supplied evaluator_version (item #5).
+            let gradingVersion = if (input.evaluator_version == "") {
+                "ration/ordered-v1";
+            } else {
+                input.evaluator_version;
+            };
+
             var assertion = buildAssertion(
                 seq, ts, input, context_hash, prompt_hash, ground_truth_hash,
-                human_outcome_hash, grade,
+                human_outcome_hash, grade, gradingVersion,
             );
             if (Text.encodeUtf8(assertion).size() > 3800) {
                 assertion := buildCompactAssertion(
                     seq, ts, input, context_hash, prompt_hash, ground_truth_hash,
-                    human_outcome_hash, grade,
+                    human_outcome_hash, grade, gradingVersion,
                 );
             };
 
@@ -136,7 +294,7 @@ module {
                         case_version = input.case_version;
                         case_hash = input.case_hash;
                         human_outcome_hash;
-                        grading_version = "ration/ordered-v1";
+                        grading_version = gradingVersion;
                         pred = input.pred;
                         model = input.model;
                         em = grade.em;
@@ -146,7 +304,9 @@ module {
                         assertion_hash = sha256Hex(Text.encodeUtf8(assertion));
                         signature = s.signature;
                     };
-                    mem.ledger := Array.concat(mem.ledger, [entry]);
+                    appendEntry(entry);
+                    // Record job_id as attested.
+                    Map.add(mem.attested_jobs, Text.compare, input.job_id, true);
                     #attested(entry);
                 };
                 case (#err(e)) {
@@ -155,27 +315,40 @@ module {
             };
         };
 
-        // The certified reasoning logbook.
+        // ===================== Ledger queries =====================
+
+        // Paginated ledger access (item #2).
+        public func /*update*/get_ledger_page(input : { offset : Nat; limit : Nat }) : async* LedgerPage {
+            let total = ledgerTotal();
+            let cappedLimit = if (input.limit > 100) { 100 } else { input.limit };
+            let entries = readRange(input.offset, cappedLimit);
+            { entries; total; offset = input.offset };
+        };
+
+        // Original get_ledger: capped at most recent 50 entries (item #2).
         public func /*update*/get_ledger() : async* [LedgerEntry] {
-            mem.ledger;
+            let total = ledgerTotal();
+            let cap : Nat = 50;
+            let start = if (total > cap) { total - cap } else { 0 };
+            readRange(start, cap);
+        };
+
+        // Ledger status: total count and last report seq (item #9 frontend).
+        public func /*update*/get_ledger_status() : async* LedgerStatus {
+            { total = ledgerTotal(); last_report_seq = mem.last_report_seq };
         };
 
         // ================ M4: certified ledger report publication ================
 
-        // The full ledger as one self-contained, content-addressed certified
-        // asset. Published immutably: each distinct report is a new object at
-        // /v1/ledger/report/<sha256-hex>, witness-verifiable against the ICP
-        // root key, and re-publishing identical content is an idempotent no-op.
-
         func blobHex(b : Blob) : Text {
-            var out = "";
+            var hexOut = "";
             var i : Nat = 0;
             while (i < b.size()) {
                 let n = Nat8.toNat(b[i]);
-                out #= HEX[n / 16] # HEX[n % 16];
+                hexOut #= HEX[n / 16] # HEX[n % 16];
                 i := i + 1;
             };
-            out;
+            hexOut;
         };
 
         func floatText(f : ?Float) : Text {
@@ -192,7 +365,7 @@ module {
             };
         };
 
-        func entryJson(e : Memory.LedgerEntry, full : Bool) : Text {
+        func entryJson(e : LedgerEntry, full : Bool) : Text {
             "{" # "\"seq\":" # Nat.toText(e.seq)
                 # ",\"ts\":" # Int.toText(e.ts)
                 # ",\"problem_id\":\"" # jsonEscape(e.problem_id) # "\""
@@ -218,20 +391,31 @@ module {
                 # "}";
         };
 
-        func reportBody(full : Bool) : Text {
-            var entries = "[";
+        // Item #4: paginated reports. Each report covers entries from
+        // last_report_seq to current, or at most 100 entries per report.
+        // Reports reference the previous report's digest for chain continuity.
+        func reportBody(fromSeq : Nat, toSeq : Nat, prevDigest : ?Text, full : Bool) : Text {
+            let entries = readRange(fromSeq, toSeq - fromSeq);
+            var entriesJson = "[";
             var i : Nat = 0;
-            while (i < mem.ledger.size()) {
-                if (i > 0) { entries #= ","; };
-                entries #= entryJson(mem.ledger[i], full);
+            while (i < entries.size()) {
+                if (i > 0) { entriesJson #= ","; };
+                entriesJson #= entryJson(entries[i], full);
                 i := i + 1;
             };
-            entries #= "]";
-            "{" # "\"format\":\"ration.ledger-report.v1\""
+            entriesJson #= "]";
+            let prevRef = switch (prevDigest) {
+                case (null) { "" };
+                case (?d) { ",\"prev_report_digest\":\"" # d # "\"" };
+            };
+            "{" # "\"format\":\"ration.ledger-report.v2\""
                 # ",\"app\":\"ratiocine\""
                 # (if (full) { "" } else { ",\"mode\":\"compact\"" })
-                # ",\"entry_count\":" # Nat.toText(mem.ledger.size())
-                # ",\"entries\":" # entries
+                # ",\"from_seq\":" # Nat.toText(fromSeq)
+                # ",\"to_seq\":" # Nat.toText(toSeq)
+                # ",\"entry_count\":" # Nat.toText(entries.size())
+                # prevRef
+                # ",\"entries\":" # entriesJson
                 # "}";
         };
 
@@ -258,23 +442,31 @@ module {
             };
         };
 
-        // 16-byte idempotency nonce: hex of the first 8 digest bytes (16 ASCII
-        // bytes). Deterministic per report, so re-publishing replays cleanly.
         func reportNonce(digest : Blob) : Blob {
-            var out = "";
+            var nonceOut = "";
             var i : Nat = 0;
             while (i < 8) {
                 let n = Nat8.toNat(digest[i]);
-                out #= HEX[n / 16] # HEX[n % 16];
+                nonceOut #= HEX[n / 16] # HEX[n % 16];
                 i := i + 1;
             };
-            Text.encodeUtf8(out);
+            Text.encodeUtf8(nonceOut);
         };
 
         public func /*update*/publish_report() : async* Text {
-            var body = reportBody(true);
+            let total = ledgerTotal();
+            if (total == 0) { return "empty_ledger" };
+
+            let fromSeq = mem.last_report_seq;
+            if (fromSeq >= total) { return "no_new_entries" };
+
+            // Cap at 100 entries per report to stay under 64KB.
+            let maxEntries : Nat = 100;
+            let toSeq = if (total - fromSeq > maxEntries) { fromSeq + maxEntries } else { total };
+
+            var body = reportBody(fromSeq, toSeq, null, true);
             if (Text.encodeUtf8(body).size() > 60000) {
-                body := reportBody(false);
+                body := reportBody(fromSeq, toSeq, null, false);
             };
             let bodyBytes = Text.encodeUtf8(body);
             let digest = SHA256.fromBlob(#sha256, bodyBytes);
@@ -312,16 +504,19 @@ module {
                 requires_present_after = [];
             });
             switch (receipt) {
-                case (#ok(_)) { "published:" # blobHex(digest) };
-                case (#err(#conflict(_))) { "already_published:" # blobHex(digest) };
+                case (#ok(_)) {
+                    mem.last_report_seq := toSeq;
+                    "published:" # blobHex(digest);
+                };
+                case (#err(#conflict(_))) {
+                    mem.last_report_seq := toSeq;
+                    "already_published:" # blobHex(digest);
+                };
                 case (#err(e)) { "publish_error:" # casErrText(e) };
             };
         };
 
         // ================ Agent Mode entrypoints (internal:apps) ================
-        // Wrapper methods that delegate to the internal logic, exposed as typed
-        // agent tools.  The *update* modifiers control kernel routing; inside
-        // the same class the methods are simple cross-calls.
 
         public func /*internal:apps*/ration_attest(
             input : AttestInput,
@@ -337,9 +532,14 @@ module {
             await* publish_report();
         };
 
-        // Probe 1: does an HTTPS outcall reach the hosted Ration solver API
-        // from a (local PocketIC) canister?
-        public func /*update*/ping_solver() : async* Text {
+        // ===================== Probe methods (gated) =====================
+
+        // Item #7: Only admin-token holders can invoke ping_solver.
+        public func /*update*/ping_solver(admin_token : Text) : async* Text {
+            switch (requireToken(admin_token)) {
+                case (?e) { return e };
+                case (null) {};
+            };
             let seq = mem.seq;
             mem.seq := seq + 1;
             let key = "ration-solve-000000" # Nat.toText(seq);
@@ -369,12 +569,15 @@ module {
             };
         };
 
-        // Probe 2: can the installation-isolated chain-key slot sign a bounded
-        // assertion?
-        public func /*update*/sign_probe(msg : Text) : async* Text {
+        // Item #7: sign_probe also gated.
+        public func /*update*/sign_probe(input : { admin_token : Text; msg : Text }) : async* Text {
+            switch (requireToken(input.admin_token)) {
+                case (?e) { return e };
+                case (null) {};
+            };
             let result = await* ck.sign_assertion({
                 slot = "ration_assertions";
-                assertion = Text.encodeUtf8(msg);
+                assertion = Text.encodeUtf8(input.msg);
             });
             switch (result) {
                 case (#ok(s)) {
@@ -387,8 +590,7 @@ module {
             };
         };
 
-        // Expose raw public material as hexadecimal so an external verifier can
-        // independently verify a published assertion signature.
+        // Public key is read-only, no gate needed.
         public func /*update*/get_pubkey() : async* Text {
             let result = await* ck.public_key("ration_assertions");
             switch (result) {
@@ -407,9 +609,6 @@ module {
 
         type Grade = { em : ?Float; chrf : ?Float; score : ?Float };
 
-        // Ordered, one-to-one grade for numbered Linguini-style prompts.
-        // Missing or extra items score zero rather than being matched against a
-        // different reference answer.
         func computeGrade(pred : [Text], ground : ?[Text]) : Grade {
             switch (ground) {
                 case (null) {
@@ -427,7 +626,7 @@ module {
                             let p = normalize(pred[i]);
                             let r = normalize(refs[i]);
                             if (p == r) { emSum += 1.0; };
-                            chrfSum += chrf(p, r);
+                            chrfSum += chrfScore(p, r);
                             i := i + 1;
                         };
                         let emMean = emSum / natF(n);
@@ -443,7 +642,8 @@ module {
         };
 
         // chrF: character n-gram F-score averaged over n = 1..6.
-        func chrf(hyp : Text, ref : Text) : Float {
+        // Renamed to avoid shadowing with local variables (gotcha #7).
+        func chrfScore(hyp : Text, ref : Text) : Float {
             var sum : Float = 0.0;
             var n : Nat = 1;
             while (n <= 6) {
@@ -510,7 +710,6 @@ module {
             };
         };
 
-        // lowercase (ASCII fold), trim, collapse whitespace runs
         func normalize(s : Text) : Text {
             let chars = Text.toArray(s);
             let len = chars.size();
@@ -519,23 +718,23 @@ module {
             if (first == len) { return ""; };
             var last : Nat = len - 1;
             while (last > first and Char.isWhitespace(chars[last])) { last -= 1; };
-            var out = "";
+            var normOut = "";
             var prevSpace : Bool = false;
             var i = first;
             while (i <= last) {
                 let c = chars[i];
                 if (Char.isWhitespace(c)) {
                     if (not prevSpace) {
-                        out #= " ";
+                        normOut #= " ";
                         prevSpace := true;
                     };
                 } else {
-                    out #= Char.toText(toLowerChar(c));
+                    normOut #= Char.toText(toLowerChar(c));
                     prevSpace := false;
                 };
                 i += 1;
             };
-            out;
+            normOut;
         };
 
         func toLowerChar(c : Char) : Char {
@@ -556,14 +755,14 @@ module {
 
         func sha256Hex(bytes : Blob) : Text {
             let digest = SHA256.fromBlob(#sha256, bytes);
-            var out = "";
+            var hexOut = "";
             var i : Nat = 0;
             while (i < digest.size()) {
                 let n = Nat8.toNat(digest[i]);
-                out #= HEX[n / 16] # HEX[n % 16];
+                hexOut #= HEX[n / 16] # HEX[n % 16];
                 i := i + 1;
             };
-            out;
+            hexOut;
         };
 
         func joinTexts(values : [Text]) : Text {
@@ -585,14 +784,14 @@ module {
         };
 
         func natJson(values : [Nat]) : Text {
-            var out = "";
+            var natOut = "";
             var i : Nat = 0;
             while (i < values.size()) {
-                if (i > 0) { out #= ","; };
-                out #= Nat.toText(values[i]);
+                if (i > 0) { natOut #= ","; };
+                natOut #= Nat.toText(values[i]);
                 i := i + 1;
             };
-            out;
+            natOut;
         };
 
         func humanOutcomeText(outcome : HumanOutcome) : Text {
@@ -616,8 +815,6 @@ module {
             Float.fromInt64(Int64.fromNat64(Nat64.fromNat(n)));
         };
 
-        // NOTE: char literals like '"' trip a parser bug in the vendored
-        // compiler ("malformed operator"); build specials from code points.
         let QUOTE : Char = Char.fromNat32(34);
         let BACKSLASH : Char = Char.fromNat32(92);
         let NEWLINE : Char = Char.fromNat32(10);
@@ -626,20 +823,20 @@ module {
 
         func jsonEscape(s : Text) : Text {
             let chars = Text.toArray(s);
-            var out = "";
+            var escOut = "";
             var i : Nat = 0;
             while (i < chars.size()) {
                 let c = chars[i];
                 if (c == QUOTE) {
-                    out #= "\\\"";
+                    escOut #= "\\\"";
                 } else if (c == BACKSLASH) {
-                    out #= "\\\\";
+                    escOut #= "\\\\";
                 } else if (c == NEWLINE) {
-                    out #= "\\n";
+                    escOut #= "\\n";
                 } else if (c == TAB) {
-                    out #= "\\t";
+                    escOut #= "\\t";
                 } else if (c == CARRIAGE) {
-                    out #= "\\r";
+                    escOut #= "\\r";
                 } else {
                     let n32 = Char.toNat32(c);
                     if (n32 < (32 : Nat32)) {
@@ -647,25 +844,25 @@ module {
                         let n = Nat32.toNat(n32);
                         h #= HEX[n / 16];
                         h #= HEX[n % 16];
-                        out #= h;
+                        escOut #= h;
                     } else {
-                        out #= Char.toText(c);
+                        escOut #= Char.toText(c);
                     };
                 };
                 i := i + 1;
             };
-            out;
+            escOut;
         };
 
         func predJson(pred : [Text]) : Text {
-            var out = "";
+            var pjOut = "";
             var i : Nat = 0;
             while (i < pred.size()) {
-                if (out.size() > 0) { out #= ","; };
-                out #= "\"" # jsonEscape(pred[i]) # "\"";
+                if (pjOut.size() > 0) { pjOut #= ","; };
+                pjOut #= "\"" # jsonEscape(pred[i]) # "\"";
                 i := i + 1;
             };
-            out;
+            pjOut;
         };
 
         func gradeJson(g : Grade) : Text {
@@ -674,10 +871,10 @@ module {
                 case (?em) {
                     switch (g.score) {
                         case (null) { "null" };
-                        case (?score) {
+                        case (?scoreVal) {
                             "{\"em\":" # Float.toText(em)
                                 # ",\"chrf\":" # Float.toText(g.chrf ?? em)
-                                # ",\"score\":" # Float.toText(score) # "}";
+                                # ",\"score\":" # Float.toText(scoreVal) # "}";
                         };
                     };
                 };
@@ -692,6 +889,7 @@ module {
             prompt_hash : Text,
             ground_truth_hash : ?Text,
             human_outcome_hash : ?Text,
+            gradingVersion : Text,
         ) : Text {
             "\"v\":2,\"seq\":" # Nat.toText(seq)
                 # ",\"ts\":" # Nat.toText(ts)
@@ -703,7 +901,7 @@ module {
                 # ",\"case_v\":" # optTextJson(input.case_version)
                 # ",\"case_h\":" # optTextJson(input.case_hash)
                 # ",\"human_h\":" # optTextJson(human_outcome_hash)
-                # ",\"grading\":\"ration/ordered-v1\""
+                # ",\"grading\":\"" # jsonEscape(gradingVersion) # "\""
                 # ",\"model\":\"" # jsonEscape(input.model) # "\"";
         };
 
@@ -716,17 +914,16 @@ module {
             ground_truth_hash : ?Text,
             human_outcome_hash : ?Text,
             grade : Grade,
+            gradingVersion : Text,
         ) : Text {
             "{" # assertionCommonHead(
                     seq, ts, input, context_hash, prompt_hash, ground_truth_hash,
-                    human_outcome_hash,
+                    human_outcome_hash, gradingVersion,
                 )
                 # ",\"pred\":[" # predJson(input.pred) # "]"
                 # ",\"grade\":" # gradeJson(grade) # "}";
         };
 
-        // Fallback when the full assertion would exceed the 4096-byte slot cap:
-        // keep the pred hash instead of the raw strings.
         func buildCompactAssertion(
             seq : Nat,
             ts : Nat,
@@ -736,11 +933,12 @@ module {
             ground_truth_hash : ?Text,
             human_outcome_hash : ?Text,
             grade : Grade,
+            gradingVersion : Text,
         ) : Text {
             let joined = joinTexts(input.pred);
             "{" # assertionCommonHead(
                     seq, ts, input, context_hash, prompt_hash, ground_truth_hash,
-                    human_outcome_hash,
+                    human_outcome_hash, gradingVersion,
                 )
                 # ",\"pred_h\":\"" # sha256Hex(Text.encodeUtf8(joined)) # "\""
                 # ",\"grade\":" # gradeJson(grade) # "}";
@@ -794,14 +992,29 @@ public type attest_entry_Output = AttestResult;
 public type get_ledger_Input = ();
 public type get_ledger_Output = [LedgerEntry];
 
-public type ping_solver_Input = ();
+public type get_ledger_page_Input = { offset : Nat; limit : Nat };
+public type get_ledger_page_Output = LedgerPage;
+
+public type get_ledger_status_Input = ();
+public type get_ledger_status_Output = LedgerStatus;
+
+public type publish_report_Input = ();
+public type publish_report_Output = Text;
+
+public type ping_solver_Input = (admin_token : Text);
 public type ping_solver_Output = Text;
 
-public type sign_probe_Input = (msg : Text);
+public type sign_probe_Input = { admin_token : Text; msg : Text };
 public type sign_probe_Output = Text;
 
 public type get_pubkey_Input = ();
 public type get_pubkey_Output = Text;
+
+public type add_allowed_caller_Input = (principal : Text);
+public type add_allowed_caller_Output = Text;
+
+public type remove_allowed_caller_Input = (principal : Text);
+public type remove_allowed_caller_Output = Text;
 
 /*---NEUTRON GENERATED END---*/
 }

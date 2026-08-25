@@ -41,18 +41,41 @@ An IOL-AI 2026 competitor. The goal: submit a `script.py` to a public Hugging Fa
 - `bash scripts/sync-ration-app.sh` copies `ration-app/` → `neutron/apps/ratiocine/` and runs `mops install` on first sync.
 - Build + install: `cd neutron && npm --workspace neutron-ratiocine run package` then `npm run provision -- ration-local.ndeploy.json reinstall`.
 - Local PocketIC canister: `mqrdp-r7777-77775-qaaaq-cai` at `http://localhost:8000`. App methods are exposed namespaced as `app_ratiocine__<method>`.
-- Memory is **v2** (`LedgerEntry` ledger) with a v1→v2 migration declared in `neutron.json`.
+- Memory is **v4** (page-chunked ledger, caller allowlist, dedup set, report tracking) with v1→v2→v3→v4 migrations declared in `neutron.json`.
 - **Agent Mode entrypoints**: `ration_attest`, `ration_ledger`, `ration_report` are `/*internal:apps*/` functions exposing the core logic to the kernel agent catalog. `agent_entrypoints` capability declares them.
 - **Upgrade demo**: `neutron/upgrade_demo.ts` tests in-place canister upgrade via management canister chunk API (`install_chunked_code(mode=#upgrade(#keep))`) and verifies ledger persistence.
 
-### Verified working on local PocketIC (as of 2026-08-19)
-- Chain-key signing (`sign_probe`, 64-byte secp256k1 sig), public-key fetch, HTTPS-outcall validation.
+### Verified working on local PocketIC (as of 2026-08-25, v0.4)
+- Chain-key signing (`sign_probe`, 64-byte secp256k1 sig — requires admin token), public-key fetch, HTTPS-outcall validation.
 - **M3 backend**: `attest_entry` (grade → sign → append) and `get_ledger`. A perfect answer grades EM=1.0, chrF=1.0, score=1.0 (score = sqrt(em·chrf)), 64-byte signature, SHA-256 context + assertion hashes.
-- **M4 certified report**: `publish_report` publishes the ledger as an immutable content-addressed certified asset, served over HTTP at `/app/ratiocine/_route/protocol/v1/ledger/report/<sha256>` (HTTP 200, valid JSON, idempotent re-publish).
+- **M4 certified report**: `publish_report` publishes paginated ledger reports (max 100 entries per report, tracks `from_seq`/`to_seq`) as immutable content-addressed certified assets, served over HTTP at `/app/ratiocine/_route/protocol/v1/ledger/report/<sha256>` (HTTP 200, valid JSON). Returns `no_new_entries` if already caught up.
+- **v0.4 improvements** (all verified):
+  - Page-chunked ledger: O(1) amortized append via `[[LedgerEntry]]` pages of 64 entries.
+  - Paginated `get_ledger_page({offset, limit})`: max 100 results; `get_ledger` capped at 50 most recent.
+  - Token-based access control: `ping_solver` and `sign_probe` require admin token; `add_allowed_caller`/`remove_allowed_caller` admin methods; bootstrap-on-first-call.
+  - Duplicate job_id rejection: `Map<Text, Bool>` prevents double-signing (saves 26B cycles per ECDSA).
+  - `evaluator_version` wired through: caller-supplied version stored as `grading_version`.
+  - Report format v2: includes `from_seq`, `to_seq`, `entry_count`; idempotent within range.
+  - Frontend: verify link uses canister's own certified route; publish button shows delta count.
 - **Agent Mode entrypoints**: `ration_attest`, `ration_ledger`, `ration_report` declared as `/*internal:apps*/` with `agent_entrypoints` capability. Generated `_Input`/`_Output` types for kernel agent catalog.
 - **Upgrade persistence**: `neutron/upgrade_demo.ts` — in-place `install_chunked_code(mode=#upgrade(#keep))` preserves stable memory (enhanced orthogonal persistence). PocketIC 14 requires `wasm_memory_persistence` payload in the mode variant.
-- Smoke tests: `neutron/smoke_ledger.ts`, `neutron/smoke_report.ts`, `neutron/upgrade_demo.ts`.
-- **Blocked**: branded Netlify DNS (user to wire), forge-attempt UI mode, Agent Mode runtime integration test (stock Agent tile → ratiocine — requires preproduction Agent Mode runtime).
+- Smoke tests: `neutron/probe_local.ts`, `neutron/smoke_ledger.ts`, `neutron/smoke_report.ts`, `neutron/upgrade_demo.ts`.
+- **Blocked**: branded Netlify DNS (user to wire), mainnet funding (5 ICP), Agent Mode runtime integration test.
+
+### v0.4 method reference
+
+| Method | Input | Output | Access |
+|--------|-------|--------|--------|
+| `attest_entry` | `AttestInput` record | `#attested(LedgerEntry)` or `#error(Text)` | Open (dedup-protected) |
+| `get_ledger` | `()` | `[LedgerEntry]` (last 50) | Open |
+| `get_ledger_page` | `{offset: Nat, limit: Nat}` | `{entries, total, offset}` | Open |
+| `get_ledger_status` | `()` | `{total: Nat, last_report_seq: Nat}` | Open |
+| `publish_report` | `()` | report locator text | Open |
+| `ping_solver` | `admin_token: Text` | outcall result | Admin token |
+| `sign_probe` | `{admin_token: Text, msg: Text}` | signature info | Admin token |
+| `get_pubkey` | `()` | JSON public key | Open |
+| `add_allowed_caller` | `token: Text` | confirmation | First-call bootstrap / existing token |
+| `remove_allowed_caller` | `token: Text` | confirmation | Existing token |
 
 ### Vendored Motoko compiler gotchas (this is NOT stock Motoko — expect surprises)
 The Neutron workspace compiles with a **patched Motoko (mo:core v2.6.0)** whose syntax differs from the Motoko most people know. Cost ~2 hours to discover; do not "fix" these back to stock syntax:
@@ -69,6 +92,7 @@ The Neutron workspace compiles with a **patched Motoko (mo:core v2.6.0)** whose 
 11. **Variant values inside record literals use paren/bare form, not `{ #tag = ... }`.** `{ #put = {...} }` is a parse error; write `#put({...})` (payload) or `#absent` (unit). Bare `#tag(x)` expressions outside records were always fine.
 12. **No `Blob.blobArray` / `Blob.slice`** in this core. To build small blobs, accumulate hex/text and `Text.encodeUtf8` (or index bytes into a string). `Array.concat` exists for vecs.
 13. To get a real compiler error **location** (the wrapper only prints the message), temporarily patch the diagnostic `.map(({message}) => message)` in `packages/neutron-motoko-wasm/src/index.ts` to include `d.source:d.range.start.line` — revert before committing.
+14. **Multi-argument functions break Candid deserialization.** A method `func foo(a : Text, b : Text)` compiles but traps at runtime with "unexpected IDL type when parsing (Text, Text)". The Neutron runtime only deserializes a single positional argument. For multi-param methods, use a record: `func foo(input : { a : Text; b : Text })`. Single-param methods (`func bar(x : Text)`) work fine.
 
 ## Two-track approach
 

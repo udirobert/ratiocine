@@ -254,6 +254,7 @@ export const App = () => {
   const [reportUrl, setReportUrl] = useState("");
   const [reportBusy, setReportBusy] = useState(false);
   const [reportErr, setReportErr] = useState("");
+  const [lastReportSeq, setLastReportSeq] = useState(0);
 
   const jobIdRef = useRef<string | null>(null);
   const problemRef = useRef<Problem | null>(null);
@@ -286,6 +287,17 @@ export const App = () => {
     } catch (e: any) {
       setLedgerErr(String(e?.message ?? e));
     }
+    // Fetch ledger status for publish delta indicator.
+    try {
+      const status = await client.callDialog("get_ledger_status", [null]);
+      if (status && typeof status === "object") {
+        const s = status as Record<string, unknown>;
+        const lrs = Number(s.last_report_seq ?? 0);
+        if (Number.isFinite(lrs)) setLastReportSeq(lrs);
+      }
+    } catch {
+      // Non-critical; ignore.
+    }
   }, [client]);
 
   useEffect(() => {
@@ -300,20 +312,28 @@ export const App = () => {
     try {
       const raw = await client.callDialog("publish_report", [null]);
       const s = typeof raw === "string" ? raw : String(raw);
-      const digest = s.split(":")[1];
-      if (!digest) {
-        setReportErr(s);
+      if (s === "no_new_entries") {
+        setReportErr("No new entries since last publish.");
+      } else if (s === "empty_ledger") {
+        setReportErr("Ledger is empty.");
       } else {
-        setReportUrl(
-          `${window.location.origin}/app/ratiocine/_route/protocol/v1/ledger/report/${digest}`,
-        );
+        const digest = s.split(":")[1];
+        if (!digest) {
+          setReportErr(s);
+        } else {
+          setReportUrl(
+            `${window.location.origin}/app/ratiocine/_route/protocol/v1/ledger/report/${digest}`,
+          );
+          // Update the local tracking so the button reflects the new state.
+          setLastReportSeq(ledger.length);
+        }
       }
     } catch (e: any) {
       setReportErr("Publish error: " + String(e?.message ?? e));
     } finally {
       setReportBusy(false);
     }
-  }, [client]);
+  }, [client, ledger.length]);
 
   // Rotate insights while solving
   useEffect(() => {
@@ -474,10 +494,10 @@ export const App = () => {
         {/* Header */}
         <header className={nt.pageHeader}>
           <div>
-            <p className={nt.eyebrow}>Don't trust the AI result. Verify it.</p>
+            <p className={nt.eyebrow}>You solved it. Now watch the machine try.</p>
             <h1 className={nt.title}>Ration</h1>
             <p className={cx(nt.text, nt.muted, "ration-tagline")}>
-              Cryptographic trust layer for AI evaluation.
+              Same puzzle. Same grading. Honest comparison.
             </p>
             <div className={nt.tagList}>
               <span className={nt.tag}>https_outcalls</span>
@@ -824,10 +844,10 @@ export const App = () => {
                         </div>
                       </div>
 
-                      {/* Verify link */}
+                      {/* Verify link — use canister certified route (item #8) */}
                       <div className="ration-receipt-verify">
                         <a
-                          href={`https://ratiocine.trustfall.xyz/verify/?hash=${entry.assertion_hash}`}
+                          href={`${window.location.origin}/app/ratiocine/_route/protocol/v1/ledger/report/${entry.assertion_hash}`}
                           target="_blank"
                           rel="noreferrer"
                           className="ration-receipt-verify-link"
@@ -835,7 +855,7 @@ export const App = () => {
                           Verify this receipt independently →
                         </a>
                         <span className="ration-receipt-verify-hint">
-                          Open in a new tab — no app required.
+                          Open in a new tab — served as a certified asset from this canister.
                         </span>
                       </div>
                     </div>
@@ -865,10 +885,14 @@ export const App = () => {
               <button
                 className={cx(nt.button, nt.buttonSecondary, "nt-button--sm")}
                 onClick={() => void publishReport()}
-                disabled={reportBusy || !client || ledger.length === 0}
+                disabled={reportBusy || !client || ledger.length === 0 || ledger.length <= lastReportSeq}
                 type="button"
               >
-                {reportBusy ? "Publishing…" : "Publish certified report"}
+                {reportBusy
+                  ? "Publishing…"
+                  : ledger.length > lastReportSeq
+                    ? `Publish certified report (+${ledger.length - lastReportSeq} new)`
+                    : "Publish certified report"}
               </button>
             </div>
             {reportErr && (

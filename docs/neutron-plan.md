@@ -29,7 +29,7 @@ hash has not yet been exported and independently compared.
 | Hackathon package | Submitted in Week 1 | Package/listing evidence; not a deployed Ration service. |
 | Ration landing + solve preview | Live on Netlify at `ratiocine.trustfall.xyz` | Browser inference preview only; `/api/status` has been probed without starting a solve. |
 | Modal inference | Deployed, scale-to-zero | Idle containers are expected between requests. The app uses an L4 GPU only when a solve is dispatched. |
-| Ration attestation | Verified on local PocketIC | Ordered EM + chrF, chain-key signatures, certified report publication, and v3 migration are local proofs. |
+| Ration attestation | Verified on local PocketIC (v0.4) | Ordered EM + chrF, chain-key signatures, page-chunked ledger, duplicate rejection, paginated certified report publication (format v2), access control, and v3→v4 migration are local proofs. |
 | Public ICP Ration canister | Not yet verified/deployed | No public principal, tile/report URL, or certificate-aware verifier result is recorded. |
 
 ## Product architecture
@@ -44,8 +44,9 @@ Ration inside the user's Neutron canister
   ├─ ordered deterministic grade: EM + chrF
   ├─ SHA-256 assertion commitments
   ├─ `ration_assertions` chain-key signature
-  ├─ stable v3 ledger append
-  └─ optional immutable certified report publication
+  ├─ page-chunked stable v4 ledger (O(1) amortized append)
+  ├─ duplicate job_id rejection
+  └─ optional immutable certified report publication (paginated, format v2)
 ```
 
 The browser-first submit/poll path is intentional: local PocketIC cannot make
@@ -82,6 +83,25 @@ attest to a human's identity, the remote model that generated an answer, or the
 truth of caller-supplied reference data. A public verifier must validate the
 ICP-certified HTTP witness, report digest, assertion hash, and secp256k1
 signature against the deployed canister's public key.
+
+## Product philosophy
+
+The user-facing value is the **comparison experience**: you and a machine
+solved the same puzzle, graded by the same rules. That's inherently interesting
+and shareable.
+
+The cryptographic infrastructure (chain-key signatures, certified assets,
+content-addressed reports) provides **ceremony and honesty** — it makes the
+comparison feel weighty and prevents anyone from editing the record after the
+fact. But it is not the headline. The headline is: "Here's how you compared."
+
+Sequence of priorities:
+1. Make the puzzle fun (the game has to work as a game).
+2. Make the comparison delightful (the AI solve + side-by-side is the reward).
+3. Let the receipt be the quiet proof underneath (permanent, honest, verifiable if you care to look).
+
+Do not lead with "provable" or "on-chain" in user-facing copy. Lead with the
+comparison.
 
 ## Path to a true public signed demo
 

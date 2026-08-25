@@ -2,7 +2,7 @@
   "format": 3,
   "name": "Ration",
   "id": "ratiocine",
-  "version": 300,
+  "version": 400,
   "update_source": "233tv-xiaaa-aaaay-aacta-cai",
   "description": "Ration: a certified reasoning logbook. Solves Linguini problems via a declared outcall, grades answers in-canister (EM + chrF), and signs every entry with a chain-key assertion.",
   "src": "main.mo",
@@ -95,6 +95,14 @@
       "type": "update",
       "async": "async*"
     },
+    "get_ledger_page": {
+      "type": "update",
+      "async": "async*"
+    },
+    "get_ledger_status": {
+      "type": "update",
+      "async": "async*"
+    },
     "publish_report": {
       "type": "update",
       "async": "async*"
@@ -110,11 +118,19 @@
     "get_pubkey": {
       "type": "update",
       "async": "async*"
+    },
+    "add_allowed_caller": {
+      "type": "update",
+      "async": "async*"
+    },
+    "remove_allowed_caller": {
+      "type": "update",
+      "async": "async*"
     }
   },
   "memory": {
     "ratiocine": {
-      "version": 3,
+      "version": 4,
       "schemas": {
         "1": {
           "src": "memory/ratiocine/v1.mo"
@@ -124,6 +140,9 @@
         },
         "3": {
           "src": "memory/ratiocine/v3.mo"
+        },
+        "4": {
+          "src": "memory/ratiocine/v4.mo"
         }
       },
       "migrations": [
@@ -136,6 +155,11 @@
           "from": 2,
           "to": 3,
           "src": "memory/ratiocine/v2_to_v3.mo"
+        },
+        {
+          "from": 3,
+          "to": 4,
+          "src": "memory/ratiocine/v3_to_v4.mo"
         }
       ]
     }

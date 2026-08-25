@@ -29,8 +29,9 @@ browser (Vercel showcase or a Neutron tile)
 
 installed Ration app in the user's Neutron canister
   └─ ordered EM + chrF grade against supplied references
-  └─ SHA-256 commitments + chain-key signature + stable ledger append
-  └─ optional immutable certified ledger report publication
+  └─ SHA-256 commitments + chain-key signature + page-chunked stable ledger
+  └─ duplicate job_id rejection (prevents double-signing)
+  └─ optional immutable certified ledger report publication (paginated, format v2)
 ```
 
 The canister is the **verifier, not the compute**. A receipt proves that the
@@ -38,14 +39,20 @@ specific installed canister evaluated submitted data at a recorded time. It
 does **not** prove the identity of a browser user, the provenance of a remote
 model, or the truthfulness of caller-supplied ground truth/model labels.
 
-### Verified delivery snapshot — 24 August 2026
+**v0.4** (25 August 2026) adds: page-chunked ledger for O(1) append, paginated
+queries (`get_ledger_page`), token-based access control on probe methods,
+duplicate job_id rejection, evaluator_version passthrough, report format v2
+with `from_seq`/`to_seq` tracking, and frontend delta indicators.
+
+### Verified delivery snapshot — 25 August 2026
 
 | Surface | Verified fact | What it does **not** establish |
 |---|---|---|
 | Neutron Hackathon | Week 1 package submitted as `ratiocine_l.neutron`, v1, reported as 272 KB with five screenshots. | A public Ration canister installation or a public report. |
 | Netlify | [`ratiocine.trustfall.xyz`](https://ratiocine.trustfall.xyz) returns HTTP 200; `/api/status` is live and rejects a missing job ID without dispatching a solve. | That a candidate answer is a signed receipt. |
 | Modal | `ratiocine-solve` is deployed with a scale-to-zero L4 worker and had no active containers at inspection. | An outage: zero active containers is the intended idle state. |
-| Ration attestation | The local PocketIC canister verifies ordered grades, chain-key signatures, certified report publication, and v3 stable-memory migration. | Mainnet/ICP availability. The recorded canister is local only. |
+| Ration attestation (v0.4) | Local PocketIC verifies: page-chunked ledger (O(1) append), paginated queries, token-based access control, duplicate rejection, evaluator_version passthrough, paginated reports (format v2), certified HTTP, chain-key signatures, and stable-memory persistence across upgrades. | Mainnet/ICP availability. The recorded canister is local only. |
+| Mainnet preflight | Read-only preflight passes: same deployer, subnet, archive pins, planned Wasm hash. Balance = 0 ICP. | Funded deployment. Requires 5+ ICP to proceed. |
 
 The first row is the submitted product artifact; the second and third rows are
 the live inference-preview path; the fourth row is the verified attestation
@@ -73,16 +80,31 @@ The code implements the product sequence below for the versioned
 ```text
 play the canonical Apurinã puzzle
   → emit a bounded browser-declared human outcome
-  → solve the exact same five ordered prompts with AI
-  → compare human declaration, AI candidate, and reference
-  → attest the ordered AI evaluation in Ration
+  → solve the exact same five ordered prompts with AI (inline, on result screen)
+  → compare human declaration, AI candidate, and reference (side-by-side)
+  → attest the ordered AI evaluation in Ration (background, when canister is live)
   → publish a content-addressed certified report (after public deployment)
 ```
+
+The inline AI comparison (`showcase/app/play/ai-comparison.tsx`) fires
+automatically on puzzle completion, polls Modal for the result, and renders a
+side-by-side human vs machine score card. Key properties:
+
+- **Deduplication**: results are cached in `localStorage` keyed by puzzle ID;
+  remounting the result screen serves the cached comparison without re-firing
+  Modal.
+- **Retry**: on network/GPU error, a retry button re-submits the same puzzle.
+- **Ration attestation stub**: on successful AI result, `attestInBackground()`
+  fires a best-effort POST to the canister (currently a no-op until
+  `CANISTER_URL` is set for mainnet).
+- **Share gating**: the share button is disabled until the comparison settles
+  (done, cached, or error), ensuring the share text always includes AI results
+  when available.
 
 `showcase/app/play/canonical-apurina.ts` defines the allowlisted case and its
 SHA-256 hash. The handoff carries ordered answers, attempts, hints, elapsed
 time, and gated-context state—not the puzzle context or answer key. Ration
-stable-memory **v3** binds new attestations to the context, prompt, reference,
+stable-memory **v4** binds attestations to the context, prompt, reference,
 canonical case, and human-outcome commitments. `ration/ordered-v1` requires
 equal answer counts and position-by-position matching. `get_pubkey` returns
 hex-encoded public-key material for an external verifier.

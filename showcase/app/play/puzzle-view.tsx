@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { LanguageMap } from "./language-map";
 import { AudioMoment } from "./audio-moment";
 import { Briefing } from "./briefing";
+import { AiComparison, type AiResult } from "./ai-comparison";
 import { createApurinaComparisonUrl } from "./canonical-apurina";
 import {
   getTodaysPuzzle,
@@ -25,6 +26,7 @@ function generateShareText(
   grades: Map<number, QueryGrade>,
   elapsed: number,
   hintsUsed: number,
+  aiResult?: AiResult | null,
 ): string {
   const emojiMap: Record<TileGrade, string> = { correct: "🟩", misplaced: "🟨", wrong: "⬛" };
   const lines = puzzle.queries.map((q) => {
@@ -35,10 +37,28 @@ function generateShareText(
   const allCorrect = puzzle.queries.every((q) => grades.get(q.id)?.isCorrect);
   const m = Math.floor(elapsed / 60);
   const s = elapsed % 60;
+  const humanLine = `${allCorrect ? "Cracked" : "Attempted"} in ${m}:${s.toString().padStart(2, "0")}${hintsUsed ? ` · ${hintsUsed} hint${hintsUsed > 1 ? "s" : ""}` : ""}`;
+
+  if (aiResult) {
+    const aiCorrect = puzzle.queries.filter((q, i) =>
+      (aiResult.pred[i] || "").trim().toLowerCase() === q.answerJoined.toLowerCase()
+    ).length;
+    const humanCorrect = puzzle.queries.filter((q) => grades.get(q.id)?.isCorrect).length;
+    return [
+      `🧩 Ratiocine — ${puzzle.language}`,
+      ...lines,
+      `You: ${humanLine}`,
+      `AI: ${aiCorrect}/${puzzle.queries.length} in ${aiResult.elapsed_s}s`,
+      humanCorrect > aiCorrect ? `Beat the machine.` : humanCorrect === aiCorrect ? `Tied.` : `The machine got more.`,
+      `ratiocine.vercel.app`,
+    ].join("\n");
+  }
+
   return [
     `🧩 Ratiocine — ${puzzle.language}`,
     ...lines,
-    `${allCorrect ? "Cracked" : "Attempted"} in ${m}:${s.toString().padStart(2, "0")}${hintsUsed ? ` · ${hintsUsed} hints` : ""}`,
+    humanLine,
+    `Can the machine do it too?`,
     `ratiocine.vercel.app`,
   ].join("\n");
 }
@@ -92,6 +112,8 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
   // Progress
   const [progress, setProgress] = useState<PuzzleProgress | null>(null);
   const [copied, setCopied] = useState(false);
+  const [aiResult, setAiResult] = useState<AiResult | null>(null);
+  const [aiSettled, setAiSettled] = useState(false);
 
   // Timer
   const [elapsed, setElapsed] = useState(0);
@@ -241,10 +263,10 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
   }, [hintsUsed, puzzle.hints]);
 
   const handleShare = useCallback(async () => {
-    const text = generateShareText(puzzle, grades, elapsed, hintsUsed);
+    const text = generateShareText(puzzle, grades, elapsed, hintsUsed, aiResult);
     try { await navigator.clipboard.writeText(text); setCopied(true); setTimeout(() => setCopied(false), 2000); }
     catch { prompt("Copy:", text); }
-  }, [puzzle, grades, elapsed, hintsUsed]);
+  }, [puzzle, grades, elapsed, hintsUsed, aiResult]);
 
   // ─── Grade colors ─────────────────────────────────────────────────────────
 
@@ -722,6 +744,16 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
                   })}
                 </div>
 
+                {/* AI Comparison — the reward moment */}
+                <AiComparison
+                  puzzle={puzzle}
+                  humanElapsed={elapsed}
+                  humanHints={hintsUsed}
+                  humanGrades={grades}
+                  onResult={setAiResult}
+                  onSettled={() => setAiSettled(true)}
+                />
+
                 {/* Audio moment */}
                 {allCorrect && (
                   <AudioMoment
@@ -769,24 +801,11 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
                 )}
                 <button
                   onClick={handleShare}
-                  className="px-4 py-2 rounded-md border border-white/15 text-[12px] font-mono text-white/60 hover:text-white/80 hover:bg-white/5 transition-colors min-h-[44px]"
+                  disabled={!aiSettled}
+                  className="px-4 py-2 rounded-md border border-white/15 text-[12px] font-mono text-white/60 hover:text-white/80 hover:bg-white/5 transition-colors min-h-[44px] disabled:opacity-30 disabled:cursor-not-allowed"
                 >
-                  {copied ? "Copied!" : "Share"}
+                  {!aiSettled ? "Waiting for AI..." : copied ? "Copied!" : "Share"}
                 </button>
-                <a
-                  href={createApurinaComparisonUrl({
-                    answers: answers.map((answer) => answer.map((slot) => slot.morpheme ?? "").join("")),
-                    attempts,
-                    hintsUsed,
-                    elapsedSeconds: elapsed,
-                    gatedContextRevealed: gatedRevealed,
-                  })}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="px-4 py-2 rounded-md border border-emerald-400/30 bg-emerald-400/[0.06] text-[12px] font-mono text-emerald-200/80 hover:bg-emerald-400/[0.12] transition-colors min-h-[44px] flex items-center"
-                >
-                  Compare your unsigned solve with AI ↗
-                </a>
               </div>
             </motion.div>
           )}
