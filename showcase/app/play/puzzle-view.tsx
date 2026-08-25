@@ -568,31 +568,39 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
                 {/* Morpheme bank */}
                 {!isLocked && (
                   <div className="flex flex-wrap items-center justify-center gap-1.5 mb-4">
-                    {puzzle.morphemeBank.map((m, i) => {
-                      const isSelected = selected === m;
-                      const revealed = revealedMorphemes.get(m);
-                      return (
-                        <button
-                          key={`${m}-${i}`}
-                          onClick={() => { sfx.click(); setSelected((p) => (p === m ? null : m)); }}
-                          className={`tile-physical relative px-3 py-2.5 min-h-[44px] rounded font-mono text-[13px] border transition-all ${
-                            isSelected
-                              ? ""
-                              : "border-white/10 bg-white/[0.03] text-white/70 hover:border-white/20"
-                          }`}
-                          style={isSelected ? {
-                            borderColor: puzzle.theme.accent,
-                            backgroundColor: `${puzzle.theme.accent}25`,
-                            color: puzzle.theme.sourceColor,
-                            boxShadow: `0 0 8px ${puzzle.theme.accent}25`,
-                          } : undefined}
-                          title={revealed || undefined}
-                        >
-                          {m}
-                          {revealed && <span className="absolute -top-1 -right-1 w-1.5 h-1.5 rounded-full" style={{ backgroundColor: puzzle.theme.accent }} />}
-                        </button>
-                      );
-                    })}
+                    {puzzle.morphemeBank.map((group, gi) => (
+                      <div key={gi} className="contents">
+                        {/* Visual divider between groups */}
+                        {gi > 0 && (
+                          <span className="w-px h-8 bg-white/10 mx-1 shrink-0" />
+                        )}
+                        {group.map((m, i) => {
+                          const isSelected = selected === m;
+                          const revealed = revealedMorphemes.get(m);
+                          return (
+                            <button
+                              key={`${m}-${gi}-${i}`}
+                              onClick={() => { sfx.click(); setSelected((p) => (p === m ? null : m)); }}
+                              className={`tile-physical relative px-3 py-2.5 min-h-[44px] rounded font-mono text-[13px] border transition-all ${
+                                isSelected
+                                  ? ""
+                                  : "border-white/10 bg-white/[0.03] text-white/70 hover:border-white/20"
+                              }`}
+                              style={isSelected ? {
+                                borderColor: puzzle.theme.accent,
+                                backgroundColor: `${puzzle.theme.accent}25`,
+                                color: puzzle.theme.sourceColor,
+                                boxShadow: `0 0 8px ${puzzle.theme.accent}25`,
+                              } : undefined}
+                              title={revealed || undefined}
+                            >
+                              {m}
+                              {revealed && <span className="absolute -top-1 -right-1 w-1.5 h-1.5 rounded-full" style={{ backgroundColor: puzzle.theme.accent }} />}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    ))}
                   </div>
                 )}
 

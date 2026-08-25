@@ -72,7 +72,7 @@ export interface Puzzle {
   verdicts: { perfect: string; good: string; partial: string }; // warm human result messages
   pairs: PuzzlePair[];
   queries: PuzzleQuery[];
-  morphemeBank: string[];
+  morphemeBank: string[][]; // grouped tiles — each inner array is a visual group (e.g. prefixes, roots, suffixes)
   hints: PuzzleHint[];
   lore: LanguageLore;
   nextPreview: PuzzlePreview;
@@ -101,16 +101,16 @@ export const APURINA_PUZZLE: Puzzle = {
   pairs: [
     // Visible from start (rows 1-6): enough to notice person prefixes + roots
     { id: 1, source: "nhaapitaka", target: "I am going", morphemes: ["nhaa", "pita", "ka"] },
-    { id: 2, source: "ãpitaka", target: "you (sg.) are going", morphemes: ["ã", "pita", "ka"] },
+    { id: 2, source: "ãpitaka", target: "you are going", morphemes: ["ã", "pita", "ka"] },
     { id: 3, source: "apitaka", target: "he/she is going", morphemes: ["a", "pita", "ka"] },
     { id: 4, source: "nhaakutaka", target: "I am eating", morphemes: ["nhaa", "kuta", "ka"] },
-    { id: 5, source: "ãkutaka", target: "you (sg.) are eating", morphemes: ["ã", "kuta", "ka"] },
+    { id: 5, source: "ãkutaka", target: "you are eating", morphemes: ["ã", "kuta", "ka"] },
     { id: 6, source: "akutaka", target: "he/she is eating", morphemes: ["a", "kuta", "ka"] },
-    // Gated (rows 7-10): require active reveal; row 10 is the crucial "we incl." example
+    // Gated (rows 7-10): require active reveal; row 10 is the crucial "we (everyone)" example
     { id: 7, source: "nhaanykataka", target: "I am speaking", morphemes: ["nhaa", "nykata", "ka"], gated: true },
-    { id: 8, source: "ãnykataka", target: "you (sg.) are speaking", morphemes: ["ã", "nykata", "ka"], gated: true },
+    { id: 8, source: "ãnykataka", target: "you are speaking", morphemes: ["ã", "nykata", "ka"], gated: true },
     { id: 9, source: "anykataka", target: "he/she is speaking", morphemes: ["a", "nykata", "ka"], gated: true },
-    { id: 10, source: "kaapitaka", target: "we (incl.) are going", morphemes: ["kaa", "pita", "ka"], gated: true },
+    { id: 10, source: "kaapitaka", target: "we (everyone) are going", morphemes: ["kaa", "pita", "ka"], gated: true },
   ],
 
   queries: [
@@ -127,16 +127,16 @@ export const APURINA_PUZZLE: Puzzle = {
     // Standard
     {
       id: 1,
-      prompt: "we (incl.) are eating",
+      prompt: "we (everyone) are eating",
       answer: ["kaa", "kuta", "ka"],
       answerJoined: "kaakutaka",
       difficulty: "standard",
-      hintOnFail: "You need the 'we (incl.)' prefix. Have you revealed all the context rows?",
+      hintOnFail: "You need the 'we' prefix. Have you revealed all the context rows?",
       flavor: "Everyone sits down together for the meal.",
     },
     {
       id: 2,
-      prompt: "you (sg.) are speaking",
+      prompt: "you are speaking",
       answer: ["ã", "nykata", "ka"],
       answerJoined: "ãnykataka",
       difficulty: "standard",
@@ -145,11 +145,11 @@ export const APURINA_PUZZLE: Puzzle = {
     },
     {
       id: 3,
-      prompt: "we (incl.) are speaking",
+      prompt: "we (everyone) are speaking",
       answer: ["kaa", "nykata", "ka"],
       answerJoined: "kaanykataka",
       difficulty: "standard",
-      hintOnFail: "Combine what you learned about 'we (incl.)' with the 'speak' root.",
+      hintOnFail: "Combine what you learned about 'we' with the 'speak' root.",
       flavor: "The whole village is having a conversation.",
     },
     // Synthesis — every needed morpheme and rule appears in the evidence.
@@ -164,19 +164,14 @@ export const APURINA_PUZZLE: Puzzle = {
     },
   ],
 
-  // Morpheme bank: correct tiles + plausible distractors that appear in context
+  // Morpheme bank: grouped tiles (prefixes | roots | suffixes) + 1 distractor
   morphemeBank: [
-    // Person prefixes (all appear in context)
-    "nhaa", "ã", "a", "kaa",
-    // Verb roots (all appear in context)
-    "pita", "kuta", "nykata",
-    // Suffix
-    "ka",   // progressive (in all context examples)
-    // Hard distractors — these are sub-parts of real morphemes
-    "nhaa·kuta", // someone might grab the whole prefix+root as one unit
-    "taka",      // looks like it could be a suffix (it's root+suffix mashed)
-    "api",       // sub-string of "apitaka" — tempting but wrong segmentation
-    "kata",      // anagram of kuta+a
+    // Person prefixes
+    ["nhaa", "ã", "a", "kaa"],
+    // Verb roots
+    ["pita", "kuta", "nykata"],
+    // Suffix + distractor
+    ["ka", "taka"],
   ],
 
   hints: [
