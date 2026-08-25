@@ -116,8 +116,7 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
   const [score, setScore] = useState(0);
   const [ghostVisible, setGhostVisible] = useState(true); // ghost tile hint for Q1
 
-  // Selection
-  const [selected, setSelected] = useState<string | null>(null);
+  // Selection removed — tap-to-place model (tap tile = auto-place, tap slot = remove)
 
   // Hints & context
   const [hintsUsed, setHintsUsed] = useState(0);
@@ -201,17 +200,8 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
 
   const handleSlotTap = useCallback((idx: number) => {
     if (isLocked) return;
-    if (selected) {
-      sfx.snap();
-      setAnswers((prev) => {
-        const next = [...prev];
-        const row = [...next[currentQ]];
-        row[idx] = { morpheme: selected };
-        next[currentQ] = row;
-        return next;
-      });
-      setSelected(null);
-    } else if (slots[idx].morpheme) {
+    // Tap a placed tile → return it to the bank
+    if (slots[idx].morpheme) {
       setAnswers((prev) => {
         const next = [...prev];
         const row = [...next[currentQ]];
@@ -220,7 +210,24 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
         return next;
       });
     }
-  }, [isLocked, selected, currentQ, slots, sfx]);
+  }, [isLocked, currentQ, slots]);
+
+  // Tap a bank tile → auto-place into first empty slot
+  const handleTilePlace = useCallback((morpheme: string) => {
+    if (isLocked) return;
+    const emptyIdx = slots.findIndex((s) => !s.morpheme);
+    if (emptyIdx === -1) return; // all slots full
+    sfx.snap();
+    setAnswers((prev) => {
+      const next = [...prev];
+      const row = [...next[currentQ]];
+      row[emptyIdx] = { morpheme };
+      next[currentQ] = row;
+      return next;
+    });
+    // Hide ghost tile on first interaction
+    if (ghostVisible) setGhostVisible(false);
+  }, [isLocked, slots, currentQ, sfx, ghostVisible]);
 
   const handleSubmit = useCallback(() => {
     if (isLocked) return;
@@ -500,17 +507,9 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
                             ? gradeColor(slot.grade)
                             : slot.morpheme
                               ? "border-white/30 bg-white/[0.06] text-white/90"
-                              : selected
-                                ? "border-dashed"
-                                : "border-white/10 bg-white/[0.02] border-dashed text-white/35"
+                              : "border-white/10 bg-white/[0.02] border-dashed text-white/35"
                         }`}
-                        style={{
-                          transformStyle: "preserve-3d",
-                          ...((!slot.grade && !slot.morpheme && selected) ? {
-                            borderColor: `${puzzle.theme.accent}80`,
-                            backgroundColor: `${puzzle.theme.accent}0a`,
-                          } : {}),
-                        }}
+                        style={{ transformStyle: "preserve-3d" }}
                       >
                         {slot.morpheme || (
                           // Ghost tile hint: show first correct morpheme pulsing in Q1's first slot
@@ -521,24 +520,6 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
                       </motion.button>
                     );
                   })}
-                  {!isLocked && (
-                    <button
-                      onClick={() => {
-                        if (selected) {
-                          setAnswers((prev) => {
-                            const next = [...prev];
-                            const row = [...next[currentQ], { morpheme: selected }];
-                            next[currentQ] = row;
-                            return next;
-                          });
-                          setSelected(null);
-                        }
-                      }}
-                      className="w-11 min-h-[44px] rounded-md border border-dashed border-white/10 text-white/40 hover:text-white/60 text-lg"
-                    >
-                      +
-                    </button>
-                  )}
                 </div>
 
                 {/* Word assembly — appears after correct */}
@@ -575,23 +556,19 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
                           <span className="w-px h-8 bg-white/10 mx-1 shrink-0" />
                         )}
                         {group.map((m, i) => {
-                          const isSelected = selected === m;
                           const revealed = revealedMorphemes.get(m);
+                          // Check if this tile is already placed in a slot
+                          const isPlaced = slots.some((s) => s.morpheme === m);
                           return (
                             <button
                               key={`${m}-${gi}-${i}`}
-                              onClick={() => { sfx.click(); setSelected((p) => (p === m ? null : m)); }}
+                              onClick={() => { sfx.click(); handleTilePlace(m); }}
+                              disabled={isPlaced}
                               className={`tile-physical relative px-3 py-2.5 min-h-[44px] rounded font-mono text-[13px] border transition-all ${
-                                isSelected
-                                  ? ""
+                                isPlaced
+                                  ? "opacity-30 border-white/5 bg-white/[0.01] text-white/30"
                                   : "border-white/10 bg-white/[0.03] text-white/70 hover:border-white/20"
                               }`}
-                              style={isSelected ? {
-                                borderColor: puzzle.theme.accent,
-                                backgroundColor: `${puzzle.theme.accent}25`,
-                                color: puzzle.theme.sourceColor,
-                                boxShadow: `0 0 8px ${puzzle.theme.accent}25`,
-                              } : undefined}
                               title={revealed || undefined}
                             >
                               {m}
