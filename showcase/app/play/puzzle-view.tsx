@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "motion/react";
 
 import { LanguageMap } from "./language-map";
 import { AudioMoment } from "./audio-moment";
-import { Briefing } from "./briefing";
+import { StudyPhase } from "./study-phase";
 import { AiComparison, type AiResult } from "./ai-comparison";
 import { createApurinaComparisonUrl } from "./canonical-apurina";
 import { useSfx } from "./use-sfx";
@@ -66,7 +66,7 @@ function generateShareText(
 
 // ─── Types ──────────────────────────────────────────────────────────────────
 
-type Phase = "briefing" | "study" | "solve" | "result";
+type Phase = "study" | "solve" | "result";
 
 interface SlotData {
   morpheme: string | null;
@@ -85,7 +85,7 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
   const sfx = useSfx();
 
   // Phase
-  const [phase, setPhase] = useState<Phase>("briefing");
+  const [phase, setPhase] = useState<Phase>("study");
   const [currentQ, setCurrentQ] = useState(0);
 
   // Per-query answers
@@ -104,7 +104,6 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
 
   // Hints & context
   const [hintsUsed, setHintsUsed] = useState(0);
-  const [gatedRevealed, setGatedRevealed] = useState(false);
   const [highlightedRows, setHighlightedRows] = useState<Set<number>>(new Set());
   const [revealedMorphemes, setRevealedMorphemes] = useState<Map<string, string>>(new Map());
 
@@ -120,7 +119,7 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
   const startRef = useRef(Date.now());
 
   useEffect(() => {
-    if (phase === "briefing") return;
+    if (phase !== "solve") return;
     if (timerRef.current) return;
     startRef.current = Date.now();
     timerRef.current = setInterval(() => {
@@ -141,7 +140,6 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
   const mins = Math.floor(elapsed / 60);
   const secs = elapsed % 60;
   const timeStr = `${mins}:${secs.toString().padStart(2, "0")}`;
-  const visiblePairs = gatedRevealed ? puzzle.pairs : puzzle.pairs.filter((p) => !p.gated);
 
   // Stop timer on all done
   useEffect(() => {
@@ -268,6 +266,15 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
   return (
     <div className="touch-game relative flex flex-col h-svh w-full overflow-hidden bg-[#0a0c10] text-white" onClick={sfx.enable} onKeyDown={sfx.enable}>
 
+      {/* CRT atmosphere — subtle scan lines + grain */}
+      <div
+        className="absolute inset-0 pointer-events-none z-0 opacity-[0.025]"
+        style={{
+          backgroundImage: "repeating-linear-gradient(0deg, transparent 0px, transparent 2px, rgba(255,255,255,1) 2px, rgba(255,255,255,1) 3px)",
+        }}
+      />
+      <div className="absolute inset-0 pointer-events-none z-0 opacity-[0.015] grain-noise" />
+
       {/* ═══ Top bar ═══ */}
       <header className="shrink-0 flex items-center justify-between px-4 py-2.5 border-b border-white/8 sm:px-6">
         <div className="flex items-center gap-2.5">
@@ -293,7 +300,7 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
               {score}/{puzzle.queries.length}
             </motion.span>
           )}
-          {phase !== "briefing" && (
+          {phase === "solve" && (
             <span className="font-mono text-xs text-white/80 tabular-nums">{timeStr}</span>
           )}
           {phase === "solve" && (
@@ -324,66 +331,21 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
       <div className="flex-1 flex flex-col min-h-0">
         <AnimatePresence mode="wait">
 
-          {/* ─── BRIEFING ─── */}
-          {phase === "briefing" && (
-            <motion.div
-              key="briefing"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0, scale: 0.96 }}
-              transition={{ duration: 0.4 }}
-              className="flex-1 flex flex-col min-h-0"
-            >
-              <Briefing puzzle={puzzle} onDismiss={() => setPhase("study")} />
-            </motion.div>
-          )}
-
-          {/* ─── STUDY ─── */}
+          {/* ─── STUDY (merged briefing + evidence) ─── */}
           {phase === "study" && (
             <motion.div
               key="study"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              exit={{ opacity: 0, x: -20 }}
-              className="flex-1 flex flex-col px-4 py-4 sm:px-6 min-h-0"
+              exit={{ opacity: 0, scale: 0.97 }}
+              transition={{ duration: 0.3 }}
+              className="flex-1 flex flex-col min-h-0"
             >
-              <div className="flex-1 min-h-0 overflow-y-auto">
-                <div className="max-w-lg mx-auto">
-                  <div className="grid gap-px bg-white/5 rounded-md overflow-hidden border border-white/8">
-                    {visiblePairs.map((pair) => (
-                      <div
-                        key={pair.id}
-                        className={`flex items-center gap-2 px-3 py-2.5 min-h-[44px] bg-[#0c0e13] ${
-                          highlightedRows.has(pair.id) ? "bg-amber-400/[0.04]" : ""
-                        }`}
-                      >
-                        <span className="font-mono text-[10px] text-white/40 w-4 text-right shrink-0">{pair.id}</span>
-                        <span className="font-mono text-[13px] text-sky-300/90 flex-1">{pair.source}</span>
-                        <span className="text-[12px] text-white/85 flex-1">{pair.target}</span>
-                      </div>
-                    ))}
-                  </div>
-                  {!gatedRevealed && puzzle.pairs.some((p) => p.gated) && (
-                    <button
-                      onClick={() => setGatedRevealed(true)}
-                      className="mt-2 text-[11px] font-mono text-white/50 hover:text-white/70 transition-colors min-h-[44px]"
-                    >
-                      + {puzzle.pairs.filter((p) => p.gated).length} more rows
-                    </button>
-                  )}
-                  <p className="mt-3 text-[11px] text-white/85 italic leading-relaxed">
-                    {puzzle.lore.funFact.split("—")[0].trim()}
-                  </p>
-                </div>
-              </div>
-              <div className="shrink-0 pt-4 flex justify-center">
-                <button
-                  onClick={() => setPhase("solve")}
-                  className="px-6 py-2.5 rounded-md bg-amber-500/90 text-sm font-bold text-black hover:bg-amber-400 transition-colors"
-                >
-                  Ready →
-                </button>
-              </div>
+              <StudyPhase
+                puzzle={puzzle}
+                highlightedRows={highlightedRows}
+                onReady={() => setPhase("solve")}
+              />
             </motion.div>
           )}
 
