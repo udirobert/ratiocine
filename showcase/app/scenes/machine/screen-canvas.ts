@@ -16,6 +16,14 @@ const SCORE = "0.1141";
 let charCount = 0;
 let lastFrame = 0;
 const CHARS_PER_SEC = 18;
+let skipMode = false;
+
+export function setSkipTypewriter(skip: boolean) {
+  skipMode = skip;
+  if (skip) {
+    charCount = 9999; // instant completion
+  }
+}
 
 export const drawScreen = (
   ctx: CanvasRenderingContext2D,
@@ -27,7 +35,9 @@ export const drawScreen = (
   if (lastFrame === 0) lastFrame = now;
   const dt = now - lastFrame;
   lastFrame = now;
-  charCount += (dt / 1000) * CHARS_PER_SEC;
+  if (!skipMode) {
+    charCount += (dt / 1000) * CHARS_PER_SEC;
+  }
 
   const totalChars = TITLE.length + TAGLINE.length + TAGLINE_2.length;
   const progress = Math.min(charCount, totalChars);

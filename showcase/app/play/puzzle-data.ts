@@ -44,6 +44,12 @@ export interface PuzzlePreview {
   script: string; // sample characters
   difficulty: number; // 1-5
   family: string;
+  theme: { accent: string; sourceColor: string };
+  warmup?: {
+    pairs: { source: string; target: string }[];
+    query: string;
+    answer: string;
+  };
 }
 
 export interface PuzzleTheme {
@@ -206,6 +212,16 @@ export const APURINA_PUZZLE: Puzzle = {
     script: "piriyʼ · ɨmbirʼi · kʼaniyʼ",
     difficulty: 3,
     family: "Xinkan (isolate)",
+    theme: { accent: "#f59e0b", sourceColor: "#fcd34d" },
+    warmup: {
+      pairs: [
+        { source: "piriyʼ", target: "dog" },
+        { source: "ɨmbirʼi", target: "water" },
+        { source: "kʼaniyʼ", target: "house" },
+      ],
+      query: "What is 'piriyʼ kʼaniyʼ'?",
+      answer: "dog house",
+    },
   },
 
   theme: {
@@ -225,6 +241,17 @@ export function getTodaysPuzzle(): Puzzle {
   // const daysSinceEpoch = Math.floor(Date.now() / 86400000);
   // return PUZZLE_POOL[daysSinceEpoch % PUZZLE_POOL.length];
   return APURINA_PUZZLE;
+}
+
+// Look up a specific puzzle by ID (for challenge links)
+export function getPuzzleById(id: string): Puzzle | undefined {
+  return PUZZLE_POOL.find((p) => p.id === id);
+}
+
+// Generate a challenge URL for a specific puzzle
+export function getChallengeUrl(puzzleId: string): string {
+  const base = typeof window !== "undefined" ? window.location.origin : "https://ratiocine.vercel.app";
+  return `${base}/play?puzzle=${encodeURIComponent(puzzleId)}`;
 }
 
 // ─── Grading ────────────────────────────────────────────────────────────────

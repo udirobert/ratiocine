@@ -14,6 +14,7 @@ export const StudyPhase = ({ puzzle, highlightedRows, onReady }: StudyPhaseProps
   const [showRows, setShowRows] = useState(false);
   const [visibleCount, setVisibleCount] = useState(0);
   const [ready, setReady] = useState(false);
+  const [flashedRows, setFlashedRows] = useState<Set<number>>(new Set());
 
   const { theme } = puzzle;
   const pairs = puzzle.pairs.filter((p) => !p.gated);
@@ -36,6 +37,22 @@ export const StudyPhase = ({ puzzle, highlightedRows, onReady }: StudyPhaseProps
     const t = setTimeout(() => setVisibleCount((c) => c + 1), 80);
     return () => clearTimeout(t);
   }, [showRows, visibleCount, pairs.length]);
+
+  // Tap a source word → flash rows that share morphemes
+  const handleSourceTap = (pair: PuzzlePair) => {
+    const sharedRows = new Set<number>();
+    for (const morpheme of pair.morphemes) {
+      for (const other of pairs) {
+        if (other.id !== pair.id && other.morphemes.includes(morpheme)) {
+          sharedRows.add(other.id);
+        }
+      }
+    }
+    if (sharedRows.size === 0) return;
+    setFlashedRows(sharedRows);
+    // Clear flash after 1.5s
+    setTimeout(() => setFlashedRows(new Set()), 1500);
+  };
 
   return (
     <div className="flex-1 flex flex-col min-h-0 relative">
@@ -112,8 +129,9 @@ export const StudyPhase = ({ puzzle, highlightedRows, onReady }: StudyPhaseProps
               <EvidenceCard
                 key={pair.id}
                 pair={pair}
-                highlighted={highlightedRows.has(pair.id)}
+                highlighted={highlightedRows.has(pair.id) || flashedRows.has(pair.id)}
                 theme={theme}
+                onSourceTap={() => handleSourceTap(pair)}
               />
             ))}
           </div>
@@ -161,18 +179,24 @@ const EvidenceCard = ({
   pair,
   highlighted,
   theme,
+  onSourceTap,
 }: {
   pair: PuzzlePair;
   highlighted: boolean;
   theme: PuzzleTheme;
+  onSourceTap: () => void;
 }) => (
   <motion.div
     initial={{ opacity: 0, x: -12, scale: 0.97 }}
-    animate={{ opacity: 1, x: 0, scale: 1 }}
+    animate={{
+      opacity: 1,
+      x: 0,
+      scale: highlighted ? 1.01 : 1,
+    }}
     transition={{ duration: 0.3, ease: "easeOut" }}
     className={`
       flex items-center gap-3 px-4 py-3 rounded-lg
-      border transition-colors
+      border transition-all duration-300
       ${highlighted
         ? "border-white/15"
         : "border-white/6 bg-white/[0.02]"
@@ -180,10 +204,10 @@ const EvidenceCard = ({
     `}
     style={{
       boxShadow: highlighted
-        ? `0 0 12px ${theme.accent}15`
+        ? `0 0 12px ${theme.accent}20`
         : "0 1px 3px rgba(0,0,0,0.3)",
-      backgroundColor: highlighted ? `${theme.accent}08` : undefined,
-      borderColor: highlighted ? `${theme.accent}40` : undefined,
+      backgroundColor: highlighted ? `${theme.accent}0c` : undefined,
+      borderColor: highlighted ? `${theme.accent}50` : undefined,
     }}
   >
     {/* Row number */}
@@ -191,13 +215,15 @@ const EvidenceCard = ({
       {pair.id}
     </span>
 
-    {/* Source — themed color */}
-    <span
-      className="font-mono text-[13px] flex-1 tracking-wide"
+    {/* Source — tappable, themed color */}
+    <button
+      type="button"
+      onClick={onSourceTap}
+      className="font-mono text-[13px] flex-1 tracking-wide text-left cursor-pointer hover:underline underline-offset-2 decoration-white/20 transition-colors"
       style={{ color: `${theme.sourceColor}d9` }}
     >
       {pair.source}
-    </span>
+    </button>
 
     {/* Connector */}
     <span className="text-white/15 text-[10px] shrink-0">→</span>

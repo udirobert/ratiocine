@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
-import { drawScreen, SCREEN_H, SCREEN_W } from "./screen-canvas";
+import { drawScreen, setSkipTypewriter, SCREEN_H, SCREEN_W } from "./screen-canvas";
 
 const MacScene = dynamic(
   () => import("./mac-scene").then((m) => m.MacScene),
@@ -22,6 +22,13 @@ export const Machine = ({ onPlay, zooming = false }: MachineProps) => {
 
   useEffect(() => {
     setIsMobile(window.innerWidth < 768);
+    // Skip typewriter for return visitors
+    const visited = localStorage.getItem("ration-visited");
+    if (visited) {
+      setSkipTypewriter(true);
+    } else {
+      localStorage.setItem("ration-visited", "1");
+    }
   }, []);
 
   // Drive the typewriter animation on a 2D canvas,

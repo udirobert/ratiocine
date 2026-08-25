@@ -6,11 +6,14 @@ import { motion, AnimatePresence } from "motion/react";
 import { LanguageMap } from "./language-map";
 import { AudioMoment } from "./audio-moment";
 import { StudyPhase } from "./study-phase";
+import { WarmupTeaser } from "./warmup-teaser";
 import { AiComparison, type AiResult } from "./ai-comparison";
 import { createApurinaComparisonUrl } from "./canonical-apurina";
 import { useSfx } from "./use-sfx";
 import {
   getTodaysPuzzle,
+  getPuzzleById,
+  getChallengeUrl,
   gradeAnswer,
   loadProgress,
   recordSolve,
@@ -81,7 +84,17 @@ export interface PuzzleViewProps {
 }
 
 export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
-  const puzzle = useMemo(() => getTodaysPuzzle(), []);
+  const puzzle = useMemo(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get("puzzle");
+      if (id) {
+        const found = getPuzzleById(id);
+        if (found) return found;
+      }
+    }
+    return getTodaysPuzzle();
+  }, []);
   const sfx = useSfx();
 
   // Phase
@@ -248,8 +261,28 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
 
   const handleShare = useCallback(async () => {
     const text = generateShareText(puzzle, grades, elapsed, hintsUsed, aiResult);
-    try { await navigator.clipboard.writeText(text); setCopied(true); setTimeout(() => setCopied(false), 2000); }
-    catch { prompt("Copy:", text); }
+    // Try native share with image, fall back to clipboard text
+    try {
+      const { generateShareCard } = await import("./share-card");
+      const blob = await generateShareCard(puzzle, grades, elapsed, hintsUsed, aiResult);
+      if (blob && navigator.share && navigator.canShare?.({ files: [new File([blob], "ratiocine.png", { type: "image/png" })] })) {
+        await navigator.share({
+          text,
+          files: [new File([blob], "ratiocine.png", { type: "image/png" })],
+        });
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+        return;
+      }
+      // Fallback: copy text
+      await navigator.clipboard.writeText(text);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // Final fallback
+      try { await navigator.clipboard.writeText(text); setCopied(true); setTimeout(() => setCopied(false), 2000); }
+      catch { prompt("Copy:", text); }
+    }
   }, [puzzle, grades, elapsed, hintsUsed, aiResult]);
 
   // ─── Grade colors ─────────────────────────────────────────────────────────
@@ -638,6 +671,23 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
                   >
                     {!aiSettled ? "⏳" : copied ? "Copied!" : "Share"}
                   </motion.button>
+
+                  {/* Challenge a friend */}
+                  <motion.button
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 1.1 }}
+                    onClick={() => {
+                      const url = getChallengeUrl(puzzle.id);
+                      navigator.clipboard.writeText(url).then(() => {
+                        setCopied(true);
+                        setTimeout(() => setCopied(false), 2000);
+                      });
+                    }}
+                    className="mt-2 text-[11px] font-mono text-white/40 hover:text-white/70 transition-colors"
+                  >
+                    Challenge a friend →
+                  </motion.button>
                 </div>
 
                 {/* ═══ Details — below the fold ═══ */}
@@ -705,11 +755,8 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
                     </div>
                   </details>
 
-                  {/* Next puzzle */}
-                  <div className="text-center py-2">
-                    <p className="text-sm font-bold text-white/80">{puzzle.nextPreview.language}</p>
-                    <p className="font-mono text-[11px] text-white/40 mt-0.5">Coming soon</p>
-                  </div>
+                  {/* Next-day warmup teaser */}
+                  <WarmupTeaser preview={puzzle.nextPreview} />
 
                   {/* Local record */}
                   {progress && (
