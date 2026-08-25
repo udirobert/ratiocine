@@ -20,7 +20,7 @@ type Phase = "landing" | "pre-flash" | "expanding" | "game";
 const Home = () => {
   const [phase, setPhase] = useState<Phase>("landing");
   const [isMobile, setIsMobile] = useState(false);
-  const [clipInset, setClipInset] = useState("35% 32% 35% 32%"); // CRT bounds approx
+  const [clipInset, setClipInset] = useState("50% 50% 50% 50%"); // fully closed
 
   useEffect(() => {
     setIsMobile(window.innerWidth < 768);
@@ -33,22 +33,27 @@ const Home = () => {
     setPhase("pre-flash");
 
     setTimeout(() => {
-      // Phase 2: clip expansion (600ms spring)
-      setPhase("expanding");
-      setClipInset("0% 0% 0% 0%");
+      // Phase 2: clip starts at CRT bounds, then expands to full
+      setClipInset("35% 32% 35% 32%");
+
+      // Trigger expansion on next frame so the browser registers the start position
+      requestAnimationFrame(() => {
+        setPhase("expanding");
+        setClipInset("0% 0% 0% 0%");
+      });
 
       setTimeout(() => {
         // Phase 3: game fully revealed
         setPhase("game");
         // Update URL without navigation
         window.history.replaceState(null, "", "/play");
-      }, 700);
+      }, 900);
     }, 200);
   }, [phase]);
 
   const handleBack = useCallback(() => {
+    setClipInset("50% 50% 50% 50%");
     setPhase("landing");
-    setClipInset("35% 32% 35% 32%");
     window.history.replaceState(null, "", "/");
   }, []);
 
@@ -56,7 +61,6 @@ const Home = () => {
   useEffect(() => {
     if (window.location.pathname === "/play") {
       setPhase("game");
-      setClipInset("0% 0% 0% 0%");
     }
   }, []);
 
