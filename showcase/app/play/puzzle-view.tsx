@@ -8,6 +8,7 @@ import { AudioMoment } from "./audio-moment";
 import { Briefing } from "./briefing";
 import { AiComparison, type AiResult } from "./ai-comparison";
 import { createApurinaComparisonUrl } from "./canonical-apurina";
+import { useSfx } from "./use-sfx";
 import {
   getTodaysPuzzle,
   gradeAnswer,
@@ -81,6 +82,7 @@ export interface PuzzleViewProps {
 
 export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
   const puzzle = useMemo(() => getTodaysPuzzle(), []);
+  const sfx = useSfx();
 
   // Phase
   const [phase, setPhase] = useState<Phase>("briefing");
@@ -159,6 +161,7 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
   const handleSlotTap = useCallback((idx: number) => {
     if (isLocked) return;
     if (selected) {
+      sfx.snap();
       setAnswers((prev) => {
         const next = [...prev];
         const row = [...next[currentQ]];
@@ -176,7 +179,7 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
         return next;
       });
     }
-  }, [isLocked, selected, currentQ, slots]);
+  }, [isLocked, selected, currentQ, slots, sfx]);
 
   const handleSubmit = useCallback(() => {
     if (isLocked) return;
@@ -205,6 +208,7 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
     setGrades((prev) => new Map(prev).set(query.id, result));
 
     if (result.isCorrect) {
+      sfx.chime();
       // Score ticks up
       setScore((s) => s + 1);
       // Word assembly after flip animation settles
@@ -224,10 +228,11 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
       }, submitted.length * 100 + 800);
     } else {
       // Shake on wrong — the visual IS the feedback
+      sfx.thud();
       setShaking(true);
       setTimeout(() => setShaking(false), 400);
     }
-  }, [isLocked, slots, attempts, currentQ, query, locked]);
+  }, [isLocked, slots, attempts, currentQ, query, locked, sfx]);
 
   const handleHint = useCallback(() => {
     if (hintsUsed >= puzzle.hints.length) return;
@@ -261,7 +266,7 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
   // ─── Render ───────────────────────────────────────────────────────────────
 
   return (
-    <div className="touch-game relative flex flex-col h-svh w-full overflow-hidden bg-[#0a0c10] text-white">
+    <div className="touch-game relative flex flex-col h-svh w-full overflow-hidden bg-[#0a0c10] text-white" onClick={sfx.enable} onKeyDown={sfx.enable}>
 
       {/* ═══ Top bar ═══ */}
       <header className="shrink-0 flex items-center justify-between px-4 py-2.5 border-b border-white/8 sm:px-6">
@@ -302,6 +307,18 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
           )}
         </div>
       </header>
+
+      {/* ═══ Progress bar ═══ */}
+      {phase === "solve" && (
+        <div className="shrink-0 h-0.5 bg-white/5">
+          <motion.div
+            className="h-full bg-amber-400/80 rounded-r-full"
+            initial={{ width: "0%" }}
+            animate={{ width: `${(score / puzzle.queries.length) * 100}%` }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+          />
+        </div>
+      )}
 
       {/* ═══ Main frame ═══ */}
       <div className="flex-1 flex flex-col min-h-0">
@@ -509,8 +526,8 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
                       return (
                         <button
                           key={`${m}-${i}`}
-                          onClick={() => setSelected((p) => (p === m ? null : m))}
-                          className={`relative px-3 py-2.5 min-h-[44px] rounded font-mono text-[13px] border transition-all ${
+                          onClick={() => { sfx.click(); setSelected((p) => (p === m ? null : m)); }}
+                          className={`tile-physical relative px-3 py-2.5 min-h-[44px] rounded font-mono text-[13px] border transition-all ${
                             isSelected
                               ? "border-amber-400 bg-amber-400/15 text-amber-300 shadow-[0_0_8px_rgba(229,168,75,0.15)]"
                               : "border-white/10 bg-white/[0.03] text-white/70 hover:border-white/20"
@@ -592,30 +609,41 @@ export const PuzzleView = ({ onBack }: PuzzleViewProps) => {
                     {allCorrect ? `${puzzle.language} decoded in ${timeStr}` : `${timeStr} · ${hintsUsed > 0 ? `${hintsUsed} hint${hintsUsed > 1 ? "s" : ""}` : "no hints"}`}
                   </motion.p>
 
-                  {/* Emoji grid */}
+                  {/* Card-flip result grid */}
                   <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.5 }}
-                    className="mt-5 flex items-center justify-center gap-1"
+                    className="mt-5 flex items-center justify-center gap-2"
                   >
                     {puzzle.queries.map((q, i) => {
                       const g = grades.get(q.id);
                       const correct = g?.isCorrect;
                       return (
-                        <motion.span
-                          key={q.id}
-                          initial={{ scale: 0, rotate: -180 }}
-                          animate={{ scale: 1, rotate: 0 }}
-                          transition={{ delay: 0.5 + i * 0.1, type: "spring", stiffness: 300 }}
-                          className={`w-8 h-8 rounded-md flex items-center justify-center text-sm ${
-                            correct
-                              ? "bg-emerald-400/20 text-emerald-400"
-                              : "bg-red-400/15 text-red-400/70"
-                          }`}
-                        >
-                          {correct ? "✓" : "✗"}
-                        </motion.span>
+                        <div key={q.id} className="card-flip w-10 h-10">
+                          <motion.div
+                            className="card-flip-inner relative w-full h-full"
+                            initial={{ rotateY: 0 }}
+                            animate={{ rotateY: 180 }}
+                            transition={{ delay: 0.6 + i * 0.15, duration: 0.5, ease: "easeInOut" }}
+                            style={{ transformStyle: "preserve-3d" }}
+                          >
+                            {/* Back (face-down) */}
+                            <div className="card-face card-back">
+                              <span className="text-white/20 text-sm font-mono">{i + 1}</span>
+                            </div>
+                            {/* Front (revealed) */}
+                            <div className={`card-face card-front ${
+                              correct
+                                ? "bg-emerald-400/20 border border-emerald-400/40"
+                                : "bg-red-400/15 border border-red-400/30"
+                            }`}>
+                              <span className={`text-sm font-bold ${correct ? "text-emerald-400" : "text-red-400/80"}`}>
+                                {correct ? "✓" : "✗"}
+                              </span>
+                            </div>
+                          </motion.div>
+                        </div>
                       );
                     })}
                   </motion.div>
