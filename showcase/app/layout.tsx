@@ -14,43 +14,44 @@ const geistSans = Geist({
 export const metadata: Metadata = {
   metadataBase: new URL("https://ratiocine.vercel.app"),
   title: {
-    default: "ratiocine — IOL-AI 2026",
+    default: "ratiocine — linguistics puzzle game",
     template: "%s · ratiocine",
   },
   description:
-    "How I built an AI to compete in the International Linguistics Olympiad using Arkor, Modal, Vultr, Cohere Labs and Hugging Face.",
+    "A linguistics deduction game built from our IOL-AI 2026 entry. Crack the pattern of a real language, then watch the machine try — same puzzle, same grading.",
   applicationName: "ratiocine",
   authors: [{ name: "udirobert", url: "https://github.com/udirobert/ratiocine" }],
   creator: "udirobert",
   keywords: [
     "IOL-AI 2026",
     "linguistics olympiad",
-    "natural language processing",
-    "AI",
+    "linguistics puzzle",
+    "language game",
+    "AI comparison",
     "Qwen2.5",
-    "chain-key signing",
+    "endangered languages",
   ],
   openGraph: {
     type: "website",
     siteName: "ratiocine",
-    title: "ratiocine — IOL-AI 2026",
+    title: "ratiocine — crack the pattern, then watch the machine try",
     description:
-      "An AI that solves International Linguistics Olympiad problems — the problem · the machine · the answer.",
+      "A daily linguistics deduction puzzle. You and a 14B-parameter model, graded by the same algorithm. Built from our IOL-AI 2026 competition entry.",
     url: "https://ratiocine.vercel.app",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "ratiocine — IOL-AI 2026",
+        alt: "ratiocine — linguistics puzzle game",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "ratiocine — IOL-AI 2026",
+    title: "ratiocine — crack the pattern, then watch the machine try",
     description:
-      "An AI that solves International Linguistics Olympiad problems — the problem · the machine · the answer.",
+      "A daily linguistics deduction puzzle. You and a 14B-parameter model, graded by the same algorithm. Built from our IOL-AI 2026 competition entry.",
     images: ["/og-image.png"],
   },
   robots: {
