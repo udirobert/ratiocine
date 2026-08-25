@@ -50,7 +50,7 @@ function generateShareText(
       `You: ${humanLine}`,
       `AI: ${aiCorrect}/${puzzle.queries.length} in ${aiResult.elapsed_s}s`,
       humanCorrect > aiCorrect ? `Beat the machine.` : humanCorrect === aiCorrect ? `Tied.` : `The machine got more.`,
-      `ratiocine.vercel.app`,
+      `ratiocine.vercel.app/play`,
     ].join("\n");
   }
 
@@ -59,7 +59,7 @@ function generateShareText(
     ...lines,
     humanLine,
     `Can the machine do it too?`,
-    `ratiocine.vercel.app`,
+    `ratiocine.vercel.app/play`,
   ].join("\n");
 }
 

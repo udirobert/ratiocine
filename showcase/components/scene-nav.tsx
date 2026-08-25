@@ -3,13 +3,12 @@
 import { ArrowLeftIcon, ArrowRightIcon } from "@phosphor-icons/react";
 import { motion } from "motion/react";
 
-export type SceneId = "problem" | "machine" | "answer" | "play";
+export type SceneId = "problem" | "machine" | "answer";
 
 const SCENES: { id: SceneId; label: string; index: number }[] = [
   { id: "problem", label: "The Problem", index: 0 },
   { id: "machine", label: "The Machine", index: 1 },
   { id: "answer", label: "The Answer", index: 2 },
-  { id: "play", label: "Play", index: 3 },
 ];
 
 interface SceneNavProps {
