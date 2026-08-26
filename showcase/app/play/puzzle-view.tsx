@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import { motion, AnimatePresence, LayoutGroup } from "motion/react";
 
 import { LanguageMap } from "./language-map";
@@ -506,7 +506,7 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
   return (
     <div
       className="touch-game relative flex flex-col h-svh w-full overflow-hidden bg-[#0a0c10] text-white"
-      style={{ "--puzzle-accent": puzzle.theme.accent } as React.CSSProperties}
+      style={{ "--puzzle-accent": puzzle.theme.accent } as CSSProperties}
       onClick={sfx.enable}
       onKeyDown={sfx.enable}
     >

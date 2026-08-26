@@ -201,6 +201,18 @@ To create more training data:
 
 10. **PyPI is reachable**: The sandbox has no internet for HF Hub, but `pip install` still works. Useful for installing bitsandbytes for 4-bit inference if needed.
 
+## The daily game (showcase/app/play)
+
+The showcase is a daily linguistics deduction game: study evidence rows → compose answers from morpheme tiles → compare against the 14B model (same EM grading). Key facts:
+
+- **5 puzzles** in `puzzle-data.ts` (Apurinã, Swahili, Turkish, Quechua, Nahuatl) rotate daily via `getTodaysPuzzle()`; `?puzzle=<id>` overrides for challenge links.
+- **Per-puzzle theming** flows through `--puzzle-accent` (set on the puzzle root) and `.pa-*` utility classes in `globals.css`. Never hardcode hex colors in play components.
+- **Forfeit flow**: after 2 failed attempts a "reveal this one" option locks the query wrong (honest share grid `🔍`). `good`/`partial` verdicts are only reachable this way.
+- **Evidence drawer** (ContextPanel) opens mid-solve via the book icon or `E` key; gated pairs (`gated: true`) are revealed from inside the drawer.
+- **A11y**: keyboard play (1–9 place, ⌫ remove, ↵ check, H hint, E evidence), `aria-live` grade announcements, grade symbols on tiles (not color-only), `MotionConfig reducedMotion="user"`, SFX mute persisted in `ration-sfx-muted`.
+- **Analytics**: `lib/analytics.ts` wraps `@vercel/analytics` — funnel events `play_start → study_complete → first_submit → puzzle_solved → shared → ai_verdict`.
+- The timer is intentionally **hidden during solve** and revealed on the result screen (deduction, not speedrun).
+
 ## Project structure
 
 ```
