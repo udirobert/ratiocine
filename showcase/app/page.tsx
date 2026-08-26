@@ -5,6 +5,7 @@ import { useCallback, useEffect, useState } from "react";
 import { motion } from "motion/react";
 
 import { GridBackground } from "@/components/ui/grid-background";
+import { track } from "@/lib/analytics";
 
 const Machine = dynamic(
   () => import("./scenes/machine/index").then((m) => m.Machine),
@@ -38,6 +39,7 @@ const Home = () => {
 
   const handlePlay = useCallback(() => {
     if (phase !== "landing") return;
+    track("play_start");
 
     // Phase 1: pre-flash (200ms)
     setPhase("pre-flash");

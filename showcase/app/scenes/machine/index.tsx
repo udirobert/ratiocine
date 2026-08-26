@@ -74,27 +74,37 @@ export const Machine = ({ onPlay, zooming = false, solvedResult = null }: Machin
         />
       )}
 
-      {/* 3D Mac (desktop only) */}
-      {!isMobile && <MacScene screenCanvasRef={canvasRef} zooming={zooming} />}
+      {/* 3D Mac (desktop only) — the machine itself is the play button */}
+      {!isMobile && (
+        <div
+          className="absolute inset-0 cursor-pointer"
+          role={onPlay ? "button" : undefined}
+          aria-label={onPlay ? "Play today's puzzle" : undefined}
+          onClick={() => { if (!zooming) onPlay?.(); }}
+        >
+          <MacScene screenCanvasRef={canvasRef} zooming={zooming} />
+        </div>
+      )}
 
       {/* Play button — positioned below the Mac (hidden during zoom) */}
       {!isMobile && !zooming && (
-        <div className="absolute inset-x-0 bottom-20 z-30 flex justify-center pointer-events-none">
+        <div className="absolute inset-x-0 bottom-16 z-30 flex flex-col items-center gap-2 pointer-events-none">
           {onPlay ? (
             <button
               onClick={onPlay}
               className="pointer-events-auto px-7 py-3 rounded-full border border-amber-400/40 bg-amber-400/10 backdrop-blur text-amber-300 font-mono text-sm font-medium hover:bg-amber-400/20 hover:border-amber-400/60 transition-all shadow-[0_0_20px_rgba(229,168,75,0.1)]"
             >
-              ▶ Play the Apurinã puzzle
+              ▶ Play today&rsquo;s puzzle
             </button>
           ) : (
             <Link
               href="/play"
               className="pointer-events-auto px-7 py-3 rounded-full border border-amber-400/40 bg-amber-400/10 backdrop-blur text-amber-300 font-mono text-sm font-medium hover:bg-amber-400/20 hover:border-amber-400/60 transition-all shadow-[0_0_20px_rgba(229,168,75,0.1)]"
             >
-              ▶ Play the Apurinã puzzle
+              ▶ Play today&rsquo;s puzzle
             </Link>
           )}
+          <span className="font-mono text-[10px] text-white/30">or click the machine — new puzzle daily</span>
         </div>
       )}
 
@@ -108,6 +118,9 @@ export const Machine = ({ onPlay, zooming = false, solvedResult = null }: Machin
             Crack the pattern of a real language.
             <br />
             Then watch the machine try.
+          </p>
+          <p className="mt-3 font-mono text-[11px] text-white/45">
+            A new puzzle every day.
           </p>
           <Link
             href="/play"

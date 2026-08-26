@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 
 import { cn } from "@/lib/utils";
+import { Providers } from "@/components/providers";
 
 const geistSans = Geist({
   variable: "--font-sans",
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
     template: "%s · ratiocine",
   },
   description:
-    "A linguistics deduction game built from our IOL-AI 2026 entry. Crack the pattern of a real language, then watch the machine try — same puzzle, same grading.",
+    "A daily linguistics deduction game built from our IOL-AI 2026 entry. Crack the pattern of a real language, then watch the machine try — same puzzle, same grading.",
   applicationName: "ratiocine",
   authors: [{ name: "udirobert", url: "https://github.com/udirobert/ratiocine" }],
   creator: "udirobert",
@@ -77,7 +78,9 @@ const RootLayout = ({
       <link rel="icon" href="/favicon.ico" sizes="any" />
       <link rel="icon" href="/favicon.png" sizes="32x32" type="image/png" />
     </head>
-    <body>{children}</body>
+    <body>
+      <Providers>{children}</Providers>
+    </body>
   </html>
 );
 

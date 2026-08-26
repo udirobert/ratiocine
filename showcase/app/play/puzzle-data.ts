@@ -796,7 +796,11 @@ export function getPuzzleById(id: string): Puzzle | undefined {
 
 // Generate a challenge URL for a specific puzzle
 export function getChallengeUrl(puzzleId: string): string {
-  const base = typeof window !== "undefined" ? window.location.origin : "https://ratiocine.vercel.app";
+  // Canonical origin can be pinned at deploy time; otherwise use whatever
+  // domain served the page so shares stay on-brand everywhere.
+  const base =
+    process.env.NEXT_PUBLIC_SITE_URL ||
+    (typeof window !== "undefined" ? window.location.origin : "https://ratiocine.vercel.app");
   return `${base}/play?puzzle=${encodeURIComponent(puzzleId)}`;
 }
 
