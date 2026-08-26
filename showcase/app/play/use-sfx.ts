@@ -1,13 +1,35 @@
 "use client";
 
-import { useCallback, useRef } from "react";
+import { useCallback, useRef, useState } from "react";
 
 // Micro-sound effects via Web Audio API oscillator synthesis.
 // No audio files — pure waveform generation, ~50ms per sound.
 
+const MUTE_KEY = "ration-sfx-muted";
+
 export const useSfx = () => {
   const ctxRef = useRef<AudioContext | null>(null);
   const enabledRef = useRef(false);
+  const [muted, setMuted] = useState<boolean>(() => {
+    if (typeof window === "undefined") return false;
+    try {
+      return localStorage.getItem(MUTE_KEY) === "1";
+    } catch {
+      return false;
+    }
+  });
+  const mutedRef = useRef(muted);
+
+  const toggleMute = useCallback(() => {
+    setMuted((m) => {
+      const next = !m;
+      mutedRef.current = next;
+      try {
+        localStorage.setItem(MUTE_KEY, next ? "1" : "0");
+      } catch {}
+      return next;
+    });
+  }, []);
 
   const getCtx = useCallback(() => {
     if (!ctxRef.current) {
@@ -24,12 +46,12 @@ export const useSfx = () => {
   // Enable on first user interaction
   const enable = useCallback(() => {
     enabledRef.current = true;
-    getCtx();
+    if (!mutedRef.current) getCtx();
   }, [getCtx]);
 
   // Soft click — tile select
   const click = useCallback(() => {
-    if (!enabledRef.current) return;
+    if (!enabledRef.current || mutedRef.current) return;
     const ac = getCtx();
     if (!ac) return;
     const osc = ac.createOscillator();
@@ -46,7 +68,7 @@ export const useSfx = () => {
 
   // Snap — tile placed in slot
   const snap = useCallback(() => {
-    if (!enabledRef.current) return;
+    if (!enabledRef.current || mutedRef.current) return;
     const ac = getCtx();
     if (!ac) return;
     const osc = ac.createOscillator();
@@ -63,7 +85,7 @@ export const useSfx = () => {
 
   // Thud — wrong answer
   const thud = useCallback(() => {
-    if (!enabledRef.current) return;
+    if (!enabledRef.current || mutedRef.current) return;
     const ac = getCtx();
     if (!ac) return;
     const osc = ac.createOscillator();
@@ -80,7 +102,7 @@ export const useSfx = () => {
 
   // Chime — correct answer (three ascending notes)
   const chime = useCallback(() => {
-    if (!enabledRef.current) return;
+    if (!enabledRef.current || mutedRef.current) return;
     const ac = getCtx();
     if (!ac) return;
     const notes = [523, 659, 784]; // C5, E5, G5
@@ -100,7 +122,7 @@ export const useSfx = () => {
 
   // Pop — tile removed from slot (short high blip)
   const pop = useCallback(() => {
-    if (!enabledRef.current) return;
+    if (!enabledRef.current || mutedRef.current) return;
     const ac = getCtx();
     if (!ac) return;
     const osc = ac.createOscillator();
@@ -115,5 +137,5 @@ export const useSfx = () => {
     osc.stop(ac.currentTime + 0.07);
   }, [getCtx]);
 
-  return { enable, click, snap, thud, chime, pop };
+  return { enable, click, snap, thud, chime, pop, muted, toggleMute };
 };

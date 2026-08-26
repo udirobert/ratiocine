@@ -57,7 +57,7 @@ export const ContextPanel = ({ pairs, highlightedRows }: ContextPanelProps) => {
       <span>
         {parts.map((part, i) =>
           part.highlight ? (
-            <span key={i} className="bg-amber-400/20 text-amber-300 rounded px-0.5">
+            <span key={i} className="pa-bg-20 pa-text rounded px-0.5">
               {part.text}
             </span>
           ) : (
@@ -82,7 +82,7 @@ export const ContextPanel = ({ pairs, highlightedRows }: ContextPanelProps) => {
         {pairs.length > 6 && (
           <button
             onClick={() => setExpanded((e) => !e)}
-            className="font-mono text-[11px] text-amber-300/70 hover:text-amber-300 transition-colors"
+            className="font-mono text-[11px] pa-text opacity-70 hover:opacity-100 transition-opacity"
           >
             {expanded ? "show fewer" : `show all ${pairs.length}`}
           </button>
@@ -101,7 +101,7 @@ export const ContextPanel = ({ pairs, highlightedRows }: ContextPanelProps) => {
                 layout
                 className={`flex items-center gap-3 px-4 py-2.5 transition-colors cursor-pointer ${
                   isHighlightedByHint
-                    ? "bg-amber-400/[0.06]"
+                    ? "pa-bg-10"
                     : isMatchedBySelection
                       ? "bg-white/[0.04]"
                       : "hover:bg-white/[0.02]"
@@ -143,7 +143,7 @@ export const ContextPanel = ({ pairs, highlightedRows }: ContextPanelProps) => {
 
                 {/* Hint indicator */}
                 {isHighlightedByHint && (
-                  <span className="text-amber-400/60 text-[10px] shrink-0">★</span>
+                  <span className="pa-text opacity-60 text-[10px] shrink-0">★</span>
                 )}
               </motion.div>
             );
@@ -158,7 +158,7 @@ export const ContextPanel = ({ pairs, highlightedRows }: ContextPanelProps) => {
           animate={{ opacity: 1, y: 0 }}
           className="mt-2 flex items-center gap-2 text-[11px] text-white/50"
         >
-          <span className="font-mono text-amber-300 bg-amber-400/10 rounded px-1.5 py-0.5">
+          <span className="font-mono pa-text pa-bg-10 rounded px-1.5 py-0.5">
             {selectedMorpheme}
           </span>
           <span>

@@ -8,24 +8,27 @@ interface StudyPhaseProps {
   puzzle: Puzzle;
   highlightedRows: Set<number>;
   onReady: () => void;
+  /** Skip intro animations — used when returning to evidence mid-solve */
+  instant?: boolean;
 }
 
-export const StudyPhase = ({ puzzle, highlightedRows, onReady }: StudyPhaseProps) => {
-  const [showRows, setShowRows] = useState(false);
-  const [visibleCount, setVisibleCount] = useState(0);
-  const [ready, setReady] = useState(false);
+export const StudyPhase = ({ puzzle, highlightedRows, onReady, instant = false }: StudyPhaseProps) => {
+  const [showRows, setShowRows] = useState(instant);
+  const [visibleCount, setVisibleCount] = useState(instant ? Number.MAX_SAFE_INTEGER : 0);
+  const [ready, setReady] = useState(instant);
   const [flashedRows, setFlashedRows] = useState<Set<number>>(new Set());
 
   const { theme } = puzzle;
   const pairs = puzzle.pairs.filter((p) => !p.gated);
   const chars = useMemo(() => puzzle.language.split(""), [puzzle.language]);
 
-  // After title animation settles, start showing rows
+  // After title animation settles, start showing rows (skipped in instant mode)
   useEffect(() => {
+    if (instant) return;
     const titleDelay = chars.length * 40 + 600;
     const t = setTimeout(() => setShowRows(true), titleDelay);
     return () => clearTimeout(t);
-  }, [chars.length]);
+  }, [chars.length, instant]);
 
   // Stagger rows in one by one
   useEffect(() => {
@@ -82,7 +85,7 @@ export const StudyPhase = ({ puzzle, highlightedRows, onReady }: StudyPhaseProps
           {/* Language name — staggered characters */}
           <motion.h2
             className="text-3xl sm:text-4xl font-bold tracking-tight text-white text-center mb-2"
-            initial="hidden"
+            initial={instant ? "visible" : "hidden"}
             animate="visible"
           >
             {chars.map((char, i) => (
@@ -106,9 +109,9 @@ export const StudyPhase = ({ puzzle, highlightedRows, onReady }: StudyPhaseProps
 
           {/* Region + speaker count */}
           <motion.div
-            initial={{ opacity: 0 }}
+            initial={instant ? false : { opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
+            transition={{ delay: instant ? 0 : 0.5 }}
             className="flex items-center justify-center gap-3 mb-8"
           >
             <span className="text-[12px] text-white/50 font-mono">
@@ -118,16 +121,22 @@ export const StudyPhase = ({ puzzle, highlightedRows, onReady }: StudyPhaseProps
             <span className="text-[12px] text-white/50 font-mono">
               {puzzle.lore.speakers.split("—")[0].trim()}
             </span>
-            <span className="text-[10px] px-1.5 py-0.5 rounded-full border border-red-400/30 text-red-300/60 font-mono">
-              endangered
-            </span>
+            {/endangered|critically|severely/i.test(puzzle.lore.endangerment) ? (
+              <span className="text-[10px] px-1.5 py-0.5 rounded-full border border-red-400/30 text-red-300/60 font-mono">
+                endangered
+              </span>
+            ) : (
+              <span className="text-[10px] px-1.5 py-0.5 rounded-full border border-emerald-400/30 text-emerald-300/60 font-mono">
+                living
+              </span>
+            )}
           </motion.div>
 
           {/* Task framing — one sentence that explains the challenge */}
           <motion.p
-            initial={{ opacity: 0 }}
+            initial={instant ? false : { opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.7 }}
+            transition={{ delay: instant ? 0 : 0.7 }}
             className="text-[14px] text-white/70 text-center mb-6 max-w-xs mx-auto"
           >
             {puzzle.taskFrame}
@@ -139,6 +148,7 @@ export const StudyPhase = ({ puzzle, highlightedRows, onReady }: StudyPhaseProps
               <EvidenceCard
                 key={pair.id}
                 pair={pair}
+                instant={instant}
                 highlighted={highlightedRows.has(pair.id) || flashedRows.has(pair.id)}
                 theme={theme}
                 onSourceTap={() => handleSourceTap(pair)}
@@ -190,20 +200,22 @@ const EvidenceCard = ({
   highlighted,
   theme,
   onSourceTap,
+  instant = false,
 }: {
   pair: PuzzlePair;
   highlighted: boolean;
   theme: PuzzleTheme;
   onSourceTap: () => void;
+  instant?: boolean;
 }) => (
   <motion.div
-    initial={{ opacity: 0, x: -12, scale: 0.97 }}
+    initial={instant ? false : { opacity: 0, x: -12, scale: 0.97 }}
     animate={{
       opacity: 1,
       x: 0,
       scale: highlighted ? 1.01 : 1,
     }}
-    transition={{ duration: 0.3, ease: "easeOut" }}
+    transition={{ duration: instant ? 0.1 : 0.3, ease: "easeOut" }}
     className={`
       flex items-center gap-3 px-4 py-3 rounded-lg
       border transition-all duration-300

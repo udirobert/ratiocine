@@ -194,6 +194,42 @@
 }
 
 
+/* ─── Per-puzzle accent (set --puzzle-accent on the puzzle root) ─────────────
+   All player-facing accent spots read these so a new puzzle theme never
+   leaves stale hardcoded hues behind. */
+
+.pa-text { color: var(--puzzle-accent, #e5a84b); }
+.pa-border { border-color: var(--puzzle-accent, #e5a84b); }
+.pa-border-20 { border-color: color-mix(in srgb, var(--puzzle-accent, #e5a84b) 20%, transparent); }
+.pa-border-40 { border-color: color-mix(in srgb, var(--puzzle-accent, #e5a84b) 40%, transparent); }
+.pa-bg-10 { background-color: color-mix(in srgb, var(--puzzle-accent, #e5a84b) 10%, transparent); }
+.pa-bg-15 { background-color: color-mix(in srgb, var(--puzzle-accent, #e5a84b) 15%, transparent); }
+.pa-bg-20 { background-color: color-mix(in srgb, var(--puzzle-accent, #e5a84b) 20%, transparent); }
+.pa-bg-solid { background-color: var(--puzzle-accent, #e5a84b); }
+.pa-bg-solid:hover { filter: brightness(1.1); }
+.pa-chip {
+  border: 1px solid color-mix(in srgb, var(--puzzle-accent, #e5a84b) 40%, transparent);
+  background-color: color-mix(in srgb, var(--puzzle-accent, #e5a84b) 10%, transparent);
+  color: var(--puzzle-accent, #e5a84b);
+}
+.pa-chip:hover {
+  background-color: color-mix(in srgb, var(--puzzle-accent, #e5a84b) 18%, transparent);
+  border-color: color-mix(in srgb, var(--puzzle-accent, #e5a84b) 60%, transparent);
+}
+
+/* ─── Reduced motion ───────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 /* ─── Grain noise texture (for CRT transition edge) ────────────────────────── */
 
 .grain-noise {

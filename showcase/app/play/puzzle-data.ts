@@ -272,6 +272,7 @@ export interface QueryGrade {
   grades: TileGrade[];
   isCorrect: boolean;
   attempt: number; // which attempt (1 or 2)
+  revealed?: boolean; // true = player forfeited; counts as missed, share grid shows 🔍
 }
 
 export function gradeAnswer(
