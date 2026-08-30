@@ -74,14 +74,10 @@ export const Machine = ({ onPlay, zooming = false, solvedResult = null }: Machin
         />
       )}
 
-      {/* 3D Mac (desktop only) — the machine itself is the play button */}
+      {/* 3D Mac (desktop only) — pure exploration. OrbitControls rotate/orbit;
+          it is NOT a play trigger. The dedicated Play button starts the game. */}
       {!isMobile && (
-        <div
-          className="absolute inset-0 cursor-pointer"
-          role={onPlay ? "button" : undefined}
-          aria-label={onPlay ? "Play today's puzzle" : undefined}
-          onClick={() => { if (!zooming) onPlay?.(); }}
-        >
+        <div className="absolute inset-0 cursor-grab active:cursor-grabbing">
           <MacScene screenCanvasRef={canvasRef} zooming={zooming} />
         </div>
       )}
@@ -104,7 +100,7 @@ export const Machine = ({ onPlay, zooming = false, solvedResult = null }: Machin
               ▶ Play today&rsquo;s puzzle
             </Link>
           )}
-          <span className="font-mono text-[10px] text-white/30">or click the machine — new puzzle daily</span>
+          <span className="font-mono text-[10px] text-white/30">new puzzle daily</span>
         </div>
       )}
 
