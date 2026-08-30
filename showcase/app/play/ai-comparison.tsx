@@ -86,6 +86,7 @@ function attestInBackground(puzzle: Puzzle, aiResult: AiResult): void {
     context: buildContext(puzzle),
     prompt: puzzle.queries.map((q, i) => `${i + 1}. ${q.prompt}`).join("\n"),
     pred: aiResult.pred,
+    ground_truth: puzzle.queries.map((q) => q.answerJoined),
     model: aiResult.model,
     evaluator_version: "showcase-v1",
     task_type: puzzle.taskType,
