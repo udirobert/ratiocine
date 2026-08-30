@@ -56,31 +56,21 @@ function setCachedResult(puzzleId: string, result: AiResult): void {
 
 // ─── Ration attestation stub ────────────────────────────────────────────────
 
-// Fires attest_entry in background when a canister endpoint is configured.
-// Currently a no-op stub — replace CANISTER_URL when mainnet is live.
-const CANISTER_URL: string | null = null; // e.g. "http://localhost:8000" or mainnet URL
+// Fires attest_entry in background via the mainnet Neutron canister's HTTP gateway.
+// Mainnet Neutron canister hosting the Ration app (deployed 2026-08-30).
+const CANISTER_URL = "https://cvrwv-mqaaa-aaaai-ax4pa-cai.icp0.io";
 
-async function attestInBackground(puzzle: Puzzle, aiResult: AiResult): Promise<void> {
-  if (!CANISTER_URL) return; // silent no-op until mainnet
-
-  const payload = {
-    job_id: `${puzzle.id}-${Date.now()}`,
-    problem: puzzle.queries.map((q) => q.prompt).join("\n"),
-    reference: puzzle.queries.map((q) => q.answerJoined),
-    prediction: aiResult.pred,
-    model_label: aiResult.model,
-    evaluator_version: "showcase-v1",
-  };
-
-  try {
-    await fetch(`${CANISTER_URL}/api/v1/app/ratiocine/call/attest_entry`, {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify(payload),
-    });
-  } catch {
-    // Attestation is best-effort; never block UX
-  }
+// Best-effort attestation. Called fire-and-forget after the AI verdict.
+// NOTE: attest_entry is a Candid update method — it is NOT reachable over a
+// plain HTTP fetch. Calling it requires @dfinity/agent with an identity that
+// the kernel authorizes (controllers + Neutron self). Until that path is wired
+// (via a server-side Vercel route using the deployer identity, or an
+// add_allowed_caller bootstrap), this stays a silent no-op so it never blocks
+// or errors the solve flow. The canister base URL is recorded for that wiring.
+function attestInBackground(_puzzle: Puzzle, _aiResult: AiResult): void {
+  // No-op until a signed agent call is wired. Do not fetch: the /api/v1/...
+  // route does not exist on the canister's HTTP gateway.
+  void CANISTER_URL;
 }
 
 // ─── Types ──────────────────────────────────────────────────────────────────

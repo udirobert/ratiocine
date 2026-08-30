@@ -65,5 +65,19 @@ once the CNAME points at Vercel.
 
 If you want a separate domain for the Ration protocol page (once mainnet is
 live), `ration.trustfall.xyz` is available. That would host the canister
-interaction UI (attestation, ledger viewer, report verifier). Not needed until
-the 5 ICP is funded and the canister is deployed.
+interaction UI (attestation, ledger viewer, report verifier).
+
+## Mainnet canister (live 2026-08-30)
+
+The Ration app is deployed to mainnet on the Neutron canister:
+
+- **Canister ID**: `cvrwv-mqaaa-aaaai-ax4pa-cai`
+- **Canister URL**: `https://cvrwv-mqaaa-aaaai-ax4pa-cai.icp0.io`
+- **Subnet**: `brlsh-zidhj-3yy3e-6vqbz-7xnih-xeq2l-as5oc-g32c4-i5pdn-2wwof-oae`
+
+Methods are reachable via `@dfinity/agent` with a kernel-authorized identity
+(controllers + Neutron self). `get_ledger`, `get_ledger_page`, `get_ledger_status`,
+`get_pubkey` and `attest_entry` are all live. Browser-based attestation from the
+showcase still needs a signed agent path (server-side Vercel route or an
+`add_allowed_caller` bootstrap) — the `CANISTER_URL` base is `ai-comparison.tsx`
+records the URL, but the background attest call is currently a no-op.

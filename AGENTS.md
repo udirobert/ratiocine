@@ -60,7 +60,8 @@ An IOL-AI 2026 competitor. The goal: submit a `script.py` to a public Hugging Fa
 - **Agent Mode entrypoints**: `ration_attest`, `ration_ledger`, `ration_report` declared as `/*internal:apps*/` with `agent_entrypoints` capability. Generated `_Input`/`_Output` types for kernel agent catalog.
 - **Upgrade persistence**: `neutron/upgrade_demo.ts` — in-place `install_chunked_code(mode=#upgrade(#keep))` preserves stable memory (enhanced orthogonal persistence). PocketIC 14 requires `wasm_memory_persistence` payload in the mode variant.
 - Smoke tests: `neutron/probe_local.ts`, `neutron/smoke_ledger.ts`, `neutron/smoke_report.ts`, `neutron/upgrade_demo.ts`.
-- **Blocked**: branded Netlify DNS (user to wire), mainnet funding (5 ICP), Agent Mode runtime integration test.
+- **Deployed**: mainnet canister `cvrwv-mqaaa-aaaai-ax4pa-cai` at https://cvrwv-mqaaa-aaaai-ax4pa-cai.icp0.io/, DNS `ratiocine.trustfall.xyz` → Vercel, CANISTER_URL wired in showcase.
+- **Remaining**: Agent Mode runtime integration test.
 
 ### v0.4 method reference
 
