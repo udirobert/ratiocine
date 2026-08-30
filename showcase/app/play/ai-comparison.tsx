@@ -56,21 +56,49 @@ function setCachedResult(puzzleId: string, result: AiResult): void {
 
 // ─── Ration attestation stub ────────────────────────────────────────────────
 
-// Fires attest_entry in background via the mainnet Neutron canister's HTTP gateway.
-// Mainnet Neutron canister hosting the Ration app (deployed 2026-08-30).
-const CANISTER_URL = "https://cvrwv-mqaaa-aaaai-ax4pa-cai.icp0.io";
+// ─── Ration attestation relay ───────────────────────────────────────────────
+// Attestations land on the mainnet Neutron canister cvrwv-mqaaa-aaaai-ax4pa-cai
+// (Ration app v0.4.0), relayed server-side by /api/attest which signs with the
+// deployer identity. The browser never signs — it only POSTs the payload.
 
-// Best-effort attestation. Called fire-and-forget after the AI verdict.
-// NOTE: attest_entry is a Candid update method — it is NOT reachable over a
-// plain HTTP fetch. Calling it requires @dfinity/agent with an identity that
-// the kernel authorizes (controllers + Neutron self). Until that path is wired
-// (via a server-side Vercel route using the deployer identity, or an
-// add_allowed_caller bootstrap), this stays a silent no-op so it never blocks
-// or errors the solve flow. The canister base URL is recorded for that wiring.
-function attestInBackground(_puzzle: Puzzle, _aiResult: AiResult): void {
-  // No-op until a signed agent call is wired. Do not fetch: the /api/v1/...
-  // route does not exist on the canister's HTTP gateway.
-  void CANISTER_URL;
+// Shared evidence block used both for the AI solve request and the attestation.
+function buildContext(puzzle: Puzzle): string {
+  return [
+    `Language: ${puzzle.language}`,
+    `Task: ${puzzle.title.toLowerCase()}`,
+    "",
+    "Evidence:",
+    ...puzzle.pairs.map((pair, i) => `${i + 1}. ${pair.source} = ${pair.target}`),
+  ].join("\n");
+}
+
+// Fire-and-forget attestation. The browser cannot sign the Candid update
+// (no private key; the kernel only authorizes controllers), so it POSTs the
+// payload to the server-side relay at /api/attest, which signs with the
+// deployer identity and calls attest_entry on the canister. Best-effort —
+// never blocks or errors the solve flow.
+function attestInBackground(puzzle: Puzzle, aiResult: AiResult): void {
+  if (typeof window === "undefined") return;
+
+  const payload = {
+    job_id: `${puzzle.id}-${Date.now()}`,
+    problem_id: puzzle.id,
+    context: buildContext(puzzle),
+    prompt: puzzle.queries.map((q, i) => `${i + 1}. ${q.prompt}`).join("\n"),
+    pred: aiResult.pred,
+    model: aiResult.model,
+    evaluator_version: "showcase-v1",
+    task_type: puzzle.taskType,
+  };
+
+  // No auth token configured client-side; the relay may gate server-side.
+  fetch("/api/attest", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify(payload),
+  }).catch(() => {
+    // best-effort — never surface attestation failures to the player
+  });
 }
 
 // ─── Types ──────────────────────────────────────────────────────────────────
@@ -151,13 +179,7 @@ export const AiComparison = ({ puzzle, humanElapsed, humanHints, humanGrades, on
     baseRef.current = base;
 
     // Build the context and query from puzzle data
-    const context = [
-      `Language: ${puzzle.language}`,
-      `Task: ${puzzle.title.toLowerCase()}`,
-      "",
-      "Evidence:",
-      ...puzzle.pairs.map((pair, i) => `${i + 1}. ${pair.source} = ${pair.target}`),
-    ].join("\n");
+    const context = buildContext(puzzle);
 
     const query = [
       "Translate each English phrase into " + puzzle.language + ".",
