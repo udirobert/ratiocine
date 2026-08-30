@@ -61,6 +61,7 @@ An IOL-AI 2026 competitor. The goal: submit a `script.py` to a public Hugging Fa
 - **Upgrade persistence**: `neutron/upgrade_demo.ts` — in-place `install_chunked_code(mode=#upgrade(#keep))` preserves stable memory (enhanced orthogonal persistence). PocketIC 14 requires `wasm_memory_persistence` payload in the mode variant.
 - Smoke tests: `neutron/probe_local.ts`, `neutron/smoke_ledger.ts`, `neutron/smoke_report.ts`, `neutron/upgrade_demo.ts`.
 - **Deployed**: mainnet canister `cvrwv-mqaaa-aaaai-ax4pa-cai` at https://cvrwv-mqaaa-aaaai-ax4pa-cai.icp0.io/, DNS `ratiocine.trustfall.xyz` → Vercel, CANISTER_URL wired in showcase.
+- **Attestation relay (wired 2026-08-30)**: `showcase/app/api/attest/route.ts` — Vercel serverless route derives the deployer identity from `RATION_DEPLOYER_SECRET` (mirrors icblast's sha256 seed derivation) and calls `app_ratiocine__attest_entry` via `@dfinity/agent` (pinned 3.4.3). Client `attestInBackground` fire-and-forget POSTs after the AI verdict settles; failures are silently swallowed. Verified end-to-end against mainnet (ledger seq 4–5 signed). Optional `RATION_ATTEST_TOKEN` bearer gate exists but is unset (client sends no token). Gotchas: `IDL.Func` annotations are `string[]` (`["update"]`); `InterfaceFactory` = `(idl: {IDL: {...}}) => ServiceClass` typed as `IDL.InterfaceFactory` from `@dfinity/candid` (not re-exported by `@dfinity/agent`); `opt` fields use `[]` not `null`.
 - **Remaining**: Agent Mode runtime integration test.
 
 ### v0.4 method reference
