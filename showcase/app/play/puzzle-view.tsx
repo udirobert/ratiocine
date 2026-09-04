@@ -153,6 +153,12 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
   const [toast, setToast] = useState<string | null>(null);
   const toastTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
+  // Wax-seal ritual timer
+  const sealTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  useEffect(() => () => {
+    if (sealTimerRef.current) clearTimeout(sealTimerRef.current);
+  }, []);
+
   // Screen-reader announcements
   const [announce, setAnnounce] = useState("");
 
@@ -337,7 +343,7 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
     if (result.isCorrect) {
       sfx.chime();
       // Seal ritual — stamp the answer ~180ms after the flip lands
-      setTimeout(() => {
+      sealTimerRef.current = setTimeout(() => {
         sfx.stamp();
         setSealedQ(query.id);
         if (navigator.vibrate) navigator.vibrate([10, 30, 20]);
@@ -471,6 +477,10 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
   // ─── Keyboard play (desktop) ──────────────────────────────────────────────
 
   const flatBank = useMemo(() => puzzle.morphemeBank.flat(), [puzzle]);
+  const driftGlyphs = useMemo(
+    () => puzzle.morphemeBank.flat().filter((m) => m.length <= 6).slice(0, 12),
+    [puzzle],
+  );
 
   useEffect(() => {
     if (phase !== "solve") return;
@@ -770,10 +780,10 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
                   {sealedQ === query.id && qGrade?.isCorrect && (
                     <motion.div
                       key="seal"
-                      initial={{ opacity: 0, scale: 1.8, rotate: -16 }}
-                      animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
                       exit={{ opacity: 0, scale: 0.8 }}
-                      transition={{ type: "spring", stiffness: 260, damping: 14 }}
+                      transition={{ duration: 0.2 }}
                       className="flex items-center justify-center mb-4"
                     >
                       <div className="relative">
@@ -944,10 +954,7 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
               className="flex-1 flex flex-col px-4 py-4 sm:px-6 overflow-y-auto"
             >
               {/* Glyphs of the language drift upward through the celebration */}
-              <GlyphDrift
-                glyphs={puzzle.morphemeBank.flat().filter((m) => m.length <= 6).slice(0, 12)}
-                accent={puzzle.theme.accent}
-              />
+              <GlyphDrift glyphs={driftGlyphs} accent={puzzle.theme.accent} />
 
               <div className="max-w-lg mx-auto w-full flex-1 relative z-10">
 

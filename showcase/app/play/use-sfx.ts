@@ -1,6 +1,7 @@
 "use client";
 
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { useReducedMotion } from "motion/react";
 
 // Micro-sound effects via Web Audio API oscillator synthesis.
 // No audio files — pure waveform generation, ~50ms per sound.
@@ -40,6 +41,10 @@ export const useSfx = () => {
   });
   const mutedRef = useRef(muted);
 
+  // Respect the OS / MotionConfig reduced-motion preference for sound as well.
+  const reducedMotion = useReducedMotion();
+  const reducedMotionRef = useRef(reducedMotion);
+
   const getCtx = useCallback(() => {
     if (!ctxRef.current) {
       try {
@@ -78,8 +83,14 @@ export const useSfx = () => {
     } catch {}
   }, []);
 
+  // Keep the reduced-motion ref in sync and stop sound when the preference flips.
+  useEffect(() => {
+    reducedMotionRef.current = reducedMotion;
+    if (reducedMotion) stopAmbient();
+  }, [reducedMotion, stopAmbient]);
+
   const startAmbient = useCallback(() => {
-    if (!enabledRef.current || mutedRef.current || ambientRef.current) return;
+    if (!enabledRef.current || mutedRef.current || reducedMotionRef.current || ambientRef.current) return;
     const ac = getCtx();
     if (!ac) return;
     const f = ambientFreqRef.current;
@@ -149,7 +160,7 @@ export const useSfx = () => {
 
   // Soft click — tile select
   const click = useCallback(() => {
-    if (!enabledRef.current || mutedRef.current) return;
+    if (!enabledRef.current || mutedRef.current || reducedMotionRef.current) return;
     const ac = getCtx();
     if (!ac) return;
     const osc = ac.createOscillator();
@@ -166,7 +177,7 @@ export const useSfx = () => {
 
   // Snap — tile placed in slot
   const snap = useCallback(() => {
-    if (!enabledRef.current || mutedRef.current) return;
+    if (!enabledRef.current || mutedRef.current || reducedMotionRef.current) return;
     const ac = getCtx();
     if (!ac) return;
     const osc = ac.createOscillator();
@@ -183,7 +194,7 @@ export const useSfx = () => {
 
   // Thud — wrong answer
   const thud = useCallback(() => {
-    if (!enabledRef.current || mutedRef.current) return;
+    if (!enabledRef.current || mutedRef.current || reducedMotionRef.current) return;
     const ac = getCtx();
     if (!ac) return;
     const osc = ac.createOscillator();
@@ -200,7 +211,7 @@ export const useSfx = () => {
 
   // Chime — correct answer (three ascending notes)
   const chime = useCallback(() => {
-    if (!enabledRef.current || mutedRef.current) return;
+    if (!enabledRef.current || mutedRef.current || reducedMotionRef.current) return;
     const ac = getCtx();
     if (!ac) return;
     const notes = [523, 659, 784]; // C5, E5, G5
@@ -220,7 +231,7 @@ export const useSfx = () => {
 
   // Pop — tile removed from slot (short high blip)
   const pop = useCallback(() => {
-    if (!enabledRef.current || mutedRef.current) return;
+    if (!enabledRef.current || mutedRef.current || reducedMotionRef.current) return;
     const ac = getCtx();
     if (!ac) return;
     const osc = ac.createOscillator();
@@ -237,7 +248,7 @@ export const useSfx = () => {
 
   // Stamp — wax-seal thud: low body + paper-contact noise
   const stamp = useCallback(() => {
-    if (!enabledRef.current || mutedRef.current) return;
+    if (!enabledRef.current || mutedRef.current || reducedMotionRef.current) return;
     const ac = getCtx();
     if (!ac) return;
     const t = ac.currentTime;
@@ -266,7 +277,7 @@ export const useSfx = () => {
 
   // Page — evidence drawer opens: soft paper swish
   const page = useCallback(() => {
-    if (!enabledRef.current || mutedRef.current) return;
+    if (!enabledRef.current || mutedRef.current || reducedMotionRef.current) return;
     const ac = getCtx();
     if (!ac) return;
     const t = ac.currentTime;
@@ -288,7 +299,7 @@ export const useSfx = () => {
 
   // Whoosh — phase/query transition: low air sweep
   const whoosh = useCallback(() => {
-    if (!enabledRef.current || mutedRef.current) return;
+    if (!enabledRef.current || mutedRef.current || reducedMotionRef.current) return;
     const ac = getCtx();
     if (!ac) return;
     const t = ac.currentTime;
