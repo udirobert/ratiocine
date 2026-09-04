@@ -82,9 +82,9 @@ export const StudyPhase = ({ puzzle, highlightedRows, onReady, instant = false }
       <div className="flex-1 flex flex-col items-center px-4 sm:px-6 overflow-y-auto relative z-10">
         <div className="max-w-lg w-full pt-8 pb-24">
 
-          {/* Language name — staggered characters */}
+          {/* Language name — manuscript display, staggered characters */}
           <motion.h2
-            className="text-3xl sm:text-4xl font-bold tracking-tight text-white text-center mb-2"
+            className="text-4xl sm:text-5xl font-display font-bold tracking-tight text-white text-center mb-2"
             initial={instant ? "visible" : "hidden"}
             animate="visible"
           >
@@ -132,12 +132,12 @@ export const StudyPhase = ({ puzzle, highlightedRows, onReady, instant = false }
             )}
           </motion.div>
 
-          {/* Task framing — one sentence that explains the challenge */}
+          {/* Task framing — manuscript italic, like a field-notebook heading */}
           <motion.p
             initial={instant ? false : { opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: instant ? 0 : 0.7 }}
-            className="text-[14px] text-white/70 text-center mb-6 max-w-xs mx-auto"
+            className="text-[15px] font-display italic text-white/65 text-center mb-6 max-w-xs mx-auto leading-relaxed"
           >
             {puzzle.taskFrame}
           </motion.p>
@@ -156,13 +156,13 @@ export const StudyPhase = ({ puzzle, highlightedRows, onReady, instant = false }
             ))}
           </div>
 
-          {/* Lore hook — appears after a few rows */}
+          {/* Lore hook — manuscript pull-quote, appears after a few rows */}
           {visibleCount > 3 && (
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6 }}
-              className="mt-6 text-[13px] text-white/50 italic text-center leading-relaxed"
+              className="mt-6 text-[14px] font-display italic text-white/55 text-center leading-relaxed max-w-sm mx-auto"
             >
               &ldquo;{puzzle.lore.briefingHook}&rdquo;
             </motion.p>
@@ -170,7 +170,7 @@ export const StudyPhase = ({ puzzle, highlightedRows, onReady, instant = false }
         </div>
       </div>
 
-      {/* Ready button — themed accent */}
+      {/* Ready button — glowing accent, the way forward breathes */}
       <motion.div
         className="absolute bottom-6 inset-x-0 flex justify-center z-20"
         initial={{ opacity: 0, y: 12 }}
@@ -180,10 +180,9 @@ export const StudyPhase = ({ puzzle, highlightedRows, onReady, instant = false }
         <button
           onClick={onReady}
           disabled={!ready}
-          className="px-8 py-3 rounded-full text-sm font-bold text-black transition-all disabled:opacity-0"
+          className="pulse-glow px-8 py-3 rounded-full text-sm font-bold text-black transition-all disabled:opacity-0"
           style={{
             backgroundColor: theme.accent,
-            boxShadow: `0 0 20px ${theme.accent}25`,
           }}
         >
           I see it →
@@ -217,19 +216,15 @@ const EvidenceCard = ({
     }}
     transition={{ duration: instant ? 0.1 : 0.3, ease: "easeOut" }}
     className={`
-      flex items-center gap-3 px-4 py-3 rounded-lg
-      border transition-all duration-300
-      ${highlighted
-        ? "border-white/15"
-        : "border-white/6 bg-white/[0.02]"
-      }
+      archive-card flex items-center gap-3 px-4 py-3 rounded-lg
+      transition-all duration-300
+      ${highlighted ? "pa-border-40" : ""}
     `}
     style={{
       boxShadow: highlighted
-        ? `0 0 12px ${theme.accent}20`
-        : "0 1px 3px rgba(0,0,0,0.3)",
+        ? `0 0 16px ${theme.accent}25, 0 1px 3px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.05)`
+        : undefined,
       backgroundColor: highlighted ? `${theme.accent}0c` : undefined,
-      borderColor: highlighted ? `${theme.accent}50` : undefined,
     }}
   >
     {/* Row number */}

@@ -9,7 +9,10 @@ import { StudyPhase } from "./study-phase";
 import { WarmupTeaser } from "./warmup-teaser";
 import { AiComparison, type AiResult } from "./ai-comparison";
 import { ContextPanel } from "./context-panel";
-import { useSfx } from "./use-sfx";
+import { AmbientWorld } from "./ambient-world";
+import { GlyphDrift } from "./glyph-drift";
+import { OrnamentRule } from "./decor";
+import { useSfx, AMBIENT_FREQ } from "./use-sfx";
 import { useSolveCounter } from "./use-solve-counter";
 import { track } from "@/lib/analytics";
 import {
@@ -122,6 +125,7 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
   const [locked, setLocked] = useState<boolean[]>(() => puzzle.queries.map(() => false));
   const [assembled, setAssembled] = useState<Map<number, string>>(new Map());
   const [shaking, setShaking] = useState(false);
+  const [sealedQ, setSealedQ] = useState<number | null>(null); // query that just got its wax seal
   const [score, setScore] = useState(0);
   const [ghostVisible, setGhostVisible] = useState(true); // ghost tile hint for Q1
   const [everPlaced, setEverPlaced] = useState(false); // coach caption until first placement
@@ -148,6 +152,12 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
   // Transient toast (hints, fail hints, morpheme meanings)
   const [toast, setToast] = useState<string | null>(null);
   const toastTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Wax-seal ritual timer
+  const sealTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  useEffect(() => () => {
+    if (sealTimerRef.current) clearTimeout(sealTimerRef.current);
+  }, []);
 
   // Screen-reader announcements
   const [announce, setAnnounce] = useState("");
@@ -193,6 +203,13 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
   const shownFailHintsRef = useRef<Set<number>>(new Set());
 
   useEffect(() => { setProgress(loadProgress()); }, []);
+
+  // ── Ambient pad: tune the room tone to this puzzle, stop on unmount ──
+  useEffect(() => {
+    sfx.setAmbientFreq(AMBIENT_FREQ[puzzle.id] ?? 55);
+    return () => sfx.stopAmbient();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [puzzle.id]);
 
   // Ghost tile hint for Q1 — fades after 2s
   useEffect(() => {
@@ -325,6 +342,12 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
 
     if (result.isCorrect) {
       sfx.chime();
+      // Seal ritual — stamp the answer ~180ms after the flip lands
+      sealTimerRef.current = setTimeout(() => {
+        sfx.stamp();
+        setSealedQ(query.id);
+        if (navigator.vibrate) navigator.vibrate([10, 30, 20]);
+      }, 180);
       setAnnounce(`Query ${currentQ + 1}: correct — ${query.answerJoined}`);
       setForfeitArmed(null);
       // Score ticks up
@@ -454,6 +477,10 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
   // ─── Keyboard play (desktop) ──────────────────────────────────────────────
 
   const flatBank = useMemo(() => puzzle.morphemeBank.flat(), [puzzle]);
+  const driftGlyphs = useMemo(
+    () => puzzle.morphemeBank.flat().filter((m) => m.length <= 6).slice(0, 12),
+    [puzzle],
+  );
 
   useEffect(() => {
     if (phase !== "solve") return;
@@ -505,8 +532,11 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
 
   return (
     <div
-      className="touch-game relative flex flex-col h-svh w-full overflow-hidden bg-[#0a0c10] text-white"
-      style={{ "--puzzle-accent": puzzle.theme.accent } as CSSProperties}
+      className="touch-game font-display relative flex flex-col h-svh w-full overflow-hidden bg-[#0a0c10] text-white"
+      style={{
+        "--puzzle-accent": puzzle.theme.accent,
+        "--puzzle-source": puzzle.theme.sourceColor,
+      } as CSSProperties}
       onClick={sfx.enable}
       onKeyDown={sfx.enable}
     >
@@ -533,14 +563,8 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
         )}
       </AnimatePresence>
 
-      {/* CRT atmosphere — subtle scan lines + grain */}
-      <div
-        className="absolute inset-0 pointer-events-none z-0 opacity-[0.025]"
-        style={{
-          backgroundImage: "repeating-linear-gradient(0deg, transparent 0px, transparent 2px, rgba(255,255,255,1) 2px, rgba(255,255,255,1) 3px)",
-        }}
-      />
-      <div className="absolute inset-0 pointer-events-none z-0 opacity-[0.015] grain-noise" />
+      {/* Living world — per-puzzle atmosphere (replaces flat CRT wash) */}
+      <AmbientWorld puzzleId={puzzle.id} theme={puzzle.theme} />
 
       {/* ═══ Top bar ═══ */}
       <header className="shrink-0 flex items-center justify-between px-4 py-2.5 border-b border-white/8 sm:px-6">
@@ -550,12 +574,12 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
           )}
           <div>
             <span
-              className="text-[10px] font-mono tracking-wider"
-              style={{ color: `${puzzle.theme.accent}99` }}
+              className="text-[13px] font-display italic tracking-wide"
+              style={{ color: `${puzzle.theme.accent}cc` }}
             >
-              {puzzle.language.toUpperCase()}
+              {puzzle.language}
             </span>
-            <span className="text-[10px] text-white/50 ml-2 font-mono">{puzzle.family}</span>
+            <span className="text-[10px] text-white/40 ml-2 font-mono">{puzzle.family}</span>
           </div>
         </div>
         <div className="flex items-center gap-1 sm:gap-3">
@@ -630,6 +654,7 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
                     setStudiedOnce(true);
                     track("study_complete", { puzzle: puzzle.id });
                   }
+                  sfx.whoosh();
                   setPhase("solve");
                 }}
               />
@@ -676,18 +701,18 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
                   </p>
                 )}
 
-                {/* Query prompt — with shake animation */}
+                {/* Query prompt — manuscript serif, with shake animation */}
                 <motion.p
                   animate={shaking ? { x: [0, -4, 4, -4, 4, -2, 2, 0] } : { x: 0 }}
                   transition={{ duration: 0.4 }}
-                  className="text-center text-white/80 text-base mb-5"
+                  className="text-center text-white/85 text-lg mb-5 leading-relaxed"
                 >
                   {query.prompt}
                   {query.difficulty === "curveball" && (
                     <motion.span
                       animate={{ opacity: [0.6, 1, 0.6] }}
                       transition={{ duration: 2, repeat: Infinity }}
-                      className="ml-2 text-[10px] text-amber-400/80 font-mono"
+                      className="ml-2 text-[10px] text-amber-400/80 font-mono align-middle"
                     >
                       ⚡
                     </motion.span>
@@ -698,7 +723,7 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
                 {/* Tutorial queries have a subtle glow on the prompt instead of text */}
 
                 <LayoutGroup>
-                {/* Answer slots — with flip animation + layoutId fly */}
+                {/* Answer slots — inscription sockets with flip + layoutId fly */}
                 <div className="flex items-center justify-center gap-2 mb-5 flex-wrap perspective-[800px]">
                   {slots.map((slot, i) => {
                     const flipDelay = i * 0.1;
@@ -718,8 +743,8 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
                           slot.grade
                             ? gradeColor(slot.grade)
                             : slot.morpheme
-                              ? "border-white/30 bg-white/[0.06] text-white/90"
-                              : "border-white/10 bg-white/[0.02] border-dashed text-white/35"
+                              ? "socket-filled text-white/90"
+                              : "socket-empty text-white/35"
                         }`}
                         style={{ transformStyle: "preserve-3d" }}
                       >
@@ -750,6 +775,25 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
                   })}
                 </div>
 
+                {/* Wax-seal ritual — stamps the assembled word on correct */}
+                <AnimatePresence>
+                  {sealedQ === query.id && qGrade?.isCorrect && (
+                    <motion.div
+                      key="seal"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0, scale: 0.8 }}
+                      transition={{ duration: 0.2 }}
+                      className="flex items-center justify-center mb-4"
+                    >
+                      <div className="relative">
+                        <span className="seal-in seal-disc">✓</span>
+                        <span className="ring-ping absolute inset-0 rounded-full border-2 pa-border-40" />
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
                 {/* Word assembly — appears after correct */}
                 <AnimatePresence>
                   {assembled.has(query.id) && (
@@ -758,7 +802,7 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       className="text-center mb-4"
                     >
-                      <span className="font-mono text-lg text-emerald-400 font-bold tracking-wide">
+                      <span className="font-mono text-lg ps-text font-bold tracking-wide">
                         {assembled.get(query.id)}
                       </span>
                     </motion.div>
@@ -792,10 +836,10 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
                               key={`${m}-${gi}-${i}`}
                               onClick={() => !isPlaced && handleTilePlace(m)}
                               disabled={isPlaced}
-                              className={`tile-physical relative px-3 py-2.5 min-h-[44px] rounded font-mono text-[13px] border transition-all ${
+                              className={`tablet tablet-hover relative px-3 py-2.5 min-h-[44px] rounded font-mono text-[13px] border transition-all ${
                                 isPlaced
                                   ? "opacity-0 border-transparent bg-transparent pointer-events-none"
-                                  : "border-white/10 bg-white/[0.03] text-white/70 hover:border-white/20"
+                                  : "border-white/10 text-white/75"
                               }`}
                               whileTap={!isPlaced ? { scale: 0.92 } : undefined}
                               title={revealed || undefined}
@@ -885,7 +929,7 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
                     </button>
                   )}
                   <button
-                    onClick={() => { setEvidenceOpen(true); track("evidence_open", { puzzle: puzzle.id }); }}
+                    onClick={() => { sfx.page(); setEvidenceOpen(true); track("evidence_open", { puzzle: puzzle.id }); }}
                     className="w-11 min-h-[44px] flex items-center justify-center text-white/40 hover:text-white/70 transition-colors rounded-md hover:bg-white/5"
                     aria-label="Open evidence panel"
                   >
@@ -909,27 +953,30 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
               animate={{ opacity: 1, scale: 1 }}
               className="flex-1 flex flex-col px-4 py-4 sm:px-6 overflow-y-auto"
             >
-              <div className="max-w-lg mx-auto w-full flex-1">
+              {/* Glyphs of the language drift upward through the celebration */}
+              <GlyphDrift glyphs={driftGlyphs} accent={puzzle.theme.accent} />
+
+              <div className="max-w-lg mx-auto w-full flex-1 relative z-10">
 
                 {/* ═══ Celebration — visible without scrolling ═══ */}
                 <div className="flex flex-col items-center justify-center min-h-[45svh] py-6">
 
-                  {/* Big score */}
+                  {/* Big score — manuscript numerals */}
                   <motion.p
                     initial={{ scale: 0.5, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     transition={{ type: "spring", stiffness: 200, delay: 0.1 }}
-                    className={`text-6xl font-bold tabular-nums ${allCorrect ? "text-emerald-400" : "text-white/90"}`}
+                    className={`text-6xl font-bold tabular-nums ${allCorrect ? "ps-text" : "text-white/90"}`}
                   >
                     {score}/{puzzle.queries.length}
                   </motion.p>
 
-                  {/* Warm verdict */}
+                  {/* Warm verdict — manuscript italic */}
                   <motion.p
                     initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3 }}
-                    className="mt-3 text-[15px] text-white/70 text-center"
+                    className="mt-3 text-[17px] font-display italic text-white/75 text-center leading-relaxed"
                   >
                     {allCorrect
                       ? puzzle.verdicts.perfect
@@ -938,12 +985,15 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
                         : puzzle.verdicts.partial}
                   </motion.p>
 
+                  {/* Ornament rule — separates verdict from stats */}
+                  <OrnamentRule className="mt-4 w-32" />
+
                   {/* Time + hints (smaller, secondary) */}
                   <motion.p
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.5 }}
-                    className="mt-1 text-[11px] font-mono text-white/40"
+                    className="mt-3 text-[11px] font-mono text-white/40"
                   >
                     {timeStr}
                     {hintsUsed > 0 ? ` · ${hintsUsed} hint${hintsUsed > 1 ? "s" : ""}` : ""}
@@ -951,7 +1001,7 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
                     {allCorrect && hintsUsed === 0 && contextReveals === 0 ? " · ✨ no hints" : ""}
                   </motion.p>
 
-                  {/* Card-flip result grid */}
+                  {/* Card-flip result grid — themed seals */}
                   <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -974,13 +1024,9 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
                             <div className="card-face card-back">
                               <span className="text-white/20 text-sm font-mono">{i + 1}</span>
                             </div>
-                            {/* Front (revealed) */}
-                            <div className={`card-face card-front ${
-                              correct
-                                ? "bg-emerald-400/20 border border-emerald-400/40"
-                                : "bg-red-400/15 border border-red-400/30"
-                            }`}>
-                              <span className={`text-sm font-bold ${correct ? "text-emerald-400" : "text-red-400/80"}`}>
+                            {/* Front (revealed) — wax seal for correct, ash for missed */}
+                            <div className={`card-face card-front ${correct ? "pa-bg-15 pa-border-40" : "bg-red-400/15 border border-red-400/30"}`}>
+                              <span className={`text-sm font-bold ${correct ? "pa-text" : "text-red-400/80"}`}>
                                 {correct ? "✓" : "✗"}
                               </span>
                             </div>
