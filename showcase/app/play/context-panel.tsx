@@ -89,7 +89,7 @@ export const ContextPanel = ({ pairs, highlightedRows }: ContextPanelProps) => {
         )}
       </div>
 
-      <div className="rounded-lg border border-white/10 bg-white/[0.02] overflow-hidden">
+      <div className="rounded-lg archive-card overflow-hidden">
         <div className="divide-y divide-white/5">
           {visiblePairs.map((pair) => {
             const isHighlightedByHint = highlightedRows.has(pair.id);

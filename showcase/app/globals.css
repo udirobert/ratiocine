@@ -217,6 +217,160 @@
   border-color: color-mix(in srgb, var(--puzzle-accent, #e5a84b) 60%, transparent);
 }
 
+/* ─── Manuscript serif (field-notes display face) ────────────────────────────
+   --font-display is provided by next/font (Fraunces) in layout.tsx; the
+   fallback stack keeps an archival serif if the font fails to load. */
+.font-display {
+  font-family: var(--font-display), "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+}
+
+/* Source-language tint (set --puzzle-source on the puzzle root) */
+.ps-text { color: var(--puzzle-source, #a7f3d0); }
+.ps-text-dim { color: color-mix(in srgb, var(--puzzle-source, #a7f3d0) 65%, transparent); }
+
+/* ─── Ambient world — per-puzzle living backdrop ───────────────────────────── */
+
+@keyframes motif-drift {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-52px, -30px, 0); }
+}
+.motif-drift {
+  animation: motif-drift 52s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+@keyframes aurora-a {
+  0%, 100% { transform: translate3d(-8%, -4%, 0) scale(1); }
+  50%      { transform: translate3d(10%, 7%, 0) scale(1.16); }
+}
+@keyframes aurora-b {
+  0%, 100% { transform: translate3d(9%, 8%, 0) scale(1.12); }
+  50%      { transform: translate3d(-10%, -7%, 0) scale(0.94); }
+}
+.aurora-a { animation: aurora-a 26s ease-in-out infinite; will-change: transform; }
+.aurora-b { animation: aurora-b 34s ease-in-out infinite; will-change: transform; }
+
+/* Embers / dust motes rising through the field station air.
+   Per-item --peak / --sway are set inline so one keyframe serves all. */
+@keyframes ember-rise {
+  0%   { transform: translate3d(0, 0, 0); opacity: 0; }
+  12%  { opacity: var(--peak, 0.4); }
+  78%  { opacity: calc(var(--peak, 0.4) * 0.55); }
+  100% { transform: translate3d(var(--sway, 2vw), -104vh, 0); opacity: 0; }
+}
+.ember {
+  animation: ember-rise linear infinite;
+  will-change: transform, opacity;
+}
+
+/* Glyphs of the language drifting upward — result-phase celebration */
+@keyframes glyph-rise {
+  0%   { transform: translate3d(0, 0, 0) rotate(var(--rot0, -6deg)); opacity: 0; }
+  14%  { opacity: var(--peak, 0.3); }
+  76%  { opacity: var(--peak, 0.3); }
+  100% { transform: translate3d(var(--sway, 3vw), -106vh, 0) rotate(var(--rot1, 8deg)); opacity: 0; }
+}
+.glyph-float {
+  animation: glyph-rise linear infinite;
+  will-change: transform, opacity;
+}
+
+/* ─── Seal ritual — correct answers are stamped, not just checked ──────────── */
+
+@keyframes seal-in {
+  0%   { transform: scale(1.8) rotate(-16deg); opacity: 0; }
+  55%  { transform: scale(0.92) rotate(3deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+.seal-in { animation: seal-in 0.5s cubic-bezier(0.2, 1.5, 0.35, 1) both; }
+
+@keyframes ring-ping {
+  0%   { transform: scale(0.6); opacity: 0.9; }
+  100% { transform: scale(1.85); opacity: 0; }
+}
+.ring-ping { animation: ring-ping 0.8s cubic-bezier(0.16, 0.84, 0.44, 1) both; }
+
+/* Wax-seal disc — accent-tinted, lit from above */
+.seal-disc {
+  width: 22px;
+  height: 22px;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.8);
+  background: radial-gradient(circle at 32% 28%,
+    color-mix(in srgb, var(--puzzle-accent, #e5a84b) 55%, white) 0%,
+    var(--puzzle-accent, #e5a84b) 55%,
+    color-mix(in srgb, var(--puzzle-accent, #e5a84b) 62%, black) 100%);
+  box-shadow:
+    0 1px 4px rgba(0, 0, 0, 0.55),
+    inset 0 1px 1px rgba(255, 255, 255, 0.4),
+    inset 0 -1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* ─── Artifact materials ───────────────────────────────────────────────────── */
+
+/* Morpheme tile as a carved tablet — lit top edge, engraved glyph */
+.tablet {
+  background: linear-gradient(180deg,
+    rgba(255, 255, 255, 0.085) 0%,
+    rgba(255, 255, 255, 0.03) 42%,
+    rgba(0, 0, 0, 0.28) 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.35),
+    0 2px 6px rgba(0, 0, 0, 0.4);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.65);
+  transition: transform 0.15s ease, box-shadow 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+.tablet-hover:hover {
+  border-color: color-mix(in srgb, var(--puzzle-accent, #e5a84b) 50%, transparent);
+  color: color-mix(in srgb, var(--puzzle-accent, #e5a84b) 45%, white);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.35),
+    0 3px 10px rgba(0, 0, 0, 0.5),
+    0 0 16px color-mix(in srgb, var(--puzzle-accent, #e5a84b) 20%, transparent);
+}
+
+/* Answer slot as an inscription socket — empty sockets are recessed & dashed */
+.socket-empty {
+  border-style: dashed;
+  border-color: color-mix(in srgb, var(--puzzle-accent, #e5a84b) 24%, transparent);
+  background: color-mix(in srgb, var(--puzzle-accent, #e5a84b) 4%, transparent);
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.42);
+}
+.socket-filled {
+  border-color: rgba(255, 255, 255, 0.32);
+  background: linear-gradient(180deg,
+    rgba(255, 255, 255, 0.07) 0%,
+    rgba(255, 255, 255, 0.02) 45%,
+    rgba(0, 0, 0, 0.22) 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 2px 5px rgba(0, 0, 0, 0.4);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+/* Evidence rows as archive index cards */
+.archive-card {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.012));
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* Ready-button glow pulse — the way forward breathes */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 18px color-mix(in srgb, var(--puzzle-accent, #e5a84b) 22%, transparent), 0 2px 8px rgba(0, 0, 0, 0.4); }
+  50%      { box-shadow: 0 0 38px color-mix(in srgb, var(--puzzle-accent, #e5a84b) 48%, transparent), 0 2px 8px rgba(0, 0, 0, 0.4); }
+}
+.pulse-glow { animation: pulse-glow 2.6s ease-in-out infinite; }
+
 /* ─── Reduced motion ───────────────────────────────────────────────────────── */
 
 @media (prefers-reduced-motion: reduce) {

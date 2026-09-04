@@ -2,7 +2,7 @@ import "./globals.css";
 
 import clsx from "clsx";
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import { Geist, Fraunces } from "next/font/google";
 
 import { cn } from "@/lib/utils";
 import { Providers } from "@/components/providers";
@@ -10,6 +10,14 @@ import { Providers } from "@/components/providers";
 const geistSans = Geist({
   variable: "--font-sans",
   subsets: ["latin"],
+});
+
+// Field-manuscript display serif — language names, prompts, verdicts.
+// Exposed as --font-display and consumed by .font-display in globals.css.
+const fraunces = Fraunces({
+  variable: "--font-display",
+  subsets: ["latin"],
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
@@ -73,7 +81,7 @@ export const viewport: Viewport = {
 const RootLayout = ({
   children,
 }: Readonly<{ children: React.ReactNode }>) => (
-  <html lang="en" className={cn(clsx(geistSans.variable))}>
+  <html lang="en" className={cn(clsx(geistSans.variable, fraunces.variable))}>
     <head>
       <link rel="icon" href="/favicon.ico" sizes="any" />
       <link rel="icon" href="/favicon.png" sizes="32x32" type="image/png" />
