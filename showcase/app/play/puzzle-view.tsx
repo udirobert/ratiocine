@@ -127,7 +127,8 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
   const [shaking, setShaking] = useState(false);
   const [sealedQ, setSealedQ] = useState<number | null>(null); // query that just got its wax seal
   const [score, setScore] = useState(0);
-  const [ghostVisible, setGhostVisible] = useState(true); // ghost tile hint for Q1
+  const [ghostVisible, setGhostVisible] = useState(true); // ghost tile hint for Q1/Q2
+  const ghostTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [everPlaced, setEverPlaced] = useState(false); // coach caption until first placement
 
   // Selection removed — tap-to-place model (tap tile = auto-place, tap slot = remove)
@@ -211,14 +212,6 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [puzzle.id]);
 
-  // Ghost tile hint for Q1 — fades after 2s
-  useEffect(() => {
-    if (phase === "solve" && ghostVisible) {
-      const t = setTimeout(() => setGhostVisible(false), 2000);
-      return () => clearTimeout(t);
-    }
-  }, [phase, ghostVisible]);
-
   // Derived
   const allLocked = locked.every(Boolean);
   const allCorrect = puzzle.queries.every((q) => grades.get(q.id)?.isCorrect);
@@ -230,6 +223,21 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
   const mins = Math.floor(elapsed / 60);
   const secs = elapsed % 60;
   const timeStr = `${mins}:${secs.toString().padStart(2, "0")}`;
+
+  // Ghost tile hint for Q1/Q2 first slot — shows briefly when a fresh query appears
+  useEffect(() => {
+    if (phase !== "solve") return;
+    if (currentQ > 1 || attempts[currentQ] > 0 || slots.some((s) => s.morpheme) || !query.answer[0]) {
+      setGhostVisible(false);
+      return;
+    }
+    setGhostVisible(true);
+    if (ghostTimerRef.current) clearTimeout(ghostTimerRef.current);
+    ghostTimerRef.current = setTimeout(() => setGhostVisible(false), 2000);
+    return () => {
+      if (ghostTimerRef.current) clearTimeout(ghostTimerRef.current);
+    };
+  }, [phase, currentQ, attempts, slots, query]);
 
   // Stop timer on all done
   useEffect(() => {
@@ -765,8 +773,8 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
                             )}
                           </span>
                         ) : (
-                          // Ghost tile hint: show first correct morpheme pulsing in Q1's first slot
-                          ghostVisible && currentQ === 0 && i === 0 && attempts[0] === 0
+                          // Ghost tile hint: show first correct morpheme pulsing in Q1/Q2's first slot
+                          ghostVisible && currentQ <= 1 && i === 0 && attempts[currentQ] === 0
                             ? <span className="text-white/20 animate-pulse">{query.answer[0]}</span>
                             : <span>·</span>
                         )}

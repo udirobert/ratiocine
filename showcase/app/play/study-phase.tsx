@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { Puzzle, PuzzlePair, PuzzleTheme } from "./puzzle-data";
 
 interface StudyPhaseProps {
@@ -17,6 +17,7 @@ export const StudyPhase = ({ puzzle, highlightedRows, onReady, instant = false }
   const [visibleCount, setVisibleCount] = useState(instant ? Number.MAX_SAFE_INTEGER : 0);
   const [ready, setReady] = useState(instant);
   const [flashedRows, setFlashedRows] = useState<Set<number>>(new Set());
+  const flashTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const { theme } = puzzle;
   const pairs = puzzle.pairs.filter((p) => !p.gated);
@@ -41,6 +42,12 @@ export const StudyPhase = ({ puzzle, highlightedRows, onReady, instant = false }
     return () => clearTimeout(t);
   }, [showRows, visibleCount, pairs.length]);
 
+  const flashRows = (ids: Set<number>, ms = 1500) => {
+    if (flashTimerRef.current) clearTimeout(flashTimerRef.current);
+    setFlashedRows(ids);
+    flashTimerRef.current = setTimeout(() => setFlashedRows(new Set()), ms);
+  };
+
   // Tap a source word → flash rows that share morphemes
   const handleSourceTap = (pair: PuzzlePair) => {
     const sharedRows = new Set<number>();
@@ -52,9 +59,31 @@ export const StudyPhase = ({ puzzle, highlightedRows, onReady, instant = false }
       }
     }
     if (sharedRows.size === 0) return;
-    setFlashedRows(sharedRows);
-    // Clear flash after 1.5s
-    setTimeout(() => setFlashedRows(new Set()), 1500);
+    flashRows(sharedRows);
+  };
+
+  // Hint button — flash the rows containing the most common morpheme
+  const handleHint = () => {
+    const counts = new Map<string, number>();
+    for (const pair of pairs) {
+      for (const morph of pair.morphemes) {
+        counts.set(morph, (counts.get(morph) ?? 0) + 1);
+      }
+    }
+    let best = "";
+    let bestCount = 0;
+    for (const [morph, c] of counts.entries()) {
+      if (c > bestCount) {
+        best = morph;
+        bestCount = c;
+      }
+    }
+    if (bestCount <= 1) return;
+    const rows = new Set<number>();
+    for (const pair of pairs) {
+      if (pair.morphemes.includes(best)) rows.add(pair.id);
+    }
+    flashRows(rows);
   };
 
   return (
@@ -112,7 +141,7 @@ export const StudyPhase = ({ puzzle, highlightedRows, onReady, instant = false }
             initial={instant ? false : { opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: instant ? 0 : 0.5 }}
-            className="flex items-center justify-center gap-3 mb-8"
+            className="flex items-center justify-center gap-3 mb-2"
           >
             <span className="text-[12px] text-white/50 font-mono">
               {puzzle.region}
@@ -131,6 +160,16 @@ export const StudyPhase = ({ puzzle, highlightedRows, onReady, instant = false }
               </span>
             )}
           </motion.div>
+
+          {/* Language hook — one-sentence "why this is cool" */}
+          <motion.p
+            initial={instant ? false : { opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: instant ? 0 : 0.55 }}
+            className="text-[12px] font-display italic text-center text-white/50 mb-8 max-w-sm mx-auto leading-relaxed"
+          >
+            {puzzle.lore.funFact}
+          </motion.p>
 
           {/* Task framing — manuscript italic, like a field-notebook heading */}
           <motion.p
@@ -170,22 +209,39 @@ export const StudyPhase = ({ puzzle, highlightedRows, onReady, instant = false }
         </div>
       </div>
 
-      {/* Ready button — glowing accent, the way forward breathes */}
+      {/* Interaction hint */}
+      <motion.p
+        className="absolute bottom-[84px] inset-x-0 text-center text-[11px] text-white/40 font-mono z-20"
+        initial={{ opacity: 0 }}
+        animate={ready ? { opacity: 1 } : { opacity: 0 }}
+        transition={{ duration: 0.4 }}
+      >
+        tap any source word to trace the pattern
+      </motion.p>
+
+      {/* Ready / hint buttons */}
       <motion.div
-        className="absolute bottom-6 inset-x-0 flex justify-center z-20"
+        className="absolute bottom-6 inset-x-0 flex items-center justify-center gap-3 z-20 px-4"
         initial={{ opacity: 0, y: 12 }}
         animate={ready ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
         transition={{ duration: 0.4 }}
       >
         <button
+          onClick={handleHint}
+          disabled={!ready}
+          className="px-4 py-3 rounded-full text-sm font-medium text-white/80 transition-all disabled:opacity-0 hover:text-white hover:bg-white/10"
+        >
+          Need a hint?
+        </button>
+        <button
           onClick={onReady}
           disabled={!ready}
-          className="pulse-glow px-8 py-3 rounded-full text-sm font-bold text-black transition-all disabled:opacity-0"
+          className="pulse-glow px-7 py-3 rounded-full text-sm font-bold text-black transition-all disabled:opacity-0"
           style={{
             backgroundColor: theme.accent,
           }}
         >
-          I see it →
+          I&apos;m ready
         </button>
       </motion.div>
     </div>
