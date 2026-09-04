@@ -26,19 +26,78 @@ by clip). Mobile: direct splash → Play link → /play.
 
 ### Game phases
 
-1. **Study** — unified briefing + evidence. Language name types in, metadata
-   fades, evidence cards stagger in as specimen cards with themed source color.
-   Ready button appears after all cards are visible.
-2. **Solve** — morpheme tile composition. Progress bar fills per query. Hints
-   are visual-only (row highlights, tile meaning reveals). Shake on wrong,
-   chime on correct.
-3. **Result** — celebration first (big score, card-flip grid, share button),
-   then below the fold: AI comparison, solve trace, map, lore.
+1. **Study** — unified briefing + evidence. Language name types in with
+   manuscript serif display type, metadata fades, and evidence cards stagger
+   in as archive specimen cards with themed source color. The ready button
+   pulses with the puzzle accent once all cards are visible.
+2. **Solve** — morpheme tile composition over a living per-puzzle backdrop
+   (`AmbientWorld`). Progress bar fills per query with the puzzle accent.
+   Tiles are rendered as inscription tablets/sockets; hints are visual-only
+   (row highlights, tile meaning reveals). Shake on wrong, chime + wax-seal
+   ritual on correct.
+3. **Result** — celebration first (big score, card-flip grid, share button,
+   glyph drift). Then below the fold: AI comparison, solve trace, map, lore.
 
 ### Parametric theming
 
-Each puzzle carries a `PuzzleTheme` (accent, sourceColor, bgTint). The entire
-game shifts tonally per language without component changes.
+Each puzzle carries a `PuzzleTheme` (accent, sourceColor, bgTint). These are
+surfaced as CSS custom properties (`--puzzle-accent`, `--puzzle-source`) on
+the `PuzzleView` root so the entire game shifts tonally per language without
+component changes.
+
+## Field Station design system
+
+The `/play` experience is themed as a linguistic field station: each puzzle is
+a different cultural/language world, rendered with shared primitives.
+
+### Living backdrop (`AmbientWorld`)
+
+- Per-puzzle generative cultural SVG motifs (`Motifs`) drift slowly in the
+  background.
+- Aurora/ember layers and soft light bloom follow the puzzle accent.
+- A deterministic seeded random generator keeps SSR and CSR output identical.
+- Reduced motion disables the drift/ember animations; CSS `prefers-reduced-motion`
+  also suppresses keyframe motion globally.
+
+### Typography & materials
+
+- **Manuscript serif display** (`font-display` / Fraunces) for language names
+  and celebration text; `font-mono` for morphemes and metadata.
+- **Artifact materials:**
+  - `tablet` / `tablet-hover` — morpheme bank tiles
+  - `socket-empty` / `socket-filled` — answer slots
+  - `archive-card` — evidence and context cards
+  - `seal-disc` — wax-seal ritual mark on correct answers
+
+### Ritual moments
+
+- **Wax seal** — a `seal-in` keyframe animates the seal into place after a
+  correct answer; `ring-ping` emits a subtle ripple.
+- **Glyph drift** — during the result celebration, language glyphs float upward
+  through the scene (`GlyphDrift`).
+- **Ornament rule** — `OrnamentRule` separates sections with a themed gradient
+  flourish.
+
+### Sound design (`useSfx`)
+
+- All audio is synthesized via the Web Audio API (no audio files).
+- **Ambient pad** tuned per puzzle via `AMBIENT_FREQ`; a quiet detuned pair +
+  fifth with slow LFO breathing.
+- **Micro-SFX:** `click` (tile select), `snap` (tile placed), `thud` (wrong),
+  `chime` (correct), `stamp` (wax seal), `page` (evidence drawer), `whoosh`
+  (phase/query transition).
+- **Reduced motion gating:** `useSfx` reads `useReducedMotion()` from the
+  existing `MotionConfig` and silences all audio when the user prefers reduced
+  motion. The mute state persists in `localStorage` under `ration-sfx-muted`.
+
+### Build verification
+
+```bash
+cd showcase
+npm install
+npx tsc --noEmit
+npm run build   # next build --webpack
+```
 
 ## User funnel — steps to a win
 
