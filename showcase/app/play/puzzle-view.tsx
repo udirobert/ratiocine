@@ -9,6 +9,7 @@ import { StudyPhase } from "./study-phase";
 import { WarmupTeaser } from "./warmup-teaser";
 import { AiComparison, type AiResult } from "./ai-comparison";
 import { ContextPanel } from "./context-panel";
+import { CoachMarks, hasSeenCoach } from "./coach-marks";
 import { AmbientWorld } from "./ambient-world";
 import { GlyphDrift } from "./glyph-drift";
 import { OrnamentRule } from "./decor";
@@ -168,6 +169,7 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
   const [copied, setCopied] = useState(false);
   const [aiResult, setAiResult] = useState<AiResult | null>(null);
   const [aiSettled, setAiSettled] = useState(false);
+  const [showCoach, setShowCoach] = useState(() => !hasSeenCoach());
   const [everSubmitted, setEverSubmitted] = useState(false);
 
   // Timer — accumulates across phase switches (evidence trips don't reset it)
@@ -553,6 +555,13 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
       <div aria-live="polite" role="status" className="sr-only">
         {announce}
       </div>
+
+      {/* First-time coach marks */}
+      <AnimatePresence>
+        {showCoach && (
+          <CoachMarks accent={puzzle.theme.accent} onDismiss={() => setShowCoach(false)} />
+        )}
+      </AnimatePresence>
 
       {/* Transient toast — hint text, fail hints, morpheme meanings */}
       <AnimatePresence>
@@ -1097,6 +1106,26 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
                     </motion.p>
                   )}
                 </div>
+
+                {/* ═══ What you discovered ═══ */}
+                <motion.div
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1.0 }}
+                  className="max-w-md mx-auto w-full"
+                >
+                  <div className="archive-card rounded-xl p-5 border border-white/10">
+                    <h3 className="font-display text-[15px] font-bold text-white mb-2">
+                      What you discovered
+                    </h3>
+                    <p className="text-[13px] text-white/70 leading-relaxed mb-3">
+                      {puzzle.instruction}
+                    </p>
+                    <p className="text-[13px] font-display italic text-white/60 leading-relaxed">
+                      &ldquo;{puzzle.lore.culturalNote}&rdquo;
+                    </p>
+                  </div>
+                </motion.div>
 
                 {/* ═══ Act II — the machine's turn (the brand moment) ═══ */}
                 <div className="flex items-center gap-3 py-6">
