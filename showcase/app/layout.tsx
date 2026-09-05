@@ -47,21 +47,13 @@ export const metadata: Metadata = {
     description:
       "A daily linguistics deduction puzzle. You and a 14B-parameter model, graded by the same algorithm. Built from our IOL-AI 2026 competition entry.",
     url: "https://ratiocine.vercel.app",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "ratiocine — linguistics puzzle game",
-      },
-    ],
+    // Images resolve via the app/opengraph-image.tsx convention route.
   },
   twitter: {
     card: "summary_large_image",
     title: "ratiocine — crack the pattern, then watch the machine try",
     description:
       "A daily linguistics deduction puzzle. You and a 14B-parameter model, graded by the same algorithm. Built from our IOL-AI 2026 competition entry.",
-    images: ["/og-image.png"],
   },
   robots: {
     index: true,
