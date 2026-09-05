@@ -10,6 +10,7 @@ import { WarmupTeaser } from "./warmup-teaser";
 import { WarmupGate } from "./warmup-gate";
 import { AiComparison, type AiResult } from "./ai-comparison";
 import { ContextPanel } from "./context-panel";
+import { ArchivePanel } from "./archive-panel";
 import { CoachMarks, hasSeenCoach, hasSeenWarmup, markWarmupSeen } from "./coach-marks";
 import { AmbientWorld } from "./ambient-world";
 import { GlyphDrift } from "./glyph-drift";
@@ -21,6 +22,7 @@ import {
   getTodaysPuzzle,
   getPuzzleById,
   getChallengeUrl,
+  PUZZLE_POOL,
   gradeAnswer,
   loadProgress,
   recordSolve,
@@ -132,6 +134,7 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
   const [ghostVisible, setGhostVisible] = useState(true); // ghost tile hint for Q1/Q2
   const ghostTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [everPlaced, setEverPlaced] = useState(false); // coach caption until first placement
+  const [archiveOpen, setArchiveOpen] = useState(false);
 
   // Selection removed — tap-to-place model (tap tile = auto-place, tap slot = remove)
 
@@ -625,6 +628,14 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
               💡 {puzzle.hints.length - hintsUsed}
             </button>
           )}
+          {/* Archive — practice any puzzle in the pool */}
+          <button
+            onClick={(e) => { e.stopPropagation(); setArchiveOpen(true); }}
+            className="text-sm min-w-[44px] min-h-[44px] flex items-center justify-center opacity-60 hover:opacity-100 transition-opacity"
+            aria-label="Open puzzle archive"
+          >
+            📚
+          </button>
           <button
             onClick={(e) => { e.stopPropagation(); sfx.toggleMute(); }}
             className="text-sm min-w-[44px] min-h-[44px] flex items-center justify-center opacity-60 hover:opacity-100 transition-opacity"
@@ -1249,6 +1260,15 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
       </div>
 
       {/* ═══ Evidence drawer — consult specimens without leaving the puzzle ═══ */}
+      <AnimatePresence>
+        {archiveOpen && (
+          <ArchivePanel
+            currentPuzzleId={puzzle.id}
+            progress={progress}
+            onClose={() => setArchiveOpen(false)}
+          />
+        )}
+      </AnimatePresence>
       <AnimatePresence>
         {evidenceOpen && (
           <>
