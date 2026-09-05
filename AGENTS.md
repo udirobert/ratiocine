@@ -217,6 +217,16 @@ The showcase is a daily linguistics deduction game: study evidence rows → comp
 - **Analytics**: `lib/analytics.ts` wraps `@vercel/analytics` — funnel events `play_start → study_complete → first_submit → puzzle_solved → shared → ai_verdict`.
 - The timer is intentionally **hidden during solve** and revealed on the result screen (deduction, not speedrun).
 
+### Showcase merge checklist
+
+Enforced after the 2026-09-05 incident (backdrop painted over game text on phones). Full rules in `docs/puzzle-ui-plan.md` → "Layering contract & mobile atmosphere rules".
+
+- [ ] `tsc --noEmit` clean in `showcase/`
+- [ ] Any backdrop / loading / phase-scaffold change walked on a phone viewport (`agent-browser set device "iPhone 14"`, warmup → study → solve → submit) with screenshots
+- [ ] Game content holds `relative z-10` above decorative layers; text cards use `card-solid`
+- [ ] No `justify-center` + `overflow` centering (use `m-auto` inner)
+- [ ] Vercel preview deploy green (watch the Edge Function size limit — keep `opengraph-image` on nodejs runtime)
+
 ## Project structure
 
 ```

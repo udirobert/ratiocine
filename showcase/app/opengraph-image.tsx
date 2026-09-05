@@ -1,6 +1,9 @@
 import { ImageResponse } from "next/og";
 
-export const runtime = "edge";
+// nodejs runtime: the satori layout engine blows the 1 MB edge-function
+// limit (1.07 MB). OG output is cached at the edge anyway, so the slower
+// cold start never touches players.
+export const runtime = "nodejs";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
