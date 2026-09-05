@@ -87,15 +87,23 @@
     }
   ],
   "func": {
+    "add_allowed_caller": {
+      "type": "update",
+      "async": "async*"
+    },
+    "remove_allowed_caller": {
+      "type": "update",
+      "async": "async*"
+    },
     "attest_entry": {
       "type": "update",
       "async": "async*"
     },
-    "get_ledger": {
+    "get_ledger_page": {
       "type": "update",
       "async": "async*"
     },
-    "get_ledger_page": {
+    "get_ledger": {
       "type": "update",
       "async": "async*"
     },
@@ -107,6 +115,21 @@
       "type": "update",
       "async": "async*"
     },
+    "ration_attest": {
+      "type": "internal",
+      "async": "async*",
+      "expose": "apps"
+    },
+    "ration_ledger": {
+      "type": "internal",
+      "async": "async*",
+      "expose": "apps"
+    },
+    "ration_report": {
+      "type": "internal",
+      "async": "async*",
+      "expose": "apps"
+    },
     "ping_solver": {
       "type": "update",
       "async": "async*"
@@ -116,14 +139,6 @@
       "async": "async*"
     },
     "get_pubkey": {
-      "type": "update",
-      "async": "async*"
-    },
-    "add_allowed_caller": {
-      "type": "update",
-      "async": "async*"
-    },
-    "remove_allowed_caller": {
       "type": "update",
       "async": "async*"
     }

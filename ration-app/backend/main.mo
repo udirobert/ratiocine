@@ -986,14 +986,20 @@ module {
 
 /*---NEUTRON GENERATED BEGIN---*/
 
-public type attest_entry_Input = AttestInput;
+public type add_allowed_caller_Input = (token : Text);
+public type add_allowed_caller_Output = Text;
+
+public type remove_allowed_caller_Input = (token : Text);
+public type remove_allowed_caller_Output = Text;
+
+public type attest_entry_Input = (input : AttestInput);
 public type attest_entry_Output = AttestResult;
+
+public type get_ledger_page_Input = (input : { offset : Nat; limit : Nat });
+public type get_ledger_page_Output = LedgerPage;
 
 public type get_ledger_Input = ();
 public type get_ledger_Output = [LedgerEntry];
-
-public type get_ledger_page_Input = { offset : Nat; limit : Nat };
-public type get_ledger_page_Output = LedgerPage;
 
 public type get_ledger_status_Input = ();
 public type get_ledger_status_Output = LedgerStatus;
@@ -1001,20 +1007,23 @@ public type get_ledger_status_Output = LedgerStatus;
 public type publish_report_Input = ();
 public type publish_report_Output = Text;
 
+public type ration_attest_Input = (input : AttestInput,);
+public type ration_attest_Output = AttestResult;
+
+public type ration_ledger_Input = (());
+public type ration_ledger_Output = [LedgerEntry];
+
+public type ration_report_Input = (());
+public type ration_report_Output = Text;
+
 public type ping_solver_Input = (admin_token : Text);
 public type ping_solver_Output = Text;
 
-public type sign_probe_Input = { admin_token : Text; msg : Text };
+public type sign_probe_Input = (input : { admin_token : Text; msg : Text });
 public type sign_probe_Output = Text;
 
 public type get_pubkey_Input = ();
 public type get_pubkey_Output = Text;
-
-public type add_allowed_caller_Input = (principal : Text);
-public type add_allowed_caller_Output = Text;
-
-public type remove_allowed_caller_Input = (principal : Text);
-public type remove_allowed_caller_Output = Text;
 
 /*---NEUTRON GENERATED END---*/
 }

@@ -14,6 +14,7 @@ import {
   loadApurinaHandoff,
   type HumanOutcome,
 } from "./apurina-case";
+import { APP_PROBLEMS } from "./problems";
 import "./style.scss";
 
 // ---------------------------------------------------------------------------
@@ -52,46 +53,23 @@ function statusUrl(base: string, id: string) {
 }
 
 // ---------------------------------------------------------------------------
-// Sample problem bank
+// Sample problem bank — ten real IOL-style language problems, generated from
+// the showcase puzzle set (see src/problems.ts). Every one ships ground
+// truth, so the canister grades deterministically before chain-key signing.
 // ---------------------------------------------------------------------------
 type Problem = {
   id: string;
   label: string;
+  language?: string;
+  family?: string;
+  region?: string;
   task_type: string;
   context: string;
   query: string;
   ground_truth?: string[];
 };
 
-const PROBLEMS: Problem[] = [
-  {
-    id: "suna-translate",
-    label: "Mini-language · Translate (graded)",
-    task_type: "translation",
-    context:
-      "suna: sun; bade: big; suna bade: big sun; me: my; me suna: my sun",
-    query: "Translate into the unfamiliar language:\n1. the sun\n2. the big sun",
-    ground_truth: ["suna", "suna bade"],
-  },
-  {
-    id: "xinka-fill",
-    label: "Guazacapán Xinka · Fill the blanks",
-    task_type: "fill_blanks",
-    context:
-      "Here are two different forms of some verbs in Guazacapán Xinka and their English translations:\n\npiriyʼ | ɨmbirʼi | see\nimʼay | ɨnimʼa | say, tell\naplayʼ | ɨnapalʼa | open (it)\nkʼaniyʼ | ɨŋkʼanʼi | trap\nɬɨknɨyʼ | ɨnɬɨkɨnʼɨ | obey, believe\ntundiyʼ | ɨndunatʼi | play (an instrument)\nʂakʂayʼ | ɨnʂakaʦʼa | steal\nkiʂiyʼ | ɨŋɡiʦʼi | roast\nhɨkʼay | ɨnhɨkʼa | sew, weave\nhɨnɨyʼ | ɨnhɨnɨ | learn, know\nyuɬmuyʼ | ɨnyuɬumʼu | suck candy\niplayʼ | ɨnipalʼa | bathe (it)\npɬahniyʼ | ɨmpɬahanʼi | dig\nterʼoy | ɨnderʼo | kill",
-    query:
-      "Fill the blanks (1-4):\n\nnetkayʼ | (1) | push\nkɨrɨyʼ | (2) | pull\npɬuhruyʼ | (3) | make holes\nherʼoy | (4) | smooth out",
-  },
-  {
-    id: "ubykh-translate",
-    label: "Ubykh · Translate to English",
-    task_type: "translation",
-    context:
-      "Here are some forms of the Ubykh verb to give and their English translations:\n\n1. wəšʼtʷən — we give you_{sg} to him\n2. sawtʷən — you_{sg} give me to them\n3. awəstʷan — I give them to you_{sg}\n4. wəsənatʷən — they give you_{sg} to me\n5. śʷəstʷan — I give you_{pl} to him\n6. šʼantʷan — he gives us to them\n7. awəšʼtʷən — we give him to you_{sg}\n8. səśʷəntʷan — he gives me to you_{pl}\n9. aśʷəstʷan — I give him to you_{pl}",
-    query:
-      "Translate into English:\n\n10. ašʼəntʷən\n11. səśʷtʷan\n12. šʼəwənatʷan",
-  },
-];
+const PROBLEMS: Problem[] = APP_PROBLEMS;
 
 // ---------------------------------------------------------------------------
 // Insight cards shown while waiting
@@ -243,6 +221,7 @@ export const App = () => {
   const [entry, setEntry] = useState<LedgerEntry | null>(null);
   const [attestError, setAttestError] = useState("");
   const [attestBusy, setAttestBusy] = useState(false);
+  const [demoBusy, setDemoBusy] = useState(false);
   const [forgeMode, setForgeMode] = useState(false);
   const [forgeType, setForgeType] = useState<"output" | "model">("output");
   const [tamperedValue, setTamperedValue] = useState("");
@@ -488,6 +467,54 @@ export const App = () => {
   const activeIdx = phaseIndex(phase);
   const isRunning = ["queued", "waking", "loading", "deducing"].includes(phase);
 
+  // Instant demo: attest a canned perfect answer with no GPU round-trip, so
+  // a reviewer sees grade → sign → ledger in seconds. The canister still
+  // grades deterministically; only the "model" is declared as canned.
+  const demoAttest = useCallback(async () => {
+    if (!client) return;
+    const p = PROBLEMS[0];
+    setDemoBusy(true);
+    setAttestError("");
+    setEntry(null);
+    try {
+      const raw = await client.callDialog("attest_entry", [
+        {
+          job_id: `demo-${Date.now()}`,
+          problem_id: p.id,
+          context: p.context,
+          prompt: p.query,
+          pred: p.ground_truth ?? [],
+          model: "demo-canned (no GPU)",
+          model_version: null,
+          evaluator_version: "ration/v1.0",
+          task_type: p.task_type,
+          ground_truth: p.ground_truth ?? null,
+          case_version: null,
+          case_hash: null,
+          human_outcome: null,
+        },
+      ]);
+      const e = asEntry(raw);
+      if (e) {
+        setEntry(e);
+        setPhase("done");
+        setResult({ pred: p.ground_truth ?? [], model: "demo-canned (no GPU)", elapsed_s: 0 });
+        void loadLedger();
+      } else if (raw && typeof raw === "object" && "error" in raw) {
+        const errObj = raw as { error?: unknown };
+        setAttestError(
+          String(Array.isArray(errObj.error) ? errObj.error[1] ?? errObj.error[0] : errObj.error),
+        );
+      } else {
+        setAttestError("Unrecognized attestation response");
+      }
+    } catch (e: any) {
+      setAttestError("Attest error: " + String(e?.message ?? e));
+    } finally {
+      setDemoBusy(false);
+    }
+  }, [client, loadLedger]);
+
   return (
     <main className={cx(nt.appFill, "ration-app")}>
       <div className="nt-page ration-shell">
@@ -537,7 +564,13 @@ export const App = () => {
                   onClick={() => setSelected(p.id)}
                   disabled={isRunning || Boolean(handoff)}
                 >
-                  <span className="ration-problem-label">{p.label}</span>
+                  <span className="ration-problem-main">
+                    <span className="ration-problem-label">{p.label}</span>
+                    <span className="ration-problem-sub">
+                      {[p.family, p.region].filter(Boolean).join(" · ")}
+                      {p.ground_truth ? ` · ${p.ground_truth.length} items, graded` : ""}
+                    </span>
+                  </span>
                   <span className={cx(nt.tag, "ration-problem-type")}>
                     {p.task_type}
                   </span>
@@ -618,7 +651,22 @@ export const App = () => {
               >
                 {isRunning ? "Solving…" : "Solve with Ration"}
               </button>
+              <button
+                className={cx(nt.button, nt.buttonSecondary)}
+                onClick={() => void demoAttest()}
+                disabled={isRunning || demoBusy || !client}
+                type="button"
+                title="Attest a canned perfect answer instantly — no GPU wait"
+              >
+                {demoBusy ? "Signing demo…" : "Try instant demo (no GPU)"}
+              </button>
             </div>
+            {/* Demo/attest errors must surface even before any solve runs */}
+            {phase === "idle" && attestError && (
+              <div className={cx(nt.alert, nt.alertWarning, "ration-attest-err")}>
+                {attestError}
+              </div>
+            )}
           </section>
 
           {/* Deduction Theatre */}
@@ -910,8 +958,17 @@ export const App = () => {
               <div className={cx(nt.alert, nt.alertWarning)}>{ledgerErr}</div>
             ) : ledger.length === 0 ? (
               <p className={cx(nt.text, nt.muted, "ration-ledger-empty")}>
-                No receipts yet. Solve a problem and grade & sign it to start
-                the logbook.
+                No receipts yet. Solve a problem and grade &amp; sign it — or
+                run the{" "}
+                <button
+                  type="button"
+                  className="ration-link-button"
+                  onClick={() => void demoAttest()}
+                  disabled={demoBusy || !client}
+                >
+                  instant demo
+                </button>{" "}
+                to see a signed receipt in seconds.
               </p>
             ) : (
               <ul className="ration-ledger">
