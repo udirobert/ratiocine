@@ -10,14 +10,18 @@ interface StudyPhaseProps {
   onReady: () => void;
   /** Skip intro animations — used when returning to evidence mid-solve */
   instant?: boolean;
+  /** Fires once, the first time the player traces a source word */
+  onFirstTrace?: () => void;
 }
 
-export const StudyPhase = ({ puzzle, highlightedRows, onReady, instant = false }: StudyPhaseProps) => {
+export const StudyPhase = ({ puzzle, highlightedRows, onReady, instant = false, onFirstTrace }: StudyPhaseProps) => {
   const [showRows, setShowRows] = useState(instant);
   const [visibleCount, setVisibleCount] = useState(instant ? Number.MAX_SAFE_INTEGER : 0);
   const [ready, setReady] = useState(instant);
   const [flashedRows, setFlashedRows] = useState<Set<number>>(new Set());
   const flashTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const tracedRef = useRef(false);
+  const autoNudgeRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const { theme } = puzzle;
   const pairs = puzzle.pairs.filter((p) => !p.gated);
@@ -58,6 +62,12 @@ export const StudyPhase = ({ puzzle, highlightedRows, onReady, instant = false }
         }
       }
     }
+    // First trace is a discovery moment, not just a control
+    if (!tracedRef.current) {
+      tracedRef.current = true;
+      if (autoNudgeRef.current) clearTimeout(autoNudgeRef.current);
+      onFirstTrace?.();
+    }
     if (sharedRows.size === 0) return;
     flashRows(sharedRows);
   };
@@ -85,6 +95,39 @@ export const StudyPhase = ({ puzzle, highlightedRows, onReady, instant = false }
     }
     flashRows(rows);
   };
+
+  // Auto-nudge: if the player hasn't traced anything ~3s after ready,
+  // demonstrate it once on the most-shared morpheme. Cancelled by any tap.
+  useEffect(() => {
+    if (!ready || instant) return;
+    autoNudgeRef.current = setTimeout(() => {
+      if (tracedRef.current) return;
+      const counts = new Map<string, number>();
+      for (const pair of pairs) {
+        for (const morph of pair.morphemes) {
+          counts.set(morph, (counts.get(morph) ?? 0) + 1);
+        }
+      }
+      let best = "";
+      let bestCount = 0;
+      for (const [morph, c] of counts.entries()) {
+        if (c > bestCount) {
+          best = morph;
+          bestCount = c;
+        }
+      }
+      if (bestCount <= 1) return;
+      const rows = new Set<number>();
+      for (const pair of pairs) {
+        if (pair.morphemes.includes(best)) rows.add(pair.id);
+      }
+      flashRows(rows, 2200);
+    }, 3000);
+    return () => {
+      if (autoNudgeRef.current) clearTimeout(autoNudgeRef.current);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ready, instant]);
 
   return (
     <div className="flex-1 flex flex-col min-h-0 relative">

@@ -27,6 +27,9 @@ import {
   gradeAnswer,
   loadProgress,
   recordSolve,
+  saveDraft,
+  loadDraft,
+  clearDraft,
   type Puzzle,
   type PuzzleProgress,
   type QueryGrade,
@@ -159,6 +162,7 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
 
   // Evidence drawer + gated specimens
   const [evidenceOpen, setEvidenceOpen] = useState(false);
+  const [seenEvidence, setSeenEvidence] = useState(false); // pulse the book icon until first opened
   const [revealedGated, setRevealedGated] = useState(false);
   const [contextReveals, setContextReveals] = useState(0);
 
@@ -232,6 +236,62 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
   const shownFailHintsRef = useRef<Set<number>>(new Set());
 
   useEffect(() => { setProgress(loadProgress()); }, []);
+
+  // Restore a mid-solve draft (same puzzle, same day) so a refresh or
+  // backgrounded tab never costs the attempt. Hint highlights aren't
+  // restored — hints stay usable and re-apply cleanly.
+  useEffect(() => {
+    const draft = loadDraft(puzzle.id);
+    if (!draft || draft.answers.length !== puzzle.queries.length) return;
+    try {
+      const gradeMap = new Map(draft.grades.map((g) => [g.queryId, g]));
+      setAnswers(
+        puzzle.queries.map((q, qi) => {
+          const g = gradeMap.get(q.id);
+          const row = draft.answers[qi] ?? [];
+          return q.answer.map((_, si) => {
+            const m = row[si] ?? null;
+            if (!m) return { morpheme: null };
+            if (g?.isCorrect) return { morpheme: m, grade: "correct" as const };
+            return { morpheme: m };
+          });
+        }),
+      );
+      setGrades(gradeMap);
+      if (draft.attempts.length === puzzle.queries.length) setAttempts(draft.attempts);
+      if (draft.locked.length === puzzle.queries.length) setLocked(draft.locked);
+      setScore(draft.score);
+      setElapsed(draft.elapsed);
+      accumRef.current = draft.elapsed;
+      setHintsUsed(draft.hintsUsed);
+      setRevealedGated(draft.revealedGated);
+      setContextReveals(draft.contextReveals);
+    } catch {
+      /* corrupt draft — start fresh */
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Persist the draft while solving; clear it once every query locks.
+  const allLockedEarly = locked.every(Boolean);
+  useEffect(() => {
+    if (phase !== "solve") return;
+    if (allLockedEarly) {
+      clearDraft(puzzle.id);
+      return;
+    }
+    saveDraft(puzzle.id, {
+      answers: answers.map((row) => row.map((s) => s.morpheme)),
+      grades: [...grades.values()],
+      attempts,
+      locked,
+      score,
+      elapsed,
+      hintsUsed,
+      revealedGated,
+      contextReveals,
+    });
+  }, [phase, allLockedEarly, answers, grades, attempts, locked, score, elapsed, hintsUsed, revealedGated, contextReveals, puzzle.id]);
 
   // ── Ambient pad: tune the room tone to this puzzle, stop on unmount ──
   useEffect(() => {
@@ -347,6 +407,17 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
     const meaning = revealedMorphemes.get(morpheme);
     if (meaning) showToast(`${morpheme} = ${meaning}`, 2500);
   }, [isLocked, slots, currentQ, sfx, ghostVisible, everPlaced, revealedMorphemes, showToast]);
+
+  // Clear all placed tiles in the current query (cheaper than unpicking one by one)
+  const handleClear = useCallback(() => {
+    if (isLocked) return;
+    sfx.pop();
+    setAnswers((prev) => {
+      const next = [...prev];
+      next[currentQ] = next[currentQ].map(() => ({ morpheme: null }));
+      return next;
+    });
+  }, [isLocked, currentQ, sfx]);
 
   const handleSubmit = useCallback(() => {
     if (isLocked) return;
@@ -616,8 +687,13 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
         )}
       </AnimatePresence>
 
-      {/* Living world — per-puzzle atmosphere (replaces flat CRT wash) */}
-      <AmbientWorld puzzleId={puzzle.id} theme={puzzle.theme} />
+      {/* Living world — per-puzzle atmosphere (replaces flat CRT wash).
+          Frozen while modals cover it or the phase isn't solve. */}
+      <AmbientWorld
+        puzzleId={puzzle.id}
+        theme={puzzle.theme}
+        active={phase === "solve" && !evidenceOpen && !archiveOpen && !showCoach}
+      />
 
       {/* ═══ Top bar ═══ */}
       <header className="shrink-0 flex items-center justify-between px-4 py-2.5 border-b border-white/8 sm:px-6">
@@ -730,6 +806,10 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
                 puzzle={puzzle}
                 highlightedRows={highlightedRows}
                 instant={studiedOnce}
+                onFirstTrace={() => {
+                  sfx.chime();
+                  showToast("Shared piece found — it repeats across rows.", 3500);
+                }}
                 onReady={() => {
                   if (!studiedOnce) {
                     setStudiedOnce(true);
@@ -998,6 +1078,15 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
                       Check
                     </button>
                   )}
+                  {!isLocked && slots.filter((s) => s.morpheme).length >= 2 && (
+                    <button
+                      onClick={handleClear}
+                      className="px-3 py-2 rounded-md text-[12px] font-mono text-white/45 hover:text-white/75 hover:bg-white/5 transition-colors min-h-[44px]"
+                      aria-label="Remove all placed tiles"
+                    >
+                      clear
+                    </button>
+                  )}
                   {isLocked && !allLocked && (
                     <button
                       onClick={() => {
@@ -1010,13 +1099,20 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
                     </button>
                   )}
                   <button
-                    onClick={() => { sfx.page(); setEvidenceOpen(true); track("evidence_open", { puzzle: puzzle.id }); }}
-                    className="w-11 min-h-[44px] flex items-center justify-center text-white/40 hover:text-white/70 transition-colors rounded-md hover:bg-white/5"
+                    onClick={() => { sfx.page(); setEvidenceOpen(true); setSeenEvidence(true); track("evidence_open", { puzzle: puzzle.id }); }}
+                    className={`w-11 min-h-[44px] flex items-center justify-center text-white/40 hover:text-white/70 transition-colors rounded-md hover:bg-white/5 ${!seenEvidence ? "evidence-nudge" : ""}`}
                     aria-label="Open evidence panel"
                   >
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
                   </button>
                 </div>
+
+                {/* Grading legend — appears after the first submit teaches the colors */}
+                {everSubmitted && !allLocked && (
+                  <p className="text-center text-[10px] font-mono text-white/35 mt-3" aria-hidden="true">
+                    ✓ right slot · ⇄ right piece, wrong slot · ✗ not in answer
+                  </p>
+                )}
 
                 {/* Keyboard legend — fine-pointer devices only */}
                 <p className="hidden [@media(pointer:fine)]:block text-center text-[10px] font-mono text-white/20 mt-3">
@@ -1052,6 +1148,19 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
                     {score}/{puzzle.queries.length}
                   </motion.p>
 
+                  {/* Flawless tier — no hints, no reveals, no context peeks */}
+                  {allCorrect && hintsUsed === 0 && contextReveals === 0 &&
+                    ![...grades.values()].some((g) => g.revealed) && (
+                    <motion.p
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.25 }}
+                      className="mt-2 text-[12px] font-mono pa-text tracking-widest uppercase"
+                    >
+                      ✦ flawless — pure deduction
+                    </motion.p>
+                  )}
+
                   {/* Warm verdict — manuscript italic */}
                   <motion.p
                     initial={{ opacity: 0, y: 8 }}
@@ -1065,6 +1174,18 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
                         ? puzzle.verdicts.good
                         : puzzle.verdicts.partial}
                   </motion.p>
+
+                  {/* Honest framing for assisted finishes */}
+                  {[...grades.values()].some((g) => g.revealed) && (
+                    <motion.p
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.4 }}
+                      className="mt-1 text-[12px] font-display italic text-white/45 text-center"
+                    >
+                      cracked with a reveal — the pattern is still yours.
+                    </motion.p>
+                  )}
 
                   {/* Ornament rule — separates verdict from stats */}
                   <OrnamentRule className="mt-4 w-32" />
@@ -1092,6 +1213,18 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
                       aria-live="polite"
                     >
                       🔥 {progress.streak}-day streak
+                    </motion.p>
+                  )}
+
+                  {/* Day-1 line — teach the streak mechanic before it pays off */}
+                  {progress && progress.streak <= 1 && (
+                    <motion.p
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.6 }}
+                      className="mt-2 text-[11px] font-mono text-white/40"
+                    >
+                      day 1 — solve tomorrow to start a streak 🔥
                     </motion.p>
                   )}
 
@@ -1289,22 +1422,35 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
                     </div>
                   </details>
 
-                  {/* Audio moment — only where we have a real recording */}
+                  {/* Audio moment — field recordings live here as speakers
+                      record them; absence is a coming-soon, not a gap */}
                   {allCorrect && puzzle.id === "apurina-verb-agreement" && (
-                    <AudioMoment
-                      audioSrc="/audio/apurina-forms.mp3"
-                      language={puzzle.language}
-                      transcript={puzzle.queries.map((q) => q.answerJoined).join(" · ")}
-                    />
+                    <>
+                      <AudioMoment
+                        audioSrc="/audio/apurina-forms.mp3"
+                        language={puzzle.language}
+                        transcript={puzzle.queries.map((q) => q.answerJoined).join(" · ")}
+                      />
+                      <p className="text-center text-[10px] font-mono text-white/30 -mt-2">
+                        field recording · more languages soon
+                      </p>
+                    </>
                   )}
 
-                  {/* Map */}
-                  <LanguageMap
-                    progress={progress}
-                    currentLanguageCode={puzzle.languageCode}
-                    currentCoordinates={puzzle.lore.coordinates}
-                    currentLanguage={puzzle.language}
-                  />
+                  {/* Map — collapsed so the duel stays the climax */}
+                  <details className="rounded-lg border border-white/8 bg-white/[0.01]">
+                    <summary className="px-4 py-3 text-[11px] font-mono text-white/60 uppercase tracking-wider cursor-pointer hover:text-white/80 min-h-[44px] flex items-center">
+                      Language map
+                    </summary>
+                    <div className="px-3 pb-3">
+                      <LanguageMap
+                        progress={progress}
+                        currentLanguageCode={puzzle.languageCode}
+                        currentCoordinates={puzzle.lore.coordinates}
+                        currentLanguage={puzzle.language}
+                      />
+                    </div>
+                  </details>
 
                   {/* Lore */}
                   <details className="rounded-lg border border-white/8 bg-white/[0.01]">

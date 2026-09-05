@@ -23,6 +23,9 @@ import type { PuzzleTheme } from "./puzzle-data";
 interface AmbientWorldProps {
   puzzleId: string;
   theme: PuzzleTheme;
+  /** False when the world sits behind modals or non-solve phases — the
+      shader freezes to a still frame and embers pause (battery, not beauty). */
+  active?: boolean;
 }
 
 // Deterministic pseudo-random (SSR-safe: no Math.random at render time)
@@ -31,7 +34,7 @@ const prand = (i: number, n: number): number => {
   return x - Math.floor(x);
 };
 
-export const AmbientWorld = ({ puzzleId, theme }: AmbientWorldProps) => {
+export const AmbientWorld = ({ puzzleId, theme, active = true }: AmbientWorldProps) => {
   const reduced = useReducedMotion();
 
   // WebGL capability — fall back to the painted gradient when unavailable
@@ -109,7 +112,7 @@ export const AmbientWorld = ({ puzzleId, theme }: AmbientWorldProps) => {
             }}
           />
         ) : (
-          <MaterialField theme={theme} reduced={Boolean(reduced)} />
+          <MaterialField theme={theme} reduced={Boolean(reduced)} paused={!active} />
         )}
       </motion.div>
 
@@ -126,24 +129,26 @@ export const AmbientWorld = ({ puzzleId, theme }: AmbientWorldProps) => {
         />
       </motion.div>
 
-      {/* Aurora light — two slow breaths in accent & source hues */}
+      {/* Aurora light — two slow breaths in accent & source hues.
+          Radial gradients, not blur filters: identical look, a fraction of
+          the mobile GPU cost (no giant offscreen blur textures). */}
       <motion.div
         style={reduced ? undefined : { x: lightX, y: lightY }}
         className="absolute inset-0"
         {...enter(1.05)}
       >
         <div
-          className="aurora-a absolute -left-1/4 top-1/4 h-[60vmax] w-[60vmax] rounded-full opacity-[0.13] blur-3xl"
-          style={{ background: `radial-gradient(circle, ${theme.accent} 0%, transparent 65%)` }}
+          className="aurora-a absolute -left-1/4 top-1/4 h-[60vmax] w-[60vmax] rounded-full"
+          style={{ background: `radial-gradient(circle, ${theme.accent}2e 0%, ${theme.accent}14 35%, transparent 65%)` }}
         />
         <div
-          className="aurora-b absolute -right-1/4 -bottom-1/6 h-[55vmax] w-[55vmax] rounded-full opacity-[0.10] blur-3xl"
-          style={{ background: `radial-gradient(circle, ${theme.sourceColor} 0%, transparent 65%)` }}
+          className="aurora-b absolute -right-1/4 -bottom-1/6 h-[55vmax] w-[55vmax] rounded-full"
+          style={{ background: `radial-gradient(circle, ${theme.sourceColor}24 0%, ${theme.sourceColor}12 35%, transparent 65%)` }}
         />
       </motion.div>
 
       {/* Embers — faint motes of the accent hue rising through the air */}
-      {!reduced &&
+      {!reduced && active &&
         embers.map((e, i) => (
           <span
             key={i}

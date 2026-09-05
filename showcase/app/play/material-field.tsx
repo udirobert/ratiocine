@@ -239,9 +239,11 @@ function FieldPlane({ theme, reduced }: { theme: PuzzleTheme; reduced: boolean }
 export const MaterialField = ({
   theme,
   reduced,
+  paused = false,
 }: {
   theme: PuzzleTheme;
   reduced: boolean;
+  paused?: boolean;
 }) => {
   // Pause the render loop while the tab is hidden (saves mobile battery)
   const [hidden, setHidden] = useState(false);
@@ -251,7 +253,7 @@ export const MaterialField = ({
     return () => document.removeEventListener("visibilitychange", onVis);
   }, []);
 
-  const still = reduced || hidden;
+  const still = reduced || hidden || paused;
 
   return (
     <div className="absolute inset-0" aria-hidden="true">

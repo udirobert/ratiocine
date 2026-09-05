@@ -240,11 +240,12 @@
   stroke-dasharray: 1;
   stroke-dashoffset: 1;
   animation: motif-draw 3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-  animation-delay: calc(var(--draw-i, 0) * 110ms);
+  /* Cap the stagger so dense lattices (130+ elements) settle in ~4s */
+  animation-delay: calc(min(var(--draw-i, 0), 36) * 110ms);
 }
 .motif-grow .motif-fill-in {
   animation: motif-fill-in 1.6s ease-out both;
-  animation-delay: calc(var(--draw-i, 0) * 110ms + 1.2s);
+  animation-delay: calc(min(var(--draw-i, 0), 36) * 110ms + 1.2s);
 }
 @media (prefers-reduced-motion: reduce) {
   .motif-grow :is(path, circle),
@@ -398,6 +399,13 @@
   50%      { box-shadow: 0 0 38px color-mix(in srgb, var(--puzzle-accent, #e5a84b) 48%, transparent), 0 2px 8px rgba(0, 0, 0, 0.4); }
 }
 .pulse-glow { animation: pulse-glow 2.6s ease-in-out infinite; }
+
+/* Evidence nudge — the book icon breathes until first opened */
+@keyframes evidence-nudge {
+  0%, 100% { box-shadow: 0 0 0 color-mix(in srgb, var(--puzzle-accent, #e5a84b) 0%, transparent); }
+  50%      { box-shadow: 0 0 14px color-mix(in srgb, var(--puzzle-accent, #e5a84b) 45%, transparent); }
+}
+.evidence-nudge { animation: evidence-nudge 2.2s ease-in-out infinite; }
 
 /* ─── Reduced motion ───────────────────────────────────────────────────────── */
 

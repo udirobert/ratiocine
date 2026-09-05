@@ -1584,6 +1584,55 @@ export function gradeAnswer(
 
 const STORAGE_KEY = "ration-puzzle-progress";
 
+// ─── Mid-solve draft (survive a refresh) ────────────────────────────────────
+
+export interface SolveDraft {
+  /** morpheme per slot, per query */
+  answers: Array<Array<string | null>>;
+  grades: Array<{ queryId: number; grades: TileGrade[]; isCorrect: boolean; attempt: number; revealed?: boolean }>;
+  attempts: number[];
+  locked: boolean[];
+  score: number;
+  elapsed: number;
+  hintsUsed: number;
+  revealedGated: boolean;
+  contextReveals: number;
+}
+
+function draftKey(puzzleId: string): string {
+  return `ration-solve-draft-${puzzleId}-${localDayKey()}`;
+}
+
+export function saveDraft(puzzleId: string, draft: SolveDraft): void {
+  if (typeof window === "undefined") return;
+  try {
+    localStorage.setItem(draftKey(puzzleId), JSON.stringify(draft));
+    // Prune yesterday's drafts for other puzzles
+    for (let i = localStorage.length - 1; i >= 0; i--) {
+      const k = localStorage.key(i);
+      if (k && k.startsWith("ration-solve-draft-") && k !== draftKey(puzzleId) && !k.endsWith(localDayKey())) {
+        localStorage.removeItem(k);
+      }
+    }
+  } catch {}
+}
+
+export function loadDraft(puzzleId: string): SolveDraft | null {
+  if (typeof window === "undefined") return null;
+  try {
+    const raw = localStorage.getItem(draftKey(puzzleId));
+    if (raw) return JSON.parse(raw);
+  } catch {}
+  return null;
+}
+
+export function clearDraft(puzzleId: string): void {
+  if (typeof window === "undefined") return;
+  try {
+    localStorage.removeItem(draftKey(puzzleId));
+  } catch {}
+}
+
 export interface PuzzleProgress {
   puzzlesSolved: number;
   lastSolvedDate: string | null; // YYYY-MM-DD (local calendar day)
