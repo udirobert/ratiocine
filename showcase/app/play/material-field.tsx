@@ -72,7 +72,7 @@ float sdHex(vec2 p, float r) {
 // source-hue zenith wash, slow woven bands in the accent hue.
 vec3 atmosphere(vec2 uv) {
   float bottom = smoothstep(0.95, -0.05, uv.y);
-  vec3 col = mix(uBg * 0.42, uBg * 1.75, bottom * bottom);
+  vec3 col = mix(uBg * 0.42, uBg * 1.25, bottom * bottom);
   col += uSource * 0.09 * smoothstep(0.8, 0.0, uv.y);
   float band = sin(uv.y * 46.0 + sin(uv.x * 7.0 + uTime * 0.12) * 1.8 + uTime * 0.05);
   col += uAccent * 0.028 * band * band;
@@ -103,10 +103,11 @@ void main() {
   glass.g = atmosphere(uv + refr).g;
   glass.b = atmosphere(uv + refr * 0.85 - vec2(ca, 0.0)).b;
 
-  // pointer-driven specular sweep
+  // pointer-driven specular sweep — kept tight and dim so the world
+  // shimmers instead of glaring (tall phone viewports magnify it)
   vec2 L = normalize(mix(vec2(0.65, 0.85), uLight, uLightMix));
-  float spec = pow(max(0.0, dot(L, n)), 18.0) * (1.0 - rad);
-  glass += vec3(1.0, 0.96, 0.9) * spec * 0.45;
+  float spec = pow(max(0.0, dot(L, n)), 28.0) * (1.0 - rad);
+  glass += vec3(1.0, 0.96, 0.9) * spec * 0.22;
 
   vec3 col = mix(atmosphere(uv), glass, inside * 0.9);
 

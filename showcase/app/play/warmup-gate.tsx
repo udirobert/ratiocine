@@ -22,11 +22,11 @@ export const WarmupGate = ({ puzzle, onContinue }: WarmupGateProps) => {
   };
 
   return (
-    <div className="flex-1 flex flex-col items-center justify-center px-4 py-8 overflow-y-auto">
+    <div className="flex-1 flex flex-col items-center px-4 py-8 overflow-y-auto">
       <motion.div
         initial={{ opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
-        className="max-w-sm w-full"
+        className="m-auto w-full max-w-sm"
       >
         <p className="text-center text-white/40 text-[11px] font-mono uppercase tracking-widest mb-4">
           Quick warm-up — today&apos;s language

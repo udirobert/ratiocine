@@ -696,7 +696,7 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
       />
 
       {/* ═══ Top bar ═══ */}
-      <header className="shrink-0 flex items-center justify-between px-4 py-2.5 border-b border-white/8 sm:px-6">
+      <header className="shrink-0 relative z-10 flex items-center justify-between px-4 py-2.5 border-b border-white/8 sm:px-6">
         <div className="flex items-center gap-2.5">
           {onBack && (
             <button onClick={onBack} className="text-white/50 hover:text-white/80 text-lg leading-none min-w-[44px] min-h-[44px] flex items-center justify-center">←</button>
@@ -757,7 +757,7 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
 
       {/* ═══ Progress bar ═══ */}
       {phase === "solve" && (
-        <div className="shrink-0 h-0.5 bg-white/5">
+        <div className="shrink-0 relative z-10 h-0.5 bg-white/5">
           <motion.div
             className="h-full rounded-r-full"
             style={{ backgroundColor: puzzle.theme.accent }}
@@ -769,7 +769,9 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
       )}
 
       {/* ═══ Main frame ═══ */}
-      <div className="flex-1 flex flex-col min-h-0">
+      {/* relative z-10: the living backdrop is positioned and would otherwise
+          paint over this in-flow content — the game must sit above its world. */}
+      <div className="flex-1 flex flex-col min-h-0 relative z-10">
         <AnimatePresence mode="wait">
 
           {/* ─── WARMUP (first-time mini puzzle) ─── */}
@@ -866,7 +868,7 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
                 <motion.p
                   animate={shaking ? { x: [0, -4, 4, -4, 4, -2, 2, 0] } : { x: 0 }}
                   transition={{ duration: 0.4 }}
-                  className="text-center text-white/85 text-lg mb-5 leading-relaxed"
+                  className="text-center text-white/85 text-lg mb-5 leading-relaxed [text-shadow:0_1px_10px_rgba(0,0,0,0.85)]"
                 >
                   {query.prompt}
                   {query.difficulty === "curveball" && (

@@ -32,7 +32,7 @@ export const WarmupTeaser = ({ preview, title = "Tomorrow's warmup" }: WarmupTea
     <motion.div
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
-      className="rounded-lg border border-white/8 bg-white/[0.01] overflow-hidden"
+      className="card-solid rounded-lg border border-white/10 overflow-hidden"
     >
       {/* Header */}
       <div className="px-4 py-3 border-b border-white/5">

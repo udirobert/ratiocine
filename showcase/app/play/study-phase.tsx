@@ -152,7 +152,7 @@ export const StudyPhase = ({ puzzle, highlightedRows, onReady, instant = false, 
       <div className="absolute inset-0 pointer-events-none z-0 opacity-[0.02] grain-noise" />
 
       <div className="flex-1 flex flex-col items-center px-4 sm:px-6 overflow-y-auto relative z-10">
-        <div className="max-w-lg w-full pt-8 pb-24">
+        <div className="m-auto w-full max-w-lg pt-8 pb-8">
 
           {/* Language name — manuscript display, staggered characters */}
           <motion.h2
@@ -184,7 +184,7 @@ export const StudyPhase = ({ puzzle, highlightedRows, onReady, instant = false, 
             initial={instant ? false : { opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: instant ? 0 : 0.5 }}
-            className="flex items-center justify-center gap-3 mb-2"
+            className="flex items-center justify-center gap-x-3 gap-y-1 flex-wrap mb-2 px-2 text-center"
           >
             <span className="text-[12px] text-white/50 font-mono">
               {puzzle.region}
@@ -311,7 +311,7 @@ const EvidenceCard = ({
     }}
     transition={{ duration: instant ? 0.1 : 0.3, ease: "easeOut" }}
     className={`
-      archive-card flex items-center gap-3 px-4 py-3 rounded-lg
+      archive-card card-solid flex items-center gap-3 px-4 py-3 rounded-lg
       transition-all duration-300
       ${highlighted ? "pa-border-40" : ""}
     `}
