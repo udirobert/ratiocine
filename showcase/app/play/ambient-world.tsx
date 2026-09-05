@@ -7,7 +7,7 @@
 // over from the machine scene, and a vignette to hold focus.
 // Purely decorative: aria-hidden, pointer-events-none, transform/opacity only.
 
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   motion,
   useMotionValue,
@@ -17,6 +17,7 @@ import {
 } from "motion/react";
 
 import { Motif } from "./motifs";
+import { MaterialField } from "./material-field";
 import type { PuzzleTheme } from "./puzzle-data";
 
 interface AmbientWorldProps {
@@ -32,6 +33,17 @@ const prand = (i: number, n: number): number => {
 
 export const AmbientWorld = ({ puzzleId, theme }: AmbientWorldProps) => {
   const reduced = useReducedMotion();
+
+  // WebGL capability — fall back to the painted gradient when unavailable
+  const [glOk, setGlOk] = useState<boolean | null>(null);
+  useEffect(() => {
+    try {
+      const c = document.createElement("canvas");
+      setGlOk(Boolean(c.getContext("webgl2") || c.getContext("webgl")));
+    } catch {
+      setGlOk(false);
+    }
+  }, []);
 
   // Pointer parallax — normalized -1..1, spring-smoothed
   const mx = useMotionValue(0);
@@ -75,13 +87,18 @@ export const AmbientWorld = ({ puzzleId, theme }: AmbientWorldProps) => {
       aria-hidden="true"
       className="absolute inset-0 z-0 overflow-hidden pointer-events-none"
     >
-      {/* Deep place atmosphere — the homeland rising from the bottom edge */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background: `radial-gradient(ellipse 120% 90% at 50% 108%, ${theme.bgTint ?? theme.accent}b3 0%, transparent 62%), radial-gradient(ellipse 90% 70% at 50% -20%, ${theme.bgTint ?? theme.accent}66 0%, transparent 55%)`,
-        }}
-      />
+      {/* Living material field — hex glass cells refracting the place-atmosphere
+          (shader; falls back to the painted gradient without WebGL) */}
+      {glOk === false ? (
+        <div
+          className="absolute inset-0"
+          style={{
+            background: `radial-gradient(ellipse 120% 90% at 50% 108%, ${theme.bgTint ?? theme.accent}b3 0%, transparent 62%), radial-gradient(ellipse 90% 70% at 50% -20%, ${theme.bgTint ?? theme.accent}66 0%, transparent 55%)`,
+          }}
+        />
+      ) : (
+        <MaterialField theme={theme} reduced={Boolean(reduced)} />
+      )}
 
       {/* Cultural motif — slow drift + counter-parallax */}
       <motion.div
