@@ -17,6 +17,7 @@ export async function generateShareCard(
   elapsed: number,
   hintsUsed: number,
   aiResult: AiResult | null,
+  streak = 0,
 ): Promise<Blob | null> {
   const canvas = document.createElement("canvas");
   canvas.width = W;
@@ -151,7 +152,11 @@ export async function generateShareCard(
   // ─── Footer ─────────────────────────────────────────────────────────────
   ctx.font = "14px ui-monospace, monospace";
   ctx.fillStyle = "rgba(255,255,255,0.25)";
-  ctx.fillText("ratiocine.vercel.app/play", W / 2, H - 50);
+  ctx.fillText(
+    streak > 1 ? `🔥 ${streak}-day streak · ratiocine.vercel.app/play` : "ratiocine.vercel.app/play",
+    W / 2,
+    H - 50,
+  );
 
   ctx.font = "12px ui-monospace, monospace";
   ctx.fillStyle = "rgba(255,255,255,0.15)";

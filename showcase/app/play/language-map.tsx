@@ -32,7 +32,15 @@ interface Pin {
 // Known pins (from puzzle pool + current)
 const ALL_PINS: Pin[] = [
   { languageCode: "apu", language: "Apurinã", coordinates: [-6.73, -64.45] },
-  // Future puzzles would add here
+  { languageCode: "swa", language: "Swahili", coordinates: [-6.79, 39.28] },
+  { languageCode: "tur", language: "Turkish", coordinates: [39.93, 32.86] },
+  { languageCode: "quz", language: "Quechua", coordinates: [-13.53, -71.97] },
+  { languageCode: "nah", language: "Nahuatl", coordinates: [19.43, -99.13] },
+  { languageCode: "epo", language: "Esperanto", coordinates: [52.23, 21.01] },
+  { languageCode: "ind", language: "Indonesian", coordinates: [-6.2, 106.8] },
+  { languageCode: "fin", language: "Finnish", coordinates: [60.17, 24.94] },
+  { languageCode: "mri", language: "Māori", coordinates: [-41.29, 174.78] },
+  { languageCode: "zul", language: "Zulu", coordinates: [-29.86, 31.03] },
 ];
 
 // Convert lat/lng to SVG x/y (equirectangular projection, 230×130 viewbox)

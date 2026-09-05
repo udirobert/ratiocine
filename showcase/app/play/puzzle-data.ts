@@ -767,22 +767,22 @@ export const NAHUATL_PUZZLE: Puzzle = {
   },
 
   nextPreview: {
-    language: "Apurinã",
-    script: "nhaapitaka · ãkutaka",
-    difficulty: 4,
-    family: "Arawakan",
+    language: "Esperanto",
+    script: "mi lernis · mi manĝos",
+    difficulty: 2,
+    family: "Constructed",
     theme: {
-      accent: "#34d399",
-      sourceColor: "#6ee7b7",
-      bgTint: "#064e3b",
+      accent: "#2dd4bf",
+      sourceColor: "#5eead4",
+      bgTint: "#042f2e",
     },
     warmup: {
       pairs: [
-        { source: "nhaapitaka", target: "I am going" },
-        { source: "ãpitaka", target: "you are going" },
+        { source: "mi lernas", target: "I learn" },
+        { source: "mi lernis", target: "I learned" },
       ],
-      query: "What is 'apitaka'?",
-      answer: "he/she is going",
+      query: "What is 'mi lernos'?",
+      answer: "I will learn",
     },
   },
 
@@ -795,12 +795,698 @@ export const NAHUATL_PUZZLE: Puzzle = {
 
 // ─── Puzzle pool (daily rotation) ───────────────────────────────────────────
 
+export const ESPERANTO_PUZZLE: Puzzle = {
+  id: "esperanto-tense",
+  language: "Esperanto",
+  languageCode: "epo",
+  family: "Constructed · Romance/Germanic roots",
+  region: "Worldwide (born in Warsaw)",
+  taskType: "translation",
+  title: "Tense Endings",
+  instruction:
+    "Study the Esperanto verb forms and their English translations. Deduce the tense system, then translate the English phrases by composing morpheme tiles.",
+  taskFrame: "Figure out how Esperanto marks time. Then prove it.",
+  verdicts: {
+    perfect: "Bonege! You think like Zamenhof now.",
+    good: "Almost fluent — the endings are clicking.",
+    partial: "Tricky, but the pattern is perfectly regular. Look again.",
+  },
+
+  pairs: [
+    { id: 1, source: "mi lernas", target: "I learn", morphemes: ["mi", "lern", "as"] },
+    { id: 2, source: "mi lernis", target: "I learned", morphemes: ["mi", "lern", "is"] },
+    { id: 3, source: "mi lernos", target: "I will learn", morphemes: ["mi", "lern", "os"] },
+    { id: 4, source: "vi lernas", target: "you learn", morphemes: ["vi", "lern", "as"] },
+    { id: 5, source: "li lernas", target: "he learns", morphemes: ["li", "lern", "as"] },
+    { id: 6, source: "ni lernas", target: "we learn", morphemes: ["ni", "lern", "as"] },
+    { id: 7, source: "mi manĝas", target: "I eat", morphemes: ["mi", "manĝ", "as"], gated: true },
+    { id: 8, source: "ili lernas", target: "they learn", morphemes: ["ili", "lern", "as"], gated: true },
+  ],
+
+  queries: [
+    {
+      id: 0,
+      prompt: "you learned",
+      answer: ["vi", "lern", "is"],
+      answerJoined: "vi lernis",
+      difficulty: "tutorial",
+      hintOnFail: "Take row 4 ('you learn') and swap the ending for the past one from row 2.",
+      flavor: "Yesterday's lesson finally makes sense.",
+    },
+    {
+      id: 1,
+      prompt: "we learned",
+      answer: ["ni", "lern", "is"],
+      answerJoined: "ni lernis",
+      difficulty: "standard",
+      hintOnFail: "Start with 'we' from row 6, keep the root, use the past ending.",
+    },
+    {
+      id: 2,
+      prompt: "I will eat",
+      answer: ["mi", "manĝ", "os"],
+      answerJoined: "mi manĝos",
+      difficulty: "standard",
+      hintOnFail: "The 'eat' root only appears in gated row 7. The future ending is in row 3.",
+      flavor: "Dinner plans, stated with confidence.",
+    },
+    {
+      id: 3,
+      prompt: "they eat",
+      answer: ["ili", "manĝ", "as"],
+      answerJoined: "ili manĝas",
+      difficulty: "standard",
+      hintOnFail: "Combine the 'they' pronoun from row 8 with the 'eat' root.",
+    },
+    {
+      id: 4,
+      prompt: "he ate",
+      answer: ["li", "manĝ", "is"],
+      answerJoined: "li manĝis",
+      difficulty: "standard",
+      hintOnFail: "li + manĝ + past ending. Every piece is in the evidence.",
+    },
+  ],
+
+  morphemeBank: [
+    ["mi", "vi", "li", "ni", "ili"],
+    ["lern", "manĝ"],
+    ["as", "is", "os"],
+  ],
+
+  hints: [
+    {
+      level: 1,
+      type: "highlight",
+      text: "Rows 1-3 differ only at the end. The ending carries the tense.",
+      highlightRows: [1, 2, 3],
+    },
+    {
+      level: 2,
+      type: "reveal",
+      text: "-is marks the past. Every past form in the evidence ends in -is.",
+      revealMorpheme: { morpheme: "is", meaning: "past tense" },
+    },
+    {
+      level: 3,
+      type: "rule",
+      text: "Structure: [pronoun] + [root] + [tense]. -as = present, -is = past, -os = future. mi=I, vi=you, li=he, ni=we, ili=they.",
+    },
+  ],
+
+  lore: {
+    etymology: "'Esperanto' means 'one who hopes' — the pen name of L. L. Zamenhof, who published the language in Warsaw in 1887.",
+    geography: "Spoken worldwide: congresses, clubs, and a native-speaking community of children raised in Esperanto households.",
+    speakers: "Estimates range from 100,000 to 2 million; around 1,000 native speakers. Duolingo's Esperanto course has millions of learners.",
+    family: "Constructed, with Romance and Germanic vocabulary and a Slavic-inspired structure. Designed for regularity: 16 rules, no exceptions.",
+    culturalNote: "Esperanto was meant to be a neutral second language for peace. Its congresses still run entirely in Esperanto — a century-old experiment that never quite died.",
+    endangerment: "Not endangered in the usual sense — but its native-speaker community is tiny and precious to linguists.",
+    funFact: "Every Esperanto verb ending is fixed: -as is always present, -is always past, -os always future. No irregular verbs exist. At all.",
+    briefingHook: "A language with zero irregular verbs. The puzzle practically solves itself — if you trust the pattern.",
+    lineageNote: "Its vocabulary cousin is French and Latin; its idealism cousin is the internet itself.",
+    coordinates: [52.23, 21.01],
+  },
+
+  nextPreview: {
+    language: "Indonesian",
+    script: "anak-anak · mereka makan",
+    difficulty: 2,
+    family: "Austronesian · Malayo-Polynesian",
+    theme: { accent: "#f97316", sourceColor: "#fdba74", bgTint: "#431407" },
+    warmup: {
+      pairs: [
+        { source: "anak", target: "child" },
+        { source: "anak-anak", target: "children" },
+      ],
+      query: "What is 'kuda-kuda'?",
+      answer: "horses",
+    },
+  },
+
+  theme: {
+    accent: "#2dd4bf",
+    sourceColor: "#5eead4",
+    bgTint: "#042f2e",
+  },
+};
+
+// ─── Indonesian Reduplication ───────────────────────────────────────────────
+
+export const INDONESIAN_PUZZLE: Puzzle = {
+  id: "indonesian-plurals",
+  language: "Indonesian",
+  languageCode: "ind",
+  family: "Austronesian · Malayo-Polynesian",
+  region: "Indonesia (Jakarta)",
+  taskType: "translation",
+  title: "Plurals by Doubling",
+  instruction:
+    "Study the Indonesian words and their English translations. Deduce how plurals work, then translate the English phrases by composing tiles.",
+  taskFrame: "Figure out how Indonesian makes things plural. Then prove it.",
+  verdicts: {
+    perfect: "Bagus sekali! You pluralize like a Jakartan.",
+    good: "Almost there — the doubling trick is clicking.",
+    partial: "The pattern is hiding in plain sight. Say the words out loud.",
+  },
+
+  pairs: [
+    { id: 1, source: "anak", target: "child", morphemes: ["anak"] },
+    { id: 2, source: "anak-anak", target: "children", morphemes: ["anak-anak"] },
+    { id: 3, source: "kuda", target: "horse", morphemes: ["kuda"] },
+    { id: 4, source: "kuda-kuda", target: "horses", morphemes: ["kuda-kuda"] },
+    { id: 5, source: "saya makan", target: "I eat", morphemes: ["saya", "makan"] },
+    { id: 6, source: "mereka makan", target: "they eat", morphemes: ["mereka", "makan"] },
+    { id: 7, source: "buku", target: "book", morphemes: ["buku"], gated: true },
+    { id: 8, source: "buku-buku", target: "books", morphemes: ["buku-buku"], gated: true },
+    { id: 9, source: "kami makan", target: "we eat", morphemes: ["kami", "makan"], gated: true },
+  ],
+
+  queries: [
+    {
+      id: 0,
+      prompt: "I eat",
+      answer: ["saya", "makan"],
+      answerJoined: "saya makan",
+      difficulty: "tutorial",
+      hintOnFail: "Row 5 is the exact same phrase. This one is free!",
+    },
+    {
+      id: 1,
+      prompt: "children",
+      answer: ["anak-anak"],
+      answerJoined: "anak-anak",
+      difficulty: "standard",
+      hintOnFail: "Compare rows 1-2: the plural just says the word twice.",
+    },
+    {
+      id: 2,
+      prompt: "horses",
+      answer: ["kuda-kuda"],
+      answerJoined: "kuda-kuda",
+      difficulty: "standard",
+      hintOnFail: "Same doubling trick as rows 2 and 4.",
+    },
+    {
+      id: 3,
+      prompt: "books",
+      answer: ["buku-buku"],
+      answerJoined: "buku-buku",
+      difficulty: "standard",
+      hintOnFail: "The 'book' root is in gated row 7 — reveal it, then double it.",
+    },
+    {
+      id: 4,
+      prompt: "we eat",
+      answer: ["kami", "makan"],
+      answerJoined: "kami makan",
+      difficulty: "standard",
+      hintOnFail: "'We' is kami from gated row 9. The verb never changes.",
+      flavor: "The whole family sits down together.",
+    },
+  ],
+
+  morphemeBank: [
+    ["anak", "anak-anak", "kuda", "kuda-kuda", "buku", "buku-buku"],
+    ["saya", "mereka", "kami", "makan"],
+  ],
+
+  hints: [
+    {
+      level: 1,
+      type: "highlight",
+      text: "Rows 1-2 and 3-4: what happens to the word when the meaning becomes plural?",
+      highlightRows: [1, 2, 3, 4],
+    },
+    {
+      level: 2,
+      type: "reveal",
+      text: "Reduplication: saying the word twice makes it plural. anak-anak = children.",
+      revealMorpheme: { morpheme: "anak-anak", meaning: "children (plural by doubling)" },
+    },
+    {
+      level: 3,
+      type: "rule",
+      text: "Plural = full reduplication (word-word). Verbs never change: saya=I, mereka=they, kami=we, makan=eat.",
+    },
+  ],
+
+  lore: {
+    etymology: "'Indonesia' means 'Indian islands' in Greek — a name adopted at independence in 1945.",
+    geography: "The world's fourth most populous nation: 17,000 islands from Sumatra to Papua. Jakarta is the capital.",
+    speakers: "Over 270 million people use Indonesian; ~43 million speak it natively. It is one of the fastest-growing languages on earth.",
+    family: "Austronesian — the great seafaring family stretching from Madagascar to Easter Island. Malay is its closest kin.",
+    culturalNote: "Indonesian was chosen at independence precisely because it belonged to no single ethnic group — a trade tongue promoted into a national language in one generation.",
+    endangerment: "Thriving — though its success pressures hundreds of smaller regional languages like Javanese and Sundanese.",
+    funFact: "Plurals by repetition: anak-anak (children), kuda-kuda (horses). In casual speech you can even drop the repetition if context is clear.",
+    briefingHook: "A language where the plural is just saying the word twice.",
+    lineageNote: "Cousin to Hawaiian, Māori, and Malagasy — one family that sailed half the planet.",
+    coordinates: [-6.2, 106.8],
+  },
+
+  nextPreview: {
+    language: "Finnish",
+    script: "talot · kylässä",
+    difficulty: 3,
+    family: "Uralic · Finnic",
+    theme: { accent: "#7dd3fc", sourceColor: "#bae6fd", bgTint: "#082f49" },
+    warmup: {
+      pairs: [
+        { source: "talo", target: "house" },
+        { source: "talot", target: "houses" },
+      ],
+      query: "What is 'kylät'?",
+      answer: "villages",
+    },
+  },
+
+  theme: {
+    accent: "#f97316",
+    sourceColor: "#fdba74",
+    bgTint: "#431407",
+  },
+};
+
+// ─── Finnish Vowel Harmony ──────────────────────────────────────────────────
+
+export const FINNISH_PUZZLE: Puzzle = {
+  id: "finnish-harmony",
+  language: "Finnish",
+  languageCode: "fin",
+  family: "Uralic · Finnic",
+  region: "Finland (Helsinki)",
+  taskType: "translation",
+  title: "Harmony Endings",
+  instruction:
+    "Study the Finnish words and their English translations. Deduce the plural and the 'in the…' endings — including which vowel goes with which word — then translate by composing tiles.",
+  taskFrame: "Figure out how Finnish endings harmonize with their roots. Then prove it.",
+  verdicts: {
+    perfect: "Täydellistä! Even the vowels obey you.",
+    good: "Almost — the harmony rule is starting to ring true.",
+    partial: "Listen to the vowels. Front words want front endings.",
+  },
+
+  pairs: [
+    { id: 1, source: "talo", target: "house", morphemes: ["talo"] },
+    { id: 2, source: "talot", target: "houses", morphemes: ["talo", "t"] },
+    { id: 3, source: "talossa", target: "in the house", morphemes: ["talo", "ssa"] },
+    { id: 4, source: "kylä", target: "village", morphemes: ["kylä"] },
+    { id: 5, source: "kylät", target: "villages", morphemes: ["kylä", "t"] },
+    { id: 6, source: "kylässä", target: "in the village", morphemes: ["kylä", "ssä"] },
+    { id: 7, source: "koulu", target: "school", morphemes: ["koulu"], gated: true },
+    { id: 8, source: "koulut", target: "schools", morphemes: ["koulu", "t"], gated: true },
+    { id: 9, source: "koulussa", target: "in the school", morphemes: ["koulu", "ssa"], gated: true },
+  ],
+
+  queries: [
+    {
+      id: 0,
+      prompt: "houses",
+      answer: ["talo", "t"],
+      answerJoined: "talot",
+      difficulty: "tutorial",
+      hintOnFail: "Row 2 is the exact same word. This one is free!",
+    },
+    {
+      id: 1,
+      prompt: "in the house",
+      answer: ["talo", "ssa"],
+      answerJoined: "talossa",
+      difficulty: "standard",
+      hintOnFail: "Row 3 shows it: back-vowel roots take -ssa.",
+    },
+    {
+      id: 2,
+      prompt: "villages",
+      answer: ["kylä", "t"],
+      answerJoined: "kylät",
+      difficulty: "standard",
+      hintOnFail: "Plural -t works for every root. Row 5 proves it.",
+    },
+    {
+      id: 3,
+      prompt: "in the village",
+      answer: ["kylä", "ssä"],
+      answerJoined: "kylässä",
+      difficulty: "curveball",
+      hintOnFail: "kylä has front vowels (ä) — so it takes the front ending -ssä, not -ssa. Row 6.",
+      flavor: "The front vowels demand their own ending.",
+    },
+    {
+      id: 4,
+      prompt: "in the school",
+      answer: ["koulu", "ssa"],
+      answerJoined: "koulussa",
+      difficulty: "standard",
+      hintOnFail: "koulu has back vowels (o, u) — back ending -ssa. Gated row 9 confirms it.",
+    },
+  ],
+
+  morphemeBank: [
+    ["talo", "kylä", "koulu"],
+    ["t", "ssa", "ssä"],
+  ],
+
+  hints: [
+    {
+      level: 1,
+      type: "highlight",
+      text: "Rows 3 and 6 both mean 'in the…' but the endings differ. What differs about the roots?",
+      highlightRows: [3, 6],
+    },
+    {
+      level: 2,
+      type: "reveal",
+      text: "-ssä is the front-vowel twin of -ssa. kylä (with ä) takes -ssä.",
+      revealMorpheme: { morpheme: "ssä", meaning: "'in the…' (front-vowel form)" },
+    },
+    {
+      level: 3,
+      type: "rule",
+      text: "Plural is always -t. 'In the' is -ssa after back vowels (a, o, u) and -ssä after front vowels (ä, ö, y). The vowels must harmonize.",
+    },
+  ],
+
+  lore: {
+    etymology: "'Suomi' — the Finns' own name for their country — has no certain origin. Outsiders' 'Finland' likely comes from an old Germanic word for wanderers.",
+    geography: "Finland: lakes, forests, and the Arctic north. Helsinki sits on the Gulf of Finland, a short ferry from Estonia.",
+    speakers: "About 5.5 million speakers — nearly all in Finland, with communities in Sweden and Norway.",
+    family: "Uralic — kin to Estonian and Hungarian, and famously unrelated to Swedish or Russian despite the neighbours.",
+    culturalNote: "Finnish holds the world record for the longest palindromic word (saippuakivikauppias: travelling soapstone salesman) and compulsory vowel harmony that singers feel in their mouths.",
+    endangerment: "Safe and thriving — though small dialects like Ingrian face extinction.",
+    funFact: "Finnish vowels come in front and back teams that refuse to mix: talo takes -ssa, kylä demands -ssä. The mouth position must match.",
+    briefingHook: "A language where the vowels vote — and the ending must obey the majority.",
+    lineageNote: "Distant cousin to Hungarian — though a Finn and a Hungarian can't understand a word of each other's speech.",
+    coordinates: [60.17, 24.94],
+  },
+
+  nextPreview: {
+    language: "Māori",
+    script: "māua · tātou",
+    difficulty: 4,
+    family: "Austronesian · Polynesian",
+    theme: { accent: "#a3e635", sourceColor: "#d9f99d", bgTint: "#1a2e05" },
+    warmup: {
+      pairs: [
+        { source: "māua", target: "we two, not you" },
+        { source: "tāua", target: "you and I" },
+      ],
+      query: "What is 'mātou'?",
+      answer: "we, not you",
+    },
+  },
+
+  theme: {
+    accent: "#7dd3fc",
+    sourceColor: "#bae6fd",
+    bgTint: "#082f49",
+  },
+};
+
+// ─── Māori Pronouns ─────────────────────────────────────────────────────────
+
+export const MAORI_PUZZLE: Puzzle = {
+  id: "maori-pronouns",
+  language: "Māori",
+  languageCode: "mri",
+  family: "Austronesian · Polynesian",
+  region: "Aotearoa (Wellington)",
+  taskType: "translation",
+  title: "Who Is 'We'?",
+  instruction:
+    "Study the Māori pronouns and their English translations. Deduce how 'we' changes with who is included — then translate by composing tiles.",
+  taskFrame: "Figure out how Māori draws the line around 'we'. Then prove it.",
+  verdicts: {
+    perfect: "Ka mau te wehi! You know exactly who 'we' is.",
+    good: "Almost — the inclusive/exclusive line is getting clearer.",
+    partial: "The secret is who counts as 'we'. Compare rows 4 and 5.",
+  },
+
+  pairs: [
+    { id: 1, source: "au", target: "I", morphemes: ["au"] },
+    { id: 2, source: "koe", target: "you", morphemes: ["koe"] },
+    { id: 3, source: "ia", target: "he/she", morphemes: ["ia"] },
+    { id: 4, source: "māua", target: "we two, not you", morphemes: ["mā", "ua"] },
+    { id: 5, source: "tāua", target: "you and I", morphemes: ["tā", "ua"] },
+    { id: 6, source: "mātou", target: "we, not you", morphemes: ["mā", "tou"] },
+    { id: 7, source: "tātou", target: "all of us, incl. you", morphemes: ["tā", "tou"], gated: true },
+    { id: 8, source: "rāua", target: "they two", morphemes: ["rā", "ua"], gated: true },
+    { id: 9, source: "rātou", target: "they all", morphemes: ["rā", "tou"], gated: true },
+  ],
+
+  queries: [
+    {
+      id: 0,
+      prompt: "we two, not you",
+      answer: ["mā", "ua"],
+      answerJoined: "māua",
+      difficulty: "tutorial",
+      hintOnFail: "Row 4 is the exact same word. This one is free!",
+    },
+    {
+      id: 1,
+      prompt: "all of us, incl. you",
+      answer: ["tā", "tou"],
+      answerJoined: "tātou",
+      difficulty: "standard",
+      hintOnFail: "tā- includes the listener (row 5), -tou means more than two (row 6). Gated row 7 confirms it.",
+    },
+    {
+      id: 2,
+      prompt: "they two",
+      answer: ["rā", "ua"],
+      answerJoined: "rāua",
+      difficulty: "standard",
+      hintOnFail: "rā- marks 'they' (gated rows 8-9), -ua marks exactly two (rows 4-5).",
+    },
+    {
+      id: 3,
+      prompt: "they all",
+      answer: ["rā", "tou"],
+      answerJoined: "rātou",
+      difficulty: "standard",
+      hintOnFail: "Combine rā- (they) with -tou (plural). Row 9.",
+    },
+    {
+      id: 4,
+      prompt: "we, not you",
+      answer: ["mā", "tou"],
+      answerJoined: "mātou",
+      difficulty: "standard",
+      hintOnFail: "mā- excludes the listener (row 4), -tou is plural. Row 6.",
+      flavor: "Talking about your own group to an outsider.",
+    },
+  ],
+
+  morphemeBank: [
+    ["au", "koe", "ia"],
+    ["mā", "tā", "rā"],
+    ["ua", "tou"],
+  ],
+
+  hints: [
+    {
+      level: 1,
+      type: "highlight",
+      text: "Rows 4 and 5 share an ending but mean different 'we's. The first half decides who is included.",
+      highlightRows: [4, 5],
+    },
+    {
+      level: 2,
+      type: "reveal",
+      text: "tā- includes the person you're talking to; mā- excludes them. -ua = two people, -tou = more.",
+      revealMorpheme: { morpheme: "tā", meaning: "'we' including you" },
+    },
+    {
+      level: 3,
+      type: "rule",
+      text: "[who] + [how many]: mā- = we-not-you, tā- = we-incl-you, rā- = they; -ua = two, -tou = three or more.",
+    },
+  ],
+
+  lore: {
+    etymology: "'Māori' means 'ordinary, normal' — the ordinary people, as opposed to spirits or strangers.",
+    geography: "Aotearoa (New Zealand): from the subtropical north to the Southern Alps. Wellington is the capital.",
+    speakers: "Around 200,000 speakers; an official language since 1987. Kōhanga reo (language nests) revived it from steep decline.",
+    family: "Polynesian — close kin to Hawaiian, Samoan, and Tahitian. Its great voyages settled a triangle spanning a third of the globe.",
+    culturalNote: "The haka, the hongi greeting, and whakapapa genealogies that recite dozens of generations — Māori draws identity from exactly who counts as 'us', which is what this puzzle is about.",
+    endangerment: "Revitalizing: UNESCO lists it as vulnerable, but immersion schools and official status have reversed the decline.",
+    funFact: "Māori has four kinds of 'we': you-and-I, us-two-not-you, all-of-us-incl-you, us-not-you. English makes do with one.",
+    briefingHook: "A language with four different words for 'we' — because who is included matters.",
+    lineageNote: "Sister to Hawaiian — the two split only ~800 years ago, when canoes carried Polynesians to Aotearoa.",
+    coordinates: [-41.29, 174.78],
+  },
+
+  nextPreview: {
+    language: "Zulu",
+    script: "umntwana · abafana",
+    difficulty: 3,
+    family: "Niger-Congo · Bantu",
+    theme: { accent: "#c084fc", sourceColor: "#d8b4fe", bgTint: "#2e1065" },
+    warmup: {
+      pairs: [
+        { source: "umntwana", target: "child" },
+        { source: "abantwana", target: "children" },
+      ],
+      query: "What is 'abafana'?",
+      answer: "boys",
+    },
+  },
+
+  theme: {
+    accent: "#a3e635",
+    sourceColor: "#d9f99d",
+    bgTint: "#1a2e05",
+  },
+};
+
+// ─── Zulu Noun Classes ──────────────────────────────────────────────────────
+
+export const ZULU_PUZZLE: Puzzle = {
+  id: "zulu-noun-class",
+  language: "Zulu",
+  languageCode: "zul",
+  family: "Niger-Congo · Bantu",
+  region: "South Africa (Durban)",
+  taskType: "translation",
+  title: "Noun Classes",
+  instruction:
+    "Study the Zulu nouns and their English translations. Deduce the singular/plural prefixes — then translate by composing tiles.",
+  taskFrame: "Figure out how Zulu sorts its nouns into classes. Then prove it.",
+  verdicts: {
+    perfect: "Kuhle kakhulu! The classes bow to you.",
+    good: "Almost — the class prefixes are falling into place.",
+    partial: "Group the words by meaning, then watch the prefixes.",
+  },
+
+  pairs: [
+    { id: 1, source: "umntwana", target: "child", morphemes: ["um", "ntwana"] },
+    { id: 2, source: "abantwana", target: "children", morphemes: ["aba", "ntwana"] },
+    { id: 3, source: "umfana", target: "boy", morphemes: ["um", "fana"] },
+    { id: 4, source: "abafana", target: "boys", morphemes: ["aba", "fana"] },
+    { id: 5, source: "isikolo", target: "school", morphemes: ["isi", "kolo"] },
+    { id: 6, source: "izikolo", target: "schools", morphemes: ["izi", "kolo"] },
+    { id: 7, source: "umfundi", target: "student", morphemes: ["um", "fundi"], gated: true },
+    { id: 8, source: "abafundi", target: "students", morphemes: ["aba", "fundi"], gated: true },
+  ],
+
+  queries: [
+    {
+      id: 0,
+      prompt: "boy",
+      answer: ["um", "fana"],
+      answerJoined: "umfana",
+      difficulty: "tutorial",
+      hintOnFail: "Row 3 is the exact same word. This one is free!",
+    },
+    {
+      id: 1,
+      prompt: "children",
+      answer: ["aba", "ntwana"],
+      answerJoined: "abantwana",
+      difficulty: "standard",
+      hintOnFail: "Take 'child' from row 1 and swap um- for the people-plural aba- from row 2.",
+    },
+    {
+      id: 2,
+      prompt: "school",
+      answer: ["isi", "kolo"],
+      answerJoined: "isikolo",
+      difficulty: "standard",
+      hintOnFail: "Things take isi- in the singular (row 5). People take um-.",
+    },
+    {
+      id: 3,
+      prompt: "schools",
+      answer: ["izi", "kolo"],
+      answerJoined: "izikolo",
+      difficulty: "standard",
+      hintOnFail: "Row 6: the thing-plural is izi-.",
+    },
+    {
+      id: 4,
+      prompt: "students",
+      answer: ["aba", "fundi"],
+      answerJoined: "abafundi",
+      difficulty: "curveball",
+      hintOnFail: "The 'student' root only appears in gated row 7. Students are people — people-plural aba-.",
+      flavor: "Graduation day in KwaZulu-Natal.",
+    },
+  ],
+
+  morphemeBank: [
+    ["um", "aba", "isi", "izi"],
+    ["ntwana", "fana", "kolo", "fundi"],
+  ],
+
+  hints: [
+    {
+      level: 1,
+      type: "highlight",
+      text: "Rows 1-4 are people, rows 5-6 are things. Do the prefixes care?",
+      highlightRows: [1, 2, 5, 6],
+    },
+    {
+      level: 2,
+      type: "reveal",
+      text: "aba- is the plural for people (class 2). izi- is the plural for things (class 8).",
+      revealMorpheme: { morpheme: "aba", meaning: "plural of people" },
+    },
+    {
+      level: 3,
+      type: "rule",
+      text: "People: um- (one) → aba- (many). Things: isi- (one) → izi- (many). Pick the prefix by class AND number.",
+    },
+  ],
+
+  lore: {
+    etymology: "'Zulu' comes from the legendary founder Zulu kaMalandela — the name means 'heaven' or 'sky'.",
+    geography: "KwaZulu-Natal province, South Africa: Indian Ocean coast rising to the Drakensberg mountains. Durban is the great port city.",
+    speakers: "Over 14 million speakers — South Africa's most-spoken home language, and an official language since 1994.",
+    family: "Bantu — the giant subfamily that spread farming and iron across half of Africa. Xhosa and Swazi are its closest kin.",
+    culturalNote: "Zulu is famous for its clicks (c, q, x) borrowed from Khoisan neighbours — and for a noun-class system where adjectives, verbs, and pronouns all agree with the noun's class.",
+    endangerment: "Safe and growing — one of Africa's most vital languages.",
+    funFact: "Zulu nouns come in classes like teams: people wear um-/aba-, things wear isi-/izi-. The prefix tells you what kind of thing you're talking about.",
+    briefingHook: "A language where every noun wears its team's jersey — and the jersey changes in the plural.",
+    lineageNote: "Close cousin to Swahili (already in your rotation) — same Bantu engine, different paint job. Compare their prefixes!",
+    coordinates: [-29.86, 31.03],
+  },
+
+  nextPreview: {
+    language: "Apurinã",
+    script: "nhaapitaka · ãkutaka",
+    difficulty: 4,
+    family: "Arawakan",
+    theme: { accent: "#34d399", sourceColor: "#6ee7b7", bgTint: "#064e3b" },
+    warmup: {
+      pairs: [
+        { source: "nhaapitaka", target: "I am going" },
+        { source: "ãpitaka", target: "you are going" },
+      ],
+      query: "What is 'apitaka'?",
+      answer: "he/she is going",
+    },
+  },
+
+  theme: {
+    accent: "#c084fc",
+    sourceColor: "#d8b4fe",
+    bgTint: "#2e1065",
+  },
+};
+
+// ─── Puzzle pool (daily rotation) ───────────────────────────────────────────
+
 export const PUZZLE_POOL: Puzzle[] = [
   APURINA_PUZZLE,
   SWAHILI_PUZZLE,
   TURKISH_PUZZLE,
   QUECHUA_PUZZLE,
   NAHUATL_PUZZLE,
+  ESPERANTO_PUZZLE,
+  INDONESIAN_PUZZLE,
+  FINNISH_PUZZLE,
+  MAORI_PUZZLE,
+  ZULU_PUZZLE,
 ];
 
 // Daily puzzle selection (deterministic from date — same puzzle worldwide)
@@ -814,14 +1500,16 @@ export function getPuzzleById(id: string): Puzzle | undefined {
   return PUZZLE_POOL.find((p) => p.id === id);
 }
 
-// Generate a challenge URL for a specific puzzle
-export function getChallengeUrl(puzzleId: string): string {
+// Generate a challenge URL for a specific puzzle.
+// Optional timeStr ("m:ss") embeds a ghost time for the friend to beat.
+export function getChallengeUrl(puzzleId: string, timeStr?: string): string {
   // Canonical origin can be pinned at deploy time; otherwise use whatever
   // domain served the page so shares stay on-brand everywhere.
   const base =
     process.env.NEXT_PUBLIC_SITE_URL ||
     (typeof window !== "undefined" ? window.location.origin : "https://ratiocine.vercel.app");
-  return `${base}/play?puzzle=${encodeURIComponent(puzzleId)}`;
+  const t = timeStr ? `&t=${encodeURIComponent(timeStr)}` : "";
+  return `${base}/play?puzzle=${encodeURIComponent(puzzleId)}${t}`;
 }
 
 // ─── Grading ────────────────────────────────────────────────────────────────
@@ -861,21 +1549,41 @@ const STORAGE_KEY = "ration-puzzle-progress";
 
 export interface PuzzleProgress {
   puzzlesSolved: number;
-  lastSolvedDate: string | null;
+  lastSolvedDate: string | null; // YYYY-MM-DD (local calendar day)
   streak: number;
   bestTime: number | null; // seconds
   languagesCracked: string[]; // language codes
+  history: string[]; // YYYY-MM-DD days solved (for streak repair / future calendar UI)
+}
+
+function localDayKey(d: Date = new Date()): string {
+  const y = d.getFullYear();
+  const m = `${d.getMonth() + 1}`.padStart(2, "0");
+  const day = `${d.getDate()}`.padStart(2, "0");
+  return `${y}-${m}-${day}`;
+}
+
+function dayKeyOffset(offsetDays: number): string {
+  const d = new Date();
+  d.setDate(d.getDate() + offsetDays);
+  return localDayKey(d);
 }
 
 export function loadProgress(): PuzzleProgress {
+  const empty: PuzzleProgress = { puzzlesSolved: 0, lastSolvedDate: null, streak: 0, bestTime: null, languagesCracked: [], history: [] };
   if (typeof window === "undefined") {
-    return { puzzlesSolved: 0, lastSolvedDate: null, streak: 0, bestTime: null, languagesCracked: [] };
+    return empty;
   }
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    if (raw) return JSON.parse(raw);
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      // Migrate pre-history saves
+      if (!Array.isArray(parsed.history)) parsed.history = parsed.lastSolvedDate ? [parsed.lastSolvedDate] : [];
+      return { ...empty, ...parsed };
+    }
   } catch {}
-  return { puzzlesSolved: 0, lastSolvedDate: null, streak: 0, bestTime: null, languagesCracked: [] };
+  return empty;
 }
 
 export function saveProgress(progress: PuzzleProgress): void {
@@ -887,19 +1595,16 @@ export function saveProgress(progress: PuzzleProgress): void {
 
 export function recordSolve(puzzle: Puzzle, elapsed: number): PuzzleProgress {
   const prev = loadProgress();
-  const today = new Date().toISOString().slice(0, 10);
+  const today = localDayKey();
+  const yesterday = dayKeyOffset(-1);
 
-  // Streak logic
+  // Calendar-day streak logic (local days, idempotent replays same day)
   let streak = prev.streak;
-  if (prev.lastSolvedDate) {
-    const lastDate = new Date(prev.lastSolvedDate);
-    const diff = Math.floor((Date.now() - lastDate.getTime()) / 86400000);
-    if (diff === 1) {
-      streak += 1;
-    } else if (diff > 1) {
-      streak = 1;
-    }
-    // same day: don't increment streak
+  const alreadySolvedToday = prev.lastSolvedDate === today;
+  if (alreadySolvedToday) {
+    streak = Math.max(prev.streak, 1);
+  } else if (prev.lastSolvedDate === yesterday) {
+    streak = prev.streak + 1;
   } else {
     streak = 1;
   }
@@ -908,12 +1613,15 @@ export function recordSolve(puzzle: Puzzle, elapsed: number): PuzzleProgress {
     ? prev.languagesCracked
     : [...prev.languagesCracked, puzzle.languageCode];
 
+  const history = alreadySolvedToday ? prev.history : [...prev.history, today];
+
   const progress: PuzzleProgress = {
-    puzzlesSolved: prev.puzzlesSolved + 1,
+    puzzlesSolved: alreadySolvedToday ? prev.puzzlesSolved : prev.puzzlesSolved + 1,
     lastSolvedDate: today,
     streak,
     bestTime: prev.bestTime === null ? elapsed : Math.min(prev.bestTime, elapsed),
     languagesCracked,
+    history,
   };
 
   saveProgress(progress);

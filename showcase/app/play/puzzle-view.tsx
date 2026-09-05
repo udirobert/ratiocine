@@ -41,6 +41,7 @@ function generateShareText(
   elapsed: number,
   hintsUsed: number,
   aiResult?: AiResult | null,
+  streak?: number,
 ): string {
   const emojiMap: Record<TileGrade, string> = { correct: "🟩", misplaced: "🟨", wrong: "⬛" };
   const lines = puzzle.queries.map((q) => {
@@ -53,12 +54,15 @@ function generateShareText(
   const revealCount = puzzle.queries.filter((q) => grades.get(q.id)?.revealed).length;
   const m = Math.floor(elapsed / 60);
   const s = elapsed % 60;
+  const timeStr = `${m}:${s.toString().padStart(2, "0")}`;
   const extras = [
     hintsUsed ? `${hintsUsed} hint${hintsUsed > 1 ? "s" : ""}` : null,
     revealCount ? `${revealCount} reveal${revealCount > 1 ? "s" : ""}` : null,
   ].filter(Boolean);
-  const humanLine = `${allCorrect ? "Cracked" : "Attempted"} in ${m}:${s.toString().padStart(2, "0")}${extras.length ? ` · ${extras.join(" · ")}` : ""}`;
+  const humanLine = `${allCorrect ? "Cracked" : "Attempted"} in ${timeStr}${extras.length ? ` · ${extras.join(" · ")}` : ""}`;
   const host = typeof window !== "undefined" ? window.location.host : "ratiocine.vercel.app";
+  const streakLine = streak && streak > 1 ? `🔥 ${streak}-day streak` : null;
+  const challenge = `${host}/play?puzzle=${encodeURIComponent(puzzle.id)}&t=${encodeURIComponent(timeStr)}`;
 
   if (aiResult) {
     const aiCorrect = puzzle.queries.filter((q, i) =>
@@ -71,7 +75,8 @@ function generateShareText(
       `You: ${humanLine}`,
       `AI: ${aiCorrect}/${puzzle.queries.length} in ${aiResult.elapsed_s}s`,
       humanCorrect > aiCorrect ? `Beat the machine.` : humanCorrect === aiCorrect ? `Tied.` : `The machine got more.`,
-      `${host}/play`,
+      ...(streakLine ? [streakLine] : []),
+      challenge,
     ].join("\n");
   }
 
@@ -80,7 +85,8 @@ function generateShareText(
     ...lines,
     humanLine,
     `Can the machine do it too?`,
-    `${host}/play`,
+    ...(streakLine ? [streakLine] : []),
+    challenge,
   ].join("\n");
 }
 
@@ -174,6 +180,14 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
   const [copied, setCopied] = useState(false);
   const [aiResult, setAiResult] = useState<AiResult | null>(null);
   const [aiSettled, setAiSettled] = useState(false);
+  const [aiFlash, setAiFlash] = useState(false); // spectacle pulse when verdict lands
+  const aiVerdictRef = useRef<HTMLDivElement | null>(null);
+  // Ghost time from a challenge link (?t=m:ss) — a friend's time to beat
+  const [ghostTime] = useState<string | null>(() => {
+    if (typeof window === "undefined") return null;
+    const t = new URLSearchParams(window.location.search).get("t");
+    return t && /^\d+:\d{2}$/.test(t) ? t : null;
+  });
   const [showCoach, setShowCoach] = useState(() => !hasSeenCoach());
   const [everSubmitted, setEverSubmitted] = useState(false);
 
@@ -470,30 +484,31 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
 
   const handleShare = useCallback(async () => {
     track("shared", { puzzle: puzzle.id, with_ai: Boolean(aiResult) });
-    const text = generateShareText(puzzle, grades, elapsed, hintsUsed, aiResult);
-    // Try native share with image, fall back to clipboard text
+    const streak = progress?.streak ?? 0;
+    const text = generateShareText(puzzle, grades, elapsed, hintsUsed, aiResult, streak);
+    // Copy the Wordle-style grid text FIRST (works everywhere, incl. desktop
+    // where file-share is unavailable) — then try to upgrade to image share.
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch { /* clipboard may be unavailable — image path still attempted */ }
     try {
       const { generateShareCard } = await import("./share-card");
-      const blob = await generateShareCard(puzzle, grades, elapsed, hintsUsed, aiResult);
+      const blob = await generateShareCard(puzzle, grades, elapsed, hintsUsed, aiResult, streak);
       if (blob && navigator.share && navigator.canShare?.({ files: [new File([blob], "ratiocine.png", { type: "image/png" })] })) {
         await navigator.share({
           text,
           files: [new File([blob], "ratiocine.png", { type: "image/png" })],
         });
-        setCopied(true);
-        setTimeout(() => setCopied(false), 2000);
         return;
       }
-      // Fallback: copy text
-      await navigator.clipboard.writeText(text);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
     } catch {
       // Final fallback
       try { await navigator.clipboard.writeText(text); setCopied(true); setTimeout(() => setCopied(false), 2000); }
       catch { prompt("Copy:", text); }
     }
-  }, [puzzle, grades, elapsed, hintsUsed, aiResult]);
+  }, [puzzle, grades, elapsed, hintsUsed, aiResult, progress?.streak]);
 
   // ─── Keyboard play (desktop) ──────────────────────────────────────────────
 
@@ -1060,6 +1075,38 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
                     {allCorrect && hintsUsed === 0 && contextReveals === 0 ? " · ✨ no hints" : ""}
                   </motion.p>
 
+                  {/* Streak badge — the habit engine, front and center */}
+                  {progress && progress.streak > 1 && (
+                    <motion.p
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.6 }}
+                      className="mt-2 text-[12px] font-mono pa-text"
+                      aria-live="polite"
+                    >
+                      🔥 {progress.streak}-day streak
+                    </motion.p>
+                  )}
+
+                  {/* Ghost time — a friend challenged you to beat their time */}
+                  {ghostTime && (() => {
+                    const toSecs = (t: string) => {
+                      const [mm, ss] = t.split(":").map(Number);
+                      return mm * 60 + ss;
+                    };
+                    const beaten = toSecs(timeStr) <= toSecs(ghostTime);
+                    return (
+                    <motion.p
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.65 }}
+                      className="mt-2 text-[11px] font-mono text-white/55"
+                    >
+                      ⏱ friend&apos;s time: {ghostTime} — {beaten ? "you beat it." : "they got you this time."}
+                    </motion.p>
+                    );
+                  })()}
+
                   {/* Card-flip result grid — themed seals */}
                   <motion.div
                     initial={{ opacity: 0 }}
@@ -1110,7 +1157,7 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
                     </button>
                     <button
                       onClick={() => {
-                        const url = getChallengeUrl(puzzle.id);
+                        const url = getChallengeUrl(puzzle.id, timeStr);
                         navigator.clipboard.writeText(url).then(() => {
                           setCopied(true);
                           setTimeout(() => setCopied(false), 2000);
@@ -1178,6 +1225,10 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
                   <span className="flex-1 h-px bg-white/10" />
                 </div>
 
+                <div
+                  ref={aiVerdictRef}
+                  className={`rounded-xl transition-shadow duration-700 ${aiFlash ? "shadow-[0_0_32px_-4px_var(--puzzle-accent)]" : ""}`}
+                >
                 <AiComparison
                   puzzle={puzzle}
                   humanElapsed={elapsed}
@@ -1194,8 +1245,17 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
                       outcome: humanCorrect > aiCorrect ? "win" : humanCorrect === aiCorrect ? "tie" : "loss",
                     });
                   }}
-                  onSettled={() => setAiSettled(true)}
+                  onSettled={() => {
+                    setAiSettled(true);
+                    // Spectacle: bring the verdict into view + pulse once
+                    setAiFlash(true);
+                    setTimeout(() => setAiFlash(false), 1800);
+                    aiVerdictRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+                    sfx.chime();
+                    setAnnounce("The machine's verdict is in.");
+                  }}
                 />
+                </div>
 
                 {/* ═══ Details — below the fold ═══ */}
                 <div className="space-y-4 pb-6 pt-6">

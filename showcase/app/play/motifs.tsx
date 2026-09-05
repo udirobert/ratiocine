@@ -181,6 +181,14 @@ const BUILDERS: Record<string, (color: string) => ReactNode> = {
   "turkish-vowel-harmony": TurkishMotif,
   "quechua-person-endings": QuechuaMotif,
   "nahuatl-both-ends": NahuatlMotif,
+  // New pool members reuse the existing generative vocab (abstract, not copied):
+  // constructed lattice for Esperanto, ocean swell for Indonesian, terraces for
+  // Finnish snow-lines, river currents for Māori waves, step-fret for Zulu geometry.
+  "esperanto-tense": TurkishMotif,
+  "indonesian-plurals": SwahiliMotif,
+  "finnish-harmony": QuechuaMotif,
+  "maori-pronouns": ApurinaMotif,
+  "zulu-noun-class": NahuatlMotif,
 };
 
 interface MotifProps {

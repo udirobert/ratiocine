@@ -16,6 +16,11 @@ export const AMBIENT_FREQ: Record<string, number> = {
   "turkish-vowel-harmony": 61.74,   // B1 — bazaar hum
   "quechua-person-endings": 51.91,  // G#1 — thin mountain air
   "nahuatl-both-ends": 58.27,       // A#1 — temple stone
+  "esperanto-tense": 57.0,          // A#1-ish — congress hall
+  "indonesian-plurals": 53.0,       // F1 — archipelago surf
+  "finnish-harmony": 46.25,         // F#1 — frozen lake
+  "maori-pronouns": 50.0,           // G1-ish — southern ocean
+  "zulu-noun-class": 59.0,          // B1-ish — highveld drum
 };
 
 interface AmbientNodes {
