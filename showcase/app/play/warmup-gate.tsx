@@ -1,7 +1,9 @@
 "use client";
 
 import { motion } from "motion/react";
+import { useState } from "react";
 import { buildTodayWarmup, type Puzzle } from "./puzzle-data";
+import { LEVELS, getLevel, setLevel, type Level } from "./level";
 import { WarmupTeaser } from "./warmup-teaser";
 
 interface WarmupGateProps {
@@ -12,6 +14,7 @@ interface WarmupGateProps {
 // First-time gate: one tap-sized warmup drawn from TODAY's puzzle (its
 // tutorial query), so everything learned transfers into the solve phase.
 export const WarmupGate = ({ puzzle, onContinue }: WarmupGateProps) => {
+  const [level, setLevelState] = useState<Level>(() => getLevel());
   const preview = {
     language: puzzle.language,
     script: "",
@@ -32,6 +35,28 @@ export const WarmupGate = ({ puzzle, onContinue }: WarmupGateProps) => {
           Quick warm-up — today&apos;s language
         </p>
         <WarmupTeaser preview={preview} title="Warm-up" />
+        <div className="mt-5" role="group" aria-label="Practice level">
+          <p className="text-center text-[11px] font-mono text-white/40 mb-2">
+            How much help do you want?
+          </p>
+          <div className="grid grid-cols-3 gap-1.5">
+            {LEVELS.map((l) => (
+              <button
+                key={l.id}
+                onClick={() => { setLevel(l.id); setLevelState(l.id); }}
+                aria-pressed={level === l.id}
+                className={`rounded-lg border px-2 py-2.5 min-h-[48px] transition-all ${
+                  level === l.id
+                    ? "pa-bg-15 pa-border-40 pa-text"
+                    : "border-white/10 text-white/55 hover:border-white/25"
+                }`}
+              >
+                <span className="block text-[13px] font-bold">{l.label}</span>
+                <span className="block text-[10px] opacity-70 mt-0.5 leading-tight">{l.blurb}</span>
+              </button>
+            ))}
+          </div>
+        </div>
         <button
           onClick={onContinue}
           className="mt-5 w-full px-6 py-3 rounded-full text-sm font-bold text-black transition-all hover:brightness-110 min-h-[48px]"

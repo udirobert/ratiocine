@@ -18,14 +18,21 @@ export const StudyPhase = ({ puzzle, highlightedRows, onReady, instant = false, 
   const [showRows, setShowRows] = useState(instant);
   const [visibleCount, setVisibleCount] = useState(instant ? Number.MAX_SAFE_INTEGER : 0);
   const [ready, setReady] = useState(instant);
+  const [page, setPage] = useState(0);
   const [flashedRows, setFlashedRows] = useState<Set<number>>(new Set());
   const flashTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const tracedRef = useRef(false);
   const autoNudgeRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const { theme } = puzzle;
-  const pairs = puzzle.pairs.filter((p) => !p.gated);
+  const pairs = useMemo(() => puzzle.pairs.filter((p) => !p.gated), [puzzle.pairs]);
   const chars = useMemo(() => puzzle.language.split(""), [puzzle.language]);
+
+  // Evidence pager — 4 specimens per page so the screen never scrolls.
+  // The intro stagger plays on page one; dots guide the rest.
+  const PAGE_SIZE = 4;
+  const pageCount = Math.max(1, Math.ceil(pairs.length / PAGE_SIZE));
+  const pagePairs = pairs.slice(page * PAGE_SIZE, page * PAGE_SIZE + PAGE_SIZE);
 
   // After title animation settles, start showing rows (skipped in instant mode)
   useEffect(() => {
@@ -35,10 +42,11 @@ export const StudyPhase = ({ puzzle, highlightedRows, onReady, instant = false, 
     return () => clearTimeout(t);
   }, [chars.length, instant]);
 
-  // Stagger rows in one by one
+  // Stagger page-one rows in one by one (later pages render instantly)
   useEffect(() => {
     if (!showRows) return;
-    if (visibleCount >= pairs.length) {
+    const target = Math.min(PAGE_SIZE, pairs.length);
+    if (visibleCount >= target) {
       setTimeout(() => setReady(true), 300);
       return;
     }
@@ -95,6 +103,14 @@ export const StudyPhase = ({ puzzle, highlightedRows, onReady, instant = false, 
     }
     flashRows(rows);
   };
+
+  // Jump to the page holding a highlighted row (hints, auto-nudge)
+  useEffect(() => {
+    if (highlightedRows.size === 0 && flashedRows.size === 0) return;
+    const ids = [...highlightedRows, ...flashedRows];
+    const idx = pairs.findIndex((p) => ids.includes(p.id));
+    if (idx !== -1) setPage(Math.floor(idx / PAGE_SIZE));
+  }, [highlightedRows, flashedRows, pairs]);
 
   // Auto-nudge: if the player hasn't traced anything ~3s after ready,
   // demonstrate it once on the most-shared morpheme. Cancelled by any tap.
@@ -224,30 +240,60 @@ export const StudyPhase = ({ puzzle, highlightedRows, onReady, instant = false, 
             {puzzle.taskFrame}
           </motion.p>
 
-          {/* Evidence specimens */}
+          {/* Evidence specimens — one page of four, never a scroll */}
           <div className="space-y-1.5">
-            {pairs.slice(0, visibleCount).map((pair) => (
-              <EvidenceCard
-                key={pair.id}
-                pair={pair}
-                instant={instant}
-                highlighted={highlightedRows.has(pair.id) || flashedRows.has(pair.id)}
-                theme={theme}
-                onSourceTap={() => handleSourceTap(pair)}
-              />
-            ))}
+            {pagePairs.map((pair, i) => {
+              const globalIdx = page * PAGE_SIZE + i;
+              if (!instant && globalIdx >= visibleCount) return null;
+              return (
+                <EvidenceCard
+                  key={pair.id}
+                  pair={pair}
+                  instant={instant}
+                  highlighted={highlightedRows.has(pair.id) || flashedRows.has(pair.id)}
+                  theme={theme}
+                  onSourceTap={() => handleSourceTap(pair)}
+                />
+              );
+            })}
           </div>
 
-          {/* Lore hook — manuscript pull-quote, appears after a few rows */}
-          {visibleCount > 3 && (
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6 }}
-              className="mt-6 text-[14px] font-display italic text-white/55 text-center leading-relaxed max-w-sm mx-auto"
-            >
-              &ldquo;{puzzle.lore.briefingHook}&rdquo;
-            </motion.p>
+          {/* Pager dots — more specimens, no scrolling */}
+          {pageCount > 1 && (
+            <div className="mt-4 flex items-center justify-center gap-3" role="group" aria-label="Evidence pages">
+              <button
+                onClick={() => setPage((p) => Math.max(0, p - 1))}
+                disabled={page === 0}
+                className="min-w-[44px] min-h-[44px] flex items-center justify-center text-white/50 disabled:opacity-20 hover:text-white/80 transition-colors text-lg"
+                aria-label="Previous evidence page"
+              >
+                ‹
+              </button>
+              <div className="flex items-center gap-2">
+                {Array.from({ length: pageCount }, (_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setPage(i)}
+                    className={`min-w-[44px] min-h-[44px] flex items-center justify-center transition-all`}
+                    aria-label={`Evidence page ${i + 1}`}
+                    aria-current={i === page}
+                  >
+                    <span
+                      className="w-2 h-2 rounded-full transition-colors"
+                      style={{ backgroundColor: i === page ? theme.accent : "rgba(255,255,255,0.2)" }}
+                    />
+                  </button>
+                ))}
+              </div>
+              <button
+                onClick={() => setPage((p) => Math.min(pageCount - 1, p + 1))}
+                disabled={page === pageCount - 1}
+                className="min-w-[44px] min-h-[44px] flex items-center justify-center text-white/50 disabled:opacity-20 hover:text-white/80 transition-colors text-lg"
+                aria-label="Next evidence page"
+              >
+                ›
+              </button>
+            </div>
           )}
         </div>
       </div>

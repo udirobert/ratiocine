@@ -3,11 +3,14 @@
 import { motion, AnimatePresence } from "motion/react";
 
 import { PUZZLE_POOL, type PuzzleProgress } from "./puzzle-data";
+import { LEVELS, type Level } from "./level";
 
 interface ArchivePanelProps {
   currentPuzzleId: string;
   progress: PuzzleProgress | null;
   onClose: () => void;
+  level: Level;
+  onLevelChange: (level: Level) => void;
 }
 
 /**
@@ -16,7 +19,7 @@ interface ArchivePanelProps {
  * today's daily is flagged. Navigation reuses the `?puzzle=` challenge-link
  * routing so links remain shareable.
  */
-export const ArchivePanel = ({ currentPuzzleId, progress, onClose }: ArchivePanelProps) => (
+export const ArchivePanel = ({ currentPuzzleId, progress, onClose, level, onLevelChange }: ArchivePanelProps) => (
   <motion.div
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
@@ -44,8 +47,28 @@ export const ArchivePanel = ({ currentPuzzleId, progress, onClose }: ArchivePane
         Every language in the rotation — practice any time.
       </p>
 
+      {/* Practice level — changeable any time */}
+      <div className="mb-4" role="group" aria-label="Practice level">
+        <div className="grid grid-cols-3 gap-1.5">
+          {LEVELS.map((l) => (
+            <button
+              key={l.id}
+              onClick={() => onLevelChange(l.id)}
+              aria-pressed={level === l.id}
+              className={`rounded-lg border px-2 py-2 min-h-[44px] transition-all ${
+                level === l.id
+                  ? "border-white/40 bg-white/10 text-white"
+                  : "border-white/10 text-white/55 hover:border-white/25"
+              }`}
+            >
+              <span className="block text-[12px] font-bold">{l.label}</span>
+            </button>
+          ))}
+        </div>
+      </div>
+
       <div className="space-y-2">
-        {PUZZLE_POOL.map((p) => {
+        {[...PUZZLE_POOL].sort((a, b) => a.difficulty - b.difficulty).map((p) => {
           const cracked = progress?.languagesCracked.includes(p.languageCode) ?? false;
           const isCurrent = p.id === currentPuzzleId;
           return (
@@ -78,6 +101,16 @@ export const ArchivePanel = ({ currentPuzzleId, progress, onClose }: ArchivePane
                   </div>
                   <p className="text-[12px] text-white/60 truncate mt-0.5">
                     {p.title} · {p.region}
+                  </p>
+                  <p className="mt-1 flex items-center gap-1" aria-label={`Difficulty ${p.difficulty} of 5`}>
+                    {Array.from({ length: 5 }, (_, i) => (
+                      <span
+                        key={i}
+                        className="w-1.5 h-1.5 rounded-full"
+                        style={{ backgroundColor: i < p.difficulty ? p.theme.accent : "rgba(255,255,255,0.15)" }}
+                        aria-hidden="true"
+                      />
+                    ))}
                   </p>
                 </div>
                 <span

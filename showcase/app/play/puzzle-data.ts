@@ -103,6 +103,7 @@ export interface Puzzle {
   family: string;
   region: string;
   taskType: string;
+  difficulty: number; // 1-5, shown as dots in the archive so players pick fair fights
   title: string;
   instruction: string;
   taskFrame: string; // one-line task framing for study phase e.g. "Figure out how this language builds its verbs."
@@ -120,6 +121,7 @@ export interface Puzzle {
 
 export const APURINA_PUZZLE: Puzzle = {
   id: "apurina-verb-agreement",
+  difficulty: 4,
   language: "Apurinã",
   languageCode: "apu",
   family: "Arawakan",
@@ -284,6 +286,7 @@ export const APURINA_PUZZLE: Puzzle = {
 
 export const SWAHILI_PUZZLE: Puzzle = {
   id: "swahili-person-tense",
+  difficulty: 2,
   language: "Swahili",
   languageCode: "swa",
   family: "Niger-Congo · Bantu",
@@ -423,6 +426,7 @@ export const SWAHILI_PUZZLE: Puzzle = {
 
 export const TURKISH_PUZZLE: Puzzle = {
   id: "turkish-vowel-harmony",
+  difficulty: 2,
   language: "Turkish",
   languageCode: "tur",
   family: "Turkic",
@@ -561,6 +565,7 @@ export const TURKISH_PUZZLE: Puzzle = {
 
 export const QUECHUA_PUZZLE: Puzzle = {
   id: "quechua-person-endings",
+  difficulty: 3,
   language: "Quechua",
   languageCode: "quz",
   family: "Quechuan",
@@ -697,6 +702,7 @@ export const QUECHUA_PUZZLE: Puzzle = {
 
 export const NAHUATL_PUZZLE: Puzzle = {
   id: "nahuatl-both-ends",
+  difficulty: 4,
   language: "Nahuatl",
   languageCode: "nah",
   family: "Uto-Aztecan",
@@ -834,6 +840,7 @@ export const NAHUATL_PUZZLE: Puzzle = {
 
 export const ESPERANTO_PUZZLE: Puzzle = {
   id: "esperanto-tense",
+  difficulty: 1,
   language: "Esperanto",
   languageCode: "epo",
   family: "Constructed · Romance/Germanic roots",
@@ -971,6 +978,7 @@ export const ESPERANTO_PUZZLE: Puzzle = {
 
 export const INDONESIAN_PUZZLE: Puzzle = {
   id: "indonesian-plurals",
+  difficulty: 1,
   language: "Indonesian",
   languageCode: "ind",
   family: "Austronesian · Malayo-Polynesian",
@@ -1107,6 +1115,7 @@ export const INDONESIAN_PUZZLE: Puzzle = {
 
 export const FINNISH_PUZZLE: Puzzle = {
   id: "finnish-harmony",
+  difficulty: 3,
   language: "Finnish",
   languageCode: "fin",
   family: "Uralic · Finnic",
@@ -1243,6 +1252,7 @@ export const FINNISH_PUZZLE: Puzzle = {
 
 export const MAORI_PUZZLE: Puzzle = {
   id: "maori-pronouns",
+  difficulty: 4,
   language: "Māori",
   languageCode: "mri",
   family: "Austronesian · Polynesian",
@@ -1380,6 +1390,7 @@ export const MAORI_PUZZLE: Puzzle = {
 
 export const ZULU_PUZZLE: Puzzle = {
   id: "zulu-noun-class",
+  difficulty: 2,
   language: "Zulu",
   languageCode: "zul",
   family: "Niger-Congo · Bantu",

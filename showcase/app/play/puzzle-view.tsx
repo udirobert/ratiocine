@@ -18,6 +18,7 @@ import { OrnamentRule } from "./decor";
 import { emitFieldRipple } from "./fx-bus";
 import { useSfx, AMBIENT_FREQ } from "./use-sfx";
 import { useSolveCounter } from "./use-solve-counter";
+import { getLevel, setLevel, ghostMs, failHintAt, forfeitAt, autoHintOnFail, type Level } from "./level";
 import { track } from "@/lib/analytics";
 import {
   getTodaysPuzzle,
@@ -151,6 +152,7 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
   const [ghostVisible, setGhostVisible] = useState(true); // ghost tile hint for Q1/Q2
   const ghostTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [everPlaced, setEverPlaced] = useState(false); // coach caption until first placement
+  const [bankExpanded, setBankExpanded] = useState(false); // reveal full tile bank
   const [archiveOpen, setArchiveOpen] = useState(false);
 
   // Selection removed — tap-to-place model (tap tile = auto-place, tap slot = remove)
@@ -232,8 +234,16 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
     toastTimerRef.current = setTimeout(() => setToast(null), ms);
   }, []);
 
+  // Practice level (gentle / standard / spicy) — tunes help generosity
+  const [level, setLevelState] = useState<Level>(() => getLevel());
+  const changeLevel = useCallback((next: Level) => {
+    setLevel(next);
+    setLevelState(next);
+  }, []);
+
   // Fail hints are shown at most once per query
   const shownFailHintsRef = useRef<Set<number>>(new Set());
+  const autoHintedRef = useRef<Set<number>>(new Set());
 
   useEffect(() => { setProgress(loadProgress()); }, []);
 
@@ -312,20 +322,40 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
   const secs = elapsed % 60;
   const timeStr = `${mins}:${secs.toString().padStart(2, "0")}`;
 
-  // Ghost tile hint for Q1/Q2 first slot — shows briefly when a fresh query appears
+  // Progressive bank: pieces from solved/locked queries + the current
+  // query's answer + two distractors. Always solvable, never overwhelming.
+  const bankVisible = useMemo(() => {
+    const known = new Set<string>();
+    puzzle.queries.forEach((q, i) => {
+      if (grades.get(q.id)?.isCorrect || locked[i]) {
+        q.answer.forEach((m) => known.add(m));
+      }
+    });
+    query?.answer.forEach((m) => known.add(m));
+    const distractors = puzzle.morphemeBank
+      .flat()
+      .filter((m) => !known.has(m))
+      .slice(0, 2);
+    return new Set([...known, ...distractors]);
+  }, [puzzle, grades, locked, query]);
+  const bankHiddenCount = puzzle.morphemeBank.flat().filter((m) => !bankVisible.has(m)).length;
+  const showAllBank = bankExpanded || bankHiddenCount === 0;
+
+  // Ghost tile hint for Q1/Q2 first slot — duration follows practice level
   useEffect(() => {
     if (phase !== "solve") return;
-    if (currentQ > 1 || attempts[currentQ] > 0 || slots.some((s) => s.morpheme) || !query.answer[0]) {
+    const ms = ghostMs(level);
+    if (ms <= 0 || currentQ > 1 || attempts[currentQ] > 0 || slots.some((s) => s.morpheme) || !query.answer[0]) {
       setGhostVisible(false);
       return;
     }
     setGhostVisible(true);
     if (ghostTimerRef.current) clearTimeout(ghostTimerRef.current);
-    ghostTimerRef.current = setTimeout(() => setGhostVisible(false), 2000);
+    ghostTimerRef.current = setTimeout(() => setGhostVisible(false), ms);
     return () => {
       if (ghostTimerRef.current) clearTimeout(ghostTimerRef.current);
     };
-  }, [phase, currentQ, attempts, slots, query]);
+  }, [phase, currentQ, attempts, slots, query, level]);
 
   // Stop timer on all done
   useEffect(() => {
@@ -419,6 +449,24 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
     });
   }, [isLocked, currentQ, sfx]);
 
+  const handleHint = useCallback(() => {
+    if (hintsUsed >= puzzle.hints.length) return;
+    const hint = puzzle.hints[hintsUsed];
+    setHintsUsed((h) => h + 1);
+    track("hint_used", { puzzle: puzzle.id, level: hint.level });
+
+    // Visual feedback: flash rows, flip morpheme tiles…
+    if (hint.highlightRows) {
+      setHighlightedRows((p) => { const n = new Set(p); hint.highlightRows!.forEach((r) => n.add(r)); return n; });
+    }
+    if (hint.revealMorpheme) {
+      setRevealedMorphemes((p) => { const n = new Map(p); n.set(hint.revealMorpheme!.morpheme, hint.revealMorpheme!.meaning); return n; });
+    }
+    // …plus a short toast so the player knows what just happened
+    if (hint.text) showToast(`💡 ${hint.text}`, 6000);
+    setAnnounce(`Hint used: ${hint.text}`);
+  }, [hintsUsed, puzzle.hints, puzzle.id, showToast]);
+
   const handleSubmit = useCallback(() => {
     if (isLocked) return;
     const submitted = slots.filter((s) => s.morpheme).map((s) => s.morpheme!);
@@ -493,16 +541,22 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
         `Query ${currentQ + 1}: not quite. ${counts.correct} correct, ${counts.misplaced} misplaced, ${counts.wrong} wrong.`,
       );
 
-      // Surface the puzzle's fail hint once per query, from attempt 2 onward
-      if (attempt >= 2 && query.hintOnFail && !shownFailHintsRef.current.has(query.id)) {
+      // Surface the puzzle's fail hint once per query (threshold by level)
+      if (attempt >= failHintAt(level) && query.hintOnFail && !shownFailHintsRef.current.has(query.id)) {
         shownFailHintsRef.current.add(query.id);
         showToast(query.hintOnFail, 6000);
       }
 
-      // Arm the "reveal this one" forfeit after 2 failed attempts
-      if (attempt >= 2) setForfeitArmed(currentQ);
+      // Gentle level: play the level-1 hint automatically on first miss
+      if (autoHintOnFail(level) && !autoHintedRef.current.has(query.id)) {
+        autoHintedRef.current.add(query.id);
+        handleHint();
+      }
+
+      // Arm the "reveal this one" forfeit (threshold by level)
+      if (attempt >= forfeitAt(level)) setForfeitArmed(currentQ);
     }
-  }, [isLocked, slots, attempts, currentQ, query, locked, sfx, showToast]);
+  }, [isLocked, slots, attempts, currentQ, query, locked, sfx, showToast, level, handleHint]);
 
   // ─── Forfeit: reveal one query (locks it wrong, honestly) ─────────────────
 
@@ -531,24 +585,6 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
       }
     }, 600);
   }, [forfeitArmed, currentQ, isLocked, query, attempts, locked, sfx]);
-
-  const handleHint = useCallback(() => {
-    if (hintsUsed >= puzzle.hints.length) return;
-    const hint = puzzle.hints[hintsUsed];
-    setHintsUsed((h) => h + 1);
-    track("hint_used", { puzzle: puzzle.id, level: hint.level });
-
-    // Visual feedback: flash rows, flip morpheme tiles…
-    if (hint.highlightRows) {
-      setHighlightedRows((p) => { const n = new Set(p); hint.highlightRows!.forEach((r) => n.add(r)); return n; });
-    }
-    if (hint.revealMorpheme) {
-      setRevealedMorphemes((p) => { const n = new Map(p); n.set(hint.revealMorpheme!.morpheme, hint.revealMorpheme!.meaning); return n; });
-    }
-    // …plus a short toast so the player knows what just happened
-    if (hint.text) showToast(`💡 ${hint.text}`, 6000);
-    setAnnounce(`Hint used: ${hint.text}`);
-  }, [hintsUsed, puzzle.hints, puzzle.id, showToast]);
 
   // Reveal the gated evidence specimens (rows hidden at the start)
   const handleRevealGated = useCallback(() => {
@@ -590,7 +626,11 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
 
   // ─── Keyboard play (desktop) ──────────────────────────────────────────────
 
-  const flatBank = useMemo(() => puzzle.morphemeBank.flat(), [puzzle]);
+  // Keyboard order follows the visible bank (progressive reveal order)
+  const flatBank = useMemo(
+    () => puzzle.morphemeBank.flat().filter((m) => showAllBank || bankVisible.has(m)),
+    [puzzle, showAllBank, bankVisible],
+  );
   const driftGlyphs = useMemo(
     () => puzzle.morphemeBank.flat().filter((m) => m.length <= 6).slice(0, 12),
     [puzzle],
@@ -788,6 +828,8 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
                 puzzle={puzzle}
                 onContinue={() => {
                   markWarmupSeen();
+                  // Pick up any level chosen in the gate
+                  setLevelState(getLevel());
                   setPhase("study");
                 }}
               />
@@ -981,16 +1023,23 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
                   </p>
                 )}
 
-                {/* Morpheme bank */}
+                {/* Morpheme bank — progressive reveal: solved + current
+                    query pieces plus two distractors, the rest behind an
+                    expander. Choosing from a few when you know some feels
+                    smart; choosing from twelve when you know none feels dumb. */}
                 {!isLocked && (
                   <div className="flex flex-wrap items-center justify-center gap-1.5 mb-4">
-                    {puzzle.morphemeBank.map((group, gi) => (
+                    {puzzle.morphemeBank.map((group, gi) => {
+                      const shown = group.filter((m) => showAllBank || bankVisible.has(m));
+                      if (shown.length === 0) return null;
+                      return (
                       <div key={gi} className="contents">
                         {/* Visual divider between groups */}
                         {gi > 0 && (
                           <span className="w-px h-8 bg-white/10 mx-1 shrink-0" />
                         )}
-                        {group.map((m, i) => {
+                        {shown.map((m) => {
+                          const i = group.indexOf(m);
                           const revealed = revealedMorphemes.get(m);
                           // Check if this tile is already placed in a slot
                           const isPlaced = slots.some((s) => s.morpheme === m);
@@ -1023,7 +1072,20 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
                           );
                         })}
                       </div>
-                    ))}
+                      );
+                    })}
+                  </div>
+                )}
+
+                {/* Bank expander — the hidden pieces, on demand */}
+                {!isLocked && !showAllBank && bankHiddenCount > 0 && (
+                  <div className="text-center mb-4">
+                    <button
+                      onClick={() => setBankExpanded(true)}
+                      className="text-[11px] font-mono text-white/35 hover:text-white/60 transition-colors underline underline-offset-4 decoration-white/15 min-h-[44px]"
+                    >
+                      +{bankHiddenCount} more pieces
+                    </button>
                   </div>
                 )}
                 </LayoutGroup>
@@ -1349,12 +1411,17 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
                     <h3 className="font-display text-[15px] font-bold text-white mb-2">
                       What you discovered
                     </h3>
-                    <p className="text-[13px] text-white/70 leading-relaxed mb-3">
-                      {puzzle.instruction}
-                    </p>
                     <p className="text-[13px] font-display italic text-white/60 leading-relaxed">
                       &ldquo;{puzzle.lore.culturalNote}&rdquo;
                     </p>
+                    <details className="mt-3">
+                      <summary className="text-[11px] font-mono text-white/40 uppercase tracking-wider cursor-pointer hover:text-white/60 min-h-[44px] flex items-center">
+                        How it works
+                      </summary>
+                      <p className="text-[13px] text-white/70 leading-relaxed">
+                        {puzzle.instruction}
+                      </p>
+                    </details>
                   </div>
                 </motion.div>
 
@@ -1491,6 +1558,8 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
             currentPuzzleId={puzzle.id}
             progress={progress}
             onClose={() => setArchiveOpen(false)}
+            level={level}
+            onLevelChange={changeLevel}
           />
         )}
       </AnimatePresence>
