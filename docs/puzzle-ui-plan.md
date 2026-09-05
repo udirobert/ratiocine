@@ -59,6 +59,33 @@ a different cultural/language world, rendered with shared primitives.
 - Reduced motion disables the drift/ember animations; CSS `prefers-reduced-motion`
   also suppresses keyframe motion globally.
 
+### Layering contract & mobile atmosphere rules
+
+Learned 2026-09-05 (a phone-viewport test showed the backdrop painting clean
+over the game text — the player saw only atmosphere, no game):
+
+1. **Content sits above its world, structurally.** The main frame, header,
+   and progress bar hold `relative z-10`. Positioned backdrop layers
+   (shader canvas, motif, aurora) win paint order over in-flow content
+   regardless of DOM order — never rely on DOM order to layer content
+   above the backdrop. Any new decorative layer must keep this contract.
+2. **Text-bearing cards carry their own ground.** Cards over the living
+   backdrop use `card-solid` (near-opaque) — never `bg-white/[0.01]`-style
+   tints that inherit whatever the sky is doing. Direct-on-backdrop text
+   gets a `text-shadow` safety net (see the solve prompt).
+3. **Mobile atmosphere budget.** Tall phone viewports magnify the backdrop:
+   `slice`-scaled motifs zoom enormously, and specular/aurora gains tuned
+   on desktop glare. Caps: specular contribution ≤ 0.22 with a tight falloff
+   (pow ≥ 28), atmosphere boost ≤ 1.25×, motif dimmed under 640px width.
+   New backdrop work must be eyeballed at 390×844, not just desktop.
+4. **Safe-center scroll containers.** Centering with `justify-center` inside
+   an `overflow-y-auto` container clips the top unreachable when content
+   overflows. Use `m-auto` on the inner wrapper instead.
+5. **Verification gate.** Any change touching the backdrop, loading states,
+   or phase scaffolding requires a phone-viewport walkthrough
+   (warmup → study → solve → submit) with screenshots before merge.
+   `agent-browser set device "iPhone 14"` against the dev server is enough.
+
 ### Typography & materials
 
 - **Manuscript serif display** (`font-display` / Fraunces) for language names
@@ -108,9 +135,9 @@ npm run build   # next build --webpack
 | 3 | Click "Play" | 3-5s | **Medium** — CTA must be obvious |
 | 4 | Portal transition | ~1s | Zero (automated) |
 | 5 | Study evidence cards | 20-40s | **Medium** — must feel like progress, not homework |
-| 6 | Click "I see it" | 30-45s | Low (only appears when ready) |
+| 6 | Click "I'm ready" | 30-45s | Low (only appears when ready) |
 | 7 | Solve Q1 (tutorial) | 15-30s | **Low** — designed to be findable |
-| 8 | Solve Q2-Q5 | 60-120s | Medium (difficulty curve) |
+| 8 | Solve remaining queries | 60-120s | Medium (difficulty curve) |
 | 9 | See result + AI comparison | ~5s | Zero (automated celebration) |
 | 10 | Share | 0-10s | **High** — must feel effortless + rewarding |
 
