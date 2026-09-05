@@ -32,6 +32,23 @@ export const hasSeenCoach = () => {
   }
 };
 
+const WARMUP_KEY = "ratiocine-seen-warmup";
+
+export const hasSeenWarmup = () => {
+  if (typeof window === "undefined") return false;
+  try {
+    return window.localStorage.getItem(WARMUP_KEY) === "1";
+  } catch {
+    return false;
+  }
+};
+
+export const markWarmupSeen = () => {
+  try {
+    window.localStorage.setItem(WARMUP_KEY, "1");
+  } catch {}
+};
+
 interface CoachMarksProps {
   onDismiss: () => void;
   accent: string;

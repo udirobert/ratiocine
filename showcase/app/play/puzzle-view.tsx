@@ -7,9 +7,10 @@ import { LanguageMap } from "./language-map";
 import { AudioMoment } from "./audio-moment";
 import { StudyPhase } from "./study-phase";
 import { WarmupTeaser } from "./warmup-teaser";
+import { WarmupGate } from "./warmup-gate";
 import { AiComparison, type AiResult } from "./ai-comparison";
 import { ContextPanel } from "./context-panel";
-import { CoachMarks, hasSeenCoach } from "./coach-marks";
+import { CoachMarks, hasSeenCoach, hasSeenWarmup, markWarmupSeen } from "./coach-marks";
 import { AmbientWorld } from "./ambient-world";
 import { GlyphDrift } from "./glyph-drift";
 import { OrnamentRule } from "./decor";
@@ -82,7 +83,7 @@ function generateShareText(
 
 // ─── Types ──────────────────────────────────────────────────────────────────
 
-type Phase = "study" | "solve" | "result";
+type Phase = "warmup" | "study" | "solve" | "result";
 
 interface SlotData {
   morpheme: string | null;
@@ -113,7 +114,7 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
   const { count: solveCount, increment: incrementSolveCount } = useSolveCounter();
 
   // Phase
-  const [phase, setPhase] = useState<Phase>("study");
+  const [phase, setPhase] = useState<Phase>(() => (hasSeenWarmup() ? "study" : "warmup"));
   const [currentQ, setCurrentQ] = useState(0);
   const [studiedOnce, setStudiedOnce] = useState(false); // skip study intro on re-entry
 
@@ -651,6 +652,26 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
       {/* ═══ Main frame ═══ */}
       <div className="flex-1 flex flex-col min-h-0">
         <AnimatePresence mode="wait">
+
+          {/* ─── WARMUP (first-time mini puzzle) ─── */}
+          {phase === "warmup" && (
+            <motion.div
+              key="warmup"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0, scale: 0.97 }}
+              transition={{ duration: 0.3 }}
+              className="flex-1 flex flex-col min-h-0"
+            >
+              <WarmupGate
+                preview={puzzle.nextPreview}
+                onContinue={() => {
+                  markWarmupSeen();
+                  setPhase("study");
+                }}
+              />
+            </motion.div>
+          )}
 
           {/* ─── STUDY (merged briefing + evidence) ─── */}
           {phase === "study" && (
