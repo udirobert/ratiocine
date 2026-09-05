@@ -24,9 +24,31 @@ export const StudyPhase = ({ puzzle, highlightedRows, onReady, instant = false, 
   const tracedRef = useRef(false);
   const autoNudgeRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
+  // Default lore to OPEN on first visit to this puzzle, then remember state
+  const [loreOpen, setLoreOpen] = useState(() => {
+    if (typeof window === "undefined") return false;
+    const key = `lore-seen-${puzzle.id}`;
+    const seen = localStorage.getItem(key);
+    if (!seen) {
+      localStorage.setItem(key, "true");
+      return true; // First visit: show lore
+    }
+    return false; // Return visit: collapsed
+  });
+
   const { theme } = puzzle;
   const pairs = useMemo(() => puzzle.pairs.filter((p) => !p.gated), [puzzle.pairs]);
-  const chars = useMemo(() => puzzle.language.split(""), [puzzle.language]);
+
+  // Helper to check if language is endangered (more explicit logic)
+  const isEndangered = useMemo(() => {
+    const text = puzzle.lore.endangerment.toLowerCase();
+    return (
+      text.startsWith("classified as") ||
+      text.startsWith("unesco lists") ||
+      text.startsWith("many varieties are endangered") ||
+      /^(critically|severely|definitely|vulnerable)/.test(text)
+    );
+  }, [puzzle.lore.endangerment]);
 
   // Evidence pager — 4 specimens per page so the screen never scrolls.
   // The intro stagger plays on page one; dots guide the rest.
@@ -37,10 +59,10 @@ export const StudyPhase = ({ puzzle, highlightedRows, onReady, instant = false, 
   // After title animation settles, start showing rows (skipped in instant mode)
   useEffect(() => {
     if (instant) return;
-    const titleDelay = chars.length * 40 + 600;
+    const titleDelay = 400; // Shortened from char-by-char animation
     const t = setTimeout(() => setShowRows(true), titleDelay);
     return () => clearTimeout(t);
-  }, [chars.length, instant]);
+  }, [instant]);
 
   // Stagger page-one rows in one by one (later pages render instantly)
   useEffect(() => {
@@ -168,77 +190,79 @@ export const StudyPhase = ({ puzzle, highlightedRows, onReady, instant = false, 
       <div className="absolute inset-0 pointer-events-none z-0 opacity-[0.02] grain-noise" />
 
       <div className="flex-1 flex flex-col items-center px-4 sm:px-6 overflow-y-auto relative z-10">
-        <div className="m-auto w-full max-w-lg pt-8 pb-8">
+        <div className="m-auto w-full max-w-lg pt-6 pb-8">
 
-          {/* Language name — manuscript display, staggered characters */}
-          <motion.h2
-            className="text-4xl sm:text-5xl font-display font-bold tracking-tight text-white text-center mb-2"
-            initial={instant ? "visible" : "hidden"}
-            animate="visible"
-          >
-            {chars.map((char, i) => (
-              <motion.span
-                key={i}
-                className="inline-block"
-                variants={{
-                  hidden: { opacity: 0, y: i % 2 === 0 ? -20 : 20 },
-                  visible: { opacity: 1, y: 0 },
-                }}
-                transition={{
-                  delay: 0.1 + i * 0.04,
-                  duration: 0.4,
-                  ease: [0.2, 0.65, 0.3, 0.9],
-                }}
-              >
-                {char === " " ? "\u00A0" : char}
-              </motion.span>
-            ))}
-          </motion.h2>
-
-          {/* Region + speaker count */}
+          {/* Compact header: title + inline badge */}
           <motion.div
-            initial={instant ? false : { opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: instant ? 0 : 0.5 }}
-            className="flex items-center justify-center gap-x-3 gap-y-1 flex-wrap mb-2 px-2 text-center"
+            initial={instant ? false : { opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: instant ? 0 : 0.1, duration: 0.5 }}
+            className="flex items-start justify-between gap-3 mb-3"
           >
-            <span className="text-[12px] text-white/50 font-mono">
-              {puzzle.region}
+            <h2 className="text-3xl sm:text-4xl font-display font-bold tracking-tight text-white">
+              {puzzle.language}
+            </h2>
+            <span
+              className={`shrink-0 text-[10px] px-2 py-1 rounded-full border font-mono ${
+                isEndangered
+                  ? "border-red-400/30 text-red-300/60"
+                  : "border-emerald-400/30 text-emerald-300/60"
+              }`}
+            >
+              {isEndangered ? "endangered" : "living"}
             </span>
-            <span className="text-white/20">·</span>
-            <span className="text-[12px] text-white/50 font-mono">
-              {puzzle.lore.speakers.split("—")[0].trim()}
-            </span>
-            {/endangered|critically|severely/i.test(puzzle.lore.endangerment) ? (
-              <span className="text-[10px] px-1.5 py-0.5 rounded-full border border-red-400/30 text-red-300/60 font-mono">
-                endangered
-              </span>
-            ) : (
-              <span className="text-[10px] px-1.5 py-0.5 rounded-full border border-emerald-400/30 text-emerald-300/60 font-mono">
-                living
-              </span>
-            )}
           </motion.div>
 
-          {/* Language hook — one-sentence "why this is cool" */}
+          {/* Task frame — single line orientation */}
           <motion.p
             initial={instant ? false : { opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: instant ? 0 : 0.55 }}
-            className="text-[12px] font-display italic text-center text-white/50 mb-8 max-w-sm mx-auto leading-relaxed"
-          >
-            {puzzle.lore.funFact}
-          </motion.p>
-
-          {/* Task framing — manuscript italic, like a field-notebook heading */}
-          <motion.p
-            initial={instant ? false : { opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: instant ? 0 : 0.7 }}
-            className="text-[15px] font-display italic text-white/65 text-center mb-6 max-w-xs mx-auto leading-relaxed"
+            transition={{ delay: instant ? 0 : 0.2 }}
+            className="text-[13px] sm:text-[14px] font-display italic text-white/60 text-center mb-5 leading-relaxed"
           >
             {puzzle.taskFrame}
           </motion.p>
+
+          {/* Collapsible language lore drawer — defaults to OPEN on first visit */}
+          <motion.details
+            initial={instant ? false : { opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: instant ? 0 : 0.25 }}
+            className="mb-5 text-[13px] text-white/70"
+            open={loreOpen}
+            onToggle={(e) => setLoreOpen((e.target as HTMLDetailsElement).open)}
+          >
+            <summary className="cursor-pointer hover:text-white/90 flex items-center justify-center gap-2 transition-colors py-2 select-none">
+              <span className="text-[10px] transition-transform" style={{ transform: loreOpen ? "rotate(90deg)" : "rotate(0deg)" }}>
+                ▸
+              </span>
+              <span className="text-[11px] font-mono uppercase tracking-wider text-white/50 hover:text-white/70">
+                About {puzzle.language}
+              </span>
+            </summary>
+            <motion.div
+              initial={{ opacity: 0, y: -4 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.2 }}
+              className="mt-3 space-y-3 px-4 py-3.5 rounded-lg border border-white/10 bg-white/[0.03]"
+            >
+              <div>
+                <span className="text-white/45 text-[10px] uppercase tracking-wide font-mono block mb-1">Region</span>
+                <p className="text-white/85 leading-relaxed">{puzzle.region}</p>
+              </div>
+              <div>
+                <span className="text-white/45 text-[10px] uppercase tracking-wide font-mono block mb-1">Speakers</span>
+                <p className="text-white/85 leading-relaxed">{puzzle.lore.speakers}</p>
+              </div>
+              <div>
+                <span className="text-white/45 text-[10px] uppercase tracking-wide font-mono block mb-1">Family</span>
+                <p className="text-white/85 leading-relaxed">{puzzle.lore.family}</p>
+              </div>
+              <div className="pt-2.5 border-t border-white/10">
+                <p className="text-white/80 italic leading-relaxed">{puzzle.lore.funFact}</p>
+              </div>
+            </motion.div>
+          </motion.details>
 
           {/* Evidence specimens — one page of four, never a scroll */}
           <div className="space-y-1.5">

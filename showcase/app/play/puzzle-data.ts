@@ -1543,6 +1543,12 @@ export function getTodaysPuzzle(): Puzzle {
   return PUZZLE_POOL[daysSinceEpoch % PUZZLE_POOL.length];
 }
 
+// Random puzzle selection (for variety on refresh or "try another" button)
+export function getRandomPuzzle(excludeId?: string): Puzzle {
+  const available = excludeId ? PUZZLE_POOL.filter((p) => p.id !== excludeId) : PUZZLE_POOL;
+  return available[Math.floor(Math.random() * available.length)];
+}
+
 // Look up a specific puzzle by ID (for challenge links)
 export function getPuzzleById(id: string): Puzzle | undefined {
   return PUZZLE_POOL.find((p) => p.id === id);
