@@ -50,6 +50,43 @@ export interface PuzzlePreview {
     pairs: { source: string; target: string }[];
     query: string;
     answer: string;
+    choices?: string[]; // multiple-choice options (answer included); derived if omitted
+  };
+}
+
+// Derive 3 multiple-choice options for a warmup: the answer plus two
+// plausible distractors drawn from the pair targets. Deterministic order so
+// the answer isn't always first (answer lands in the middle).
+export function warmupChoices(warmup: NonNullable<PuzzlePreview["warmup"]>): string[] {
+  if (warmup.choices && warmup.choices.length >= 3) return warmup.choices.slice(0, 3);
+  const distractors = warmup.pairs.map((p) => p.target).filter((t) => t !== warmup.answer);
+  const picked = [warmup.answer, ...distractors].slice(0, 3);
+  // Rotate so the answer sits in the middle: [d1, answer, d2]
+  if (picked.length === 3) return [picked[1], picked[0], picked[2]];
+  return picked;
+}
+
+// Build a warmup for TODAY's puzzle from its tutorial query (Q0): the first
+// two evidence rows plus Q0's prompt, with distractors drawn from the other
+// queries' answers. Learning transfers directly into the solve phase.
+export function buildTodayWarmup(puzzle: Puzzle): NonNullable<PuzzlePreview["warmup"]> {
+  const q0 = puzzle.queries[0];
+  const pairs = puzzle.pairs.filter((p) => !p.gated).slice(0, 2).map((p) => ({
+    source: p.source,
+    target: p.target,
+  }));
+  const distractors = puzzle.queries
+    .slice(1)
+    .map((q) => q.answerJoined)
+    .filter((a) => a !== q0.answerJoined)
+    .slice(0, 2);
+  const choices = [q0.answerJoined, ...distractors];
+  const ordered = choices.length === 3 ? [choices[1], choices[0], choices[2]] : choices;
+  return {
+    pairs,
+    query: `How do you say "${q0.prompt}"?`,
+    answer: q0.answerJoined,
+    choices: ordered,
   };
 }
 

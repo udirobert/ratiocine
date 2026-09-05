@@ -209,40 +209,36 @@ export const StudyPhase = ({ puzzle, highlightedRows, onReady, instant = false }
         </div>
       </div>
 
-      {/* Interaction hint */}
-      <motion.p
-        className="absolute bottom-[84px] inset-x-0 text-center text-[11px] text-white/40 font-mono z-20"
-        initial={{ opacity: 0 }}
-        animate={ready ? { opacity: 1 } : { opacity: 0 }}
-        transition={{ duration: 0.4 }}
-      >
-        tap any source word to trace the pattern
-      </motion.p>
-
-      {/* Ready / hint buttons */}
+      {/* Interaction hint + ready / hint buttons — in flow, so toasts can
+          never cover the hint and the hint never covers evidence rows */}
       <motion.div
-        className="absolute bottom-6 inset-x-0 flex items-center justify-center gap-3 z-20 px-4"
+        className="shrink-0 flex flex-col items-center gap-2 px-4 pb-6 pt-2 z-20"
         initial={{ opacity: 0, y: 12 }}
         animate={ready ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
         transition={{ duration: 0.4 }}
       >
-        <button
-          onClick={handleHint}
-          disabled={!ready}
-          className="px-4 py-3 rounded-full text-sm font-medium text-white/80 transition-all disabled:opacity-0 hover:text-white hover:bg-white/10"
-        >
-          Need a hint?
-        </button>
-        <button
-          onClick={onReady}
-          disabled={!ready}
-          className="pulse-glow px-7 py-3 rounded-full text-sm font-bold text-black transition-all disabled:opacity-0"
-          style={{
-            backgroundColor: theme.accent,
-          }}
-        >
-          I&apos;m ready
-        </button>
+        <p className="text-center text-[11px] text-white/40 font-mono">
+          tap any source word to trace the pattern
+        </p>
+        <div className="flex items-center justify-center gap-3">
+          <button
+            onClick={handleHint}
+            disabled={!ready}
+            className="px-4 py-3 min-h-[48px] rounded-full text-sm font-medium text-white/80 transition-all disabled:opacity-0 hover:text-white hover:bg-white/10"
+          >
+            Need a hint?
+          </button>
+          <button
+            onClick={onReady}
+            disabled={!ready}
+            className="pulse-glow px-7 py-3 min-h-[48px] rounded-full text-sm font-bold text-black transition-all disabled:opacity-0"
+            style={{
+              backgroundColor: theme.accent,
+            }}
+          >
+            I&apos;m ready
+          </button>
+        </div>
       </motion.div>
     </div>
   );

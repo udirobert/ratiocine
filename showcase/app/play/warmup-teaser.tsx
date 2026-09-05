@@ -1,17 +1,20 @@
 "use client";
 
 import { motion } from "motion/react";
-import { useState } from "react";
-import type { PuzzlePreview } from "./puzzle-data";
+import { useMemo, useState } from "react";
+import { warmupChoices, type PuzzlePreview } from "./puzzle-data";
 
 interface WarmupTeaserProps {
   preview: PuzzlePreview;
+  /** Header label — "Warm-up" in the gate, "Tomorrow's warmup" on the result screen */
+  title?: string;
 }
 
-export const WarmupTeaser = ({ preview }: WarmupTeaserProps) => {
+export const WarmupTeaser = ({ preview, title = "Tomorrow's warmup" }: WarmupTeaserProps) => {
   const { warmup, theme } = preview;
-  const [guess, setGuess] = useState("");
-  const [revealed, setRevealed] = useState(false);
+  const [picked, setPicked] = useState<string | null>(null);
+
+  const choices = useMemo(() => (warmup ? warmupChoices(warmup) : []), [warmup]);
 
   if (!warmup) {
     return (
@@ -22,11 +25,8 @@ export const WarmupTeaser = ({ preview }: WarmupTeaserProps) => {
     );
   }
 
-  const isCorrect = guess.trim().toLowerCase() === warmup.answer.toLowerCase();
-
-  const handleSubmit = () => {
-    setRevealed(true);
-  };
+  const revealed = picked !== null;
+  const isCorrect = picked === warmup.answer;
 
   return (
     <motion.div
@@ -37,7 +37,7 @@ export const WarmupTeaser = ({ preview }: WarmupTeaserProps) => {
       {/* Header */}
       <div className="px-4 py-3 border-b border-white/5">
         <p className="text-[10px] font-mono text-white/40 uppercase tracking-widest">
-          Tomorrow&apos;s warmup
+          {title}
         </p>
         <p className="text-sm font-bold text-white/80 mt-0.5" style={{ color: theme.accent }}>
           {preview.language}
@@ -60,40 +60,52 @@ export const WarmupTeaser = ({ preview }: WarmupTeaserProps) => {
         <div className="pt-2 border-t border-white/5">
           <p className="text-[12px] text-white/70 mb-2">{warmup.query}</p>
 
-          {!revealed ? (
-            <div className="flex gap-2">
-              <input
-                type="text"
-                value={guess}
-                onChange={(e) => setGuess(e.target.value)}
-                onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
-                placeholder="your guess..."
-                className="flex-1 bg-white/[0.03] border border-white/10 rounded px-3 py-1.5 text-[12px] font-mono text-white/80 placeholder:text-white/25 outline-none focus:border-white/25 transition-colors"
-              />
-              <button
-                onClick={handleSubmit}
-                disabled={!guess.trim()}
-                className="px-3 py-1.5 rounded text-[11px] font-mono font-bold text-black disabled:opacity-30 transition-all"
-                style={{ backgroundColor: theme.accent }}
-              >
-                ↵
-              </button>
-            </div>
-          ) : (
-            <motion.div
+          {/* Multiple-choice — tap, never type */}
+          <div className="flex flex-col gap-2" role="group" aria-label="Warm-up choices">
+            {choices.map((choice) => {
+              const selected = picked === choice;
+              const correct = choice === warmup.answer;
+              return (
+                <button
+                  key={choice}
+                  onClick={() => !revealed && setPicked(choice)}
+                  disabled={revealed}
+                  className={`w-full rounded-lg border px-3 py-2.5 min-h-[44px] text-left text-[13px] font-mono transition-all ${
+                    revealed && correct
+                      ? "border-emerald-400/60 bg-emerald-400/10 text-emerald-300"
+                      : revealed && selected
+                        ? "border-red-400/50 bg-red-400/10 text-red-300/80"
+                        : revealed
+                          ? "border-white/8 text-white/35"
+                          : "border-white/15 text-white/80 hover:border-white/30 hover:bg-white/5 active:scale-[0.99]"
+                  }`}
+                  aria-pressed={selected}
+                >
+                  <span className="mr-2" aria-hidden="true">
+                    {revealed && correct ? "✓" : revealed && selected ? "✗" : "○"}
+                  </span>
+                  {choice}
+                </button>
+              );
+            })}
+          </div>
+
+          {revealed && (
+            <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="text-[12px] font-mono"
+              className="mt-2 text-[12px] font-mono text-white/60"
+              aria-live="polite"
             >
               {isCorrect ? (
                 <span style={{ color: theme.accent }}>✓ Correct — you&apos;re ready.</span>
               ) : (
-                <span className="text-white/60">
-                  Answer: <span style={{ color: theme.accent }}>{warmup.answer}</span>
-                  <span className="text-white/30 ml-2">Come back tomorrow for the full puzzle.</span>
+                <span>
+                  The answer was <span style={{ color: theme.accent }}>{warmup.answer}</span>
+                  <span className="text-white/30 ml-2">You&apos;ll crack the pattern below.</span>
                 </span>
               )}
-            </motion.div>
+            </motion.p>
           )}
         </div>
       </div>

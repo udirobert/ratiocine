@@ -122,8 +122,15 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
   const sfx = useSfx();
   const { count: solveCount, increment: incrementSolveCount } = useSolveCounter();
 
-  // Phase
-  const [phase, setPhase] = useState<Phase>(() => (hasSeenWarmup() ? "study" : "warmup"));
+  // Phase — challenge-link visitors (?puzzle=) skip the warmup gate and
+  // land straight in study; the warmup teaches today's puzzle, which they
+  // already hold in their hands via the link.
+  const [phase, setPhase] = useState<Phase>(() => {
+    if (typeof window !== "undefined" && new URLSearchParams(window.location.search).get("puzzle")) {
+      return "study";
+    }
+    return hasSeenWarmup() ? "study" : "warmup";
+  });
   const [currentQ, setCurrentQ] = useState(0);
   const [studiedOnce, setStudiedOnce] = useState(false); // skip study intro on re-entry
 
@@ -700,7 +707,7 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
               className="flex-1 flex flex-col min-h-0"
             >
               <WarmupGate
-                preview={puzzle.nextPreview}
+                puzzle={puzzle}
                 onContinue={() => {
                   markWarmupSeen();
                   setPhase("study");
