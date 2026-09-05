@@ -29,8 +29,8 @@ const ApurinaMotif = (color: string): ReactNode => {
       d={d}
       fill="none"
       stroke={color}
-      strokeOpacity={0.05 + (i % 3) * 0.016}
-      strokeWidth={1}
+      strokeOpacity={0.12 + (i % 3) * 0.045}
+      strokeWidth={1.5}
     />
   ));
 };
@@ -48,8 +48,8 @@ const SwahiliMotif = (color: string): ReactNode => {
         r={r}
         fill="none"
         stroke={color}
-        strokeOpacity={0.04 + (k % 3) * 0.012}
-        strokeWidth={1}
+        strokeOpacity={0.10 + (k % 3) * 0.035}
+        strokeWidth={1.5}
       />,
       <circle
         key={`r${r}`}
@@ -58,8 +58,8 @@ const SwahiliMotif = (color: string): ReactNode => {
         r={r}
         fill="none"
         stroke={color}
-        strokeOpacity={0.035 + (k % 3) * 0.01}
-        strokeWidth={1}
+        strokeOpacity={0.09 + (k % 3) * 0.03}
+        strokeWidth={1.5}
       />,
     );
   }
@@ -81,8 +81,8 @@ const TurkishMotif = (color: string): ReactNode => {
           d={`M ${x} ${y - s} L ${x + s} ${y} L ${x} ${y + s} L ${x - s} ${y} Z`}
           fill="none"
           stroke={color}
-          strokeOpacity={0.05}
-          strokeWidth={1}
+          strokeOpacity={0.13}
+          strokeWidth={1.5}
         />,
       );
       if ((row + col) % 3 === 0) {
@@ -92,7 +92,7 @@ const TurkishMotif = (color: string): ReactNode => {
             key={k++}
             d={`M ${x} ${y - h} L ${x + h} ${y} L ${x} ${y + h} L ${x - h} ${y} Z`}
             fill={color}
-            fillOpacity={0.028}
+            fillOpacity={0.07}
             stroke="none"
           />,
         );
@@ -125,8 +125,8 @@ const QuechuaMotif = (color: string): ReactNode => {
         d={d}
         fill="none"
         stroke={color}
-        strokeOpacity={0.05 + (i % 2) * 0.014}
-        strokeWidth={1}
+        strokeOpacity={0.12 + (i % 2) * 0.035}
+        strokeWidth={1.5}
         strokeLinejoin="round"
       />,
     );
@@ -150,8 +150,8 @@ const NahuatlMotif = (color: string): ReactNode => {
           d={meander(x, bandY, flip)}
           fill="none"
           stroke={color}
-          strokeOpacity={0.055}
-          strokeWidth={1.2}
+          strokeOpacity={0.13}
+          strokeWidth={1.8}
           strokeLinejoin="round"
           strokeLinecap="round"
         />,

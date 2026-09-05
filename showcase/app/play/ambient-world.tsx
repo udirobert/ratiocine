@@ -79,7 +79,7 @@ export const AmbientWorld = ({ puzzleId, theme }: AmbientWorldProps) => {
       <div
         className="absolute inset-0"
         style={{
-          background: `radial-gradient(ellipse 120% 90% at 50% 108%, ${theme.bgTint}59 0%, transparent 62%), radial-gradient(ellipse 90% 70% at 50% -20%, ${theme.bgTint}33 0%, transparent 55%)`,
+          background: `radial-gradient(ellipse 120% 90% at 50% 108%, ${theme.bgTint ?? theme.accent}b3 0%, transparent 62%), radial-gradient(ellipse 90% 70% at 50% -20%, ${theme.bgTint ?? theme.accent}66 0%, transparent 55%)`,
         }}
       />
 
@@ -101,11 +101,11 @@ export const AmbientWorld = ({ puzzleId, theme }: AmbientWorldProps) => {
         className="absolute inset-0"
       >
         <div
-          className="aurora-a absolute -left-1/4 top-1/4 h-[60vmax] w-[60vmax] rounded-full opacity-[0.05] blur-3xl"
+          className="aurora-a absolute -left-1/4 top-1/4 h-[60vmax] w-[60vmax] rounded-full opacity-[0.13] blur-3xl"
           style={{ background: `radial-gradient(circle, ${theme.accent} 0%, transparent 65%)` }}
         />
         <div
-          className="aurora-b absolute -right-1/4 -bottom-1/6 h-[55vmax] w-[55vmax] rounded-full opacity-[0.04] blur-3xl"
+          className="aurora-b absolute -right-1/4 -bottom-1/6 h-[55vmax] w-[55vmax] rounded-full opacity-[0.10] blur-3xl"
           style={{ background: `radial-gradient(circle, ${theme.sourceColor} 0%, transparent 65%)` }}
         />
       </motion.div>
@@ -133,20 +133,20 @@ export const AmbientWorld = ({ puzzleId, theme }: AmbientWorldProps) => {
 
       {/* CRT scan lines + grain — the machine is still with you */}
       <div
-        className="absolute inset-0 opacity-[0.025]"
+        className="absolute inset-0 opacity-[0.014]"
         style={{
           backgroundImage:
             "repeating-linear-gradient(0deg, transparent 0px, transparent 2px, rgba(255,255,255,1) 2px, rgba(255,255,255,1) 3px)",
         }}
       />
-      <div className="absolute inset-0 opacity-[0.015] grain-noise" />
+      <div className="absolute inset-0 opacity-[0.012] grain-noise" />
 
       {/* Vignette — hold focus at the center of the field desk */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 95% 85% at 50% 45%, transparent 52%, rgba(0,0,0,0.52) 100%)",
+            "radial-gradient(ellipse 95% 85% at 50% 45%, transparent 58%, rgba(0,0,0,0.34) 100%)",
         }}
       />
     </div>

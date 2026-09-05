@@ -546,10 +546,13 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
 
   return (
     <div
-      className="touch-game font-display relative flex flex-col h-svh w-full overflow-hidden bg-[#0a0c10] text-white"
+      className="touch-game font-display relative flex flex-col h-svh w-full overflow-hidden text-white"
       style={{
         "--puzzle-accent": puzzle.theme.accent,
         "--puzzle-source": puzzle.theme.sourceColor,
+        // Page base picks up the puzzle's place-tint — the whole world shifts
+        // tonally per language, not just the accents on top of black.
+        background: `color-mix(in srgb, ${puzzle.theme.bgTint ?? puzzle.theme.accent} 16%, #0a0c10)`,
       } as CSSProperties}
       onClick={sfx.enable}
       onKeyDown={sfx.enable}

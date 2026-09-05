@@ -45,7 +45,7 @@ export interface PuzzlePreview {
   script: string; // sample characters
   difficulty: number; // 1-5
   family: string;
-  theme: { accent: string; sourceColor: string };
+  theme: { accent: string; sourceColor: string; bgTint?: string };
   warmup?: {
     pairs: { source: string; target: string }[];
     query: string;
@@ -221,7 +221,11 @@ export const APURINA_PUZZLE: Puzzle = {
     script: "ninapenda · utacheza",
     difficulty: 2,
     family: "Niger-Congo · Bantu",
-    theme: { accent: "#f87171", sourceColor: "#fca5a5" },
+    theme: {
+      accent: "#f87171",
+      sourceColor: "#fca5a5",
+      bgTint: "#450a0a",
+    },
     warmup: {
       pairs: [
         { source: "ninapenda", target: "I like" },
@@ -355,7 +359,11 @@ export const SWAHILI_PUZZLE: Puzzle = {
     script: "evler · atlar · çiçekler",
     difficulty: 2,
     family: "Turkic",
-    theme: { accent: "#22d3ee", sourceColor: "#67e8f9" },
+    theme: {
+      accent: "#22d3ee",
+      sourceColor: "#67e8f9",
+      bgTint: "#083344",
+    },
     warmup: {
       pairs: [
         { source: "ev", target: "house" },
@@ -490,7 +498,11 @@ export const TURKISH_PUZZLE: Puzzle = {
     script: "rimani · mikhunki · purin",
     difficulty: 3,
     family: "Quechuan",
-    theme: { accent: "#c084fc", sourceColor: "#d8b4fe" },
+    theme: {
+      accent: "#c084fc",
+      sourceColor: "#d8b4fe",
+      bgTint: "#2d1b4e",
+    },
     warmup: {
       pairs: [
         { source: "rimani", target: "I speak" },
@@ -622,7 +634,11 @@ export const QUECHUA_PUZZLE: Puzzle = {
     script: "nicochi · ticuica · cuicah",
     difficulty: 3,
     family: "Uto-Aztecan",
-    theme: { accent: "#fbbf24", sourceColor: "#fcd34d" },
+    theme: {
+      accent: "#fbbf24",
+      sourceColor: "#fcd34d",
+      bgTint: "#3a1508",
+    },
     warmup: {
       pairs: [
         { source: "nicochi", target: "I sleep" },
@@ -636,7 +652,7 @@ export const QUECHUA_PUZZLE: Puzzle = {
   theme: {
     accent: "#c084fc",       // purple-400 — Andean woven textile
     sourceColor: "#d8b4fe",  // purple-300
-    bgTint: "#3b0764",       // purple-950
+    bgTint: "#2d1b4e",       // Andean dusk — woven-textile indigo (was purple-950, too near-black)
   },
 };
 
@@ -755,7 +771,11 @@ export const NAHUATL_PUZZLE: Puzzle = {
     script: "nhaapitaka · ãkutaka",
     difficulty: 4,
     family: "Arawakan",
-    theme: { accent: "#34d399", sourceColor: "#6ee7b7" },
+    theme: {
+      accent: "#34d399",
+      sourceColor: "#6ee7b7",
+      bgTint: "#064e3b",
+    },
     warmup: {
       pairs: [
         { source: "nhaapitaka", target: "I am going" },
@@ -769,7 +789,7 @@ export const NAHUATL_PUZZLE: Puzzle = {
   theme: {
     accent: "#fbbf24",       // amber-400 — Aztec gold
     sourceColor: "#fcd34d",  // amber-300
-    bgTint: "#451a03",       // amber-950
+    bgTint: "#3a1508",       // volcanic clay — warm earth, not pure black
   },
 };
 
