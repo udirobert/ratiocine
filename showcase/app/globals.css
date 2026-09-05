@@ -228,6 +228,34 @@
 .ps-text { color: var(--puzzle-source, #a7f3d0); }
 .ps-text-dim { color: color-mix(in srgb, var(--puzzle-source, #a7f3d0) 65%, transparent); }
 
+/* ─── Motif growth — lines draw themselves on like ink on the field desk ──────
+   Stroked elements carry pathLength={1} and a --draw-i stagger index. */
+@keyframes motif-draw {
+  to { stroke-dashoffset: 0; }
+}
+@keyframes motif-fill-in {
+  from { fill-opacity: 0; }
+}
+.motif-grow :is(path, circle) {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: motif-draw 3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation-delay: calc(var(--draw-i, 0) * 110ms);
+}
+.motif-grow .motif-fill-in {
+  animation: motif-fill-in 1.6s ease-out both;
+  animation-delay: calc(var(--draw-i, 0) * 110ms + 1.2s);
+}
+@media (prefers-reduced-motion: reduce) {
+  .motif-grow :is(path, circle),
+  .motif-grow .motif-fill-in {
+    animation: none;
+  }
+  .motif-grow :is(path, circle) {
+    stroke-dashoffset: 0;
+  }
+}
+
 /* ─── Ambient world — per-puzzle living backdrop ───────────────────────────── */
 
 @keyframes motif-drift {

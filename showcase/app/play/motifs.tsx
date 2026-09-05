@@ -31,6 +31,8 @@ const ApurinaMotif = (color: string): ReactNode => {
       stroke={color}
       strokeOpacity={0.12 + (i % 3) * 0.045}
       strokeWidth={1.5}
+      pathLength={1}
+      style={{ ["--draw-i" as string]: i }}
     />
   ));
 };
@@ -50,6 +52,8 @@ const SwahiliMotif = (color: string): ReactNode => {
         stroke={color}
         strokeOpacity={0.10 + (k % 3) * 0.035}
         strokeWidth={1.5}
+        pathLength={1}
+        style={{ ["--draw-i" as string]: k * 2 }}
       />,
       <circle
         key={`r${r}`}
@@ -60,6 +64,8 @@ const SwahiliMotif = (color: string): ReactNode => {
         stroke={color}
         strokeOpacity={0.09 + (k % 3) * 0.03}
         strokeWidth={1.5}
+        pathLength={1}
+        style={{ ["--draw-i" as string]: k * 2 + 1 }}
       />,
     );
   }
@@ -83,6 +89,8 @@ const TurkishMotif = (color: string): ReactNode => {
           stroke={color}
           strokeOpacity={0.13}
           strokeWidth={1.5}
+          pathLength={1}
+          style={{ ["--draw-i" as string]: k }}
         />,
       );
       if ((row + col) % 3 === 0) {
@@ -90,10 +98,12 @@ const TurkishMotif = (color: string): ReactNode => {
         els.push(
           <path
             key={k++}
+            className="motif-fill-in"
             d={`M ${x} ${y - h} L ${x + h} ${y} L ${x} ${y + h} L ${x - h} ${y} Z`}
             fill={color}
             fillOpacity={0.07}
             stroke="none"
+            style={{ ["--draw-i" as string]: k }}
           />,
         );
       }
@@ -128,6 +138,8 @@ const QuechuaMotif = (color: string): ReactNode => {
         strokeOpacity={0.12 + (i % 2) * 0.035}
         strokeWidth={1.5}
         strokeLinejoin="round"
+        pathLength={1}
+        style={{ ["--draw-i" as string]: i }}
       />,
     );
   }
@@ -154,6 +166,8 @@ const NahuatlMotif = (color: string): ReactNode => {
           strokeWidth={1.8}
           strokeLinejoin="round"
           strokeLinecap="round"
+          pathLength={1}
+          style={{ ["--draw-i" as string]: k }}
         />,
       );
     }
@@ -181,7 +195,7 @@ export const Motif = ({ puzzleId, color, className }: MotifProps) => {
     <svg
       viewBox="0 0 1440 900"
       preserveAspectRatio="xMidYMid slice"
-      className={className}
+      className={`motif-grow ${className ?? ""}`}
       aria-hidden="true"
       focusable="false"
     >

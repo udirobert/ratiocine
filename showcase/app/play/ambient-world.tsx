@@ -82,6 +82,17 @@ export const AmbientWorld = ({ puzzleId, theme }: AmbientWorldProps) => {
     [],
   );
 
+  // Staggered entrance choreography — the field desk assembles itself.
+  // Layers: material → motif → aurora → embers. Skipped under reduced motion.
+  const enter = (delay: number) =>
+    reduced
+      ? {}
+      : {
+          initial: { opacity: 0 },
+          animate: { opacity: 1 },
+          transition: { duration: 1.4, delay, ease: "easeOut" as const },
+        };
+
   return (
     <div
       aria-hidden="true"
@@ -89,21 +100,24 @@ export const AmbientWorld = ({ puzzleId, theme }: AmbientWorldProps) => {
     >
       {/* Living material field — hex glass cells refracting the place-atmosphere
           (shader; falls back to the painted gradient without WebGL) */}
-      {glOk === false ? (
-        <div
-          className="absolute inset-0"
-          style={{
-            background: `radial-gradient(ellipse 120% 90% at 50% 108%, ${theme.bgTint ?? theme.accent}b3 0%, transparent 62%), radial-gradient(ellipse 90% 70% at 50% -20%, ${theme.bgTint ?? theme.accent}66 0%, transparent 55%)`,
-          }}
-        />
-      ) : (
-        <MaterialField theme={theme} reduced={Boolean(reduced)} />
-      )}
+      <motion.div className="absolute inset-0" {...enter(0)}>
+        {glOk === false ? (
+          <div
+            className="absolute inset-0"
+            style={{
+              background: `radial-gradient(ellipse 120% 90% at 50% 108%, ${theme.bgTint ?? theme.accent}b3 0%, transparent 62%), radial-gradient(ellipse 90% 70% at 50% -20%, ${theme.bgTint ?? theme.accent}66 0%, transparent 55%)`,
+            }}
+          />
+        ) : (
+          <MaterialField theme={theme} reduced={Boolean(reduced)} />
+        )}
+      </motion.div>
 
-      {/* Cultural motif — slow drift + counter-parallax */}
+      {/* Cultural motif — slow drift + counter-parallax; lines draw on like ink */}
       <motion.div
         style={reduced ? undefined : { x: motifX, y: motifY }}
         className="absolute -inset-14"
+        {...enter(0.45)}
       >
         <Motif
           puzzleId={puzzleId}
@@ -116,6 +130,7 @@ export const AmbientWorld = ({ puzzleId, theme }: AmbientWorldProps) => {
       <motion.div
         style={reduced ? undefined : { x: lightX, y: lightY }}
         className="absolute inset-0"
+        {...enter(1.05)}
       >
         <div
           className="aurora-a absolute -left-1/4 top-1/4 h-[60vmax] w-[60vmax] rounded-full opacity-[0.13] blur-3xl"
