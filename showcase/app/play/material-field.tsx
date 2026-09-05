@@ -16,6 +16,7 @@ import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
 
 import type { PuzzleTheme } from "./puzzle-data";
+import { onFieldRipple, type FieldRippleKind } from "./fx-bus";
 
 const VERT = /* glsl */ `
 varying vec2 vUv;
@@ -36,6 +37,9 @@ uniform vec3 uSource;
 uniform vec2 uLight;     // pointer-driven light direction
 uniform float uLightMix; // 0 = static key light .. 1 = pointer light
 uniform float uBreath;   // 0 = static lattice .. 1 = breathing cells
+uniform vec2 uRippleC;   // ritual ripple centre (uv)
+uniform float uRippleT;  // ripple start in uTime space; < 0 = idle
+uniform float uRippleK;  // 0 = correct (accent), 1 = wrong (damped ash-red), 2 = bloom (warm full pulse)
 
 const float CELL = 0.052;
 
@@ -110,6 +114,27 @@ void main() {
   float edge = smoothstep(0.0018, 0.0, abs(d));
   col += uAccent * edge * 0.08;
 
+  // ritual ripple — the world answers the wax seal
+  float ripple = 0.0;
+  if (uRippleT >= 0.0) {
+    float dt = max(0.0, uTime - uRippleT);
+    if (dt < 4.0) {
+      vec2 cp = (uRippleC - 0.5) * vec2(uAspect, 1.0);
+      float R = length(p - cp);
+      float bloom = step(1.5, uRippleK);
+      float wrong = step(0.5, uRippleK) * (1.0 - bloom);
+      float speed = mix(0.5, 0.85, bloom);
+      float front = dt * speed;
+      float ring = exp(-pow((R - front) * 13.0, 2.0));
+      float decay = exp(-dt * mix(mix(1.4, 3.2, wrong), 1.1, bloom));
+      vec3 rc = mix(mix(uAccent, vec3(0.85, 0.35, 0.32), wrong), vec3(1.0, 0.95, 0.85), bloom);
+      ripple = ring * decay;
+      col += rc * ripple * mix(0.42, 0.30, bloom);
+      // bloom also lifts the whole field briefly — the language exhales
+      col *= 1.0 + bloom * decay * 0.12;
+    }
+  }
+
   // gentle vignette to hold the field desk
   float vig = smoothstep(1.3, 0.35, length(p));
   col *= mix(0.82, 1.0, vig);
@@ -136,6 +161,9 @@ function FieldPlane({ theme, reduced }: { theme: PuzzleTheme; reduced: boolean }
           uLight: { value: new THREE.Vector2(0.65, 0.85) },
           uLightMix: { value: 0 },
           uBreath: { value: reduced ? 0 : 1 },
+          uRippleC: { value: new THREE.Vector2(0.5, 0.45) },
+          uRippleT: { value: -1 },
+          uRippleK: { value: 0 },
         },
         depthWrite: false,
         depthTest: false,
@@ -170,10 +198,32 @@ function FieldPlane({ theme, reduced }: { theme: PuzzleTheme; reduced: boolean }
     if (reduced) invalidate();
   }, [reduced, mat, invalidate]);
 
+  // Ritual ripples — the world answers the wax seal / thud / solve bloom.
+  // Suppressed under reduced motion (the shader stays a still frame).
+  const timeRef = useRef(0);
+  useEffect(() => {
+    if (reduced) return;
+    const kindValue: Record<FieldRippleKind, number> = {
+      correct: 0,
+      wrong: 1,
+      bloom: 2,
+    };
+    return onFieldRipple((x, y, kind) => {
+      const u = mat.uniforms;
+      // DOM y is top-down; shader uv y is bottom-up
+      (u.uRippleC.value as THREE.Vector2).set(x, 1 - y);
+      u.uRippleT.value = timeRef.current;
+      u.uRippleK.value = kindValue[kind];
+    });
+  }, [mat, reduced]);
+
   useFrame((state, delta) => {
     const u = mat.uniforms;
     u.uAspect.value = size.width / Math.max(1, size.height);
-    if (!reduced) u.uTime.value = state.clock.elapsedTime;
+    if (!reduced) {
+      timeRef.current = state.clock.elapsedTime;
+      u.uTime.value = state.clock.elapsedTime;
+    }
     const k = 1 - Math.exp(-4 * Math.min(delta, 0.1));
     (u.uLight.value as THREE.Vector2).lerp(lightTarget.current, k);
     u.uLightMix.value += (lightMixTarget.current - u.uLightMix.value) * k;

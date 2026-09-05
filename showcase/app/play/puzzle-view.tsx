@@ -15,6 +15,7 @@ import { CoachMarks, hasSeenCoach, hasSeenWarmup, markWarmupSeen } from "./coach
 import { AmbientWorld } from "./ambient-world";
 import { GlyphDrift } from "./glyph-drift";
 import { OrnamentRule } from "./decor";
+import { emitFieldRipple } from "./fx-bus";
 import { useSfx, AMBIENT_FREQ } from "./use-sfx";
 import { useSolveCounter } from "./use-solve-counter";
 import { track } from "@/lib/analytics";
@@ -265,6 +266,8 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
       setTimeout(() => {
         setPhase("result");
         incrementSolveCount();
+        // The language exhales — full-field bloom on solve
+        emitFieldRipple(0.5, 0.5, "bloom");
         // Notify parent of solve result (for CRT solved state)
         const m = Math.floor(elapsed / 60);
         const s = elapsed % 60;
@@ -360,6 +363,8 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
       sealTimerRef.current = setTimeout(() => {
         sfx.stamp();
         setSealedQ(query.id);
+        // The world answers the seal — accent ripple from the answer row
+        emitFieldRipple(0.5, 0.62, "correct");
         if (navigator.vibrate) navigator.vibrate([10, 30, 20]);
       }, 180);
       setAnnounce(`Query ${currentQ + 1}: correct — ${query.answerJoined}`);
@@ -386,6 +391,8 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
       sfx.thud();
       setShaking(true);
       setTimeout(() => setShaking(false), 400);
+      // Damped, ashy ripple — the world flinches, it doesn't punish
+      emitFieldRipple(0.5, 0.62, "wrong");
 
       // Screen-reader summary of per-tile grades
       const counts = { correct: 0, misplaced: 0, wrong: 0 };
