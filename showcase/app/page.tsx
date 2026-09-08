@@ -260,7 +260,7 @@ const Home = () => {
             </button>
           </div>
 
-          <nav className="fixed bottom-5 inset-x-0 z-40 flex items-center justify-center gap-2 pb-[env(safe-area-inset-bottom)]">
+          <nav className="fixed top-5 left-1/2 z-40 flex -translate-x-1/2 items-center justify-center gap-2">
             {BEATS.map((b, i) => (
               <button
                 key={b.label}
