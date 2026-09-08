@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 
+import { ConsentBanner } from "@/components/ConsentBanner";
 import { PuzzleView } from "./puzzle-view";
 
 export const PlayClient = () => {
@@ -10,6 +11,7 @@ export const PlayClient = () => {
   return (
     <main className="h-svh w-screen overflow-hidden bg-[#0a0c10]">
       <PuzzleView onBack={() => router.push("/")} />
+      <ConsentBanner />
     </main>
   );
 };

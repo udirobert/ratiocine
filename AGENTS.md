@@ -4,7 +4,10 @@ Guidance for AI agents (and humans) working on this project.
 
 ## What this is
 
-An IOL-AI 2026 competitor. The goal: submit a `script.py` to a public Hugging Face repo that solves International Linguistics Olympiad problems. Deadline: **July 26, 2026, 23:59 UTC** (the competition is only a few days long).
+An IOL-AI competitor and linguistics research platform. Initially built for IOL-AI 2026 (deadline passed: July 26, 2026). Now focused on:
+1. **IOL-AI 2027+** — iterating on models, prompts, and training data for future competitions
+2. **Research contributions** — contributing to machine translation benchmarks (e.g., Last Translation Benchmark V2) and IOL-related NLP research
+3. **Community dataset building** — leveraging the daily game (showcase/app/play) to crowdsource hard linguistics problems and human solver strategies
 
 ## Current status (as of 2026-07-26)
 
@@ -62,9 +65,8 @@ An IOL-AI 2026 competitor. The goal: submit a `script.py` to a public Hugging Fa
 - Smoke tests: `neutron/probe_local.ts`, `neutron/smoke_ledger.ts`, `neutron/smoke_report.ts`, `neutron/upgrade_demo.ts`.
 - **Deployed**: mainnet canister `cvrwv-mqaaa-aaaai-ax4pa-cai` at https://cvrwv-mqaaa-aaaai-ax4pa-cai.icp0.io/, DNS `ratiocine.trustfall.xyz` → Vercel, CANISTER_URL wired in showcase.
 - **Q3 submission prep (2026-09-05, unsubmitted)**: 10 real language problems generated into `ration-app/src/problems.ts` (from showcase puzzle set, all with ground truth); one-click instant demo attestation (canned perfect pred, no GPU) + idle-phase error surfacing; `ration-app/test/agent_entrypoints.test.ts` pins the agent catalog integration (declaration/definitions/generated types/delegation — caught a stale `mogen` block missing all three `ration_*` types, since fixed and recompiled); `mogen` output refreshed into canonical `ration-app/backend/main.mo` + `neutron.json`. Entry pack: `ENTRY_Q3.md` + `entry-screenshots/` (4 shots). PocketIC gotcha: after wiping `.neutron/pocketic`, also delete `ration-local.ndeploy.session.json` or reinstall stalls on the dead canister ID.
-- **Remaining**: submit Q3 entry before the final-hour lock (see `ENTRY_Q3.md`).
+- **Neutron Q3 (week 3) deadline: MISSED** (2026-09-07). Did not submit.
 - **Attestation relay (wired 2026-08-30)**: `showcase/app/api/attest/route.ts` — Vercel serverless route derives the deployer identity from `RATION_DEPLOYER_SECRET` (mirrors icblast's sha256 seed derivation) and calls `app_ratiocine__attest_entry` via `@dfinity/agent` (pinned 3.4.3). Client `attestInBackground` fire-and-forget POSTs after the AI verdict settles; failures are silently swallowed. Verified end-to-end against mainnet (ledger seq 4–5 signed). Optional `RATION_ATTEST_TOKEN` bearer gate exists but is unset (client sends no token). Gotchas: `IDL.Func` annotations are `string[]` (`["update"]`); `InterfaceFactory` = `(idl: {IDL: {...}}) => ServiceClass` typed as `IDL.InterfaceFactory` from `@dfinity/candid` (not re-exported by `@dfinity/agent`); `opt` fields use `[]` not `null`.
-- **Remaining**: none on the relay; Q3 entry submission is the open item (see `ENTRY_Q3.md`).
 
 ### v0.4 method reference
 
@@ -245,6 +247,7 @@ ratiocine/
 ├── showcase/               # Next.js showcase site (Vercel)
 │   ├── app/
 │   │   ├── page.tsx        # Scene switcher (problem → machine → answer)
+│   │   ├── play/           # Daily linguistics deduction game (5 rotating puzzles)
 │   │   └── scenes/
 │   │       ├── problem/    # Real IOL problem + rain refraction shader (postprocessing)
 │   │       ├── machine/    # Mac GLB + CRT HTMLTexture screen + partner logos
@@ -264,3 +267,45 @@ ratiocine/
 ├── tsconfig.json
 └── arkor.config.ts
 ```
+
+## Research & Community Strategy
+
+### Game as Research Platform
+
+The daily game (`showcase/app/play`) is designed to collect human solver data:
+- **5 rotating puzzles** (Apurinã, Swahili, Turkish, Quechua, Nahuatl) with morpheme-tile composition
+- **Per-query grading** (EM + partial credit) mirrors the IOL-AI scoring function
+- **Human vs AI comparison** shows where the 14B model fails vs. where humans struggle
+- **Analytics funnel** (`lib/analytics.ts`) tracks solver behavior: study time, attempts, forfeit rate, tile reuse patterns
+
+### Research Deliverables (in progress)
+
+Three parallel tracks to contribute to the IOL/MT research community:
+
+1. **Solver trace collection** — anonymized human reasoning data (tile placements, study time, forfeit patterns)
+   - Schema: `docs/solver-trace-schema.md`
+   - Target: 500+ opt-in sessions/month, contribute to human-AI comparison research
+
+2. **Last Translation Benchmark V2 contributions** — IOL-style morphological reasoning problems
+   - Export format: `docs/ltb-export-schema.md`
+   - Target: 25 problems (5 puzzles × 5 queries), authorship credit on LTB V2 paper
+   - Why valuable: Few-shot, rare languages, exact morpheme segmentation (breaks SOTA models)
+
+3. **IOL-AI 2026 technical report** — baseline for future competitions
+   - Draft: `docs/iol-2026-technical-report.md`
+   - Covers: 8 submissions, hybrid CoT strategy, 14B vs fine-tuned 7B, task-specific prompts, error analysis
+   - Target: arXiv preprint + GitHub reference implementation (100+ stars, 5+ citations by IOL-AI 2027)
+
+### Roadmap
+
+See `docs/research-roadmap.md` for the 6-week implementation plan (Phases 1-3) and long-term strategy (Phase 4).
+
+**Progress tracking:** See `.github/RESEARCH_PROGRESS.md` for detailed task checklist (updated weekly).
+
+**Next immediate steps:**
+1. Implement consent banner + analytics events (Phase 1, Week 1) — see `docs/phase1-implementation.md`
+2. Run 14B model on all 25 queries, capture predictions (Phase 2, Week 3)
+3. Submit 1-2 example problems to LTB V2 (proof of concept)
+4. Publish technical report once IOL-AI 2026 private leaderboard results are released
+
+**Quick start guide:** `RESEARCH_NEXT_STEPS.md` has the executive summary + recommended order of work.
