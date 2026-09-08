@@ -217,6 +217,20 @@ The showcase is a daily linguistics deduction game: study evidence rows → comp
 - **Analytics**: `lib/analytics.ts` wraps `@vercel/analytics` — funnel events `play_start → study_complete → first_submit → puzzle_solved → shared → ai_verdict`.
 - The timer is intentionally **hidden during solve** and revealed on the result screen (deduction, not speedrun).
 
+### The home journey (`showcase/app/page.tsx`)
+
+`/` is a **vertical scroll-snap journey** that frames the daily game inside the wider project — the modalities that were previously orphaned are re-wired here:
+
+1. **The Machine** — CRT Mac hero (3D, desktop) + Play CTA. Flanking `PartnerLogos` (Arkor · Modal · Vultr · Cohere · Hugging Face) render industry context at first impression.
+2. **The Problem** — the real Apurinã IOL problem (`scenes/problem`).
+3. **The Competition** — the IOL-AI 2026 build: 160 problems / 15 languages / 30 min / √EM·chrF, score 0.1141, and "what we learned".
+4. **The Answer** — the decode reveal (`scenes/answer`).
+5. **Verified** — the Ration attestation beat: graded → SHA-256 → chain-key signed on ICP → immutable ledger. Links to the certified mainnet canister. This is the wider-industry / provenance framing.
+6. **Play** — the gravity beat: Play CTA + "More puzzles" chips (all 10, via `/play?puzzle=ID`) + "Built with" + GitHub.
+
+Chrome: top-left `01/06` progress label, top-right `Explore` (→ `/explore`) + `▶ Play`, bottom dot-nav (`scrollIntoView`). The journey's beats **unmount during the game** (so the 3D Mac canvas isn't burning GPU behind the puzzle) and **scroll position is restored on return**. The CRT-flash clip-path transition (`landing → pre-flash → expanding → game`) still fires from any Play affordance — the journey frames the daily game; it does not replace it. `scenes` / `components/scene-nav.tsx` stay as the focused narrate modality. Note: dead code in the tree before this change was `HeroOverlay`, `SceneNav`/`SceneLabel` (never imported) and an unlinked `/explore` — all now reachable from `/`.
+
+
 ### Showcase merge checklist
 
 Enforced after the 2026-09-05 incident (backdrop painted over game text on phones). Full rules in `docs/puzzle-ui-plan.md` → "Layering contract & mobile atmosphere rules".
