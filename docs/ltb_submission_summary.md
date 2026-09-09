@@ -50,3 +50,14 @@ All examples are credited to `https://ratiocine.trustfall.xyz/play?puzzle=<id>`.
 ## Request
 
 We would like the Ratiocine team to be listed on the LTB V2 author list. We are happy to address any reviewer feedback and can scale the pipeline to more puzzles and more models as needed.
+
+## Submitted proof-of-concept examples
+
+On 2026-09-09 the two strongest examples were submitted through the LTB contributor interface (https://last-translation-benchmark.vilda.net/contribute) and are now pending review:
+
+| # | Source → Target | Input | Human translation | LTB status |
+|---|-----------------|-------|-------------------|------------|
+| 6106 | English → Swahili | `we sang` | `tu li imba` | Pending |
+| 6107 | English → Apurinã | `he/she is going` | `a pita ka` | Pending |
+
+Both examples break the tested SOTA models on exact morpheme composition and have been verified through the site’s model leaderboard.
