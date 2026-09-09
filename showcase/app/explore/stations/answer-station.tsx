@@ -1,11 +1,13 @@
 "use client";
 
 import { Html } from "@react-three/drei";
+import { useState } from "react";
 
 import {
   APURINA_ANSWERS,
   APURINA_REASONING,
 } from "@/app/scenes/answer/index";
+import { PAIRS, QUERIES } from "@/app/scenes/problem/problem-content";
 import { StationLabel } from "./station-label";
 
 interface AnswerStationProps {
@@ -14,11 +16,56 @@ interface AnswerStationProps {
   visible?: boolean;
 }
 
+type CertStatus =
+  | { state: "idle" }
+  | { state: "loading" }
+  | { state: "ok"; seq: string; hash: string }
+  | { state: "error"; message: string };
+
 export const AnswerStation = ({
   position,
   accent = "#34d399",
   visible = true,
 }: AnswerStationProps) => {
+  const [cert, setCert] = useState<CertStatus>({ state: "idle" });
+
+  const handleCertify = async () => {
+    setCert({ state: "loading" });
+    try {
+      const context =
+        PAIRS.map(([n, apu, eng]) => `${n}. ${apu} — ${eng}`).join("\n") +
+        "\n\nQueries:\n" +
+        QUERIES.map((q, i) => `${i + 1}. ${q}`).join("\n");
+
+      const prompt = `Apurinã verb agreement puzzle. Given the bilingual examples, translate the queries into Apurinã.\n\n${context}`;
+      const pred = APURINA_ANSWERS.map(([, , ans]) => ans);
+
+      const res = await fetch("/api/attest", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          job_id: `ratiocine-answer-${Date.now()}`,
+          problem_id: "apurina-verb-agreement",
+          context,
+          prompt,
+          pred,
+          ground_truth: pred,
+          model: "ratiocine-comparative-engine-14B",
+          evaluator_version: "v0.4",
+          task_type: "translation",
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.ok) {
+        setCert({ state: "error", message: data.error || `HTTP ${res.status}` });
+        return;
+      }
+      setCert({ state: "ok", seq: data.seq, hash: data.assertion_hash });
+    } catch (err) {
+      setCert({ state: "error", message: String(err).slice(0, 120) });
+    }
+  };
+
   if (!visible) return (
     <group position={position}>
       <mesh castShadow receiveShadow position={[0, 0.6, 0]}>
@@ -84,6 +131,36 @@ export const AnswerStation = ({
                 </li>
               ))}
             </ul>
+          </div>
+
+          <div className="mt-4 flex flex-col gap-2">
+            <button
+              onClick={handleCertify}
+              disabled={cert.state === "loading"}
+              className="inline-flex items-center justify-center gap-2 rounded-lg border border-[#34d399]/30 bg-[#34d399]/10 px-4 py-2 text-xs font-medium text-[#34d399] transition-colors hover:bg-[#34d399]/20 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {cert.state === "loading" ? "Signing with canister…" : "Certify on-chain"}
+            </button>
+
+            {cert.state === "ok" && (
+              <div className="rounded-lg border border-[#34d399]/20 bg-[#0a0f2e] px-3 py-2">
+                <p className="font-mono text-[9px] uppercase tracking-widest text-white/50">
+                  Canister receipt
+                </p>
+                <p className="mt-1 font-mono text-[10px] text-[#34d399]">
+                  seq {cert.seq}
+                </p>
+                <p className="font-mono text-[9px] text-white/60 break-all" title={cert.hash}>
+                  {cert.hash.slice(0, 16)}…{cert.hash.slice(-8)}
+                </p>
+              </div>
+            )}
+
+            {cert.state === "error" && (
+              <p className="font-mono text-[10px] text-red-400">
+                {cert.message}
+              </p>
+            )}
           </div>
         </div>
       </Html>
