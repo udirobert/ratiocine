@@ -2,13 +2,14 @@
 
 import { CameraControls, Grid } from "@react-three/drei";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useReducedMotion } from "motion/react";
 import * as THREE from "three";
 
 import { ProblemStation } from "./stations/problem-station";
 import { MachineStation } from "./stations/machine-station";
 import { AnswerStation } from "./stations/answer-station";
+import { LanguageFamilyTree } from "./language-family-tree";
 
 export type SceneId = "problem" | "machine" | "answer";
 
@@ -26,21 +27,21 @@ const STATIONS: Record<
   }
 > = {
   problem: {
-    position: [-5.5, 0, -2],
-    cameraPosition: [-6, 2.2, 5.5],
-    target: [-5.5, 1.4, -2],
+    position: [-6.5, 0, -2],
+    cameraPosition: [-7, 2.2, 6],
+    target: [-6.5, 1.4, -2],
     accent: "#7dd3fc",
   },
   machine: {
     position: [0, 0, -2],
-    cameraPosition: [0, 2.2, 5.5],
-    target: [0, 1.5, -2],
+    cameraPosition: [0, 2.2, 6],
+    target: [0, 1.35, -2],
     accent: "#e5a84b",
   },
   answer: {
-    position: [5.5, 0, -2],
-    cameraPosition: [6, 2.2, 5.5],
-    target: [5.5, 1.4, -2],
+    position: [6.5, 0, -2],
+    cameraPosition: [7, 2.2, 6],
+    target: [6.5, 1.4, -2],
     accent: "#34d399",
   },
 };
@@ -66,34 +67,79 @@ function Floor() {
   );
 }
 
-function DustMotes({ accent }: { accent: string }) {
-  const [geometry] = useState(() => {
-    const geo = new THREE.BufferGeometry();
-    const positions = new Float32Array(160 * 3);
-    for (let i = 0; i < 160; i++) {
-      positions[i * 3] = (Math.random() - 0.5) * 22;
-      positions[i * 3 + 1] = Math.random() * 9;
-      positions[i * 3 + 2] = (Math.random() - 0.5) * 14 - 3;
-    }
-    geo.setAttribute("position", new THREE.BufferAttribute(positions, 3));
-    return geo;
-  });
-  const points = useRef<THREE.Points>(null);
+const GLYPHS = ["ã", "ka", "pita", "nhaa", "kuta", "apu", "kaa", "api"];
+
+function createGlyphTexture(glyph: string, color: string) {
+  const size = 256;
+  const canvas = document.createElement("canvas");
+  canvas.width = size;
+  canvas.height = size;
+  const ctx = canvas.getContext("2d");
+  if (!ctx) return new THREE.CanvasTexture(canvas);
+  ctx.clearRect(0, 0, size, size);
+  ctx.font = `bold ${size * 0.45}px ui-sans-serif, system-ui, -apple-system, sans-serif`;
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.fillStyle = color;
+  ctx.fillText(glyph, size / 2, size / 2 + size * 0.05);
+  const metrics = ctx.measureText(glyph);
+  const tex = new THREE.CanvasTexture(canvas);
+  tex.colorSpace = THREE.SRGBColorSpace;
+  // store aspect on the texture object for sprite scaling
+  (tex as any).aspect = metrics.width / (size * 0.45);
+  return tex;
+}
+
+function FloatingGlyphs({ accent }: { accent: string }) {
+  const [sprites] = useState(() =>
+    Array.from({ length: 18 }, (_, i) => {
+      const glyph = GLYPHS[i % GLYPHS.length];
+      return {
+        glyph,
+        position: [
+          (Math.random() - 0.5) * 20,
+          1.8 + Math.random() * 4.5,
+          (Math.random() - 0.5) * 12 - 3,
+        ] as [number, number, number],
+        phase: Math.random() * Math.PI * 2,
+        speed: 0.15 + Math.random() * 0.35,
+        scale: 0.18 + Math.random() * 0.28,
+      };
+    }),
+  );
+  const group = useRef<THREE.Group>(null);
+  const textures = useMemo(() => {
+    const map = new Map<string, THREE.CanvasTexture>();
+    GLYPHS.forEach((g) => map.set(g, createGlyphTexture(g, accent)));
+    return map;
+  }, [accent]);
+
   useFrame(({ clock }) => {
-    if (!points.current) return;
-    points.current.rotation.y = clock.elapsedTime * 0.015;
+    if (!group.current) return;
+    group.current.children.forEach((child, i) => {
+      const s = sprites[i];
+      child.position.y = s.position[1] + Math.sin(clock.elapsedTime * s.speed + s.phase) * 0.12;
+      child.rotation.z = Math.sin(clock.elapsedTime * s.speed * 0.5 + s.phase) * 0.06;
+      const scale = s.scale * (0.85 + Math.sin(clock.elapsedTime * 0.5 + s.phase) * 0.15);
+      const tex = textures.get(s.glyph);
+      const aspect = tex ? (tex as any).aspect || 1 : 1;
+      child.scale.set(scale * aspect, scale, scale);
+    });
   });
+
   return (
-    <points ref={points} geometry={geometry}>
-      <pointsMaterial
-        color={accent}
-        size={0.05}
-        sizeAttenuation
-        transparent
-        opacity={0.25}
-        depthWrite={false}
-      />
-    </points>
+    <group ref={group}>
+      {sprites.map((s, i) => (
+        <sprite key={i} position={s.position}>
+          <spriteMaterial
+            map={textures.get(s.glyph)}
+            transparent
+            opacity={0.18}
+            depthWrite={false}
+          />
+        </sprite>
+      ))}
+    </group>
   );
 }
 
@@ -140,7 +186,8 @@ function Scene({ active }: { active: SceneId }) {
       <MachineStation position={STATIONS.machine.position} />
       <AnswerStation position={STATIONS.answer.position} accent={STATIONS.answer.accent} visible={active === "answer"} />
 
-      <DustMotes accent={accent} />
+      <FloatingGlyphs accent={accent} />
+      <LanguageFamilyTree />
     </>
   );
 }

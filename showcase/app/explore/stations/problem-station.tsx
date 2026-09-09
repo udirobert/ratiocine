@@ -3,6 +3,7 @@
 import { Html } from "@react-three/drei";
 
 import { PAIRS, QUERIES } from "@/app/scenes/problem/problem-content";
+import { StationLabel } from "./station-label";
 
 interface ProblemStationProps {
   position: [number, number, number];
@@ -75,6 +76,17 @@ export const ProblemStation = ({
           </div>
         </div>
       </Html>
+
+      <StationLabel
+        title="Specimen record"
+        lines={[
+          { key: "ISO 639-3", value: "apu" },
+          { key: "Family", value: "Arawakan · Purus branch" },
+          { key: "Speakers", value: "~2,000 (2012)" },
+          { key: "Status", value: "Definitely endangered" },
+          { key: "Region", value: "Amazonas, Brazil" },
+        ]}
+      />
     </group>
   );
 };

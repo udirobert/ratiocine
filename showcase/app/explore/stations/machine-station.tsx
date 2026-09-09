@@ -3,6 +3,7 @@
 import { Suspense, useEffect, useRef, useState } from "react";
 
 import { MacModel } from "@/app/scenes/machine/mac-model";
+import { StationLabel } from "./station-label";
 
 const SCREEN_W = 562;
 const SCREEN_H = 408;
@@ -89,16 +90,29 @@ export const MachineStation = ({ position }: MachineStationProps) => {
 
   return (
     <group position={position}>
-      <mesh castShadow receiveShadow position={[0, 0.6, 0]}>
-        <cylinderGeometry args={[0.85, 0.95, 1.2, 32]} />
-        <meshStandardMaterial color="#10131a" roughness={0.3} metalness={0.7} />
+      <mesh castShadow receiveShadow position={[0, 0.45, 0]}>
+        <cylinderGeometry args={[1.2, 1.35, 0.9, 48]} />
+        <meshStandardMaterial color="#10131a" roughness={0.3} metalness={0.7} emissive="#1a1205" emissiveIntensity={0.2} />
       </mesh>
 
-      <group position={[0, 1.2, 0]} scale={[3, 3, 3]}>
+      <pointLight position={[0, 2.5, 1.5]} intensity={25} color="#e5a84b" distance={8} />
+      <pointLight position={[0, 0.6, 1.2]} intensity={12} color="#e5a84b" distance={4} />
+
+      <group position={[0, 0.95, 0]} scale={[2.8, 2.8, 2.8]}>
         <Suspense fallback={null}>
           <MacModel screenCanvas={screenCanvas} enableFloat={false} />
         </Suspense>
       </group>
+
+      <StationLabel
+        title="Brass-and-glass analyzer"
+        lines={[
+          { key: "Model", value: "14B comparative engine" },
+          { key: "Runtime", value: "Modal L4 worker" },
+          { key: "Verifier", value: "Neutron canister (EM + chrF)" },
+          { key: "Mode", value: "Greedy decode · 512 tokens" },
+        ]}
+      />
     </group>
   );
 };

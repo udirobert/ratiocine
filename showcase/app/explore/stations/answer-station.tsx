@@ -6,6 +6,7 @@ import {
   APURINA_ANSWERS,
   APURINA_REASONING,
 } from "@/app/scenes/answer/index";
+import { StationLabel } from "./station-label";
 
 interface AnswerStationProps {
   position: [number, number, number];
@@ -86,6 +87,16 @@ export const AnswerStation = ({
           </div>
         </div>
       </Html>
+
+      <StationLabel
+        title="Verified record"
+        lines={[
+          { key: "Source", value: "IOL-AI 2026 Apurinã verb agreement" },
+          { key: "Method", value: "14B comparative engine + in-canister proof" },
+          { key: "Score", value: "0.1141 public · EM=0.0563 chrF=0.2314" },
+          { key: "Receipt", value: "ratiocine ledger (mainnet canister)" },
+        ]}
+      />
     </group>
   );
 };
