@@ -3,7 +3,7 @@
 
 import { useState } from "react";
 
-const PAIRS = [
+export const PAIRS = [
   ["1", "nhaapitaka", "I am going"],
   ["2", "ãpitaka", "you (sg.) are going"],
   ["3", "apitaka", "he/she is going"],
@@ -14,13 +14,13 @@ const PAIRS = [
   ["8", "ãnykataka", "you (sg.) are speaking"],
   ["9", "anykataka", "he/she is speaking"],
   ["10", "kaapitaka", "we (incl.) are going"],
-];
+] as const;
 
-const QUERIES = [
+export const QUERIES = [
   "we (incl.) are eating",
   "you (sg.) are speaking",
   "we (incl.) are speaking",
-];
+] as const;
 
 const PREVIEW_COUNT = 3;
 

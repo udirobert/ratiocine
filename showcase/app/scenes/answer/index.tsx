@@ -3,6 +3,18 @@
 import { motion } from "motion/react";
 import { useState } from "react";
 
+export const APURINA_ANSWERS = [
+  ["1", "we (incl.) are eating", "kaakutaka"],
+  ["2", "you (sg.) are speaking", "ãnykataka"],
+  ["3", "we (incl.) are speaking", "kaanykataka"],
+] as const;
+
+export const APURINA_REASONING = [
+  { label: "row 10", morphemes: "kaa·pita·ka", meaning: "we incl. are going" },
+  { label: "rows 4–6", morphemes: "·kuta·", meaning: "eat root" },
+  { label: "every row", morphemes: "·ka", meaning: "progressive" },
+] as const;
+
 export const Answer = () => {
   const [revealed, setRevealed] = useState(false);
 
@@ -48,11 +60,7 @@ export const Answer = () => {
 
           {/* all three query answers */}
           <div className="mt-4 space-y-1.5 text-left">
-            {[
-              ["1", "we (incl.) are eating", "kaakutaka"],
-              ["2", "you (sg.) are speaking", "ãnykataka"],
-              ["3", "we (incl.) are speaking", "kaanykataka"],
-            ].map(([n, q, ans]) => (
+            {APURINA_ANSWERS.map(([n, q, ans]) => (
               <div
                 key={n}
                 className="flex items-center justify-between gap-3 rounded-lg border border-white/10 bg-white/5 px-3 py-2"
@@ -72,19 +80,12 @@ export const Answer = () => {
               Here's how
             </p>
             <ul className="mt-2 space-y-1.5 text-xs text-white/70">
-              <li>
-                <span className="text-white/50">row 10</span>{" "}
-                <span className="font-mono">kaa·pita·ka</span> = "we incl. are
-                going"
-              </li>
-              <li>
-                <span className="text-white/50">rows 4–6</span>{" "}
-                <span className="font-mono">·kuta·</span> = "eat" root
-              </li>
-              <li>
-                <span className="text-white/50">every row</span> ending{" "}
-                <span className="font-mono">·ka</span> = progressive
-              </li>
+              {APURINA_REASONING.map(({ label, morphemes, meaning }) => (
+                <li key={label}>
+                  <span className="text-white/50">{label}</span>{" "}
+                  <span className="font-mono">{morphemes}</span> = "{meaning}"
+                </li>
+              ))}
             </ul>
           </div>
 
