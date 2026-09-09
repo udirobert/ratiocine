@@ -1,0 +1,1437 @@
+[
+  {
+    "id": 10000,
+    "source_text": "I am eating",
+    "source_lang": "English",
+    "target_lang": "Apurinã",
+    "source_lang_iso": "eng",
+    "target_lang_iso": "apu",
+    "source_instructions": "Given the following bilingual evidence pairs and a tile bank of morphemes, deduce the correct morpheme sequence for the query.\n\nEvidence:\n- nhaapitaka → I am going\n- ãpitaka → you are going\n- apitaka → he/she is going\n- nhaakutaka → I am eating\n- ãkutaka → you are eating\n- akutaka → he/she is eating\n- nhaanykataka → I am speaking\n- ãnykataka → you are speaking\n- anykataka → he/she is speaking\n- kaapitaka → we (everyone) are going\n\nAvailable morphemes: nhaa, ã, a, kaa, pita, kuta, nykata, ka, taka\n\nHint:\nCompare rows 1-3: what stays the same, what changes? The changing part encodes person.\nkaa- marks 'we (inclusive)'. It appears only in row 10 — you may need to reveal it.\nStructure: [person prefix] + [verb root] + [aspect suffix]. Roots: pita=go, kuta=eat, nykata=speak. The suffix -ka marks progressive ('am doing'). Every answer can be assembled from this evidence.\n\nQuery: I am eating",
+    "source_media": null,
+    "translations": [
+      {
+        "model": "ratiocine_ground_truth",
+        "translation": "nhaa kuta ka",
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "google/gemma-4-31b-it",
+        "translation": "nhaa kuta ka",
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "google/gemini-3-8-flash",
+        "translation": "nhaa kuta ka",
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      }
+    ],
+    "verification_rules": [
+      "Translation must use exactly 3 morpheme(s): 'nhaa', 'kuta', 'ka'.",
+      "Morphemes must appear in this exact order: nhaa-kuta-ka.",
+      "Translation must only use morphemes from the provided tile bank: nhaa, ã, a, kaa, pita, kuta, nykata, ka, taka.",
+      "Translation must express the meaning: 'I am eating'.",
+      "Translation must be consistent with the evidence pattern: 'nhaapitaka' → 'I am going'.",
+      "Translation must be consistent with the evidence pattern: 'ãpitaka' → 'you are going'.",
+      "Translation must be consistent with the evidence pattern: 'apitaka' → 'he/she is going'.",
+      "Translation must be consistent with the evidence pattern: 'nhaakutaka' → 'I am eating'.",
+      "Translation must be consistent with the evidence pattern: 'ãkutaka' → 'you are eating'.",
+      "Translation must be consistent with the evidence pattern: 'akutaka' → 'he/she is eating'.",
+      "Translation must be consistent with the evidence pattern: 'nhaanykataka' → 'I am speaking'.",
+      "Translation must be consistent with the evidence pattern: 'ãnykataka' → 'you are speaking'.",
+      "Translation must be consistent with the evidence pattern: 'anykataka' → 'he/she is speaking'.",
+      "Translation must be consistent with the evidence pattern: 'kaapitaka' → 'we (everyone) are going'."
+    ],
+    "linguistics": [
+      "Morphological",
+      "Verbal Inflection",
+      "Person/Number Agreement",
+      "Agglutinative"
+    ],
+    "attribution": "https://ratiocine.trustfall.xyz/play?puzzle=apurina-verb-agreement",
+    "tags": [
+      "LTBv2",
+      "IOL",
+      "morphology",
+      "rare-language",
+      "few-shot"
+    ]
+  },
+  {
+    "id": 10001,
+    "source_text": "we (everyone) are eating",
+    "source_lang": "English",
+    "target_lang": "Apurinã",
+    "source_lang_iso": "eng",
+    "target_lang_iso": "apu",
+    "source_instructions": "Given the following bilingual evidence pairs and a tile bank of morphemes, deduce the correct morpheme sequence for the query.\n\nEvidence:\n- nhaapitaka → I am going\n- ãpitaka → you are going\n- apitaka → he/she is going\n- nhaakutaka → I am eating\n- ãkutaka → you are eating\n- akutaka → he/she is eating\n- nhaanykataka → I am speaking\n- ãnykataka → you are speaking\n- anykataka → he/she is speaking\n- kaapitaka → we (everyone) are going\n\nAvailable morphemes: nhaa, ã, a, kaa, pita, kuta, nykata, ka, taka\n\nHint:\nCompare rows 1-3: what stays the same, what changes? The changing part encodes person.\nkaa- marks 'we (inclusive)'. It appears only in row 10 — you may need to reveal it.\nStructure: [person prefix] + [verb root] + [aspect suffix]. Roots: pita=go, kuta=eat, nykata=speak. The suffix -ka marks progressive ('am doing'). Every answer can be assembled from this evidence.\n\nQuery: we (everyone) are eating",
+    "source_media": null,
+    "translations": [
+      {
+        "model": "ratiocine_ground_truth",
+        "translation": "kaa kuta ka",
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "google/gemma-4-31b-it",
+        "translation": "kaa kuta ka",
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "google/gemini-3-8-flash",
+        "translation": "Step 1: Identify the components for \"we (everyone) are eating\"",
+        "verified": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ]
+      }
+    ],
+    "verification_rules": [
+      "Translation must use exactly 3 morpheme(s): 'kaa', 'kuta', 'ka'.",
+      "Morphemes must appear in this exact order: kaa-kuta-ka.",
+      "Translation must only use morphemes from the provided tile bank: nhaa, ã, a, kaa, pita, kuta, nykata, ka, taka.",
+      "Translation must express the meaning: 'we (everyone) are eating'.",
+      "Translation must be consistent with the evidence pattern: 'nhaapitaka' → 'I am going'.",
+      "Translation must be consistent with the evidence pattern: 'ãpitaka' → 'you are going'.",
+      "Translation must be consistent with the evidence pattern: 'apitaka' → 'he/she is going'.",
+      "Translation must be consistent with the evidence pattern: 'nhaakutaka' → 'I am eating'.",
+      "Translation must be consistent with the evidence pattern: 'ãkutaka' → 'you are eating'.",
+      "Translation must be consistent with the evidence pattern: 'akutaka' → 'he/she is eating'.",
+      "Translation must be consistent with the evidence pattern: 'nhaanykataka' → 'I am speaking'.",
+      "Translation must be consistent with the evidence pattern: 'ãnykataka' → 'you are speaking'.",
+      "Translation must be consistent with the evidence pattern: 'anykataka' → 'he/she is speaking'.",
+      "Translation must be consistent with the evidence pattern: 'kaapitaka' → 'we (everyone) are going'."
+    ],
+    "linguistics": [
+      "Morphological",
+      "Verbal Inflection",
+      "Person/Number Agreement",
+      "Agglutinative"
+    ],
+    "attribution": "https://ratiocine.trustfall.xyz/play?puzzle=apurina-verb-agreement",
+    "tags": [
+      "LTBv2",
+      "IOL",
+      "morphology",
+      "rare-language",
+      "few-shot"
+    ]
+  },
+  {
+    "id": 10002,
+    "source_text": "you are speaking",
+    "source_lang": "English",
+    "target_lang": "Apurinã",
+    "source_lang_iso": "eng",
+    "target_lang_iso": "apu",
+    "source_instructions": "Given the following bilingual evidence pairs and a tile bank of morphemes, deduce the correct morpheme sequence for the query.\n\nEvidence:\n- nhaapitaka → I am going\n- ãpitaka → you are going\n- apitaka → he/she is going\n- nhaakutaka → I am eating\n- ãkutaka → you are eating\n- akutaka → he/she is eating\n- nhaanykataka → I am speaking\n- ãnykataka → you are speaking\n- anykataka → he/she is speaking\n- kaapitaka → we (everyone) are going\n\nAvailable morphemes: nhaa, ã, a, kaa, pita, kuta, nykata, ka, taka\n\nHint:\nCompare rows 1-3: what stays the same, what changes? The changing part encodes person.\nkaa- marks 'we (inclusive)'. It appears only in row 10 — you may need to reveal it.\nStructure: [person prefix] + [verb root] + [aspect suffix]. Roots: pita=go, kuta=eat, nykata=speak. The suffix -ka marks progressive ('am doing'). Every answer can be assembled from this evidence.\n\nQuery: you are speaking",
+    "source_media": null,
+    "translations": [
+      {
+        "model": "ratiocine_ground_truth",
+        "translation": "ã nykata ka",
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "google/gemma-4-31b-it",
+        "translation": "ã nykata ka",
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "google/gemini-3-8-flash",
+        "translation": "Step 1: Identify the components for \"you are speaking\"",
+        "verified": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ]
+      }
+    ],
+    "verification_rules": [
+      "Translation must use exactly 3 morpheme(s): 'ã', 'nykata', 'ka'.",
+      "Morphemes must appear in this exact order: ã-nykata-ka.",
+      "Translation must only use morphemes from the provided tile bank: nhaa, ã, a, kaa, pita, kuta, nykata, ka, taka.",
+      "Translation must express the meaning: 'you are speaking'.",
+      "Translation must be consistent with the evidence pattern: 'nhaapitaka' → 'I am going'.",
+      "Translation must be consistent with the evidence pattern: 'ãpitaka' → 'you are going'.",
+      "Translation must be consistent with the evidence pattern: 'apitaka' → 'he/she is going'.",
+      "Translation must be consistent with the evidence pattern: 'nhaakutaka' → 'I am eating'.",
+      "Translation must be consistent with the evidence pattern: 'ãkutaka' → 'you are eating'.",
+      "Translation must be consistent with the evidence pattern: 'akutaka' → 'he/she is eating'.",
+      "Translation must be consistent with the evidence pattern: 'nhaanykataka' → 'I am speaking'.",
+      "Translation must be consistent with the evidence pattern: 'ãnykataka' → 'you are speaking'.",
+      "Translation must be consistent with the evidence pattern: 'anykataka' → 'he/she is speaking'.",
+      "Translation must be consistent with the evidence pattern: 'kaapitaka' → 'we (everyone) are going'."
+    ],
+    "linguistics": [
+      "Morphological",
+      "Verbal Inflection",
+      "Person/Number Agreement",
+      "Agglutinative"
+    ],
+    "attribution": "https://ratiocine.trustfall.xyz/play?puzzle=apurina-verb-agreement",
+    "tags": [
+      "LTBv2",
+      "IOL",
+      "morphology",
+      "rare-language",
+      "few-shot"
+    ]
+  },
+  {
+    "id": 10003,
+    "source_text": "we (everyone) are speaking",
+    "source_lang": "English",
+    "target_lang": "Apurinã",
+    "source_lang_iso": "eng",
+    "target_lang_iso": "apu",
+    "source_instructions": "Given the following bilingual evidence pairs and a tile bank of morphemes, deduce the correct morpheme sequence for the query.\n\nEvidence:\n- nhaapitaka → I am going\n- ãpitaka → you are going\n- apitaka → he/she is going\n- nhaakutaka → I am eating\n- ãkutaka → you are eating\n- akutaka → he/she is eating\n- nhaanykataka → I am speaking\n- ãnykataka → you are speaking\n- anykataka → he/she is speaking\n- kaapitaka → we (everyone) are going\n\nAvailable morphemes: nhaa, ã, a, kaa, pita, kuta, nykata, ka, taka\n\nHint:\nCompare rows 1-3: what stays the same, what changes? The changing part encodes person.\nkaa- marks 'we (inclusive)'. It appears only in row 10 — you may need to reveal it.\nStructure: [person prefix] + [verb root] + [aspect suffix]. Roots: pita=go, kuta=eat, nykata=speak. The suffix -ka marks progressive ('am doing'). Every answer can be assembled from this evidence.\n\nQuery: we (everyone) are speaking",
+    "source_media": null,
+    "translations": [
+      {
+        "model": "ratiocine_ground_truth",
+        "translation": "kaa nykata ka",
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "google/gemma-4-31b-it",
+        "translation": "Step 1: Identify the source word for \"we (everyone) are speaking\"",
+        "verified": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "model": "google/gemini-3-8-flash",
+        "translation": "kaa nykata ka",
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      }
+    ],
+    "verification_rules": [
+      "Translation must use exactly 3 morpheme(s): 'kaa', 'nykata', 'ka'.",
+      "Morphemes must appear in this exact order: kaa-nykata-ka.",
+      "Translation must only use morphemes from the provided tile bank: nhaa, ã, a, kaa, pita, kuta, nykata, ka, taka.",
+      "Translation must express the meaning: 'we (everyone) are speaking'.",
+      "Translation must be consistent with the evidence pattern: 'nhaapitaka' → 'I am going'.",
+      "Translation must be consistent with the evidence pattern: 'ãpitaka' → 'you are going'.",
+      "Translation must be consistent with the evidence pattern: 'apitaka' → 'he/she is going'.",
+      "Translation must be consistent with the evidence pattern: 'nhaakutaka' → 'I am eating'.",
+      "Translation must be consistent with the evidence pattern: 'ãkutaka' → 'you are eating'.",
+      "Translation must be consistent with the evidence pattern: 'akutaka' → 'he/she is eating'.",
+      "Translation must be consistent with the evidence pattern: 'nhaanykataka' → 'I am speaking'.",
+      "Translation must be consistent with the evidence pattern: 'ãnykataka' → 'you are speaking'.",
+      "Translation must be consistent with the evidence pattern: 'anykataka' → 'he/she is speaking'.",
+      "Translation must be consistent with the evidence pattern: 'kaapitaka' → 'we (everyone) are going'."
+    ],
+    "linguistics": [
+      "Morphological",
+      "Verbal Inflection",
+      "Person/Number Agreement",
+      "Agglutinative"
+    ],
+    "attribution": "https://ratiocine.trustfall.xyz/play?puzzle=apurina-verb-agreement",
+    "tags": [
+      "LTBv2",
+      "IOL",
+      "morphology",
+      "rare-language",
+      "few-shot"
+    ]
+  },
+  {
+    "id": 10004,
+    "source_text": "he/she is going",
+    "source_lang": "English",
+    "target_lang": "Apurinã",
+    "source_lang_iso": "eng",
+    "target_lang_iso": "apu",
+    "source_instructions": "Given the following bilingual evidence pairs and a tile bank of morphemes, deduce the correct morpheme sequence for the query.\n\nEvidence:\n- nhaapitaka → I am going\n- ãpitaka → you are going\n- apitaka → he/she is going\n- nhaakutaka → I am eating\n- ãkutaka → you are eating\n- akutaka → he/she is eating\n- nhaanykataka → I am speaking\n- ãnykataka → you are speaking\n- anykataka → he/she is speaking\n- kaapitaka → we (everyone) are going\n\nAvailable morphemes: nhaa, ã, a, kaa, pita, kuta, nykata, ka, taka\n\nHint:\nCompare rows 1-3: what stays the same, what changes? The changing part encodes person.\nkaa- marks 'we (inclusive)'. It appears only in row 10 — you may need to reveal it.\nStructure: [person prefix] + [verb root] + [aspect suffix]. Roots: pita=go, kuta=eat, nykata=speak. The suffix -ka marks progressive ('am doing'). Every answer can be assembled from this evidence.\n\nQuery: he/she is going",
+    "source_media": null,
+    "translations": [
+      {
+        "model": "ratiocine_ground_truth",
+        "translation": "a pita ka",
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "google/gemma-4-31b-it",
+        "translation": "a pita ka",
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "google/gemini-3-8-flash",
+        "translation": "Step 1: Identify the source English sentence: \"he/she is going\"",
+        "verified": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ]
+      }
+    ],
+    "verification_rules": [
+      "Translation must use exactly 3 morpheme(s): 'a', 'pita', 'ka'.",
+      "Morphemes must appear in this exact order: a-pita-ka.",
+      "Translation must only use morphemes from the provided tile bank: nhaa, ã, a, kaa, pita, kuta, nykata, ka, taka.",
+      "Translation must express the meaning: 'he/she is going'.",
+      "Translation must be consistent with the evidence pattern: 'nhaapitaka' → 'I am going'.",
+      "Translation must be consistent with the evidence pattern: 'ãpitaka' → 'you are going'.",
+      "Translation must be consistent with the evidence pattern: 'apitaka' → 'he/she is going'.",
+      "Translation must be consistent with the evidence pattern: 'nhaakutaka' → 'I am eating'.",
+      "Translation must be consistent with the evidence pattern: 'ãkutaka' → 'you are eating'.",
+      "Translation must be consistent with the evidence pattern: 'akutaka' → 'he/she is eating'.",
+      "Translation must be consistent with the evidence pattern: 'nhaanykataka' → 'I am speaking'.",
+      "Translation must be consistent with the evidence pattern: 'ãnykataka' → 'you are speaking'.",
+      "Translation must be consistent with the evidence pattern: 'anykataka' → 'he/she is speaking'.",
+      "Translation must be consistent with the evidence pattern: 'kaapitaka' → 'we (everyone) are going'."
+    ],
+    "linguistics": [
+      "Morphological",
+      "Verbal Inflection",
+      "Person/Number Agreement",
+      "Agglutinative"
+    ],
+    "attribution": "https://ratiocine.trustfall.xyz/play?puzzle=apurina-verb-agreement",
+    "tags": [
+      "LTBv2",
+      "IOL",
+      "morphology",
+      "rare-language",
+      "few-shot"
+    ]
+  },
+  {
+    "id": 10100,
+    "source_text": "I will like",
+    "source_lang": "English",
+    "target_lang": "Swahili",
+    "source_lang_iso": "eng",
+    "target_lang_iso": "swa",
+    "source_instructions": "Given the following bilingual evidence pairs and a tile bank of morphemes, deduce the correct morpheme sequence for the query.\n\nEvidence:\n- ninapenda → I like\n- unasoma → you read\n- anacheza → she plays\n- nilipenda → I liked\n- tulisoma → we read (past)\n- utacheza → you will play\n- wataimba → they will sing\n- anaimba → he sings\n\nAvailable morphemes: ni, u, a, tu, wa, m, na, li, ta, penda, soma, cheza, imba\n\nHint:\nCompare rows 1 and 4 — same person, different time. The middle piece carries the tense.\n'ta' puts the action in the future.\nStructure: [who] + [when] + [verb]. ni=I, u=you, a=he/she, tu=we, wa=they · na=present, li=past, ta=future.\n\nQuery: I will like",
+    "source_media": null,
+    "translations": [
+      {
+        "model": "ratiocine_ground_truth",
+        "translation": "ni ta penda",
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "google/gemma-4-31b-it",
+        "translation": "ni ta penda",
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "google/gemini-3-8-flash",
+        "translation": "ni ta penda",
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      }
+    ],
+    "verification_rules": [
+      "Translation must use exactly 3 morpheme(s): 'ni', 'ta', 'penda'.",
+      "Morphemes must appear in this exact order: ni-ta-penda.",
+      "Translation must only use morphemes from the provided tile bank: ni, u, a, tu, wa, m, na, li, ta, penda, soma, cheza, imba.",
+      "Translation must express the meaning: 'I will like'.",
+      "Translation must be consistent with the evidence pattern: 'ninapenda' → 'I like'.",
+      "Translation must be consistent with the evidence pattern: 'nilipenda' → 'I liked'.",
+      "Translation must be consistent with the evidence pattern: 'utacheza' → 'you will play'.",
+      "Translation must be consistent with the evidence pattern: 'wataimba' → 'they will sing'."
+    ],
+    "linguistics": [
+      "Morphological",
+      "Verbal Inflection",
+      "Person/Number Agreement",
+      "Tense/Aspect"
+    ],
+    "attribution": "https://ratiocine.trustfall.xyz/play?puzzle=swahili-person-tense",
+    "tags": [
+      "LTBv2",
+      "IOL",
+      "morphology",
+      "rare-language",
+      "few-shot"
+    ]
+  },
+  {
+    "id": 10101,
+    "source_text": "they read",
+    "source_lang": "English",
+    "target_lang": "Swahili",
+    "source_lang_iso": "eng",
+    "target_lang_iso": "swa",
+    "source_instructions": "Given the following bilingual evidence pairs and a tile bank of morphemes, deduce the correct morpheme sequence for the query.\n\nEvidence:\n- ninapenda → I like\n- unasoma → you read\n- anacheza → she plays\n- nilipenda → I liked\n- tulisoma → we read (past)\n- utacheza → you will play\n- wataimba → they will sing\n- anaimba → he sings\n\nAvailable morphemes: ni, u, a, tu, wa, m, na, li, ta, penda, soma, cheza, imba\n\nHint:\nCompare rows 1 and 4 — same person, different time. The middle piece carries the tense.\n'ta' puts the action in the future.\nStructure: [who] + [when] + [verb]. ni=I, u=you, a=he/she, tu=we, wa=they · na=present, li=past, ta=future.\n\nQuery: they read",
+    "source_media": null,
+    "translations": [
+      {
+        "model": "ratiocine_ground_truth",
+        "translation": "wa na soma",
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "google/gemma-4-31b-it",
+        "translation": "wa na soma",
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "google/gemini-3-8-flash",
+        "translation": "wa na soma",
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      }
+    ],
+    "verification_rules": [
+      "Translation must use exactly 3 morpheme(s): 'wa', 'na', 'soma'.",
+      "Morphemes must appear in this exact order: wa-na-soma.",
+      "Translation must only use morphemes from the provided tile bank: ni, u, a, tu, wa, m, na, li, ta, penda, soma, cheza, imba.",
+      "Translation must express the meaning: 'they read'.",
+      "Translation must be consistent with the evidence pattern: 'ninapenda' → 'I like'.",
+      "Translation must be consistent with the evidence pattern: 'unasoma' → 'you read'.",
+      "Translation must be consistent with the evidence pattern: 'anacheza' → 'she plays'.",
+      "Translation must be consistent with the evidence pattern: 'tulisoma' → 'we read (past)'.",
+      "Translation must be consistent with the evidence pattern: 'wataimba' → 'they will sing'.",
+      "Translation must be consistent with the evidence pattern: 'anaimba' → 'he sings'."
+    ],
+    "linguistics": [
+      "Morphological",
+      "Verbal Inflection",
+      "Person/Number Agreement",
+      "Tense/Aspect"
+    ],
+    "attribution": "https://ratiocine.trustfall.xyz/play?puzzle=swahili-person-tense",
+    "tags": [
+      "LTBv2",
+      "IOL",
+      "morphology",
+      "rare-language",
+      "few-shot"
+    ]
+  },
+  {
+    "id": 10102,
+    "source_text": "we sang",
+    "source_lang": "English",
+    "target_lang": "Swahili",
+    "source_lang_iso": "eng",
+    "target_lang_iso": "swa",
+    "source_instructions": "Given the following bilingual evidence pairs and a tile bank of morphemes, deduce the correct morpheme sequence for the query.\n\nEvidence:\n- ninapenda → I like\n- unasoma → you read\n- anacheza → she plays\n- nilipenda → I liked\n- tulisoma → we read (past)\n- utacheza → you will play\n- wataimba → they will sing\n- anaimba → he sings\n\nAvailable morphemes: ni, u, a, tu, wa, m, na, li, ta, penda, soma, cheza, imba\n\nHint:\nCompare rows 1 and 4 — same person, different time. The middle piece carries the tense.\n'ta' puts the action in the future.\nStructure: [who] + [when] + [verb]. ni=I, u=you, a=he/she, tu=we, wa=they · na=present, li=past, ta=future.\n\nQuery: we sang",
+    "source_media": null,
+    "translations": [
+      {
+        "model": "ratiocine_ground_truth",
+        "translation": "tu li imba",
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "google/gemma-4-31b-it",
+        "translation": "tulimba",
+        "verified": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "model": "google/gemini-3-8-flash",
+        "translation": "tu li imba",
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      }
+    ],
+    "verification_rules": [
+      "Translation must use exactly 3 morpheme(s): 'tu', 'li', 'imba'.",
+      "Morphemes must appear in this exact order: tu-li-imba.",
+      "Translation must only use morphemes from the provided tile bank: ni, u, a, tu, wa, m, na, li, ta, penda, soma, cheza, imba.",
+      "Translation must express the meaning: 'we sang'.",
+      "Translation must be consistent with the evidence pattern: 'nilipenda' → 'I liked'.",
+      "Translation must be consistent with the evidence pattern: 'tulisoma' → 'we read (past)'.",
+      "Translation must be consistent with the evidence pattern: 'wataimba' → 'they will sing'.",
+      "Translation must be consistent with the evidence pattern: 'anaimba' → 'he sings'."
+    ],
+    "linguistics": [
+      "Morphological",
+      "Verbal Inflection",
+      "Person/Number Agreement",
+      "Tense/Aspect"
+    ],
+    "attribution": "https://ratiocine.trustfall.xyz/play?puzzle=swahili-person-tense",
+    "tags": [
+      "LTBv2",
+      "IOL",
+      "morphology",
+      "rare-language",
+      "few-shot"
+    ]
+  },
+  {
+    "id": 10200,
+    "source_text": "eyes",
+    "source_lang": "English",
+    "target_lang": "Turkish",
+    "source_lang_iso": "eng",
+    "target_lang_iso": "tur",
+    "source_instructions": "Given the following bilingual evidence pairs and a tile bank of morphemes, deduce the correct morpheme sequence for the query.\n\nEvidence:\n- ev → house\n- at → horse\n- kız → girl\n- göz → eye\n- gün → day\n- el → hand\n- evler → houses\n- atlar → horses\n- eller → hands\n- kitaplar → books\n\nAvailable morphemes: ev, at, kız, göz, gün, el, kitap, taş, lar, ler\n\nHint:\nSay rows 7 and 8 out loud. Look only at the last vowel of each root.\nThe plural ending has two costumes: -lar or -ler.\nVowel harmony: the ending copies the root's last vowel family. Back vowels (a, ı, o, u) → -lar. Front vowels (e, i, ö, ü) → -ler.\n\nQuery: eyes",
+    "source_media": null,
+    "translations": [
+      {
+        "model": "ratiocine_ground_truth",
+        "translation": "göz ler",
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "google/gemma-4-31b-it",
+        "translation": "göz ler",
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "google/gemini-3-8-flash",
+        "translation": "göz ler",
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      }
+    ],
+    "verification_rules": [
+      "Translation must use exactly 2 morpheme(s): 'göz', 'ler'.",
+      "Morphemes must appear in this exact order: göz-ler.",
+      "Translation must only use morphemes from the provided tile bank: ev, at, kız, göz, gün, el, kitap, taş, lar, ler.",
+      "Translation must express the meaning: 'eyes'.",
+      "Translation must be consistent with the evidence pattern: 'göz' → 'eye'.",
+      "Translation must be consistent with the evidence pattern: 'evler' → 'houses'.",
+      "Translation must be consistent with the evidence pattern: 'eller' → 'hands'."
+    ],
+    "linguistics": [
+      "Morphological",
+      "Phonological",
+      "Agglutinative",
+      "Vowel Harmony"
+    ],
+    "attribution": "https://ratiocine.trustfall.xyz/play?puzzle=turkish-vowel-harmony",
+    "tags": [
+      "LTBv2",
+      "IOL",
+      "morphology",
+      "rare-language",
+      "few-shot"
+    ]
+  },
+  {
+    "id": 10201,
+    "source_text": "girls",
+    "source_lang": "English",
+    "target_lang": "Turkish",
+    "source_lang_iso": "eng",
+    "target_lang_iso": "tur",
+    "source_instructions": "Given the following bilingual evidence pairs and a tile bank of morphemes, deduce the correct morpheme sequence for the query.\n\nEvidence:\n- ev → house\n- at → horse\n- kız → girl\n- göz → eye\n- gün → day\n- el → hand\n- evler → houses\n- atlar → horses\n- eller → hands\n- kitaplar → books\n\nAvailable morphemes: ev, at, kız, göz, gün, el, kitap, taş, lar, ler\n\nHint:\nSay rows 7 and 8 out loud. Look only at the last vowel of each root.\nThe plural ending has two costumes: -lar or -ler.\nVowel harmony: the ending copies the root's last vowel family. Back vowels (a, ı, o, u) → -lar. Front vowels (e, i, ö, ü) → -ler.\n\nQuery: girls",
+    "source_media": null,
+    "translations": [
+      {
+        "model": "ratiocine_ground_truth",
+        "translation": "kız lar",
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "google/gemma-4-31b-it",
+        "translation": "kız lar",
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "google/gemini-3-8-flash",
+        "translation": "kız lar",
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      }
+    ],
+    "verification_rules": [
+      "Translation must use exactly 2 morpheme(s): 'kız', 'lar'.",
+      "Morphemes must appear in this exact order: kız-lar.",
+      "Translation must only use morphemes from the provided tile bank: ev, at, kız, göz, gün, el, kitap, taş, lar, ler.",
+      "Translation must express the meaning: 'girls'.",
+      "Translation must be consistent with the evidence pattern: 'kız' → 'girl'.",
+      "Translation must be consistent with the evidence pattern: 'atlar' → 'horses'.",
+      "Translation must be consistent with the evidence pattern: 'kitaplar' → 'books'."
+    ],
+    "linguistics": [
+      "Morphological",
+      "Phonological",
+      "Agglutinative",
+      "Vowel Harmony"
+    ],
+    "attribution": "https://ratiocine.trustfall.xyz/play?puzzle=turkish-vowel-harmony",
+    "tags": [
+      "LTBv2",
+      "IOL",
+      "morphology",
+      "rare-language",
+      "few-shot"
+    ]
+  },
+  {
+    "id": 10202,
+    "source_text": "days",
+    "source_lang": "English",
+    "target_lang": "Turkish",
+    "source_lang_iso": "eng",
+    "target_lang_iso": "tur",
+    "source_instructions": "Given the following bilingual evidence pairs and a tile bank of morphemes, deduce the correct morpheme sequence for the query.\n\nEvidence:\n- ev → house\n- at → horse\n- kız → girl\n- göz → eye\n- gün → day\n- el → hand\n- evler → houses\n- atlar → horses\n- eller → hands\n- kitaplar → books\n\nAvailable morphemes: ev, at, kız, göz, gün, el, kitap, taş, lar, ler\n\nHint:\nSay rows 7 and 8 out loud. Look only at the last vowel of each root.\nThe plural ending has two costumes: -lar or -ler.\nVowel harmony: the ending copies the root's last vowel family. Back vowels (a, ı, o, u) → -lar. Front vowels (e, i, ö, ü) → -ler.\n\nQuery: days",
+    "source_media": null,
+    "translations": [
+      {
+        "model": "ratiocine_ground_truth",
+        "translation": "gün ler",
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "google/gemma-4-31b-it",
+        "translation": "gün ler",
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "google/gemini-3-8-flash",
+        "translation": "gün ler",
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      }
+    ],
+    "verification_rules": [
+      "Translation must use exactly 2 morpheme(s): 'gün', 'ler'.",
+      "Morphemes must appear in this exact order: gün-ler.",
+      "Translation must only use morphemes from the provided tile bank: ev, at, kız, göz, gün, el, kitap, taş, lar, ler.",
+      "Translation must express the meaning: 'days'.",
+      "Translation must be consistent with the evidence pattern: 'gün' → 'day'.",
+      "Translation must be consistent with the evidence pattern: 'evler' → 'houses'.",
+      "Translation must be consistent with the evidence pattern: 'eller' → 'hands'."
+    ],
+    "linguistics": [
+      "Morphological",
+      "Phonological",
+      "Agglutinative",
+      "Vowel Harmony"
+    ],
+    "attribution": "https://ratiocine.trustfall.xyz/play?puzzle=turkish-vowel-harmony",
+    "tags": [
+      "LTBv2",
+      "IOL",
+      "morphology",
+      "rare-language",
+      "few-shot"
+    ]
+  },
+  {
+    "id": 10300,
+    "source_text": "I walk",
+    "source_lang": "English",
+    "target_lang": "Quechua",
+    "source_lang_iso": "eng",
+    "target_lang_iso": "quz",
+    "source_instructions": "Given the following bilingual evidence pairs and a tile bank of morphemes, deduce the correct morpheme sequence for the query.\n\nEvidence:\n- rimani → I speak\n- rimanki → you speak\n- riman → she speaks\n- rikuni → I see\n- mikhunki → you eat\n- purin → he walks\n- rimanchik → we (all of us) speak\n- mikhunchik → we (all of us) eat\n\nAvailable morphemes: rima, riku, mikhu, puri, taki, ni, nki, n, nchik\n\nHint:\nRows 1–3 share a root. Watch the ending change with the person.\n'nchik' means we — including the person you're talking to.\nStructure: [root] + [person]. ni=I, nki=you, n=he/she, nchik=we (incl.). Watch out: -n and -ni differ by one vowel.\n\nQuery: I walk",
+    "source_media": null,
+    "translations": [
+      {
+        "model": "ratiocine_ground_truth",
+        "translation": "puri ni",
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "google/gemma-4-31b-it",
+        "translation": "puri ni",
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "google/gemini-3-8-flash",
+        "translation": "puri ni",
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      }
+    ],
+    "verification_rules": [
+      "Translation must use exactly 2 morpheme(s): 'puri', 'ni'.",
+      "Morphemes must appear in this exact order: puri-ni.",
+      "Translation must only use morphemes from the provided tile bank: rima, riku, mikhu, puri, taki, ni, nki, n, nchik.",
+      "Translation must express the meaning: 'I walk'.",
+      "Translation must be consistent with the evidence pattern: 'rimani' → 'I speak'.",
+      "Translation must be consistent with the evidence pattern: 'rikuni' → 'I see'.",
+      "Translation must be consistent with the evidence pattern: 'purin' → 'he walks'."
+    ],
+    "linguistics": [
+      "Morphological",
+      "Verbal Inflection",
+      "Person/Number Agreement",
+      "Agglutinative"
+    ],
+    "attribution": "https://ratiocine.trustfall.xyz/play?puzzle=quechua-person-endings",
+    "tags": [
+      "LTBv2",
+      "IOL",
+      "morphology",
+      "rare-language",
+      "few-shot"
+    ]
+  },
+  {
+    "id": 10301,
+    "source_text": "we (all of us) see",
+    "source_lang": "English",
+    "target_lang": "Quechua",
+    "source_lang_iso": "eng",
+    "target_lang_iso": "quz",
+    "source_instructions": "Given the following bilingual evidence pairs and a tile bank of morphemes, deduce the correct morpheme sequence for the query.\n\nEvidence:\n- rimani → I speak\n- rimanki → you speak\n- riman → she speaks\n- rikuni → I see\n- mikhunki → you eat\n- purin → he walks\n- rimanchik → we (all of us) speak\n- mikhunchik → we (all of us) eat\n\nAvailable morphemes: rima, riku, mikhu, puri, taki, ni, nki, n, nchik\n\nHint:\nRows 1–3 share a root. Watch the ending change with the person.\n'nchik' means we — including the person you're talking to.\nStructure: [root] + [person]. ni=I, nki=you, n=he/she, nchik=we (incl.). Watch out: -n and -ni differ by one vowel.\n\nQuery: we (all of us) see",
+    "source_media": null,
+    "translations": [
+      {
+        "model": "ratiocine_ground_truth",
+        "translation": "riku nchik",
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "google/gemma-4-31b-it",
+        "translation": "riku nchik",
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "google/gemini-3-8-flash",
+        "translation": "riku nchik",
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      }
+    ],
+    "verification_rules": [
+      "Translation must use exactly 2 morpheme(s): 'riku', 'nchik'.",
+      "Morphemes must appear in this exact order: riku-nchik.",
+      "Translation must only use morphemes from the provided tile bank: rima, riku, mikhu, puri, taki, ni, nki, n, nchik.",
+      "Translation must express the meaning: 'we (all of us) see'.",
+      "Translation must be consistent with the evidence pattern: 'rikuni' → 'I see'.",
+      "Translation must be consistent with the evidence pattern: 'rimanchik' → 'we (all of us) speak'.",
+      "Translation must be consistent with the evidence pattern: 'mikhunchik' → 'we (all of us) eat'."
+    ],
+    "linguistics": [
+      "Morphological",
+      "Verbal Inflection",
+      "Person/Number Agreement",
+      "Agglutinative"
+    ],
+    "attribution": "https://ratiocine.trustfall.xyz/play?puzzle=quechua-person-endings",
+    "tags": [
+      "LTBv2",
+      "IOL",
+      "morphology",
+      "rare-language",
+      "few-shot"
+    ]
+  },
+  {
+    "id": 10302,
+    "source_text": "she eats",
+    "source_lang": "English",
+    "target_lang": "Quechua",
+    "source_lang_iso": "eng",
+    "target_lang_iso": "quz",
+    "source_instructions": "Given the following bilingual evidence pairs and a tile bank of morphemes, deduce the correct morpheme sequence for the query.\n\nEvidence:\n- rimani → I speak\n- rimanki → you speak\n- riman → she speaks\n- rikuni → I see\n- mikhunki → you eat\n- purin → he walks\n- rimanchik → we (all of us) speak\n- mikhunchik → we (all of us) eat\n\nAvailable morphemes: rima, riku, mikhu, puri, taki, ni, nki, n, nchik\n\nHint:\nRows 1–3 share a root. Watch the ending change with the person.\n'nchik' means we — including the person you're talking to.\nStructure: [root] + [person]. ni=I, nki=you, n=he/she, nchik=we (incl.). Watch out: -n and -ni differ by one vowel.\n\nQuery: she eats",
+    "source_media": null,
+    "translations": [
+      {
+        "model": "ratiocine_ground_truth",
+        "translation": "mikhu n",
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "google/gemma-4-31b-it",
+        "translation": "mikhu n",
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "google/gemini-3-8-flash",
+        "translation": "mikhu n",
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      }
+    ],
+    "verification_rules": [
+      "Translation must use exactly 2 morpheme(s): 'mikhu', 'n'.",
+      "Morphemes must appear in this exact order: mikhu-n.",
+      "Translation must only use morphemes from the provided tile bank: rima, riku, mikhu, puri, taki, ni, nki, n, nchik.",
+      "Translation must express the meaning: 'she eats'.",
+      "Translation must be consistent with the evidence pattern: 'riman' → 'she speaks'.",
+      "Translation must be consistent with the evidence pattern: 'mikhunki' → 'you eat'.",
+      "Translation must be consistent with the evidence pattern: 'purin' → 'he walks'.",
+      "Translation must be consistent with the evidence pattern: 'mikhunchik' → 'we (all of us) eat'."
+    ],
+    "linguistics": [
+      "Morphological",
+      "Verbal Inflection",
+      "Person/Number Agreement",
+      "Agglutinative"
+    ],
+    "attribution": "https://ratiocine.trustfall.xyz/play?puzzle=quechua-person-endings",
+    "tags": [
+      "LTBv2",
+      "IOL",
+      "morphology",
+      "rare-language",
+      "few-shot"
+    ]
+  },
+  {
+    "id": 10400,
+    "source_text": "I sing",
+    "source_lang": "English",
+    "target_lang": "Nahuatl",
+    "source_lang_iso": "eng",
+    "target_lang_iso": "nah",
+    "source_instructions": "Given the following bilingual evidence pairs and a tile bank of morphemes, deduce the correct morpheme sequence for the query.\n\nEvidence:\n- nicochi → I sleep\n- ticochi → you sleep\n- cochi → he sleeps\n- nichoca → I cry\n- ticuica → you sing\n- cuicah → they sing\n- nicochih → we sleep\n\nAvailable morphemes: ni, ti, xi, cochi, choca, cuica, h\n\nHint:\nRows 1 and 7 are both 'I sleep'… except one is plural. What got added, and where?\nA lone 'h' at the end makes the subject plural.\nStructure: [who] + [verb] + (h if plural). ni=I/we, ti=you, nothing=he/she/they. 'We' = ni- plus -h: both ends at once.\n\nQuery: I sing",
+    "source_media": null,
+    "translations": [
+      {
+        "model": "ratiocine_ground_truth",
+        "translation": "ni cuica",
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "google/gemma-4-31b-it",
+        "translation": "ni cuica",
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "google/gemini-3-8-flash",
+        "translation": "ni cuica",
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      }
+    ],
+    "verification_rules": [
+      "Translation must use exactly 2 morpheme(s): 'ni', 'cuica'.",
+      "Morphemes must appear in this exact order: ni-cuica.",
+      "Translation must only use morphemes from the provided tile bank: ni, ti, xi, cochi, choca, cuica, h.",
+      "Translation must express the meaning: 'I sing'.",
+      "Translation must be consistent with the evidence pattern: 'nicochi' → 'I sleep'.",
+      "Translation must be consistent with the evidence pattern: 'nichoca' → 'I cry'.",
+      "Translation must be consistent with the evidence pattern: 'ticuica' → 'you sing'.",
+      "Translation must be consistent with the evidence pattern: 'cuicah' → 'they sing'.",
+      "Translation must be consistent with the evidence pattern: 'nicochih' → 'we sleep'."
+    ],
+    "linguistics": [
+      "Morphological",
+      "Verbal Inflection",
+      "Person/Number Agreement"
+    ],
+    "attribution": "https://ratiocine.trustfall.xyz/play?puzzle=nahuatl-both-ends",
+    "tags": [
+      "LTBv2",
+      "IOL",
+      "morphology",
+      "rare-language",
+      "few-shot"
+    ]
+  },
+  {
+    "id": 10401,
+    "source_text": "they cry",
+    "source_lang": "English",
+    "target_lang": "Nahuatl",
+    "source_lang_iso": "eng",
+    "target_lang_iso": "nah",
+    "source_instructions": "Given the following bilingual evidence pairs and a tile bank of morphemes, deduce the correct morpheme sequence for the query.\n\nEvidence:\n- nicochi → I sleep\n- ticochi → you sleep\n- cochi → he sleeps\n- nichoca → I cry\n- ticuica → you sing\n- cuicah → they sing\n- nicochih → we sleep\n\nAvailable morphemes: ni, ti, xi, cochi, choca, cuica, h\n\nHint:\nRows 1 and 7 are both 'I sleep'… except one is plural. What got added, and where?\nA lone 'h' at the end makes the subject plural.\nStructure: [who] + [verb] + (h if plural). ni=I/we, ti=you, nothing=he/she/they. 'We' = ni- plus -h: both ends at once.\n\nQuery: they cry",
+    "source_media": null,
+    "translations": [
+      {
+        "model": "ratiocine_ground_truth",
+        "translation": "choca h",
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "google/gemma-4-31b-it",
+        "translation": "choca h",
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "google/gemini-3-8-flash",
+        "translation": "choca h",
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      }
+    ],
+    "verification_rules": [
+      "Translation must use exactly 2 morpheme(s): 'choca', 'h'.",
+      "Morphemes must appear in this exact order: choca-h.",
+      "Translation must only use morphemes from the provided tile bank: ni, ti, xi, cochi, choca, cuica, h.",
+      "Translation must express the meaning: 'they cry'.",
+      "Translation must be consistent with the evidence pattern: 'nichoca' → 'I cry'.",
+      "Translation must be consistent with the evidence pattern: 'cuicah' → 'they sing'.",
+      "Translation must be consistent with the evidence pattern: 'nicochih' → 'we sleep'."
+    ],
+    "linguistics": [
+      "Morphological",
+      "Verbal Inflection",
+      "Person/Number Agreement"
+    ],
+    "attribution": "https://ratiocine.trustfall.xyz/play?puzzle=nahuatl-both-ends",
+    "tags": [
+      "LTBv2",
+      "IOL",
+      "morphology",
+      "rare-language",
+      "few-shot"
+    ]
+  },
+  {
+    "id": 10402,
+    "source_text": "we sing",
+    "source_lang": "English",
+    "target_lang": "Nahuatl",
+    "source_lang_iso": "eng",
+    "target_lang_iso": "nah",
+    "source_instructions": "Given the following bilingual evidence pairs and a tile bank of morphemes, deduce the correct morpheme sequence for the query.\n\nEvidence:\n- nicochi → I sleep\n- ticochi → you sleep\n- cochi → he sleeps\n- nichoca → I cry\n- ticuica → you sing\n- cuicah → they sing\n- nicochih → we sleep\n\nAvailable morphemes: ni, ti, xi, cochi, choca, cuica, h\n\nHint:\nRows 1 and 7 are both 'I sleep'… except one is plural. What got added, and where?\nA lone 'h' at the end makes the subject plural.\nStructure: [who] + [verb] + (h if plural). ni=I/we, ti=you, nothing=he/she/they. 'We' = ni- plus -h: both ends at once.\n\nQuery: we sing",
+    "source_media": null,
+    "translations": [
+      {
+        "model": "ratiocine_ground_truth",
+        "translation": "ni cuica h",
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "google/gemma-4-31b-it",
+        "translation": "ni cuica h",
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "google/gemini-3-8-flash",
+        "translation": "ni cuica h",
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      }
+    ],
+    "verification_rules": [
+      "Translation must use exactly 3 morpheme(s): 'ni', 'cuica', 'h'.",
+      "Morphemes must appear in this exact order: ni-cuica-h.",
+      "Translation must only use morphemes from the provided tile bank: ni, ti, xi, cochi, choca, cuica, h.",
+      "Translation must express the meaning: 'we sing'.",
+      "Translation must be consistent with the evidence pattern: 'nicochi' → 'I sleep'.",
+      "Translation must be consistent with the evidence pattern: 'nichoca' → 'I cry'.",
+      "Translation must be consistent with the evidence pattern: 'ticuica' → 'you sing'.",
+      "Translation must be consistent with the evidence pattern: 'cuicah' → 'they sing'.",
+      "Translation must be consistent with the evidence pattern: 'nicochih' → 'we sleep'."
+    ],
+    "linguistics": [
+      "Morphological",
+      "Verbal Inflection",
+      "Person/Number Agreement"
+    ],
+    "attribution": "https://ratiocine.trustfall.xyz/play?puzzle=nahuatl-both-ends",
+    "tags": [
+      "LTBv2",
+      "IOL",
+      "morphology",
+      "rare-language",
+      "few-shot"
+    ]
+  }
+]
