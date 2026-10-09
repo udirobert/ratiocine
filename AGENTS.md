@@ -305,8 +305,8 @@ Three parallel tracks to contribute to the IOL/MT research community:
 2. **Last Translation Benchmark V2 contributions** — IOL-style morphological reasoning problems
    - Export format: `docs/ltb-export-schema.md`
    - Target: 25 problems (5 puzzles × 5 queries), authorship credit on LTB V2 paper
-   - Status (2026-10-09): 17 exported; #6106/#6107 submitted 2026-09-09, pending review. 2048-token sweeps on free lanes: **`openai/gpt-oss-120b` 16/17 and `qwen/qwen3.8-27b` 16/17 — each model's ONLY miss is #6106 Swahili "we sang" (`tulisimba`/`tulimba` ≠ `tu li imba`), joining morphemes instead of segmenting; Gemma 4 31B fails it too (3/3 convergence). #6107 Apurinã is solved by all three — the Sept "failures" were 512-token harness truncations; it needs repositioning, not a difficulty claim.** Sept sweep archived at `data/ltb_model_outputs_truncated20261009.json`; gemma full 2048 re-sweep + gemini re-run pending (OpenRouter credits or Google AI Studio key). See `docs/ltb_submission_summary.md` + `docs/ltb-reviewer-note.md`.
-   - Why valuable: Few-shot, rare languages, exact morpheme segmentation (constrained composition — `source_instructions` includes a structural hint; re-run with larger token budget before claiming "breaks SOTA")
+   - Status (2026-10-09): 17 exported; #6106/#6107 submitted 2026-09-09, pending review. **The "breaks SOTA" difficulty claim is RETRACTED.** The 2048-token sweeps (gpt-oss-120b and qwen3.8-27b at 16/17, both missing #6106) measured a scoring artifact, not model ability: the sweep prompt asks for "the EXACT target-language form" while gold is a morpheme decomposition, and `split_joined_morphemes` re-split joined answers by walking the gold list — which recovers Apurinã `apitaka` → `a pita ka` but fails Swahili `tulimba`, because `li + imba` elides a vowel and never concatenates to `tuliimba`. Of 39 recorded answers: 1 was a correct translation scored wrong (qwen `tulimba`), 1 genuinely wrong (gpt-oss `tulisimba`), rest uninformative. Qwen3-32B / DeepSeek-V3.2 / GLM-4.6 all emit `tu li imba` when the output format is stated. Surviving contribution is a benchmark-design finding: exact-match grading of a decomposed gold penalises correct surface forms under boundary phonology — relevant to LTB's `verification_rules`. #6107 was solved by all models; the Sept "failures" were 512-token truncations. Sept sweep archived at `data/ltb_model_outputs_truncated20261009.json`. Scoring is now dual-axis (`EM_decomp` / `EM_surface`) with `--prompt-variant {default,decomposition,no_hint}` arms; gemma full re-sweep + gemini re-run still pending. See `.github/RESEARCH_PROGRESS.md` + `docs/ltb_submission_summary.md`.
+   - Why valuable: Few-shot, rare languages, exact morpheme segmentation — but the required output format must be stated in the item, and grading must accept attested surface forms, or the item measures the harness instead of the model
 
 3. **IOL-AI 2026 technical report** — baseline for future competitions
    - Draft: `docs/iol-2026-technical-report.md`
@@ -325,4 +325,5 @@ See `docs/research-roadmap.md` for the 6-week implementation plan (Phases 1-3) a
 3. Submit 1-2 example problems to LTB V2 (proof of concept)
 4. Publish technical report once IOL-AI 2026 private leaderboard results are released
 
-**Quick start guide:** `RESEARCH_NEXT_STEPS.md` has the executive summary + recommended order of work.
+**Progress tracking:** See `.github/RESEARCH_PROGRESS.md` for the code-verified
+task checklist — it states which claims have been retracted and why.
