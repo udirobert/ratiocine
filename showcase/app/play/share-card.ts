@@ -4,6 +4,7 @@
 
 import type { Puzzle, QueryGrade } from "./puzzle-data";
 import type { AiResult } from "./ai-comparison";
+import { variantTagline, variantInvite, type ShareVariant } from "@/lib/share-ab";
 
 const W = 1200;
 const H = 630;
@@ -154,6 +155,7 @@ export async function generateShareCard(
   hintsUsed: number,
   aiResult: AiResult | null,
   streak = 0,
+  variant: ShareVariant = "control",
 ): Promise<Blob | null> {
   // Use the brand fonts if they've loaded in the page; fall back silently.
   try {
@@ -283,7 +285,7 @@ export async function generateShareCard(
   const vsX = LEFT + youW + 36;
   ctx.fillText("vs", vsX, duelY);
 
-  let verdict: string;
+  const isDuel = Boolean(aiResult);
   if (aiResult) {
     const aiCorrect = puzzle.queries.filter((q, i) =>
       (aiResult.pred[i] || "").trim().toLowerCase() === q.answerJoined.toLowerCase(),
@@ -299,25 +301,17 @@ export async function generateShareCard(
     ctx.fillStyle = "rgba(255,255,255,0.42)";
     const modelShort = aiResult.model.split("/").pop() ?? aiResult.model;
     ctx.fillText(`${aiResult.elapsed_s}s · ${modelShort}`, aiX + 150, duelY + 34);
-
-    verdict =
-      humanCorrect > aiCorrect
-        ? "Beat the machine."
-        : humanCorrect === aiCorrect
-          ? "A tie — rematch tomorrow."
-          : "The machine got more — this time.";
   } else {
     ctx.font = `500 22px ${MONO}`;
     ctx.fillStyle = "rgba(56,189,248,0.7)";
     ctx.fillText("MACHINE: PENDING — CAN IT DO IT TOO?", vsX + 70, duelY - 14);
-    verdict = "Can the machine do it too?";
   }
 
-  // Verdict, manuscript italic
+  // Verdict, manuscript italic — the A/B tested call-to-action line
   ctx.textAlign = "left";
   ctx.font = `italic 500 34px ${SERIF}`;
   ctx.fillStyle = "rgba(255,255,255,0.85)";
-  ctx.fillText(verdict, LEFT, 548);
+  ctx.fillText(isDuel ? variantTagline(variant) : variantInvite(variant), LEFT, 548);
 
   // ─── Right rail: streak pill + wordmark ──
   ctx.textAlign = "right";

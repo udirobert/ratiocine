@@ -12,6 +12,7 @@ export type RatiocineEvent =
   | "query_reveal"
   | "puzzle_solved"
   | "shared"
+  | "share_click"
   | "ai_verdict";
 
 export function track(

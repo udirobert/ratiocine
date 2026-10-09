@@ -21,6 +21,13 @@ import { useSolveCounter } from "./use-solve-counter";
 import { getLevel, setLevel, ghostMs, failHintAt, forfeitAt, autoHintOnFail, type Level } from "./level";
 import { track } from "@/lib/analytics";
 import {
+  getShareVariant,
+  challengeParam,
+  variantTagline,
+  variantInvite,
+  type ShareVariant,
+} from "@/lib/share-ab";
+import {
   getTodaysPuzzle,
   getPuzzleById,
   getChallengeUrl,
@@ -46,6 +53,7 @@ function generateShareText(
   hintsUsed: number,
   aiResult?: AiResult | null,
   streak?: number,
+  variant: ShareVariant = "control",
 ): string {
   const emojiMap: Record<TileGrade, string> = { correct: "🟩", misplaced: "🟨", wrong: "⬛" };
   const lines = puzzle.queries.map((q) => {
@@ -66,19 +74,18 @@ function generateShareText(
   const humanLine = `${allCorrect ? "Cracked" : "Attempted"} in ${timeStr}${extras.length ? ` · ${extras.join(" · ")}` : ""}`;
   const host = typeof window !== "undefined" ? window.location.host : "ratiocine.vercel.app";
   const streakLine = streak && streak > 1 ? `🔥 ${streak}-day streak` : null;
-  const challenge = `${host}/play?puzzle=${encodeURIComponent(puzzle.id)}&t=${encodeURIComponent(timeStr)}`;
+  const challenge = `${host}/play?puzzle=${encodeURIComponent(puzzle.id)}&t=${encodeURIComponent(timeStr)}${challengeParam(variant)}`;
 
   if (aiResult) {
     const aiCorrect = puzzle.queries.filter((q, i) =>
       (aiResult.pred[i] || "").trim().toLowerCase() === q.answerJoined.toLowerCase()
     ).length;
-    const humanCorrect = puzzle.queries.filter((q) => grades.get(q.id)?.isCorrect).length;
     return [
       `🧩 Ratiocine — ${puzzle.language}`,
       ...lines,
       `You: ${humanLine}`,
       `AI: ${aiCorrect}/${puzzle.queries.length} in ${aiResult.elapsed_s}s`,
-      humanCorrect > aiCorrect ? `Beat the machine.` : humanCorrect === aiCorrect ? `Tied.` : `The machine got more.`,
+      variantTagline(variant),
       ...(streakLine ? [streakLine] : []),
       challenge,
     ].join("\n");
@@ -88,7 +95,7 @@ function generateShareText(
     `🧩 Ratiocine — ${puzzle.language}`,
     ...lines,
     humanLine,
-    `Can the machine do it too?`,
+    variantInvite(variant),
     ...(streakLine ? [streakLine] : []),
     challenge,
   ].join("\n");
@@ -132,6 +139,11 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
   }, [puzzle.id]);
   const sfx = useSfx();
   const { count: solveCount, increment: incrementSolveCount } = useSolveCounter();
+
+  useEffect(() => {
+    const sc = new URLSearchParams(window.location.search).get("sc");
+    if (sc) track("share_click", { share_variant: sc === "l" ? "linguistic" : "control" });
+  }, []);
 
   // Phase — challenge-link visitors (?puzzle=) skip the warmup gate and
   // land straight in study; the warmup teaches today's puzzle, which they
@@ -604,9 +616,10 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
   }, [revealedGated, sfx, puzzle.id]);
 
   const handleShare = useCallback(async () => {
-    track("shared", { puzzle: puzzle.id, with_ai: Boolean(aiResult) });
+    const variant = getShareVariant();
+    track("shared", { puzzle: puzzle.id, with_ai: Boolean(aiResult), share_variant: variant });
     const streak = progress?.streak ?? 0;
-    const text = generateShareText(puzzle, grades, elapsed, hintsUsed, aiResult, streak);
+    const text = generateShareText(puzzle, grades, elapsed, hintsUsed, aiResult, streak, variant);
     // Copy the Wordle-style grid text FIRST (works everywhere, incl. desktop
     // where file-share is unavailable) — then try to upgrade to image share.
     try {
@@ -616,7 +629,7 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
     } catch { /* clipboard may be unavailable — image path still attempted */ }
     try {
       const { generateShareCard } = await import("./share-card");
-      const blob = await generateShareCard(puzzle, grades, elapsed, hintsUsed, aiResult, streak);
+      const blob = await generateShareCard(puzzle, grades, elapsed, hintsUsed, aiResult, streak, variant);
       if (blob && navigator.share && navigator.canShare?.({ files: [new File([blob], "ratiocine.png", { type: "image/png" })] })) {
         await navigator.share({
           text,
@@ -1371,7 +1384,8 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
                     </button>
                     <button
                       onClick={() => {
-                        const url = getChallengeUrl(puzzle.id, timeStr);
+                        const url = getChallengeUrl(puzzle.id, timeStr) + challengeParam(getShareVariant());
+                        track("shared", { puzzle: puzzle.id, with_ai: false, share_variant: getShareVariant(), channel: "challenge_link" });
                         navigator.clipboard.writeText(url).then(() => {
                           setCopied(true);
                           setTimeout(() => setCopied(false), 2000);
