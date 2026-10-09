@@ -237,6 +237,13 @@ def main():
         help="Max output tokens (512 truncated CoT traces in the first sweep)",
     )
     parser.add_argument(
+        "--outputs",
+        type=Path,
+        default=OUTPUTS_PATH,
+        help="Output JSON to read/append (use one file per model to run sweeps "
+        "in parallel, then merge)",
+    )
+    parser.add_argument(
         "--prompt-variant",
         choices=["default", "decomposition", "no_hint"],
         default="default",
@@ -265,8 +272,8 @@ def main():
 
     # Load existing outputs (resume-safe)
     outputs: dict[str, list[dict]] = {}
-    if OUTPUTS_PATH.exists():
-        with open(OUTPUTS_PATH) as f:
+    if args.outputs.exists():
+        with open(args.outputs) as f:
             outputs = json.load(f)
 
     queries_to_run: list[tuple[dict, dict]] = []
@@ -336,17 +343,17 @@ def main():
                 f"  [{i + 1}/{len(queries_to_run)}] {key} HTTP {e.code}: {e.reason}"
             )
             # Save progress before stopping
-            with open(OUTPUTS_PATH, "w") as f:
+            with open(args.outputs, "w") as f:
                 json.dump(outputs, f, indent=2, ensure_ascii=False)
             raise
         except Exception as e:
             logging.error(f"  [{i + 1}/{len(queries_to_run)}] {key} ERROR: {e}")
 
         # Save after every query so we can resume
-        with open(OUTPUTS_PATH, "w") as f:
+        with open(args.outputs, "w") as f:
             json.dump(outputs, f, indent=2, ensure_ascii=False)
 
-    logging.info(f"[run] Done. Outputs saved to {OUTPUTS_PATH}")
+    logging.info(f"[run] Done. Outputs saved to {args.outputs}")
 
 
 if __name__ == "__main__":
