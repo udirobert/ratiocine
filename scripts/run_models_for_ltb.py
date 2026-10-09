@@ -158,7 +158,7 @@ def main():
     parser.add_argument(
         "--provider",
         default=None,
-        help="Pin a provider (arkor|openrouter|groq|google); default: try all configured",
+        help="Pin a provider (arkor|openrouter|groq|featherless|google); default: try all configured",
     )
     parser.add_argument(
         "--limit", type=int, default=0, help="Max queries to run (0 = all)"
@@ -176,7 +176,8 @@ def main():
     if not providers:
         logging.error(
             "Error: no provider keys set in .env — configure one of "
-            "ARKOR_API_KEY / OPENROUTER_API_KEY / GROQ_API_KEY / GOOGLE_API_KEY"
+            "ARKOR_API_KEY / OPENROUTER_API_KEY / GROQ_API_KEY / FEATHERLESS_API_KEY"
+            " / GOOGLE_API_KEY"
         )
         sys.exit(1)
 

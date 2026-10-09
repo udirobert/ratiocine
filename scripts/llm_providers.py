@@ -8,7 +8,8 @@ one without an API key is skipped. 429/5xx are retried with backoff on the
 same provider before failing over to the next.
 
 Env keys (see .env.example):
-    ARKOR_API_KEY        OPENROUTER_API_KEY        GROQ_API_KEY        GOOGLE_API_KEY
+    ARKOR_API_KEY        OPENROUTER_API_KEY        GROQ_API_KEY
+    FEATHERLESS_API_KEY  GOOGLE_API_KEY
 """
 
 import json
@@ -47,6 +48,14 @@ PROVIDERS = [
         "env_key": "GROQ_API_KEY",
         "default_url": "https://api.groq.com/openai/v1",
         "extra_headers": {"Origin": "https://console.groq.com"},
+    },
+    {
+        # funded lane — last of the OpenAI-compatible gateways so sweeps spend
+        # the free tiers before it; pin with --provider featherless for the
+        # long runs where openrouter's :free routes would 429
+        "name": "featherless",
+        "env_key": "FEATHERLESS_API_KEY",
+        "default_url": "https://api.featherless.ai/v1",
     },
     {
         # Google's OpenAI-compatible layer (AI Studio key)
