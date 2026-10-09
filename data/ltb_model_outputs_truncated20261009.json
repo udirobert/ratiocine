@@ -1,0 +1,352 @@
+{
+  "apurina-verb-agreement:0": [
+    {
+      "model": "google/gemma-4-31b-it",
+      "raw": "<analysis>\nStep 1: Identify the source phrase \"I am eating\".\nStep 2: From the evidence:\n- \"I\" prefix is \"nhaa\" (seen in nhaapitaka, nhaakutaka, nhaanykataka).\n- \"eat\" root is \"kuta\" (seen in nhaakutaka, ãkutaka, akutaka).\n- \"am ...-ing\" (progressive aspect) suffix is \"ka\" (seen in all examples).\n- Wait, looking at the evidence: \"nhaakutaka\" is \"I am eating\".\n- Breaking it down: nhaa (I) + kuta (eat) + ka (progressive).\n- Wait, the evidence says \"nhaakutaka\" is \"I am eating\". Let's check the morphemes: nhaa + kuta + ka.\n- Let's re-verify: nhaapitaka (nhaa + pita + ka), ãpitaka (ã + pita + ka), apitaka (a + pita + ka).\n- The suffix is \"ka\" or \"taka\"?\n- Let's look at the morphemes provided: \"taka\" is listed as a morpheme.\n- Let's re-examine: nhaa-pita-ka? No, the evidence says \"nhaapitaka\". If the root is \"pita\" and the suffix is \"ka\", that's \"nhaapitaka\". But \"taka\" is also listed.\n- Let's look at the evidence again: nhaapitaka, ãpitaka, apitaka.\n- If the root is \"pita\" and the suffix is \"ka\", it's \"pitaka\".\n- If the root is \"pi\" and the suffix is \"taka\", it's \"pitaka\".\n- However, the hint says \"Roots: pita=go, kuta=eat, nykata=speak\".\n- If the root is \"kuta\" and the suffix is \"ka\", then \"I am eating\" is nhaa + kuta + ka = nhaakutaka.\n- The evidence explicitly lists \"nhaakutaka → I am eating\".\nStep 3: The target form is \"nhaakutaka\".\n</analysis>\n<answers>\nnhaakutaka\n</answers>",
+      "answer": [
+        "nhaa",
+        "kuta",
+        "ka"
+      ]
+    },
+    {
+      "model": "google/gemini-3-8-flash",
+      "raw": "<analysis>\nStep 1: Identify the source elements for \"I am eating\".\n- Person: \"I\" is marked by the prefix `nhaa-`.\n- Verb root: \"eat\" is `kuta`.\n- Aspect: progressive aspect (\"am ...-ing\") is marked by `-ka`.\nStep 2: Combine the morphemes according to the structure [person prefix] + [verb root] + [aspect suffix]: `nhaa` + `kuta` + `ka`.\nStep 3: Compose the exact target-language form: `nhaakutaka`. This form is directly attested in the evidence (\"nhaakutaka → I am eating\").\n</analysis>\n<answers>\nnhaakutaka\n</answers>",
+      "answer": [
+        "nhaa",
+        "kuta",
+        "ka"
+      ]
+    }
+  ],
+  "apurina-verb-agreement:1": [
+    {
+      "model": "google/gemma-4-31b-it",
+      "raw": "<analysis>\nStep 1: Identify the source word for \"we (everyone) are eating\".\n- \"we (everyone)\" corresponds to the prefix 'kaa-' (from kaapitaka).\n- \"eating\" corresponds to the root 'kuta' (from nhaakutaka, ãkutaka, akutaka).\n- \"are ...-ing\" (progressive aspect) corresponds to the suffix '-taka' (seen in all examples).\n\nStep 2: Note grammar.\nThe structure is [person prefix] + [verb root] + [aspect suffix].\nPrefix: kaa-\nRoot: kuta\nSuffix: -taka\n\nStep 3: Compose the target-language form.\nkaa + kuta + taka = kaakutaka.\n</analysis>\n<answers>\nkaakutaka\n</answers>",
+      "answer": [
+        "kaa",
+        "kuta",
+        "ka"
+      ]
+    },
+    {
+      "model": "google/gemini-3-8-flash",
+      "raw": "<analysis>\nStep 1: Identify the components for \"we (everyone) are eating\":\n- \"we (everyone)\": prefix `kaa-` (as seen in `kaapitaka` = \"we (everyone) are going\")\n- \"eat\": verb root `kuta` (as seen in `akutaka` = \"he/she is eating\")\n- \"are [verb]-ing\": suffix `-ka`\n\nStep 2: Combine the prefix, root, and suffix:\n`kaa` + `kuta` + `ka` = `kaakutaka`\n\nStep 3: Compose the exact target form:\n`kaakutaka`\n</analysis>",
+      "answer": [
+        "Step",
+        "1:",
+        "Identify",
+        "the",
+        "components",
+        "for",
+        "\"we",
+        "(everyone)",
+        "are",
+        "eating\""
+      ]
+    }
+  ],
+  "apurina-verb-agreement:2": [
+    {
+      "model": "google/gemma-4-31b-it",
+      "raw": "<analysis>\nStep 1: Identify the source word for \"you are speaking\".\n- \"you\" prefix: From \"ãpitaka\" (you are going) and \"ãkutaka\" (you are eating), the prefix for \"you\" is \"ã\".\n- \"speaking\" root: From \"nhaanykataka\" (I am speaking), \"ãnykataka\" (you are speaking), and \"anykataka\" (he/she is speaking), the root for \"speak\" is \"nykata\".\n- \"are ...-ing\" suffix: From all examples, the progressive suffix is \"taka\" (or \"ka\" as per the hint, but the evidence shows \"taka\" as the ending). Looking at the evidence, the suffix is consistently \"taka\".\n\nStep 2: Combine the morphemes.\n- Prefix (you): ã\n- Root (speak): nykata\n- Suffix (progressive): taka\n\nStep 3: Compose the final form.\n- ã + nykata + taka = ãnykataka.\n</analysis>\n<answers>\nãnykataka\n</answers>",
+      "answer": [
+        "ã",
+        "nykata",
+        "ka"
+      ]
+    },
+    {
+      "model": "google/gemini-3-8-flash",
+      "raw": "<analysis>\nStep 1: Identify the components for \"you are speaking\":\n- \"you\" (subject prefix) = ã-\n- \"speak\" (verb root) = nykata\n- progressive aspect suffix = -ka\nStep 2: Combine the morphemes according to the structure [person prefix] + [verb root] + [aspect suffix]:\nã + nykata + ka = ãnykataka.\nThis form is also directly attested in the evidence: \"ãnykataka → you are speaking\".\n",
+      "answer": [
+        "Step",
+        "1:",
+        "Identify",
+        "the",
+        "components",
+        "for",
+        "\"you",
+        "are",
+        "speaking\""
+      ]
+    }
+  ],
+  "apurina-verb-agreement:3": [
+    {
+      "model": "google/gemma-4-31b-it",
+      "raw": "<analysis>\nStep 1: Identify the source word for \"we (everyone) are speaking\".\n- \"we (everyone)\" corresponds to the prefix 'kaa-' (from kaapitaka).\n- \"speaking\" corresponds to the root 'nykata' (from nhaanykataka, ãnykataka, anykataka).\n- \"are ...-ing\" (progressive aspect) corresponds to the suffix '-taka' (seen in all examples).\n\nStep 2: Note grammar.\nThe structure is [person prefix] + [verb root] + [aspect suffix].\nPrefix: kaa-\nRoot: nykata\nSuffix: -taka\n\nStep 3: Compose the target-language form.\nkaa + nykata + taka = kaanykataka.\nWait, looking at the examples:\nnhaapitaka (nhaa + pita + ka) - No, the suffix is 'taka'.\nLet's re-examine:\nnhaapitaka: nhaa (I) + pita (go) + ka (??) - No, the evidence says \"taka\" is the suffix.\nWait: nhaa-pita-ka? No, the evidence says \"nhaapitaka\".\nLet's look at the morphemes: nhaa, ã, a, kaa, pita, kuta, nykata, ka, taka.\nIf the root is 'pita' and the suffix is 'taka', then nhaapitaka = nhaa + pita + ka? No, that's not right.\nLet's look at the words again:\nnhaapitaka = nhaa + pita + ka? Or nhaa + pita + taka?\nIf the root is 'pita' and the suffix is 'taka', then nhaapitaka = nhaa + pita + ka? No, the 'ta' is part of 'taka'.\nLet's re-read: \"nhaapitaka\".\nnhaa (I) + pita (go) + ka (progressive).\nWait, the morpheme list says \"taka\" is a morpheme.\nIf the root is 'pita' and the suffix is 'taka', then nhaapitaka = nhaa + pita + ka? No.\nLet's look at the roots again: pita, kuta, nykata.\nnhaapitaka = nhaa + pita + ka.\nn",
+      "answer": [
+        "Step",
+        "1:",
+        "Identify",
+        "the",
+        "source",
+        "word",
+        "for",
+        "\"we",
+        "(everyone)",
+        "are",
+        "speaking\""
+      ]
+    },
+    {
+      "model": "google/gemini-3-8-flash",
+      "raw": "<analysis>\nStep 1: Identify the source elements:\n- \"we (everyone)\" is marked by the prefix kaa- (seen in kaapitaka \"we (everyone) are going\").\n- \"speak\" is the verb root nykata (seen in nhaanykataka \"I am speaking\", anykataka \"he/she is speaking\").\n- progressive aspect \"-ing\" is marked by suffix -ka.\n\nStep 2: Grammar and combination:\n[person prefix] + [verb root] + [aspect suffix]\nkaa- + nykata + -ka = kaanykataka.\n\nStep 3: Exact target form:\nkaanykataka\n</analysis>\n<answers>\nkaanykataka\n</answers>",
+      "answer": [
+        "kaa",
+        "nykata",
+        "ka"
+      ]
+    }
+  ],
+  "apurina-verb-agreement:4": [
+    {
+      "model": "google/gemma-4-31b-it",
+      "raw": "<analysis>\nStep 1: Identify the source word for \"he/she is going\".\n- \"going\" corresponds to the root \"pita\".\n- \"is ...-ing\" (progressive aspect) corresponds to the suffix \"taka\" (or \"ka\" based on the hint, but the evidence shows \"taka\" as the ending for all examples).\n- \"he/she\" corresponds to the prefix \"a\" (as seen in \"apitaka\", \"akutaka\", \"anykataka\").\n\nStep 2: Combine the morphemes.\n- Prefix: a\n- Root: pita\n- Suffix: taka\n\nStep 3: Compose the final form.\n- a + pita + taka = apitaka.\n</analysis>\n<answers>\napitaka\n</answers>",
+      "answer": [
+        "a",
+        "pita",
+        "ka"
+      ]
+    },
+    {
+      "model": "google/gemini-3-8-flash",
+      "raw": "<analysis>\nStep 1: Identify the source English sentence: \"he/she is going\".",
+      "answer": [
+        "Step",
+        "1:",
+        "Identify",
+        "the",
+        "source",
+        "English",
+        "sentence:",
+        "\"he/she",
+        "is",
+        "going\""
+      ]
+    }
+  ],
+  "swahili-person-tense:0": [
+    {
+      "model": "google/gemma-4-31b-it",
+      "raw": "<analysis>\nStep 1: Identify the source words for \"I\", \"will\", and \"like\".\n- \"I\" = ni (from ninapenda, nilipenda)\n- \"will\" (future tense) = ta (from utacheza, wataimba)\n- \"like\" = penda (from ninapenda, nilipenda)\n\nStep 2: Apply the grammar structure [who] + [when] + [verb].\n- [who] = ni\n- [when] = ta\n- [verb] = penda\n\nStep 3: Compose the target-language form: ni + ta + penda = nitapenda.\n</analysis>\n<answers>\nnitapenda\n</answers>",
+      "answer": [
+        "ni",
+        "ta",
+        "penda"
+      ]
+    },
+    {
+      "model": "google/gemini-3-8-flash",
+      "raw": "<analysis>\nStep 1: Identify the source elements for \"I will like\":\n- Subject \"I\": prefix is \"ni\"\n- Tense \"will\" (future): prefix is \"ta\"\n- Verb \"like\": stem is \"penda\"\n\nStep 2: Note grammar:\nStructure is [subject prefix] + [tense marker] + [verb stem].\n\nStep 3: Compose the form:\nni + ta + penda = nitapenda\n</analysis>\n<answers>\nnitapenda\n</answers>",
+      "answer": [
+        "ni",
+        "ta",
+        "penda"
+      ]
+    }
+  ],
+  "swahili-person-tense:1": [
+    {
+      "model": "google/gemma-4-31b-it",
+      "raw": "<analysis>\nStep 1: Identify the source word for \"they read\".\n- \"they\" corresponds to the morpheme 'wa'.\n- \"read\" corresponds to the morpheme 'soma'.\nStep 2: Determine the tense. The query \"they read\" is in the present tense (similar to \"she plays\" or \"he sings\").\n- Present tense corresponds to the morpheme 'na'.\nStep 3: Compose the sequence using the structure [who] + [when] + [verb].\n- [wa] + [na] + [soma] = wanasoma.\n</analysis>\n<answers>\nwanasoma\n</answers>",
+      "answer": [
+        "wa",
+        "na",
+        "soma"
+      ]
+    },
+    {
+      "model": "google/gemini-3-8-flash",
+      "raw": "<analysis>\nStep 1: Identify the source components:\n- Subject: \"they\" -> wa\n- Tense: present (\"read\", contrast with \"read (past)\" in the examples) -> na\n- Verb: \"read\" -> soma\n\nStep 2: Note grammar:\nStructure: [subject prefix] + [tense prefix] + [verb root]\nwa- + na- + soma\n\nStep 3: Compose the target-language form:\nwanasoma\n</analysis>\n<answers>\nwanasoma\n</answers>",
+      "answer": [
+        "wa",
+        "na",
+        "soma"
+      ]
+    }
+  ],
+  "swahili-person-tense:2": [
+    {
+      "model": "google/gemma-4-31b-it",
+      "raw": "<analysis>\nStep 1: Identify the source word for \"we sang\".\n- \"we\" corresponds to the morpheme 'tu'.\n- \"sang\" is the past tense of \"sing\".\n- \"sing\" corresponds to the morpheme 'imba'.\n- \"past\" corresponds to the morpheme 'li'.\n\nStep 2: Note the grammar structure.\n- Structure: [who] + [when] + [verb].\n- Who: tu (we)\n- When: li (past)\n- Verb: imba (sing)\n\nStep 3: Compose the target-language form.\n- tu + li + imba = tulimba.\n</analysis>\n<answers>\ntulimba\n</answers>",
+      "answer": [
+        "tulimba"
+      ]
+    },
+    {
+      "model": "google/gemini-3-8-flash",
+      "raw": "<analysis>\nStep 1: Identify the components for \"we sang\":\n- Subject: \"we\" -> tu\n- Tense: past (\"sang\") -> li\n- Verb root: \"sing\" -> imba\n\nStep 2: Combine using the structure [who] + [when] + [verb]:\n- tu + li + imba\n\nStep 3: Compose the target form:\n- tuliimba\n</analysis>\n<answers>\ntuliimba\n</answers>",
+      "answer": [
+        "tu",
+        "li",
+        "imba"
+      ]
+    }
+  ],
+  "turkish-vowel-harmony:0": [
+    {
+      "model": "google/gemma-4-31b-it",
+      "raw": "<analysis>\nStep 1: Identify the source word for \"eyes\". From the evidence, \"eye\" is \"göz\".\nStep 2: Determine the plural suffix. The root \"göz\" ends in 'ö', which is a front vowel (e, i, ö, ü). According to the vowel harmony rule provided, front vowels take the suffix \"-ler\".\nStep 3: Combine the root and the suffix: göz + ler = gözler.\n</analysis>\n<answers>\ngözler\n</answers>",
+      "answer": [
+        "göz",
+        "ler"
+      ]
+    },
+    {
+      "model": "google/gemini-3-8-flash",
+      "raw": "<analysis>\nStep 1: Identify the source word for \"eyes\". The noun root for \"eye\" is \"göz\".\nStep 2: Note the grammar rules. The plural suffix in Turkish has two allomorphs: \"-lar\" after back vowels (a, ı, o, u) and \"-ler\" after front vowels (e, i, ö, ü). The vowel in \"göz\" is \"ö\", which is a front vowel. Therefore, the plural suffix to use is \"-ler\".\nStep 3: Combine \"göz\" + \"ler\" to form \"gözler\".\n</analysis>\n<answers>\ngözler\n</answers>",
+      "answer": [
+        "göz",
+        "ler"
+      ]
+    }
+  ],
+  "turkish-vowel-harmony:1": [
+    {
+      "model": "google/gemma-4-31b-it",
+      "raw": "<analysis>\nStep 1: Identify the source word for \"girls\". From the evidence, \"girl\" is \"kız\".\nStep 2: Determine the plural suffix. The root \"kız\" ends in the vowel 'ı'. According to the vowel harmony rule provided: Back vowels (a, ı, o, u) take the suffix \"-lar\".\nStep 3: Combine the root \"kız\" with the suffix \"-lar\" to get \"kızlar\".\n</analysis>\n<answers>\nkızlar\n</answers>",
+      "answer": [
+        "kız",
+        "lar"
+      ]
+    },
+    {
+      "model": "google/gemini-3-8-flash",
+      "raw": "<analysis>\nStep 1: Identify the source word for \"girls\". The singular \"girl\" is \"kız\".\nStep 2: Note grammar: plural suffix. The last vowel of \"kız\" is \"ı\", which is a back vowel (a, ı, o, u). By vowel harmony, back vowels take the plural suffix \"-lar\".\nStep 3: Compose the exact target-language form: kız + lar = kızlar.\n</analysis>\n<answers>\nkızlar\n</answers>",
+      "answer": [
+        "kız",
+        "lar"
+      ]
+    }
+  ],
+  "turkish-vowel-harmony:2": [
+    {
+      "model": "google/gemma-4-31b-it",
+      "raw": "<analysis>\nStep 1: Identify the source word for \"days\". The root for \"day\" is \"gün\".\nStep 2: Determine the plural suffix. The last vowel in \"gün\" is 'ü'.\nStep 3: Apply vowel harmony. 'ü' is a front vowel (e, i, ö, ü), so the suffix is \"-ler\".\nStep 4: Combine the root and the suffix: gün + ler = günler.\n</analysis>\n<answers>\ngünler\n</answers>",
+      "answer": [
+        "gün",
+        "ler"
+      ]
+    },
+    {
+      "model": "google/gemini-3-8-flash",
+      "raw": "<analysis>\nStep 1: The query is \"days\". The root for \"day\" is \"gün\".\nStep 2: \"gün\" contains the front vowel \"ü\". According to vowel harmony rules, roots with front vowels take the plural suffix \"-ler\".\nStep 3: Combining the root \"gün\" and plural suffix \"-ler\" yields \"günler\".\n</analysis>\n<answers>\ngünler\n</answers>",
+      "answer": [
+        "gün",
+        "ler"
+      ]
+    }
+  ],
+  "quechua-person-endings:0": [
+    {
+      "model": "google/gemma-4-31b-it",
+      "raw": "<analysis>\nStep 1: Identify the root for \"walk\". From the evidence \"purin → he walks\", the root is \"puri\".\nStep 2: Identify the suffix for \"I\". From \"rimani → I speak\" and \"rikuni → I see\", the suffix for \"I\" is \"ni\".\nStep 3: Combine the root \"puri\" and the suffix \"ni\".\nResult: purini.\n</analysis>\n<answers>\npurini\n</answers>",
+      "answer": [
+        "puri",
+        "ni"
+      ]
+    },
+    {
+      "model": "google/gemini-3-8-flash",
+      "raw": "<analysis>\nStep 1: Identify the root for \"walk\" and the suffix for \"I\".\nFrom \"purin\" (he walks), the root for \"walk\" is \"puri\".\nFrom \"rimani\" (I speak) and \"rikuni\" (I see), the suffix for 1st person singular (\"I\") is \"-ni\".\n\nStep 2: Note grammar:\nStructure is [root] + [person].\nRoot: puri\n1st person subject: ni\n\nStep 3: Compose the target-language form:\npuri + ni = purini\n</analysis>\n<answers>\npurini\n</answers>",
+      "answer": [
+        "puri",
+        "ni"
+      ]
+    }
+  ],
+  "quechua-person-endings:1": [
+    {
+      "model": "google/gemma-4-31b-it",
+      "raw": "<analysis>\nStep 1: Identify the root for \"see\". From the evidence \"rikuni → I see\", the root is \"riku\".\nStep 2: Identify the suffix for \"we (all of us)\". From \"rimanchik → we (all of us) speak\" and \"mikhunchik → we (all of us) eat\", the suffix is \"nchik\".\nStep 3: Combine the root \"riku\" and the suffix \"nchik\".\nResult: rikunchik.\n</analysis>\n<answers>\nrikunchik\n</answers>",
+      "answer": [
+        "riku",
+        "nchik"
+      ]
+    },
+    {
+      "model": "google/gemini-3-8-flash",
+      "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- \"see\" corresponds to the root \"riku\" (from \"rikuni\" = \"I see\").\n- \"we (all of us)\" corresponds to the suffix \"-nchik\" (from \"rimanchik\" = \"we (all of us) speak\", \"mikhunchik\" = \"we (all of us) eat\").\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- The structure is [verb root] + [person suffix].\n- Root: riku\n- Person suffix for 1st person plural inclusive (\"we (all of us)\"): -nchik\n\nStep 3: Compose the EXACT target-language form.\n- riku + nchik = rikunchik\n</analysis>\n<answers>\nrikunchik\n</answers>",
+      "answer": [
+        "riku",
+        "nchik"
+      ]
+    }
+  ],
+  "quechua-person-endings:2": [
+    {
+      "model": "google/gemma-4-31b-it",
+      "raw": "<analysis>\nStep 1: Identify the root for \"eat\". From \"mikhunki\" (you eat) and \"mikhunchik\" (we eat), the root is \"mikhu\".\nStep 2: Identify the suffix for \"she\". From \"riman\" (she speaks) and \"purin\" (he walks), the suffix for 3rd person singular is \"n\".\nStep 3: Combine the root \"mikhu\" and the suffix \"n\".\nResult: mikhun.\n</analysis>\n<answers>\nmikhun\n</answers>",
+      "answer": [
+        "mikhu",
+        "n"
+      ]
+    },
+    {
+      "model": "google/gemini-3-8-flash",
+      "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- \"eat\" corresponds to the root \"mikhu\".\n- \"she\" corresponds to the 3rd person singular subject suffix \"-n\".\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- Structure: [root] + [person].\n- mikhu + n.\n\nStep 3: Compose the EXACT target-language form.\n- mikhun\n</analysis>\n<answers>\nmikhun\n</answers>",
+      "answer": [
+        "mikhu",
+        "n"
+      ]
+    }
+  ],
+  "nahuatl-both-ends:0": [
+    {
+      "model": "google/gemma-4-31b-it",
+      "raw": "<analysis>\nStep 1: Identify the source word for \"I sing\".\n- \"I\" is represented by the prefix 'ni' (from nicochi, nichoca).\n- \"sing\" is represented by the root 'cuica' (from ticuica, cuicah).\nStep 2: Note any grammar.\n- The subject is \"I\" (singular), so no plural suffix '-h' is needed.\nStep 3: Compose the target-language form: ni + cuica = nicuica.\n</analysis>\n<answers>\nnicuica\n</answers>",
+      "answer": [
+        "ni",
+        "cuica"
+      ]
+    },
+    {
+      "model": "google/gemini-3-8-flash",
+      "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- \"I\" prefix = ni-\n- \"sing\" verb root = cuica\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- Singular 1st person takes prefix ni- with no plural suffix -h.\n- Structure: [who] + [verb] = ni + cuica.\n\nStep 3: Compose the EXACT target-language form.\n- nicuica\n</analysis>\n<answers>\nnicuica\n</answers>",
+      "answer": [
+        "ni",
+        "cuica"
+      ]
+    }
+  ],
+  "nahuatl-both-ends:1": [
+    {
+      "model": "google/gemma-4-31b-it",
+      "raw": "<analysis>\nStep 1: Identify the source word for \"they cry\".\n- \"cry\" is \"choca\" (from nichoca).\n- \"they\" is indicated by the absence of a subject prefix (from cuicah \"they sing\" vs ticuica \"you sing\").\n- Plurality is indicated by the suffix \"-h\" (from cuicah \"they sing\" and nicochih \"we sleep\").\n\nStep 2: Note grammar.\n- Subject: They (null prefix).\n- Verb: cry (choca).\n- Plural marker: -h.\n\nStep 3: Compose the form.\n- [null] + choca + h = chocah.\n</analysis>\n<answers>\nchocah\n</answers>",
+      "answer": [
+        "choca",
+        "h"
+      ]
+    },
+    {
+      "model": "google/gemini-3-8-flash",
+      "raw": "<analysis>\nStep 1: Identify the verb and subject:\n- \"cry\" = choca\n- \"they\" = 3rd person plural (Ø- prefix + -h suffix)\nStep 2: Grammar:\n- [who] + [verb] + (-h if plural)\n- 3rd person has no prefix.\n- Plural suffix is -h.\nStep 3: Compose:\n- choca + h = chocah\n</analysis>\n<answers>\nchocah\n</answers>",
+      "answer": [
+        "choca",
+        "h"
+      ]
+    }
+  ],
+  "nahuatl-both-ends:2": [
+    {
+      "model": "google/gemma-4-31b-it",
+      "raw": "<analysis>\nStep 1: Identify the source word for \"we sing\".\n- \"we\" is the plural of \"I\". From the evidence, \"I\" is represented by the prefix 'ni-'.\n- \"sing\" is represented by the root 'cuica'.\n- Plurality for the subject is indicated by the suffix '-h'.\n\nStep 2: Apply grammar.\n- Subject \"we\" = ni (I) + h (plural).\n- Verb \"sing\" = cuica.\n- Structure: [who] + [verb] + [plural marker].\n- Sequence: ni + cuica + h.\n\nStep 3: Compose the target-language form.\n- nicuicah\n</analysis>\n<answers>\nnicuicah\n</answers>",
+      "answer": [
+        "ni",
+        "cuica",
+        "h"
+      ]
+    },
+    {
+      "model": "google/gemini-3-8-flash",
+      "raw": "<analysis>\nStep 1: Identify the source elements for \"we sing\":\n- Subject \"we\" corresponds to 1st person prefix `ni-` combined with plural suffix `-h`.\n- Verb root \"sing\" corresponds to `cuica` (from `ticuica` = you sing, `cuicah` = they sing).\nStep 2: Grammar structure is [subject prefix] + [verb root] + [plural suffix]:\n- Prefix: `ni-`\n- Verb: `cuica`\n- Suffix: `-h`\nStep 3: Combine morphemes into the target form:\n`ni` + `cuica` + `h` = `nicuicah`\n</analysis>\n<answers>\nnicuicah\n</answers>",
+      "answer": [
+        "ni",
+        "cuica",
+        "h"
+      ]
+    }
+  ]
+}
