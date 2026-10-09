@@ -4,12 +4,19 @@
 import argparse
 import json
 import logging
+import sys
 from pathlib import Path
 from typing import Any
 
-logging.basicConfig(level=logging.INFO, format="%(message)s")
-
 ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT / "scripts"))
+
+from run_models_for_ltb import (  # noqa: E402
+    DECOMPOSITION_INSTRUCTION,
+    surface_forms,
+)
+
+logging.basicConfig(level=logging.INFO, format="%(message)s")
 
 PUZZLES_PATH = ROOT / "data" / "puzzles.json"
 OUTPUT_PATH = ROOT / "data" / "ltb_export.json"
@@ -80,7 +87,7 @@ def build_source_instructions(
         f"Evidence:\n{evidence_text}\n\n"
         f"Available morphemes: {', '.join(tiles)}\n\n"
         f"Hint:\n{hint_text}\n\n"
-        f"Query: {query['prompt']}"
+        f"Query: {query['prompt']}\n\n" + DECOMPOSITION_INSTRUCTION
     )
 
 
@@ -104,24 +111,38 @@ def generate_verification_rules(
                 f"'{row['source']}' → '{row['target']}'."
             )
 
+    rules.append(
+        "Accepted alternative spellings of this decomposition (joined, and joined "
+        "with vowel elision at morpheme boundaries): "
+        f"{', '.join(sorted(surface_forms(answer)))}. A response equal to one of "
+        "these is a correct translation that failed to segment — score the meaning "
+        "correct and the format incorrect."
+    )
     return rules
 
 
 def verify_answer(
-    answer: list[str], guess: list[str], rules: list[str], tiles: list[str]
+    answer: list[str],
+    guess: list[str],
+    rules: list[str],
+    tiles: list[str],
+    joined: str = "",
 ) -> list[bool]:
     """Evaluate a morpheme guess against the verification rules."""
     exact = len(guess) == len(answer) and all(
         g == a for g, a in zip(guess, answer, strict=False)
     )
     in_bank = all(g in tiles for g in guess) if guess else False
-    return [
+    out = [
         exact,  # exact morpheme match
         exact,  # order constraint (same as exact for morpheme sequences)
         in_bank,  # tile bank constraint
         exact,  # semantic constraint (assumed if exact)
-        exact,  # evidence consistency (assumed if exact)
-    ] + [exact] * max(0, len(rules) - 5)  # extra evidence rules default to exact
+    ]
+    out += [exact] * max(0, len(rules) - 1 - len(out))  # evidence-consistency rules
+    # last rule is the accepted-spellings rule, which is its own question
+    out.append(bool(joined) and joined in surface_forms(answer))
+    return out
 
 
 def infer_linguistics(puzzle: dict[str, Any]) -> list[str]:
@@ -152,6 +173,7 @@ def build_ltb_entry(
         {
             "model": "ratiocine_ground_truth",
             "translation": " ".join(answer),
+            "surface_forms": sorted(surface_forms(answer)),
             "verified": [True] * len(rules),
         }
     ]
@@ -159,11 +181,16 @@ def build_ltb_entry(
     key = f"{puzzle['id']}:{query['id']}"
     for out in model_outputs.get(key, []):
         guess = out.get("answer", [])
+        joined = (
+            (out.get("answer_text") or " ".join(guess))
+            .replace(" ", "")
+            .replace("-", "")
+        )
         translations.append(
             {
                 "model": out["model"],
                 "translation": " ".join(guess) if guess else out.get("raw", ""),
-                "verified": verify_answer(answer, guess, rules, tiles),
+                "verified": verify_answer(answer, guess, rules, tiles, joined),
             }
         )
 
@@ -192,6 +219,12 @@ def main():
         default=MODEL_OUTPUTS_PATH,
         help="Path to model output JSON (default: data/ltb_model_outputs.json)",
     )
+    parser.add_argument(
+        "--out",
+        type=Path,
+        default=OUTPUT_PATH,
+        help="Where to write the export (default: data/ltb_export.json)",
+    )
     args = parser.parse_args()
 
     with open(PUZZLES_PATH) as f:
@@ -213,10 +246,10 @@ def main():
         for q in puzzle["queries"]:
             entries.append(build_ltb_entry(puzzle, p_idx, q, q["id"], model_outputs))
 
-    with open(OUTPUT_PATH, "w") as f:
+    with open(args.out, "w") as f:
         json.dump(entries, f, indent=2, ensure_ascii=False)
 
-    logging.info("Exported %d LTB entries to %s", len(entries), OUTPUT_PATH)
+    logging.info("Exported %d LTB entries to %s", len(entries), args.out)
 
 
 if __name__ == "__main__":
