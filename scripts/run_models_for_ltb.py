@@ -4,9 +4,7 @@
 import argparse
 import json
 import logging
-import os
 import re
-import ssl
 import sys
 import time
 import urllib.error
@@ -17,7 +15,9 @@ logging.basicConfig(level=logging.INFO, format="%(message)s")
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "hf-pipeline" / "submission"))
+sys.path.insert(0, str(ROOT / "scripts"))
 
+import llm_providers  # noqa: E402
 from prompts import (  # noqa: E402
     SYSTEM_PROMPT,
     USER_TEMPLATE,
@@ -59,12 +59,16 @@ def call_model(
     context: str,
     query: str,
     model: str,
-    endpoint: str,
-    api_key: str,
+    env: dict[str, str],
+    provider_name: str | None = None,
     max_tokens: int = 512,
     task_type: str = "translation",
-) -> str:
-    """Call the Arkor OpenAI-compatible chat endpoint."""
+) -> tuple[str, str]:
+    """Call an OpenAI-compatible endpoint with retry/failover.
+
+    Returns (raw_output, provider_name). provider_name=None tries every
+    configured provider in registry order.
+    """
     system = (
         get_system_prompt(task_type)
         if task_type
@@ -82,35 +86,17 @@ def call_model(
         },
     ]
 
-    # GPT-5 / o-series don't accept max_tokens or temperature
-    if any(m in model for m in ["gpt-5", "o1", "o3"]):
-        payload = {
-            "model": model,
-            "messages": messages,
-        }
-    else:
-        payload = {
-            "model": model,
-            "messages": messages,
-            "max_tokens": max_tokens,
-            "temperature": 0,
-        }
+    # CoT traces run long; 512 truncated them mid-analysis in the first sweep
+    payload = llm_providers.build_payload(model, messages, max_tokens=max_tokens)
 
-    req = urllib.request.Request(
-        endpoint,
-        data=json.dumps(payload).encode(),
-        headers={
-            "Authorization": f"Bearer {api_key}",
-            "Content-Type": "application/json",
-        },
-    )
-
-    with urllib.request.urlopen(
-        req, timeout=120, context=ssl._create_unverified_context()
-    ) as resp:
-        data = json.loads(resp.read())
-
-    return data["choices"][0]["message"]["content"]
+    if provider_name:
+        provider = next(
+            (p for p in llm_providers.PROVIDERS if p["name"] == provider_name), None
+        )
+        if provider is None or provider["env_key"] not in env:
+            raise RuntimeError(f"provider {provider_name!r} unknown or key missing")
+        return llm_providers.call_chat(env, provider, payload), provider["name"]
+    return llm_providers.call_with_failover(env, payload)
 
 
 def build_context(puzzle: dict, query: dict) -> str:
@@ -165,20 +151,33 @@ def main():
         description="Run models on Ratiocine puzzles for LTB"
     )
     parser.add_argument(
-        "--model", default="Qwen/Qwen2.5-14B-Instruct-AWQ", help="Model ID on Arkor"
+        "--model",
+        default="Qwen/Qwen2.5-14B-Instruct-AWQ",
+        help="Model ID on the provider",
+    )
+    parser.add_argument(
+        "--provider",
+        default=None,
+        help="Pin a provider (arkor|openrouter|groq|google); default: try all configured",
     )
     parser.add_argument(
         "--limit", type=int, default=0, help="Max queries to run (0 = all)"
     )
-    parser.add_argument("--max-tokens", type=int, default=512, help="Max output tokens")
+    parser.add_argument(
+        "--max-tokens",
+        type=int,
+        default=2048,
+        help="Max output tokens (512 truncated CoT traces in the first sweep)",
+    )
     args = parser.parse_args()
 
     env = load_env()
-    endpoint = env.get("ARKOR_ENDPOINT_URL", os.getenv("ARKOR_ENDPOINT_URL", ""))
-    api_key = env.get("ARKOR_API_KEY", os.getenv("ARKOR_API_KEY", ""))
-
-    if not endpoint or not api_key:
-        logging.error("Error: ARKOR_ENDPOINT_URL and ARKOR_API_KEY must be set in .env")
+    providers = llm_providers.available_providers(env)
+    if not providers:
+        logging.error(
+            "Error: no provider keys set in .env — configure one of "
+            "ARKOR_API_KEY / OPENROUTER_API_KEY / GROQ_API_KEY / GOOGLE_API_KEY"
+        )
         sys.exit(1)
 
     with open(PUZZLES_PATH) as f:
@@ -203,7 +202,9 @@ def main():
         queries_to_run = queries_to_run[: args.limit]
 
     logging.info(f"[run] {len(queries_to_run)} queries with {args.model}")
-    logging.info(f"[run] Endpoint: {endpoint}")
+    logging.info(
+        "[run] Providers: " + (args.provider or ", ".join(p["name"] for p in providers))
+    )
 
     for i, (puzzle, query) in enumerate(queries_to_run):
         key = f"{puzzle['id']}:{query['id']}"
@@ -215,12 +216,12 @@ def main():
         context = build_context(puzzle, query)
         t0 = time.time()
         try:
-            raw = call_model(
+            raw, provider = call_model(
                 context,
                 query["prompt"],
                 args.model,
-                endpoint,
-                api_key,
+                env,
+                provider_name=args.provider,
                 max_tokens=args.max_tokens,
             )
             elapsed = time.time() - t0
@@ -234,6 +235,7 @@ def main():
             outputs.setdefault(key, []).append(
                 {
                     "model": args.model,
+                    "provider": provider,
                     "raw": raw,
                     "answer": answer,
                 }
