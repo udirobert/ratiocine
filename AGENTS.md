@@ -16,7 +16,7 @@ An IOL-AI competitor and linguistics research platform. Initially built for IOL-
 - `pyproject.toml` configures ruff (py310, isort/bugbear/simplify; RUF001/002/003 disabled for linguistic data)
 - Local `.env` holds: `HF_TOKEN`, `ARKOR_API_KEY`, `ARKOR_ENDPOINT_URL` (all gitignored)
 - `.env.example` documents all env vars; Modal token configured (`~/.modal.toml`, workspace `ungethe`)
-- Arkor endpoint verified: 6 models available (Gemma 4 31B, Gemini 3.6 Flash, GPT-5, etc.)
+- Arkor endpoint verified: 6 models available (Gemma 4 31B, Gemini 3.6 Flash, GPT-5, etc.) — **as of 2026-10 the preview expired: every call returns 404 "Unknown preview"**. `scripts/llm_providers.py` is the provider registry (arkor → openrouter → groq → google, OpenAI-compatible, retry + failover, `--provider` pin, probe CLI). Keys: `OPENROUTER_API_KEY` / `GROQ_API_KEY` / `GOOGLE_API_KEY` (free lanes, see `.env.example`).
 - 160 Linguini problems converted to training data in `data/synthetic/iol_train.jsonl`
 - 160 CoT-augmented training examples generated in `data/synthetic/iol_cot_train.jsonl` (112 with full `<analysis>/<answers>` tags from GPT-5, 48 wrapped from Gemma 4)
 - Task-specific prompting system in `hf-pipeline/submission/prompts.py` (5 task types + hybrid CoT for translation/fill_blanks)
@@ -128,6 +128,8 @@ python train.py                        # fine-tune (needs GPU)
 # then follow submission/README.md to push to HF
 ```
 
+**Free-GPU fine-tuning (Kaggle):** upload `hf-pipeline/` + the training JSONL as a Kaggle Input and run `python train.py --data ../input/<ds>/iol_train.jsonl --push your-username/ratiocine` in a Notebook (T4/P100, 30 GPU-h/week free; `HF_TOKEN` via Kaggle secrets). `train.py` auto-detects cuda/mps/cpu, skips 4-bit off CUDA, and pushes the saved adapter dir via `upload_folder` — never `model.push_to_hub` on a quantized PEFT model. Local smoke test: `python train.py --limit 8 --epochs 1`.
+
 `train.py` auto-loads `.env` via `python-dotenv` before reading `MODEL_NAME`, `DATASET_PATH`, `OUTPUT_DIR`, `HF_REPO_ID`.
 
 The submission format:
@@ -216,7 +218,7 @@ The showcase is a daily linguistics deduction game: study evidence rows → comp
 - **Forfeit flow**: after 2 failed attempts a "reveal this one" option locks the query wrong (honest share grid `🔍`). `good`/`partial` verdicts are only reachable this way.
 - **Evidence drawer** (ContextPanel) opens mid-solve via the book icon or `E` key; gated pairs (`gated: true`) are revealed from inside the drawer.
 - **A11y**: keyboard play (1–9 place, ⌫ remove, ↵ check, H hint, E evidence), `aria-live` grade announcements, grade symbols on tiles (not color-only), `MotionConfig reducedMotion="user"`, SFX mute persisted in `ration-sfx-muted`.
-- **Analytics**: `lib/analytics.ts` wraps `@vercel/analytics` — funnel events `play_start → study_complete → first_submit → puzzle_solved → shared → ai_verdict`.
+- **Analytics**: `lib/analytics.ts` wraps `@vercel/analytics` — funnel events `play_start → study_complete → first_submit → puzzle_solved → shared → ai_verdict`. Share-copy A/B test (48h): `lib/share-ab.ts` assigns a stable `control`/`linguistic` variant (localStorage `ration-share-variant`); `shared` carries `share_variant`, challenge links carry `&sc=c|l` and fire `share_click` on arrival.
 - The timer is intentionally **hidden during solve** and revealed on the result screen (deduction, not speedrun).
 
 ### The home journey (`showcase/app/page.tsx`)
@@ -303,7 +305,8 @@ Three parallel tracks to contribute to the IOL/MT research community:
 2. **Last Translation Benchmark V2 contributions** — IOL-style morphological reasoning problems
    - Export format: `docs/ltb-export-schema.md`
    - Target: 25 problems (5 puzzles × 5 queries), authorship credit on LTB V2 paper
-   - Why valuable: Few-shot, rare languages, exact morpheme segmentation (breaks SOTA models)
+   - Status (2026-10-09): 17 exported; #6106/#6107 submitted 2026-09-09, pending review. 2048-token sweeps on free lanes: **`openai/gpt-oss-120b` 16/17 and `qwen/qwen3.8-27b` 16/17 — each model's ONLY miss is #6106 Swahili "we sang" (`tulisimba`/`tulimba` ≠ `tu li imba`), joining morphemes instead of segmenting; Gemma 4 31B fails it too (3/3 convergence). #6107 Apurinã is solved by all three — the Sept "failures" were 512-token harness truncations; it needs repositioning, not a difficulty claim.** Sept sweep archived at `data/ltb_model_outputs_truncated20261009.json`; gemma full 2048 re-sweep + gemini re-run pending (OpenRouter credits or Google AI Studio key). See `docs/ltb_submission_summary.md` + `docs/ltb-reviewer-note.md`.
+   - Why valuable: Few-shot, rare languages, exact morpheme segmentation (constrained composition — `source_instructions` includes a structural hint; re-run with larger token budget before claiming "breaks SOTA")
 
 3. **IOL-AI 2026 technical report** — baseline for future competitions
    - Draft: `docs/iol-2026-technical-report.md`

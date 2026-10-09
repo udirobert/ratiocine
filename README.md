@@ -18,9 +18,10 @@ languages. It ships two things:
    [`ratiocine.trustfall.xyz`](https://ratiocine.trustfall.xyz).
 
 The submission, the live browser-to-Modal preview, and the local PocketIC
-attestation demo are verified separately. A public ICP Ration canister and
-certificate-aware verifier are not deployed yet; see the architecture record
-before treating a preview result as a public receipt.
+attestation demo are verified separately. The Ration canister is live on ICP
+mainnet (`cvrwv-mqaaa-aaaai-ax4pa-cai`) with certified ledger reports, and the
+showcase attestation relay signs entries end-to-end; a standalone
+certificate-aware verifier is still on the roadmap.
 
 ## Quick links
 
@@ -35,19 +36,22 @@ before treating a preview result as a public receipt.
 ├── src/arkor/         # Arkor rapid prototyping (TypeScript)
 ├── ration-app/        # Neutron app source (Motoko backend + React tile)  ← canonical
 ├── neutron/           # local clone of infu/neutron (gitignored) — for building
-├── showcase/          # Next.js 3-scene build-story (Vercel)
+├── showcase/          # Next.js scroll journey + daily game + /explore stations (Vercel)
 ├── data/synthetic/    # IOL training data
-├── netlify/functions/ # /api/solve + /api/status proxy → Modal
+├── netlify/functions/ # /api/solve + /api/status proxy → Modal (trustfall.xyz front)
 └── docs/              # this readme's detail lives here
 ```
 
 ## Quick start
 
 ```bash
-# Showcase (Vercel): 3D build-story site
+# Showcase (Vercel): scroll journey, daily game, /explore station journey
 cd showcase && npm install && npm run dev   # → http://localhost:3000
 
 # Neutron app: sync → build → local PocketIC
 ./scripts/sync-ration-app.sh
 cd neutron && npm --workspace neutron-ratiocine run package
 ```
+
+## Virality (Nikita Bier playbook)
+Daily game + share grid is the Wordle shape: activation = first puzzle value in 3 seconds. Run the K-factor worksheet on shares → new players, then a 48-hour test on the share copy.
