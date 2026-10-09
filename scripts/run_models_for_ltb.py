@@ -28,6 +28,16 @@ from prompts import (  # noqa: E402
 PUZZLES_PATH = ROOT / "data" / "puzzles.json"
 OUTPUTS_PATH = ROOT / "data" / "ltb_model_outputs.json"
 
+# The stock IOL system prompt asks for "the EXACT target-language form", so a
+# model that answers `tulimba` is following instructions while our gold is the
+# tile decomposition. This arm makes the required output format explicit so the
+# two representations can be measured against the same recordings.
+DECOMPOSITION_INSTRUCTION = (
+    "Answer format (REQUIRED): for the query, output ONLY its morphemes taken from "
+    "the available morphemes list, separated by single spaces, in order. Never "
+    "write the combined word."
+)
+
 # First 5 rare-language puzzles (matching export_to_ltb.py)
 LTB_PUZZLE_IDS = [
     "apurina-verb-agreement",
@@ -99,14 +109,16 @@ def call_model(
     return llm_providers.call_with_failover(env, payload)
 
 
-def build_context(puzzle: dict, query: dict) -> str:
+def build_context(puzzle: dict, query: dict, prompt_variant: str = "default") -> str:
     """Build IOL few-shot context for the model."""
     evidence = "\n".join(
         f"- {row['source']} → {row['target']}" for row in puzzle["pairs"]
     )
     tiles = [m for group in puzzle["morphemeBank"] for m in group]
     hints = "\n".join(h["text"] for h in puzzle["hints"])
-    return (
+    if prompt_variant == "no_hint":
+        hints = "(none — deduce the pattern from the evidence alone)"
+    context = (
         "Given the following bilingual evidence pairs and a tile bank of morphemes, "
         "deduce the correct morpheme sequence for the query.\n\n"
         f"Evidence:\n{evidence}\n\n"
@@ -114,10 +126,62 @@ def build_context(puzzle: dict, query: dict) -> str:
         f"Hint:\n{hints}\n\n"
         f"Query: {query['prompt']}"
     )
+    if prompt_variant == "decomposition":
+        context += "\n\n" + DECOMPOSITION_INSTRUCTION
+    return context
 
 
-def parse_morphemes(raw: str, gold: list[str]) -> list[str]:
+VOWELS = set("aeiouã")
+
+
+def segment_from_bank(joined: str, tiles: list[str]) -> list[str] | None:
+    """Segment a joined word using the puzzle's tile bank.
+
+    Longest-tile-first with backtracking: a greedy prefix walk silently fails on
+    banks with overlapping tiles ('a' inside 'kaa'), which is what made the first
+    sweeps grade correct answers as wrong.
+    """
+    bank = sorted(set(tiles), key=len, reverse=True)
+    memo: dict[int, list[str] | None] = {}
+
+    def walk(i: int) -> list[str] | None:
+        if i == len(joined):
+            return []
+        if i in memo:
+            return memo[i]
+        for tile in bank:
+            if joined.startswith(tile, i):
+                rest = walk(i + len(tile))
+                if rest is not None:
+                    memo[i] = [tile, *rest]
+                    return memo[i]
+        memo[i] = None
+        return None
+
+    return walk(0)
+
+
+def surface_forms(morphs: list[str]) -> set[str]:
+    """Joined spellings a model may legitimately produce for a decomposition.
+
+    Includes the vowel-elided form, because Bantu-style boundary phonology makes
+    'tu'+'li'+'imba' surface as 'tulimba', not 'tuliimba'.
+    """
+    exact = "".join(morphs)
+    elided = ""
+    for m in morphs:
+        if elided and elided[-1] in VOWELS and m and m[0] in VOWELS:
+            elided += m[1:]
+        else:
+            elided += m
+    return {exact, elided}
+
+
+def parse_morphemes(
+    raw: str, gold: list[str], tiles: list[str] | None = None
+) -> list[str]:
     """Parse a single answer string into morphemes."""
+    tiles = tiles or []
     # Extract first line from model output (parse_answers returns per-item answers)
     parsed = parse_answers(raw, n_expected=1, task_type="translation")
     if not parsed:
@@ -128,6 +192,9 @@ def parse_morphemes(raw: str, gold: list[str]) -> list[str]:
     # Some models join morphemes with no spaces; if the gold answer is a known
     # segmentation, try to recover by finding contiguous morpheme pieces.
     if " " not in answer:
+        segmented = segment_from_bank(answer.replace("-", ""), tiles) or []
+        if segmented:
+            return segmented
         return split_joined_morphemes(answer, gold)
     return [m.strip() for m in re.split(r"\s+", answer) if m.strip()]
 
@@ -169,6 +236,14 @@ def main():
         default=2048,
         help="Max output tokens (512 truncated CoT traces in the first sweep)",
     )
+    parser.add_argument(
+        "--prompt-variant",
+        choices=["default", "decomposition", "no_hint"],
+        default="default",
+        help="default: stock IOL prompt (asks for the target-language form); "
+        "decomposition: same prompt + explicit space-separated tile output; "
+        "no_hint: evidence only, hint block withheld",
+    )
     args = parser.parse_args()
 
     env = load_env()
@@ -204,17 +279,23 @@ def main():
 
     logging.info(f"[run] {len(queries_to_run)} queries with {args.model}")
     logging.info(
-        "[run] Providers: " + (args.provider or ", ".join(p["name"] for p in providers))
+        f"[run] Prompt variant: {args.prompt_variant} | Providers: "
+        + (args.provider or ", ".join(p["name"] for p in providers))
     )
 
     for i, (puzzle, query) in enumerate(queries_to_run):
         key = f"{puzzle['id']}:{query['id']}"
-        # Skip if this model already has a result for this query
-        if key in outputs and any(o["model"] == args.model for o in outputs[key]):
+        tiles = [m for group in puzzle["morphemeBank"] for m in group]
+        # Skip if this model+variant already has a result for this query
+        if key in outputs and any(
+            o["model"] == args.model
+            and o.get("prompt_variant", "default") == args.prompt_variant
+            for o in outputs[key]
+        ):
             logging.info(f"  [{i + 1}/{len(queries_to_run)}] {key} — already run")
             continue
 
-        context = build_context(puzzle, query)
+        context = build_context(puzzle, query, args.prompt_variant)
         t0 = time.time()
         try:
             raw, provider = call_model(
@@ -226,19 +307,28 @@ def main():
                 max_tokens=args.max_tokens,
             )
             elapsed = time.time() - t0
-            answer = parse_morphemes(raw, query["answer"])
-            correct = answer == query["answer"]
-            status = "✓" if correct else "✗"
+            lines = parse_answers(raw, n_expected=1, task_type="translation")
+            answer_text = lines[0].strip().strip(".!?;:，。") if lines else ""
+            answer = parse_morphemes(raw, query["answer"], tiles)
+            # Two independent grades from one recording: does the answer equal the
+            # tile decomposition, and does it equal an attested surface form?
+            em_decomp = answer == query["answer"]
+            em_surface = answer_text.replace(" ", "").replace("-", "") in (
+                surface_forms(query["answer"])
+            )
+            status = f"{'✓' if em_decomp else '✗'}dec {'✓' if em_surface else '✗'}surf"
             logging.info(
                 f"  [{i + 1}/{len(queries_to_run)}] {key} {status} "
-                f"({elapsed:.1f}s) answer={answer}"
+                f"({elapsed:.1f}s) said={answer_text!r} segmented={answer}"
             )
             outputs.setdefault(key, []).append(
                 {
                     "model": args.model,
                     "provider": provider,
+                    "prompt_variant": args.prompt_variant,
                     "raw": raw,
                     "answer": answer,
+                    "answer_text": answer_text,
                 }
             )
         except urllib.error.HTTPError as e:
