@@ -8,7 +8,7 @@ Ratiocine is an IOL-AI competition team and linguistics research platform (githu
 
 ## What we are contributing
 
-17 IOL-style few-shot morphological reasoning examples in five under-represented languages (Apurinã, Swahili, Turkish, Quechua, Nahuatl), formatted per `docs/ltb-export-schema.md`. Each item specifies an English source, a tile bank of morphemes, self-contained bilingual evidence in `source_instructions`, and an exact morpheme-sequence ground truth — verification is deterministic and reproducible without external resources.
+17 IOL-style few-shot morphological reasoning examples in five under-represented languages (Apurinã, Swahili, Turkish, Quechua, Nahuatl), formatted per `docs/ltb-export-schema.md`. Each item specifies an English source, a tile bank of morphemes, self-contained bilingual evidence in `source_instructions`, the required output format stated in the item itself, and a morpheme-sequence ground truth whose accepted surface spellings are enumerated in `verification_rules` — verification is deterministic and reproducible without external resources.
 
 We believe these target a gap most LTB entries do not cover: benchmark items score translation *output* quality, while ours require *exact morphological composition* against an explicit tile bank, verifiable without a judge. Our own ablation (below) is part of what we want to contribute, because it shows how easily such an item measures the harness instead of the model.
 
@@ -70,4 +70,4 @@ it.
 
 1. Feedback on format and verification rules for #6106/#6107 so we can align the remaining 15 before scaling up.
 2. If the contribution is accepted, we would like the Ratiocine team listed on the LTB V2 author list.
-3. We can scale to 25 items (5 languages × 5 queries) and add stronger model baselines on your preferred cadence.
+3. We can scale from 17 to 25 items, but not by padding: measured on our own grid, the remaining queries in our puzzle bank are single-rule compositions that every model we ran already solves. Tell us whether LTB V2 wants (a) more items of that kind for coverage, or (b) fewer, harder items — we can author the latter if you confirm they should chain sub-rules (harmony with a decoy feature, boundary phonology that a spaced gold punishes), since that needs new evidence rows reviewed by a linguist rather than new prompts.

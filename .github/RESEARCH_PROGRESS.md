@@ -1,6 +1,6 @@
 # Research Progress Tracker
 
-**Last Updated:** 2026-10-09
+**Last Updated:** 2026-10-10
 
 Statuses below are read from the code and the data files, not from this file's
 previous state — the earlier version of this tracker described a plan, and
@@ -37,8 +37,10 @@ several of its boxes had quietly gone stale.
 - [x] `data/puzzles.json` (10 puzzles) produced by `scripts/extract_puzzles.ts`
 - [x] `scripts/export_to_ltb.py` — 17 entries in `data/ltb_export.json`
       (Apurinã 5, Swahili 3, Turkish 3, Quechua 3, Nahuatl 3)
-- [x] Verification rules per entry, including the accepted-spellings rule
-      added 2026-10-09 (joined + vowel-elided forms)
+- [ ] Regenerate `data/ltb_export.json`: the exporter emits the accepted-spellings
+      rule (joined + vowel-elided forms) since 2026-10-09, but the committed
+      export was generated before it, so the file a reviewer would read still
+      hard-requires the spaced gold and marks a correct `tulimba` unverified
 - [ ] Linguistic annotation review by someone who reads these languages
       (`linguistics` tags are currently rule-inferred, not signed off)
 
@@ -49,11 +51,16 @@ several of its boxes had quietly gone stale.
 - [x] 2048-token sweeps, hinted arm: `openai/gpt-oss-120b` and
       `qwen/qwen3.8-27b` (Groq), `google/gemma-4-31b-it:free` (partial, 5 items)
 - [x] `scripts/score_ltb_outputs.py` — dual grading (`EM_decomp`, `EM_surface`)
-- [ ] `decomposition` and `no_hint` prompt arms across Qwen3-32B /
-      DeepSeek-V3.2 / GLM-4.6 (Featherless) — running now
-- [ ] Gemma 4 31B full 17-item re-sweep (OpenRouter `:free` throttles; needs
-      credits, a Google AI Studio key, or Featherless `gemma-3-27b-it`, which is
-      gated behind a HuggingFace org link on that account)
+- [x] `decomposition` arm across Qwen3-32B / DeepSeek-V3.2 / GLM-4.6 (Featherless)
+      — all three answer `tu li imba`; the only Apurinã misses are the `taka`
+      format artifact
+- [ ] `default` / `no_hint` arms for the open-weight models — running on
+      Featherless now (gemma 3 arms, Qwen3-32B, DeepSeek-V3.2). Featherless
+      concurrency units are account-wide, so one chain at a time or every call 429s
+- [x] Gemma 4 31B full 17-item re-sweep unblocked: Featherless serves
+      `google/gemma-4-31B-it` without the HuggingFace gate that blocks
+      `gemma-3-27b-it` on that account (OpenRouter `:free` is upstream-throttled
+      on nearly every call)
 - [ ] Scale to the 25-item target: the other 5 puzzles hold 25 more queries,
       but Māori / Zulu / Finnish / Esperanto / Indonesian are weaker fits for
       LTB's low-resource mission than Apurinã or Quechua
@@ -159,12 +166,18 @@ to LTB V2 specifically because it ships `verification_rules`.
 
 ## Next session start here
 
-1. Read the explicit-format arm results (`python3 scripts/score_ltb_outputs.py`)
-   and decide whether any item survives as discriminative.
-2. If none do, author deeper queries — multi-morpheme chaining and evidence-only
-   exceptions — rather than adding more 1-step compositions, which the 2048-token
-   sweeps show frontier models solve.
-3. Verify Phase-1 events on the production deployment, then start counting
+1. ~~Read the explicit-format arm results and decide whether any item survives as
+   discriminative~~ — done 2026-10-10: aggregating misses by item, the only real
+   misses are Turkish `göz ler` / `gün ler` (one model). See
+   `docs/ltb_submission_summary.md` → Mining decision.
+2. Merge the in-flight gap arms (`data/gap_*.json`) into
+   `data/ltb_model_outputs.json`, re-score, regenerate `data/ltb_export.json`
+   (the committed export predates the accepted-spellings rule), and delete the
+   scratch files.
+3. If the grid still shows no second discriminative item, stop item mining and put
+   the effort into the linguist sign-off — harder items need new evidence rows in
+   `puzzle-data.ts`, which is authoring work, not sweep work.
+4. Verify Phase-1 events on the production deployment, then start counting
    opt-in sessions.
 
 ---

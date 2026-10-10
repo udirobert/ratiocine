@@ -100,6 +100,8 @@ Example: `queries[0] = {prompt: "my father", answer: ["u", "ku", "pa"]}`
 2. "Morphemes must appear in this exact order: u-ku-pa."
 3. "Translation must not use any morphemes outside the provided tile bank."
 4. "Translation must express possession ('my') and the kinship term ('father')."
+5. "Accepted alternative spellings of this decomposition … a response equal to one
+   of these is a correct translation that failed to segment."
 
 **Generalized rule template:**
 
@@ -124,6 +126,18 @@ def generate_verification_rules(query, answer, tiles, context_rows):
     for row in context_rows:
         if any(morph in row.source for morph in answer):
             rules.append(f"Translation must be consistent with the evidence pattern: '{row.source}' → '{row.target}'.")
+
+    # Rule 6: Accepted surface spellings of the decomposition. Required, because a
+    # spaced gold otherwise marks a correct fused translation (`tulimba` for
+    # `tu li imba`) wrong. State the format in `source_instructions` AND enumerate
+    # the accepted joined / elided spellings here, so a surface answer can be scored
+    # meaning-correct but format-incorrect instead of simply wrong.
+    rules.append(
+        "Accepted alternative spellings of this decomposition (joined, and joined "
+        f"with vowel elision at morpheme boundaries): {', '.join(sorted(surface_forms(answer)))}. "
+        "A response equal to one of these is a correct translation that failed to "
+        "segment — score the meaning correct and the format incorrect."
+    )
 
     return rules
 ```

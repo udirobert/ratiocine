@@ -140,6 +140,49 @@ On 2026-09-09 the two examples we then thought were strongest were submitted thr
 The defensible contribution is the *verification design*, not item difficulty: see
 takeaways 2 and 4 above and `docs/ltb-reviewer-note.md`.
 
+## Mining decision (2026-10-10)
+
+Before scaling to 25 items we asked what the recorded grid actually separates.
+Aggregating every miss by item: the only items on record that any model gets wrong
+for a reasoning reason (rather than a format reason) are Turkish `göz ler` and
+`gün ler`, and only Qwen3-32B misses them. Every other Apurinã miss is the `taka`
+over-segmentation, and the Swahili misses are either a wrong formation
+(`tulisimba`) or a correct surface form scored wrong (`tulimba`). At 2048 tokens,
+with the output format stated, no item in the exported set separates two or more of
+the models we can run.
+
+So the scale-up is not a matter of exporting the remaining 8 queries from the
+existing puzzles — a single-rule query is either trivial or an artifact trap.
+Discriminative items need a **sub-rule the evidence only implies**, and an
+accepted-answer spelling that cannot be recovered by concatenation. Two shapes
+worth authoring:
+
+- **Harmony with a decoy feature.** Turkish is the worked case: front *rounded*
+  stems (`göz`, `gün`) take the front suffix while the unrounded front stem
+  (`kız`) does not decide it, so a model that keys on "frontness of the last
+  vowel" alone gets 1 of 3. The same shape exists in the Finnish puzzle
+  (`koulu` → `-ssa` despite the `u`, `kylä` → `-ssä`), which is the mirror-image
+  decoy.
+- **Morpheme-boundary collisions** — `ka` inside `taka` is one; Quechua `mikhu n`
+  (a final-vowel stem plus a consonant-initial suffix) is another. These are
+  worth authoring *as surface-form items*, because the collision is exactly what
+  a spaced gold punishes.
+
+Constraint on all of it: the tile bank bounds what is answerable, so a harder item
+means new evidence rows in `showcase/app/play/puzzle-data.ts` (game content that has
+to be linguistically correct), not a new prompt. That is authoring work with a
+linguist, not sweep work — hence open action 4 (sign-off) gates open action 6.
+
+The other 5 puzzles (Esperanto, Indonesian, Finnish, Māori) are 25 more queries and
+would fill the grid cheaply, but they are well-resourced languages and a weaker fit
+for LTB's low-resource mission, so they stay out of the export unless an item from
+them is genuinely discriminative.
+
+The cheaper honest move for now is to reframe the contribution: we ship 17 items
+whose format contract is explicit and whose accepted spellings are enumerated, plus
+the measurement that single-rule composition items do not discriminate current
+models.
+
 ## Files and structure
 
 - `data/puzzles.json` — exported puzzle pool from `showcase/app/play/puzzle-data.ts`
