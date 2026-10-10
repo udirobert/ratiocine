@@ -87,7 +87,7 @@ a benchmark-design finding: **exact-match grading of a decomposed gold penalises
 correct surface forms in any language with boundary phonology** — which matters
 to LTB V2 specifically because it ships `verification_rules`.
 
-**Measured 2026-10-10** (10 model×arm cells, 155 recordings,
+**Measured 2026-10-10** (15 model×arm cells, 225 recordings,
 `data/ltb_model_outputs.json`, scored on both axes by `scripts/score_ltb_outputs.py`):
 
 - Every model recorded in the `decomposition` arm answers `tu li imba` —
@@ -97,14 +97,24 @@ to LTB V2 specifically because it ships `verification_rules`.
   decomposition axis and 17/17 on the surface axis (its one miss is the
   correctly-fused `tulimba`), and Qwen3.8-27B answers everything it reached
   (16/16).
-- Stating the format induces a *different* error: 9 of the 24 Apurinã answers in
+- Stating the format induces a *different* error: 13 of the 29 Apurinã answers in
   the decomposition arm segment a standalone `taka` (the 'eat' tile) for the
-  aspect suffix `ka`, across 4 of its 5 models — and 0 of the 17 Apurinã answers
+  aspect suffix `ka`, across 5 of its 6 models — and 0 of the 39 Apurinã answers
   recorded in the arms that ask for the word do.
-- One format-independent miss: Turkish rounded-front vowel harmony — Qwen3-32B
-  answers `göz lar` and `gün lar` for `göz ler` / `gün ler` while getting
-  `kız lar` right. Recorded in the decomposition arm only so far, so
-  "format-independent" is still an inference until the other two arms land.
+- One item has format-independent difficulty: Turkish `göz ler` ('eyes'), missed
+  by Qwen3-32B in **both** arms and with two different errors — `göz lar`
+  (back-harmony suffix after a rounded front stem) when the format is stated,
+  `göller` ('lakes', a different lexeme) when the word is asked for. Thin
+  evidence: that model's word-asking lane returned nothing for 5 of its 17 items.
+- **Correction to this file's earlier draft**, which listed `gün ler` beside
+  `göz ler` as the same harmony failure and called the pair format-independent:
+  Qwen3-32B writes `günler` correctly in the `default` arm and only `gün lar` in
+  the `decomposition` arm, so it belongs in the format-induced column with
+  Apurinã `taka`. Same item, same model, and the only variable is whether the
+  prompt names the output representation — which is the finding, not the harmony.
+- The other genuine miss on the grid is one cell: GPT-OSS-120B `default` wrote
+  `tulisimba` for Swahili `tu li imba`, an inserted `s` no Swahili paradigm
+  produces.
 - `parse_morphemes` was dropping any answer the tag parser returned as a bare
   tag (an unterminated `<answers>` block, or `<mikhu n>`), scoring correct
   answers as misses. Fixed, then 40 recordings were re-derived offline from the
@@ -115,17 +125,23 @@ to LTB V2 specifically because it ships `verification_rules`.
 
 - [ ] Decide whether to notify the LTB reviewers of the retracted framing
       (#6106/#6107 submitted 2026-09-09, still pending review)
-- [ ] Re-export under the stated-format contract and resubmit
+- [x] Re-export under the stated-format contract — `data/ltb_export.json`
+      regenerated 2026-10-10: every entry now states the required output format in
+      `source_instructions`, carries an accepted-spellings rule (joined + elided),
+      and lists model translations with the prompt arm they came from. Lane
+      failures are no longer exported as translations, and repeated answers are
+      deduped across arms. Remaining: resubmit, gated on the reviewer-note decision
 - [x] Re-establish any difficulty claim on data from the explicit-format arm,
       or drop difficulty claims and lead with the verification-rule finding —
-      **no difficulty claim survives except Turkish `gün ler` (n=1); lead with
-      the verification-rule finding**
-- [ ] Close the coverage gaps: gemma was 5/17 in `default` and absent from the
-      other arms; 2 items per arm lost to Groq 429 on Qwen3.8-27B; Qwen3-32B and
-      GLM-4.6 have Featherless lane failures. Re-recording gemma (3 arms),
-      Qwen3-32B (`default`/`no_hint`) and DeepSeek-V3.2 (`default`) on
-      Featherless now — note Featherless concurrency units are account-wide, so
-      these must run one chain at a time or every call 429s
+      **no difficulty claim survives except Turkish `göz ler`, and it rests on one
+      model (n=1, with a broken lane); lead with the verification-rule finding**
+- [ ] Close the coverage gaps. Done since the last update: gemma in all three arms
+      (17 items each), Qwen3-32B `default`. Still open: Qwen3-32B `no_hint`;
+      DeepSeek-V3.2 `default`, which Featherless 503'd at 2 of 17; GLM-4.6 outside
+      the decomposition arm; 2 items per arm lost to Groq 429 on Qwen3.8-27B; and
+      the 5 blank Qwen3-32B `default` completions, which are the one cell where a
+      re-run would change the conclusion rather than the coverage. Featherless
+      concurrency units are account-wide, so chains must run one at a time.
 
 ---
 
@@ -167,16 +183,19 @@ to LTB V2 specifically because it ships `verification_rules`.
 ## Next session start here
 
 1. ~~Read the explicit-format arm results and decide whether any item survives as
-   discriminative~~ — done 2026-10-10: aggregating misses by item, the only real
-   misses are Turkish `göz ler` / `gün ler` (one model). See
-   `docs/ltb_submission_summary.md` → Mining decision.
-2. Merge the in-flight gap arms (`data/gap_*.json`) into
-   `data/ltb_model_outputs.json`, re-score, regenerate `data/ltb_export.json`
-   (the committed export predates the accepted-spellings rule), and delete the
-   scratch files.
-3. If the grid still shows no second discriminative item, stop item mining and put
-   the effort into the linguist sign-off — harder items need new evidence rows in
-   `puzzle-data.ts`, which is authoring work, not sweep work.
+   discriminative~~ — done 2026-10-10: across 15 cells the only genuinely wrong
+   formations are Turkish `göz ler` (one model, both arms, two different errors),
+   Turkish `gün ler` (one model, decomposition arm only — so format-induced, not
+   a harmony gap), and Swahili `tulisimba` (one model, one arm). No item separates
+   two models. See `docs/ltb_submission_summary.md` → Mining decision.
+2. ~~Merge the in-flight gap arms, re-score, regenerate the export, delete the
+   scratch files~~ — done 2026-10-10: 225 recordings in `data/ltb_model_outputs.json`,
+   `data/ltb_export.json` regenerated under the stated-format contract.
+3. Stop item mining and put the effort into the linguist sign-off — harder items
+   need new evidence rows in `puzzle-data.ts`, which is authoring work, not sweep
+   work. The shape to author is an item whose evidence implies a rule without
+   teaching the queried combination (Turkish rounded-front stems are the worked
+   case); the `taka` / `gün lar` pair shows a spaced gold can *cause* the miss.
 4. Verify Phase-1 events on the production deployment, then start counting
    opt-in sessions.
 

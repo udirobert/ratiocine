@@ -171,6 +171,39 @@ From solver trace data (once we have it):
 ]
 ```
 
+Two rules `scripts/export_to_ltb.py` applies when it builds this list from
+`data/ltb_model_outputs.json`, because a raw sweep dump would misrepresent both
+the models and the benchmark:
+
+- **Lane failures are not translations.** A completion that came back blank,
+  degenerate (one character repeated), truncated mid-reasoning, or as an echo of
+  the evidence is our serving infrastructure failing, not a model answering
+  wrongly. Those recordings are dropped; `scripts/score_ltb_outputs.py`
+  classifies them as `lane_failure` / `truncated_output` / `parse_artifact` /
+  `evidence_echo` and the exporter refuses to export them as `translations`.
+- **One entry per distinct answer, with `prompt_variants` listing every arm that
+  produced it.** The same model is recorded in up to three arms (word asked for,
+  spaced morphemes demanded, hint withheld), so deduping on `(model, answer)`
+  keeps the list to *answers* rather than *calls*. `note` records why a non-exact
+  answer is there — a correct fused surface form (`tulimba`) is a different fact
+  from a wrong formation (`tulisimba`), and only the second is a translation
+  error.
+
+```json
+  {
+    "model": "google/gemma-4-31B-it",
+    "translation": "tulimba",
+    "prompt_variants": ["default", "no_hint"],
+    "note": "correct translation of the decomposition, written as the fused surface form rather than spaced morphemes",
+    "verified": [false, false, false, false, false, false, false, false, true]
+  }
+```
+
+The trailing `true` is the accepted-spellings rule (Rule 6 above): the last
+element of `verified` always answers "is this an attested surface form of the
+gold?", so a reader can tell a format miss from a wrong translation without
+re-deriving it.
+
 #### 4. Annotate `linguistics`
 
 Map our puzzles to LTB linguistic categories:

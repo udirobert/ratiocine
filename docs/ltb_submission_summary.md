@@ -54,14 +54,21 @@ the same items:
 | `qwen/qwen3.8-27b` | default | 17 | 16/17 | **17/17** | #6106 → `tulimba`: correct translation, scored wrong on format |
 | `qwen/qwen3.8-27b` | decomposition | 15 | 12/15 | 12/15 | Apurinã ×3 over-segmented `…taka`; 2 items lost to Groq 429 |
 | `qwen/qwen3.8-27b` | no_hint | 16 | 16/16 | 16/16 | clean; 1 item lost to Groq 429 |
-| `Qwen/Qwen3-32B` | decomposition | 17 | 13/17 | 13/17 | 1 Featherless lane failure + 1 `…taka` + **2 Turkish harmony errors** → 13/16 answered |
+| `Qwen/Qwen3-32B` | decomposition | 17 | 13/17 | 13/17 | 1 Featherless lane failure + 1 `…taka` + the 2 Turkish slips (`göz lar`, `gün lar` — the second does not survive the other arm, see takeaway 4) → 13/16 answered |
+| `Qwen/Qwen3-32B` | default | 17 | 9/17 | 10/17 | 5 Featherless lane failures + 1 evidence-echo truncation — of the 11 answers the lane actually delivered, **8 are correct**, and the two misses are Turkish `göller` ('lakes', the wrong word) and Swahili `tulimba` (right word, no segmentation). Not a reasoning-weak arm; a broken lane. |
 | `deepseek-ai/DeepSeek-V3.2` | decomposition | 17 | 13/17 | 13/17 | Apurinã ×4 over-segmented `…taka` |
+| `deepseek-ai/DeepSeek-V3.2` | default | 2 | 2/2 | 2/2 | Featherless 503'd this model mid-arm; only 2 of 17 items recorded, both correct (`nhaakutaka`, `ãnykataka`) |
 | `zai-org/GLM-4.6` | decomposition | 17 | 16/17 | 16/17 | Apurinã ×1 `kaa kuta taka` |
-| `google/gemma-4-31b-it:free` | default | 5 | 5/5 | 5/5 | partial (OpenRouter `:free`) — #6106 never recorded at this budget; a Featherless re-sweep is running |
+| `google/gemma-4-31b-it` | decomposition | 17 | 13/17 | 13/17 | Apurinã ×4 over-segmented `…taka` |
+| `google/gemma-4-31b-it` | default | 17 | 16/17 | **17/17** | #6106 → `tulimba`: correct translation, scored wrong on format |
+| `google/gemma-4-31b-it` | no_hint | 17 | 16/17 | **17/17** | same single `tulimba` miss |
+| `google/gemma-4-31b-it:free` | default | 5 | 5/5 | 5/5 | earlier partial (OpenRouter `:free`); superseded by the Featherless rows above |
 
 Grading is over `data/ltb_model_outputs.json` as it stands after the parser fix
-described below; `Items` is the number of the 17 queries actually recorded for
-that arm, so rows are not directly comparable across arms.
+described below — **225 recordings across 15 model×arm cells** — and `Items` is
+the number of the 17 queries actually recorded for that arm, so rows are not
+directly comparable across arms. Where an arm is short, the reason is a serving
+lane (Featherless 503 / Groq 429), not a dropped item.
 
 Re-run note: this grid was measured twice. The first pass was lost when a
 concurrent write to `data/ltb_model_outputs.json` was reverted, and the whole
@@ -73,7 +80,7 @@ worded as a rate rather than a per-model verdict.
 Extraction fix (2026-10-10): `parse_morphemes` dropped any answer the tag parser
 returned as a bare tag — an unterminated `<answers>\nkız lar` or a model that
 wrapped the answer itself in one (`<mikhu n>`). Those are correct answers scored
-as misses. Recovering the text from the answer block repaired 40 of the 155
+as misses. Recovering the text from the answer block repaired 40 of the then-155
 recordings offline (from stored `raw`, no re-calls), which is what moved
 GPT-OSS's `decomposition` arm to 17/17, DeepSeek to 13/17, and Qwen3-32B to
 13/17. Anything that still reads as a miss was re-checked by hand.
@@ -94,37 +101,58 @@ Key takeaways:
    `tu li imba`. There is no difficulty evidence for #6106.
 2. **Stating the format manufactures the opposite error.** Apurinã's aspect
    suffix `ka` sits inside the 'eat' verb `taka`, and when the prompt demands
-   bare morphemes, models reach for the lexeme: 9 of the 24 Apurinã answers in
+   bare morphemes, models reach for the lexeme: 13 of the 29 Apurinã answers in
    the `decomposition` arm segment a standalone `taka` (DeepSeek-V3.2 4/5,
-   Qwen3.8-27B 3/4, Qwen3-32B 1/5, GLM-4.6 1/5; GPT-OSS 0/5), answering
-   `nhaa kuta taka` / `kaa kuta taka` / `a pita taka` where the gold is `… ka`.
-   **None of the 17 Apurinã answers recorded in the arms that ask for the word
-   contains a `taka` morpheme** — the same items are clean there (GPT-OSS 5/5 in
-   both `default` and `no_hint`, Qwen3.8-27B 5/5 in `default` and 4/4 in
-   `no_hint`, Gemma 3/3). So the exact-match gold is wrong in *both* directions:
-   fused correct answers are punished for not segmenting, and demanding
-   segmentation invites over-segmentation.
+   Gemma 4 31B 4/5, Qwen3.8-27B 3/4, Qwen3-32B 1/5, GLM-4.6 1/5; GPT-OSS 0/5),
+   answering `nhaa kuta taka` / `a pita taka` where the gold is `… ka`.
+   **None of the 39 Apurinã answers recorded in the arms that ask for the word
+   (five models, nine cells) contains a `taka` morpheme.** So the
+   exact-match gold is wrong in *both* directions: fused correct answers are
+   punished for not segmenting, and demanding segmentation invites
+   over-segmentation.
    The `taka` rate is unstable run-to-run (GPT-OSS showed it in the lost first
    pass and not in the re-run), so we report it as a prompt-induced error class,
    not as a per-model property.
+   All 13 were checked against the stored `raw`: the `taka` is the model's own
+   token inside its `<answers>` block, not an artifact of our segmenter. Gemma 4
+   31B's trace even shows the self-check failing — "Check: a + pita + taka =
+   apitaka" — when `a`+`pita`+`taka` concatenates to `apitataka`, not the gold
+   word `apitaka`. Under a bare-morpheme instruction the model pads the sequence
+   with a lexeme tile and its own verification step does not catch it.
 3. **The hint is not load-bearing.** Withholding it costs nothing: GPT-OSS is
    17/17 with the format stated and 16/17 without the hint (its one no-hint miss
    is the unsegmented-but-correct `tulimba`, so 17/17 on the surface axis), and
    Qwen3.8-27B answers every item it reached (16/16). These items measure
    deduction from the evidence, not instruction-following on a scaffold — that
    closes the confound we flagged in September.
-4. **The one item family with format-independent difficulty is Turkish vowel
-   harmony, and it is narrower than "the model can't do harmony".** Qwen3-32B
-   answers `kız lar` ('girls') correctly but `göz lar` ('eyes') and `gün lar`
-   ('days') wrongly — it applies the back-harmony suffix after *rounded*
-   front-vowel stems, which is exactly the sub-rule the unrounded stem does not
-   exercise. It reproduced across both sweep passes, and every other model
-   recorded (GPT-OSS, Qwen3.8-27B, DeepSeek-V3.2, GLM-4.6, Gemma) gets all three.
-   A genuine modeling error, but one model and two items; present it as a lead.
-   Caveat while we write this: Qwen3-32B is only recorded in the `decomposition`
-   arm, so "format-independent" is currently an inference — the `default` and
-   `no_hint` arms for that model are being recorded to test whether the error
-   survives a prompt that asks for the word instead of the morphemes.
+4. **One item has format-independent difficulty, and it is a single model on a
+   single item.** Turkish `göz ler` ('eyes') is missed by Qwen3-32B in **both**
+   arms, and the two errors are not the same error: with the format stated it
+   writes `göz lar`, and with the word asked for it writes `göller`, which is
+   'lakes' — a different lexeme. Every other cell we recorded gets it: GPT-OSS,
+   Qwen3.8-27B and Gemma 4 31B in all three arms, DeepSeek-V3.2 and GLM-4.6 in the
+   `decomposition` arm (DeepSeek's word-asking arm only reached 2 of 17 items).
+   Why the item is hard is worth stating precisely, because the evidence explains
+   it. The puzzle teaches two shapes — unrounded *front* stems (`ev`, `el` →
+   `-ler`) and unrounded *back* stems (`at`, `kitap` → `-lar`) — and never shows a
+   **rounded front** stem taking a suffix. `göz` and `gün` are exactly that
+   untaught combination, so the item asks a model to apply a rule the evidence
+   implies but does not demonstrate. A model that imports the *four-way* rule,
+   where rounding does decide the vowel (`-ı` vs `-u`), slips to `göz lar`.
+   **The companion claim in the earlier draft of this document was wrong and is
+   retracted here.** We grouped `gün ler` with `göz ler` as one harmony failure and
+   called the pair "format-independent". It is not: Qwen3-32B answers `günler`
+   correctly in the `default` arm and only `gün lar` in the `decomposition` arm, so
+   it belongs with the Apurinã `taka` effect — an error the spaced-format
+   instruction induces, not a gap in the model's Turkish. Same item, same model,
+   and the only variable is whether the prompt names the output representation.
+   (An earlier draft also described `kız` as an "unrounded front" decoy; `ı` is
+   back-unrounded, so `kız lar` is the ordinary case and not part of the trap.)
+   Caveat on the one surviving claim: Qwen3-32B's `default` arm is a weak lane — 5
+   of its 17 recordings are Featherless failures that returned nothing, and one
+   returned the reasoning preamble — so it answered 11 items. The `göz` failure is
+   real in both arms, but the "every other model gets it" side rests mainly on the
+   `decomposition` arm.
 5. **Cheap lanes make a grid like this nearly free** — 3 arms × 6 models above
    ran on Groq's free tier plus well under a dollar of Featherless credit.
 
@@ -143,13 +171,55 @@ takeaways 2 and 4 above and `docs/ltb-reviewer-note.md`.
 ## Mining decision (2026-10-10)
 
 Before scaling to 25 items we asked what the recorded grid actually separates.
-Aggregating every miss by item: the only items on record that any model gets wrong
-for a reasoning reason (rather than a format reason) are Turkish `göz ler` and
-`gün ler`, and only Qwen3-32B misses them. Every other Apurinã miss is the `taka`
-over-segmentation, and the Swahili misses are either a wrong formation
-(`tulisimba`) or a correct surface form scored wrong (`tulimba`). At 2048 tokens,
-with the output format stated, no item in the exported set separates two or more of
-the models we can run.
+Per item, across **all 15 model×arm cells** (so a row mixes the arm that demands
+morphemes with the arms that ask for the word — which is the point: the columns
+separate where the miss came from):
+
+| Language | Gold | n | correct | `taka` artifact | surface, not segmented | lane / truncation | real miss |
+|----------|------|---|---------|-----------------|------------------------|-------------------|-----------|
+| Apurinã | `nhaa kuta ka` | 15 | 12 | 2 | 0 | 1 | 0 |
+| Apurinã | `kaa kuta ka` | 13 | 8 | 4 | 0 | 1 | 0 |
+| Apurinã | `ã nykata ka` | 14 | 11 | 2 | 0 | 1 | 0 |
+| Apurinã | `kaa nykata ka` | 13 | 10 | 2 | 0 | 1 | 0 |
+| Apurinã | `a pita ka` (#6107) | 13 | 10 | 3 | 0 | 0 | 0 |
+| Swahili | `ni ta penda` | 14 | 14 | 0 | 0 | 0 | 0 |
+| Swahili | `wa na soma` | 13 | 13 | 0 | 0 | 0 | 0 |
+| Swahili | `tu li imba` (#6106) | 12 | 6 | 0 | **5** | 0 | **1** |
+| Turkish | `göz ler` | 13 | 11 | 0 | 0 | 0 | **2** |
+| Turkish | `kız lar` | 13 | 13 | 0 | 0 | 0 | 0 |
+| Turkish | `gün ler` | 14 | 13 | 0 | 0 | 0 | **1** |
+| Quechua | `puri ni` | 13 | 13 | 0 | 0 | 0 | 0 |
+| Quechua | `riku nchik` | 13 | 13 | 0 | 0 | 0 | 0 |
+| Quechua | `mikhu n` | 13 | 12 | 0 | 0 | 1 | 0 |
+| Nahuatl | `ni cuica` | 13 | 12 | 0 | 0 | 1 | 0 |
+| Nahuatl | `choca h` | 13 | 12 | 0 | 0 | 1 | 0 |
+| Nahuatl | `ni cuica h` | 13 | 13 | 0 | 0 | 0 | 0 |
+
+`n` is the number of cells that recorded that item (13–15; the shortfalls are the
+Groq 429s that cost Qwen3.8-27B two items, a Featherless 503 that stopped
+DeepSeek's `default` arm at 2 of 17, and Qwen3.8-27B's partial `no_hint` sweep).
+
+Read the columns, not the totals. Twelve of the seventeen items are solved by
+every cell that reached them. Of the five that are not, four are entirely a
+format effect: the `taka` column is the spaced-format instruction inducing an
+extra morpheme (13 of 29 decomposition-arm Apurinã answers, 0 of 39 word-asking
+ones), and the Swahili row's five `tulimba` entries are correct translations
+scored against a decomposed gold. The only genuinely wrong formations on the
+whole grid are three, and two of them are one model on one item:
+
+- Turkish `göz ler` — Qwen3-32B, in **both** arms, with two different errors
+  (`göz lar` = harmony slip; `göller` = 'lakes', wrong lexeme).
+- Turkish `gün ler` — Qwen3-32B in the `decomposition` arm only (`gün lar`); it
+  writes `günler` correctly when asked for the word, so this one belongs in the
+  format column, not the difficulty column.
+- Swahili `tu li imba` — GPT-OSS in the `default` arm wrote `tulisimba`, an
+  insertion of `s` that no Swahili paradigm produces. One model, one arm.
+
+So no item separates two or more *models* for a reasoning reason. Leading with
+`göz ler` would be honest but thin — one model, and that model's `default` arm is
+a broken lane (5 of its 17 recordings returned nothing at all). At 2048 tokens,
+with the output format stated, the exported set does not discriminate the models
+we can run.
 
 So the scale-up is not a matter of exporting the remaining 8 queries from the
 existing puzzles — a single-rule query is either trivial or an artifact trap.
@@ -157,12 +227,18 @@ Discriminative items need a **sub-rule the evidence only implies**, and an
 accepted-answer spelling that cannot be recovered by concatenation. Two shapes
 worth authoring:
 
-- **Harmony with a decoy feature.** Turkish is the worked case: front *rounded*
-  stems (`göz`, `gün`) take the front suffix while the unrounded front stem
-  (`kız`) does not decide it, so a model that keys on "frontness of the last
-  vowel" alone gets 1 of 3. The same shape exists in the Finnish puzzle
-  (`koulu` → `-ssa` despite the `u`, `kylä` → `-ssä`), which is the mirror-image
-  decoy.
+- **Harmony with a decoy feature.** Turkish is the worked case, and the phonology
+  is more interesting than the earlier draft of this section said. The evidence
+  teaches two shapes — unrounded *front* stems (`ev`, `el` → `-ler`) and unrounded
+  *back* stems (`at`, `kitap` → `-lar`) — and never shows a **rounded front** stem
+  taking a suffix. So `göz` and `gün` are exactly the underdetermined combination.
+  A model that imports the *four-way* rule (where rounding does decide the vowel:
+  `-ı` vs `-u`) into the two-way plural slips to `göz lar`. That is the error we
+  recorded, and it is the shape worth authoring more of: an item whose evidence
+  implies a rule but does not teach the queried combination.
+  (`kız` is a back-unrounded stem — `kız lar` is the ordinary case, not a decoy;
+  the previous draft of this bullet had it the other way round. The Finnish puzzle
+  is the mirror-image decoy: `koulu` → `-ssa` despite the `u`, `kylä` → `-ssä`.)
 - **Morpheme-boundary collisions** — `ka` inside `taka` is one; Quechua `mikhu n`
   (a final-vowel stem plus a consonant-initial suffix) is another. These are
   worth authoring *as surface-form items*, because the collision is exactly what
@@ -187,7 +263,7 @@ models.
 
 - `data/puzzles.json` — exported puzzle pool from `showcase/app/play/puzzle-data.ts`
 - `data/ltb_export.json` — 17 LTB-formatted entries with `translations`, `verification_rules`, and `linguistics` tags
-- `data/ltb_model_outputs.json` — 155 raw model recordings across 10 model×arm cells; entries carry `provider` and `prompt_variant`, and `raw` is kept so a parser fix can be re-applied offline instead of re-spending on calls
+- `data/ltb_model_outputs.json` — 225 raw model recordings across 15 model×arm cells (5 models in all three arms, Qwen3-32B and DeepSeek-V3.2 in two, GLM-4.6 in one); entries carry `provider` and `prompt_variant`, and `raw` is kept so a parser fix can be re-applied offline instead of re-spending on calls
 - `data/ltb_model_outputs_truncated20261009.json` — archived Sept sweep at `max_tokens=512`
 - `scripts/export_to_ltb.py` — converts puzzle data to `data/ltb_export.json`
 - `scripts/llm_providers.py` — provider registry (arkor → openrouter → groq → featherless → google) with retry/failover + health probe CLI
@@ -201,9 +277,9 @@ All examples are credited to `https://ratiocine.trustfall.xyz/play?puzzle=<id>`.
 
 ## Open actions
 
-1. Fill the coverage gaps that keep the grid honest (in flight on Featherless: Gemma 4 31B across all three arms, Qwen3-32B `default`/`no_hint`, DeepSeek-V3.2 `default`). Still open: Qwen3.8-27b lost 2 items per arm to Groq 429s, and GLM-4.6 is only recorded in one arm. Each run needs its own `--outputs` file, merged afterwards.
+1. Fill the coverage gaps that keep the grid honest. Closed since the last commit: Gemma 4 31B in all three arms, and Qwen3-32B `default`. Still open: Qwen3-32B `no_hint`, DeepSeek-V3.2 `default` (Featherless 503'd it at 2 of 17), GLM-4.6 outside the `decomposition` arm, and the two Qwen3.8-27b items it lost per arm to Groq 429s. Qwen3-32B `default` is also the one cell where the *lane* is the problem — 5 blank/`!!!!` completions — so a re-run there is worth more than a new model. Each run needs its own `--outputs` file, merged afterwards.
 2. Featherless concurrency units are account-wide, not per-model: four model chains in parallel 429 every call after the first. Run one chain at a time.
-3. ~~Run the Apurinã `ka`/`taka` over-segmentation against more models~~ — done: 9 of 24 decomposition-arm Apurinã answers over-segment across 4 models, 0 of 17 in the arms that ask for the word (takeaway 2). It is a prompt-format effect, not two models' quirk.
+3. ~~Run the Apurinã `ka`/`taka` over-segmentation against more models~~ — done: 13 of 29 decomposition-arm Apurinã answers over-segment across 5 models, 0 of 39 in the arms that ask for the word (takeaway 2). It is a prompt-format effect, not two models' quirk.
 4. Get an independent linguist sign-off on the Apurinã segmentation (see reviewer note).
 5. Decide the gold representation for the remaining items: the export now states the required output format and lists accepted surface spellings in `verification_rules`, which is the fix; whether to keep the spaced decomposition or the attested surface form as primary gold is a judgment call for the LTB team.
 6. Scale from 17 to 25 problems (5 × 5) only if discriminative items can be authored — see the mining note in `AGENTS.md`.

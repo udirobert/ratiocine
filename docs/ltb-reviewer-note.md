@@ -37,11 +37,13 @@ it.
   surfaces as `tulimba`, never `tuliimba`). And the failure runs the other way
   too: demanding spaced morphemes induced over-segmentation on our Apurinã
   items, where the aspect suffix `ka` is a substring of the 'eat' verb `taka`.
-  In the re-run of the whole grid, 9 of the 24 Apurinã answers recorded in that
-  arm segment a standalone `taka` morpheme (across 4 of its 5 models) and answer
-  `nhaa kuta taka` / `a pita taka` for a gold of `… ka`, while not one of the 17
-  Apurinã answers recorded in the arms that ask for the word contains a `taka`
-  morpheme. A
+  In the current grid (15 model×arm cells, 225 recordings), 13 of the 29 Apurinã
+  answers recorded in the spaced-morpheme arm segment a standalone `taka` morpheme
+  — across 5 of the 6 models run in that arm — and answer `nhaa kuta taka` /
+  `a pita taka` for a gold of `… ka`, while not one of the 39 Apurinã answers
+  recorded in the arms that ask for the word contains a `taka` morpheme. We
+  checked all 13 against the stored raw completions: the morpheme is the model's
+  own token, not an artifact of our segmenter. A
   constrained-composition item only measures composition if the accepted output
   format and the graded gold are the same representation.
 - **Practical suggestion:** have `verification_rules` enumerate the accepted
@@ -52,22 +54,38 @@ it.
   GPT-OSS-120B still scores 16/17 and Qwen3.8-27B answered every item it reached.
   These items measure deduction from the evidence rather than
   instruction-following on a scaffold.
-- The only format-independent difficulty we can point at is Turkish harmony, and
-  it is narrow: Qwen3-32B answers `kız lar` ('girls') correctly but `göz lar` and
-  `gün lar` wrongly — the back-harmony suffix after *rounded* front-vowel stems —
-  reproduced across two independent passes, while every other model we recorded
-  gets all three. Two items against one model, so we offer it as a lead rather
-  than a finding.
+- The one item with format-independent difficulty we can point at is Turkish
+  `göz ler` ('eyes'), and it is narrow: only Qwen3-32B misses it, in both arms,
+  with two different errors — `göz lar` when the format is stated (the
+  back-harmony suffix after a *rounded* front-vowel stem) and `göller` ('lakes')
+  when the word is asked for, which is a different lexeme. Every other cell we
+  recorded gets it. Our evidence for it is thin: that model's word-asking lane
+  returned nothing for 5 of its 17 items.
+  The item design is the useful part, and it generalises past Turkish: the
+  evidence in `source_instructions` teaches `ev`/`el` → `-ler` (unrounded front)
+  and `at`/`kitap` → `-lar` (back), and never shows a **rounded front** stem
+  taking a suffix. `göz` is exactly the combination the evidence implies a rule
+  for but does not demonstrate. An item that underdetermines one sub-rule this way
+  is harder, and more diagnostic, than one with more morphemes.
+  Worth separating from it is a claim an earlier draft of this note made: we
+  grouped `gün ler` with `göz ler` as the same harmony failure. It is not.
+  Qwen3-32B writes `günler` correctly when asked for the word and only `gün lar`
+  in the spaced-morpheme arm, so it belongs with the Apurinã `taka` effect — an
+  error the format instruction induces. That correction is part of what we want
+  to contribute: the same item, the same model, and the only variable is whether
+  the prompt names the output representation.
 - Ground-truth segmentations are authored by our team; we are arranging
   independent linguist verification of the Apurinã set and will share it on
   request.
-- Coverage caveat: the grid is not complete. Gemma 4 31B is recorded on 5 of 17
-  items; Groq's free tier dropped a few items to 429s; and some open-weight runs
-  on our Featherless lane returned blank or degenerate completions, which we
-  exclude as lane failures rather than model answers.
+- Coverage caveat: the grid is not complete. Qwen3.8-27B lost two items per arm to
+  Groq 429s, DeepSeek-V3.2's word-asking arm stopped at 2 of 17 when Featherless
+  503'd it, GLM-4.6 is only recorded in one arm, and some open-weight runs on our
+  Featherless lane returned blank or degenerate completions — we classify those as
+  lane failures rather than model answers, and they are the main reason one
+  Qwen3-32B arm looks weaker than the model is.
 
 ## Ask
 
 1. Feedback on format and verification rules for #6106/#6107 so we can align the remaining 15 before scaling up.
 2. If the contribution is accepted, we would like the Ratiocine team listed on the LTB V2 author list.
-3. We can scale from 17 to 25 items, but not by padding: measured on our own grid, the remaining queries in our puzzle bank are single-rule compositions that every model we ran already solves. Tell us whether LTB V2 wants (a) more items of that kind for coverage, or (b) fewer, harder items — we can author the latter if you confirm they should chain sub-rules (harmony with a decoy feature, boundary phonology that a spaced gold punishes), since that needs new evidence rows reviewed by a linguist rather than new prompts.
+3. We can scale from 17 to 25 items, but not by padding: measured on our own grid, the remaining queries in our puzzle bank are single-rule compositions that every model we ran already solves. Tell us whether LTB V2 wants (a) more items of that kind for coverage, or (b) fewer, harder items — we can author the latter if you confirm they should be items whose evidence implies a sub-rule without teaching the queried combination (Turkish rounded-front stems are the worked case), or turn on boundary phonology that a spaced gold punishes, since that needs new evidence rows reviewed by a linguist rather than new prompts.
