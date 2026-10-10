@@ -52,7 +52,7 @@ export const SceneNav = ({ current, onChange }: SceneNavProps) => {
             />
             <span
               className={`font-mono text-[10px] tracking-wide transition-colors ${
-                scene.id === current ? "text-white/80" : "text-white/50"
+                scene.id === current ? "text-white/80" : "text-white/70"
               }`}
             >
               {scene.label.replace("The ", "")}

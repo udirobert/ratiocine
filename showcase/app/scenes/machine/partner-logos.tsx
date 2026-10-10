@@ -51,7 +51,7 @@ const chip = (p: (typeof PARTNERS)[number], i: number) => (
       <p className="text-xs font-semibold text-white/80 group-hover:text-white transition-colors leading-none mb-0.5">
         {p.name}
       </p>
-      <p className="text-[10px] text-white/40 leading-none whitespace-nowrap">
+      <p className="text-[11px] text-white/55 leading-none whitespace-nowrap">
         {p.desc}
       </p>
     </div>

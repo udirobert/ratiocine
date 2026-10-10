@@ -236,7 +236,7 @@ export const StudyPhase = ({ puzzle, highlightedRows, onReady, instant = false, 
               <span className="text-[10px] transition-transform" style={{ transform: loreOpen ? "rotate(90deg)" : "rotate(0deg)" }}>
                 ▸
               </span>
-              <span className="text-[11px] font-mono uppercase tracking-wider text-white/50 hover:text-white/70">
+              <span className="text-[11px] font-mono uppercase tracking-wider text-white/55 hover:text-white/80">
                 About {puzzle.language}
               </span>
             </summary>
@@ -247,15 +247,15 @@ export const StudyPhase = ({ puzzle, highlightedRows, onReady, instant = false, 
               className="mt-3 space-y-3 px-4 py-3.5 rounded-lg border border-white/10 bg-white/[0.03]"
             >
               <div>
-                <span className="text-white/45 text-[10px] uppercase tracking-wide font-mono block mb-1">Region</span>
+                <span className="text-white/55 text-[11px] uppercase tracking-wide font-mono block mb-1">Region</span>
                 <p className="text-white/85 leading-relaxed">{puzzle.region}</p>
               </div>
               <div>
-                <span className="text-white/45 text-[10px] uppercase tracking-wide font-mono block mb-1">Speakers</span>
+                <span className="text-white/55 text-[11px] uppercase tracking-wide font-mono block mb-1">Speakers</span>
                 <p className="text-white/85 leading-relaxed">{puzzle.lore.speakers}</p>
               </div>
               <div>
-                <span className="text-white/45 text-[10px] uppercase tracking-wide font-mono block mb-1">Family</span>
+                <span className="text-white/55 text-[11px] uppercase tracking-wide font-mono block mb-1">Family</span>
                 <p className="text-white/85 leading-relaxed">{puzzle.lore.family}</p>
               </div>
               <div className="pt-2.5 border-t border-white/10">
@@ -288,7 +288,7 @@ export const StudyPhase = ({ puzzle, highlightedRows, onReady, instant = false, 
               <button
                 onClick={() => setPage((p) => Math.max(0, p - 1))}
                 disabled={page === 0}
-                className="min-w-[44px] min-h-[44px] flex items-center justify-center text-white/50 disabled:opacity-20 hover:text-white/80 transition-colors text-lg"
+                className="min-w-[44px] min-h-[44px] flex items-center justify-center text-white/70 disabled:opacity-20 hover:text-white transition-colors text-lg"
                 aria-label="Previous evidence page"
               >
                 ‹
@@ -312,7 +312,7 @@ export const StudyPhase = ({ puzzle, highlightedRows, onReady, instant = false, 
               <button
                 onClick={() => setPage((p) => Math.min(pageCount - 1, p + 1))}
                 disabled={page === pageCount - 1}
-                className="min-w-[44px] min-h-[44px] flex items-center justify-center text-white/50 disabled:opacity-20 hover:text-white/80 transition-colors text-lg"
+                className="min-w-[44px] min-h-[44px] flex items-center justify-center text-white/70 disabled:opacity-20 hover:text-white transition-colors text-lg"
                 aria-label="Next evidence page"
               >
                 ›
@@ -330,7 +330,7 @@ export const StudyPhase = ({ puzzle, highlightedRows, onReady, instant = false, 
         animate={ready ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
         transition={{ duration: 0.4 }}
       >
-        <p className="text-center text-[11px] text-white/40 font-mono">
+        <p className="text-center text-[11px] text-white/55 font-mono">
           tap any source word to trace the pattern
         </p>
         <div className="flex items-center justify-center gap-3">
@@ -393,7 +393,7 @@ const EvidenceCard = ({
     }}
   >
     {/* Row number */}
-    <span className="font-mono text-[10px] text-white/25 w-4 text-right shrink-0 tabular-nums">
+    <span className="font-mono text-[11px] text-white/55 w-4 text-right shrink-0 tabular-nums">
       {pair.id}
     </span>
 

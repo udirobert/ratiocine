@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import { Button } from "@/components/button";
 import type { Puzzle, QueryGrade } from "./puzzle-data";
 
 // ─── Modal API config ───────────────────────────────────────────────────────
@@ -174,7 +175,13 @@ export const AiComparison = ({ puzzle, humanElapsed, humanHints, humanGrades, on
   const doSolve = useCallback(async () => {
     setPhase("submitting");
     setError("");
+    setAiElapsed(0);
     startRef.current = Date.now();
+
+    // Elapsed timer — ticks from submit so cold GPU starts aren't a silent wait
+    timerRef.current = setInterval(() => {
+      setAiElapsed(Math.floor((Date.now() - startRef.current) / 1000));
+    }, 1000);
 
     const base = await resolveBase();
     baseRef.current = base;
@@ -200,11 +207,6 @@ export const AiComparison = ({ puzzle, humanElapsed, humanHints, humanGrades, on
 
       jobIdRef.current = data.job_id;
       setPhase("queued");
-
-      // Elapsed timer
-      timerRef.current = setInterval(() => {
-        setAiElapsed(Math.floor((Date.now() - startRef.current) / 1000));
-      }, 1000);
 
       // Poll
       pollRef.current = setInterval(async () => {
@@ -350,12 +352,9 @@ export const AiComparison = ({ puzzle, humanElapsed, humanHints, humanGrades, on
           >
             <p className="text-[12px] text-red-400/70">{error}</p>
             <p className="text-[11px] text-white/70">The comparison is optional — your solve still counts.</p>
-            <button
-              onClick={handleRetry}
-              className="mt-1 px-3 py-1.5 rounded border border-white/15 text-[11px] font-mono text-white/70 hover:text-white/80 hover:bg-white/5 transition-colors min-h-[36px]"
-            >
-              Retry
-            </button>
+            <Button variant="secondary" size="md" onClick={handleRetry} className="mt-1">
+              Try again
+            </Button>
           </motion.div>
         )}
 

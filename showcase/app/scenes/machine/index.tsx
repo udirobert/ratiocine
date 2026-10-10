@@ -1,16 +1,23 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
+import { Button } from "../../../components/button";
+import { MacLoading } from "./mac-loading";
 import { drawScreen, setSkipTypewriter, setSolvedState, SCREEN_H, SCREEN_W } from "./screen-canvas";
 import type { SolvedData } from "./screen-canvas";
 import { useSolveCounter } from "../../play/use-solve-counter";
 
 const MacScene = dynamic(
   () => import("./mac-scene").then((m) => m.MacScene),
-  { ssr: false },
+  { ssr: false, loading: () => <MacLoading /> },
+);
+
+const PlayIcon = () => (
+  <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true">
+    <path d="M3 1.7v8.6c0 .8.9 1.3 1.6.9l6.9-4.3c.6-.4.6-1.4 0-1.8L4.6.8c-.7-.4-1.6.1-1.6.9z" />
+  </svg>
 );
 
 interface MachineProps {
@@ -70,6 +77,7 @@ export const Machine = ({ onPlay, zooming = false, solvedResult = null }: Machin
           ref={canvasRef}
           width={SCREEN_W}
           height={SCREEN_H}
+          aria-hidden="true"
           className="absolute -left-[9999px] -top-[9999px]"
         />
       )}
@@ -77,30 +85,38 @@ export const Machine = ({ onPlay, zooming = false, solvedResult = null }: Machin
       {/* 3D Mac (desktop only) — pure exploration. OrbitControls rotate/orbit;
           it is NOT a play trigger. The dedicated Play button starts the game. */}
       {!isMobile && (
-        <div className="absolute inset-0 cursor-grab active:cursor-grabbing">
+        <div
+          className="absolute inset-0 cursor-grab active:cursor-grabbing"
+          role="img"
+          aria-label="3D Macintosh showing today's puzzle"
+        >
           <MacScene screenCanvasRef={canvasRef} zooming={zooming} />
         </div>
       )}
 
       {/* Play button — positioned below the Mac (hidden during zoom) */}
       {!isMobile && !zooming && (
-        <div className="absolute inset-x-0 bottom-16 z-30 flex flex-col items-center gap-2 pointer-events-none">
+        <div className="absolute inset-x-0 bottom-24 z-30 flex flex-col items-center gap-2 pointer-events-none">
           {onPlay ? (
-            <button
+            <Button
+              variant="primary"
+              size="lg"
               onClick={onPlay}
-              className="pointer-events-auto px-7 py-3 rounded-full border border-amber-400/40 bg-amber-400/10 backdrop-blur text-amber-300 font-mono text-sm font-medium hover:bg-amber-400/20 hover:border-amber-400/60 transition-all shadow-[0_0_20px_rgba(229,168,75,0.1)]"
+              className="pointer-events-auto pulse-glow"
             >
-              ▶ Play today&rsquo;s puzzle
-            </button>
+              <PlayIcon /> Play today&rsquo;s puzzle
+            </Button>
           ) : (
-            <Link
+            <Button
+              variant="primary"
+              size="lg"
               href="/play"
-              className="pointer-events-auto px-7 py-3 rounded-full border border-amber-400/40 bg-amber-400/10 backdrop-blur text-amber-300 font-mono text-sm font-medium hover:bg-amber-400/20 hover:border-amber-400/60 transition-all shadow-[0_0_20px_rgba(229,168,75,0.1)]"
+              className="pointer-events-auto pulse-glow"
             >
-              ▶ Play today&rsquo;s puzzle
-            </Link>
+              <PlayIcon /> Play today&rsquo;s puzzle
+            </Button>
           )}
-          <span className="font-mono text-[10px] text-white/30">new puzzle daily</span>
+          <span className="font-mono text-[11px] text-white/55">new puzzle daily</span>
         </div>
       )}
 
@@ -115,16 +131,13 @@ export const Machine = ({ onPlay, zooming = false, solvedResult = null }: Machin
             <br />
             Then watch the machine try.
           </p>
-          <p className="mt-3 font-mono text-[11px] text-white/45">
+          <p className="mt-3 font-mono text-[11px] text-white/55">
             A new puzzle every day.
           </p>
-          <Link
-            href="/play"
-            className="mt-8 inline-flex items-center gap-2 rounded-full bg-amber-500/90 px-7 py-3 text-sm font-bold text-black transition-all hover:bg-amber-400"
-          >
-            Play →
-          </Link>
-          <p className="mt-6 font-mono text-[10px] text-white/45 uppercase tracking-widest">
+          <Button variant="primary" size="lg" href="/play" className="mt-8">
+            Play <PlayIcon />
+          </Button>
+          <p className="mt-6 font-mono text-[11px] text-white/55 uppercase tracking-widest">
             IOL-AI 2026 Competitor · Score{" "}
             <span className="text-emerald-400/80">0.1141</span>
           </p>
@@ -135,11 +148,11 @@ export const Machine = ({ onPlay, zooming = false, solvedResult = null }: Machin
       {!isMobile && !zooming && (
         <div className="pointer-events-none absolute inset-x-0 bottom-8 z-20 flex flex-col items-center gap-1">
           {count !== null && count > 0 && (
-            <p className="text-[10px] text-white/40 font-mono">
+            <p className="text-[11px] text-white/55 font-mono">
               {count} solved today
             </p>
           )}
-          <p className="text-[10px] text-white/25 font-mono">
+          <p className="text-[11px] text-white/55 font-mono">
             drag to rotate
           </p>
         </div>

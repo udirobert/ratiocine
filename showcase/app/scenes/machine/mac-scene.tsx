@@ -4,11 +4,13 @@ import {
   ContactShadows,
   OrbitControls,
   Stage,
+  useProgress,
 } from "@react-three/drei";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Suspense, useEffect, useRef, useState, type RefObject } from "react";
 import { MathUtils } from "three";
 
+import { MacLoading } from "./mac-loading";
 import { MacModel } from "./mac-model";
 
 // Animates the camera forward when zooming is triggered
@@ -45,6 +47,8 @@ export const MacScene = ({
 }) => {
   const [el, setEl] = useState<HTMLCanvasElement | null>(null);
   const [isMobile, setIsMobile] = useState(false);
+  const { progress, active } = useProgress();
+  const ready = !active && progress >= 100;
 
   useEffect(() => {
     setIsMobile(window.innerWidth < 768);
@@ -55,42 +59,49 @@ export const MacScene = ({
   if (isMobile) return null;
 
   return (
-    <Canvas
-      shadows
-      dpr={[1, 1.5]}
-      gl={{ antialias: true, powerPreference: "high-performance" }}
-      camera={{ position: [0.02, 0.01, 0.05], fov: 24, near: 0.001, far: 100 }}
-      className="absolute inset-0"
-    >
-      <Suspense fallback={null}>
-        <Stage
-          intensity={0.5}
-          environment="forest"
-          shadows={false}
-          adjustCamera={false}
+    <div className="absolute inset-0">
+      <div
+        className={`absolute inset-0 transition-opacity duration-700 ${ready ? "opacity-100" : "opacity-0"}`}
+      >
+        <Canvas
+          shadows
+          dpr={[1, 1.5]}
+          gl={{ antialias: true, powerPreference: "high-performance" }}
+          camera={{ position: [0.02, 0.01, 0.05], fov: 24, near: 0.001, far: 100 }}
+          className="absolute inset-0"
         >
-          <MacModel screenCanvas={el} zooming={zooming} enableFloat />
-        </Stage>
-      </Suspense>
-      <CameraZoom zooming={zooming} />
-      <ContactShadows
-        position={[0, -0.35, 0]}
-        opacity={0.4}
-        blur={2}
-        far={4}
-        resolution={128}
-      />
-      {!zooming && (
-        <OrbitControls
-          enableDamping
-          enablePan={false}
-          enableZoom={false}
-          minDistance={2}
-          maxDistance={8}
-          minPolarAngle={Math.PI / 6}
-          maxPolarAngle={Math.PI / 2}
-        />
-      )}
-    </Canvas>
+          <Suspense fallback={null}>
+            <Stage
+              intensity={0.5}
+              environment="forest"
+              shadows={false}
+              adjustCamera={false}
+            >
+              <MacModel screenCanvas={el} zooming={zooming} enableFloat />
+            </Stage>
+          </Suspense>
+          <CameraZoom zooming={zooming} />
+          <ContactShadows
+            position={[0, -0.35, 0]}
+            opacity={0.4}
+            blur={2}
+            far={4}
+            resolution={128}
+          />
+          {!zooming && (
+            <OrbitControls
+              enableDamping
+              enablePan={false}
+              enableZoom={false}
+              minDistance={2}
+              maxDistance={8}
+              minPolarAngle={Math.PI / 6}
+              maxPolarAngle={Math.PI / 2}
+            />
+          )}
+        </Canvas>
+      </div>
+      {!ready && <MacLoading progress={progress} />}
+    </div>
   );
 };

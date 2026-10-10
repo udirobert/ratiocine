@@ -31,12 +31,12 @@ export const WarmupGate = ({ puzzle, onContinue }: WarmupGateProps) => {
         animate={{ opacity: 1, y: 0 }}
         className="m-auto w-full max-w-sm"
       >
-        <p className="text-center text-white/40 text-[10px] sm:text-[11px] font-mono uppercase tracking-widest mb-3 sm:mb-4">
+        <p className="text-center text-white/55 text-[11px] font-mono uppercase tracking-widest mb-3 sm:mb-4">
           Quick warm-up — today&apos;s language
         </p>
         <WarmupTeaser preview={preview} title="Warm-up" />
         <div className="mt-4 sm:mt-5" role="group" aria-label="Practice level">
-          <p className="text-center text-[10px] sm:text-[11px] font-mono text-white/40 mb-2">
+          <p className="text-center text-[11px] font-mono text-white/55 mb-2">
             How much help do you want?
           </p>
           <div className="grid grid-cols-3 gap-1.5">

@@ -12,6 +12,8 @@ type ScreenMat = ShaderMaterial & { map: CanvasTexture | null };
 
 const material = crtMaterial as ScreenMat;
 
+useLoader.preload(GLTFLoader, "/mac.glb");
+
 interface MacModelProps {
   screenCanvas: HTMLCanvasElement | null;
   zooming?: boolean;

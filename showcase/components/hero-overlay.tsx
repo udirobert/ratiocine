@@ -53,7 +53,7 @@ export const HeroOverlay = () => {
               />
             </a>
 
-            <p className="mt-6 font-mono text-[10px] text-white/45 uppercase tracking-widest">
+            <p className="mt-6 font-mono text-[11px] text-white/55 uppercase tracking-widest">
               IOL-AI 2026 Competitor · Score{" "}
               <span className="text-emerald-400/80">0.1141</span>
             </p>

@@ -72,17 +72,18 @@ export const ContextPanel = ({ pairs, highlightedRows }: ContextPanelProps) => {
     <div className="w-full">
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2">
-          <span className="font-mono text-[10px] text-white/50 uppercase tracking-widest">
+          <span className="font-mono text-[11px] text-white/55 uppercase tracking-widest">
             Context
           </span>
-          <span className="text-[10px] text-white/50">
+          <span className="text-[11px] text-white/55">
             — tap a word to trace its pattern
           </span>
         </div>
         {pairs.length > 6 && (
           <button
             onClick={() => setExpanded((e) => !e)}
-            className="font-mono text-[11px] pa-text opacity-70 hover:opacity-100 transition-opacity"
+            className="font-mono text-[12px] pa-text px-3 min-h-[44px] opacity-80 hover:opacity-100 transition-opacity focus-visible:outline-2 focus-visible:outline-offset-2"
+            style={{ outlineColor: "var(--puzzle-accent, #e5a84b)" }}
           >
             {expanded ? "show fewer" : `show all ${pairs.length}`}
           </button>
@@ -124,7 +125,7 @@ export const ContextPanel = ({ pairs, highlightedRows }: ContextPanelProps) => {
                 }}
               >
                 {/* Row number */}
-                <span className="font-mono text-[11px] text-white/50 w-5 shrink-0 text-right">
+                <span className="font-mono text-[11px] text-white/55 w-5 shrink-0 text-right">
                   {pair.id}
                 </span>
 
@@ -156,7 +157,7 @@ export const ContextPanel = ({ pairs, highlightedRows }: ContextPanelProps) => {
         <motion.div
           initial={{ opacity: 0, y: 4 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mt-2 flex items-center gap-2 text-[11px] text-white/50"
+          className="mt-2 flex items-center gap-2 text-[11px] text-white/55"
         >
           <span className="font-mono pa-text pa-bg-10 rounded px-1.5 py-0.5">
             {selectedMorpheme}
@@ -166,7 +167,7 @@ export const ContextPanel = ({ pairs, highlightedRows }: ContextPanelProps) => {
           </span>
           <button
             onClick={() => setSelectedMorpheme(null)}
-            className="ml-auto text-white/50 hover:text-white/50"
+            className="ml-auto px-2 min-h-[44px] text-white/70 hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60"
           >
             clear
           </button>

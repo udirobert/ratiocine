@@ -36,14 +36,14 @@ export const ArchivePanel = ({ currentPuzzleId, progress, onClose, level, onLeve
     >
       <button
         onClick={onClose}
-        className="absolute top-3 right-3 text-white/40 hover:text-white/80 transition-colors text-xl leading-none min-w-[44px] min-h-[44px] flex items-center justify-center"
+        className="absolute top-3 right-3 text-white/70 hover:text-white transition-colors text-xl leading-none min-w-[44px] min-h-[44px] flex items-center justify-center"
         aria-label="Close archive"
       >
         ×
       </button>
 
       <h2 className="font-display text-lg font-bold text-white mb-1">Field archive</h2>
-      <p className="text-[12px] text-white/50 mb-4">
+      <p className="text-[12px] text-white/55 mb-4">
         Every language in the rotation — practice any time.
       </p>
 
@@ -87,7 +87,7 @@ export const ArchivePanel = ({ currentPuzzleId, progress, onClose, level, onLeve
                     >
                       {p.language}
                     </span>
-                    <span className="text-[10px] font-mono text-white/40">{p.family}</span>
+                    <span className="text-[11px] font-mono text-white/55">{p.family}</span>
                     {cracked && (
                       <span className="text-[10px] font-mono px-1.5 py-0.5 rounded-full border border-white/15 text-white/60">
                         ✓ cracked

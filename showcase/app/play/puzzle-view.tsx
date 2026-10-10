@@ -8,6 +8,8 @@ import { AudioMoment } from "./audio-moment";
 import { StudyPhase } from "./study-phase";
 import { WarmupTeaser } from "./warmup-teaser";
 import { WarmupGate } from "./warmup-gate";
+import { NextPuzzleCountdown } from "./next-puzzle-countdown";
+import { FlameIcon, PuzzleIcon } from "./icons";
 import { AiComparison, type AiResult } from "./ai-comparison";
 import { ContextPanel } from "./context-panel";
 import { ArchivePanel } from "./archive-panel";
@@ -19,6 +21,7 @@ import { emitFieldRipple } from "./fx-bus";
 import { useSfx, AMBIENT_FREQ } from "./use-sfx";
 import { useSolveCounter } from "./use-solve-counter";
 import { getLevel, setLevel, ghostMs, failHintAt, forfeitAt, autoHintOnFail, type Level } from "./level";
+import { Button } from "@/components/button";
 import { track } from "@/lib/analytics";
 import {
   getShareVariant,
@@ -186,6 +189,27 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
   const [seenEvidence, setSeenEvidence] = useState(false); // pulse the book icon until first opened
   const [revealedGated, setRevealedGated] = useState(false);
   const [contextReveals, setContextReveals] = useState(0);
+  const evidenceCloseRef = useRef<HTMLButtonElement | null>(null);
+
+  // Evidence sheet a11y: Escape closes, focus lands on the close button while
+  // it's open, and returns to the opener afterwards.
+  useEffect(() => {
+    if (!evidenceOpen) return;
+    const prev = document.activeElement as HTMLElement | null;
+    const raf = requestAnimationFrame(() => evidenceCloseRef.current?.focus());
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        e.preventDefault();
+        setEvidenceOpen(false);
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("keydown", onKey);
+      prev?.focus?.();
+    };
+  }, [evidenceOpen]);
 
   // Forfeit ("reveal this one") flow — armed per query after 2 failed attempts
   const [forfeitArmed, setForfeitArmed] = useState<number | null>(null);
@@ -756,19 +780,22 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
       />
 
       {/* ═══ Top bar ═══ */}
-      <header className="shrink-0 relative z-10 flex items-center justify-between px-4 py-2.5 border-b border-white/8 sm:px-6">
-        <div className="flex items-center gap-2.5">
+      <header inert={evidenceOpen} className="shrink-0 relative z-10 flex items-center justify-between px-4 py-2.5 border-b border-white/8 sm:px-6">
+        <div className="flex items-center gap-2.5 min-w-0">
           {onBack && (
-            <button onClick={onBack} className="text-white/50 hover:text-white/80 text-lg leading-none min-w-[44px] min-h-[44px] flex items-center justify-center">←</button>
+            <button onClick={onBack} className="text-white/70 hover:text-white text-lg leading-none min-w-[44px] min-h-[44px] flex items-center justify-center">←</button>
           )}
-          <div>
+          <div className="min-w-0">
             <span
               className="text-[13px] font-display italic tracking-wide"
               style={{ color: `${puzzle.theme.accent}cc` }}
             >
               {puzzle.language}
             </span>
-            <span className="text-[10px] text-white/40 ml-2 font-mono">{puzzle.family}</span>
+            <span className="text-[11px] text-white/55 ml-2 font-mono">{puzzle.family}</span>
+            <span className="hidden md:inline-block ml-2 font-mono text-[11px] text-white/55 border border-white/15 rounded-full px-2 py-0.5 align-middle max-w-[280px] truncate">
+              {puzzle.language} · {puzzle.lore.geography.split(/[:.,;]/)[0]} · {puzzle.lore.speakers.split(/[.,;(]/)[0]}
+            </span>
           </div>
         </div>
         <div className="flex items-center gap-1 sm:gap-3">
@@ -841,7 +868,7 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
       {/* ═══ Main frame ═══ */}
       {/* relative z-10: the living backdrop is positioned and would otherwise
           paint over this in-flow content — the game must sit above its world. */}
-      <div className="flex-1 flex flex-col min-h-0 relative z-10">
+      <div inert={evidenceOpen} className="flex-1 flex flex-col min-h-0 relative z-10">
         <AnimatePresence mode="wait">
 
           {/* ─── WARMUP (first-time mini puzzle) ─── */}
@@ -904,17 +931,20 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
               transition={{ duration: 0.2 }}
-              className="flex-1 flex flex-col px-4 py-4 sm:px-6 min-h-0"
+              className="flex-1 flex flex-col px-4 py-4 sm:px-6 min-h-0 overflow-y-auto"
             >
-              <div className="flex-1 flex flex-col justify-center max-w-lg mx-auto w-full">
+              <div className="flex flex-col max-w-lg mx-auto w-full my-auto">
 
                 {/* Query progress dots — compact for mobile */}
                 <div className="flex items-center justify-center gap-1 mb-4">
+                  <span className="text-[11px] font-mono text-white/55 mr-2 shrink-0">
+                    Clue {currentQ + 1} of {puzzle.queries.length}
+                  </span>
                   {puzzle.queries.map((q, i) => (
                     <button
                       key={q.id}
                       onClick={() => setCurrentQ(i)}
-                      className={`w-10 h-10 rounded-full text-[11px] font-mono font-bold flex items-center justify-center transition-all ${
+                      className={`w-10 h-10 rounded-full text-[11px] font-mono font-bold flex items-center justify-center transition-all focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60 ${
                         i === currentQ
                           ? "pa-bg-20 border-2 pa-border pa-text"
                           : locked[i] && grades.get(q.id)?.isCorrect
@@ -972,7 +1002,7 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
                             ? gradeColor(slot.grade)
                             : slot.morpheme
                               ? "socket-filled text-white/90"
-                              : "socket-empty text-white/35"
+                              : "socket-empty text-white/55"
                         }`}
                         style={{ transformStyle: "preserve-3d" }}
                       >
@@ -1071,7 +1101,7 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
                               key={`${m}-${gi}-${i}`}
                               onClick={() => !isPlaced && handleTilePlace(m)}
                               disabled={isPlaced}
-                              className={`tablet tablet-hover relative px-2.5 sm:px-3 py-2 sm:py-2.5 min-h-[40px] sm:min-h-[44px] rounded font-mono text-[12.5px] sm:text-[13px] border transition-all ${
+                              className={`tablet tablet-hover relative px-2.5 sm:px-3 py-2 sm:py-2.5 min-h-[44px] rounded font-mono text-[12.5px] sm:text-[13px] border transition-all ${
                                 isPlaced
                                   ? "opacity-0 border-transparent bg-transparent pointer-events-none"
                                   : "border-white/10 text-white/75"
@@ -1105,7 +1135,7 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
                   <div className="text-center mb-3">
                     <button
                       onClick={() => setBankExpanded(true)}
-                      className="text-[11px] font-mono text-white/35 hover:text-white/60 transition-colors underline underline-offset-4 decoration-white/15 min-h-[40px] sm:min-h-[44px]"
+                      className="text-[12px] font-mono text-white/70 hover:text-white transition-colors underline underline-offset-4 decoration-white/25 hover:decoration-white/50 px-3 min-h-[44px] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60"
                     >
                       +{bankHiddenCount} more pieces
                     </button>
@@ -1119,7 +1149,7 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.8 }}
-                    className="text-center text-[10px] sm:text-[11px] text-white/40 mb-2"
+                    className="text-center text-[11px] text-white/55 mb-2"
                   >
                     tap tiles in order · tap a placed tile to remove it
                   </motion.p>
@@ -1131,7 +1161,7 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
                     {!forfeitConfirm ? (
                       <button
                         onClick={() => setForfeitConfirm(true)}
-                        className="text-[11px] font-mono text-white/35 hover:text-white/60 transition-colors underline underline-offset-4 decoration-white/15 min-h-[40px] sm:min-h-[44px]"
+                        className="text-[12px] font-mono text-white/70 hover:text-white transition-colors underline underline-offset-4 decoration-white/25 hover:decoration-white/50 px-3 min-h-[44px] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60"
                       >
                         stuck? reveal this one
                       </button>
@@ -1139,13 +1169,13 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
                       <span className="inline-flex items-center gap-4 text-[11px] font-mono">
                         <button
                           onClick={handleForfeit}
-                          className="text-red-300/70 hover:text-red-300 transition-colors min-h-[40px] sm:min-h-[44px]"
+                          className="text-red-300/80 hover:text-red-200 transition-colors px-2 min-h-[44px] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60"
                         >
                           reveal — counts as missed
                         </button>
                         <button
                           onClick={() => setForfeitConfirm(false)}
-                          className="text-white/50 hover:text-white/80 transition-colors min-h-[40px] sm:min-h-[44px]"
+                          className="text-white/70 hover:text-white transition-colors px-2 min-h-[44px] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60"
                         >
                           keep trying
                         </button>
@@ -1154,40 +1184,46 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
                   </div>
                 )}
 
-                {/* Submit / navigation */}
-                <div className="flex items-center justify-center gap-2 sm:gap-3">
+                {/* Submit / navigation — sticky on small screens so Check never
+                    scrolls away behind the tile bank */}
+                <div className="sticky bottom-0 z-10 -mx-4 px-4 pt-3 pb-2 pb-[calc(0.5rem+env(safe-area-inset-bottom))] bg-gradient-to-t from-[#0a0c10] via-[#0a0c10]/80 to-transparent flex items-center justify-center gap-2 sm:gap-3">
                   {!isLocked && (
-                    <button
-                      onClick={handleSubmit}
-                      disabled={!slots.some((s) => s.morpheme)}
-                      className="px-4 sm:px-5 py-2 rounded-md pa-bg-solid text-sm font-bold text-black disabled:opacity-30 transition-all min-h-[40px] sm:min-h-[44px]"
-                    >
-                      Check
-                    </button>
+                    slots.some((s) => s.morpheme) ? (
+                      <Button variant="primary" size="md" onClick={handleSubmit}>
+                        Check
+                      </Button>
+                    ) : (
+                      <span className="text-[11px] font-mono text-white/55 flex items-center min-h-[44px] px-3">
+                        place a tile to check
+                      </span>
+                    )
                   )}
                   {!isLocked && slots.filter((s) => s.morpheme).length >= 2 && (
-                    <button
+                    <Button
+                      variant="tertiary"
+                      size="md"
                       onClick={handleClear}
-                      className="px-2.5 sm:px-3 py-2 rounded-md text-[12px] font-mono text-white/45 hover:text-white/75 hover:bg-white/5 transition-colors min-h-[40px] sm:min-h-[44px]"
                       aria-label="Remove all placed tiles"
                     >
                       clear
-                    </button>
+                    </Button>
                   )}
                   {isLocked && !allLocked && (
-                    <button
+                    <Button
+                      variant="primary"
+                      size="md"
+                      autoFocus
                       onClick={() => {
                         const next = locked.findIndex((l, i) => !l && i !== currentQ);
                         if (next !== -1) setCurrentQ(next);
                       }}
-                      className="px-4 sm:px-5 py-2 rounded-md border border-white/20 text-sm text-white/85 hover:bg-white/5 transition-colors min-h-[40px] sm:min-h-[44px]"
                     >
                       Next →
-                    </button>
+                    </Button>
                   )}
                   <button
                     onClick={() => { sfx.page(); setEvidenceOpen(true); setSeenEvidence(true); track("evidence_open", { puzzle: puzzle.id }); }}
-                    className={`w-10 sm:w-11 min-h-[40px] sm:min-h-[44px] flex items-center justify-center text-white/40 hover:text-white/70 transition-colors rounded-md hover:bg-white/5 ${!seenEvidence ? "evidence-nudge" : ""}`}
+                    className={`w-10 sm:w-11 min-h-[44px] flex items-center justify-center text-white/70 hover:text-white transition-colors rounded-md hover:bg-white/5 ${!seenEvidence ? "evidence-nudge" : ""}`}
                     aria-label="Open evidence panel"
                   >
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
@@ -1196,13 +1232,13 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
 
                 {/* Grading legend — appears after the first submit teaches the colors */}
                 {everSubmitted && !allLocked && (
-                  <p className="text-center text-[9px] sm:text-[10px] font-mono text-white/35 mt-2 sm:mt-3" aria-hidden="true">
+                  <p className="text-center text-[11px] font-mono text-white/55 mt-2 sm:mt-3" aria-hidden="true">
                     ✓ right slot · ⇄ right piece, wrong slot · ✗ not in answer
                   </p>
                 )}
 
                 {/* Keyboard legend — fine-pointer devices only */}
-                <p className="hidden [@media(pointer:fine)]:block text-center text-[9px] sm:text-[10px] font-mono text-white/20 mt-2 sm:mt-3">
+                <p className="hidden [@media(pointer:fine)]:block text-center text-[11px] font-mono text-white/55 mt-2 sm:mt-3">
                   1–9 place · ⌫ remove · ↵ check · H hint · E evidence
                 </p>
               </div>
@@ -1268,7 +1304,7 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ delay: 0.4 }}
-                      className="mt-1 text-[12px] font-display italic text-white/45 text-center"
+                      className="mt-1 text-[12px] font-display italic text-white/55 text-center"
                     >
                       cracked with a reveal — the pattern is still yours.
                     </motion.p>
@@ -1282,7 +1318,7 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.5 }}
-                    className="mt-3 text-[11px] font-mono text-white/40"
+                    className="mt-3 text-[11px] font-mono text-white/55"
                   >
                     {timeStr}
                     {hintsUsed > 0 ? ` · ${hintsUsed} hint${hintsUsed > 1 ? "s" : ""}` : ""}
@@ -1296,10 +1332,10 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
                       initial={{ opacity: 0, scale: 0.9 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ delay: 0.6 }}
-                      className="mt-2 text-[12px] font-mono pa-text"
+                      className="mt-2 text-[12px] font-mono pa-text inline-flex items-center gap-1"
                       aria-live="polite"
                     >
-                      🔥 {progress.streak}-day streak
+                      <FlameIcon /> {progress.streak}-day streak
                     </motion.p>
                   )}
 
@@ -1309,9 +1345,9 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ delay: 0.6 }}
-                      className="mt-2 text-[11px] font-mono text-white/40"
+                      className="mt-2 text-[11px] font-mono text-white/55 inline-flex items-center gap-1"
                     >
-                      day 1 — solve tomorrow to start a streak 🔥
+                      day 1 — solve tomorrow to start a streak <FlameIcon />
                     </motion.p>
                   )}
 
@@ -1376,13 +1412,12 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
                     transition={{ delay: 0.9 }}
                     className="mt-6 flex items-center justify-center gap-3 flex-wrap"
                   >
-                    <button
-                      onClick={handleShare}
-                      className="px-6 py-2.5 rounded-full pa-chip text-sm font-mono transition-all min-h-[44px]"
-                    >
+                    <Button variant="secondary" size="md" onClick={handleShare}>
                       {copied ? "Copied!" : "Share result"}
-                    </button>
-                    <button
+                    </Button>
+                    <Button
+                      variant="primary"
+                      size="md"
                       onClick={() => {
                         const url = getChallengeUrl(puzzle.id, timeStr) + challengeParam(getShareVariant());
                         track("shared", { puzzle: puzzle.id, with_ai: false, share_variant: getShareVariant(), channel: "challenge_link" });
@@ -1391,12 +1426,9 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
                           setTimeout(() => setCopied(false), 2000);
                         });
                       }}
-                      className={allCorrect
-                        ? "px-6 py-2.5 rounded-full pa-bg-solid text-sm font-bold text-black transition-all min-h-[44px]"
-                        : "px-4 py-2.5 rounded-full text-[11px] font-mono text-white/40 hover:text-white/70 transition-colors min-h-[44px]"}
                     >
                       Challenge a friend →
-                    </button>
+                    </Button>
                   </motion.div>
 
                   {/* Machine still thinking? Say so — don't gate sharing on it */}
@@ -1405,7 +1437,7 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ delay: 1.1 }}
-                      className="mt-2 text-[10px] font-mono text-white/30"
+                      className="mt-2 text-[11px] font-mono text-white/55"
                     >
                       the machine is still thinking — the verdict lands below
                     </motion.p>
@@ -1417,7 +1449,7 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ delay: 1.3 }}
-                      className="mt-3 text-[10px] font-mono text-white/30"
+                      className="mt-3 text-[11px] font-mono text-white/55"
                     >
                       {solveCount} solved today
                     </motion.p>
@@ -1438,8 +1470,27 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
                     <p className="text-[13px] font-display italic text-white/60 leading-relaxed">
                       &ldquo;{puzzle.lore.culturalNote}&rdquo;
                     </p>
+                    <div className="mt-3 grid gap-2 sm:grid-cols-3">
+                      <div className="rounded-lg border border-white/10 px-3 py-2 min-w-0">
+                        <span className="block font-mono text-[11px] text-white/55 uppercase tracking-wider">Where</span>
+                        <span className="block text-[13px] text-white/70 leading-snug">{puzzle.lore.geography}</span>
+                      </div>
+                      <div className="rounded-lg border border-white/10 px-3 py-2 min-w-0">
+                        <span className="block font-mono text-[11px] text-white/55 uppercase tracking-wider">Speakers</span>
+                        <span className="block text-[13px] text-white/70 leading-snug">{puzzle.lore.speakers}</span>
+                      </div>
+                      <div className="rounded-lg border border-white/10 px-3 py-2 min-w-0">
+                        <span className="block font-mono text-[11px] text-white/55 uppercase tracking-wider">Status</span>
+                        <span className="block text-[13px] text-white/70 leading-snug">{puzzle.lore.endangerment}</span>
+                      </div>
+                    </div>
+                    <p className="mt-3 text-[13px] text-white/70 leading-relaxed">
+                      <span className="font-mono text-[11px] text-white/55 uppercase tracking-wider mr-1.5">Note</span>
+                      {puzzle.lore.funFact}
+                    </p>
                     <details className="mt-3">
-                      <summary className="text-[11px] font-mono text-white/40 uppercase tracking-wider cursor-pointer hover:text-white/60 min-h-[44px] flex items-center">
+                      <summary className="tool-summary px-0">
+                        <span className="tool-chevron">▸</span>
                         How it works
                       </summary>
                       <p className="text-[13px] text-white/70 leading-relaxed">
@@ -1452,7 +1503,7 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
                 {/* ═══ Act II — the machine's turn (the brand moment) ═══ */}
                 <div className="flex items-center gap-3 py-6">
                   <span className="flex-1 h-px bg-white/10" />
-                  <span className="text-[10px] font-mono uppercase tracking-widest text-white/40">
+                  <span className="text-[11px] font-mono uppercase tracking-widest text-white/55">
                     the machine&rsquo;s turn
                   </span>
                   <span className="flex-1 h-px bg-white/10" />
@@ -1495,8 +1546,10 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
 
                   {/* Solve trace — collapsed by default */}
                   <details className="rounded-lg border border-white/8 bg-white/[0.01]">
-                    <summary className="px-4 py-3 text-[11px] font-mono text-white/60 uppercase tracking-wider cursor-pointer hover:text-white/80 min-h-[44px] flex items-center">
+                    <summary className="tool-summary">
+                      <span className="tool-chevron">▸</span>
                       Solve trace
+                      <span className="tool-teaser">{score}/{puzzle.queries.length} correct</span>
                     </summary>
                     <div className="divide-y divide-white/5">
                       {puzzle.queries.map((q, i) => {
@@ -1524,7 +1577,7 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
                         language={puzzle.language}
                         transcript={puzzle.queries.map((q) => q.answerJoined).join(" · ")}
                       />
-                      <p className="text-center text-[10px] font-mono text-white/30 -mt-2">
+                      <p className="text-center text-[11px] font-mono text-white/55 -mt-2">
                         field recording · more languages soon
                       </p>
                     </>
@@ -1532,8 +1585,10 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
 
                   {/* Map — collapsed so the duel stays the climax */}
                   <details className="rounded-lg border border-white/8 bg-white/[0.01]">
-                    <summary className="px-4 py-3 text-[11px] font-mono text-white/60 uppercase tracking-wider cursor-pointer hover:text-white/80 min-h-[44px] flex items-center">
+                    <summary className="tool-summary">
+                      <span className="tool-chevron">▸</span>
                       Language map
+                      <span className="tool-teaser">{puzzle.language}</span>
                     </summary>
                     <div className="px-3 pb-3">
                       <LanguageMap
@@ -1545,26 +1600,20 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
                     </div>
                   </details>
 
-                  {/* Lore */}
-                  <details className="rounded-lg border border-white/8 bg-white/[0.01]">
-                    <summary className="px-4 py-3 text-[11px] font-mono text-white/60 uppercase tracking-wider cursor-pointer hover:text-white/80 min-h-[44px] flex items-center">
-                      About {puzzle.language}
-                    </summary>
-                    <div className="px-4 pb-4 space-y-2 text-[13px] text-white/75 leading-relaxed">
-                      <p><span className="text-white/40 font-mono text-[10px]">WHERE</span> {puzzle.lore.geography}</p>
-                      <p><span className="text-white/40 font-mono text-[10px]">SPEAKERS</span> {puzzle.lore.speakers}</p>
-                      <p><span className="text-white/40 font-mono text-[10px]">STATUS</span> {puzzle.lore.endangerment}</p>
-                      <p><span className="text-white/40 font-mono text-[10px]">NOTE</span> {puzzle.lore.funFact}</p>
-                    </div>
-                  </details>
-
                   {/* Next-day warmup teaser */}
+                  <div className="flex justify-center pt-1">
+                    <NextPuzzleCountdown />
+                  </div>
                   <WarmupTeaser preview={puzzle.nextPreview} />
 
                   {/* Local record */}
                   {progress && (
-                    <p className="text-center text-[10px] font-mono text-white/40">
-                      🔥{progress.streak} · 🧩{progress.puzzlesSolved}
+                    <p className="text-center text-[11px] font-mono text-white/55 flex items-center justify-center gap-1.5">
+                      <FlameIcon />
+                      {progress.streak}
+                      <span aria-hidden="true">·</span>
+                      <PuzzleIcon />
+                      {progress.puzzlesSolved}
                     </p>
                   )}
                 </div>
@@ -1610,13 +1659,14 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
             >
               <div className="max-w-lg mx-auto">
                 <div className="flex items-center justify-between mb-3">
-                  <p className="text-[11px] font-mono text-white/50 uppercase tracking-widest">
+                  <p className="text-[11px] font-mono text-white/55 uppercase tracking-widest">
                     Evidence
                   </p>
                   <button
+                    ref={evidenceCloseRef}
                     onClick={() => setEvidenceOpen(false)}
                     aria-label="Close evidence"
-                    className="min-w-[44px] min-h-[44px] flex items-center justify-center text-white/50 hover:text-white/80 transition-colors"
+                    className="min-w-[44px] min-h-[44px] flex items-center justify-center text-white/70 hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60"
                   >
                     ✕
                   </button>
@@ -1628,13 +1678,13 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
                 {gatedCount > 0 && !revealedGated && (
                   <button
                     onClick={handleRevealGated}
-                    className="mt-3 w-full rounded-lg border border-dashed border-white/15 px-4 py-3 text-[12px] font-mono text-white/50 hover:text-white/75 hover:border-white/25 transition-colors min-h-[44px]"
+                    className="mt-3 w-full rounded-lg border border-dashed border-white/15 px-4 py-3 text-[12px] font-mono text-white/70 hover:text-white hover:border-white/25 transition-colors min-h-[44px]"
                   >
                     🔒 {gatedCount} more specimen{gatedCount !== 1 ? "s" : ""} hidden — reveal?
                   </button>
                 )}
                 {revealedGated && gatedCount > 0 && (
-                  <p className="mt-3 text-center text-[10px] font-mono text-white/30">
+                  <p className="mt-3 text-center text-[11px] font-mono text-white/55">
                     all specimens revealed
                   </p>
                 )}

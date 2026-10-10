@@ -20,7 +20,7 @@ export const WarmupTeaser = ({ preview, title = "Tomorrow's warmup" }: WarmupTea
     return (
       <div className="text-center py-3">
         <p className="text-sm font-bold text-white/80">{preview.language}</p>
-        <p className="font-mono text-[11px] text-white/40 mt-0.5">Coming soon</p>
+        <p className="font-mono text-[11px] text-white/55 mt-0.5">Coming soon</p>
       </div>
     );
   }
@@ -36,7 +36,7 @@ export const WarmupTeaser = ({ preview, title = "Tomorrow's warmup" }: WarmupTea
     >
       {/* Header */}
       <div className="px-4 py-3 border-b border-white/5">
-        <p className="text-[10px] font-mono text-white/40 uppercase tracking-widest">
+        <p className="text-[11px] font-mono text-white/55 uppercase tracking-widest">
           {title}
         </p>
         <p className="text-sm font-bold text-white/80 mt-0.5" style={{ color: theme.accent }}>
@@ -76,7 +76,7 @@ export const WarmupTeaser = ({ preview, title = "Tomorrow's warmup" }: WarmupTea
                       : revealed && selected
                         ? "border-red-400/50 bg-red-400/10 text-red-300/80"
                         : revealed
-                          ? "border-white/8 text-white/35"
+                          ? "border-white/8 text-white/55"
                           : "border-white/15 text-white/80 hover:border-white/30 hover:bg-white/5 active:scale-[0.99]"
                   }`}
                   aria-pressed={selected}
@@ -102,7 +102,7 @@ export const WarmupTeaser = ({ preview, title = "Tomorrow's warmup" }: WarmupTea
               ) : (
                 <span>
                   The answer was <span style={{ color: theme.accent }}>{warmup.answer}</span>
-                  <span className="text-white/30 ml-2">You&apos;ll crack the pattern below.</span>
+                  <span className="text-white/55 ml-2">You&apos;ll crack the pattern below.</span>
                 </span>
               )}
             </motion.p>

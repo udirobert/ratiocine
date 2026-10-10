@@ -94,7 +94,7 @@ export const AudioMoment = ({
 
       {/* Text */}
       <div className="min-w-0 flex-1">
-        <p className="text-[11px] text-white/40 font-mono uppercase tracking-wider">
+        <p className="text-[11px] text-white/55 font-mono uppercase tracking-wider">
           Hear {language}
         </p>
         <p className="text-sm text-white/70 font-mono truncate">
@@ -104,7 +104,7 @@ export const AudioMoment = ({
 
       {/* Status */}
       {hasPlayed && !playing && (
-        <span className="text-[10px] text-white/50 shrink-0">tap to replay</span>
+        <span className="text-[11px] text-white/70 shrink-0">tap to replay</span>
       )}
     </motion.div>
   );

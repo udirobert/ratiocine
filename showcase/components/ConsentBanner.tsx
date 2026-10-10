@@ -70,7 +70,7 @@ export function ConsentBanner() {
               </div>
               <a
                 href="/privacy"
-                className="block mt-2 text-xs text-white/50 hover:text-white/70 underline"
+                className="block mt-2 text-xs text-white/70 hover:text-white underline"
               >
                 Learn more about data use
               </a>
