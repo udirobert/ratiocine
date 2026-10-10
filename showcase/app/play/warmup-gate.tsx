@@ -37,7 +37,7 @@ export const WarmupGate = ({ puzzle, onContinue }: WarmupGateProps) => {
         <WarmupTeaser preview={preview} title="Warm-up" />
         <div className="mt-4 sm:mt-5" role="group" aria-label="Practice level">
           <p className="text-center text-[11px] font-mono text-white/55 mb-2">
-            How much help do you want?
+            Pick your pace
           </p>
           <div className="grid grid-cols-3 gap-1.5">
             {LEVELS.map((l) => (

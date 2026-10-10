@@ -2,7 +2,9 @@
 
 import { motion } from "motion/react";
 import { useEffect, useMemo, useRef, useState } from "react";
-import type { Puzzle, PuzzlePair, PuzzleTheme } from "./puzzle-data";
+import { Button } from "@/components/button";
+import { EvidenceCard, sharedRowsFor } from "./evidence-rail";
+import type { Puzzle, PuzzlePair } from "./puzzle-data";
 
 interface StudyPhaseProps {
   puzzle: Puzzle;
@@ -22,7 +24,11 @@ export const StudyPhase = ({ puzzle, highlightedRows, onReady, instant = false, 
   const [flashedRows, setFlashedRows] = useState<Set<number>>(new Set());
   const flashTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const tracedRef = useRef(false);
+  const [hasTraced, setHasTraced] = useState(false);
+  const [hintUsed, setHintUsed] = useState(false);
+  const [gateTimedOut, setGateTimedOut] = useState(false);
   const autoNudgeRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const gateTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Default lore to OPEN on first visit to this puzzle, then remember state
   const [loreOpen, setLoreOpen] = useState(() => {
@@ -84,17 +90,11 @@ export const StudyPhase = ({ puzzle, highlightedRows, onReady, instant = false, 
 
   // Tap a source word → flash rows that share morphemes
   const handleSourceTap = (pair: PuzzlePair) => {
-    const sharedRows = new Set<number>();
-    for (const morpheme of pair.morphemes) {
-      for (const other of pairs) {
-        if (other.id !== pair.id && other.morphemes.includes(morpheme)) {
-          sharedRows.add(other.id);
-        }
-      }
-    }
+    const sharedRows = sharedRowsFor(pair, pairs);
     // First trace is a discovery moment, not just a control
     if (!tracedRef.current) {
       tracedRef.current = true;
+      setHasTraced(true);
       if (autoNudgeRef.current) clearTimeout(autoNudgeRef.current);
       onFirstTrace?.();
     }
@@ -166,6 +166,18 @@ export const StudyPhase = ({ puzzle, highlightedRows, onReady, instant = false, 
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ready, instant]);
+
+  // Ready-gate escape hatch: ~20s after the phase is ready, the trace
+  // requirement lifts — the gate earns attention, never hard-blocks.
+  useEffect(() => {
+    if (!ready || instant) return;
+    gateTimerRef.current = setTimeout(() => setGateTimedOut(true), 20000);
+    return () => {
+      if (gateTimerRef.current) clearTimeout(gateTimerRef.current);
+    };
+  }, [ready, instant]);
+
+  const gateOpen = instant || hasTraced || hintUsed || gateTimedOut;
 
   return (
     <div className="flex-1 flex flex-col min-h-0 relative">
@@ -331,88 +343,34 @@ export const StudyPhase = ({ puzzle, highlightedRows, onReady, instant = false, 
         transition={{ duration: 0.4 }}
       >
         <p className="text-center text-[11px] text-white/55 font-mono">
-          tap any source word to trace the pattern
+          tap a source word to isolate a repeated piece
         </p>
         <div className="flex items-center justify-center gap-3">
-          <button
-            onClick={handleHint}
+          <Button
+            variant="secondary"
+            size="md"
+            onClick={() => { setHintUsed(true); handleHint(); }}
             disabled={!ready}
-            className="px-4 py-3 min-h-[48px] rounded-full text-sm font-medium text-white/80 transition-all disabled:opacity-0 hover:text-white hover:bg-white/10"
           >
-            Need a hint?
-          </button>
-          <button
-            onClick={onReady}
-            disabled={!ready}
-            className="pulse-glow px-7 py-3 min-h-[48px] rounded-full text-sm font-bold text-black transition-all disabled:opacity-0"
-            style={{
-              backgroundColor: theme.accent,
-            }}
-          >
-            I&apos;m ready
-          </button>
+            Compare rows
+          </Button>
+          {gateOpen ? (
+            <Button
+              variant="primary"
+              size="md"
+              onClick={onReady}
+              disabled={!ready}
+              className="pulse-glow"
+            >
+              I&apos;ve got it →
+            </Button>
+          ) : (
+            <Button variant="tertiary" size="md" disabled>
+              Trace a pattern to begin
+            </Button>
+          )}
         </div>
       </motion.div>
     </div>
   );
 };
-
-// ─── Evidence Card ────────────────────────────────────────────────────────────
-
-const EvidenceCard = ({
-  pair,
-  highlighted,
-  theme,
-  onSourceTap,
-  instant = false,
-}: {
-  pair: PuzzlePair;
-  highlighted: boolean;
-  theme: PuzzleTheme;
-  onSourceTap: () => void;
-  instant?: boolean;
-}) => (
-  <motion.div
-    initial={instant ? false : { opacity: 0, x: -12, scale: 0.97 }}
-    animate={{
-      opacity: 1,
-      x: 0,
-      scale: highlighted ? 1.01 : 1,
-    }}
-    transition={{ duration: instant ? 0.1 : 0.3, ease: "easeOut" }}
-    className={`
-      archive-card card-solid flex items-center gap-3 px-4 py-3 rounded-lg
-      transition-all duration-300
-      ${highlighted ? "pa-border-40" : ""}
-    `}
-    style={{
-      boxShadow: highlighted
-        ? `0 0 16px ${theme.accent}25, 0 1px 3px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.05)`
-        : undefined,
-      backgroundColor: highlighted ? `${theme.accent}0c` : undefined,
-    }}
-  >
-    {/* Row number */}
-    <span className="font-mono text-[11px] text-white/55 w-4 text-right shrink-0 tabular-nums">
-      {pair.id}
-    </span>
-
-    {/* Source — tappable, themed color */}
-    <button
-      type="button"
-      onClick={onSourceTap}
-      className="font-mono text-[13px] flex-1 tracking-wide text-left cursor-pointer hover:underline underline-offset-2 decoration-white/20 transition-colors"
-      style={{ color: `${theme.sourceColor}d9` }}
-    >
-      {pair.source}
-    </button>
-
-    {/* Connector */}
-    <span className="text-white/15 text-[10px] shrink-0">→</span>
-
-    {/* Gloss */}
-    <span className="text-[12px] text-white/70 flex-1 text-right">
-      {pair.target}
-    </span>
-  </motion.div>
-);

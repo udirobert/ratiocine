@@ -9,6 +9,7 @@ import { StudyPhase } from "./study-phase";
 import { WarmupTeaser } from "./warmup-teaser";
 import { WarmupGate } from "./warmup-gate";
 import { NextPuzzleCountdown } from "./next-puzzle-countdown";
+import { EvidenceRail } from "./evidence-rail";
 import { FlameIcon, PuzzleIcon } from "./icons";
 import { AiComparison, type AiResult } from "./ai-comparison";
 import { ContextPanel } from "./context-panel";
@@ -190,6 +191,7 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
   const [revealedGated, setRevealedGated] = useState(false);
   const [contextReveals, setContextReveals] = useState(0);
   const evidenceCloseRef = useRef<HTMLButtonElement | null>(null);
+  const railRef = useRef<HTMLDivElement | null>(null);
 
   // Evidence sheet a11y: Escape closes, focus lands on the close button while
   // it's open, and returns to the opener afterwards.
@@ -692,7 +694,15 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
       }
       if (evidenceOpen) return; // drawer open — only Escape acts
 
-      if (e.key.toLowerCase() === "e") { setEvidenceOpen(true); return; }
+      if (e.key.toLowerCase() === "e") {
+        // Docked rail at lg — focus it instead of opening the drawer
+        if (window.matchMedia("(min-width: 1024px)").matches) {
+          railRef.current?.focus();
+        } else {
+          setEvidenceOpen(true);
+        }
+        return;
+      }
       if (e.key.toLowerCase() === "h") { handleHint(); return; }
       if (e.key === "Enter") {
         if (!isLocked && slots.some((s) => s.morpheme)) handleSubmit();
@@ -931,9 +941,31 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
               transition={{ duration: 0.2 }}
-              className="flex-1 flex flex-col px-4 py-4 sm:px-6 min-h-0 overflow-y-auto"
+              className="flex-1 flex flex-col px-4 py-4 sm:px-6 min-h-0 overflow-y-auto lg:grid lg:grid-cols-[320px_minmax(0,1fr)] lg:gap-6 lg:content-start lg:max-w-5xl lg:mx-auto lg:w-full"
             >
+              {/* Docked evidence rail — desktop workbench left pane */}
+              <div
+                ref={railRef}
+                tabIndex={-1}
+                className="hidden lg:block lg:sticky lg:top-0 self-start lg:h-[calc(100svh-150px)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60 rounded-xl"
+              >
+                <EvidenceRail
+                  puzzle={puzzle}
+                  highlightedRows={highlightedRows}
+                  variant="dock"
+                />
+              </div>
+
               <div className="flex flex-col max-w-lg mx-auto w-full my-auto">
+
+                {/* Inline evidence strip — mobile keeps two rows visible */}
+                <div className="lg:hidden">
+                  <EvidenceRail
+                    puzzle={puzzle}
+                    highlightedRows={highlightedRows}
+                    variant="strip"
+                  />
+                </div>
 
                 {/* Query progress dots — compact for mobile */}
                 <div className="flex items-center justify-center gap-1 mb-4">
@@ -1163,7 +1195,7 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
                         onClick={() => setForfeitConfirm(true)}
                         className="text-[12px] font-mono text-white/70 hover:text-white transition-colors underline underline-offset-4 decoration-white/25 hover:decoration-white/50 px-3 min-h-[44px] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60"
                       >
-                        stuck? reveal this one
+                        show me this one
                       </button>
                     ) : (
                       <span className="inline-flex items-center gap-4 text-[11px] font-mono">
@@ -1171,7 +1203,7 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
                           onClick={handleForfeit}
                           className="text-red-300/80 hover:text-red-200 transition-colors px-2 min-h-[44px] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60"
                         >
-                          reveal — counts as missed
+                          show it — counts as missed
                         </button>
                         <button
                           onClick={() => setForfeitConfirm(false)}
@@ -1223,8 +1255,8 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
                   )}
                   <button
                     onClick={() => { sfx.page(); setEvidenceOpen(true); setSeenEvidence(true); track("evidence_open", { puzzle: puzzle.id }); }}
-                    className={`w-10 sm:w-11 min-h-[44px] flex items-center justify-center text-white/70 hover:text-white transition-colors rounded-md hover:bg-white/5 ${!seenEvidence ? "evidence-nudge" : ""}`}
-                    aria-label="Open evidence panel"
+                    className={`lg:hidden w-10 sm:w-11 min-h-[44px] flex items-center justify-center text-white/70 hover:text-white transition-colors rounded-md hover:bg-white/5 ${!seenEvidence ? "evidence-nudge" : ""}`}
+                    aria-label="Open full archive"
                   >
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
                   </button>

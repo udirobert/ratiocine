@@ -65,7 +65,7 @@ const DemoSource = ({ text, highlight }: { text: string; highlight: boolean }) =
   </span>
 );
 
-const STEP_TITLES = ["Study the clues", "Spot the pattern", "Build the answer"];
+const STEP_TITLES = ["Compare", "Isolate", "Test"];
 
 export const CoachMarks = ({ onDismiss, accent }: CoachMarksProps) => {
   const [step, setStep] = useState(0);
@@ -166,7 +166,7 @@ export const CoachMarks = ({ onDismiss, accent }: CoachMarksProps) => {
                 </div>
               ))}
               <p className="text-[11px] text-white/55 font-mono text-center pt-1">
-                three clues in a language you&apos;ve never seen
+                Two words share a piece. Two meanings share a word.
               </p>
             </div>
           )}
@@ -189,7 +189,7 @@ export const CoachMarks = ({ onDismiss, accent }: CoachMarksProps) => {
               ))}
               <p className="text-[11px] font-mono text-center pt-1">
                 {miSelected ? (
-                  <span className="pa-text">mi = my — the shared piece</span>
+                  <span className="pa-text">&ldquo;mi&rdquo; is in both rows — and both mean &ldquo;my&rdquo;. So mi = my.</span>
                 ) : (
                   <span className="text-white/55">tap a row to highlight the shared piece</span>
                 )}
@@ -221,7 +221,7 @@ export const CoachMarks = ({ onDismiss, accent }: CoachMarksProps) => {
                 su-tu = <span className="pa-text">your cat</span>
               </motion.p>
               <p className="text-[11px] text-white/55 font-mono text-center">
-                tap tiles in order to build each answer
+                Build your answer from the pieces you proved.
               </p>
             </div>
           )}

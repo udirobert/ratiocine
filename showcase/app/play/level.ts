@@ -14,13 +14,15 @@ export const LEVELS: Array<{ id: Level; label: string; blurb: string }> = [
   { id: "spicy", label: "Spicy", blurb: "Minimal help. Prove it." },
 ];
 
+export const DEFAULT_LEVEL: Level = "gentle";
+
 export function getLevel(): Level {
-  if (typeof window === "undefined") return "standard";
+  if (typeof window === "undefined") return DEFAULT_LEVEL;
   try {
     const v = window.localStorage.getItem(LEVEL_KEY);
     if (v === "gentle" || v === "standard" || v === "spicy") return v;
   } catch {}
-  return "standard";
+  return DEFAULT_LEVEL;
 }
 
 export function setLevel(level: Level): void {
