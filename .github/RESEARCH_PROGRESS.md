@@ -80,11 +80,45 @@ a benchmark-design finding: **exact-match grading of a decomposed gold penalises
 correct surface forms in any language with boundary phonology** — which matters
 to LTB V2 specifically because it ships `verification_rules`.
 
+**Measured 2026-10-10** (10 model×arm cells, 155 recordings,
+`data/ltb_model_outputs.json`, scored on both axes by `scripts/score_ltb_outputs.py`):
+
+- Every model recorded in the `decomposition` arm answers `tu li imba` —
+  GPT-OSS-120B, Qwen3.8-27B, Qwen3-32B, DeepSeek-V3.2, GLM-4.6. GPT-OSS is
+  17/17 in that arm.
+- The hint block is not load-bearing: with it withheld GPT-OSS is 16/17 on the
+  decomposition axis and 17/17 on the surface axis (its one miss is the
+  correctly-fused `tulimba`), and Qwen3.8-27B answers everything it reached
+  (16/16).
+- Stating the format induces a *different* error: 9 of the 24 Apurinã answers in
+  the decomposition arm segment a standalone `taka` (the 'eat' tile) for the
+  aspect suffix `ka`, across 4 of its 5 models — and 0 of the 17 Apurinã answers
+  recorded in the arms that ask for the word do.
+- One format-independent miss: Turkish rounded-front vowel harmony — Qwen3-32B
+  answers `göz lar` and `gün lar` for `göz ler` / `gün ler` while getting
+  `kız lar` right. Recorded in the decomposition arm only so far, so
+  "format-independent" is still an inference until the other two arms land.
+- `parse_morphemes` was dropping any answer the tag parser returned as a bare
+  tag (an unterminated `<answers>` block, or `<mikhu n>`), scoring correct
+  answers as misses. Fixed, then 40 recordings were re-derived offline from the
+  stored `raw` — no re-calls. That repair is what moved GPT-OSS's decomposition
+  arm to 17/17, DeepSeek-V3.2 to 13/17 and Qwen3-32B to 13/17.
+- Blank / degenerate Featherless completions are classified `lane_failure` and
+  must not be read as model errors.
+
 - [ ] Decide whether to notify the LTB reviewers of the retracted framing
       (#6106/#6107 submitted 2026-09-09, still pending review)
 - [ ] Re-export under the stated-format contract and resubmit
-- [ ] Re-establish any difficulty claim on data from the explicit-format arm,
-      or drop difficulty claims and lead with the verification-rule finding
+- [x] Re-establish any difficulty claim on data from the explicit-format arm,
+      or drop difficulty claims and lead with the verification-rule finding —
+      **no difficulty claim survives except Turkish `gün ler` (n=1); lead with
+      the verification-rule finding**
+- [ ] Close the coverage gaps: gemma was 5/17 in `default` and absent from the
+      other arms; 2 items per arm lost to Groq 429 on Qwen3.8-27B; Qwen3-32B and
+      GLM-4.6 have Featherless lane failures. Re-recording gemma (3 arms),
+      Qwen3-32B (`default`/`no_hint`) and DeepSeek-V3.2 (`default`) on
+      Featherless now — note Featherless concurrency units are account-wide, so
+      these must run one chain at a time or every call 429s
 
 ---
 
