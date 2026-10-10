@@ -1694,6 +1694,9 @@ export function saveProgress(progress: PuzzleProgress): void {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
   } catch {}
+  try {
+    window.dispatchEvent(new CustomEvent("ratiocine:progress-saved"));
+  } catch {}
 }
 
 export function recordSolve(puzzle: Puzzle, elapsed: number): PuzzleProgress {

@@ -78,7 +78,6 @@ export const CoachMarks = ({ onDismiss, accent }: CoachMarksProps) => {
     try {
       window.localStorage.setItem(COACH_KEY, "1");
     } catch {}
-    window.dispatchEvent(new CustomEvent("ratiocine:coach-dismissed"));
     onDismiss();
   };
 
@@ -153,7 +152,7 @@ export const CoachMarks = ({ onDismiss, accent }: CoachMarksProps) => {
           {STEP_TITLES[step]}
         </h3>
 
-        <div className="min-h-[190px]">
+        <div className="min-h-[190px] flex flex-col justify-center">
           {step === 0 && (
             <div className="space-y-2">
               {DEMO_PAIRS.map((p) => (
