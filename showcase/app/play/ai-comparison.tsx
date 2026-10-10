@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Button } from "@/components/button";
 import type { Puzzle, QueryGrade } from "./puzzle-data";
+import { normalizeAnswer, unwrapAnswer } from "./puzzle-data";
 
 // ─── Modal API config ───────────────────────────────────────────────────────
 
@@ -86,7 +87,7 @@ function attestInBackground(puzzle: Puzzle, aiResult: AiResult): void {
     problem_id: puzzle.id,
     context: buildContext(puzzle),
     prompt: puzzle.queries.map((q, i) => `${i + 1}. ${q.prompt}`).join("\n"),
-    pred: aiResult.pred,
+    pred: aiResult.pred.map(unwrapAnswer),
     ground_truth: puzzle.queries.map((q) => q.answerJoined),
     model: aiResult.model,
     evaluator_version: "showcase-v1",
@@ -280,9 +281,7 @@ export const AiComparison = ({ puzzle, humanElapsed, humanHints, humanGrades, on
   // ─── Grading the AI result ────────────────────────────────────────────────
 
   const aiGrades = aiResult ? puzzle.queries.map((q, i) => {
-    const predicted = (aiResult.pred[i] || "").trim().toLowerCase();
-    const expected = q.answerJoined.toLowerCase();
-    return predicted === expected;
+    return normalizeAnswer(aiResult.pred[i] || "") === normalizeAnswer(q.answerJoined);
   }) : null;
 
   const aiCorrectCount = aiGrades ? aiGrades.filter(Boolean).length : 0;
@@ -402,7 +401,7 @@ export const AiComparison = ({ puzzle, humanElapsed, humanHints, humanGrades, on
               {puzzle.queries.map((q, i) => {
                 const humanCorrect = humanGrades.get(q.id)?.isCorrect ?? false;
                 const aiCorrect = aiGrades[i];
-                const aiAnswer = (aiResult.pred[i] || "—").trim();
+                const aiAnswer = unwrapAnswer(aiResult.pred[i] || "—");
 
                 return (
                   <motion.div

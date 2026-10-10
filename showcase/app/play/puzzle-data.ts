@@ -1733,3 +1733,17 @@ export function recordSolve(puzzle: Puzzle, elapsed: number): PuzzleProgress {
   saveProgress(progress);
   return progress;
 }
+
+/** Strip one layer of wrapping brackets/quotes when it wraps the whole string,
+ *  preserving case and interior punctuation — for display. */
+export function unwrapAnswer(s: string): string {
+  const out = (s ?? "").trim();
+  const wrapped = out.match(/^[[({"'“‘]([\s\S]*)[\])}"'”’]$/);
+  return wrapped ? wrapped[1].trim() : out;
+}
+
+/** Normalise an answer for comparison: model output sometimes arrives wrapped
+ *  in brackets or quotes, which exact-match grading would score as wrong. */
+export function normalizeAnswer(s: string): string {
+  return unwrapAnswer(s).replace(/\s+/g, " ").toLowerCase();
+}

@@ -38,6 +38,7 @@ import {
   PUZZLE_POOL,
   gradeAnswer,
   loadProgress,
+  normalizeAnswer,
   recordSolve,
   saveDraft,
   loadDraft,
@@ -82,7 +83,7 @@ function generateShareText(
 
   if (aiResult) {
     const aiCorrect = puzzle.queries.filter((q, i) =>
-      (aiResult.pred[i] || "").trim().toLowerCase() === q.answerJoined.toLowerCase()
+      normalizeAnswer(aiResult.pred[i] || "") === normalizeAnswer(q.answerJoined)
     ).length;
     return [
       `🧩 Ratiocine — ${puzzle.language}`,
@@ -1559,7 +1560,7 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
                   onResult={(r) => {
                     setAiResult(r);
                     const aiCorrect = puzzle.queries.filter((q, i) =>
-                      (r.pred[i] || "").trim().toLowerCase() === q.answerJoined.toLowerCase()
+                      normalizeAnswer(r.pred[i] || "") === normalizeAnswer(q.answerJoined)
                     ).length;
                     const humanCorrect = puzzle.queries.filter((q) => grades.get(q.id)?.isCorrect).length;
                     track("ai_verdict", {

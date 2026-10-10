@@ -3,6 +3,7 @@
 // motif at low opacity, wax-seal result chips, you-vs-machine duel panel.
 
 import type { Puzzle, QueryGrade } from "./puzzle-data";
+import { normalizeAnswer } from "./puzzle-data";
 import type { AiResult } from "./ai-comparison";
 import { variantTagline, variantInvite, type ShareVariant } from "@/lib/share-ab";
 
@@ -288,7 +289,7 @@ export async function generateShareCard(
   const isDuel = Boolean(aiResult);
   if (aiResult) {
     const aiCorrect = puzzle.queries.filter((q, i) =>
-      (aiResult.pred[i] || "").trim().toLowerCase() === q.answerJoined.toLowerCase(),
+      normalizeAnswer(aiResult.pred[i] || "") === normalizeAnswer(q.answerJoined),
     ).length;
     const aiX = vsX + 70;
     ctx.font = `700 52px ${SANS}`;
