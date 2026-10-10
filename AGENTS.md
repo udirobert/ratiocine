@@ -319,11 +319,20 @@ See `docs/research-roadmap.md` for the 6-week implementation plan (Phases 1-3) a
 
 **Progress tracking:** See `.github/RESEARCH_PROGRESS.md` for detailed task checklist (updated weekly).
 
-**Next immediate steps:**
-1. Implement consent banner + analytics events (Phase 1, Week 1) — see `docs/phase1-implementation.md`
-2. Run 14B model on all 25 queries, capture predictions (Phase 2, Week 3)
-3. Submit 1-2 example problems to LTB V2 (proof of concept)
-4. Publish technical report once IOL-AI 2026 private leaderboard results are released
+**Next immediate steps** (as of 2026-10-10 — the previous list here was stale: the
+consent banner/analytics are shipped, 225 model recordings exist across 6 models,
+and #6106/#6107 were submitted 2026-09-09):
+1. **Independent sign-off of the Apurinã / Quechua / Nahuatl ground-truth
+   segmentations** — the blocker. We authored them, and harder items need new
+   evidence rows in `showcase/app/play/puzzle-data.ts`, which is game content
+   somebody has to certify. No reviewer contacted yet.
+2. Decide whether to send `docs/ltb-reviewer-note.md` (drafted, matches the data;
+   #6106/#6107 are in LTB's queue carrying the retracted framing until we do).
+3. Widen the model set — link HuggingFace on the Featherless account to un-gate
+   `gemma-3-27b-it` / Llama-3.3-70B, since "no item discriminates" is measured over
+   six models, and fill the remaining arms (Qwen3-32B `no_hint`, GLM-4.6
+   non-decomposition, DeepSeek `default`, the 5 blank Qwen3-32B `default` cells).
+4. Publish the technical report once the IOL-AI 2026 private leaderboard lands.
 
 **Progress tracking:** See `.github/RESEARCH_PROGRESS.md` for the code-verified
 task checklist — it states which claims have been retracted and why.

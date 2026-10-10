@@ -37,26 +37,47 @@ several of its boxes had quietly gone stale.
 - [x] `data/puzzles.json` (10 puzzles) produced by `scripts/extract_puzzles.ts`
 - [x] `scripts/export_to_ltb.py` — 17 entries in `data/ltb_export.json`
       (Apurinã 5, Swahili 3, Turkish 3, Quechua 3, Nahuatl 3)
-- [ ] Regenerate `data/ltb_export.json`: the exporter emits the accepted-spellings
-      rule (joined + vowel-elided forms) since 2026-10-09, but the committed
-      export was generated before it, so the file a reviewer would read still
-      hard-requires the spaced gold and marks a correct `tulimba` unverified
-- [ ] Linguistic annotation review by someone who reads these languages
-      (`linguistics` tags are currently rule-inferred, not signed off)
+- [x] Regenerate `data/ltb_export.json` — done 2026-10-10. The file a reviewer
+      reads now states the required output format, enumerates accepted joined and
+      elided spellings, and marks a correct `tulimba` as verified on the meaning
+      rules and unverified on segmentation only (124 translations from 225
+      recordings, deduped per model with the arm each answer came from)
+- [ ] 🔴 **BLOCKER** — Independent sign-off by someone who reads Apurinã, Quechua
+      and Nahuatl, covering the ground-truth segmentations *and* the
+      rule-inferred `linguistics` tags (neither has been reviewed by a second
+      person). This gates authoring new items: the tile bank bounds what is
+      answerable, so a harder item means new evidence rows in
+      `showcase/app/play/puzzle-data.ts`, which is game content someone has to
+      certify as correct — not a prompt change. Nothing can be mined until it is
+      unblocked, and we are the ones writing these analyses, so self-review is
+      not evidence.
 
 ### Model evaluation 🟢 in progress
 
 - [x] `scripts/llm_providers.py` — failover across arkor / openrouter / groq /
       featherless / google; Arkor's preview expired 2026-10 (404 on every model)
 - [x] 2048-token sweeps, hinted arm: `openai/gpt-oss-120b` and
-      `qwen/qwen3.8-27b` (Groq), `google/gemma-4-31b-it:free` (partial, 5 items)
+      `qwen/qwen3.8-27b` (Groq)
+- [x] Gemma 4 31B recorded in all three arms from the Featherless lane (17 items
+      each), superseding the 5-item OpenRouter `:free` partial; Qwen3-32B in two
+      arms. Grid is now 15 model×arm cells / 225 recordings.
+- [ ] Widen the model set — the negative result ("no item separates two of the
+      models we can run") is only measured over 6 models, so it is bounded by
+      which models we could reach. Featherless gates `gemma-3-27b-it` and
+      Llama-3.3-70B behind a HuggingFace account link on the same funded key
+      (`gemma-4-31B-it` is not gated), and `qwen/qwen3.8-27b` is Groq-only (404 on
+      Featherless). Linking HF is a few minutes of account work for the user and
+      is the cheapest way to test whether the finding holds at a larger n.
 - [x] `scripts/score_ltb_outputs.py` — dual grading (`EM_decomp`, `EM_surface`)
 - [x] `decomposition` arm across Qwen3-32B / DeepSeek-V3.2 / GLM-4.6 (Featherless)
       — all three answer `tu li imba`; the only Apurinã misses are the `taka`
       format artifact
-- [ ] `default` / `no_hint` arms for the open-weight models — running on
-      Featherless now (gemma 3 arms, Qwen3-32B, DeepSeek-V3.2). Featherless
-      concurrency units are account-wide, so one chain at a time or every call 429s
+- [ ] Remaining `default` / `no_hint` cells: Qwen3-32B `no_hint`, GLM-4.6 outside
+      the decomposition arm, DeepSeek-V3.2 `default` (Featherless 503'd it at 2 of
+      17), the 2 items per arm Qwen3.8-27B lost to Groq 429s, and the 5 blank
+      Qwen3-32B `default` completions — that last one is the only re-run that could
+      change a conclusion rather than add coverage. Featherless concurrency units
+      are account-wide: one chain at a time or every call 429s.
 - [x] Gemma 4 31B full 17-item re-sweep unblocked: Featherless serves
       `google/gemma-4-31B-it` without the HuggingFace gate that blocks
       `gemma-3-27b-it` on that account (OpenRouter `:free` is upstream-throttled
@@ -172,7 +193,7 @@ to LTB V2 specifically because it ships `verification_rules`.
 | Decision | Options | Status | Notes |
 |----------|---------|--------|-------|
 | Gold representation in LTB entries | surface form vs decomposition | **Settled 2026-10-09** | Both, measured side by side; export states the format and accepts attested spellings |
-| Tell LTB reviewers about the retracted claim | notify / wait | 🔴 Open | Items are in the review queue now |
+| Tell LTB reviewers about the retracted claim | notify / wait | 🔴 Open — user's call | `docs/ltb-reviewer-note.md` is drafted and current (retraction, the two-directional format finding, the `göz ler` correction, coverage caveats); nothing has been sent |
 | Technical report venue | arXiv vs GitHub-only | 🔵 Undecided | Recommendation: GitHub now, arXiv later |
 | Publication timing | wait for private leaderboard vs publish | 🔵 Undecided | Recommendation: publish with TBDs |
 | Solver trace dataset | fully open vs aggregate-only | 🔵 Undecided | Recommendation: aggregate-only |

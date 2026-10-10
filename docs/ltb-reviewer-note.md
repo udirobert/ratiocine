@@ -74,15 +74,20 @@ it.
   error the format instruction induces. That correction is part of what we want
   to contribute: the same item, the same model, and the only variable is whether
   the prompt names the output representation.
-- Ground-truth segmentations are authored by our team; we are arranging
-  independent linguist verification of the Apurinã set and will share it on
-  request.
+- Ground-truth segmentations for Apurinã, Quechua and Nahuatl are authored by our
+  team and have **not** yet been reviewed by a second reader — we are looking for
+  one, and until then treat them as our analysis rather than verified data. We can
+  share the review when it exists; if you have a reviewer who reads these
+  languages, that is the fastest way to make the rest of this set usable.
 - Coverage caveat: the grid is not complete. Qwen3.8-27B lost two items per arm to
   Groq 429s, DeepSeek-V3.2's word-asking arm stopped at 2 of 17 when Featherless
   503'd it, GLM-4.6 is only recorded in one arm, and some open-weight runs on our
   Featherless lane returned blank or degenerate completions — we classify those as
   lane failures rather than model answers, and they are the main reason one
-  Qwen3-32B arm looks weaker than the model is.
+  Qwen3-32B arm looks weaker than the model is. And the negative result itself is
+  bounded by reach: "no item in this set separates two of the models we ran" is a
+  statement about six models on two free inference lanes, not about current models
+  generally. We would rather tell you that than let a 17/17 look like a ceiling.
 
 ## Ask
 

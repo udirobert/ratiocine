@@ -280,6 +280,13 @@ All examples are credited to `https://ratiocine.trustfall.xyz/play?puzzle=<id>`.
 1. Fill the coverage gaps that keep the grid honest. Closed since the last commit: Gemma 4 31B in all three arms, and Qwen3-32B `default`. Still open: Qwen3-32B `no_hint`, DeepSeek-V3.2 `default` (Featherless 503'd it at 2 of 17), GLM-4.6 outside the `decomposition` arm, and the two Qwen3.8-27b items it lost per arm to Groq 429s. Qwen3-32B `default` is also the one cell where the *lane* is the problem — 5 blank/`!!!!` completions — so a re-run there is worth more than a new model. Each run needs its own `--outputs` file, merged afterwards.
 2. Featherless concurrency units are account-wide, not per-model: four model chains in parallel 429 every call after the first. Run one chain at a time.
 3. ~~Run the Apurinã `ka`/`taka` over-segmentation against more models~~ — done: 13 of 29 decomposition-arm Apurinã answers over-segment across 5 models, 0 of 39 in the arms that ask for the word (takeaway 2). It is a prompt-format effect, not two models' quirk.
-4. Get an independent linguist sign-off on the Apurinã segmentation (see reviewer note).
+4. **The blocker on everything else:** get an independent speaker/linguist to sign off the ground-truth segmentations for Apurinã, Quechua and Nahuatl (and the rule-inferred `linguistics` tags). We authored them; without a second reader they are our analysis, not verified data. It gates action 6, because a harder item needs new evidence rows in `puzzle-data.ts` — game content somebody has to certify. Not started: no reviewer contacted.
 5. Decide the gold representation for the remaining items: the export now states the required output format and lists accepted surface spellings in `verification_rules`, which is the fix; whether to keep the spaced decomposition or the attested surface form as primary gold is a judgment call for the LTB team.
 6. Scale from 17 to 25 problems (5 × 5) only if discriminative items can be authored — see the mining note in `AGENTS.md`.
+7. Widen the model set. "No item separates two of the models we can run" is measured over six
+   models, so it is bounded by reach, not by the items. Featherless gates `gemma-3-27b-it` and
+   Llama-3.3-70B behind a HuggingFace account link on the same funded key (`gemma-4-31B-it` is
+   not gated), and `qwen/qwen3.8-27b` is Groq-only. Linking HF is the cheapest way to test the
+   negative result at larger n.
+8. Send (or deliberately not send) `docs/ltb-reviewer-note.md`. It is drafted and matches the
+   data; #6106/#6107 sit in the review queue carrying the retracted framing until we do.
