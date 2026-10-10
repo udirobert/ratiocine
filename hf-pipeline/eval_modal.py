@@ -47,7 +47,7 @@ app = modal.App("ratiocine-eval")
 @app.function(
     image=image,
     gpu="L4",
-    timeout=1800,
+    timeout=5400,
     secrets=[modal.Secret.from_name("huggingface")],
 )
 def evaluate(
@@ -161,6 +161,7 @@ def evaluate(
     all_em = []
     all_chrf = []
     by_type = {}
+    records = []
 
     for i, problem in enumerate(problems):
         pid = problem["id"]
@@ -245,6 +246,18 @@ def evaluate(
                 flush=True,
             )
 
+            records.append(
+                {
+                    "id": pid,
+                    "task_type": tt,
+                    "context": context,
+                    "query": query,
+                    "gold": gold,
+                    "raw": text,
+                    "elapsed_s": elapsed,
+                }
+            )
+
         except Exception as e:
             import traceback
 
@@ -252,6 +265,18 @@ def evaluate(
             traceback.print_exc()
             all_em.append(0.0)
             all_chrf.append(0.0)
+            records.append(
+                {
+                    "id": pid,
+                    "task_type": tt,
+                    "context": context,
+                    "query": query,
+                    "gold": gold,
+                    "raw": "",
+                    "elapsed_s": 0.0,
+                    "error": str(e),
+                }
+            )
 
     # Summary
     print()
@@ -276,6 +301,8 @@ def evaluate(
         sc = (em * ch) ** 0.5 if (em + ch) > 0 else 0
         print(f"  {ttype:20s} {em:8.4f} {ch:8.4f} {sc:8.4f} {len(scores['em']):6d}")
 
+    return records
+
 
 @app.local_entrypoint()
 def main(
@@ -283,6 +310,7 @@ def main(
     limit: int = 0,
     task_type: str = "",
     max_new_tokens: int = 512,
+    dump: bool = True,
 ):
     """Run evaluation on Modal.
 
@@ -291,10 +319,28 @@ def main(
         limit: Max problems to test (0 = all 160).
         task_type: Filter by task type.
         max_new_tokens: Max generation tokens per problem.
+        dump: Write raw generations to data/eval/ as JSON for offline rescoring.
     """
-    evaluate.remote(
+    records = evaluate.remote(
         model_id=model_id,
         limit=limit,
         task_type=task_type,
         max_new_tokens=max_new_tokens,
     )
+
+    if dump:
+        import json
+        import os
+        import time
+
+        out_dir = os.path.join(PROJECT_ROOT, "data", "eval")
+        os.makedirs(out_dir, exist_ok=True)
+        model_slug = model_id.replace("/", "_")
+        limit_or_all = str(limit) if limit else "all"
+        ts = time.strftime("%Y%m%d-%H%M%S")
+        out_path = os.path.join(
+            out_dir, f"raw_generations_{model_slug}_{limit_or_all}_{ts}.json"
+        )
+        with open(out_path, "w", encoding="utf-8") as f:
+            json.dump(records, f, ensure_ascii=False, indent=1)
+        print(f"[eval] Wrote {len(records)} records to {os.path.abspath(out_path)}")

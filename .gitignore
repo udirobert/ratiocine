@@ -77,6 +77,7 @@ outputs/
 # --- Data artifacts (keep synthetic training data, ignore large/raw) ---
 data/raw/
 data/cache/
+data/eval/
 *.parquet
 *.arrow
 *.feather
