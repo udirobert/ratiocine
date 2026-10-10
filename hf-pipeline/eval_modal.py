@@ -209,7 +209,12 @@ def evaluate(
             if not n_expected:
                 n_expected = len(gold) if isinstance(gold, list) else 1
 
-            pred_answers = parse_answers(text, n_expected=n_expected, task_type=tt)
+            pred_answers = parse_answers(
+                text,
+                n_expected=n_expected,
+                task_type=tt,
+                context=context + "\n" + query,
+            )
 
             # Score
             em_scores = []

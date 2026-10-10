@@ -338,7 +338,12 @@ def main():
                 max_tokens=args.max_tokens,
             )
             elapsed = time.time() - t0
-            lines = parse_answers(raw, n_expected=1, task_type="translation")
+            lines = parse_answers(
+                raw,
+                n_expected=1,
+                task_type="translation",
+                context=context + "\n" + query["prompt"],
+            )
             answer_text = lines[0].strip().strip(".!?;:，。") if lines else ""
             answer = parse_morphemes(raw, query["answer"], tiles)
             # Two independent grades from one recording: does the answer equal the

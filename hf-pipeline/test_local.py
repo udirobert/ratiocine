@@ -301,7 +301,10 @@ def main():
                 n_expected = len(gold) if isinstance(gold, list) else 1
 
             pred_answers = parse_answers(
-                output, n_expected=n_expected, task_type=task_type
+                output,
+                n_expected=n_expected,
+                task_type=task_type,
+                context=context + "\n" + query,
             )
             results = score_item(pred_answers, gold)
 

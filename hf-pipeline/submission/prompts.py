@@ -146,7 +146,29 @@ def count_query_items(query: str) -> int:
     return n
 
 
-def parse_answers(text: str, n_expected: int = 0, task_type: str = "") -> list[str]:
+# Bracketed answers are correct only where the problem itself writes forms in
+# phonetic brackets. Measured on the Linguini test split (160 problems, 920
+# gold answer elements): 17 bracketed gold answers, every one inside a problem
+# whose context/query contains bracketed tokens, and none outside. Stripping a
+# wrapper is therefore safe exactly when the problem shows no such notation.
+_CTX_BRACKET = re.compile(r"\[[^\]]{2,30}\]")
+_WRAPPED_BRACKET = re.compile(r"^\[([\s\S]*)\]$")
+
+
+def _strip_spurious_brackets(answers: list[str], context: str | None) -> list[str]:
+    """Drop answer-wrapping brackets unless the problem uses bracket notation."""
+    if context is None or _CTX_BRACKET.search(context):
+        return answers
+    out = []
+    for a in answers:
+        m = _WRAPPED_BRACKET.match(a.strip())
+        out.append(m.group(1).strip() if m else a)
+    return out
+
+
+def parse_answers(
+    text: str, n_expected: int = 0, task_type: str = "", context: str | None = None
+) -> list[str]:
     """Extract answers from model output, handling various formats.
 
     Strategies (tried in order):
@@ -160,6 +182,11 @@ def parse_answers(text: str, n_expected: int = 0, task_type: str = "") -> list[s
     _looks_like_analysis filter that dropped ~5% of correct translation
     answers (e.g. "We shuddered.", "The woman is afraid of my dog.") because
     they started with common English words. That filter is removed.
+
+    context: the problem's context+query text. When provided and it contains
+    no bracketed tokens, one layer of whole-answer [...] wrapping is stripped
+    (models sometimes leak brackets into non-phonetic answers). When None, no
+    stripping happens — identical behaviour to before the parameter existed.
     """
     answers: list[str] = []
 
@@ -227,6 +254,8 @@ def parse_answers(text: str, n_expected: int = 0, task_type: str = "") -> list[s
         a = re.sub(r"\*{1,2}(.+?)\*{1,2}", r"\1", a)  # strip markdown bold/italic
         if a:
             cleaned.append(a)
+
+    cleaned = _strip_spurious_brackets(cleaned, context)
 
     # 6. Task-specific post-processing
     if task_type == "match_letters":

@@ -253,7 +253,12 @@ def run_solve(
             out[0][input_ids.shape[-1] :], skip_special_tokens=True
         ).strip()
         n_items = count_query_items(query)
-        answers = parse_answers(generated, n_expected=n_items, task_type=task_type)
+        answers = parse_answers(
+            generated,
+            n_expected=n_items,
+            task_type=task_type,
+            context=context + "\n" + query,
+        )
         explanation = extract_analysis(generated)
         elapsed = round(time.time() - t0, 2)
 
