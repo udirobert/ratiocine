@@ -802,7 +802,7 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
             >
               {puzzle.language}
             </span>
-            <span className="text-[11px] text-white/55 ml-2 font-mono">{puzzle.family}</span>
+            <span className="hidden sm:inline text-[11px] text-white/55 ml-2 font-mono">{puzzle.family}</span>
             <span className="hidden md:inline-block ml-2 font-mono text-[11px] text-white/55 border border-white/15 rounded-full px-2 py-0.5 align-middle max-w-[280px] truncate">
               {puzzle.language} · {puzzle.lore.geography.split(/[:.,;]/)[0]} · {puzzle.lore.speakers.split(/[.,;(]/)[0]}
             </span>
@@ -1218,17 +1218,17 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
 
                 {/* Submit / navigation — sticky on small screens so Check never
                     scrolls away behind the tile bank */}
-                <div className="sticky bottom-0 z-10 -mx-4 px-4 pt-3 pb-2 pb-[calc(0.5rem+env(safe-area-inset-bottom))] bg-gradient-to-t from-[#0a0c10] via-[#0a0c10]/80 to-transparent flex items-center justify-center gap-2 sm:gap-3">
+                <div className="sticky bottom-0 lg:static z-10 -mx-4 lg:mx-0 px-4 lg:px-0 pt-3 lg:pt-0 pb-[calc(0.5rem+env(safe-area-inset-bottom))] lg:pb-0 bg-gradient-to-t from-[#0a0c10] via-[#0a0c10]/80 to-transparent lg:bg-none flex flex-col items-center gap-1">
+                  <div className="flex items-center justify-center gap-2 sm:gap-3">
                   {!isLocked && (
-                    slots.some((s) => s.morpheme) ? (
-                      <Button variant="primary" size="md" onClick={handleSubmit}>
-                        Check
-                      </Button>
-                    ) : (
-                      <span className="text-[11px] font-mono text-white/55 flex items-center min-h-[44px] px-3">
-                        place a tile to check
-                      </span>
-                    )
+                    <Button
+                      variant="primary"
+                      size="md"
+                      onClick={handleSubmit}
+                      disabled={!slots.some((s) => s.morpheme)}
+                    >
+                      Check
+                    </Button>
                   )}
                   {!isLocked && slots.filter((s) => s.morpheme).length >= 2 && (
                     <Button
@@ -1260,6 +1260,12 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
                   >
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
                   </button>
+                  </div>
+                  {!isLocked && !slots.some((s) => s.morpheme) && (
+                    <p className="text-[11px] font-mono text-white/55">
+                      place a tile to check
+                    </p>
+                  )}
                 </div>
 
                 {/* Grading legend — appears after the first submit teaches the colors */}

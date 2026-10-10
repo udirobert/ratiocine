@@ -78,6 +78,7 @@ export const CoachMarks = ({ onDismiss, accent }: CoachMarksProps) => {
     try {
       window.localStorage.setItem(COACH_KEY, "1");
     } catch {}
+    window.dispatchEvent(new CustomEvent("ratiocine:coach-dismissed"));
     onDismiss();
   };
 

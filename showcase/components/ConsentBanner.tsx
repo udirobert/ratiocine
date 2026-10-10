@@ -2,14 +2,32 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from "motion/react";
+import { hasSeenCoach } from '../app/play/coach-marks';
 
 export function ConsentBanner() {
   const [visible, setVisible] = useState(false);
   const [hasConsented, setHasConsented] = useState<boolean | null>(null);
+  const [coachSeen, setCoachSeen] = useState(false);
 
   useEffect(() => {
+    if (hasSeenCoach()) {
+      setCoachSeen(true);
+      return;
+    }
+    const onDismissed = () => setCoachSeen(true);
+    window.addEventListener('ratiocine:coach-dismissed', onDismissed);
+    return () => window.removeEventListener('ratiocine:coach-dismissed', onDismissed);
+  }, []);
+
+  useEffect(() => {
+    if (!coachSeen) return;
     // Check localStorage for existing consent decision
-    const consent = localStorage.getItem('ration-research-consent');
+    let consent: string | null = null;
+    try {
+      consent = localStorage.getItem('ration-research-consent');
+    } catch {
+      return;
+    }
     if (consent === null) {
       // Show banner after 5s delay (don't interrupt game entry)
       const timer = setTimeout(() => setVisible(true), 5000);
@@ -17,7 +35,7 @@ export function ConsentBanner() {
     } else {
       setHasConsented(consent === 'true');
     }
-  }, []);
+  }, [coachSeen]);
 
   const handleAccept = () => {
     localStorage.setItem('ration-research-consent', 'true');

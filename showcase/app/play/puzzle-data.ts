@@ -941,7 +941,7 @@ export const ESPERANTO_PUZZLE: Puzzle = {
   lore: {
     etymology: "'Esperanto' means 'one who hopes' — the pen name of L. L. Zamenhof, who published the language in Warsaw in 1887.",
     geography: "Spoken worldwide: congresses, clubs, and a native-speaking community of children raised in Esperanto households.",
-    speakers: "Estimates range from 100,000 to 2 million; around 1,000 native speakers. Duolingo's Esperanto course has millions of learners.",
+    speakers: "Up to 2 million speakers worldwide, of whom around 1,000 are native. Duolingo's Esperanto course has millions of learners.",
     family: "Constructed, with Romance and Germanic vocabulary and a Slavic-inspired structure. Designed for regularity: 16 rules, no exceptions.",
     culturalNote: "Esperanto was meant to be a neutral second language for peace. Its congresses still run entirely in Esperanto — a century-old experiment that never quite died.",
     endangerment: "Not endangered in the usual sense — but its native-speaker community is tiny and precious to linguists.",

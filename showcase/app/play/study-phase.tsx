@@ -30,20 +30,23 @@ export const StudyPhase = ({ puzzle, highlightedRows, onReady, instant = false, 
   const autoNudgeRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const gateTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // Default lore to OPEN on first visit to this puzzle, then remember state
-  const [loreOpen, setLoreOpen] = useState(() => {
-    if (typeof window === "undefined") return false;
-    const key = `lore-seen-${puzzle.id}`;
-    const seen = localStorage.getItem(key);
-    if (!seen) {
-      localStorage.setItem(key, "true");
-      return true; // First visit: show lore
-    }
-    return false; // Return visit: collapsed
-  });
+  const [loreOpen, setLoreOpen] = useState(false);
 
   const { theme } = puzzle;
   const pairs = useMemo(() => puzzle.pairs.filter((p) => !p.gated), [puzzle.pairs]);
+
+  // Lore teaser — a crisp speaker count and family so the summary earns a click
+  const loreTeaser = useMemo(() => {
+    const m = puzzle.lore.speakers.match(/([\d][\d,.\u2013\u2014-]*)\s*(billion|million|thousand)?/i);
+    let count = "";
+    if (m) {
+      const unit = m[2]?.toLowerCase();
+      const suffix = unit === "billion" ? "B" : unit === "million" ? "M" : unit === "thousand" ? "K" : "";
+      count = `${m[1]}${suffix} speakers`;
+    }
+    const family = puzzle.family.split("·")[0].trim();
+    return [`About ${puzzle.language}`, count, family].filter(Boolean).join(" · ");
+  }, [puzzle.language, puzzle.family, puzzle.lore.speakers]);
 
   // Helper to check if language is endangered (more explicit logic)
   const isEndangered = useMemo(() => {
@@ -244,12 +247,12 @@ export const StudyPhase = ({ puzzle, highlightedRows, onReady, instant = false, 
             open={loreOpen}
             onToggle={(e) => setLoreOpen((e.target as HTMLDetailsElement).open)}
           >
-            <summary className="cursor-pointer hover:text-white/90 flex items-center justify-center gap-2 transition-colors py-2 select-none">
-              <span className="text-[10px] transition-transform" style={{ transform: loreOpen ? "rotate(90deg)" : "rotate(0deg)" }}>
+            <summary className="cursor-pointer hover:text-white/90 flex items-center justify-center gap-2 transition-colors py-2 min-h-[44px] select-none">
+              <span className="text-[10px] shrink-0 transition-transform" style={{ transform: loreOpen ? "rotate(90deg)" : "rotate(0deg)" }}>
                 ▸
               </span>
-              <span className="text-[11px] font-mono uppercase tracking-wider text-white/55 hover:text-white/80">
-                About {puzzle.language}
+              <span className="text-[11px] font-mono uppercase tracking-wider text-white/55 hover:text-white/80 truncate">
+                {loreTeaser}
               </span>
             </summary>
             <motion.div
@@ -279,8 +282,7 @@ export const StudyPhase = ({ puzzle, highlightedRows, onReady, instant = false, 
           {/* Evidence specimens — one page of four, never a scroll */}
           <div className="space-y-1.5">
             {pagePairs.map((pair, i) => {
-              const globalIdx = page * PAGE_SIZE + i;
-              if (!instant && globalIdx >= visibleCount) return null;
+              if (!instant && page === 0 && i >= visibleCount) return null;
               return (
                 <EvidenceCard
                   key={pair.id}
