@@ -262,7 +262,7 @@ models.
 ## Files and structure
 
 - `data/puzzles.json` — exported puzzle pool from `showcase/app/play/puzzle-data.ts`
-- `data/ltb_export.json` — 17 LTB-formatted entries with `translations`, `verification_rules`, and `linguistics` tags
+- `data/ltb_export.json` — 17 LTB-formatted entries with `translations`, `verification_rules`, and `linguistics` tags. `verified` is positional against the rules and splits by kind: morpheme identity / order / tile-bank test **segmentation**, the meaning and evidence-consistency rules test **translation**, so a correct fused `tulimba` is false on the first group and true on the second. An earlier version derived all of them from exact-sequence equality, which re-ran the very mis-scoring we retracted.
 - `data/ltb_model_outputs.json` — 225 raw model recordings across 15 model×arm cells (5 models in all three arms, Qwen3-32B and DeepSeek-V3.2 in two, GLM-4.6 in one); entries carry `provider` and `prompt_variant`, and `raw` is kept so a parser fix can be re-applied offline instead of re-spending on calls
 - `data/ltb_model_outputs_truncated20261009.json` — archived Sept sweep at `max_tokens=512`
 - `scripts/export_to_ltb.py` — converts puzzle data to `data/ltb_export.json`

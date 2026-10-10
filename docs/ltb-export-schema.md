@@ -165,11 +165,19 @@ From solver trace data (once we have it):
   },
   {
     "model": "Gemini 2.5 Flash",
-    "translation": "ukupa", // wrong (concatenated, not segmented)
-    "verified": [false, false, true, true, false]
+    "translation": "ukupa", // correct translation, written fused rather than segmented
+    "verified": [false, false, false, true, true]
   }
 ]
 ```
+
+`verified` is positional against `verification_rules`, and the rules split in two
+groups: morpheme identity, order and tile-bank membership test **segmentation**;
+the meaning rule and the evidence-consistency rules test **translation**. A fused
+attested form fails only the first group. Before 2026-10-10 `verify_answer` derived
+every rule from exact-sequence equality, so `tulimba` was reported as failing "must
+express the meaning: 'we sang'" — which is the same mis-scoring we retracted in
+September, reproduced in our own export.
 
 Two rules `scripts/export_to_ltb.py` applies when it builds this list from
 `data/ltb_model_outputs.json`, because a raw sweep dump would misrepresent both
@@ -252,7 +260,7 @@ From the [LTB paper](https://arxiv.org/abs/2609.04173), common tags include:
     {
       "model": "Gemini 2.5 Flash",
       "translation": "ukupa",
-      "verified": [false, false, true, true, false]
+      "verified": [false, false, false, true, true]
     },
     {
       "model": "GPT-5",

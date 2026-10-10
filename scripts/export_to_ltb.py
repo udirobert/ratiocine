@@ -155,20 +155,24 @@ def verify_answer(
     tiles: list[str],
     joined: str = "",
 ) -> list[bool]:
-    """Evaluate a morpheme guess against the verification rules."""
+    """Evaluate a morpheme guess against the verification rules.
+
+    The rules split in two. Morpheme identity, order and tile-bank membership are
+    about *segmentation*; the meaning rule and the evidence-consistency rules are
+    about *translation*. A fused attested surface form (`tulimba`) fails the first
+    group and satisfies the second, so it is graded that way — marking it wrong on
+    "must express the meaning: 'we sang'" is the scoring artifact we retracted in
+    September, reproduced inside the export.
+    """
     exact = len(guess) == len(answer) and all(
         g == a for g, a in zip(guess, answer, strict=False)
     )
+    surface = bool(joined) and joined in surface_forms(answer)
+    meaning_ok = exact or surface
     in_bank = all(g in tiles for g in guess) if guess else False
-    out = [
-        exact,  # exact morpheme match
-        exact,  # order constraint (same as exact for morpheme sequences)
-        in_bank,  # tile bank constraint
-        exact,  # semantic constraint (assumed if exact)
-    ]
-    out += [exact] * max(0, len(rules) - 1 - len(out))  # evidence-consistency rules
-    # last rule is the accepted-spellings rule, which is its own question
-    out.append(bool(joined) and joined in surface_forms(answer))
+    out = [exact, exact, in_bank, meaning_ok]
+    out += [meaning_ok] * max(0, len(rules) - 1 - len(out))  # evidence-consistency
+    out.append(surface)  # the accepted-spellings rule is its own question
     return out
 
 
