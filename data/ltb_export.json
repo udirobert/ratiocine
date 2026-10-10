@@ -6,13 +6,17 @@
     "target_lang": "Apurinã",
     "source_lang_iso": "eng",
     "target_lang_iso": "apu",
-    "source_instructions": "Given the following bilingual evidence pairs and a tile bank of morphemes, deduce the correct morpheme sequence for the query.\n\nEvidence:\n- nhaapitaka → I am going\n- ãpitaka → you are going\n- apitaka → he/she is going\n- nhaakutaka → I am eating\n- ãkutaka → you are eating\n- akutaka → he/she is eating\n- nhaanykataka → I am speaking\n- ãnykataka → you are speaking\n- anykataka → he/she is speaking\n- kaapitaka → we (everyone) are going\n\nAvailable morphemes: nhaa, ã, a, kaa, pita, kuta, nykata, ka, taka\n\nHint:\nCompare rows 1-3: what stays the same, what changes? The changing part encodes person.\nkaa- marks 'we (inclusive)'. It appears only in row 10 — you may need to reveal it.\nStructure: [person prefix] + [verb root] + [aspect suffix]. Roots: pita=go, kuta=eat, nykata=speak. The suffix -ka marks progressive ('am doing'). Every answer can be assembled from this evidence.\n\nQuery: I am eating",
+    "source_instructions": "Given the following bilingual evidence pairs and a tile bank of morphemes, deduce the correct morpheme sequence for the query.\n\nEvidence:\n- nhaapitaka → I am going\n- ãpitaka → you are going\n- apitaka → he/she is going\n- nhaakutaka → I am eating\n- ãkutaka → you are eating\n- akutaka → he/she is eating\n- nhaanykataka → I am speaking\n- ãnykataka → you are speaking\n- anykataka → he/she is speaking\n- kaapitaka → we (everyone) are going\n\nAvailable morphemes: nhaa, ã, a, kaa, pita, kuta, nykata, ka, taka\n\nHint:\nCompare rows 1-3: what stays the same, what changes? The changing part encodes person.\nkaa- marks 'we (inclusive)'. It appears only in row 10 — you may need to reveal it.\nStructure: [person prefix] + [verb root] + [aspect suffix]. Roots: pita=go, kuta=eat, nykata=speak. The suffix -ka marks progressive ('am doing'). Every answer can be assembled from this evidence.\n\nQuery: I am eating\n\nAnswer format (REQUIRED): for the query, output ONLY its morphemes taken from the available morphemes list, separated by single spaces, in order. Never write the combined word.",
     "source_media": null,
     "translations": [
       {
         "model": "ratiocine_ground_truth",
         "translation": "nhaa kuta ka",
+        "surface_forms": [
+          "nhaakutaka"
+        ],
         "verified": [
+          true,
           true,
           true,
           true,
@@ -30,9 +34,13 @@
         ]
       },
       {
-        "model": "google/gemma-4-31b-it",
+        "model": "google/gemma-4-31b-it:free",
         "translation": "nhaa kuta ka",
+        "prompt_variants": [
+          "default"
+        ],
         "verified": [
+          true,
           true,
           true,
           true,
@@ -50,9 +58,188 @@
         ]
       },
       {
-        "model": "google/gemini-3-8-flash",
+        "model": "openai/gpt-oss-120b",
         "translation": "nhaa kuta ka",
+        "prompt_variants": [
+          "default",
+          "decomposition",
+          "no_hint"
+        ],
         "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "qwen/qwen3.8-27b",
+        "translation": "nhaa kuta ka",
+        "prompt_variants": [
+          "default",
+          "no_hint"
+        ],
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "deepseek-ai/DeepSeek-V3.2",
+        "translation": "nhaa kuta taka",
+        "prompt_variants": [
+          "decomposition"
+        ],
+        "verified": [
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "note": "over-segmented: uses the tile(s) 'taka' where the gold requires the morpheme(s) they contain — the error a spaced-morpheme instruction induces"
+      },
+      {
+        "model": "zai-org/GLM-4.6",
+        "translation": "nhaa kuta ka",
+        "prompt_variants": [
+          "decomposition"
+        ],
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "qwen/qwen3.8-27b",
+        "translation": "nhaa kuta taka",
+        "prompt_variants": [
+          "decomposition"
+        ],
+        "verified": [
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "note": "over-segmented: uses the tile(s) 'taka' where the gold requires the morpheme(s) they contain — the error a spaced-morpheme instruction induces"
+      },
+      {
+        "model": "Qwen/Qwen3-32B",
+        "translation": "nhaa kuta ka",
+        "prompt_variants": [
+          "decomposition"
+        ],
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "google/gemma-4-31B-it",
+        "translation": "nhaa kuta ka",
+        "prompt_variants": [
+          "decomposition",
+          "default",
+          "no_hint"
+        ],
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "deepseek-ai/DeepSeek-V3.2",
+        "translation": "nhaa kuta ka",
+        "prompt_variants": [
+          "default"
+        ],
+        "verified": [
+          true,
           true,
           true,
           true,
@@ -84,7 +271,8 @@
       "Translation must be consistent with the evidence pattern: 'nhaanykataka' → 'I am speaking'.",
       "Translation must be consistent with the evidence pattern: 'ãnykataka' → 'you are speaking'.",
       "Translation must be consistent with the evidence pattern: 'anykataka' → 'he/she is speaking'.",
-      "Translation must be consistent with the evidence pattern: 'kaapitaka' → 'we (everyone) are going'."
+      "Translation must be consistent with the evidence pattern: 'kaapitaka' → 'we (everyone) are going'.",
+      "Accepted alternative spellings of this decomposition (joined, and joined with vowel elision at morpheme boundaries): nhaakutaka. A response equal to one of these is a correct translation that failed to segment — score the meaning correct and the format incorrect."
     ],
     "linguistics": [
       "Morphological",
@@ -108,13 +296,17 @@
     "target_lang": "Apurinã",
     "source_lang_iso": "eng",
     "target_lang_iso": "apu",
-    "source_instructions": "Given the following bilingual evidence pairs and a tile bank of morphemes, deduce the correct morpheme sequence for the query.\n\nEvidence:\n- nhaapitaka → I am going\n- ãpitaka → you are going\n- apitaka → he/she is going\n- nhaakutaka → I am eating\n- ãkutaka → you are eating\n- akutaka → he/she is eating\n- nhaanykataka → I am speaking\n- ãnykataka → you are speaking\n- anykataka → he/she is speaking\n- kaapitaka → we (everyone) are going\n\nAvailable morphemes: nhaa, ã, a, kaa, pita, kuta, nykata, ka, taka\n\nHint:\nCompare rows 1-3: what stays the same, what changes? The changing part encodes person.\nkaa- marks 'we (inclusive)'. It appears only in row 10 — you may need to reveal it.\nStructure: [person prefix] + [verb root] + [aspect suffix]. Roots: pita=go, kuta=eat, nykata=speak. The suffix -ka marks progressive ('am doing'). Every answer can be assembled from this evidence.\n\nQuery: we (everyone) are eating",
+    "source_instructions": "Given the following bilingual evidence pairs and a tile bank of morphemes, deduce the correct morpheme sequence for the query.\n\nEvidence:\n- nhaapitaka → I am going\n- ãpitaka → you are going\n- apitaka → he/she is going\n- nhaakutaka → I am eating\n- ãkutaka → you are eating\n- akutaka → he/she is eating\n- nhaanykataka → I am speaking\n- ãnykataka → you are speaking\n- anykataka → he/she is speaking\n- kaapitaka → we (everyone) are going\n\nAvailable morphemes: nhaa, ã, a, kaa, pita, kuta, nykata, ka, taka\n\nHint:\nCompare rows 1-3: what stays the same, what changes? The changing part encodes person.\nkaa- marks 'we (inclusive)'. It appears only in row 10 — you may need to reveal it.\nStructure: [person prefix] + [verb root] + [aspect suffix]. Roots: pita=go, kuta=eat, nykata=speak. The suffix -ka marks progressive ('am doing'). Every answer can be assembled from this evidence.\n\nQuery: we (everyone) are eating\n\nAnswer format (REQUIRED): for the query, output ONLY its morphemes taken from the available morphemes list, separated by single spaces, in order. Never write the combined word.",
     "source_media": null,
     "translations": [
       {
         "model": "ratiocine_ground_truth",
         "translation": "kaa kuta ka",
+        "surface_forms": [
+          "kaakutaka"
+        ],
         "verified": [
+          true,
           true,
           true,
           true,
@@ -132,9 +324,13 @@
         ]
       },
       {
-        "model": "google/gemma-4-31b-it",
+        "model": "google/gemma-4-31b-it:free",
         "translation": "kaa kuta ka",
+        "prompt_variants": [
+          "default"
+        ],
         "verified": [
+          true,
           true,
           true,
           true,
@@ -152,11 +348,65 @@
         ]
       },
       {
-        "model": "google/gemini-3-8-flash",
-        "translation": "Step 1: Identify the components for \"we (everyone) are eating\"",
+        "model": "openai/gpt-oss-120b",
+        "translation": "kaa kuta ka",
+        "prompt_variants": [
+          "default",
+          "decomposition",
+          "no_hint"
+        ],
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "qwen/qwen3.8-27b",
+        "translation": "kaa kuta ka",
+        "prompt_variants": [
+          "default"
+        ],
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "deepseek-ai/DeepSeek-V3.2",
+        "translation": "kaa kuta taka",
+        "prompt_variants": [
+          "decomposition"
+        ],
         "verified": [
           false,
           false,
+          true,
           false,
           false,
           false,
@@ -169,6 +419,131 @@
           false,
           false,
           false
+        ],
+        "note": "over-segmented: uses the tile(s) 'taka' where the gold requires the morpheme(s) they contain — the error a spaced-morpheme instruction induces"
+      },
+      {
+        "model": "zai-org/GLM-4.6",
+        "translation": "kaa kuta taka",
+        "prompt_variants": [
+          "decomposition"
+        ],
+        "verified": [
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "note": "over-segmented: uses the tile(s) 'taka' where the gold requires the morpheme(s) they contain — the error a spaced-morpheme instruction induces"
+      },
+      {
+        "model": "qwen/qwen3.8-27b",
+        "translation": "kaa kuta taka",
+        "prompt_variants": [
+          "decomposition"
+        ],
+        "verified": [
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "note": "over-segmented: uses the tile(s) 'taka' where the gold requires the morpheme(s) they contain — the error a spaced-morpheme instruction induces"
+      },
+      {
+        "model": "google/gemma-4-31B-it",
+        "translation": "kaa kuta taka",
+        "prompt_variants": [
+          "decomposition"
+        ],
+        "verified": [
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "note": "over-segmented: uses the tile(s) 'taka' where the gold requires the morpheme(s) they contain — the error a spaced-morpheme instruction induces"
+      },
+      {
+        "model": "google/gemma-4-31B-it",
+        "translation": "kaa kuta ka",
+        "prompt_variants": [
+          "default",
+          "no_hint"
+        ],
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "Qwen/Qwen3-32B",
+        "translation": "kaa kuta ka",
+        "prompt_variants": [
+          "default"
+        ],
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
         ]
       }
     ],
@@ -186,7 +561,8 @@
       "Translation must be consistent with the evidence pattern: 'nhaanykataka' → 'I am speaking'.",
       "Translation must be consistent with the evidence pattern: 'ãnykataka' → 'you are speaking'.",
       "Translation must be consistent with the evidence pattern: 'anykataka' → 'he/she is speaking'.",
-      "Translation must be consistent with the evidence pattern: 'kaapitaka' → 'we (everyone) are going'."
+      "Translation must be consistent with the evidence pattern: 'kaapitaka' → 'we (everyone) are going'.",
+      "Accepted alternative spellings of this decomposition (joined, and joined with vowel elision at morpheme boundaries): kaakutaka. A response equal to one of these is a correct translation that failed to segment — score the meaning correct and the format incorrect."
     ],
     "linguistics": [
       "Morphological",
@@ -210,13 +586,17 @@
     "target_lang": "Apurinã",
     "source_lang_iso": "eng",
     "target_lang_iso": "apu",
-    "source_instructions": "Given the following bilingual evidence pairs and a tile bank of morphemes, deduce the correct morpheme sequence for the query.\n\nEvidence:\n- nhaapitaka → I am going\n- ãpitaka → you are going\n- apitaka → he/she is going\n- nhaakutaka → I am eating\n- ãkutaka → you are eating\n- akutaka → he/she is eating\n- nhaanykataka → I am speaking\n- ãnykataka → you are speaking\n- anykataka → he/she is speaking\n- kaapitaka → we (everyone) are going\n\nAvailable morphemes: nhaa, ã, a, kaa, pita, kuta, nykata, ka, taka\n\nHint:\nCompare rows 1-3: what stays the same, what changes? The changing part encodes person.\nkaa- marks 'we (inclusive)'. It appears only in row 10 — you may need to reveal it.\nStructure: [person prefix] + [verb root] + [aspect suffix]. Roots: pita=go, kuta=eat, nykata=speak. The suffix -ka marks progressive ('am doing'). Every answer can be assembled from this evidence.\n\nQuery: you are speaking",
+    "source_instructions": "Given the following bilingual evidence pairs and a tile bank of morphemes, deduce the correct morpheme sequence for the query.\n\nEvidence:\n- nhaapitaka → I am going\n- ãpitaka → you are going\n- apitaka → he/she is going\n- nhaakutaka → I am eating\n- ãkutaka → you are eating\n- akutaka → he/she is eating\n- nhaanykataka → I am speaking\n- ãnykataka → you are speaking\n- anykataka → he/she is speaking\n- kaapitaka → we (everyone) are going\n\nAvailable morphemes: nhaa, ã, a, kaa, pita, kuta, nykata, ka, taka\n\nHint:\nCompare rows 1-3: what stays the same, what changes? The changing part encodes person.\nkaa- marks 'we (inclusive)'. It appears only in row 10 — you may need to reveal it.\nStructure: [person prefix] + [verb root] + [aspect suffix]. Roots: pita=go, kuta=eat, nykata=speak. The suffix -ka marks progressive ('am doing'). Every answer can be assembled from this evidence.\n\nQuery: you are speaking\n\nAnswer format (REQUIRED): for the query, output ONLY its morphemes taken from the available morphemes list, separated by single spaces, in order. Never write the combined word.",
     "source_media": null,
     "translations": [
       {
         "model": "ratiocine_ground_truth",
         "translation": "ã nykata ka",
+        "surface_forms": [
+          "ãnykataka"
+        ],
         "verified": [
+          true,
           true,
           true,
           true,
@@ -234,9 +614,15 @@
         ]
       },
       {
-        "model": "google/gemma-4-31b-it",
+        "model": "openai/gpt-oss-120b",
         "translation": "ã nykata ka",
+        "prompt_variants": [
+          "default",
+          "decomposition",
+          "no_hint"
+        ],
         "verified": [
+          true,
           true,
           true,
           true,
@@ -254,11 +640,65 @@
         ]
       },
       {
-        "model": "google/gemini-3-8-flash",
-        "translation": "Step 1: Identify the components for \"you are speaking\"",
+        "model": "qwen/qwen3.8-27b",
+        "translation": "ã nykata ka",
+        "prompt_variants": [
+          "default",
+          "decomposition",
+          "no_hint"
+        ],
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "Qwen/Qwen3-32B",
+        "translation": "ã nykata ka",
+        "prompt_variants": [
+          "decomposition"
+        ],
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "deepseek-ai/DeepSeek-V3.2",
+        "translation": "ã nykata taka",
+        "prompt_variants": [
+          "decomposition"
+        ],
         "verified": [
           false,
           false,
+          true,
           false,
           false,
           false,
@@ -271,6 +711,105 @@
           false,
           false,
           false
+        ],
+        "note": "over-segmented: uses the tile(s) 'taka' where the gold requires the morpheme(s) they contain — the error a spaced-morpheme instruction induces"
+      },
+      {
+        "model": "zai-org/GLM-4.6",
+        "translation": "ã nykata ka",
+        "prompt_variants": [
+          "decomposition"
+        ],
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "google/gemma-4-31B-it",
+        "translation": "ã nykata taka",
+        "prompt_variants": [
+          "decomposition"
+        ],
+        "verified": [
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "note": "over-segmented: uses the tile(s) 'taka' where the gold requires the morpheme(s) they contain — the error a spaced-morpheme instruction induces"
+      },
+      {
+        "model": "google/gemma-4-31B-it",
+        "translation": "ã nykata ka",
+        "prompt_variants": [
+          "default",
+          "no_hint"
+        ],
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "deepseek-ai/DeepSeek-V3.2",
+        "translation": "ã nykata ka",
+        "prompt_variants": [
+          "default"
+        ],
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
         ]
       }
     ],
@@ -288,7 +827,8 @@
       "Translation must be consistent with the evidence pattern: 'nhaanykataka' → 'I am speaking'.",
       "Translation must be consistent with the evidence pattern: 'ãnykataka' → 'you are speaking'.",
       "Translation must be consistent with the evidence pattern: 'anykataka' → 'he/she is speaking'.",
-      "Translation must be consistent with the evidence pattern: 'kaapitaka' → 'we (everyone) are going'."
+      "Translation must be consistent with the evidence pattern: 'kaapitaka' → 'we (everyone) are going'.",
+      "Accepted alternative spellings of this decomposition (joined, and joined with vowel elision at morpheme boundaries): ãnykataka. A response equal to one of these is a correct translation that failed to segment — score the meaning correct and the format incorrect."
     ],
     "linguistics": [
       "Morphological",
@@ -312,13 +852,17 @@
     "target_lang": "Apurinã",
     "source_lang_iso": "eng",
     "target_lang_iso": "apu",
-    "source_instructions": "Given the following bilingual evidence pairs and a tile bank of morphemes, deduce the correct morpheme sequence for the query.\n\nEvidence:\n- nhaapitaka → I am going\n- ãpitaka → you are going\n- apitaka → he/she is going\n- nhaakutaka → I am eating\n- ãkutaka → you are eating\n- akutaka → he/she is eating\n- nhaanykataka → I am speaking\n- ãnykataka → you are speaking\n- anykataka → he/she is speaking\n- kaapitaka → we (everyone) are going\n\nAvailable morphemes: nhaa, ã, a, kaa, pita, kuta, nykata, ka, taka\n\nHint:\nCompare rows 1-3: what stays the same, what changes? The changing part encodes person.\nkaa- marks 'we (inclusive)'. It appears only in row 10 — you may need to reveal it.\nStructure: [person prefix] + [verb root] + [aspect suffix]. Roots: pita=go, kuta=eat, nykata=speak. The suffix -ka marks progressive ('am doing'). Every answer can be assembled from this evidence.\n\nQuery: we (everyone) are speaking",
+    "source_instructions": "Given the following bilingual evidence pairs and a tile bank of morphemes, deduce the correct morpheme sequence for the query.\n\nEvidence:\n- nhaapitaka → I am going\n- ãpitaka → you are going\n- apitaka → he/she is going\n- nhaakutaka → I am eating\n- ãkutaka → you are eating\n- akutaka → he/she is eating\n- nhaanykataka → I am speaking\n- ãnykataka → you are speaking\n- anykataka → he/she is speaking\n- kaapitaka → we (everyone) are going\n\nAvailable morphemes: nhaa, ã, a, kaa, pita, kuta, nykata, ka, taka\n\nHint:\nCompare rows 1-3: what stays the same, what changes? The changing part encodes person.\nkaa- marks 'we (inclusive)'. It appears only in row 10 — you may need to reveal it.\nStructure: [person prefix] + [verb root] + [aspect suffix]. Roots: pita=go, kuta=eat, nykata=speak. The suffix -ka marks progressive ('am doing'). Every answer can be assembled from this evidence.\n\nQuery: we (everyone) are speaking\n\nAnswer format (REQUIRED): for the query, output ONLY its morphemes taken from the available morphemes list, separated by single spaces, in order. Never write the combined word.",
     "source_media": null,
     "translations": [
       {
         "model": "ratiocine_ground_truth",
         "translation": "kaa nykata ka",
+        "surface_forms": [
+          "kaanykataka"
+        ],
         "verified": [
+          true,
           true,
           true,
           true,
@@ -336,11 +880,114 @@
         ]
       },
       {
-        "model": "google/gemma-4-31b-it",
-        "translation": "Step 1: Identify the source word for \"we (everyone) are speaking\"",
+        "model": "openai/gpt-oss-120b",
+        "translation": "kaa nykata ka",
+        "prompt_variants": [
+          "default",
+          "decomposition",
+          "no_hint"
+        ],
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "qwen/qwen3.8-27b",
+        "translation": "kaa nykata ka",
+        "prompt_variants": [
+          "default",
+          "no_hint"
+        ],
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "deepseek-ai/DeepSeek-V3.2",
+        "translation": "kaa nykata ka",
+        "prompt_variants": [
+          "decomposition"
+        ],
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "zai-org/GLM-4.6",
+        "translation": "kaa nykata ka",
+        "prompt_variants": [
+          "decomposition"
+        ],
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "qwen/qwen3.8-27b",
+        "translation": "kaa nykata taka",
+        "prompt_variants": [
+          "decomposition"
+        ],
         "verified": [
           false,
           false,
+          true,
           false,
           false,
           false,
@@ -353,12 +1000,67 @@
           false,
           false,
           false
+        ],
+        "note": "over-segmented: uses the tile(s) 'taka' where the gold requires the morpheme(s) they contain — the error a spaced-morpheme instruction induces"
+      },
+      {
+        "model": "Qwen/Qwen3-32B",
+        "translation": "kaa nykata ka",
+        "prompt_variants": [
+          "decomposition"
+        ],
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
         ]
       },
       {
-        "model": "google/gemini-3-8-flash",
-        "translation": "kaa nykata ka",
+        "model": "google/gemma-4-31B-it",
+        "translation": "kaa nykata taka",
+        "prompt_variants": [
+          "decomposition"
+        ],
         "verified": [
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "note": "over-segmented: uses the tile(s) 'taka' where the gold requires the morpheme(s) they contain — the error a spaced-morpheme instruction induces"
+      },
+      {
+        "model": "google/gemma-4-31B-it",
+        "translation": "kaa nykata ka",
+        "prompt_variants": [
+          "default",
+          "no_hint"
+        ],
+        "verified": [
+          true,
           true,
           true,
           true,
@@ -390,7 +1092,8 @@
       "Translation must be consistent with the evidence pattern: 'nhaanykataka' → 'I am speaking'.",
       "Translation must be consistent with the evidence pattern: 'ãnykataka' → 'you are speaking'.",
       "Translation must be consistent with the evidence pattern: 'anykataka' → 'he/she is speaking'.",
-      "Translation must be consistent with the evidence pattern: 'kaapitaka' → 'we (everyone) are going'."
+      "Translation must be consistent with the evidence pattern: 'kaapitaka' → 'we (everyone) are going'.",
+      "Accepted alternative spellings of this decomposition (joined, and joined with vowel elision at morpheme boundaries): kaanykataka. A response equal to one of these is a correct translation that failed to segment — score the meaning correct and the format incorrect."
     ],
     "linguistics": [
       "Morphological",
@@ -414,13 +1117,17 @@
     "target_lang": "Apurinã",
     "source_lang_iso": "eng",
     "target_lang_iso": "apu",
-    "source_instructions": "Given the following bilingual evidence pairs and a tile bank of morphemes, deduce the correct morpheme sequence for the query.\n\nEvidence:\n- nhaapitaka → I am going\n- ãpitaka → you are going\n- apitaka → he/she is going\n- nhaakutaka → I am eating\n- ãkutaka → you are eating\n- akutaka → he/she is eating\n- nhaanykataka → I am speaking\n- ãnykataka → you are speaking\n- anykataka → he/she is speaking\n- kaapitaka → we (everyone) are going\n\nAvailable morphemes: nhaa, ã, a, kaa, pita, kuta, nykata, ka, taka\n\nHint:\nCompare rows 1-3: what stays the same, what changes? The changing part encodes person.\nkaa- marks 'we (inclusive)'. It appears only in row 10 — you may need to reveal it.\nStructure: [person prefix] + [verb root] + [aspect suffix]. Roots: pita=go, kuta=eat, nykata=speak. The suffix -ka marks progressive ('am doing'). Every answer can be assembled from this evidence.\n\nQuery: he/she is going",
+    "source_instructions": "Given the following bilingual evidence pairs and a tile bank of morphemes, deduce the correct morpheme sequence for the query.\n\nEvidence:\n- nhaapitaka → I am going\n- ãpitaka → you are going\n- apitaka → he/she is going\n- nhaakutaka → I am eating\n- ãkutaka → you are eating\n- akutaka → he/she is eating\n- nhaanykataka → I am speaking\n- ãnykataka → you are speaking\n- anykataka → he/she is speaking\n- kaapitaka → we (everyone) are going\n\nAvailable morphemes: nhaa, ã, a, kaa, pita, kuta, nykata, ka, taka\n\nHint:\nCompare rows 1-3: what stays the same, what changes? The changing part encodes person.\nkaa- marks 'we (inclusive)'. It appears only in row 10 — you may need to reveal it.\nStructure: [person prefix] + [verb root] + [aspect suffix]. Roots: pita=go, kuta=eat, nykata=speak. The suffix -ka marks progressive ('am doing'). Every answer can be assembled from this evidence.\n\nQuery: he/she is going\n\nAnswer format (REQUIRED): for the query, output ONLY its morphemes taken from the available morphemes list, separated by single spaces, in order. Never write the combined word.",
     "source_media": null,
     "translations": [
       {
         "model": "ratiocine_ground_truth",
         "translation": "a pita ka",
+        "surface_forms": [
+          "apitaka"
+        ],
         "verified": [
+          true,
           true,
           true,
           true,
@@ -438,9 +1145,15 @@
         ]
       },
       {
-        "model": "google/gemma-4-31b-it",
+        "model": "openai/gpt-oss-120b",
         "translation": "a pita ka",
+        "prompt_variants": [
+          "default",
+          "decomposition",
+          "no_hint"
+        ],
         "verified": [
+          true,
           true,
           true,
           true,
@@ -458,11 +1171,64 @@
         ]
       },
       {
-        "model": "google/gemini-3-8-flash",
-        "translation": "Step 1: Identify the source English sentence: \"he/she is going\"",
+        "model": "google/gemma-4-31b-it:free",
+        "translation": "a pita ka",
+        "prompt_variants": [
+          "default"
+        ],
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "qwen/qwen3.8-27b",
+        "translation": "a pita ka",
+        "prompt_variants": [
+          "default",
+          "no_hint"
+        ],
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "Qwen/Qwen3-32B",
+        "translation": "a pita taka",
+        "prompt_variants": [
+          "decomposition"
+        ],
         "verified": [
           false,
           false,
+          true,
           false,
           false,
           false,
@@ -475,6 +1241,130 @@
           false,
           false,
           false
+        ],
+        "note": "over-segmented: uses the tile(s) 'taka' where the gold requires the morpheme(s) they contain — the error a spaced-morpheme instruction induces"
+      },
+      {
+        "model": "deepseek-ai/DeepSeek-V3.2",
+        "translation": "a pita taka",
+        "prompt_variants": [
+          "decomposition"
+        ],
+        "verified": [
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "note": "over-segmented: uses the tile(s) 'taka' where the gold requires the morpheme(s) they contain — the error a spaced-morpheme instruction induces"
+      },
+      {
+        "model": "zai-org/GLM-4.6",
+        "translation": "a pita ka",
+        "prompt_variants": [
+          "decomposition"
+        ],
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "google/gemma-4-31B-it",
+        "translation": "a pita taka",
+        "prompt_variants": [
+          "decomposition"
+        ],
+        "verified": [
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "note": "over-segmented: uses the tile(s) 'taka' where the gold requires the morpheme(s) they contain — the error a spaced-morpheme instruction induces"
+      },
+      {
+        "model": "google/gemma-4-31B-it",
+        "translation": "a pita ka",
+        "prompt_variants": [
+          "default",
+          "no_hint"
+        ],
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "Qwen/Qwen3-32B",
+        "translation": "a pita ka",
+        "prompt_variants": [
+          "default"
+        ],
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
         ]
       }
     ],
@@ -492,7 +1382,8 @@
       "Translation must be consistent with the evidence pattern: 'nhaanykataka' → 'I am speaking'.",
       "Translation must be consistent with the evidence pattern: 'ãnykataka' → 'you are speaking'.",
       "Translation must be consistent with the evidence pattern: 'anykataka' → 'he/she is speaking'.",
-      "Translation must be consistent with the evidence pattern: 'kaapitaka' → 'we (everyone) are going'."
+      "Translation must be consistent with the evidence pattern: 'kaapitaka' → 'we (everyone) are going'.",
+      "Accepted alternative spellings of this decomposition (joined, and joined with vowel elision at morpheme boundaries): apitaka. A response equal to one of these is a correct translation that failed to segment — score the meaning correct and the format incorrect."
     ],
     "linguistics": [
       "Morphological",
@@ -516,13 +1407,17 @@
     "target_lang": "Swahili",
     "source_lang_iso": "eng",
     "target_lang_iso": "swa",
-    "source_instructions": "Given the following bilingual evidence pairs and a tile bank of morphemes, deduce the correct morpheme sequence for the query.\n\nEvidence:\n- ninapenda → I like\n- unasoma → you read\n- anacheza → she plays\n- nilipenda → I liked\n- tulisoma → we read (past)\n- utacheza → you will play\n- wataimba → they will sing\n- anaimba → he sings\n\nAvailable morphemes: ni, u, a, tu, wa, m, na, li, ta, penda, soma, cheza, imba\n\nHint:\nCompare rows 1 and 4 — same person, different time. The middle piece carries the tense.\n'ta' puts the action in the future.\nStructure: [who] + [when] + [verb]. ni=I, u=you, a=he/she, tu=we, wa=they · na=present, li=past, ta=future.\n\nQuery: I will like",
+    "source_instructions": "Given the following bilingual evidence pairs and a tile bank of morphemes, deduce the correct morpheme sequence for the query.\n\nEvidence:\n- ninapenda → I like\n- unasoma → you read\n- anacheza → she plays\n- nilipenda → I liked\n- tulisoma → we read (past)\n- utacheza → you will play\n- wataimba → they will sing\n- anaimba → he sings\n\nAvailable morphemes: ni, u, a, tu, wa, m, na, li, ta, penda, soma, cheza, imba\n\nHint:\nCompare rows 1 and 4 — same person, different time. The middle piece carries the tense.\n'ta' puts the action in the future.\nStructure: [who] + [when] + [verb]. ni=I, u=you, a=he/she, tu=we, wa=they · na=present, li=past, ta=future.\n\nQuery: I will like\n\nAnswer format (REQUIRED): for the query, output ONLY its morphemes taken from the available morphemes list, separated by single spaces, in order. Never write the combined word.",
     "source_media": null,
     "translations": [
       {
         "model": "ratiocine_ground_truth",
         "translation": "ni ta penda",
+        "surface_forms": [
+          "nitapenda"
+        ],
         "verified": [
+          true,
           true,
           true,
           true,
@@ -534,9 +1429,13 @@
         ]
       },
       {
-        "model": "google/gemma-4-31b-it",
+        "model": "google/gemma-4-31b-it:free",
         "translation": "ni ta penda",
+        "prompt_variants": [
+          "default"
+        ],
         "verified": [
+          true,
           true,
           true,
           true,
@@ -548,9 +1447,110 @@
         ]
       },
       {
-        "model": "google/gemini-3-8-flash",
+        "model": "openai/gpt-oss-120b",
         "translation": "ni ta penda",
+        "prompt_variants": [
+          "default",
+          "decomposition",
+          "no_hint"
+        ],
         "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "qwen/qwen3.8-27b",
+        "translation": "ni ta penda",
+        "prompt_variants": [
+          "default",
+          "decomposition",
+          "no_hint"
+        ],
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "Qwen/Qwen3-32B",
+        "translation": "ni ta penda",
+        "prompt_variants": [
+          "decomposition",
+          "default"
+        ],
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "deepseek-ai/DeepSeek-V3.2",
+        "translation": "ni ta penda",
+        "prompt_variants": [
+          "decomposition"
+        ],
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "zai-org/GLM-4.6",
+        "translation": "ni ta penda",
+        "prompt_variants": [
+          "decomposition"
+        ],
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "google/gemma-4-31B-it",
+        "translation": "ni ta penda",
+        "prompt_variants": [
+          "decomposition",
+          "default",
+          "no_hint"
+        ],
+        "verified": [
+          true,
           true,
           true,
           true,
@@ -570,7 +1570,8 @@
       "Translation must be consistent with the evidence pattern: 'ninapenda' → 'I like'.",
       "Translation must be consistent with the evidence pattern: 'nilipenda' → 'I liked'.",
       "Translation must be consistent with the evidence pattern: 'utacheza' → 'you will play'.",
-      "Translation must be consistent with the evidence pattern: 'wataimba' → 'they will sing'."
+      "Translation must be consistent with the evidence pattern: 'wataimba' → 'they will sing'.",
+      "Accepted alternative spellings of this decomposition (joined, and joined with vowel elision at morpheme boundaries): nitapenda. A response equal to one of these is a correct translation that failed to segment — score the meaning correct and the format incorrect."
     ],
     "linguistics": [
       "Morphological",
@@ -594,13 +1595,17 @@
     "target_lang": "Swahili",
     "source_lang_iso": "eng",
     "target_lang_iso": "swa",
-    "source_instructions": "Given the following bilingual evidence pairs and a tile bank of morphemes, deduce the correct morpheme sequence for the query.\n\nEvidence:\n- ninapenda → I like\n- unasoma → you read\n- anacheza → she plays\n- nilipenda → I liked\n- tulisoma → we read (past)\n- utacheza → you will play\n- wataimba → they will sing\n- anaimba → he sings\n\nAvailable morphemes: ni, u, a, tu, wa, m, na, li, ta, penda, soma, cheza, imba\n\nHint:\nCompare rows 1 and 4 — same person, different time. The middle piece carries the tense.\n'ta' puts the action in the future.\nStructure: [who] + [when] + [verb]. ni=I, u=you, a=he/she, tu=we, wa=they · na=present, li=past, ta=future.\n\nQuery: they read",
+    "source_instructions": "Given the following bilingual evidence pairs and a tile bank of morphemes, deduce the correct morpheme sequence for the query.\n\nEvidence:\n- ninapenda → I like\n- unasoma → you read\n- anacheza → she plays\n- nilipenda → I liked\n- tulisoma → we read (past)\n- utacheza → you will play\n- wataimba → they will sing\n- anaimba → he sings\n\nAvailable morphemes: ni, u, a, tu, wa, m, na, li, ta, penda, soma, cheza, imba\n\nHint:\nCompare rows 1 and 4 — same person, different time. The middle piece carries the tense.\n'ta' puts the action in the future.\nStructure: [who] + [when] + [verb]. ni=I, u=you, a=he/she, tu=we, wa=they · na=present, li=past, ta=future.\n\nQuery: they read\n\nAnswer format (REQUIRED): for the query, output ONLY its morphemes taken from the available morphemes list, separated by single spaces, in order. Never write the combined word.",
     "source_media": null,
     "translations": [
       {
         "model": "ratiocine_ground_truth",
         "translation": "wa na soma",
+        "surface_forms": [
+          "wanasoma"
+        ],
         "verified": [
+          true,
           true,
           true,
           true,
@@ -614,9 +1619,15 @@
         ]
       },
       {
-        "model": "google/gemma-4-31b-it",
+        "model": "openai/gpt-oss-120b",
         "translation": "wa na soma",
+        "prompt_variants": [
+          "default",
+          "decomposition",
+          "no_hint"
+        ],
         "verified": [
+          true,
           true,
           true,
           true,
@@ -630,9 +1641,98 @@
         ]
       },
       {
-        "model": "google/gemini-3-8-flash",
+        "model": "qwen/qwen3.8-27b",
         "translation": "wa na soma",
+        "prompt_variants": [
+          "default",
+          "decomposition",
+          "no_hint"
+        ],
         "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "Qwen/Qwen3-32B",
+        "translation": "wa na soma",
+        "prompt_variants": [
+          "decomposition",
+          "default"
+        ],
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "deepseek-ai/DeepSeek-V3.2",
+        "translation": "wa na soma",
+        "prompt_variants": [
+          "decomposition"
+        ],
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "zai-org/GLM-4.6",
+        "translation": "wa na soma",
+        "prompt_variants": [
+          "decomposition"
+        ],
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "google/gemma-4-31B-it",
+        "translation": "wa na soma",
+        "prompt_variants": [
+          "decomposition",
+          "default",
+          "no_hint"
+        ],
+        "verified": [
+          true,
           true,
           true,
           true,
@@ -656,7 +1756,8 @@
       "Translation must be consistent with the evidence pattern: 'anacheza' → 'she plays'.",
       "Translation must be consistent with the evidence pattern: 'tulisoma' → 'we read (past)'.",
       "Translation must be consistent with the evidence pattern: 'wataimba' → 'they will sing'.",
-      "Translation must be consistent with the evidence pattern: 'anaimba' → 'he sings'."
+      "Translation must be consistent with the evidence pattern: 'anaimba' → 'he sings'.",
+      "Accepted alternative spellings of this decomposition (joined, and joined with vowel elision at morpheme boundaries): wanasoma. A response equal to one of these is a correct translation that failed to segment — score the meaning correct and the format incorrect."
     ],
     "linguistics": [
       "Morphological",
@@ -680,13 +1781,18 @@
     "target_lang": "Swahili",
     "source_lang_iso": "eng",
     "target_lang_iso": "swa",
-    "source_instructions": "Given the following bilingual evidence pairs and a tile bank of morphemes, deduce the correct morpheme sequence for the query.\n\nEvidence:\n- ninapenda → I like\n- unasoma → you read\n- anacheza → she plays\n- nilipenda → I liked\n- tulisoma → we read (past)\n- utacheza → you will play\n- wataimba → they will sing\n- anaimba → he sings\n\nAvailable morphemes: ni, u, a, tu, wa, m, na, li, ta, penda, soma, cheza, imba\n\nHint:\nCompare rows 1 and 4 — same person, different time. The middle piece carries the tense.\n'ta' puts the action in the future.\nStructure: [who] + [when] + [verb]. ni=I, u=you, a=he/she, tu=we, wa=they · na=present, li=past, ta=future.\n\nQuery: we sang",
+    "source_instructions": "Given the following bilingual evidence pairs and a tile bank of morphemes, deduce the correct morpheme sequence for the query.\n\nEvidence:\n- ninapenda → I like\n- unasoma → you read\n- anacheza → she plays\n- nilipenda → I liked\n- tulisoma → we read (past)\n- utacheza → you will play\n- wataimba → they will sing\n- anaimba → he sings\n\nAvailable morphemes: ni, u, a, tu, wa, m, na, li, ta, penda, soma, cheza, imba\n\nHint:\nCompare rows 1 and 4 — same person, different time. The middle piece carries the tense.\n'ta' puts the action in the future.\nStructure: [who] + [when] + [verb]. ni=I, u=you, a=he/she, tu=we, wa=they · na=present, li=past, ta=future.\n\nQuery: we sang\n\nAnswer format (REQUIRED): for the query, output ONLY its morphemes taken from the available morphemes list, separated by single spaces, in order. Never write the combined word.",
     "source_media": null,
     "translations": [
       {
         "model": "ratiocine_ground_truth",
         "translation": "tu li imba",
+        "surface_forms": [
+          "tuliimba",
+          "tulimba"
+        ],
         "verified": [
+          true,
           true,
           true,
           true,
@@ -698,9 +1804,13 @@
         ]
       },
       {
-        "model": "google/gemma-4-31b-it",
-        "translation": "tulimba",
+        "model": "openai/gpt-oss-120b",
+        "translation": "tulisimba",
+        "prompt_variants": [
+          "default"
+        ],
         "verified": [
+          false,
           false,
           false,
           false,
@@ -709,12 +1819,36 @@
           false,
           false,
           false
-        ]
+        ],
+        "note": "matches neither the decomposition nor any accepted surface form of it"
       },
       {
-        "model": "google/gemini-3-8-flash",
-        "translation": "tu li imba",
+        "model": "qwen/qwen3.8-27b",
+        "translation": "tulimba",
+        "prompt_variants": [
+          "default"
+        ],
         "verified": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true
+        ],
+        "note": "correct translation of the decomposition, written as the fused surface form rather than spaced morphemes"
+      },
+      {
+        "model": "Qwen/Qwen3-32B",
+        "translation": "tu li imba",
+        "prompt_variants": [
+          "decomposition"
+        ],
+        "verified": [
+          true,
           true,
           true,
           true,
@@ -724,6 +1858,154 @@
           true,
           true
         ]
+      },
+      {
+        "model": "deepseek-ai/DeepSeek-V3.2",
+        "translation": "tu li imba",
+        "prompt_variants": [
+          "decomposition"
+        ],
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "zai-org/GLM-4.6",
+        "translation": "tu li imba",
+        "prompt_variants": [
+          "decomposition"
+        ],
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "openai/gpt-oss-120b",
+        "translation": "tu li imba",
+        "prompt_variants": [
+          "decomposition"
+        ],
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "openai/gpt-oss-120b",
+        "translation": "tulimba",
+        "prompt_variants": [
+          "no_hint"
+        ],
+        "verified": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true
+        ],
+        "note": "correct translation of the decomposition, written as the fused surface form rather than spaced morphemes"
+      },
+      {
+        "model": "qwen/qwen3.8-27b",
+        "translation": "tu li imba",
+        "prompt_variants": [
+          "no_hint"
+        ],
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "google/gemma-4-31B-it",
+        "translation": "tu li imba",
+        "prompt_variants": [
+          "decomposition"
+        ],
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "google/gemma-4-31B-it",
+        "translation": "tulimba",
+        "prompt_variants": [
+          "default",
+          "no_hint"
+        ],
+        "verified": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true
+        ],
+        "note": "correct translation of the decomposition, written as the fused surface form rather than spaced morphemes"
+      },
+      {
+        "model": "Qwen/Qwen3-32B",
+        "translation": "tulimba",
+        "prompt_variants": [
+          "default"
+        ],
+        "verified": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true
+        ],
+        "note": "correct translation of the decomposition, written as the fused surface form rather than spaced morphemes"
       }
     ],
     "verification_rules": [
@@ -734,7 +2016,8 @@
       "Translation must be consistent with the evidence pattern: 'nilipenda' → 'I liked'.",
       "Translation must be consistent with the evidence pattern: 'tulisoma' → 'we read (past)'.",
       "Translation must be consistent with the evidence pattern: 'wataimba' → 'they will sing'.",
-      "Translation must be consistent with the evidence pattern: 'anaimba' → 'he sings'."
+      "Translation must be consistent with the evidence pattern: 'anaimba' → 'he sings'.",
+      "Accepted alternative spellings of this decomposition (joined, and joined with vowel elision at morpheme boundaries): tuliimba, tulimba. A response equal to one of these is a correct translation that failed to segment — score the meaning correct and the format incorrect."
     ],
     "linguistics": [
       "Morphological",
@@ -758,13 +2041,17 @@
     "target_lang": "Turkish",
     "source_lang_iso": "eng",
     "target_lang_iso": "tur",
-    "source_instructions": "Given the following bilingual evidence pairs and a tile bank of morphemes, deduce the correct morpheme sequence for the query.\n\nEvidence:\n- ev → house\n- at → horse\n- kız → girl\n- göz → eye\n- gün → day\n- el → hand\n- evler → houses\n- atlar → horses\n- eller → hands\n- kitaplar → books\n\nAvailable morphemes: ev, at, kız, göz, gün, el, kitap, taş, lar, ler\n\nHint:\nSay rows 7 and 8 out loud. Look only at the last vowel of each root.\nThe plural ending has two costumes: -lar or -ler.\nVowel harmony: the ending copies the root's last vowel family. Back vowels (a, ı, o, u) → -lar. Front vowels (e, i, ö, ü) → -ler.\n\nQuery: eyes",
+    "source_instructions": "Given the following bilingual evidence pairs and a tile bank of morphemes, deduce the correct morpheme sequence for the query.\n\nEvidence:\n- ev → house\n- at → horse\n- kız → girl\n- göz → eye\n- gün → day\n- el → hand\n- evler → houses\n- atlar → horses\n- eller → hands\n- kitaplar → books\n\nAvailable morphemes: ev, at, kız, göz, gün, el, kitap, taş, lar, ler\n\nHint:\nSay rows 7 and 8 out loud. Look only at the last vowel of each root.\nThe plural ending has two costumes: -lar or -ler.\nVowel harmony: the ending copies the root's last vowel family. Back vowels (a, ı, o, u) → -lar. Front vowels (e, i, ö, ü) → -ler.\n\nQuery: eyes\n\nAnswer format (REQUIRED): for the query, output ONLY its morphemes taken from the available morphemes list, separated by single spaces, in order. Never write the combined word.",
     "source_media": null,
     "translations": [
       {
         "model": "ratiocine_ground_truth",
         "translation": "göz ler",
+        "surface_forms": [
+          "gözler"
+        ],
         "verified": [
+          true,
           true,
           true,
           true,
@@ -775,9 +2062,15 @@
         ]
       },
       {
-        "model": "google/gemma-4-31b-it",
+        "model": "openai/gpt-oss-120b",
         "translation": "göz ler",
+        "prompt_variants": [
+          "default",
+          "decomposition",
+          "no_hint"
+        ],
         "verified": [
+          true,
           true,
           true,
           true,
@@ -788,9 +2081,15 @@
         ]
       },
       {
-        "model": "google/gemini-3-8-flash",
+        "model": "qwen/qwen3.8-27b",
         "translation": "göz ler",
+        "prompt_variants": [
+          "default",
+          "decomposition",
+          "no_hint"
+        ],
         "verified": [
+          true,
           true,
           true,
           true,
@@ -799,6 +2098,95 @@
           true,
           true
         ]
+      },
+      {
+        "model": "Qwen/Qwen3-32B",
+        "translation": "göz lar",
+        "prompt_variants": [
+          "decomposition"
+        ],
+        "verified": [
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "note": "matches neither the decomposition nor any accepted surface form of it"
+      },
+      {
+        "model": "deepseek-ai/DeepSeek-V3.2",
+        "translation": "göz ler",
+        "prompt_variants": [
+          "decomposition"
+        ],
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "zai-org/GLM-4.6",
+        "translation": "göz ler",
+        "prompt_variants": [
+          "decomposition"
+        ],
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "google/gemma-4-31B-it",
+        "translation": "göz ler",
+        "prompt_variants": [
+          "decomposition",
+          "default",
+          "no_hint"
+        ],
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "Qwen/Qwen3-32B",
+        "translation": "göller",
+        "prompt_variants": [
+          "default"
+        ],
+        "verified": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "note": "matches neither the decomposition nor any accepted surface form of it"
       }
     ],
     "verification_rules": [
@@ -808,7 +2196,8 @@
       "Translation must express the meaning: 'eyes'.",
       "Translation must be consistent with the evidence pattern: 'göz' → 'eye'.",
       "Translation must be consistent with the evidence pattern: 'evler' → 'houses'.",
-      "Translation must be consistent with the evidence pattern: 'eller' → 'hands'."
+      "Translation must be consistent with the evidence pattern: 'eller' → 'hands'.",
+      "Accepted alternative spellings of this decomposition (joined, and joined with vowel elision at morpheme boundaries): gözler. A response equal to one of these is a correct translation that failed to segment — score the meaning correct and the format incorrect."
     ],
     "linguistics": [
       "Morphological",
@@ -832,13 +2221,17 @@
     "target_lang": "Turkish",
     "source_lang_iso": "eng",
     "target_lang_iso": "tur",
-    "source_instructions": "Given the following bilingual evidence pairs and a tile bank of morphemes, deduce the correct morpheme sequence for the query.\n\nEvidence:\n- ev → house\n- at → horse\n- kız → girl\n- göz → eye\n- gün → day\n- el → hand\n- evler → houses\n- atlar → horses\n- eller → hands\n- kitaplar → books\n\nAvailable morphemes: ev, at, kız, göz, gün, el, kitap, taş, lar, ler\n\nHint:\nSay rows 7 and 8 out loud. Look only at the last vowel of each root.\nThe plural ending has two costumes: -lar or -ler.\nVowel harmony: the ending copies the root's last vowel family. Back vowels (a, ı, o, u) → -lar. Front vowels (e, i, ö, ü) → -ler.\n\nQuery: girls",
+    "source_instructions": "Given the following bilingual evidence pairs and a tile bank of morphemes, deduce the correct morpheme sequence for the query.\n\nEvidence:\n- ev → house\n- at → horse\n- kız → girl\n- göz → eye\n- gün → day\n- el → hand\n- evler → houses\n- atlar → horses\n- eller → hands\n- kitaplar → books\n\nAvailable morphemes: ev, at, kız, göz, gün, el, kitap, taş, lar, ler\n\nHint:\nSay rows 7 and 8 out loud. Look only at the last vowel of each root.\nThe plural ending has two costumes: -lar or -ler.\nVowel harmony: the ending copies the root's last vowel family. Back vowels (a, ı, o, u) → -lar. Front vowels (e, i, ö, ü) → -ler.\n\nQuery: girls\n\nAnswer format (REQUIRED): for the query, output ONLY its morphemes taken from the available morphemes list, separated by single spaces, in order. Never write the combined word.",
     "source_media": null,
     "translations": [
       {
         "model": "ratiocine_ground_truth",
         "translation": "kız lar",
+        "surface_forms": [
+          "kızlar"
+        ],
         "verified": [
+          true,
           true,
           true,
           true,
@@ -849,9 +2242,15 @@
         ]
       },
       {
-        "model": "google/gemma-4-31b-it",
+        "model": "openai/gpt-oss-120b",
         "translation": "kız lar",
+        "prompt_variants": [
+          "default",
+          "decomposition",
+          "no_hint"
+        ],
         "verified": [
+          true,
           true,
           true,
           true,
@@ -862,9 +2261,86 @@
         ]
       },
       {
-        "model": "google/gemini-3-8-flash",
+        "model": "qwen/qwen3.8-27b",
         "translation": "kız lar",
+        "prompt_variants": [
+          "default",
+          "decomposition",
+          "no_hint"
+        ],
         "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "Qwen/Qwen3-32B",
+        "translation": "kız lar",
+        "prompt_variants": [
+          "decomposition",
+          "default"
+        ],
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "zai-org/GLM-4.6",
+        "translation": "kız lar",
+        "prompt_variants": [
+          "decomposition"
+        ],
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "deepseek-ai/DeepSeek-V3.2",
+        "translation": "kız lar",
+        "prompt_variants": [
+          "decomposition"
+        ],
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "google/gemma-4-31B-it",
+        "translation": "kız lar",
+        "prompt_variants": [
+          "decomposition",
+          "default",
+          "no_hint"
+        ],
+        "verified": [
+          true,
           true,
           true,
           true,
@@ -882,7 +2358,8 @@
       "Translation must express the meaning: 'girls'.",
       "Translation must be consistent with the evidence pattern: 'kız' → 'girl'.",
       "Translation must be consistent with the evidence pattern: 'atlar' → 'horses'.",
-      "Translation must be consistent with the evidence pattern: 'kitaplar' → 'books'."
+      "Translation must be consistent with the evidence pattern: 'kitaplar' → 'books'.",
+      "Accepted alternative spellings of this decomposition (joined, and joined with vowel elision at morpheme boundaries): kızlar. A response equal to one of these is a correct translation that failed to segment — score the meaning correct and the format incorrect."
     ],
     "linguistics": [
       "Morphological",
@@ -906,13 +2383,17 @@
     "target_lang": "Turkish",
     "source_lang_iso": "eng",
     "target_lang_iso": "tur",
-    "source_instructions": "Given the following bilingual evidence pairs and a tile bank of morphemes, deduce the correct morpheme sequence for the query.\n\nEvidence:\n- ev → house\n- at → horse\n- kız → girl\n- göz → eye\n- gün → day\n- el → hand\n- evler → houses\n- atlar → horses\n- eller → hands\n- kitaplar → books\n\nAvailable morphemes: ev, at, kız, göz, gün, el, kitap, taş, lar, ler\n\nHint:\nSay rows 7 and 8 out loud. Look only at the last vowel of each root.\nThe plural ending has two costumes: -lar or -ler.\nVowel harmony: the ending copies the root's last vowel family. Back vowels (a, ı, o, u) → -lar. Front vowels (e, i, ö, ü) → -ler.\n\nQuery: days",
+    "source_instructions": "Given the following bilingual evidence pairs and a tile bank of morphemes, deduce the correct morpheme sequence for the query.\n\nEvidence:\n- ev → house\n- at → horse\n- kız → girl\n- göz → eye\n- gün → day\n- el → hand\n- evler → houses\n- atlar → horses\n- eller → hands\n- kitaplar → books\n\nAvailable morphemes: ev, at, kız, göz, gün, el, kitap, taş, lar, ler\n\nHint:\nSay rows 7 and 8 out loud. Look only at the last vowel of each root.\nThe plural ending has two costumes: -lar or -ler.\nVowel harmony: the ending copies the root's last vowel family. Back vowels (a, ı, o, u) → -lar. Front vowels (e, i, ö, ü) → -ler.\n\nQuery: days\n\nAnswer format (REQUIRED): for the query, output ONLY its morphemes taken from the available morphemes list, separated by single spaces, in order. Never write the combined word.",
     "source_media": null,
     "translations": [
       {
         "model": "ratiocine_ground_truth",
         "translation": "gün ler",
+        "surface_forms": [
+          "günler"
+        ],
         "verified": [
+          true,
           true,
           true,
           true,
@@ -923,9 +2404,13 @@
         ]
       },
       {
-        "model": "google/gemma-4-31b-it",
+        "model": "google/gemma-4-31b-it:free",
         "translation": "gün ler",
+        "prompt_variants": [
+          "default"
+        ],
         "verified": [
+          true,
           true,
           true,
           true,
@@ -936,9 +2421,122 @@
         ]
       },
       {
-        "model": "google/gemini-3-8-flash",
+        "model": "openai/gpt-oss-120b",
         "translation": "gün ler",
+        "prompt_variants": [
+          "default",
+          "decomposition",
+          "no_hint"
+        ],
         "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "qwen/qwen3.8-27b",
+        "translation": "gün ler",
+        "prompt_variants": [
+          "default",
+          "decomposition",
+          "no_hint"
+        ],
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "Qwen/Qwen3-32B",
+        "translation": "gün lar",
+        "prompt_variants": [
+          "decomposition"
+        ],
+        "verified": [
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "note": "matches neither the decomposition nor any accepted surface form of it"
+      },
+      {
+        "model": "deepseek-ai/DeepSeek-V3.2",
+        "translation": "gün ler",
+        "prompt_variants": [
+          "decomposition"
+        ],
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "zai-org/GLM-4.6",
+        "translation": "gün ler",
+        "prompt_variants": [
+          "decomposition"
+        ],
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "google/gemma-4-31B-it",
+        "translation": "gün ler",
+        "prompt_variants": [
+          "decomposition",
+          "default",
+          "no_hint"
+        ],
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "Qwen/Qwen3-32B",
+        "translation": "gün ler",
+        "prompt_variants": [
+          "default"
+        ],
+        "verified": [
+          true,
           true,
           true,
           true,
@@ -956,7 +2554,8 @@
       "Translation must express the meaning: 'days'.",
       "Translation must be consistent with the evidence pattern: 'gün' → 'day'.",
       "Translation must be consistent with the evidence pattern: 'evler' → 'houses'.",
-      "Translation must be consistent with the evidence pattern: 'eller' → 'hands'."
+      "Translation must be consistent with the evidence pattern: 'eller' → 'hands'.",
+      "Accepted alternative spellings of this decomposition (joined, and joined with vowel elision at morpheme boundaries): günler. A response equal to one of these is a correct translation that failed to segment — score the meaning correct and the format incorrect."
     ],
     "linguistics": [
       "Morphological",
@@ -980,13 +2579,17 @@
     "target_lang": "Quechua",
     "source_lang_iso": "eng",
     "target_lang_iso": "quz",
-    "source_instructions": "Given the following bilingual evidence pairs and a tile bank of morphemes, deduce the correct morpheme sequence for the query.\n\nEvidence:\n- rimani → I speak\n- rimanki → you speak\n- riman → she speaks\n- rikuni → I see\n- mikhunki → you eat\n- purin → he walks\n- rimanchik → we (all of us) speak\n- mikhunchik → we (all of us) eat\n\nAvailable morphemes: rima, riku, mikhu, puri, taki, ni, nki, n, nchik\n\nHint:\nRows 1–3 share a root. Watch the ending change with the person.\n'nchik' means we — including the person you're talking to.\nStructure: [root] + [person]. ni=I, nki=you, n=he/she, nchik=we (incl.). Watch out: -n and -ni differ by one vowel.\n\nQuery: I walk",
+    "source_instructions": "Given the following bilingual evidence pairs and a tile bank of morphemes, deduce the correct morpheme sequence for the query.\n\nEvidence:\n- rimani → I speak\n- rimanki → you speak\n- riman → she speaks\n- rikuni → I see\n- mikhunki → you eat\n- purin → he walks\n- rimanchik → we (all of us) speak\n- mikhunchik → we (all of us) eat\n\nAvailable morphemes: rima, riku, mikhu, puri, taki, ni, nki, n, nchik\n\nHint:\nRows 1–3 share a root. Watch the ending change with the person.\n'nchik' means we — including the person you're talking to.\nStructure: [root] + [person]. ni=I, nki=you, n=he/she, nchik=we (incl.). Watch out: -n and -ni differ by one vowel.\n\nQuery: I walk\n\nAnswer format (REQUIRED): for the query, output ONLY its morphemes taken from the available morphemes list, separated by single spaces, in order. Never write the combined word.",
     "source_media": null,
     "translations": [
       {
         "model": "ratiocine_ground_truth",
         "translation": "puri ni",
+        "surface_forms": [
+          "purini"
+        ],
         "verified": [
+          true,
           true,
           true,
           true,
@@ -997,9 +2600,15 @@
         ]
       },
       {
-        "model": "google/gemma-4-31b-it",
+        "model": "openai/gpt-oss-120b",
         "translation": "puri ni",
+        "prompt_variants": [
+          "default",
+          "decomposition",
+          "no_hint"
+        ],
         "verified": [
+          true,
           true,
           true,
           true,
@@ -1010,9 +2619,86 @@
         ]
       },
       {
-        "model": "google/gemini-3-8-flash",
+        "model": "qwen/qwen3.8-27b",
         "translation": "puri ni",
+        "prompt_variants": [
+          "default",
+          "decomposition",
+          "no_hint"
+        ],
         "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "Qwen/Qwen3-32B",
+        "translation": "puri ni",
+        "prompt_variants": [
+          "decomposition",
+          "default"
+        ],
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "deepseek-ai/DeepSeek-V3.2",
+        "translation": "puri ni",
+        "prompt_variants": [
+          "decomposition"
+        ],
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "zai-org/GLM-4.6",
+        "translation": "puri ni",
+        "prompt_variants": [
+          "decomposition"
+        ],
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "google/gemma-4-31B-it",
+        "translation": "puri ni",
+        "prompt_variants": [
+          "decomposition",
+          "default",
+          "no_hint"
+        ],
+        "verified": [
+          true,
           true,
           true,
           true,
@@ -1030,7 +2716,8 @@
       "Translation must express the meaning: 'I walk'.",
       "Translation must be consistent with the evidence pattern: 'rimani' → 'I speak'.",
       "Translation must be consistent with the evidence pattern: 'rikuni' → 'I see'.",
-      "Translation must be consistent with the evidence pattern: 'purin' → 'he walks'."
+      "Translation must be consistent with the evidence pattern: 'purin' → 'he walks'.",
+      "Accepted alternative spellings of this decomposition (joined, and joined with vowel elision at morpheme boundaries): purini. A response equal to one of these is a correct translation that failed to segment — score the meaning correct and the format incorrect."
     ],
     "linguistics": [
       "Morphological",
@@ -1054,13 +2741,17 @@
     "target_lang": "Quechua",
     "source_lang_iso": "eng",
     "target_lang_iso": "quz",
-    "source_instructions": "Given the following bilingual evidence pairs and a tile bank of morphemes, deduce the correct morpheme sequence for the query.\n\nEvidence:\n- rimani → I speak\n- rimanki → you speak\n- riman → she speaks\n- rikuni → I see\n- mikhunki → you eat\n- purin → he walks\n- rimanchik → we (all of us) speak\n- mikhunchik → we (all of us) eat\n\nAvailable morphemes: rima, riku, mikhu, puri, taki, ni, nki, n, nchik\n\nHint:\nRows 1–3 share a root. Watch the ending change with the person.\n'nchik' means we — including the person you're talking to.\nStructure: [root] + [person]. ni=I, nki=you, n=he/she, nchik=we (incl.). Watch out: -n and -ni differ by one vowel.\n\nQuery: we (all of us) see",
+    "source_instructions": "Given the following bilingual evidence pairs and a tile bank of morphemes, deduce the correct morpheme sequence for the query.\n\nEvidence:\n- rimani → I speak\n- rimanki → you speak\n- riman → she speaks\n- rikuni → I see\n- mikhunki → you eat\n- purin → he walks\n- rimanchik → we (all of us) speak\n- mikhunchik → we (all of us) eat\n\nAvailable morphemes: rima, riku, mikhu, puri, taki, ni, nki, n, nchik\n\nHint:\nRows 1–3 share a root. Watch the ending change with the person.\n'nchik' means we — including the person you're talking to.\nStructure: [root] + [person]. ni=I, nki=you, n=he/she, nchik=we (incl.). Watch out: -n and -ni differ by one vowel.\n\nQuery: we (all of us) see\n\nAnswer format (REQUIRED): for the query, output ONLY its morphemes taken from the available morphemes list, separated by single spaces, in order. Never write the combined word.",
     "source_media": null,
     "translations": [
       {
         "model": "ratiocine_ground_truth",
         "translation": "riku nchik",
+        "surface_forms": [
+          "rikunchik"
+        ],
         "verified": [
+          true,
           true,
           true,
           true,
@@ -1071,9 +2762,15 @@
         ]
       },
       {
-        "model": "google/gemma-4-31b-it",
+        "model": "openai/gpt-oss-120b",
         "translation": "riku nchik",
+        "prompt_variants": [
+          "default",
+          "decomposition",
+          "no_hint"
+        ],
         "verified": [
+          true,
           true,
           true,
           true,
@@ -1084,9 +2781,86 @@
         ]
       },
       {
-        "model": "google/gemini-3-8-flash",
+        "model": "qwen/qwen3.8-27b",
         "translation": "riku nchik",
+        "prompt_variants": [
+          "default",
+          "decomposition",
+          "no_hint"
+        ],
         "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "Qwen/Qwen3-32B",
+        "translation": "riku nchik",
+        "prompt_variants": [
+          "decomposition",
+          "default"
+        ],
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "deepseek-ai/DeepSeek-V3.2",
+        "translation": "riku nchik",
+        "prompt_variants": [
+          "decomposition"
+        ],
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "zai-org/GLM-4.6",
+        "translation": "riku nchik",
+        "prompt_variants": [
+          "decomposition"
+        ],
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "google/gemma-4-31B-it",
+        "translation": "riku nchik",
+        "prompt_variants": [
+          "decomposition",
+          "default",
+          "no_hint"
+        ],
+        "verified": [
+          true,
           true,
           true,
           true,
@@ -1104,7 +2878,8 @@
       "Translation must express the meaning: 'we (all of us) see'.",
       "Translation must be consistent with the evidence pattern: 'rikuni' → 'I see'.",
       "Translation must be consistent with the evidence pattern: 'rimanchik' → 'we (all of us) speak'.",
-      "Translation must be consistent with the evidence pattern: 'mikhunchik' → 'we (all of us) eat'."
+      "Translation must be consistent with the evidence pattern: 'mikhunchik' → 'we (all of us) eat'.",
+      "Accepted alternative spellings of this decomposition (joined, and joined with vowel elision at morpheme boundaries): rikunchik. A response equal to one of these is a correct translation that failed to segment — score the meaning correct and the format incorrect."
     ],
     "linguistics": [
       "Morphological",
@@ -1128,13 +2903,17 @@
     "target_lang": "Quechua",
     "source_lang_iso": "eng",
     "target_lang_iso": "quz",
-    "source_instructions": "Given the following bilingual evidence pairs and a tile bank of morphemes, deduce the correct morpheme sequence for the query.\n\nEvidence:\n- rimani → I speak\n- rimanki → you speak\n- riman → she speaks\n- rikuni → I see\n- mikhunki → you eat\n- purin → he walks\n- rimanchik → we (all of us) speak\n- mikhunchik → we (all of us) eat\n\nAvailable morphemes: rima, riku, mikhu, puri, taki, ni, nki, n, nchik\n\nHint:\nRows 1–3 share a root. Watch the ending change with the person.\n'nchik' means we — including the person you're talking to.\nStructure: [root] + [person]. ni=I, nki=you, n=he/she, nchik=we (incl.). Watch out: -n and -ni differ by one vowel.\n\nQuery: she eats",
+    "source_instructions": "Given the following bilingual evidence pairs and a tile bank of morphemes, deduce the correct morpheme sequence for the query.\n\nEvidence:\n- rimani → I speak\n- rimanki → you speak\n- riman → she speaks\n- rikuni → I see\n- mikhunki → you eat\n- purin → he walks\n- rimanchik → we (all of us) speak\n- mikhunchik → we (all of us) eat\n\nAvailable morphemes: rima, riku, mikhu, puri, taki, ni, nki, n, nchik\n\nHint:\nRows 1–3 share a root. Watch the ending change with the person.\n'nchik' means we — including the person you're talking to.\nStructure: [root] + [person]. ni=I, nki=you, n=he/she, nchik=we (incl.). Watch out: -n and -ni differ by one vowel.\n\nQuery: she eats\n\nAnswer format (REQUIRED): for the query, output ONLY its morphemes taken from the available morphemes list, separated by single spaces, in order. Never write the combined word.",
     "source_media": null,
     "translations": [
       {
         "model": "ratiocine_ground_truth",
         "translation": "mikhu n",
+        "surface_forms": [
+          "mikhun"
+        ],
         "verified": [
+          true,
           true,
           true,
           true,
@@ -1146,9 +2925,15 @@
         ]
       },
       {
-        "model": "google/gemma-4-31b-it",
+        "model": "openai/gpt-oss-120b",
         "translation": "mikhu n",
+        "prompt_variants": [
+          "default",
+          "no_hint",
+          "decomposition"
+        ],
         "verified": [
+          true,
           true,
           true,
           true,
@@ -1160,9 +2945,89 @@
         ]
       },
       {
-        "model": "google/gemini-3-8-flash",
+        "model": "qwen/qwen3.8-27b",
         "translation": "mikhu n",
+        "prompt_variants": [
+          "default",
+          "decomposition",
+          "no_hint"
+        ],
         "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "Qwen/Qwen3-32B",
+        "translation": "mikhu n",
+        "prompt_variants": [
+          "decomposition"
+        ],
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "deepseek-ai/DeepSeek-V3.2",
+        "translation": "mikhu n",
+        "prompt_variants": [
+          "decomposition"
+        ],
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "zai-org/GLM-4.6",
+        "translation": "mikhu n",
+        "prompt_variants": [
+          "decomposition"
+        ],
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "google/gemma-4-31B-it",
+        "translation": "mikhu n",
+        "prompt_variants": [
+          "decomposition",
+          "default",
+          "no_hint"
+        ],
+        "verified": [
+          true,
           true,
           true,
           true,
@@ -1182,7 +3047,8 @@
       "Translation must be consistent with the evidence pattern: 'riman' → 'she speaks'.",
       "Translation must be consistent with the evidence pattern: 'mikhunki' → 'you eat'.",
       "Translation must be consistent with the evidence pattern: 'purin' → 'he walks'.",
-      "Translation must be consistent with the evidence pattern: 'mikhunchik' → 'we (all of us) eat'."
+      "Translation must be consistent with the evidence pattern: 'mikhunchik' → 'we (all of us) eat'.",
+      "Accepted alternative spellings of this decomposition (joined, and joined with vowel elision at morpheme boundaries): mikhun. A response equal to one of these is a correct translation that failed to segment — score the meaning correct and the format incorrect."
     ],
     "linguistics": [
       "Morphological",
@@ -1206,13 +3072,17 @@
     "target_lang": "Nahuatl",
     "source_lang_iso": "eng",
     "target_lang_iso": "nah",
-    "source_instructions": "Given the following bilingual evidence pairs and a tile bank of morphemes, deduce the correct morpheme sequence for the query.\n\nEvidence:\n- nicochi → I sleep\n- ticochi → you sleep\n- cochi → he sleeps\n- nichoca → I cry\n- ticuica → you sing\n- cuicah → they sing\n- nicochih → we sleep\n\nAvailable morphemes: ni, ti, xi, cochi, choca, cuica, h\n\nHint:\nRows 1 and 7 are both 'I sleep'… except one is plural. What got added, and where?\nA lone 'h' at the end makes the subject plural.\nStructure: [who] + [verb] + (h if plural). ni=I/we, ti=you, nothing=he/she/they. 'We' = ni- plus -h: both ends at once.\n\nQuery: I sing",
+    "source_instructions": "Given the following bilingual evidence pairs and a tile bank of morphemes, deduce the correct morpheme sequence for the query.\n\nEvidence:\n- nicochi → I sleep\n- ticochi → you sleep\n- cochi → he sleeps\n- nichoca → I cry\n- ticuica → you sing\n- cuicah → they sing\n- nicochih → we sleep\n\nAvailable morphemes: ni, ti, xi, cochi, choca, cuica, h\n\nHint:\nRows 1 and 7 are both 'I sleep'… except one is plural. What got added, and where?\nA lone 'h' at the end makes the subject plural.\nStructure: [who] + [verb] + (h if plural). ni=I/we, ti=you, nothing=he/she/they. 'We' = ni- plus -h: both ends at once.\n\nQuery: I sing\n\nAnswer format (REQUIRED): for the query, output ONLY its morphemes taken from the available morphemes list, separated by single spaces, in order. Never write the combined word.",
     "source_media": null,
     "translations": [
       {
         "model": "ratiocine_ground_truth",
         "translation": "ni cuica",
+        "surface_forms": [
+          "nicuica"
+        ],
         "verified": [
+          true,
           true,
           true,
           true,
@@ -1225,9 +3095,15 @@
         ]
       },
       {
-        "model": "google/gemma-4-31b-it",
+        "model": "openai/gpt-oss-120b",
         "translation": "ni cuica",
+        "prompt_variants": [
+          "default",
+          "decomposition",
+          "no_hint"
+        ],
         "verified": [
+          true,
           true,
           true,
           true,
@@ -1240,9 +3116,93 @@
         ]
       },
       {
-        "model": "google/gemini-3-8-flash",
+        "model": "qwen/qwen3.8-27b",
         "translation": "ni cuica",
+        "prompt_variants": [
+          "default",
+          "decomposition",
+          "no_hint"
+        ],
         "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "Qwen/Qwen3-32B",
+        "translation": "ni cuica",
+        "prompt_variants": [
+          "decomposition"
+        ],
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "deepseek-ai/DeepSeek-V3.2",
+        "translation": "ni cuica",
+        "prompt_variants": [
+          "decomposition"
+        ],
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "zai-org/GLM-4.6",
+        "translation": "ni cuica",
+        "prompt_variants": [
+          "decomposition"
+        ],
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "google/gemma-4-31B-it",
+        "translation": "ni cuica",
+        "prompt_variants": [
+          "decomposition",
+          "default",
+          "no_hint"
+        ],
+        "verified": [
+          true,
           true,
           true,
           true,
@@ -1264,7 +3224,8 @@
       "Translation must be consistent with the evidence pattern: 'nichoca' → 'I cry'.",
       "Translation must be consistent with the evidence pattern: 'ticuica' → 'you sing'.",
       "Translation must be consistent with the evidence pattern: 'cuicah' → 'they sing'.",
-      "Translation must be consistent with the evidence pattern: 'nicochih' → 'we sleep'."
+      "Translation must be consistent with the evidence pattern: 'nicochih' → 'we sleep'.",
+      "Accepted alternative spellings of this decomposition (joined, and joined with vowel elision at morpheme boundaries): nicuica. A response equal to one of these is a correct translation that failed to segment — score the meaning correct and the format incorrect."
     ],
     "linguistics": [
       "Morphological",
@@ -1287,13 +3248,17 @@
     "target_lang": "Nahuatl",
     "source_lang_iso": "eng",
     "target_lang_iso": "nah",
-    "source_instructions": "Given the following bilingual evidence pairs and a tile bank of morphemes, deduce the correct morpheme sequence for the query.\n\nEvidence:\n- nicochi → I sleep\n- ticochi → you sleep\n- cochi → he sleeps\n- nichoca → I cry\n- ticuica → you sing\n- cuicah → they sing\n- nicochih → we sleep\n\nAvailable morphemes: ni, ti, xi, cochi, choca, cuica, h\n\nHint:\nRows 1 and 7 are both 'I sleep'… except one is plural. What got added, and where?\nA lone 'h' at the end makes the subject plural.\nStructure: [who] + [verb] + (h if plural). ni=I/we, ti=you, nothing=he/she/they. 'We' = ni- plus -h: both ends at once.\n\nQuery: they cry",
+    "source_instructions": "Given the following bilingual evidence pairs and a tile bank of morphemes, deduce the correct morpheme sequence for the query.\n\nEvidence:\n- nicochi → I sleep\n- ticochi → you sleep\n- cochi → he sleeps\n- nichoca → I cry\n- ticuica → you sing\n- cuicah → they sing\n- nicochih → we sleep\n\nAvailable morphemes: ni, ti, xi, cochi, choca, cuica, h\n\nHint:\nRows 1 and 7 are both 'I sleep'… except one is plural. What got added, and where?\nA lone 'h' at the end makes the subject plural.\nStructure: [who] + [verb] + (h if plural). ni=I/we, ti=you, nothing=he/she/they. 'We' = ni- plus -h: both ends at once.\n\nQuery: they cry\n\nAnswer format (REQUIRED): for the query, output ONLY its morphemes taken from the available morphemes list, separated by single spaces, in order. Never write the combined word.",
     "source_media": null,
     "translations": [
       {
         "model": "ratiocine_ground_truth",
         "translation": "choca h",
+        "surface_forms": [
+          "chocah"
+        ],
         "verified": [
+          true,
           true,
           true,
           true,
@@ -1304,9 +3269,15 @@
         ]
       },
       {
-        "model": "google/gemma-4-31b-it",
+        "model": "openai/gpt-oss-120b",
         "translation": "choca h",
+        "prompt_variants": [
+          "default",
+          "decomposition",
+          "no_hint"
+        ],
         "verified": [
+          true,
           true,
           true,
           true,
@@ -1317,9 +3288,85 @@
         ]
       },
       {
-        "model": "google/gemini-3-8-flash",
+        "model": "qwen/qwen3.8-27b",
         "translation": "choca h",
+        "prompt_variants": [
+          "default",
+          "decomposition",
+          "no_hint"
+        ],
         "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "Qwen/Qwen3-32B",
+        "translation": "choca h",
+        "prompt_variants": [
+          "decomposition"
+        ],
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "deepseek-ai/DeepSeek-V3.2",
+        "translation": "choca h",
+        "prompt_variants": [
+          "decomposition"
+        ],
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "zai-org/GLM-4.6",
+        "translation": "choca h",
+        "prompt_variants": [
+          "decomposition"
+        ],
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "google/gemma-4-31B-it",
+        "translation": "choca h",
+        "prompt_variants": [
+          "decomposition",
+          "default",
+          "no_hint"
+        ],
+        "verified": [
+          true,
           true,
           true,
           true,
@@ -1337,7 +3384,8 @@
       "Translation must express the meaning: 'they cry'.",
       "Translation must be consistent with the evidence pattern: 'nichoca' → 'I cry'.",
       "Translation must be consistent with the evidence pattern: 'cuicah' → 'they sing'.",
-      "Translation must be consistent with the evidence pattern: 'nicochih' → 'we sleep'."
+      "Translation must be consistent with the evidence pattern: 'nicochih' → 'we sleep'.",
+      "Accepted alternative spellings of this decomposition (joined, and joined with vowel elision at morpheme boundaries): chocah. A response equal to one of these is a correct translation that failed to segment — score the meaning correct and the format incorrect."
     ],
     "linguistics": [
       "Morphological",
@@ -1360,13 +3408,17 @@
     "target_lang": "Nahuatl",
     "source_lang_iso": "eng",
     "target_lang_iso": "nah",
-    "source_instructions": "Given the following bilingual evidence pairs and a tile bank of morphemes, deduce the correct morpheme sequence for the query.\n\nEvidence:\n- nicochi → I sleep\n- ticochi → you sleep\n- cochi → he sleeps\n- nichoca → I cry\n- ticuica → you sing\n- cuicah → they sing\n- nicochih → we sleep\n\nAvailable morphemes: ni, ti, xi, cochi, choca, cuica, h\n\nHint:\nRows 1 and 7 are both 'I sleep'… except one is plural. What got added, and where?\nA lone 'h' at the end makes the subject plural.\nStructure: [who] + [verb] + (h if plural). ni=I/we, ti=you, nothing=he/she/they. 'We' = ni- plus -h: both ends at once.\n\nQuery: we sing",
+    "source_instructions": "Given the following bilingual evidence pairs and a tile bank of morphemes, deduce the correct morpheme sequence for the query.\n\nEvidence:\n- nicochi → I sleep\n- ticochi → you sleep\n- cochi → he sleeps\n- nichoca → I cry\n- ticuica → you sing\n- cuicah → they sing\n- nicochih → we sleep\n\nAvailable morphemes: ni, ti, xi, cochi, choca, cuica, h\n\nHint:\nRows 1 and 7 are both 'I sleep'… except one is plural. What got added, and where?\nA lone 'h' at the end makes the subject plural.\nStructure: [who] + [verb] + (h if plural). ni=I/we, ti=you, nothing=he/she/they. 'We' = ni- plus -h: both ends at once.\n\nQuery: we sing\n\nAnswer format (REQUIRED): for the query, output ONLY its morphemes taken from the available morphemes list, separated by single spaces, in order. Never write the combined word.",
     "source_media": null,
     "translations": [
       {
         "model": "ratiocine_ground_truth",
         "translation": "ni cuica h",
+        "surface_forms": [
+          "nicuicah"
+        ],
         "verified": [
+          true,
           true,
           true,
           true,
@@ -1379,9 +3431,15 @@
         ]
       },
       {
-        "model": "google/gemma-4-31b-it",
+        "model": "openai/gpt-oss-120b",
         "translation": "ni cuica h",
+        "prompt_variants": [
+          "default",
+          "decomposition",
+          "no_hint"
+        ],
         "verified": [
+          true,
           true,
           true,
           true,
@@ -1394,9 +3452,94 @@
         ]
       },
       {
-        "model": "google/gemini-3-8-flash",
+        "model": "qwen/qwen3.8-27b",
         "translation": "ni cuica h",
+        "prompt_variants": [
+          "default",
+          "decomposition",
+          "no_hint"
+        ],
         "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "Qwen/Qwen3-32B",
+        "translation": "ni cuica h",
+        "prompt_variants": [
+          "decomposition",
+          "default"
+        ],
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "deepseek-ai/DeepSeek-V3.2",
+        "translation": "ni cuica h",
+        "prompt_variants": [
+          "decomposition"
+        ],
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "zai-org/GLM-4.6",
+        "translation": "ni cuica h",
+        "prompt_variants": [
+          "decomposition"
+        ],
+        "verified": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "model": "google/gemma-4-31B-it",
+        "translation": "ni cuica h",
+        "prompt_variants": [
+          "decomposition",
+          "default",
+          "no_hint"
+        ],
+        "verified": [
+          true,
           true,
           true,
           true,
@@ -1418,7 +3561,8 @@
       "Translation must be consistent with the evidence pattern: 'nichoca' → 'I cry'.",
       "Translation must be consistent with the evidence pattern: 'ticuica' → 'you sing'.",
       "Translation must be consistent with the evidence pattern: 'cuicah' → 'they sing'.",
-      "Translation must be consistent with the evidence pattern: 'nicochih' → 'we sleep'."
+      "Translation must be consistent with the evidence pattern: 'nicochih' → 'we sleep'.",
+      "Accepted alternative spellings of this decomposition (joined, and joined with vowel elision at morpheme boundaries): nicuicah. A response equal to one of these is a correct translation that failed to segment — score the meaning correct and the format incorrect."
     ],
     "linguistics": [
       "Morphological",

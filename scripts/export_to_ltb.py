@@ -15,8 +15,35 @@ from run_models_for_ltb import (  # noqa: E402
     DECOMPOSITION_INSTRUCTION,
     surface_forms,
 )
+from score_ltb_outputs import classify_failure, grade  # noqa: E402
 
 logging.basicConfig(level=logging.INFO, format="%(message)s")
+
+# Completions our serving lane failed to produce, as opposed to answers a model
+# gave that happen to be wrong. Only real answers belong in an LTB entry.
+LANE_FAILURES = {"lane_failure", "truncated_output", "parse_artifact", "evidence_echo"}
+NOTE = {
+    "unsegmented_surface_form": (
+        "correct translation of the decomposition, written as the fused surface "
+        "form rather than spaced morphemes"
+    ),
+    "wrong_answer": "matches neither the decomposition nor any accepted surface form of it",
+}
+
+
+def over_segmented(answer: list[str], guess: list[str], tiles: list[str]) -> list[str]:
+    """Tiles in the guess that swallow a required morpheme instead of using it.
+
+    Asked for bare morphemes, a model reaches for the lexeme `taka` where the gold
+    wants the aspect suffix `ka` that `taka` contains — the reverse of the fused
+    surface form being punished, and the reason the two are labelled apart.
+    """
+    return [
+        g
+        for g in guess
+        if g not in answer and g in tiles and any(a != g and a in g for a in answer)
+    ]
+
 
 PUZZLES_PATH = ROOT / "data" / "puzzles.json"
 OUTPUT_PATH = ROOT / "data" / "ltb_export.json"
@@ -179,20 +206,52 @@ def build_ltb_entry(
     ]
 
     key = f"{puzzle['id']}:{query['id']}"
+    info = {
+        "gold": " ".join(answer),
+        "gold_morphs": answer,
+        "evidence": {row["target"] for row in puzzle["pairs"]},
+        "tiles": tiles,
+    }
+    by_answer: dict[tuple[str, str], dict[str, Any]] = {}
     for out in model_outputs.get(key, []):
         guess = out.get("answer", [])
-        joined = (
-            (out.get("answer_text") or " ".join(guess))
-            .replace(" ", "")
-            .replace("-", "")
+        answer_text = out.get("answer_text") or " ".join(guess)
+        joined = answer_text.replace(" ", "").replace("-", "")
+        variant = out.get("prompt_variant") or "default"
+        decomp, surface = grade(info, answer_text, guess)
+        failure = (
+            None
+            if decomp
+            else classify_failure(
+                info, out.get("raw", ""), answer_text, surface, variant
+            )
         )
-        translations.append(
-            {
+        if failure in LANE_FAILURES:
+            # A blank or truncated completion is our serving lane failing, not a
+            # translation. Shipping it as one would misreport the model.
+            continue
+        entry = by_answer.get((out["model"], joined))
+        if entry is None:
+            by_answer[(out["model"], joined)] = entry = {
                 "model": out["model"],
-                "translation": " ".join(guess) if guess else out.get("raw", ""),
+                "translation": " ".join(guess) if guess else answer_text,
+                "prompt_variants": [],
                 "verified": verify_answer(answer, guess, rules, tiles, joined),
             }
-        )
+            if not decomp:
+                entry["note"] = NOTE.get(failure, failure)
+                if failure == "wrong_answer":
+                    swallowed = over_segmented(answer, guess, tiles)
+                    if swallowed:
+                        entry["note"] = (
+                            f"over-segmented: uses the tile(s) {', '.join(repr(s) for s in swallowed)} "
+                            "where the gold requires the morpheme(s) they contain — "
+                            "the error a spaced-morpheme instruction induces"
+                        )
+        if variant not in entry["prompt_variants"]:
+            entry["prompt_variants"].append(variant)
+
+    translations.extend(by_answer.values())
 
     return {
         "id": 10000 + puzzle_index * 100 + query["id"],
@@ -248,6 +307,7 @@ def main():
 
     with open(args.out, "w") as f:
         json.dump(entries, f, indent=2, ensure_ascii=False)
+        f.write("\n")
 
     logging.info("Exported %d LTB entries to %s", len(entries), args.out)
 
