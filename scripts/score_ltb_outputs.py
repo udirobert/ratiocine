@@ -20,6 +20,7 @@ failure, so the report keeps them apart instead of collapsing to one score.
 import argparse
 import json
 import sys
+from collections import Counter
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -72,15 +73,36 @@ def grade(info: dict, answer_text: str, segmented: list[str]) -> tuple[bool, boo
     return decomp, surface
 
 
-def classify_failure(info: dict, raw: str, answer_text: str, surface: bool) -> str:
+def _degenerate(raw: str) -> bool:
+    """True when the completion opens with one character repeated.
+
+    Featherless serves some open-weight models a blank, or a page of '!!!!' with a
+    few tokens of text after it. Either way the lane, not the model, failed.
+    """
+    head = raw.lstrip()[:200]
+    if len(head) < 50:
+        return False
+    _, most_frequent = Counter(head).most_common(1)[0]
+    return most_frequent / len(head) > 0.9
+
+
+def classify_failure(
+    info: dict, raw: str, answer_text: str, surface: bool, variant: str
+) -> str:
     """Label why a recorded answer missed the decomposition."""
     if surface:
         return "unsegmented_surface_form"
+    if not raw.strip() or _degenerate(raw):
+        # Featherless serves some open-weight models a blank or a page of '!!!!'.
+        # That is the lane failing, not the model reasoning.
+        return "lane_failure"
     if answer_text.startswith(("Step 1", "Step", "Identify")):
         return "parse_artifact" if "<answers>" in raw else "truncated_output"
     if answer_text in info["evidence"]:
         return "evidence_echo"
-    if "<answers>" not in raw:
+    # Only the default arm uses the <analysis>/<answers> tag protocol; the
+    # decomposition arm is told to output bare morphemes, so no tags there.
+    if variant == "default" and "<answers>" not in raw:
         return "truncated_output"
     return "wrong_answer"
 
@@ -129,7 +151,9 @@ def main():
                 "failure_type": (
                     None
                     if decomp
-                    else classify_failure(info, entry["raw"], answer_text, surface)
+                    else classify_failure(
+                        info, entry["raw"], answer_text, surface, variant
+                    )
                 ),
             }
         results.append(row)

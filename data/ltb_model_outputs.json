@@ -1,65 +1,4 @@
 {
-  "apurina-verb-agreement:1": [
-    {
-      "model": "google/gemma-4-31b-it:free",
-      "provider": "openrouter",
-      "raw": "<analysis>\nStep 1: Identify the source word for \"we (everyone) are eating\".\n- \"we (everyone)\" corresponds to the prefix 'kaa-' (from kaapitaka).\n- \"eating\" corresponds to the root 'kuta' (from nhaakutaka, ãkutaka, akutaka).\n- The progressive aspect \"are ...-ing\" corresponds to the suffix '-taka' (seen in all examples).\n\nStep 2: Note grammar.\nThe structure is [person prefix] + [verb root] + [aspect suffix].\nPrefix: kaa-\nRoot: kuta\nSuffix: -taka\n\nStep 3: Compose the target-language form.\nkaa + kuta + taka = kaakutaka.\n</analysis>\n<answers>\nkaakutaka\n</answers>",
-      "answer": [
-        "kaa",
-        "kuta",
-        "ka"
-      ]
-    },
-    {
-      "model": "openai/gpt-oss-120b",
-      "provider": "groq",
-      "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- The query “we (everyone) are eating” requires the inclusive “we” prefix, the verb root “eat”, and the progressive suffix.\n- From row 10, “kaapitaka” = we (everyone) are going, showing the pattern: **kaa** (inclusive‑we) + **pita** (go) + **ka** (progressive).\n- The verb root for “eat” is **kuta** (rows 4‑6). The progressive suffix is **ka** (present in all examples).\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- Person is marked by the prefix; for inclusive “we” the prefix is **kaa**.\n- Aspect is marked by the suffix **ka**, which appears after the verb root.\n- Word order is fixed: [person prefix] + [verb root] + [aspect suffix].\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- Combine the morphemes: **kaa** + **kuta** + **ka** → **kaakutaka**.\n</analysis>\n<answers>\nkaakutaka\n</answers>",
-      "answer": [
-        "kaa",
-        "kuta",
-        "ka"
-      ]
-    },
-    {
-      "model": "qwen/qwen3.8-27b",
-      "provider": "groq",
-      "raw": "<analysis>\n1.  **Analyze the Evidence:**\n    *   `nhaapitaka` → I am going\n    *   `ãpitaka` → you are going\n    *   `apitaka` → he/she is going\n    *   `nhaakutaka` → I am eating\n    *   `ãkutaka` → you are eating\n    *   `akutaka` → he/she is eating\n    *   `nhaanykataka` → I am speaking\n    *   `ãnykataka` → you are speaking\n    *   `anykataka` → he/she is speaking\n    *   `kaapitaka` → we (everyone) are going\n\n2.  **Deduce Morphemes:**\n    *   **Person Prefixes:**\n        *   1st person singular (I): `nhaa` (seen in `nhaapitaka`, `nhaakutaka`, `nhaanykataka`)\n        *   2nd person singular (you): `ã` (seen in `ãpitaka`, `ãkutaka`, `ãnykataka`)\n        *   3rd person singular (he/she): `a` (seen in `apitaka`, `akutaka`, `anykataka`)\n        *   1st person plural inclusive (we everyone): `kaa` (seen in `kaapitaka`)\n    *   **Verb Roots:**\n        *   go: `pita` (seen in `...pitaka`)\n        *   eat: `kuta` (seen in `...kutaka`)\n        *   speak: `nykata` (seen in `...nykataka`)\n    *   **Aspect Suffix:**\n        *   Progressive ('am doing'): `ka` (seen at the end of all examples: `...taka`, `...kaka`? No, looking closely at `nhaapitaka`, it ends in `ka`. The root is `pita`. So `pita` + `ka` = `pitaka`. Similarly `kuta` + `ka` = `kutaka`. `nykata` + `ka` = `nykataka`.)\n\n3.  **Construct the Query:**\n    *   Query: \"we (everyone) are eating\"\n    *   Person: \"we (everyone)\" → `kaa`\n    *   Verb: \"eating\" → root `kuta` + progressive suffix `ka`\n    *   Assembly: `kaa` + `kuta` + `ka`\n    *   Result: `kaakutaka`\n\n4.  **Verification:**\n    *   Compare with `kaapitaka` (we are going). Structure is `kaa` + `pita` + `ka`.\n    *   Replace `pita` with `kuta`.\n    *   Result: `kaakutaka`.\n</analysis>\n<answers>\nkaakutaka\n</answers>",
-      "answer": [
-        "kaa",
-        "kuta",
-        "ka"
-      ]
-    }
-  ],
-  "turkish-vowel-harmony:2": [
-    {
-      "model": "google/gemma-4-31b-it:free",
-      "provider": "openrouter",
-      "raw": "<analysis>\nStep 1: Identify the source word for \"days\". The root for \"day\" is \"gün\".\nStep 2: Determine the plural suffix. The last vowel in \"gün\" is 'ü'.\nStep 3: Apply vowel harmony. 'ü' is a front vowel (e, i, ö, ü), so the suffix is \"-ler\".\nStep 4: Combine the root and suffix: gün + ler = günler.\n</analysis>\n<answers>\ngünler\n</answers>",
-      "answer": [
-        "gün",
-        "ler"
-      ]
-    },
-    {
-      "model": "openai/gpt-oss-120b",
-      "provider": "groq",
-      "raw": "<analysis>\nStep 1: Identify the source word for the query “days”. The root for “day” is **gün** from the evidence list.\nStep 2: Apply plural grammar. The plural suffix is -lar or -ler depending on vowel harmony. The last vowel of the root “gün” is **ü**, a front vowel, so the front‑vowel plural suffix **-ler** is used.\nStep 3: Combine root and plural suffix: **gün + ler → günler**.\n</analysis>\n<answers>\ngünler\n</answers>",
-      "answer": [
-        "gün",
-        "ler"
-      ]
-    },
-    {
-      "model": "qwen/qwen3.8-27b",
-      "provider": "groq",
-      "raw": "<analysis>\n1.  **Identify the source word**: The query is \"days\". Looking at the evidence, `gün` corresponds to \"day\".\n2.  **Determine the plural suffix**: The evidence shows plurals like `evler` (houses), `atlar` (horses), `eller` (hands), `kitaplar` (books). The hint explains vowel harmony:\n    *   Back vowels (a, ı, o, u) take `-lar`.\n    *   Front vowels (e, i, ö, ü) take `-ler`.\n3.  **Apply vowel harmony**: The root is `gün`. The last vowel is `ü`. `ü` is a front vowel. Therefore, the plural suffix must be `-ler`.\n4.  **Compose the translation**: Root `gün` + Suffix `ler` = `günler`.\n</analysis>\n<answers>\ngünler\n</answers>",
-      "answer": [
-        "gün",
-        "ler"
-      ]
-    }
-  ],
   "apurina-verb-agreement:0": [
     {
       "model": "google/gemma-4-31b-it:free",
@@ -69,7 +8,8 @@
         "nhaa",
         "kuta",
         "ka"
-      ]
+      ],
+      "answer_text": "nhaa kuta ka"
     },
     {
       "model": "openai/gpt-oss-120b",
@@ -79,7 +19,8 @@
         "nhaa",
         "kuta",
         "ka"
-      ]
+      ],
+      "answer_text": "nhaa kuta ka"
     },
     {
       "model": "qwen/qwen3.8-27b",
@@ -89,39 +30,195 @@
         "nhaa",
         "kuta",
         "ka"
-      ]
-    }
-  ],
-  "swahili-person-tense:0": [
+      ],
+      "answer_text": "nhaa kuta ka"
+    },
     {
-      "model": "google/gemma-4-31b-it:free",
-      "provider": "openrouter",
-      "raw": "<analysis>\nStep 1: Identify the source words for \"I will like\".\n- \"I\" = ni\n- \"will\" (future tense) = ta\n- \"like\" = penda\n\nStep 2: Apply the grammar structure [who] + [when] + [verb].\n- [ni] + [ta] + [penda]\n\nStep 3: Compose the target-language form.\n- nitapenda\n</analysis>\n<answers>\nnitapenda\n</answers>",
+      "model": "deepseek-ai/DeepSeek-V3.2",
+      "provider": "featherless",
+      "prompt_variant": "decomposition",
+      "raw": "<analysis>\nStep 1: From evidence, \"I am eating\" is given as \"nhaakutaka\". The verb root for \"eat\" is \"kuta\". The person prefix for \"I\" is \"nhaa\". The aspect suffix appears to be \"taka\" (since all forms end with \"taka\", and the hint says -ka marks progressive, but the suffix is actually \"taka\" as a whole? Wait: The hint says suffix -ka marks progressive, but the given morphemes include \"ka\" and \"taka\" separately. Looking at evidence: nhaa-pi-ta-ka? But morphemes list has \"pita\", \"kuta\", \"nykata\" as roots, and \"ka\" and \"taka\" as separate. Actually, in the evidence, all forms end with \"taka\". So likely the suffix is \"taka\" meaning progressive. The hint says -ka marks progressive, but maybe it's a typo? Alternatively, maybe the structure is [person] + [root] + taka, where taka = progressive. The morphemes list includes \"taka\" as one morpheme. So for \"I am eating\": person prefix \"nhaa\", root \"kuta\", suffix \"taka\". But \"kuta\" is in the list. So sequence: nhaa kuta taka.\nStep 2: Check evidence: \"nhaakutaka\" = nhaa + kuta + taka. Yes.\nStep 3: For query \"I am eating\", it's exactly the same as evidence row 4. So morphemes: nhaa, kuta, taka.\n</analysis>\n<answers>\nnhaa kuta taka\n</answers>",
       "answer": [
-        "ni",
-        "ta",
-        "penda"
-      ]
+        "nhaa",
+        "kuta",
+        "taka"
+      ],
+      "answer_text": "nhaa kuta taka"
+    },
+    {
+      "model": "zai-org/GLM-4.6",
+      "provider": "featherless",
+      "prompt_variant": "decomposition",
+      "raw": "<analysis>\nStep 1: Identify the source word for the query \"I am eating\". From the evidence, \"nhaakutaka\" translates to \"I am eating\".\nStep 2: Break down \"nhaakutaka\" into its constituent morphemes based on the provided structure [person prefix] + [verb root] + [aspect suffix].\n- The person prefix for \"I\" is \"nhaa\" (seen in nhaapitaka, nhaakutaka, nhaanykataka).\n- The verb root for \"eat\" is \"kuta\" (seen in nhaakutaka, ãkutaka, akutaka).\n- The aspect suffix for the progressive \"am doing\" is \"ka\" (as indicated by the hint and matching the ending of all verbs).\nStep 3: Verify these morphemes against the available morphemes list: nhaa, kuta, and ka are all present. (Note: \"taka\" in the list is a distractor; the suffix is \"ka\" as per the hint and morphological boundaries).\nStep 4: Compose the exact morpheme sequence: nhaa kuta ka.\n</analysis>\n<answers>\nnhaa kuta ka\n</answers>",
+      "answer": [
+        "nhaa",
+        "kuta",
+        "ka"
+      ],
+      "answer_text": "nhaa kuta ka"
     },
     {
       "model": "openai/gpt-oss-120b",
       "provider": "groq",
-      "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.  \n- Subject morpheme for “I” is **ni** (from *nina‑* “I …” and *nilipenda* “I liked”).  \n- Future tense morpheme is **ta** (from *utacheza* “you will play”, *wataimba* “they will sing”).  \n- Verb “like” is **penda** (from *nina‑penda* “I like”, *nilipenda* “I liked”).\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.  \nThe language uses a fixed order: **[subject] + [tense] + [verb]**. No additional agreement markers are needed for the first person singular.\n\nStep 3: Compose the EXACT target-language form, preserving notation.  \nCombine the morphemes in order: **ni + ta + penda** → **nitapenda**.\n</analysis>\n<answers>\nnitapenda\n</answers>",
+      "prompt_variant": "decomposition",
+      "raw": "nhaa kuta ka",
       "answer": [
-        "ni",
-        "ta",
-        "penda"
-      ]
+        "nhaa",
+        "kuta",
+        "ka"
+      ],
+      "answer_text": "nhaa kuta ka"
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "prompt_variant": "no_hint",
+      "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- The query “I am eating” matches the pattern of the first‑person singular progressive for the verb “eat”. In the evidence list this form is given as **nhaakutaka**.\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- The prefix **nhaa‑** marks first‑person singular “I”.\n- The verb root for “eat” is **kuta**.\n- The suffix **‑taka** appears on all progressive forms.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- Concatenating the morphemes yields **nhaakutaka**.\n</analysis>\n<answers>\nnhaakutaka\n</answers>",
+      "answer": [
+        "nhaa",
+        "kuta",
+        "ka"
+      ],
+      "answer_text": "nhaakutaka"
     },
     {
       "model": "qwen/qwen3.8-27b",
       "provider": "groq",
-      "raw": "<analysis>\n1.  **Analyze the Structure**: The hint and evidence indicate a Subject-Verb structure where the verb is a complex word composed of three parts: `[Subject Prefix] + [Tense Marker] + [Verb Root]`.\n    *   **Subjects**:\n        *   `ni` = I (from *ninapenda*, *nilipenda*)\n        *   `u` = you (sg) (from *unasoma*, *utacheza*)\n        *   `a` = he/she (from *anacheza*, *anaimba*)\n        *   `tu` = we (from *tulisoma*)\n        *   `wa` = they (from *wataimba*)\n    *   **Tenses**:\n        *   `na` = present (from *ninapenda*, *unasoma*, *anacheza*)\n        *   `li` = past (from *nilipenda*, *tulisoma*)\n        *   `ta` = future (from *utacheza*, *wataimba*)\n    *   **Verbs**:\n        *   `penda` = like\n        *   `soma` = read\n        *   `cheza` = play\n        *   `imba` = sing\n\n2.  **Analyze the Query**: \"I will like\"\n    *   **Subject**: \"I\" corresponds to the prefix `ni`.\n    *   **Tense**: \"will\" indicates future tense, which corresponds to the marker `ta`.\n    *   **Verb**: \"like\" corresponds to the root `penda`.\n\n3.  **Compose the Translation**:\n    *   Combine the parts in the order `[Subject] + [Tense] + [Verb]`.\n    *   `ni` + `ta` + `penda` = `nitapenda`.\n\n4.  **Verification**:\n    *   Compare with *nilipenda* (I liked): `ni` (I) + `li` (past) + `penda` (like).\n    *   Compare with *utacheza* (you will play): `u` (you) + `ta` (future) + `cheza` (play).\n    *   The pattern holds. `nitapenda` is the correct form for \"I will like\".\n</analysis>\n<answers>\nnitapenda\n</answers>",
+      "prompt_variant": "decomposition",
+      "raw": "<analysis>\n1.  **Analyze the Evidence**:\n    *   `nhaapitaka` → I am going\n    *   `ãpitaka` → you are going\n    *   `apitaka` → he/she is going\n    *   `nhaakutaka` → I am eating\n    *   `ãkutaka` → you are eating\n    *   `akutaka` → he/she is eating\n    *   `nhaanykataka` → I am speaking\n    *   `ãnykataka` → you are speaking\n    *   `anykataka` → he/she is speaking\n    *   `kaapitaka` → we (everyone) are going\n\n2.  **Deduce Morphemes**:\n    *   **Person Prefixes**:\n        *   \"I\": `nhaa` (seen in `nhaapitaka`, `nhaakutaka`, `nhaanykataka`)\n        *   \"You\": `ã` (seen in `ãpitaka`, `ãkutaka`, `ãnykataka`)\n        *   \"He/She\": `a` (seen in `apitaka`, `akutaka`, `anykataka`)\n        *   \"We (inclusive)\": `kaa` (seen in `kaapitaka`)\n    *   **Verb Roots**:\n        *   \"go\": `pita` (seen in `nhaapitaka`)\n        *   \"eat\": `kuta` (seen in `nhaakutaka`)\n        *   \"speak\": `nykata` (seen in `nhaanykataka`)\n    *   **Aspect Suffix**:\n        *   \"am doing\" (progressive): `taka` (appears at the end of all examples). Note: The hint mentions `-ka` marks progressive, but the examples show `taka`. Looking at the available morphemes list: `nhaa`, `ã`, `a`, `kaa`, `pita`, `kuta`, `nykata`, `ka`, `taka`. The suffix in the examples is clearly `taka`. Let's re-read the hint carefully: \"The suffix -ka marks progressive ('am doing').\" However, the examples end in `taka`. Let's look at the available morphemes again. We have `ka` and `taka`.\n        *   Let's check the structure of `nhaakutaka`.\n            *   `nhaa` (I)\n            *   `kuta` (eat)\n            *   `taka` (am doing)\n        *   Does `taka` decompose into `ta` + `ka`? Or is `taka` a single morpheme? The available list has `taka` as a single item. It also has `ka`.\n        *   Let's look at `nhaapitaka`. `nhaa` + `pita` + `taka`.\n        *   Let's look at `kaapitaka`. `kaa` + `pita` + `taka`.\n        *   The hint says \"The suffix -ka marks progressive\". This might be a distractor or referring to a sub-part, but the available morpheme list explicitly contains `taka`. Since `taka` is in the list and matches the ending of every example, and `ta` is *not* in the list, the suffix must be `taka`. The `ka` in the list might be a distractor or part of a different grammatical structure not present in these specific examples (or perhaps the hint implies `taka` is composed of `ta`+`ka` but since `ta` isn't available, we use `taka`). Given the instruction \"output ONLY its morphemes taken from the available morphemes list\", and `taka` is in the list, we use `taka`.\n\n3.  **Construct the Query**:\n    *   Query: \"I am eating\"\n    *   Person: \"I\" → `nhaa`\n    *   Verb: \"eat\" → `kuta`\n    *   Aspect: \"am doing\" → `taka`\n    *   Sequence: `nhaa` `kuta` `taka`\n\n4.  **Verification**:\n    *   Evidence `nhaakutaka` corresponds to \"I am eating\".\n    *   Breaking it down: `nhaa` (I) + `kuta` (eat) + `taka` (progressive).\n    *   All parts are in the available morpheme list.\n\n5.  **Final Output Formulation**:\n    *   `nhaa kuta taka`\n</analysis>\n<answers>\nnhaa kuta taka\n</answers>",
       "answer": [
-        "ni",
-        "ta",
-        "penda"
-      ]
+        "nhaa",
+        "kuta",
+        "taka"
+      ],
+      "answer_text": "nhaa kuta taka"
+    },
+    {
+      "model": "qwen/qwen3.8-27b",
+      "provider": "groq",
+      "prompt_variant": "no_hint",
+      "raw": "<analysis>\n1.  **Analyze the Evidence:**\n    *   `nhaapitaka` → \"I am going\"\n    *   `ãpitaka` → \"you are going\"\n    *   `apitaka` → \"he/she is going\"\n    *   `nhaakutaka` → \"I am eating\"\n    *   `ãkutaka` → \"you are eating\"\n    *   `akutaka` → \"he/she is eating\"\n    *   `nhaanykataka` → \"I am speaking\"\n    *   `ãnykataka` → \"you are speaking\"\n    *   `anykataka` → \"he/she is speaking\"\n    *   `kaapitaka` → \"we (everyone) are going\"\n\n2.  **Deduce Morphemes:**\n    *   **Subject Markers (Prefixes):**\n        *   \"I\": `nhaa` (seen in `nhaapitaka`, `nhaakutaka`, `nhaanykataka`)\n        *   \"You\": `ã` (seen in `ãpitaka`, `ãkutaka`, `ãnykataka`)\n        *   \"He/She\": `a` (seen in `apitaka`, `akutaka`, `anykataka`)\n        *   \"We (everyone)\": `kaa` (seen in `kaapitaka`)\n    *   **Verb Roots:**\n        *   \"go\": `pita` (seen in `...pitaka`)\n        *   \"eat\": `kuta` (seen in `...kutaka`)\n        *   \"speak\": `nykata` (seen in `...nykataka`)\n    *   **Tense/Aspect Marker (Suffix):**\n        *   \"am/is/are\" (present continuous): `taka` (seen at the end of all examples)\n\n3.  **Analyze the Query:**\n    *   Query: \"I am eating\"\n    *   Subject: \"I\" → `nhaa`\n    *   Verb: \"eat\" → `kuta`\n    *   Tense: \"am\" → `taka`\n\n4.  **Construct the Translation:**\n    *   Combine Subject + Verb + Tense: `nhaa` + `kuta` + `taka`\n    *   Result: `nhaakutaka`\n\n5.  **Verification:**\n    *   The evidence pair `nhaakutaka` → \"I am eating\" is explicitly provided in the list.\n</analysis>\n<answers>\nnhaakutaka\n</answers>",
+      "answer": [
+        "nhaa",
+        "kuta",
+        "ka"
+      ],
+      "answer_text": "nhaakutaka"
+    },
+    {
+      "model": "Qwen/Qwen3-32B",
+      "provider": "featherless",
+      "prompt_variant": "decomposition",
+      "raw": "nhaa kuta ka",
+      "answer": [
+        "nhaa",
+        "kuta",
+        "ka"
+      ],
+      "answer_text": "nhaa kuta ka"
+    }
+  ],
+  "apurina-verb-agreement:1": [
+    {
+      "model": "google/gemma-4-31b-it:free",
+      "provider": "openrouter",
+      "raw": "<analysis>\nStep 1: Identify the source word for \"we (everyone) are eating\".\n- \"we (everyone)\" corresponds to the prefix 'kaa-' (from kaapitaka).\n- \"eating\" corresponds to the root 'kuta' (from nhaakutaka, ãkutaka, akutaka).\n- The progressive aspect \"are ...-ing\" corresponds to the suffix '-taka' (seen in all examples).\n\nStep 2: Note grammar.\nThe structure is [person prefix] + [verb root] + [aspect suffix].\nPrefix: kaa-\nRoot: kuta\nSuffix: -taka\n\nStep 3: Compose the target-language form.\nkaa + kuta + taka = kaakutaka.\n</analysis>\n<answers>\nkaakutaka\n</answers>",
+      "answer": [
+        "kaa",
+        "kuta",
+        "ka"
+      ],
+      "answer_text": "kaa kuta ka"
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- The query “we (everyone) are eating” requires the inclusive “we” prefix, the verb root “eat”, and the progressive suffix.\n- From row 10, “kaapitaka” = we (everyone) are going, showing the pattern: **kaa** (inclusive‑we) + **pita** (go) + **ka** (progressive).\n- The verb root for “eat” is **kuta** (rows 4‑6). The progressive suffix is **ka** (present in all examples).\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- Person is marked by the prefix; for inclusive “we” the prefix is **kaa**.\n- Aspect is marked by the suffix **ka**, which appears after the verb root.\n- Word order is fixed: [person prefix] + [verb root] + [aspect suffix].\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- Combine the morphemes: **kaa** + **kuta** + **ka** → **kaakutaka**.\n</analysis>\n<answers>\nkaakutaka\n</answers>",
+      "answer": [
+        "kaa",
+        "kuta",
+        "ka"
+      ],
+      "answer_text": "kaa kuta ka"
+    },
+    {
+      "model": "qwen/qwen3.8-27b",
+      "provider": "groq",
+      "raw": "<analysis>\n1.  **Analyze the Evidence:**\n    *   `nhaapitaka` → I am going\n    *   `ãpitaka` → you are going\n    *   `apitaka` → he/she is going\n    *   `nhaakutaka` → I am eating\n    *   `ãkutaka` → you are eating\n    *   `akutaka` → he/she is eating\n    *   `nhaanykataka` → I am speaking\n    *   `ãnykataka` → you are speaking\n    *   `anykataka` → he/she is speaking\n    *   `kaapitaka` → we (everyone) are going\n\n2.  **Deduce Morphemes:**\n    *   **Person Prefixes:**\n        *   1st person singular (I): `nhaa` (seen in `nhaapitaka`, `nhaakutaka`, `nhaanykataka`)\n        *   2nd person singular (you): `ã` (seen in `ãpitaka`, `ãkutaka`, `ãnykataka`)\n        *   3rd person singular (he/she): `a` (seen in `apitaka`, `akutaka`, `anykataka`)\n        *   1st person plural inclusive (we everyone): `kaa` (seen in `kaapitaka`)\n    *   **Verb Roots:**\n        *   go: `pita` (seen in `...pitaka`)\n        *   eat: `kuta` (seen in `...kutaka`)\n        *   speak: `nykata` (seen in `...nykataka`)\n    *   **Aspect Suffix:**\n        *   Progressive ('am doing'): `ka` (seen at the end of all examples: `...taka`, `...kaka`? No, looking closely at `nhaapitaka`, it ends in `ka`. The root is `pita`. So `pita` + `ka` = `pitaka`. Similarly `kuta` + `ka` = `kutaka`. `nykata` + `ka` = `nykataka`.)\n\n3.  **Construct the Query:**\n    *   Query: \"we (everyone) are eating\"\n    *   Person: \"we (everyone)\" → `kaa`\n    *   Verb: \"eating\" → root `kuta` + progressive suffix `ka`\n    *   Assembly: `kaa` + `kuta` + `ka`\n    *   Result: `kaakutaka`\n\n4.  **Verification:**\n    *   Compare with `kaapitaka` (we are going). Structure is `kaa` + `pita` + `ka`.\n    *   Replace `pita` with `kuta`.\n    *   Result: `kaakutaka`.\n</analysis>\n<answers>\nkaakutaka\n</answers>",
+      "answer": [
+        "kaa",
+        "kuta",
+        "ka"
+      ],
+      "answer_text": "kaa kuta ka"
+    },
+    {
+      "model": "deepseek-ai/DeepSeek-V3.2",
+      "provider": "featherless",
+      "prompt_variant": "decomposition",
+      "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- The query is \"we (everyone) are eating\". From evidence, \"we (everyone)\" corresponds to \"kaa\" as seen in \"kaapitaka\" (we (everyone) are going). The verb root for \"eat\" is \"kuta\" from \"nhaakutaka\", \"ãkutaka\", \"akutaka\". The progressive aspect suffix is \"ka\" (from hint: suffix -ka marks progressive). However, evidence shows \"taka\" as suffix in all examples (e.g., nhaapitaka, ãpitaka, apitaka, nhaakutaka, ãkutaka, akutaka, nhaanykataka, ãnykataka, anykataka, kaapitaka). The hint says suffix -ka marks progressive, but actual forms end with \"taka\". Possibly \"taka\" is the progressive suffix, or \"ta\" + \"ka\". Available morphemes include \"taka\" as a single morpheme. From evidence, structure is [person prefix] + [verb root] + [aspect suffix]. For \"we (everyone) are going\", it's \"kaa\" + \"pita\" + \"taka\". So suffix is \"taka\". For \"eat\", root is \"kuta\". So \"we (everyone) are eating\" should be: person prefix \"kaa\" + verb root \"kuta\" + aspect suffix \"taka\".\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- Person prefix for \"we (everyone)\" is \"kaa\". Verb root for \"eat\" is \"kuta\". Aspect suffix for progressive is \"taka\". No other changes.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- The query is \"we (everyone) are eating\". The target form should be morpheme sequence: kaa kuta taka.\n</analysis>\n<answers>\nkaa kuta taka\n</answers>",
+      "answer": [
+        "kaa",
+        "kuta",
+        "taka"
+      ],
+      "answer_text": "kaa kuta taka"
+    },
+    {
+      "model": "zai-org/GLM-4.6",
+      "provider": "featherless",
+      "prompt_variant": "decomposition",
+      "raw": "kaa kuta taka",
+      "answer": [
+        "kaa",
+        "kuta",
+        "taka"
+      ],
+      "answer_text": "kaa kuta taka"
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "prompt_variant": "decomposition",
+      "raw": "<answers>\nkaa kuta ka\n</answers>",
+      "answer": [
+        "kaa",
+        "kuta",
+        "ka"
+      ],
+      "answer_text": "kaa kuta ka"
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "prompt_variant": "no_hint",
+      "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- “we (everyone) are eating” corresponds to the pattern pronoun + verb root + ending.\n- Pronoun “we (everyone)” = **kaa** (from *kaapitaka* = we are going).\n- Verb root “eating” = **kuta** (from *nhaakutaka* = I am eating).\n- Sentence ending = **ka** (common to all sentences).\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- The language builds a clause by concatenating the pronoun, verb root, and the final morpheme **ka** without any additional affixes or changes.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- Concatenate: kaa + kuta + ka → **kaakutaka**.\n</analysis>\n<answers>\nkaakutaka\n</answers>",
+      "answer": [
+        "kaa",
+        "kuta",
+        "ka"
+      ],
+      "answer_text": "kaakutaka"
+    },
+    {
+      "model": "qwen/qwen3.8-27b",
+      "provider": "groq",
+      "prompt_variant": "decomposition",
+      "raw": "<analysis>\n1.  **Analyze the Evidence**:\n    *   `nhaapitaka` → I am going\n    *   `ãpitaka` → you are going\n    *   `apitaka` → he/she is going\n    *   `nhaakutaka` → I am eating\n    *   `ãkutaka` → you are eating\n    *   `akutaka` → he/she is eating\n    *   `nhaanykataka` → I am speaking\n    *   `ãnykataka` → you are speaking\n    *   `anykataka` → he/she is speaking\n    *   `kaapitaka` → we (everyone) are going\n\n2.  **Deduce Morphemes**:\n    *   **Person Prefixes**:\n        *   \"I\": `nhaa` (seen in `nhaapitaka`, `nhaakutaka`, `nhaanykataka`)\n        *   \"You\": `ã` (seen in `ãpitaka`, `ãkutaka`, `ãnykataka`)\n        *   \"He/She\": `a` (seen in `apitaka`, `akutaka`, `anykataka`)\n        *   \"We (everyone/inclusive)\": `kaa` (seen in `kaapitaka`)\n    *   **Verb Roots**:\n        *   \"go\": `pita` (seen in `...pitaka`)\n        *   \"eat\": `kuta` (seen in `...kutaka`)\n        *   \"speak\": `nykata` (seen in `...nykataka`)\n    *   **Aspect Suffix**:\n        *   \"am doing\" (progressive): `taka` (seen at the end of all examples). Note: The hint says \"-ka marks progressive\", but looking at the available morphemes list (`nhaa, ã, a, kaa, pita, kuta, nykata, ka, taka`), `taka` is the full suffix present in the examples. Let's re-examine the hint vs the data.\n        *   Data: `nhaa` + `pita` + `taka`.\n        *   Available morphemes: `nhaa`, `pita`, `taka`.\n        *   The hint says \"The suffix -ka marks progressive\". However, the examples clearly end in `taka`. Let's look at the available morphemes again: `nhaa, ã, a, kaa, pita, kuta, nykata, ka, taka`.\n        *   If the structure is [Person] + [Root] + [Suffix], and the examples are `nhaapitaka`, the suffix is `taka`.\n        *   Wait, is `taka` composed of `ta` + `ka`? No, `ta` is not in the list. `ka` is in the list. `taka` is in the list.\n        *   Let's check the decomposition of `nhaapitaka`: `nhaa` (I) + `pita` (go) + `taka` (progressive).\n        *   Let's check `kaapitaka`: `kaa` (we) + `pita` (go) + `taka` (progressive).\n        *   The query is \"we (everyone) are eating\".\n        *   Person: \"we (everyone)\" → `kaa`\n        *   Root: \"eating\" → `kuta`\n        *   Suffix: \"are ...ing\" → `taka`\n\n3.  **Construct the Query**:\n    *   Target: \"we (everyone) are eating\"\n    *   Person prefix: `kaa`\n    *   Verb root: `kuta`\n    *   Aspect suffix: `taka`\n    *   Sequence: `kaa kuta taka`\n\n4.  **Verification**:\n    *   `kaa` corresponds to \"we (everyone)\" based on `kaapitaka` (\"we (everyone) are going\").\n    *   `kuta` corresponds to \"eat\" based on `nhaakutaka` (\"I am eating\").\n    *   `taka` corresponds to the progressive aspect based on all examples ending in `taka`.\n    *   The available morphemes list contains `kaa`, `kuta`, and `taka`.\n\n5.  **Final Output Formulation**:\n    *   The request asks for the morphemes separated by single spaces.\n    *   Result: `kaa kuta taka`\n</analysis>\n<answers>\nkaa kuta taka\n</answers>",
+      "answer": [
+        "kaa",
+        "kuta",
+        "taka"
+      ],
+      "answer_text": "kaa kuta taka"
+    },
+    {
+      "model": "Qwen/Qwen3-32B",
+      "provider": "featherless",
+      "prompt_variant": "decomposition",
+      "raw": "",
+      "answer": [],
+      "answer_text": ""
     }
   ],
   "apurina-verb-agreement:2": [
@@ -133,7 +230,8 @@
         "ã",
         "nykata",
         "ka"
-      ]
+      ],
+      "answer_text": "ã nykata ka"
     },
     {
       "model": "qwen/qwen3.8-27b",
@@ -143,7 +241,92 @@
         "ã",
         "nykata",
         "ka"
-      ]
+      ],
+      "answer_text": "ã nykata ka"
+    },
+    {
+      "model": "Qwen/Qwen3-32B",
+      "provider": "featherless",
+      "prompt_variant": "decomposition",
+      "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.  \nThe verb root for \"speaking\" is **nykata** (from nhaanykataka → I am speaking). The second-person prefix is **ã** (as in ãpitaka → you are going, ãkutaka → you are eating). The progressive aspect suffix is **ka** (as in -ka in all examples).  \n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.  \nStructure follows [person prefix] + [verb root] + [aspect suffix]. For \"you are speaking,\" the person prefix is **ã**, verb root is **nykata**, and suffix is **ka**.  \n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.  \nThe morphemes **ã**, **nykata**, and **ka** combine to form the correct sequence.  \n</analysis>  \n<answers>  \nã nykata ka  \n</answers>",
+      "answer": [
+        "ã",
+        "nykata",
+        "ka"
+      ],
+      "answer_text": "ã nykata ka"
+    },
+    {
+      "model": "deepseek-ai/DeepSeek-V3.2",
+      "provider": "featherless",
+      "prompt_variant": "decomposition",
+      "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- The query is \"you are speaking\". From evidence: \"ãnykataka\" means \"you are speaking\".\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- The structure is [person prefix] + [verb root] + [aspect suffix].\n- For \"you\", the person prefix is \"ã\".\n- The verb root for \"speak\" is \"nykata\".\n- The aspect suffix is \"ka\" (progressive).\n- However, evidence shows \"ãnykataka\" includes \"taka\" at the end, not just \"ka\". Comparing all examples: all end in \"taka\". So likely the suffix is \"taka\" (maybe \"ta\" + \"ka\" or fused). Available morphemes include \"taka\" as a single unit. So verb root + \"taka\" might be the full form.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- The query is \"you are speaking\", which corresponds to \"ãnykataka\".\n- Breaking into morphemes from available list: person prefix \"ã\", verb root \"nykata\", and suffix \"taka\"? But \"taka\" is listed as a morpheme. However, evidence shows \"nykata\" + \"taka\" yields \"nykataka\", which matches. So morphemes: ã + nykata + taka.\n- But available morphemes: nhaa, ã, a, kaa, pita, kuta, nykata, ka, taka. Note \"ka\" is separate, but in examples, the suffix is consistently \"taka\", not \"ka\" alone. Possibly \"taka\" is the aspect suffix. So for \"you are speaking\", morphemes: ã nykata taka.\n</analysis>\n<answers>\nã nykata taka\n</answers>",
+      "answer": [
+        "ã",
+        "nykata",
+        "taka"
+      ],
+      "answer_text": "ã nykata taka"
+    },
+    {
+      "model": "zai-org/GLM-4.6",
+      "provider": "featherless",
+      "prompt_variant": "decomposition",
+      "raw": "<analysis>\nStep 1: Identify the source word for the query \"you are speaking\". From the evidence, \"you are speaking\" translates to \"ãnykataka\".\nStep 2: Break down \"ãnykataka\" into its morphemes based on the provided structure [person prefix] + [verb root] + [aspect suffix].\n- The person prefix for \"you\" is \"ã\" (seen in ãpitaka, ãkutaka, ãnykataka).\n- The verb root for \"speak\" is \"nykata\" (seen in nhaanykataka, ãnykataka, anykataka).\n- The aspect suffix for the progressive is \"ka\" (as indicated by the hint and the decomposition of the other verbs like pita+ka, kuta+ka).\nStep 3: Compose the morpheme sequence from the available list: ã, nykata, ka.\n</analysis>\n<answers>\nã nykata ka\n</answers>",
+      "answer": [
+        "ã",
+        "nykata",
+        "ka"
+      ],
+      "answer_text": "ã nykata ka"
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "prompt_variant": "decomposition",
+      "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- The query “you are speaking” corresponds to the evidence word “ãnykataka”.\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- Person prefix for second‑person singular is “ã”.\n- Verb root for “speak” is “nykata”.\n- Progressive aspect suffix is “ka”.\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- Combine the morphemes in order: “ã” + “nykata” + “ka”.\n</analysis>\n<answers>\nã nykata ka\n</answers>",
+      "answer": [
+        "ã",
+        "nykata",
+        "ka"
+      ],
+      "answer_text": "ã nykata ka"
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "prompt_variant": "no_hint",
+      "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- The phrase “you are speaking” corresponds directly to the example ãnykataka → you are speaking.\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- The second‑person singular subject is encoded by the morpheme ã.\n- The verb “to speak” is the root nykata, combined with the present‑progressive suffix taka.\n- No additional grammatical modifications are required beyond the base form.\nStep 3: Compose the EXACT target‑language form, preserving notation like You_{sg}, You_{pl}.\n- The exact form is ãnykataka.\n</analysis>\n<answers>\nãnykataka\n</answers>",
+      "answer": [
+        "ã",
+        "nykata",
+        "ka"
+      ],
+      "answer_text": "ãnykataka"
+    },
+    {
+      "model": "qwen/qwen3.8-27b",
+      "provider": "groq",
+      "prompt_variant": "decomposition",
+      "raw": "<analysis>\n1.  **Analyze the Evidence**:\n    *   `nhaapitaka` → I am going\n    *   `ãpitaka` → you are going\n    *   `apitaka` → he/she is going\n    *   `nhaakutaka` → I am eating\n    *   `ãkutaka` → you are eating\n    *   `akutaka` → he/she is eating\n    *   `nhaanykataka` → I am speaking\n    *   `ãnykataka` → you are speaking\n    *   `anykataka` → he/she is speaking\n    *   `kaapitaka` → we (everyone) are going\n\n2.  **Deduce Morphemes**:\n    *   **Person Prefixes**:\n        *   \"I\": `nhaa` (seen in `nhaapitaka`, `nhaakutaka`, `nhaanykataka`)\n        *   \"you\": `ã` (seen in `ãpitaka`, `ãkutaka`, `ãnykataka`)\n        *   \"he/she\": `a` (seen in `apitaka`, `akutaka`, `anykataka`)\n        *   \"we (inclusive)\": `kaa` (seen in `kaapitaka`)\n    *   **Verb Roots**:\n        *   \"go\": `pita` (seen in `...pitaka`)\n        *   \"eat\": `kuta` (seen in `...kutaka`)\n        *   \"speak\": `nykata` (seen in `...nykataka`)\n    *   **Aspect Suffix**:\n        *   \"progressive/are doing\": `ka` (seen at the end of all forms: `...taka`, `...taka`, `...taka`). Note that the root ends in `a` and the suffix is `ka`, forming `...aka` or `...taka`. Let's look closer.\n        *   `pita` + `ka` = `pitaka`\n        *   `kuta` + `ka` = `kutaka`\n        *   `nykata` + `ka` = `nykataka`\n        *   So the suffix is indeed `ka`.\n\n3.  **Analyze the Query**:\n    *   Query: \"you are speaking\"\n    *   Person: \"you\" → `ã`\n    *   Verb: \"speaking\" (root \"speak\" + progressive) → `nykata` + `ka`\n    *   Structure: [Person] + [Root] + [Suffix]\n    *   Sequence: `ã` + `nykata` + `ka`\n\n4.  **Verify against Available Morphemes**:\n    *   `ã` is in the list.\n    *   `nykata` is in the list.\n    *   `ka` is in the list.\n\n5.  **Final Composition**:\n    *   `ã nykata ka`\n</analysis>\n<answers>\nã nykata ka\n</answers>",
+      "answer": [
+        "ã",
+        "nykata",
+        "ka"
+      ],
+      "answer_text": "ã nykata ka"
+    },
+    {
+      "model": "qwen/qwen3.8-27b",
+      "provider": "groq",
+      "prompt_variant": "no_hint",
+      "raw": "<analysis>\n1.  **Analyze the Evidence:**\n    *   `nhaapitaka` → I am going\n    *   `ãpitaka` → you are going\n    *   `apitaka` → he/she is going\n    *   `nhaakutaka` → I am eating\n    *   `ãkutaka` → you are eating\n    *   `akutaka` → he/she is eating\n    *   `nhaanykataka` → I am speaking\n    *   `ãnykataka` → you are speaking\n    *   `anykataka` → he/she is speaking\n    *   `kaapitaka` → we (everyone) are going\n\n2.  **Deduce Morphemes:**\n    *   **Subject Markers (Prefixes):**\n        *   \"I\": `nhaa` (seen in `nhaapitaka`, `nhaakutaka`, `nhaanykataka`)\n        *   \"You\": `ã` (seen in `ãpitaka`, `ãkutaka`, `ãnykataka`)\n        *   \"He/She\": `a` (seen in `apitaka`, `akutaka`, `anykataka`)\n        *   \"We (everyone)\": `kaa` (seen in `kaapitaka`)\n    *   **Verb Roots:**\n        *   \"go\": `pita` (seen in `...pitaka`)\n        *   \"eat\": `kuta` (seen in `...kutaka`)\n        *   \"speak\": `nykata` (seen in `...nykataka`)\n    *   **Suffix:**\n        *   All forms end in `taka`. This likely indicates the present continuous tense or aspect.\n\n3.  **Analyze the Query:**\n    *   Query: \"you are speaking\"\n    *   Subject: \"you\" → `ã`\n    *   Verb: \"speaking\" → root `nykata` + suffix `taka`\n    *   Structure: Subject + Verb Root + Suffix\n    *   Sequence: `ã` + `nykata` + `taka`\n\n4.  **Verify against Evidence:**\n    *   The evidence pair `ãnykataka` → \"you are speaking\" exists directly in the list.\n    *   Breaking it down: `ã` (you) + `nykata` (speak) + `taka` (are/progressive).\n\n5.  **Final Composition:**\n    *   The target string is `ãnykataka`.\n</analysis>\n<answers>\nãnykataka\n</answers>",
+      "answer": [
+        "ã",
+        "nykata",
+        "ka"
+      ],
+      "answer_text": "ãnykataka"
     }
   ],
   "apurina-verb-agreement:3": [
@@ -155,7 +338,8 @@
         "kaa",
         "nykata",
         "ka"
-      ]
+      ],
+      "answer_text": "kaa nykata ka"
     },
     {
       "model": "qwen/qwen3.8-27b",
@@ -165,7 +349,92 @@
         "kaa",
         "nykata",
         "ka"
-      ]
+      ],
+      "answer_text": "kaa nykata ka"
+    },
+    {
+      "model": "deepseek-ai/DeepSeek-V3.2",
+      "provider": "featherless",
+      "prompt_variant": "decomposition",
+      "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n</analysis>\n<answers>\nkaa nykata ka\n</answers>",
+      "answer": [
+        "kaa",
+        "nykata",
+        "ka"
+      ],
+      "answer_text": "kaa nykata ka"
+    },
+    {
+      "model": "zai-org/GLM-4.6",
+      "provider": "featherless",
+      "prompt_variant": "decomposition",
+      "raw": "kaa nykata ka",
+      "answer": [
+        "kaa",
+        "nykata",
+        "ka"
+      ],
+      "answer_text": "kaa nykata ka"
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "prompt_variant": "decomposition",
+      "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- The query “we (everyone) are speaking” corresponds to the pattern seen in row 10 (kaapitaka = we are going). The person prefix for inclusive “we” is **kaa**, the verb root for “speak” is **nykata**, and the progressive suffix is **ka**.\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- The language uses the structure [person prefix] + [verb root] + [aspect suffix]. No additional inflection is needed for this sentence.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- Combine the morphemes in order: **kaa nykata ka**.\n</analysis>\n<answers>\nkaa nykata ka\n</answers>",
+      "answer": [
+        "kaa",
+        "nykata",
+        "ka"
+      ],
+      "answer_text": "kaa nykata ka"
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "prompt_variant": "no_hint",
+      "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- The pronoun morphemes are: nhaa = I, ã = you, a = he/she, kaa = we (everyone).\n- The verb roots are: pita = go, kuta = eat, nykata = speak.\n- The final morpheme “ka” marks the present progressive (“am/are …ing”).\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- Sentence structure is: Pronoun + VerbRoot + ka.\n- No additional agreement markers are needed; just concatenate the appropriate morphemes.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- For “we (everyone) are speaking”: Pronoun = kaa, VerbRoot = nykata, ending = ka.\n- Concatenate: kaa + nykata + ka → “kaanykataka”.\n</analysis>\n<answers>\nkaanykataka\n</answers>",
+      "answer": [
+        "kaa",
+        "nykata",
+        "ka"
+      ],
+      "answer_text": "kaanykataka"
+    },
+    {
+      "model": "qwen/qwen3.8-27b",
+      "provider": "groq",
+      "prompt_variant": "decomposition",
+      "raw": "<analysis>\n1.  **Analyze the Evidence:**\n    *   `nhaapitaka` → I am going\n    *   `ãpitaka` → you are going\n    *   `apitaka` → he/she is going\n    *   `nhaakutaka` → I am eating\n    *   `ãkutaka` → you are eating\n    *   `akutaka` → he/she is eating\n    *   `nhaanykataka` → I am speaking\n    *   `ãnykataka` → you are speaking\n    *   `anykataka` → he/she is speaking\n    *   `kaapitaka` → we (everyone) are going\n\n2.  **Deduce Morphemes:**\n    *   **Person Prefixes:**\n        *   \"I\": `nhaa` (seen in `nhaapitaka`, `nhaakutaka`, `nhaanykataka`)\n        *   \"You\": `ã` (seen in `ãpitaka`, `ãkutaka`, `ãnykataka`)\n        *   \"He/She\": `a` (seen in `apitaka`, `akutaka`, `anykataka`)\n        *   \"We (everyone/inclusive)\": `kaa` (seen in `kaapitaka`)\n    *   **Verb Roots:**\n        *   \"go\": `pita` (seen in `...pitaka`)\n        *   \"eat\": `kuta` (seen in `...kutaka`)\n        *   \"speak\": `nykata` (seen in `...nykataka`)\n    *   **Aspect Suffix:**\n        *   \"am doing\" (progressive): `taka` (seen at the end of all examples). Note: The hint says \"-ka marks progressive\", but looking at the available morphemes list (`nhaa, ã, a, kaa, pita, kuta, nykata, ka, taka`), `taka` is the full suffix present in the examples. Let's re-read the hint carefully: \"The suffix -ka marks progressive ('am doing')\". However, the examples end in `taka`. Let's look at the available morphemes again: `nhaa, ã, a, kaa, pita, kuta, nykata, ka, taka`.\n        *   Wait, let's look at `nhaapitaka`. If the root is `pita` and the suffix is `taka`, the word is `nhaa` + `pita` + `taka`.\n        *   Let's check `nhaanykataka`. Root `nykata` + suffix `taka`? `nhaa` + `nykata` + `taka` = `nhaanykataka`. This fits perfectly.\n        *   Let's check `kaapitaka`. Prefix `kaa` + Root `pita` + Suffix `taka` = `kaapitaka`. This fits perfectly.\n        *   The hint mentions \"-ka marks progressive\". This might be a distractor or referring to a sub-part, but the available morpheme list includes `taka` and `ka`. In `nhaapitaka`, if we use `ka` as the suffix, we are left with `nhaapita` + `ka`. But `pita` is the root. So `nhaa` + `pita` + `ka`? No, the word is `nhaapitaka`. The `t` is part of the suffix or the root?\n        *   Let's look at the roots again. `pita` (go), `kuta` (eat), `nykata` (speak).\n        *   If the suffix is `taka`, then:\n            *   `nhaa` + `pita` + `taka` = `nhaapitaka` (Correct)\n            *   `nhaa` + `kuta` + `taka` = `nhaakutaka` (Correct)\n            *   `nhaa` + `nykata` + `taka` = `nhaanykataka` (Correct)\n            *   `kaa` + `pita` + `taka` = `kaapitaka` (Correct)\n        *   The hint says \"The suffix -ka marks progressive\". This is slightly confusing given the data ends in `taka`. However, the available morphemes list contains `taka`. It also contains `ka`. Is it possible the suffix is just `ka` and the roots are `pitat`, `kutat`, `nykatat`? No, the hint explicitly lists roots: `pita=go, kuta=eat, nykata=speak`.\n        *   Therefore, the suffix must be `taka`. The hint's mention of \"-ka\" might be a typo for \"-taka\" or referring to a different analysis, but the evidence `nhaapitaka` clearly decomposes into `nhaa` + `pita` + `taka` using the provided roots.\n        *   Let's double check if `ka` is used anywhere. `kaapitaka` uses `kaa`. `nhaapitaka` uses `nhaa`. There is no example ending in just `ka`. All end in `taka`.\n        *   So, the structure is [Person] + [Root] + [Suffix].\n        *   Person: `kaa` (we everyone)\n        *   Root: `nykata` (speak)\n        *   Suffix: `taka` (progressive)\n\n3.  **Construct the Query:**\n    *   Query: \"we (everyone) are speaking\"\n    *   Person: `kaa`\n    *   Verb: `nykata`\n    *   Aspect: `taka`\n    *   Sequence: `kaa nykata taka`\n\n4.  **Final Verification:**\n    *   `kaa` (we) + `nykata` (speak) + `taka` (am doing) -> `kaanykataka`.\n    *   Does this match the pattern?\n        *   `kaapitaka` (we go) = `kaa` + `pita` + `taka`.\n        *   `kaanykataka` (we speak) = `kaa` + `nykata` + `taka`.\n    *   The morphemes are all in the bank: `kaa`, `nykata`, `taka`.\n\n<answers>\nkaa nykata taka\n</answers>",
+      "answer": [
+        "kaa",
+        "nykata",
+        "taka"
+      ],
+      "answer_text": "kaa nykata taka"
+    },
+    {
+      "model": "qwen/qwen3.8-27b",
+      "provider": "groq",
+      "prompt_variant": "no_hint",
+      "raw": "<analysis>\n1.  **Analyze the Evidence:**\n    *   `nhaapitaka` → I am going\n    *   `ãpitaka` → you are going\n    *   `apitaka` → he/she is going\n    *   `nhaakutaka` → I am eating\n    *   `ãkutaka` → you are eating\n    *   `akutaka` → he/she is eating\n    *   `nhaanykataka` → I am speaking\n    *   `ãnykataka` → you are speaking\n    *   `anykataka` → he/she is speaking\n    *   `kaapitaka` → we (everyone) are going\n\n2.  **Deduce Morphemes:**\n    *   **Subject Markers (Prefixes):**\n        *   \"I\": `nhaa` (seen in `nhaapitaka`, `nhaakutaka`, `nhaanykataka`)\n        *   \"You\": `ã` (seen in `ãpitaka`, `ãkutaka`, `ãnykataka`)\n        *   \"He/She\": `a` (seen in `apitaka`, `akutaka`, `anykataka`)\n        *   \"We (everyone)\": `kaa` (seen in `kaapitaka`)\n    *   **Verb Roots:**\n        *   \"go\": `pita` (seen in `...pitaka`)\n        *   \"eat\": `kuta` (seen in `...kutaka`)\n        *   \"speak\": `nykata` (seen in `...nykataka`)\n    *   **Suffix:**\n        *   Present tense/progressive marker: `taka` (appears at the end of all examples).\n\n3.  **Construct the Query:**\n    *   Query: \"we (everyone) are speaking\"\n    *   Subject: \"we (everyone)\" → `kaa`\n    *   Verb: \"speaking\" → root `nykata` + suffix `taka`\n    *   Combine: `kaa` + `nykata` + `taka`\n    *   Result: `kaanykataka`\n\n4.  **Verification:**\n    *   Compare with `kaapitaka` (we are going): `kaa` + `pita` + `taka`.\n    *   Compare with `nhaanykataka` (I am speaking): `nhaa` + `nykata` + `taka`.\n    *   The pattern holds consistent.\n\n</analysis>\n<answers>\nkaanykataka\n</answers>",
+      "answer": [
+        "kaa",
+        "nykata",
+        "ka"
+      ],
+      "answer_text": "kaanykataka"
+    },
+    {
+      "model": "Qwen/Qwen3-32B",
+      "provider": "featherless",
+      "prompt_variant": "decomposition",
+      "raw": "kaa nykata ka",
+      "answer": [
+        "kaa",
+        "nykata",
+        "ka"
+      ],
+      "answer_text": "kaa nykata ka"
     }
   ],
   "apurina-verb-agreement:4": [
@@ -177,7 +446,8 @@
         "a",
         "pita",
         "ka"
-      ]
+      ],
+      "answer_text": "a pita ka"
     },
     {
       "model": "google/gemma-4-31b-it:free",
@@ -187,7 +457,8 @@
         "a",
         "pita",
         "ka"
-      ]
+      ],
+      "answer_text": "a pita ka"
     },
     {
       "model": "qwen/qwen3.8-27b",
@@ -197,147 +468,80 @@
         "a",
         "pita",
         "ka"
-      ]
-    }
-  ],
-  "swahili-person-tense:1": [
+      ],
+      "answer_text": "a pita ka"
+    },
+    {
+      "model": "Qwen/Qwen3-32B",
+      "provider": "featherless",
+      "prompt_variant": "decomposition",
+      "raw": "a pita taka",
+      "answer": [
+        "a",
+        "pita",
+        "taka"
+      ],
+      "answer_text": "a pita taka"
+    },
+    {
+      "model": "deepseek-ai/DeepSeek-V3.2",
+      "provider": "featherless",
+      "prompt_variant": "decomposition",
+      "raw": "<analysis>\nStep 1: From evidence, \"he/she is going\" is given as \"apitaka\".  \nStep 2: Breaking down:  \n- Person prefix for he/she: \"a\" (from apitaka, akutaka, anykataka).  \n- Verb root for \"go\": \"pita\" (from nhaapitaka, ãpitaka, apitaka, kaapitaka).  \n- Aspect suffix: \"taka\" appears in all forms, but the hint says suffix -ka marks progressive. However, looking at morpheme list: available morphemes include \"taka\" as a single unit, and also \"ka\" separately. In evidence, all forms end with \"taka\". The hint says suffix -ka marks progressive, but the given morpheme list has \"taka\" as one morpheme. But in the list, \"ka\" is also separate. Let's check: In \"nhaapitaka\", if root is \"pita\", then remaining is \"nhaa\" + \"pita\" + \"ka\"? But that would be \"nhaapitaka\" = nhaa-pita-ka. But then \"taka\" isn't a morpheme; maybe \"taka\" is \"ta\" + \"ka\"? But \"ta\" not in list. Actually, the morpheme list includes \"taka\" as a morpheme. And also includes \"ka\". Possibly \"taka\" is the aspect suffix. The hint says suffix -ka marks progressive, but maybe it's a typo and should be -taka. Given the morpheme list: available morphemes: nhaa, ã, a, kaa, pita, kuta, nykata, ka, taka. So \"taka\" is one morpheme. In evidence, all verbs end with \"taka\". So structure: person prefix + verb root + taka.  \nStep 3: For \"he/she is going\": person prefix = \"a\", verb root = \"pita\", suffix = \"taka\". So morphemes: a pita taka.  \n</analysis>\n<answers>\na pita taka\n</answers>",
+      "answer": [
+        "a",
+        "pita",
+        "taka"
+      ],
+      "answer_text": "a pita taka"
+    },
+    {
+      "model": "zai-org/GLM-4.6",
+      "provider": "featherless",
+      "prompt_variant": "decomposition",
+      "raw": "<analysis>\nStep 1: Identify the source word for the query \"he/she is going\". From the evidence, \"apitaka\" translates to \"he/she is going\".\nStep 2: Break down \"apitaka\" into its constituent morphemes based on the provided structure [person prefix] + [verb root] + [aspect suffix].\n- Person prefix for \"he/she\" is \"a\".\n- Verb root for \"go\" is \"pita\".\n- Aspect suffix for progressive \"am doing\" is \"ka\".\nStep 3: Verify these morphemes against the available morphemes list: a, pita, and ka are all present.\nStep 4: Compose the exact morpheme sequence: a pita ka.\n</analysis>\n<answers>\na pita ka\n</answers>",
+      "answer": [
+        "a",
+        "pita",
+        "ka"
+      ],
+      "answer_text": "a pita ka"
+    },
     {
       "model": "openai/gpt-oss-120b",
       "provider": "groq",
-      "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- “they” corresponds to the morpheme wa.\n- “read” corresponds to the verb soma.\n- Present tense corresponds to the morpheme na (as seen in ni**na**penda, u**na**soma, a**na**cheza, a**na**imba).\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- Word order is fixed: [who] + [when] + [verb].\n- No extra agreement markers are needed; simply concatenate the morphemes.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- Concatenate wa + na + soma → wanasoma.\n</analysis>\n<answers>\nwanasoma\n</answers>",
+      "prompt_variant": "decomposition",
+      "raw": "a pita ka",
       "answer": [
-        "wa",
-        "na",
-        "soma"
-      ]
+        "a",
+        "pita",
+        "ka"
+      ],
+      "answer_text": "a pita ka"
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "prompt_variant": "no_hint",
+      "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- The example “apitaka → he/she is going” directly matches the query.\n- From the morpheme bank, “apitaka” is composed of the morphemes a (he/she pronoun) + pita (verb “go”) + ka (present progressive suffix).\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- The language uses a pronoun prefix, a verb root, and a constant suffix “ka” for the present progressive. No additional inflection is needed for the third‑person singular.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- The correct form is a + pita + ka → “apitaka”.\n</analysis>\n<answers>\napitaka\n</answers>",
+      "answer": [
+        "a",
+        "pita",
+        "ka"
+      ],
+      "answer_text": "apitaka"
     },
     {
       "model": "qwen/qwen3.8-27b",
       "provider": "groq",
-      "raw": "<analysis>\n1.  **Analyze the Structure**: The hint and evidence indicate a Subject-Verb structure where the verb is composed of three parts: `[Subject Prefix] + [Tense Marker] + [Verb Root]`.\n    *   **Subject Prefixes**:\n        *   `ni` = I (from *ninapenda*, *nilipenda*)\n        *   `u` = you (sg) (from *unasoma*, *utacheza*)\n        *   `a` = he/she (from *anacheza*, *anaimba*)\n        *   `tu` = we (from *tulisoma*)\n        *   `wa` = they (from *wataimba*)\n    *   **Tense Markers**:\n        *   `na` = present (from *ninapenda*, *unasoma*, *anacheza*)\n        *   `li` = past (from *nilipenda*, *tulisoma*)\n        *   `ta` = future (from *utacheza*, *wataimba*)\n    *   **Verb Roots**:\n        *   `penda` = like\n        *   `soma` = read\n        *   `cheza` = play\n        *   `imba` = sing\n\n2.  **Analyze the Query**: \"they read\"\n    *   **Subject**: \"they\" corresponds to the prefix `wa` (seen in *wataimba* \"they will sing\").\n    *   **Tense**: \"read\" is in the present tense (simple present, as opposed to \"read\" past or \"will read\" future). The present tense marker is `na` (seen in *unasoma* \"you read\", *anacheza* \"she plays\").\n    *   **Verb**: \"read\" corresponds to the root `soma` (seen in *unasoma* \"you read\", *tulisoma* \"we read\").\n\n3.  **Compose the Translation**:\n    *   Subject: `wa`\n    *   Tense: `na`\n    *   Verb: `soma`\n    *   Sequence: `wa` + `na` + `soma` = `wanasoma`\n\n4.  **Verification**:\n    *   *wataimba* = wa (they) + ta (future) + imba (sing) -> they will sing.\n    *   *tulisoma* = tu (we) + li (past) + soma (read) -> we read (past).\n    *   *wanasoma* = wa (they) + na (present) + soma (read) -> they read. This fits the pattern perfectly.\n</analysis>\n<answers>\nwanasoma\n</answers>",
+      "prompt_variant": "no_hint",
+      "raw": "<analysis>\n1.  **Analyze the Evidence**:\n    *   `nhaapitaka` → I am going\n    *   `ãpitaka` → you are going\n    *   `apitaka` → he/she is going\n    *   `nhaakutaka` → I am eating\n    *   `ãkutaka` → you are eating\n    *   `akutaka` → he/she is eating\n    *   `nhaanykataka` → I am speaking\n    *   `ãnykataka` → you are speaking\n    *   `anykataka` → he/she is speaking\n    *   `kaapitaka` → we (everyone) are going\n\n2.  **Deduce Morphemes**:\n    *   **Subject Markers (Prefixes)**:\n        *   \"I\": `nhaa` (seen in `nhaapitaka`, `nhaakutaka`, `nhaanykataka`)\n        *   \"You\": `ã` (seen in `ãpitaka`, `ãkutaka`, `ãnykataka`)\n        *   \"He/She\": `a` (seen in `apitaka`, `akutaka`, `anykataka`)\n        *   \"We (everyone)\": `kaa` (seen in `kaapitaka`)\n    *   **Verb Roots**:\n        *   \"go\": `pita` (seen in `...pitaka`)\n        *   \"eat\": `kuta` (seen in `...kutaka`)\n        *   \"speak\": `nykata` (seen in `...nykataka`)\n    *   **Suffix**:\n        *   All forms end in `taka`. This likely indicates the present continuous tense or aspect.\n\n3.  **Analyze the Query**:\n    *   Query: \"he/she is going\"\n    *   Subject: \"he/she\" → Prefix `a`\n    *   Verb: \"going\" → Root `pita` + Suffix `taka`\n    *   Construction: `a` + `pita` + `taka`\n\n4.  **Verify with Evidence**:\n    *   The evidence pair `apitaka` is explicitly translated as \"he/she is going\".\n    *   The morpheme sequence is `a` `pita` `taka`.\n\n5.  **Final Output Formulation**:\n    *   The requested output is the morpheme sequence or the full word. The prompt asks to \"deduce the correct morpheme sequence\". However, standard ILO format usually expects the full string. Looking at the \"Available morphemes\" list: `nhaa`, `ã`, `a`, `kaa`, `pita`, `kuta`, `nykata`, `ka`, `taka`.\n    *   The word is formed by concatenating these.\n    *   Sequence: `a` `pita` `taka`\n    *   Resulting string: `apitaka`\n\n    Let's double check if \"ka\" is a separate morpheme. In `kaapitaka` (we are going), if `kaa` is the prefix, then `pita` is the root and `taka` is the suffix. The list includes `kaa` and `ka`. `ka` might be a remnant or a different form, but `kaa` fits the \"we\" data point perfectly. The query is \"he/she\", so we use `a`.\n\n    The translation is simply the word found in the evidence.\n</analysis>\n<answers>\napitaka\n</answers>",
       "answer": [
-        "wa",
-        "na",
-        "soma"
-      ]
-    }
-  ],
-  "swahili-person-tense:2": [
-    {
-      "model": "openai/gpt-oss-120b",
-      "provider": "groq",
-      "raw": "<analysis>\nStep 1: Identify the source word for “we sang”. “we” corresponds to the morpheme **tu**. The verb “sing” is **imba**. Past tense is signaled by **li**.\nStep 2: The grammar is [who] + [when] + [verb]; thus we place **tu** (who) before **li** (past) before **imba** (verb).\nStep 3: Concatenate the morphemes in order: **tu** + **li** + **imba** → **tulisimba**.\n</analysis>\n<answers>\ntulisimba\n</answers>",
-      "answer": [
-        "tulisimba"
-      ]
-    },
-    {
-      "model": "qwen/qwen3.8-27b",
-      "provider": "groq",
-      "raw": "<analysis>\n1.  **Analyze the Structure**: The hint and evidence indicate a Subject-Verb structure where the verb is composed of three parts: `[Subject Prefix] + [Tense Marker] + [Verb Root]`.\n    *   **Subjects**:\n        *   `ni` = I (from *ninapenda*, *nilipenda*)\n        *   `u` = you (sg) (from *unasoma*, *utacheza*)\n        *   `a` = he/she (from *anacheza*, *anaimba*)\n        *   `tu` = we (from *tulisoma*)\n        *   `wa` = they (from *wataimba*)\n    *   **Tenses**:\n        *   `na` = present (from *ninapenda*, *unasoma*, *anacheza*)\n        *   `li` = past (from *nilipenda*, *tulisoma*)\n        *   `ta` = future (from *utacheza*, *wataimba*)\n    *   **Verbs**:\n        *   `penda` = like\n        *   `soma` = read\n        *   `cheza` = play\n        *   `imba` = sing\n\n2.  **Analyze the Query**: \"we sang\"\n    *   **Subject**: \"we\" corresponds to the prefix `tu`.\n    *   **Tense**: \"sang\" is past tense. The past tense marker is `li`.\n    *   **Verb**: \"sing\" corresponds to the root `imba`.\n\n3.  **Compose the Translation**:\n    *   Combine the parts in the order `[Subject] + [Tense] + [Verb]`.\n    *   `tu` + `li` + `imba` = `tulimba`.\n\n4.  **Verification**:\n    *   Compare with *tulisoma* (we read past): `tu` (we) + `li` (past) + `soma` (read).\n    *   The query requires \"we\" + \"past\" + \"sing\".\n    *   Result: `tulimba`.\n</analysis>\n<answers>\ntulimba\n</answers>",
-      "answer": [
-        "tulimba"
-      ]
-    }
-  ],
-  "turkish-vowel-harmony:0": [
-    {
-      "model": "openai/gpt-oss-120b",
-      "provider": "groq",
-      "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- “eyes” corresponds to the root “göz” (eye).\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- The query is plural, so we need the plural suffix. Vowel harmony dictates using –ler after front vowels. “göz” ends in the front vowel “ö”, so the suffix is –ler.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- Combine root and suffix: göz + ler → gözler.\n</analysis>\n<answers>\ngözler\n</answers>",
-      "answer": [
-        "göz",
-        "ler"
-      ]
-    },
-    {
-      "model": "qwen/qwen3.8-27b",
-      "provider": "groq",
-      "raw": "<analysis>\n1.  **Identify the source word**: The query is \"eyes\". Looking at the evidence, `göz` corresponds to \"eye\".\n2.  **Determine the plural suffix**: The evidence shows plurals like `evler` (houses), `atlar` (horses), `eller` (hands), `kitaplar` (books). The hint explains vowel harmony:\n    *   Back vowels (a, ı, o, u) take `-lar`.\n    *   Front vowels (e, i, ö, ü) take `-ler`.\n3.  **Apply vowel harmony**: The root is `göz`. The last vowel is `ö`. `ö` is a front vowel. Therefore, the plural suffix must be `-ler`.\n4.  **Compose the translation**: Root `göz` + Suffix `ler` = `gözler`.\n</analysis>\n<answers>\ngözler\n</answers>",
-      "answer": [
-        "göz",
-        "ler"
-      ]
-    }
-  ],
-  "turkish-vowel-harmony:1": [
-    {
-      "model": "openai/gpt-oss-120b",
-      "provider": "groq",
-      "raw": "<analysis>\nStep 1: Identify the source word for “girls”. The singular “girl” is given as kız.\nStep 2: Determine plural suffix. The root kız ends with the vowel ı, which belongs to the back‑vowel group (a, ı, o, u). According to vowel harmony, back‑vowel roots take the plural suffix -lar.\nStep 3: Combine root and suffix: kız + lar → kızlar.\n</analysis>\n<answers>\nkızlar\n</answers>",
-      "answer": [
-        "kız",
-        "lar"
-      ]
-    },
-    {
-      "model": "qwen/qwen3.8-27b",
-      "provider": "groq",
-      "raw": "<analysis>\n1.  **Identify the source word**: The query is \"girls\". Looking at the evidence, \"kız\" corresponds to \"girl\".\n2.  **Determine the plural suffix**: The evidence shows plurals like \"evler\" (houses), \"atlar\" (horses), \"eller\" (hands), \"kitaplar\" (books). The hint explains vowel harmony:\n    *   Back vowels (a, ı, o, u) take the suffix `-lar`.\n    *   Front vowels (e, i, ö, ü) take the suffix `-ler`.\n3.  **Apply vowel harmony**: The root is `kız`. The last vowel is `ı`. According to the hint, `ı` is a back vowel. Therefore, the correct plural suffix is `-lar`.\n4.  **Compose the translation**: Combine the root `kız` with the suffix `lar` to get `kızlar`.\n</analysis>\n<answers>\nkızlar\n</answers>",
-      "answer": [
-        "kız",
-        "lar"
-      ]
-    }
-  ],
-  "quechua-person-endings:0": [
-    {
-      "model": "openai/gpt-oss-120b",
-      "provider": "groq",
-      "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- The root for “walk” is **puri** (from *purin* “he walks”).\n- Person suffixes: **ni** = I, **nki** = you, **n** = he/she, **nchik** = we (incl.).\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- The language builds the verb by concatenating the root with the appropriate person suffix. No additional tense or aspect markers are shown; the base form conveys present simple.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- “I walk” = root **puri** + suffix **ni** → **purini**.\n</analysis>\n<answers>\npurini\n</answers>",
-      "answer": [
-        "puri",
-        "ni"
-      ]
-    },
-    {
-      "model": "qwen/qwen3.8-27b",
-      "provider": "groq",
-      "raw": "<analysis>\n1.  **Analyze the Evidence:**\n    *   `rimani` → I speak: Root `rima` + `ni` (I).\n    *   `rimanki` → you speak: Root `rima` + `nki` (you).\n    *   `riman` → she speaks: Root `rima` + `n` (he/she).\n    *   `rikuni` → I see: Root `riku` + `ni` (I).\n    *   `mikhunki` → you eat: Root `mikhu` + `nki` (you).\n    *   `purin` → he walks: Root `puri` + `n` (he/she).\n    *   `rimanchik` → we (all of us) speak: Root `rima` + `nchik` (we incl.).\n    *   `mikhunchik` → we (all of us) eat: Root `mikhu` + `nchik` (we incl.).\n\n2.  **Deduce Grammar Rules:**\n    *   **Structure:** [Root] + [Person Marker].\n    *   **Person Markers:**\n        *   I: `ni`\n        *   You: `nki`\n        *   He/She: `n`\n        *   We (inclusive): `nchik`\n    *   **Roots:**\n        *   Speak: `rima`\n        *   See: `riku`\n        *   Eat: `mikhu`\n        *   Walk: `puri` (from `purin` → he walks)\n\n3.  **Solve the Query:**\n    *   Query: \"I walk\"\n    *   Root for \"walk\": `puri`\n    *   Person marker for \"I\": `ni`\n    *   Combination: `puri` + `ni` = `purini`\n\n4.  **Verification:**\n    *   Does `puri` exist in the tile bank? Yes.\n    *   Does `ni` exist in the tile bank? Yes.\n    *   Does the pattern match other \"I\" forms? `rimani` (rima+ni), `rikuni` (riku+ni). Yes.\n</analysis>\n<answers>\npurini\n</answers>",
-      "answer": [
-        "puri",
-        "ni"
-      ]
-    }
-  ],
-  "quechua-person-endings:1": [
-    {
-      "model": "openai/gpt-oss-120b",
-      "provider": "groq",
-      "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- The root for “see” is **riku** (evidenced by *rikuni* “I see”).\n- The suffix for “we (all of us)” is **nchik** (evidenced by *rimanchik* “we speak”, *mikhunchik* “we eat”).\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- The language builds a verb phrase by concatenating the root directly with the person‑suffix. No extra vowel changes are needed when attaching **nchik**.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- Combine **riku** + **nchik** → **rikunchik**.\n\n</analysis>\n<answers>\nrikunchik\n</answers>",
-      "answer": [
-        "riku",
-        "nchik"
-      ]
-    },
-    {
-      "model": "qwen/qwen3.8-27b",
-      "provider": "groq",
-      "raw": "<analysis>\n1.  **Analyze the Evidence:**\n    *   `rimani` → I speak: Root `rima` + `ni` (I).\n    *   `rimanki` → you speak: Root `rima` + `nki` (you).\n    *   `riman` → she speaks: Root `rima` + `n` (he/she).\n    *   `rikuni` → I see: Root `riku` + `ni` (I).\n    *   `mikhunki` → you eat: Root `mikhu` + `nki` (you).\n    *   `purin` → he walks: Root `puri` + `n` (he/she).\n    *   `rimanchik` → we (all of us) speak: Root `rima` + `nchik` (we incl.).\n    *   `mikhunchik` → we (all of us) eat: Root `mikhu` + `nchik` (we incl.).\n\n2.  **Deduce Grammar Rules:**\n    *   **Structure:** [Root] + [Person Marker].\n    *   **Person Markers:**\n        *   I: `ni`\n        *   You: `nki`\n        *   He/She: `n`\n        *   We (inclusive): `nchik`\n    *   **Roots:**\n        *   Speak: `rima`\n        *   See: `riku`\n        *   Eat: `mikhu`\n        *   Walk: `puri`\n\n3.  **Analyze the Query:**\n    *   Query: \"we (all of us) see\"\n    *   Target Meaning: \"See\" corresponds to the root `riku` (from `rikuni` → I see).\n    *   Target Person: \"we (all of us)\" corresponds to the marker `nchik` (from `rimanchik` and `mikhunchik`).\n\n4.  **Compose the Translation:**\n    *   Root: `riku`\n    *   Person Marker: `nchik`\n    *   Combination: `riku` + `nchik` = `rikunchik`\n\n5.  **Verification:**\n    *   Does `riku` appear in the evidence? Yes (`rikuni`).\n    *   Does `nchik` appear in the evidence? Yes (`rimanchik`, `mikhunchik`).\n    *   Is the combination consistent with the pattern? Yes.\n</analysis>\n<answers>\nrikunchik\n</answers>",
-      "answer": [
-        "riku",
-        "nchik"
-      ]
-    }
-  ],
-  "quechua-person-endings:2": [
-    {
-      "model": "openai/gpt-oss-120b",
-      "provider": "groq",
-      "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- The verb “eat” appears in “mikhunki” (you eat) and “mikhunchik” (we eat). The root is **mikhu**.\n- The third‑person singular (she) suffix is **-n**, as seen in “riman” (she speaks) and “purin” (he walks).\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- The language builds a verb by concatenating the root with a person suffix.\n- For third‑person singular the suffix is **n**; no vowel changes occur when attaching it.\n\nStep 3: Compose the EXACT target‑language form, preserving notation like You_{sg}, You_{pl}.\n- Combine the root **mikhu** with the suffix **n** → **mikhun**.\n</analysis>\n<answers>\nmikhun\n</answers>",
-      "answer": [
-        "mikhu",
-        "n"
-      ]
-    },
-    {
-      "model": "qwen/qwen3.8-27b",
-      "provider": "groq",
-      "raw": "<analysis>\n1.  **Analyze the Evidence:**\n    *   `rimani` → I speak: Root `rima` + `ni` (I).\n    *   `rimanki` → you speak: Root `rima` + `nki` (you).\n    *   `riman` → she speaks: Root `rima` + `n` (he/she).\n    *   `rikuni` → I see: Root `riku` + `ni` (I).\n    *   `mikhunki` → you eat: Root `mikhu` + `nki` (you).\n    *   `purin` → he walks: Root `puri` + `n` (he/she).\n    *   `rimanchik` → we (all of us) speak: Root `rima` + `nchik` (we incl.).\n    *   `mikhunchik` → we (all of us) eat: Root `mikhu` + `nchik` (we incl.).\n\n2.  **Deduce Grammar Rules:**\n    *   **Structure:** [Root] + [Person Suffix].\n    *   **Person Suffixes:**\n        *   1st person singular (I): `ni`\n        *   2nd person singular (you): `nki`\n        *   3rd person singular (he/she): `n`\n        *   1st person plural inclusive (we incl.): `nchik`\n    *   **Roots:**\n        *   speak: `rima`\n        *   see: `riku`\n        *   eat: `mikhu`\n        *   walk: `puri`\n\n3.  **Analyze the Query:**\n    *   Query: \"she eats\"\n    *   **Verb:** \"eat\" corresponds to the root `mikhu` (seen in `mikhunki` and `mikhunchik`).\n    *   **Person:** \"she\" corresponds to the 3rd person singular suffix `n` (seen in `riman` and `purin`).\n\n4.  **Compose the Translation:**\n    *   Root: `mikhu`\n    *   Suffix: `n`\n    *   Result: `mikhun`\n\n</analysis>\n<answers>\nmikhun\n</answers>",
-      "answer": [
-        "mikhu",
-        "n"
-      ]
+        "a",
+        "pita",
+        "ka"
+      ],
+      "answer_text": "apitaka"
     }
   ],
   "nahuatl-both-ends:0": [
@@ -348,7 +552,8 @@
       "answer": [
         "ni",
         "cuica"
-      ]
+      ],
+      "answer_text": "ni cuica"
     },
     {
       "model": "qwen/qwen3.8-27b",
@@ -357,7 +562,85 @@
       "answer": [
         "ni",
         "cuica"
-      ]
+      ],
+      "answer_text": "ni cuica"
+    },
+    {
+      "model": "Qwen/Qwen3-32B",
+      "provider": "featherless",
+      "prompt_variant": "decomposition",
+      "raw": "ni cuica",
+      "answer": [
+        "ni",
+        "cuica"
+      ],
+      "answer_text": "ni cuica"
+    },
+    {
+      "model": "deepseek-ai/DeepSeek-V3.2",
+      "provider": "featherless",
+      "prompt_variant": "decomposition",
+      "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- The query is \"I sing\". From evidence: \"nicuica\" is not given, but \"ticuica\" means \"you sing\" and \"cuicah\" means \"they sing\". The verb root for \"sing\" is \"cuica\". For \"I\", the subject prefix is \"ni\" (as in \"nicochi\" = I sleep, \"nichoca\" = I cry).\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- Structure is [who] + [verb] + (h if plural). For \"I\" (singular), no plural marker \"h\" is added. So it's \"ni\" + verb root.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- The target is a morpheme sequence, not a translation. The query is \"I sing\", so morphemes: \"ni\" (I) and \"cuica\" (sing). No plural marker.\n</analysis>\n<answers>\nni cuica\n</answers>",
+      "answer": [
+        "ni",
+        "cuica"
+      ],
+      "answer_text": "ni cuica"
+    },
+    {
+      "model": "zai-org/GLM-4.6",
+      "provider": "featherless",
+      "prompt_variant": "decomposition",
+      "raw": "<analysis>\nStep 1: Identify the source word for the query \"I sing\". The verb is \"sing\" and the subject is \"I\".\nStep 2: Note any grammar (case, tense, agreement) that must be applied. The subject \"I\" corresponds to the prefix \"ni\". The verb \"sing\" corresponds to the root \"cuica\". Since it is singular (\"I\" not \"we\"), no plural suffix \"h\" is added.\nStep 3: Compose the EXACT target-language form using the available morphemes: ni + cuica.\n</analysis>\n<answers>\nni cuica\n</answers>",
+      "answer": [
+        "ni",
+        "cuica"
+      ],
+      "answer_text": "ni cuica"
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "prompt_variant": "decomposition",
+      "raw": "<answers>\nni cuica\n</answers>",
+      "answer": [
+        "ni",
+        "cuica"
+      ],
+      "answer_text": "ni cuica"
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "prompt_variant": "no_hint",
+      "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- “I sing” corresponds to the first‑person pronoun “ni” plus the verb stem for “sing”, which is “cuica”.\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- No plural marker “h” is needed because the subject is singular “I”. The order is pronoun‑verb.\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- Combine “ni” + “cuica” → “nicuica”.\n</analysis>\n<answers>\nnicuica\n</answers>",
+      "answer": [
+        "ni",
+        "cuica"
+      ],
+      "answer_text": "nicuica"
+    },
+    {
+      "model": "qwen/qwen3.8-27b",
+      "provider": "groq",
+      "prompt_variant": "decomposition",
+      "raw": "<analysis>\n1.  **Analyze the Evidence:**\n    *   `nicochi` → I sleep\n    *   `ticochi` → you sleep\n    *   `cochi` → he sleeps\n    *   `nichoca` → I cry\n    *   `ticuica` → you sing\n    *   `cuicah` → they sing\n    *   `nicochih` → we sleep\n\n2.  **Deduce Morphemes:**\n    *   **Subject Markers (Prefixes):**\n        *   `ni-` appears in \"I sleep\" (`nicochi`) and \"I cry\" (`nichoca`). It also appears in \"we sleep\" (`nicochih`).\n        *   `ti-` appears in \"you sleep\" (`ticochi`) and \"you sing\" (`ticuica`).\n        *   No prefix appears in \"he sleeps\" (`cochi`) or \"they sing\" (`cuicah`).\n        *   Therefore: `ni` = I, `ti` = you, (null) = he/she/they.\n    *   **Verb Roots:**\n        *   `cochi` is the root for \"sleep\" (seen in `nicochi`, `ticochi`, `cochi`, `nicochih`).\n        *   `choca` is the root for \"cry\" (seen in `nichoca`).\n        *   `cuica` is the root for \"sing\" (seen in `ticuica`, `cuicah`).\n    *   **Plural Marker (Suffix):**\n        *   `nicochih` is \"we sleep\". The base is `nicochi` (I sleep). The addition is `h`.\n        *   `cuicah` is \"they sing\". The base is `cuica` (he/she sings). The addition is `h`.\n        *   Therefore: `h` marks plural subjects (we/they).\n\n3.  **Analyze the Query:**\n    *   Query: \"I sing\"\n    *   Subject: \"I\" → `ni`\n    *   Verb: \"sing\" → `cuica`\n    *   Number: Singular (no `h`)\n\n4.  **Construct the Answer:**\n    *   Sequence: `ni` + `cuica`\n    *   Format: Space-separated morphemes.\n\n5.  **Final Check:**\n    *   `ni` (I) + `cuica` (sing) = `ni cuica`.\n    *   Matches the pattern of `ni cochi` (I sleep) and `ti cuica` (you sing).\n</analysis>\n<answers>\nni cuica\n</answers>",
+      "answer": [
+        "ni",
+        "cuica"
+      ],
+      "answer_text": "ni cuica"
+    },
+    {
+      "model": "qwen/qwen3.8-27b",
+      "provider": "groq",
+      "prompt_variant": "no_hint",
+      "raw": "<analysis>\n1.  **Analyze the Verbs (Lexemes):**\n    *   `cochi` appears in \"I sleep\" (`nicochi`), \"you sleep\" (`ticochi`), \"he sleeps\" (`cochi`), and \"we sleep\" (`nicochih`). This suggests `cochi` is the root for \"sleep\".\n    *   `choca` appears in \"I cry\" (`nichoca`). This suggests `choca` is the root for \"cry\".\n    *   `cuica` appears in \"you sing\" (`ticuica`) and \"they sing\" (`cuicah`). This suggests `cuica` is the root for \"sing\".\n\n2.  **Analyze the Affixes (Morphology):**\n    *   **Person Markers (Prefixes):**\n        *   `ni-` is in \"I sleep\" (`nicochi`) and \"I cry\" (`nichoca`). So, `ni` = I.\n        *   `ti-` is in \"you sleep\" (`ticochi`) and \"you sing\" (`ticuica`). So, `ti` = you.\n        *   No prefix is present in \"he sleeps\" (`cochi`) or \"they sing\" (`cuicah`). This implies the 3rd person singular/plural is unmarked or zero-marked in the prefix position.\n    *   **Number/Person Markers (Suffixes):**\n        *   `h` is in \"we sleep\" (`nicochih`) and \"they sing\" (`cuicah`).\n        *   Let's look at the subjects:\n            *   \"I\" (1sg): `ni` + root. No suffix.\n            *   \"You\" (2sg): `ti` + root. No suffix.\n            *   \"He\" (3sg): root. No suffix.\n            *   \"We\" (1pl): `ni` + root + `h`.\n            *   \"They\" (3pl): root + `h`.\n        *   This indicates that `h` marks the plural (or specifically 1st/3rd person plural, while 2nd person plural might be different, but we don't have a 2pl example). Since \"I\" is `ni` and \"We\" is `ni...h`, the `h` is a plural suffix.\n\n3.  **Synthesize the Pattern:**\n    *   Structure: [Person Prefix] + [Verb Root] + [Number Suffix]\n    *   I (1sg): `ni` + Root\n    *   You (2sg): `ti` + Root\n    *   He (3sg): Root\n    *   We (1pl): `ni` + Root + `h`\n    *   They (3pl): Root + `h`\n\n4.  **Solve the Query:**\n    *   Query: \"I sing\"\n    *   Subject: \"I\" -> Prefix `ni`\n    *   Verb: \"sing\" -> Root `cuica` (from `ticuica` and `cuicah`)\n    *   Number: Singular (implied by \"I\") -> No suffix `h`.\n    *   Construction: `ni` + `cuica` = `nicuica`\n\n5.  **Verification:**\n    *   `nicuica` follows the pattern of `nicochi` (I sleep) and `nichoca` (I cry).\n    *   The morphemes used are `ni` and `cuica`, both present in the tile bank.\n\n</analysis>\n<answers>\nnicuica\n</answers>",
+      "answer": [
+        "ni",
+        "cuica"
+      ],
+      "answer_text": "nicuica"
     }
   ],
   "nahuatl-both-ends:1": [
@@ -368,7 +651,8 @@
       "answer": [
         "choca",
         "h"
-      ]
+      ],
+      "answer_text": "choca h"
     },
     {
       "model": "qwen/qwen3.8-27b",
@@ -377,7 +661,85 @@
       "answer": [
         "choca",
         "h"
-      ]
+      ],
+      "answer_text": "choca h"
+    },
+    {
+      "model": "Qwen/Qwen3-32B",
+      "provider": "featherless",
+      "prompt_variant": "decomposition",
+      "raw": "choca h",
+      "answer": [
+        "choca",
+        "h"
+      ],
+      "answer_text": "choca h"
+    },
+    {
+      "model": "deepseek-ai/DeepSeek-V3.2",
+      "provider": "featherless",
+      "prompt_variant": "decomposition",
+      "raw": "<analysis>\nStep 1: Identify morpheme meanings from evidence.\n- \"nicochi\" → I sleep: \"ni\" = I, \"cochi\" = sleep.\n- \"ticochi\" → you sleep: \"ti\" = you, \"cochi\" = sleep.\n- \"cochi\" → he sleeps: no prefix, \"cochi\" = sleep, subject is third person singular.\n- \"nichoca\" → I cry: \"ni\" = I, \"choca\" = cry.\n- \"ticuica\" → you sing: \"ti\" = you, \"cuica\" = sing.\n- \"cuicah\" → they sing: no prefix, \"cuica\" = sing, \"h\" at end indicates plural subject (they).\n- \"nicochih\" → we sleep: \"ni\" = I/we, \"cochi\" = sleep, \"h\" at end indicates plural subject (we). So \"ni\" plus \"h\" indicates first person plural.\n\nPattern: Subject markers: \"ni\" = first person (I/we), \"ti\" = second person (you), no prefix = third person (he/she/they). Plurality is marked by suffix \"h\" at the end of the verb. For third person plural, no prefix + verb + h. For first person plural, ni + verb + h. Second person plural not given but likely ti + verb + h.\n\nStep 2: Query: \"they cry\".\n- Subject: they = third person plural → no subject prefix.\n- Verb: cry = \"choca\" (from \"nichoca\").\n- Plural marker: \"h\" at end.\nSo morpheme sequence: choca h.\n\nStep 3: Available morphemes: ni, ti, xi, cochi, choca, cuica, h. Use \"choca\" and \"h\".\n</analysis>\n<answers>\nchoca h\n</answers>",
+      "answer": [
+        "choca",
+        "h"
+      ],
+      "answer_text": "choca h"
+    },
+    {
+      "model": "zai-org/GLM-4.6",
+      "provider": "featherless",
+      "prompt_variant": "decomposition",
+      "raw": "choca h",
+      "answer": [
+        "choca",
+        "h"
+      ],
+      "answer_text": "choca h"
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "prompt_variant": "decomposition",
+      "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- “they cry” uses the verb “cry”, which in the example “nichoca → I cry” is the morpheme **choca**.\n- For third‑person plural subjects the plural marker **h** is added at the end of the verb (e.g., “cuicah → they sing”).\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- No subject prefix is used for third‑person plural; only the plural suffix **h** is attached to the verb root.\n\nStep 3: Compose the EXACT target‑language form, preserving notation like You_{sg}, You_{pl}.\n- Combine the verb root **choca** with the plural suffix **h**, keeping the order as in the morpheme list.\n\n</analysis>\n<answers>\nchoca h\n</answers>",
+      "answer": [
+        "choca",
+        "h"
+      ],
+      "answer_text": "choca h"
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "prompt_variant": "no_hint",
+      "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- “cry” verb root appears in “nichoca” = I cry → root = choca, with first‑person prefix ni.\n- “they” is expressed by adding the plural suffix h to the verb root, as seen in “cuicah” = they sing (root cuica + h).\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- Third‑person plural (they) is formed by the suffix h attached directly to the verb root, with no person prefix.\n- No additional tense or aspect markers are needed; the form matches the present tense used in the evidence.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- Combine the verb root for “cry” (choca) with the plural suffix h → “chocah”.\n</analysis>\n<answers>\nchocah\n</answers>",
+      "answer": [
+        "choca",
+        "h"
+      ],
+      "answer_text": "chocah"
+    },
+    {
+      "model": "qwen/qwen3.8-27b",
+      "provider": "groq",
+      "prompt_variant": "decomposition",
+      "raw": "<analysis>\n1.  **Analyze the Evidence:**\n    *   `nicochi` → I sleep: `ni` (I) + `cochi` (sleep)\n    *   `ticochi` → you sleep: `ti` (you) + `cochi` (sleep)\n    *   `cochi` → he sleeps: (no prefix) + `cochi` (sleep)\n    *   `nichoca` → I cry: `ni` (I) + `choca` (cry)\n    *   `ticuica` → you sing: `ti` (you) + `cuica` (sing)\n    *   `cuicah` → they sing: (no prefix) + `cuica` (sing) + `h` (plural marker)\n    *   `nicochih` → we sleep: `ni` (I/we) + `cochi` (sleep) + `h` (plural marker)\n\n2.  **Deduce Grammar Rules:**\n    *   **Subject Prefixes:**\n        *   `ni` = I / We\n        *   `ti` = You\n        *   (null/empty) = He/She/They\n    *   **Verbs:**\n        *   `cochi` = sleep\n        *   `choca` = cry\n        *   `cuica` = sing\n    *   **Plural Marker:**\n        *   `h` is appended to the end of the verb to indicate a plural subject (We, They).\n        *   \"I\" is singular, so no `h`.\n        *   \"We\" is plural, so `ni` + verb + `h`.\n        *   \"They\" is plural, so (null) + verb + `h`.\n\n3.  **Analyze the Query:**\n    *   Query: \"they cry\"\n    *   Subject: \"they\" -> No prefix (null).\n    *   Verb: \"cry\" -> `choca` (from `nichoca` where `ni` is I).\n    *   Number: Plural -> Add `h` at the end.\n\n4.  **Construct the Morpheme Sequence:**\n    *   Subject: (none)\n    *   Verb: `choca`\n    *   Plural: `h`\n    *   Sequence: `choca h`\n\n5.  **Final Verification:**\n    *   `cuicah` is \"they sing\" (`cuica` + `h`).\n    *   Therefore, \"they cry\" is `choca` + `h`.\n    *   The available morphemes are `ni`, `ti`, `xi`, `cochi`, `choca`, `cuica`, `h`.\n    *   The required morphemes are `choca` and `h`.\n</analysis>\n<answers>\nchoca h\n</answers>",
+      "answer": [
+        "choca",
+        "h"
+      ],
+      "answer_text": "choca h"
+    },
+    {
+      "model": "qwen/qwen3.8-27b",
+      "provider": "groq",
+      "prompt_variant": "no_hint",
+      "raw": "<analysis>\n1.  **Analyze the Verbs (Lexemes):**\n    *   \"sleep\": `nicochi` (I), `ticochi` (you), `cochi` (he), `nicochih` (we). The core stem appears to be `cochi`.\n    *   \"cry\": `nichoca` (I). The core stem appears to be `choca`.\n    *   \"sing\": `ticuica` (you), `cuicah` (they). The core stem appears to be `cuica`.\n\n2.  **Analyze the Affixes (Morphology):**\n    *   **Person Markers (Prefixes):**\n        *   `ni-`: I (seen in `nicochi`, `nichoca`)\n        *   `ti-`: you (seen in `ticochi`, `ticuica`)\n        *   (Zero prefix): he (seen in `cochi`)\n    *   **Number Markers (Suffixes):**\n        *   (Zero suffix): Singular (seen in `cochi`, `nichoca`, `ticuica`)\n        *   `-h`: Plural (seen in `nicochih` [we], `cuicah` [they])\n\n3.  **Synthesize the Pattern:**\n    *   Structure: [Person Prefix] + [Verb Stem] + [Number Suffix]\n    *   \"they\" corresponds to the 3rd person plural.\n    *   3rd person prefix: Zero (empty).\n    *   Plural suffix: `-h`.\n    *   Verb \"cry\" stem: `choca`.\n\n4.  **Construct the Query:**\n    *   Query: \"they cry\"\n    *   Person: 3rd person (no prefix)\n    *   Stem: `choca`\n    *   Number: Plural (`-h`)\n    *   Result: `choca` + `h` = `chocah`\n\n5.  **Verification:**\n    *   Compare with `cuicah` (they sing): `cuica` (stem) + `h` (plural). Matches pattern.\n    *   Compare with `cochi` (he sleeps): `cochi` (stem) + (zero). Matches pattern.\n    *   The target is \"they cry\", so stem `choca` + suffix `h`.\n\n</analysis>\n<answers>\nchocah\n</answers>",
+      "answer": [
+        "choca",
+        "h"
+      ],
+      "answer_text": "chocah"
     }
   ],
   "nahuatl-both-ends:2": [
@@ -389,7 +751,8 @@
         "ni",
         "cuica",
         "h"
-      ]
+      ],
+      "answer_text": "ni cuica h"
     },
     {
       "model": "qwen/qwen3.8-27b",
@@ -399,7 +762,1013 @@
         "ni",
         "cuica",
         "h"
-      ]
+      ],
+      "answer_text": "ni cuica h"
+    },
+    {
+      "model": "Qwen/Qwen3-32B",
+      "provider": "featherless",
+      "prompt_variant": "decomposition",
+      "raw": "ni cuica h",
+      "answer": [
+        "ni",
+        "cuica",
+        "h"
+      ],
+      "answer_text": "ni cuica h"
+    },
+    {
+      "model": "deepseek-ai/DeepSeek-V3.2",
+      "provider": "featherless",
+      "prompt_variant": "decomposition",
+      "raw": "<analysis>\nStep 1: Identify morpheme meanings from evidence:\n- \"nicochi\" → I sleep: ni (I) + cochi (sleep)\n- \"ticochi\" → you sleep: ti (you) + cochi (sleep)\n- \"cochi\" → he sleeps: (no prefix) + cochi (sleep) → third person singular subject has no prefix.\n- \"nichoca\" → I cry: ni (I) + choca (cry)\n- \"ticuica\" → you sing: ti (you) + cuica (sing)\n- \"cuicah\" → they sing: (no prefix) + cuica (sing) + h (plural subject) → they sing.\n- \"nicochih\" → we sleep: ni (I/we) + cochi (sleep) + h (plural subject) → we sleep.\n\nPattern: Subject prefixes: ni- (first person), ti- (second person), no prefix (third person). Plural subject is marked by suffix -h. For first person plural \"we\", both ni- and -h are used.\n\nStep 2: Query: \"we sing\"\n- Subject: we → first person plural → prefix ni- and suffix -h.\n- Verb: sing → root cuica (from \"ticuica\", \"cuicah\").\n\nStep 3: Morpheme sequence: ni + cuica + h.\n</analysis>\n<answers>\nni cuica h\n</answers>",
+      "answer": [
+        "ni",
+        "cuica",
+        "h"
+      ],
+      "answer_text": "ni cuica h"
+    },
+    {
+      "model": "zai-org/GLM-4.6",
+      "provider": "featherless",
+      "prompt_variant": "decomposition",
+      "raw": "<analysis>\nStep 1: Identify the source word for the query \"we sing\". \"we\" corresponds to the 1st person plural subject prefix \"ni\" and the plural suffix \"h\". \"sing\" corresponds to the verb root \"cuica\".\nStep 2: Note the grammar: 1st person plural requires both the prefix \"ni\" and the suffix \"h\". The verb root is \"cuica\".\nStep 3: Compose the EXACT target-language form using the available morphemes: ni, cuica, h.\n</analysis>\n<answers>\nni cuica h\n</answers>",
+      "answer": [
+        "ni",
+        "cuica",
+        "h"
+      ],
+      "answer_text": "ni cuica h"
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "prompt_variant": "decomposition",
+      "raw": "<answers>\nni cuica h\n</answers>",
+      "answer": [
+        "ni",
+        "cuica",
+        "h"
+      ],
+      "answer_text": "ni cuica h"
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "prompt_variant": "no_hint",
+      "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- “we sing” must be formed analogously to the other sentences.\n- From the evidence:\n  - “I sleep” = ni + cochi → nicochi\n  - “you sleep” = ti + cochi → ticochi\n  - “he sleeps” = cochi (no person prefix)\n  - “we sleep” = ni + cochi + h → nicochih (plural suffix h)\n  - “I cry” = ni + choca → nichoca\n  - “you sing” = ti + cuica → ticuica\n  - “they sing” = cuica + h → cuicah (plural suffix h, no prefix)\n- Therefore the pattern is:\n  * Person prefixes: ni = I, ti = you, none = he/they.\n  * Verb stems: cochi = sleep, choca = cry, cuica = sing.\n  * Plural suffix: h = plural subjects (we/they).\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- For first‑person plural “we”, the construction uses the first‑person singular prefix ni plus the plural suffix h, exactly as in “we sleep” (ni + cochi + h).\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- “we sing” = ni + cuica + h → “nicuicah”.\n</analysis>\n<answers>\nnicuicah\n</answers>",
+      "answer": [
+        "ni",
+        "cuica",
+        "h"
+      ],
+      "answer_text": "nicuicah"
+    },
+    {
+      "model": "qwen/qwen3.8-27b",
+      "provider": "groq",
+      "prompt_variant": "decomposition",
+      "raw": "<analysis>\n1.  **Analyze the Evidence:**\n    *   `nicochi` → I sleep: `ni` (I) + `cochi` (sleep)\n    *   `ticochi` → you sleep: `ti` (you) + `cochi` (sleep)\n    *   `cochi` → he sleeps: (zero subject) + `cochi` (sleep)\n    *   `nichoca` → I cry: `ni` (I) + `choca` (cry)\n    *   `ticuica` → you sing: `ti` (you) + `cuica` (sing)\n    *   `cuicah` → they sing: (zero subject) + `cuica` (sing) + `h` (plural marker)\n    *   `nicochih` → we sleep: `ni` (I/we) + `cochi` (sleep) + `h` (plural marker)\n\n2.  **Deduce Grammar Rules:**\n    *   **Subject Prefixes:**\n        *   `ni` = I / We\n        *   `ti` = You\n        *   (null) = He/She/They\n    *   **Verbs:**\n        *   `cochi` = sleep\n        *   `choca` = cry\n        *   `cuica` = sing\n    *   **Plural Marker:**\n        *   `h` is suffixed to the verb to indicate a plural subject (specifically \"we\" when combined with `ni`, or \"they\" when combined with the null subject).\n    *   **Word Order:** [Subject Prefix] + [Verb Stem] + [Plural Suffix]\n\n3.  **Analyze the Query:**\n    *   Query: \"we sing\"\n    *   Subject: \"we\" corresponds to the prefix `ni` (as seen in `nicochih` for \"we sleep\").\n    *   Verb: \"sing\" corresponds to the stem `cuica` (as seen in `ticuica` and `cuicah`).\n    *   Plural: \"we\" is plural, so the suffix `h` is required.\n\n4.  **Construct the Morpheme Sequence:**\n    *   Subject: `ni`\n    *   Verb: `cuica`\n    *   Plural: `h`\n    *   Sequence: `ni cuica h`\n\n5.  **Final Verification:**\n    *   `ni` (we) + `cuica` (sing) + `h` (plural) = \"we sing\".\n    *   This matches the pattern of `nicochih` (ni + cochi + h) and `cuicah` (null + cuica + h).\n</analysis>\n<answers>\nni cuica h\n</answers>",
+      "answer": [
+        "ni",
+        "cuica",
+        "h"
+      ],
+      "answer_text": "ni cuica h"
+    },
+    {
+      "model": "qwen/qwen3.8-27b",
+      "provider": "groq",
+      "prompt_variant": "no_hint",
+      "raw": "<analysis>\n1.  **Analyze the Verbs (Lexemes):**\n    *   \"sleep\": `nicochi` (I), `ticochi` (you), `cochi` (he), `nicochih` (we). The core stem appears to be `cochi`.\n    *   \"cry\": `nichoca` (I). The stem is likely `choca`.\n    *   \"sing\": `ticuica` (you), `cuicah` (they). The stem is likely `cuica`.\n\n2.  **Analyze the Affixes (Morphology):**\n    *   **Person Markers (Prefixes):**\n        *   `ni-`: Found in `nicochi` (I sleep) and `nichoca` (I cry). Indicates 1st person singular (I).\n        *   `ti-`: Found in `ticochi` (you sleep) and `ticuica` (you sing). Indicates 2nd person singular (you).\n        *   (No prefix): `cochi` (he sleeps), `cuicah` (they sing). Indicates 3rd person (he/they).\n    *   **Number Markers (Suffixes):**\n        *   `-h`: Found in `nicochih` (we sleep) and `cuicah` (they sing).\n        *   Let's look closer at `cuicah` (they sing). It has no prefix. `cochi` (he sleeps) has no suffix. `cuicah` has `-h`.\n        *   `nicochih` (we sleep) has prefix `ni-` and suffix `-h`.\n        *   This suggests `-h` marks plural (we/they).\n        *   Wait, let's re-examine `cuicah`. If `cuica` is the stem for \"sing\", then `cuicah` is \"they sing\".\n        *   Let's check `nicochih`. Stem `cochi` + `ni` (I) + `h` (plural/we)? Or is `h` a specific \"we\" marker?\n        *   Let's look at the available morphemes: `ni`, `ti`, `xi`, `cochi`, `choca`, `cuica`, `h`.\n        *   `xi` is in the bank but not in the evidence.\n        *   Let's look at the structure of \"we sing\".\n        *   \"We\" corresponds to 1st person plural.\n        *   \"I\" is `ni-`.\n        *   \"We\" in `nicochih` is `ni-...-h`.\n        *   \"They\" in `cuicah` is `...-h` (no prefix).\n        *   So, the pattern for 1st person plural (we) seems to be `ni-` + Stem + `-h`.\n        *   The pattern for 3rd person plural (they) seems to be Stem + `-h`.\n        *   The pattern for 1st person singular (I) is `ni-` + Stem.\n        *   The pattern for 2nd person singular (you) is `ti-` + Stem.\n        *   The pattern for 3rd person singular (he) is Stem.\n\n3.  **Construct the Query:**\n    *   Query: \"we sing\"\n    *   Stem for \"sing\": `cuica` (from `ticuica` and `cuicah`).\n    *   Person/Number for \"we\": 1st person plural.\n    *   Based on `nicochih` (we sleep = `ni` + `cochi` + `h`), the construction for \"we\" is `ni` + Stem + `h`.\n    *   Therefore, \"we sing\" = `ni` + `cuica` + `h`.\n\n4.  **Verification:**\n    *   `ni` (I/We prefix)\n    *   `cuica` (sing stem)\n    *   `h` (Plural suffix)\n    *   Result: `nicuicah`\n\n    Let's double check if `xi` plays a role. `xi` is in the bank. Is it possible `xi` is a different person marker?\n    Evidence:\n    - `ni` = I\n    - `ti` = you\n    - (null) = he/they\n    - `h` = plural marker (attached to stem or after prefix?)\n    \n    In `nicochih`, it is `ni` + `cochi` + `h`.\n    In `cuicah`, it is `cuica` + `h`.\n    \n    If the query is \"we sing\", we need the 1st person plural form.\n    Following the pattern of `nicochih` (we sleep), we take the 1st person prefix `ni`, the stem `cuica`, and the plural suffix `h`.\n    \n    Sequence: `ni` `cuica` `h` -> `nicuicah`.\n\n    Is there any other interpretation?\n    Could `xi` be \"we\"? No, `ni` is clearly \"I\" in `nicochi` and `nichoca`. `nicochih` is \"we sleep\". The difference between `nicochi` (I sleep) and `nicochih` (we sleep) is the suffix `h`. So `ni` remains the person marker, and `h` marks the plural.\n    \n    Therefore, \"we sing\" follows the same morphological structure as \"we sleep\".\n    Stem: `cuica`\n    Prefix: `ni`\n    Suffix: `h`\n    \n    Final string: `nicuicah`\n</analysis>\n<answers>\nnicuicah\n</answers>",
+      "answer": [
+        "ni",
+        "cuica",
+        "h"
+      ],
+      "answer_text": "nicuicah"
+    }
+  ],
+  "quechua-person-endings:0": [
+    {
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- The root for “walk” is **puri** (from *purin* “he walks”).\n- Person suffixes: **ni** = I, **nki** = you, **n** = he/she, **nchik** = we (incl.).\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- The language builds the verb by concatenating the root with the appropriate person suffix. No additional tense or aspect markers are shown; the base form conveys present simple.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- “I walk” = root **puri** + suffix **ni** → **purini**.\n</analysis>\n<answers>\npurini\n</answers>",
+      "answer": [
+        "puri",
+        "ni"
+      ],
+      "answer_text": "puri ni"
+    },
+    {
+      "model": "qwen/qwen3.8-27b",
+      "provider": "groq",
+      "raw": "<analysis>\n1.  **Analyze the Evidence:**\n    *   `rimani` → I speak: Root `rima` + `ni` (I).\n    *   `rimanki` → you speak: Root `rima` + `nki` (you).\n    *   `riman` → she speaks: Root `rima` + `n` (he/she).\n    *   `rikuni` → I see: Root `riku` + `ni` (I).\n    *   `mikhunki` → you eat: Root `mikhu` + `nki` (you).\n    *   `purin` → he walks: Root `puri` + `n` (he/she).\n    *   `rimanchik` → we (all of us) speak: Root `rima` + `nchik` (we incl.).\n    *   `mikhunchik` → we (all of us) eat: Root `mikhu` + `nchik` (we incl.).\n\n2.  **Deduce Grammar Rules:**\n    *   **Structure:** [Root] + [Person Marker].\n    *   **Person Markers:**\n        *   I: `ni`\n        *   You: `nki`\n        *   He/She: `n`\n        *   We (inclusive): `nchik`\n    *   **Roots:**\n        *   Speak: `rima`\n        *   See: `riku`\n        *   Eat: `mikhu`\n        *   Walk: `puri` (from `purin` → he walks)\n\n3.  **Solve the Query:**\n    *   Query: \"I walk\"\n    *   Root for \"walk\": `puri`\n    *   Person marker for \"I\": `ni`\n    *   Combination: `puri` + `ni` = `purini`\n\n4.  **Verification:**\n    *   Does `puri` exist in the tile bank? Yes.\n    *   Does `ni` exist in the tile bank? Yes.\n    *   Does the pattern match other \"I\" forms? `rimani` (rima+ni), `rikuni` (riku+ni). Yes.\n</analysis>\n<answers>\npurini\n</answers>",
+      "answer": [
+        "puri",
+        "ni"
+      ],
+      "answer_text": "puri ni"
+    },
+    {
+      "model": "Qwen/Qwen3-32B",
+      "provider": "featherless",
+      "prompt_variant": "decomposition",
+      "raw": "puri ni",
+      "answer": [
+        "puri",
+        "ni"
+      ],
+      "answer_text": "puri ni"
+    },
+    {
+      "model": "deepseek-ai/DeepSeek-V3.2",
+      "provider": "featherless",
+      "prompt_variant": "decomposition",
+      "raw": "<analysis>\nStep 1: Identify the root for \"walk\". From evidence: purin → he walks. So root is \"puri\".\nStep 2: Identify the person ending for \"I\". From evidence: rimani → I speak, rikuni → I see. So ending is \"ni\".\nStep 3: Combine root and ending: puri + ni.\n</analysis>\n<answers>\npuri ni\n</answers>",
+      "answer": [
+        "puri",
+        "ni"
+      ],
+      "answer_text": "puri ni"
+    },
+    {
+      "model": "zai-org/GLM-4.6",
+      "provider": "featherless",
+      "prompt_variant": "decomposition",
+      "raw": "puri ni",
+      "answer": [
+        "puri",
+        "ni"
+      ],
+      "answer_text": "puri ni"
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "prompt_variant": "decomposition",
+      "raw": "<answers>\npuri ni\n</answers>",
+      "answer": [
+        "puri",
+        "ni"
+      ],
+      "answer_text": "puri ni"
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "prompt_variant": "no_hint",
+      "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- The verb “walk” corresponds to the root puri (as seen in purin = he walks).\n- The pronoun “I” is marked by the suffix ni (as in rimani = I speak, rikuni = I see).\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- The language builds a verb phrase by concatenating the verb root directly with the subject suffix.\n- No additional inflection is required for the simple present.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- Combine the root puri with the suffix ni → purini.\n</analysis>\n<answers>\npurini\n</answers>",
+      "answer": [
+        "puri",
+        "ni"
+      ],
+      "answer_text": "purini"
+    },
+    {
+      "model": "qwen/qwen3.8-27b",
+      "provider": "groq",
+      "prompt_variant": "decomposition",
+      "raw": "<analysis>\n1.  **Analyze the Evidence:**\n    *   `rimani` → I speak: Root `rima` + `ni` (I).\n    *   `rimanki` → you speak: Root `rima` + `nki` (you).\n    *   `riman` → she speaks: Root `rima` + `n` (he/she).\n    *   `rikuni` → I see: Root `riku` + `ni` (I).\n    *   `mikhunki` → you eat: Root `mikhu` + `nki` (you).\n    *   `purin` → he walks: Root `puri` + `n` (he/she).\n    *   `rimanchik` → we (all of us) speak: Root `rima` + `nchik` (we incl.).\n    *   `mikhunchik` → we (all of us) eat: Root `mikhu` + `nchik` (we incl.).\n\n2.  **Deduce Grammar:**\n    *   The structure is `[Root] + [Person Marker]`.\n    *   Person markers:\n        *   I: `ni`\n        *   You: `nki`\n        *   He/She: `n`\n        *   We (inclusive): `nchik`\n    *   Roots identified:\n        *   `rima` (speak)\n        *   `riku` (see)\n        *   `mikhu` (eat)\n        *   `puri` (walk)\n\n3.  **Analyze the Query:**\n    *   Query: \"I walk\"\n    *   Root for \"walk\": From `purin` (he walks), the root is `puri`.\n    *   Person marker for \"I\": From `rimani` (I speak) and `rikuni` (I see), the marker is `ni`.\n\n4.  **Compose the Answer:**\n    *   Sequence: `puri` + `ni`\n    *   Format: Morphemes separated by spaces.\n\n</analysis>\n<answers>\npuri ni\n</answers>",
+      "answer": [
+        "puri",
+        "ni"
+      ],
+      "answer_text": "puri ni"
+    },
+    {
+      "model": "qwen/qwen3.8-27b",
+      "provider": "groq",
+      "prompt_variant": "no_hint",
+      "raw": "<analysis>\n1.  **Analyze the Verbs (Roots):**\n    *   `rimani` = \"I speak\" -> Root `rima` (speak)\n    *   `rimanki` = \"you speak\" -> Root `rima`\n    *   `riman` = \"she speaks\" -> Root `rima`\n    *   `rimanchik` = \"we speak\" -> Root `rima`\n    *   `rikuni` = \"I see\" -> Root `riku` (see)\n    *   `mikhunki` = \"you eat\" -> Root `mikhu` (eat)\n    *   `mikhunchik` = \"we eat\" -> Root `mikhu`\n    *   `purin` = \"he walks\" -> Root `puri` (walk)\n\n2.  **Analyze the Suffixes (Person/Number Markers):**\n    *   **1st Person Singular (I):**\n        *   `rima` + `ni` = `rimani` (I speak)\n        *   `riku` + `ni` = `rikuni` (I see)\n        *   Pattern: Root + `ni`\n    *   **2nd Person Singular (you):**\n        *   `rima` + `nki` = `rimanki` (you speak)\n        *   `mikhu` + `nki` = `mikhunki` (you eat)\n        *   Pattern: Root + `nki`\n    *   **3rd Person Singular (he/she):**\n        *   `rima` + `n` = `riman` (she speaks)\n        *   `puri` + `n` = `purin` (he walks)\n        *   Pattern: Root + `n`\n    *   **1st Person Plural (we):**\n        *   `rima` + `nchik` = `rimanchik` (we speak)\n        *   `mikhu` + `nchik` = `mikhunchik` (we eat)\n        *   Pattern: Root + `nchik`\n\n3.  **Determine the Query:**\n    *   Query: \"I walk\"\n    *   Verb Root for \"walk\": From `purin` (he walks), the root is `puri`.\n    *   Person/Number Marker for \"I\": From `rimani` and `rikuni`, the marker is `ni`.\n\n4.  **Compose the Translation:**\n    *   Root `puri` + Suffix `ni` = `purini`\n\n</analysis>\n<answers>\npurini\n</answers>",
+      "answer": [
+        "puri",
+        "ni"
+      ],
+      "answer_text": "purini"
+    }
+  ],
+  "quechua-person-endings:1": [
+    {
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- The root for “see” is **riku** (evidenced by *rikuni* “I see”).\n- The suffix for “we (all of us)” is **nchik** (evidenced by *rimanchik* “we speak”, *mikhunchik* “we eat”).\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- The language builds a verb phrase by concatenating the root directly with the person‑suffix. No extra vowel changes are needed when attaching **nchik**.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- Combine **riku** + **nchik** → **rikunchik**.\n\n</analysis>\n<answers>\nrikunchik\n</answers>",
+      "answer": [
+        "riku",
+        "nchik"
+      ],
+      "answer_text": "riku nchik"
+    },
+    {
+      "model": "qwen/qwen3.8-27b",
+      "provider": "groq",
+      "raw": "<analysis>\n1.  **Analyze the Evidence:**\n    *   `rimani` → I speak: Root `rima` + `ni` (I).\n    *   `rimanki` → you speak: Root `rima` + `nki` (you).\n    *   `riman` → she speaks: Root `rima` + `n` (he/she).\n    *   `rikuni` → I see: Root `riku` + `ni` (I).\n    *   `mikhunki` → you eat: Root `mikhu` + `nki` (you).\n    *   `purin` → he walks: Root `puri` + `n` (he/she).\n    *   `rimanchik` → we (all of us) speak: Root `rima` + `nchik` (we incl.).\n    *   `mikhunchik` → we (all of us) eat: Root `mikhu` + `nchik` (we incl.).\n\n2.  **Deduce Grammar Rules:**\n    *   **Structure:** [Root] + [Person Marker].\n    *   **Person Markers:**\n        *   I: `ni`\n        *   You: `nki`\n        *   He/She: `n`\n        *   We (inclusive): `nchik`\n    *   **Roots:**\n        *   Speak: `rima`\n        *   See: `riku`\n        *   Eat: `mikhu`\n        *   Walk: `puri`\n\n3.  **Analyze the Query:**\n    *   Query: \"we (all of us) see\"\n    *   Target Meaning: \"See\" corresponds to the root `riku` (from `rikuni` → I see).\n    *   Target Person: \"we (all of us)\" corresponds to the marker `nchik` (from `rimanchik` and `mikhunchik`).\n\n4.  **Compose the Translation:**\n    *   Root: `riku`\n    *   Person Marker: `nchik`\n    *   Combination: `riku` + `nchik` = `rikunchik`\n\n5.  **Verification:**\n    *   Does `riku` appear in the evidence? Yes (`rikuni`).\n    *   Does `nchik` appear in the evidence? Yes (`rimanchik`, `mikhunchik`).\n    *   Is the combination consistent with the pattern? Yes.\n</analysis>\n<answers>\nrikunchik\n</answers>",
+      "answer": [
+        "riku",
+        "nchik"
+      ],
+      "answer_text": "riku nchik"
+    },
+    {
+      "model": "Qwen/Qwen3-32B",
+      "provider": "featherless",
+      "prompt_variant": "decomposition",
+      "raw": "<analysis>\nStep 1: Identify the root for \"see\" from the example rikuni → I see. The root is \"riku\". The inclusive \"we\" marker is \"nchik\" (as seen in rimanchik and mikhunchik).  \nStep 2: The structure is [root] + [person marker]. For \"we (all of us)\", the person marker is \"nchik\".  \nStep 3: Combine \"riku\" (see) + \"nchik\" (we incl.) → \"riku nchik\".  \n</analysis>  \n<answers>  \nriku nchik  \n</answers>",
+      "answer": [
+        "riku",
+        "nchik"
+      ],
+      "answer_text": "riku nchik"
+    },
+    {
+      "model": "deepseek-ai/DeepSeek-V3.2",
+      "provider": "featherless",
+      "prompt_variant": "decomposition",
+      "raw": "<analysis>\nStep 1: Identify the root for \"see\" from the evidence. From \"rikuni → I see\", the root is \"riku\".\nStep 2: Identify the person morpheme for \"we (all of us)\" (inclusive). From \"rimanchik → we (all of us) speak\" and \"mikhunchik → we (all of us) eat\", the morpheme is \"nchik\".\nStep 3: Combine root and person morpheme: \"riku\" + \"nchik\".\n</analysis>\n<answers>\nriku nchik\n</answers>",
+      "answer": [
+        "riku",
+        "nchik"
+      ],
+      "answer_text": "riku nchik"
+    },
+    {
+      "model": "zai-org/GLM-4.6",
+      "provider": "featherless",
+      "prompt_variant": "decomposition",
+      "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\nThe query is \"we (all of us) see\". The root for \"see\" is \"riku\" (from \"rikuni\" → I see). The person marker for \"we (all of us)\" is \"nchik\" (from \"rimanchik\" → we (all of us) speak, and \"mikhunchik\" → we (all of us) eat).\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\nThe structure is [root] + [person]. The root is \"riku\" and the person marker is \"nchik\".\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\nThe morphemes are \"riku\" and \"nchik\".\n</analysis>\n<answers>\nriku nchik\n</answers>",
+      "answer": [
+        "riku",
+        "nchik"
+      ],
+      "answer_text": "riku nchik"
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "prompt_variant": "decomposition",
+      "raw": "<answers>\nriku nchik\n</answers>",
+      "answer": [
+        "riku",
+        "nchik"
+      ],
+      "answer_text": "riku nchik"
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "prompt_variant": "no_hint",
+      "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- The verb roots are: speak = rima, see = riku, eat = mikhu, walk = puri.\n- Person‑number suffixes from the evidence:\n  * ni = I (1st person singular)\n  * nki = you (2nd person singular)\n  * n = he/she (3rd person singular)\n  * nchik = we (all of us) (1st person plural inclusive)\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- The language builds the verb by concatenating the verb root with the appropriate person suffix.\n- No extra vowels or consonants are inserted; the morphemes simply join.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- “we (all of us) see” = riku (root “see”) + nchik (1st‑person plural) → rikunchik\n</analysis>\n<answers>\nrikunchik\n</answers>",
+      "answer": [
+        "riku",
+        "nchik"
+      ],
+      "answer_text": "rikunchik"
+    },
+    {
+      "model": "qwen/qwen3.8-27b",
+      "provider": "groq",
+      "prompt_variant": "decomposition",
+      "raw": "<analysis>\n1.  **Analyze the Roots**:\n    *   `rimani` = \"I speak\" -> Root `rima` (speak) + `ni` (I).\n    *   `rimanki` = \"you speak\" -> Root `rima` + `nki` (you).\n    *   `riman` = \"she speaks\" -> Root `rima` + `n` (he/she).\n    *   `rikuni` = \"I see\" -> Root `riku` (see) + `ni` (I).\n    *   `mikhunki` = \"you eat\" -> Root `mikhu` (eat) + `nki` (you).\n    *   `purin` = \"he walks\" -> Root `puri` (walk) + `n` (he/she).\n    *   `rimanchik` = \"we (all of us) speak\" -> Root `rima` + `nchik` (we incl.).\n    *   `mikhunchik` = \"we (all of us) eat\" -> Root `mikhu` + `nchik` (we incl.).\n\n2.  **Identify the Query**:\n    *   Query: \"we (all of us) see\"\n    *   Meaning components: \"see\" + \"we (all of us)\"\n\n3.  **Select Morphemes**:\n    *   Root for \"see\": From `rikuni` (\"I see\"), the root is `riku`.\n    *   Suffix for \"we (all of us)\": From `rimanchik` and `mikhunchik`, the suffix is `nchik`.\n\n4.  **Compose the Sequence**:\n    *   Structure: [root] + [person]\n    *   Root: `riku`\n    *   Person: `nchik`\n    *   Sequence: `riku nchik`\n\n5.  **Verify against Tile Bank**:\n    *   Available: `rima`, `riku`, `mikhu`, `puri`, `taki`, `ni`, `nki`, `n`, `nchik`\n    *   `riku` is in the bank.\n    *   `nchik` is in the bank.\n\n6.  **Final Output**:\n    *   `riku nchik`\n</analysis>\n<answers>\nriku nchik\n</answers>",
+      "answer": [
+        "riku",
+        "nchik"
+      ],
+      "answer_text": "riku nchik"
+    },
+    {
+      "model": "qwen/qwen3.8-27b",
+      "provider": "groq",
+      "prompt_variant": "no_hint",
+      "raw": "<analysis>\n1.  **Analyze the Verbs (Roots):**\n    *   `rimani` = \"I speak\" -> Root `rima` (speak)\n    *   `rimanki` = \"you speak\" -> Root `rima`\n    *   `riman` = \"she speaks\" -> Root `rima`\n    *   `rimanchik` = \"we (all of us) speak\" -> Root `rima`\n    *   `rikuni` = \"I see\" -> Root `riku` (see)\n    *   `mikhunki` = \"you eat\" -> Root `mikhu` (eat)\n    *   `mikhunchik` = \"we (all of us) eat\" -> Root `mikhu`\n    *   `purin` = \"he walks\" -> Root `puri` (walk)\n    *   `taki` is in the bank but not in the evidence (likely \"sing\" or similar, irrelevant here).\n\n2.  **Analyze the Suffixes (Person/Number Markers):**\n    *   **1st Person Singular (I):**\n        *   `rima` + `ni` = `rimani` (I speak)\n        *   `riku` + `ni` = `rikuni` (I see)\n        *   Suffix: `ni`\n    *   **2nd Person Singular (you):**\n        *   `rima` + `nki` = `rimanki` (you speak)\n        *   `mikhu` + `nki` = `mikhunki` (you eat)\n        *   Suffix: `nki`\n    *   **3rd Person Singular (he/she):**\n        *   `rima` + `n` = `riman` (she speaks)\n        *   `puri` + `n` = `purin` (he walks)\n        *   Suffix: `n`\n    *   **1st Person Plural (we, all of us):**\n        *   `rima` + `nchik` = `rimanchik` (we speak)\n        *   `mikhu` + `nchik` = `mikhunchik` (we eat)\n        *   Suffix: `nchik`\n\n3.  **Construct the Query:**\n    *   Query: \"we (all of us) see\"\n    *   Verb Root for \"see\": `riku` (from `rikuni`)\n    *   Suffix for \"we (all of us)\": `nchik`\n    *   Combination: `riku` + `nchik` = `rikunchik`\n\n4.  **Verification:**\n    *   Does `rikunchik` follow the pattern? Yes, it mirrors `mikhunchik` (we eat) and `rimanchik` (we speak).\n    *   Are all morphemes in the bank? `riku` (yes), `nchik` (yes).\n</analysis>\n<answers>\nrikunchik\n</answers>",
+      "answer": [
+        "riku",
+        "nchik"
+      ],
+      "answer_text": "rikunchik"
+    }
+  ],
+  "quechua-person-endings:2": [
+    {
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- The verb “eat” appears in “mikhunki” (you eat) and “mikhunchik” (we eat). The root is **mikhu**.\n- The third‑person singular (she) suffix is **-n**, as seen in “riman” (she speaks) and “purin” (he walks).\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- The language builds a verb by concatenating the root with a person suffix.\n- For third‑person singular the suffix is **n**; no vowel changes occur when attaching it.\n\nStep 3: Compose the EXACT target‑language form, preserving notation like You_{sg}, You_{pl}.\n- Combine the root **mikhu** with the suffix **n** → **mikhun**.\n</analysis>\n<answers>\nmikhun\n</answers>",
+      "answer": [
+        "mikhu",
+        "n"
+      ],
+      "answer_text": "mikhu n"
+    },
+    {
+      "model": "qwen/qwen3.8-27b",
+      "provider": "groq",
+      "raw": "<analysis>\n1.  **Analyze the Evidence:**\n    *   `rimani` → I speak: Root `rima` + `ni` (I).\n    *   `rimanki` → you speak: Root `rima` + `nki` (you).\n    *   `riman` → she speaks: Root `rima` + `n` (he/she).\n    *   `rikuni` → I see: Root `riku` + `ni` (I).\n    *   `mikhunki` → you eat: Root `mikhu` + `nki` (you).\n    *   `purin` → he walks: Root `puri` + `n` (he/she).\n    *   `rimanchik` → we (all of us) speak: Root `rima` + `nchik` (we incl.).\n    *   `mikhunchik` → we (all of us) eat: Root `mikhu` + `nchik` (we incl.).\n\n2.  **Deduce Grammar Rules:**\n    *   **Structure:** [Root] + [Person Suffix].\n    *   **Person Suffixes:**\n        *   1st person singular (I): `ni`\n        *   2nd person singular (you): `nki`\n        *   3rd person singular (he/she): `n`\n        *   1st person plural inclusive (we incl.): `nchik`\n    *   **Roots:**\n        *   speak: `rima`\n        *   see: `riku`\n        *   eat: `mikhu`\n        *   walk: `puri`\n\n3.  **Analyze the Query:**\n    *   Query: \"she eats\"\n    *   **Verb:** \"eat\" corresponds to the root `mikhu` (seen in `mikhunki` and `mikhunchik`).\n    *   **Person:** \"she\" corresponds to the 3rd person singular suffix `n` (seen in `riman` and `purin`).\n\n4.  **Compose the Translation:**\n    *   Root: `mikhu`\n    *   Suffix: `n`\n    *   Result: `mikhun`\n\n</analysis>\n<answers>\nmikhun\n</answers>",
+      "answer": [
+        "mikhu",
+        "n"
+      ],
+      "answer_text": "mikhu n"
+    },
+    {
+      "model": "Qwen/Qwen3-32B",
+      "provider": "featherless",
+      "prompt_variant": "decomposition",
+      "raw": "mikhu n",
+      "answer": [
+        "mikhu",
+        "n"
+      ],
+      "answer_text": "mikhu n"
+    },
+    {
+      "model": "deepseek-ai/DeepSeek-V3.2",
+      "provider": "featherless",
+      "prompt_variant": "decomposition",
+      "raw": "<analysis>\nStep 1: Identify the root for \"eat\" from the evidence. In \"mikhunki\" (you eat) and \"mikhunchik\" (we eat), the root is \"mikhu\".\nStep 2: Identify the person ending for \"she\". From evidence: \"riman\" (she speaks) uses \"-n\". So for \"she eats\", the root \"mikhu\" combines with \"-n\".\nStep 3: The morpheme sequence is \"mikhu\" (root for eat) and \"n\" (ending for she/he).\n</analysis>\n<answers>\nmikhu n\n</answers>",
+      "answer": [
+        "mikhu",
+        "n"
+      ],
+      "answer_text": "mikhu n"
+    },
+    {
+      "model": "zai-org/GLM-4.6",
+      "provider": "featherless",
+      "prompt_variant": "decomposition",
+      "raw": "mikhu n",
+      "answer": [
+        "mikhu",
+        "n"
+      ],
+      "answer_text": "mikhu n"
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "prompt_variant": "no_hint",
+      "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- The verb roots are: speak → rima, see → riku, eat → mikhu, walk → puri.\n- The suffix “n” marks third‑person singular (she/he/it). Adding “i” gives first‑person singular, “ki” gives second‑person singular, and “chik” gives first‑person plural inclusive.\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- “She eats” requires the verb “eat” (mikhu) plus the third‑person singular suffix “n”, with no additional pronoun marker.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- Combine mikhu + n → “mikhun”.\n</analysis>\n<answers>\nmikhun\n</answers>",
+      "answer": [
+        "mikhu",
+        "n"
+      ],
+      "answer_text": "mikhun"
+    },
+    {
+      "model": "qwen/qwen3.8-27b",
+      "provider": "groq",
+      "prompt_variant": "decomposition",
+      "raw": "<analysis>\n1.  **Analyze the Evidence:**\n    *   `rimani` → I speak: Root `rima` + `ni` (I).\n    *   `rimanki` → you speak: Root `rima` + `nki` (you).\n    *   `riman` → she speaks: Root `rima` + `n` (he/she).\n    *   `rikuni` → I see: Root `riku` + `ni` (I).\n    *   `mikhunki` → you eat: Root `mikhu` + `nki` (you).\n    *   `purin` → he walks: Root `puri` + `n` (he/she).\n    *   `rimanchik` → we (all of us) speak: Root `rima` + `nchik` (we incl.).\n    *   `mikhunchik` → we (all of us) eat: Root `mikhu` + `nchik` (we incl.).\n\n2.  **Deduce Grammar:**\n    *   The structure is `[Root] + [Person Marker]`.\n    *   Person markers:\n        *   `ni` = I\n        *   `nki` = you\n        *   `n` = he/she\n        *   `nchik` = we (inclusive)\n    *   Roots:\n        *   `rima` = speak\n        *   `riku` = see\n        *   `mikhu` = eat\n        *   `puri` = walk\n        *   `taki` = (likely sing/dance, not used in query)\n\n3.  **Analyze the Query:**\n    *   Query: \"she eats\"\n    *   \"she\" corresponds to the 3rd person singular marker `n`.\n    *   \"eats\" corresponds to the root `mikhu` (from `mikhunki` and `mikhunchik`).\n\n4.  **Compose the Answer:**\n    *   Root: `mikhu`\n    *   Person: `n`\n    *   Sequence: `mikhu n`\n\n</analysis>\n<answers>\nmikhu n\n</answers>",
+      "answer": [
+        "mikhu",
+        "n"
+      ],
+      "answer_text": "mikhu n"
+    },
+    {
+      "model": "qwen/qwen3.8-27b",
+      "provider": "groq",
+      "prompt_variant": "no_hint",
+      "raw": "<analysis>\n1.  **Analyze the Verbs (Roots):**\n    *   `rimani` = I speak -> Root: `rima`\n    *   `rimanki` = you speak -> Root: `rima`\n    *   `riman` = she speaks -> Root: `rima`\n    *   `rikuni` = I see -> Root: `riku`\n    *   `mikhunki` = you eat -> Root: `mikhu`\n    *   `purin` = he walks -> Root: `puri`\n    *   `rimanchik` = we speak -> Root: `rima`\n    *   `mikhunchik` = we eat -> Root: `mikhu`\n\n    The available morphemes confirm the roots: `rima`, `riku`, `mikhu`, `puri`, `taki`.\n\n2.  **Analyze the Affixes (Person/Number Markers):**\n    *   **1st Person Singular (I):**\n        *   `rima` + `ni` = `rimani` (I speak)\n        *   `riku` + `ni` = `rikuni` (I see)\n        *   Marker: `ni`\n    *   **2nd Person Singular (you):**\n        *   `rima` + `nki` = `rimanki` (you speak)\n        *   `mikhu` + `nki` = `mikhunki` (you eat)\n        *   Marker: `nki`\n    *   **3rd Person Singular (he/she):**\n        *   `rima` + `n` = `riman` (she speaks)\n        *   `puri` + `n` = `purin` (he walks)\n        *   Marker: `n`\n    *   **1st Person Plural (we):**\n        *   `rima` + `nchik` = `rimanchik` (we speak)\n        *   `mikhu` + `nchik` = `mikhunchik` (we eat)\n        *   Marker: `nchik`\n\n3.  **Determine the Target Translation:**\n    *   Query: \"she eats\"\n    *   Verb \"eat\": The root is `mikhu` (from `mikhunki` and `mikhunchik`).\n    *   Person \"she\": This is 3rd person singular. The marker is `n` (from `riman` and `purin`).\n    *   Construction: Root + Marker = `mikhu` + `n` = `mikhun`.\n\n4.  **Verification:**\n    *   Does `mikhun` follow the pattern? Yes.\n    *   `rima` (speak) + `n` (she) = `riman` (she speaks).\n    *   `mikhu` (eat) + `n` (she) = `mikhun` (she eats).\n\n</analysis>\n<answers>\nmikhun\n</answers>",
+      "answer": [
+        "mikhu",
+        "n"
+      ],
+      "answer_text": "mikhun"
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "prompt_variant": "decomposition",
+      "raw": "mikhu n",
+      "answer": [
+        "mikhu",
+        "n"
+      ],
+      "answer_text": "mikhu n"
+    }
+  ],
+  "swahili-person-tense:0": [
+    {
+      "model": "google/gemma-4-31b-it:free",
+      "provider": "openrouter",
+      "raw": "<analysis>\nStep 1: Identify the source words for \"I will like\".\n- \"I\" = ni\n- \"will\" (future tense) = ta\n- \"like\" = penda\n\nStep 2: Apply the grammar structure [who] + [when] + [verb].\n- [ni] + [ta] + [penda]\n\nStep 3: Compose the target-language form.\n- nitapenda\n</analysis>\n<answers>\nnitapenda\n</answers>",
+      "answer": [
+        "ni",
+        "ta",
+        "penda"
+      ],
+      "answer_text": "ni ta penda"
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.  \n- Subject morpheme for “I” is **ni** (from *nina‑* “I …” and *nilipenda* “I liked”).  \n- Future tense morpheme is **ta** (from *utacheza* “you will play”, *wataimba* “they will sing”).  \n- Verb “like” is **penda** (from *nina‑penda* “I like”, *nilipenda* “I liked”).\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.  \nThe language uses a fixed order: **[subject] + [tense] + [verb]**. No additional agreement markers are needed for the first person singular.\n\nStep 3: Compose the EXACT target-language form, preserving notation.  \nCombine the morphemes in order: **ni + ta + penda** → **nitapenda**.\n</analysis>\n<answers>\nnitapenda\n</answers>",
+      "answer": [
+        "ni",
+        "ta",
+        "penda"
+      ],
+      "answer_text": "ni ta penda"
+    },
+    {
+      "model": "qwen/qwen3.8-27b",
+      "provider": "groq",
+      "raw": "<analysis>\n1.  **Analyze the Structure**: The hint and evidence indicate a Subject-Verb structure where the verb is a complex word composed of three parts: `[Subject Prefix] + [Tense Marker] + [Verb Root]`.\n    *   **Subjects**:\n        *   `ni` = I (from *ninapenda*, *nilipenda*)\n        *   `u` = you (sg) (from *unasoma*, *utacheza*)\n        *   `a` = he/she (from *anacheza*, *anaimba*)\n        *   `tu` = we (from *tulisoma*)\n        *   `wa` = they (from *wataimba*)\n    *   **Tenses**:\n        *   `na` = present (from *ninapenda*, *unasoma*, *anacheza*)\n        *   `li` = past (from *nilipenda*, *tulisoma*)\n        *   `ta` = future (from *utacheza*, *wataimba*)\n    *   **Verbs**:\n        *   `penda` = like\n        *   `soma` = read\n        *   `cheza` = play\n        *   `imba` = sing\n\n2.  **Analyze the Query**: \"I will like\"\n    *   **Subject**: \"I\" corresponds to the prefix `ni`.\n    *   **Tense**: \"will\" indicates future tense, which corresponds to the marker `ta`.\n    *   **Verb**: \"like\" corresponds to the root `penda`.\n\n3.  **Compose the Translation**:\n    *   Combine the parts in the order `[Subject] + [Tense] + [Verb]`.\n    *   `ni` + `ta` + `penda` = `nitapenda`.\n\n4.  **Verification**:\n    *   Compare with *nilipenda* (I liked): `ni` (I) + `li` (past) + `penda` (like).\n    *   Compare with *utacheza* (you will play): `u` (you) + `ta` (future) + `cheza` (play).\n    *   The pattern holds. `nitapenda` is the correct form for \"I will like\".\n</analysis>\n<answers>\nnitapenda\n</answers>",
+      "answer": [
+        "ni",
+        "ta",
+        "penda"
+      ],
+      "answer_text": "ni ta penda"
+    },
+    {
+      "model": "Qwen/Qwen3-32B",
+      "provider": "featherless",
+      "prompt_variant": "decomposition",
+      "raw": "ni ta penda",
+      "answer": [
+        "ni",
+        "ta",
+        "penda"
+      ],
+      "answer_text": "ni ta penda"
+    },
+    {
+      "model": "deepseek-ai/DeepSeek-V3.2",
+      "provider": "featherless",
+      "prompt_variant": "decomposition",
+      "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- The query is \"I will like\". From evidence: \"ninapenda\" = \"I like\", \"nilipenda\" = \"I liked\". The verb root for \"like\" is \"penda\". The subject \"I\" is \"ni\". The future tense marker is \"ta\" (from \"utacheza\" = \"you will play\", \"wataimba\" = \"they will sing\").\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- Structure is [who] + [when] + [verb]. For \"I will like\": who = ni, when = ta (future), verb = penda.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- The morpheme sequence is: ni ta penda.\n</analysis>\n<answers>\nni ta penda\n</answers>",
+      "answer": [
+        "ni",
+        "ta",
+        "penda"
+      ],
+      "answer_text": "ni ta penda"
+    },
+    {
+      "model": "zai-org/GLM-4.6",
+      "provider": "featherless",
+      "prompt_variant": "decomposition",
+      "raw": "ni ta penda",
+      "answer": [
+        "ni",
+        "ta",
+        "penda"
+      ],
+      "answer_text": "ni ta penda"
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "prompt_variant": "decomposition",
+      "raw": "ni ta penda",
+      "answer": [
+        "ni",
+        "ta",
+        "penda"
+      ],
+      "answer_text": "ni ta penda"
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "prompt_variant": "no_hint",
+      "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- “I” = subject prefix **ni**\n- “will” (future tense) = tense marker **ta**\n- “like” = verb root **penda**\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- The language forms verbs by concatenating: subject prefix + tense marker + verb root.\n- For future tense, the marker **ta** follows the subject prefix.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- Combine the morphemes: **ni** + **ta** + **penda** → **nitapenda**\n</analysis>\n<answers>\nnitapenda\n</answers>",
+      "answer": [
+        "ni",
+        "ta",
+        "penda"
+      ],
+      "answer_text": "nitapenda"
+    },
+    {
+      "model": "qwen/qwen3.8-27b",
+      "provider": "groq",
+      "prompt_variant": "decomposition",
+      "raw": "<analysis>\n1.  **Analyze the Structure**: The hint and evidence indicate a Subject-Verb structure where the verb is composed of three parts: `[Subject] + [Tense] + [Root]`.\n    *   **Subjects**:\n        *   `ni` = I (from *ninapenda* \"I like\", *nilipenda* \"I liked\")\n        *   `u` = you (from *unasoma* \"you read\", *utacheza* \"you will play\")\n        *   `a` = he/she (from *anacheza* \"she plays\", *anaimba* \"he sings\")\n        *   `tu` = we (from *tulisoma* \"we read\")\n        *   `wa` = they (from *wataimba* \"they will sing\")\n    *   **Tenses**:\n        *   `na` = present (from *ninapenda*, *unasoma*, *anacheza*)\n        *   `li` = past (from *nilipenda*, *tulisoma*)\n        *   `ta` = future (from *utacheza*, *wataimba*)\n    *   **Verbs**:\n        *   `penda` = like (from *ninapenda*, *nilipenda*)\n        *   `soma` = read (from *unasoma*, *tulisoma*)\n        *   `cheza` = play (from *anacheza*, *utacheza*)\n        *   `imba` = sing (from *wataimba*, *anaimba*)\n\n2.  **Analyze the Query**: \"I will like\"\n    *   **Subject**: \"I\" corresponds to `ni`.\n    *   **Tense**: \"will\" (future) corresponds to `ta`.\n    *   **Verb**: \"like\" corresponds to `penda`.\n\n3.  **Compose the Sequence**:\n    *   Subject: `ni`\n    *   Tense: `ta`\n    *   Verb: `penda`\n    *   Result: `ni ta penda`\n\n4.  **Verification**:\n    *   Compare with *utacheza* (you will play): `u` (you) + `ta` (will) + `cheza` (play).\n    *   Compare with *wataimba* (they will sing): `wa` (they) + `ta` (will) + `imba` (sing).\n    *   The pattern holds: `ni` + `ta` + `penda`.\n</analysis>\n<answers>\nni ta penda\n</answers>",
+      "answer": [
+        "ni",
+        "ta",
+        "penda"
+      ],
+      "answer_text": "ni ta penda"
+    },
+    {
+      "model": "qwen/qwen3.8-27b",
+      "provider": "groq",
+      "prompt_variant": "no_hint",
+      "raw": "<analysis>\n1.  **Analyze the Evidence Pairs:**\n    *   `ninapenda` → \"I like\": `ni` (I) + `na` (present tense) + `penda` (like).\n    *   `unasoma` → \"you read\": `u` (you) + `na` (present tense) + `soma` (read).\n    *   `anacheza` → \"she plays\": `a` (she) + `na` (present tense) + `cheza` (play).\n    *   `nilipenda` → \"I liked\": `ni` (I) + `li` (past tense) + `penda` (like).\n    *   `tulisoma` → \"we read (past)\": `tu` (we) + `li` (past tense) + `soma` (read).\n    *   `utacheza` → \"you will play\": `u` (you) + `ta` (future tense) + `cheza` (play).\n    *   `wataimba` → \"they will sing\": `wa` (they) + `ta` (future tense) + `imba` (sing).\n    *   `anaimba` → \"he sings\": `a` (he) + `na` (present tense) + `imba` (sing).\n\n2.  **Deduce Morphemes:**\n    *   **Subjects:**\n        *   I: `ni`\n        *   You (sg): `u`\n        *   She/He: `a`\n        *   We: `tu`\n        *   They: `wa`\n    *   **Tenses:**\n        *   Present: `na`\n        *   Past: `li`\n        *   Future: `ta`\n    *   **Verbs:**\n        *   like: `penda`\n        *   read: `soma`\n        *   play: `cheza`\n        *   sing: `imba`\n\n3.  **Analyze the Query:**\n    *   Query: \"I will like\"\n    *   Subject: \"I\" → `ni`\n    *   Tense: \"will\" (future) → `ta`\n    *   Verb: \"like\" → `penda`\n\n4.  **Compose the Translation:**\n    *   Structure: Subject + Tense + Verb\n    *   Sequence: `ni` + `ta` + `penda`\n    *   Result: `nitapenda`\n\n5.  **Verification:**\n    *   `ni` matches \"I\" in `ninapenda` and `nilipenda`.\n    *   `ta` matches \"will\" in `utacheza` and `wataimba`.\n    *   `penda` matches \"like\" in `ninapenda` and `nilipenda`.\n    *   The combination follows the established pattern of Subject + Tense Marker + Verb Stem.\n</analysis>\n<answers>\nnitapenda\n</answers>",
+      "answer": [
+        "ni",
+        "ta",
+        "penda"
+      ],
+      "answer_text": "nitapenda"
+    }
+  ],
+  "swahili-person-tense:1": [
+    {
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- “they” corresponds to the morpheme wa.\n- “read” corresponds to the verb soma.\n- Present tense corresponds to the morpheme na (as seen in ni**na**penda, u**na**soma, a**na**cheza, a**na**imba).\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- Word order is fixed: [who] + [when] + [verb].\n- No extra agreement markers are needed; simply concatenate the morphemes.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- Concatenate wa + na + soma → wanasoma.\n</analysis>\n<answers>\nwanasoma\n</answers>",
+      "answer": [
+        "wa",
+        "na",
+        "soma"
+      ],
+      "answer_text": "wa na soma"
+    },
+    {
+      "model": "qwen/qwen3.8-27b",
+      "provider": "groq",
+      "raw": "<analysis>\n1.  **Analyze the Structure**: The hint and evidence indicate a Subject-Verb structure where the verb is composed of three parts: `[Subject Prefix] + [Tense Marker] + [Verb Root]`.\n    *   **Subject Prefixes**:\n        *   `ni` = I (from *ninapenda*, *nilipenda*)\n        *   `u` = you (sg) (from *unasoma*, *utacheza*)\n        *   `a` = he/she (from *anacheza*, *anaimba*)\n        *   `tu` = we (from *tulisoma*)\n        *   `wa` = they (from *wataimba*)\n    *   **Tense Markers**:\n        *   `na` = present (from *ninapenda*, *unasoma*, *anacheza*)\n        *   `li` = past (from *nilipenda*, *tulisoma*)\n        *   `ta` = future (from *utacheza*, *wataimba*)\n    *   **Verb Roots**:\n        *   `penda` = like\n        *   `soma` = read\n        *   `cheza` = play\n        *   `imba` = sing\n\n2.  **Analyze the Query**: \"they read\"\n    *   **Subject**: \"they\" corresponds to the prefix `wa` (seen in *wataimba* \"they will sing\").\n    *   **Tense**: \"read\" is in the present tense (simple present, as opposed to \"read\" past or \"will read\" future). The present tense marker is `na` (seen in *unasoma* \"you read\", *anacheza* \"she plays\").\n    *   **Verb**: \"read\" corresponds to the root `soma` (seen in *unasoma* \"you read\", *tulisoma* \"we read\").\n\n3.  **Compose the Translation**:\n    *   Subject: `wa`\n    *   Tense: `na`\n    *   Verb: `soma`\n    *   Sequence: `wa` + `na` + `soma` = `wanasoma`\n\n4.  **Verification**:\n    *   *wataimba* = wa (they) + ta (future) + imba (sing) -> they will sing.\n    *   *tulisoma* = tu (we) + li (past) + soma (read) -> we read (past).\n    *   *wanasoma* = wa (they) + na (present) + soma (read) -> they read. This fits the pattern perfectly.\n</analysis>\n<answers>\nwanasoma\n</answers>",
+      "answer": [
+        "wa",
+        "na",
+        "soma"
+      ],
+      "answer_text": "wa na soma"
+    },
+    {
+      "model": "Qwen/Qwen3-32B",
+      "provider": "featherless",
+      "prompt_variant": "decomposition",
+      "raw": "wa na soma",
+      "answer": [
+        "wa",
+        "na",
+        "soma"
+      ],
+      "answer_text": "wa na soma"
+    },
+    {
+      "model": "deepseek-ai/DeepSeek-V3.2",
+      "provider": "featherless",
+      "prompt_variant": "decomposition",
+      "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- The query is \"they read\". From evidence: \"unasoma\" = you read (present), \"tulisoma\" = we read (past), \"soma\" = read.\n- For \"they\": from evidence \"wataimba\" = they will sing, \"wa\" = they.\n- For tense: \"read\" is present tense. From evidence: \"ninapenda\" = I like (present), \"na\" = present tense marker.\n- Structure: [who] + [when] + [verb]. So for \"they read\": who = wa, when = na, verb = soma.\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- Present tense uses \"na\".\n- Subject \"they\" uses \"wa\".\n- Verb root is \"soma\".\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- Not applicable here; we are outputting morphemes.\n\nFor the query \"they read\", the morpheme sequence is: wa na soma.\n</analysis>\n<answers>\nwa na soma\n</answers>",
+      "answer": [
+        "wa",
+        "na",
+        "soma"
+      ],
+      "answer_text": "wa na soma"
+    },
+    {
+      "model": "zai-org/GLM-4.6",
+      "provider": "featherless",
+      "prompt_variant": "decomposition",
+      "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\nThe query is \"they read\". \"They\" corresponds to the subject prefix \"wa\". \"Read\" corresponds to the verb root \"soma\".\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\nThe tense is present (indicated by the lack of past or future markers in the English phrase). The present tense marker is \"na\".\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\nFollowing the structure [who] + [when] + [verb], the morphemes are \"wa\" + \"na\" + \"soma\".\n</analysis>\n<answers>\nwa na soma\n</answers>",
+      "answer": [
+        "wa",
+        "na",
+        "soma"
+      ],
+      "answer_text": "wa na soma"
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "prompt_variant": "decomposition",
+      "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n</analysis>\n<answers>\nwa na soma\n</answers>",
+      "answer": [
+        "wa",
+        "na",
+        "soma"
+      ],
+      "answer_text": "wa na soma"
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "prompt_variant": "no_hint",
+      "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- “they read” → subject “they” + verb “read”. In the evidence, “they will sing” = wataimba (wa + ta + imba). The subject prefix for “they” is **wa**. The present tense marker is **na** (as in “wanasoma” would be the present form, analogous to “anasoma” = she reads). The verb root for “read” is **soma**.\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- Use present tense (na) because the English phrase is in the simple present. Combine subject prefix, present marker, and verb root in that order.\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- wa + na + soma = **wanasoma**.\n</analysis>\n<answers>\nwanasoma\n</answers>",
+      "answer": [
+        "wa",
+        "na",
+        "soma"
+      ],
+      "answer_text": "wanasoma"
+    },
+    {
+      "model": "qwen/qwen3.8-27b",
+      "provider": "groq",
+      "prompt_variant": "decomposition",
+      "raw": "<analysis>\n1.  **Analyze the Structure**: The hint and evidence indicate a Subject-Verb structure where the verb is composed of three parts: `[Subject Prefix] + [Tense Marker] + [Verb Root]`.\n    *   **Subjects**:\n        *   `ni` = I (from *ninapenda*, *nilipenda*)\n        *   `u` = you (sg) (from *unasoma*, *utacheza*)\n        *   `a` = he/she (from *anacheza*, *anaimba*)\n        *   `tu` = we (from *tulisoma*)\n        *   `wa` = they (from *wataimba*)\n    *   **Tenses**:\n        *   `na` = present (from *ninapenda*, *unasoma*, *anacheza*)\n        *   `li` = past (from *nilipenda*, *tulisoma*)\n        *   `ta` = future (from *utacheza*, *wataimba*)\n    *   **Verbs**:\n        *   `penda` = like\n        *   `soma` = read\n        *   `cheza` = play\n        *   `imba` = sing\n\n2.  **Analyze the Query**: \"they read\"\n    *   **Subject**: \"they\" corresponds to the prefix `wa` (seen in *wataimba* \"they will sing\").\n    *   **Tense**: The English phrase \"they read\" is ambiguous between present and past. However, in Swahili (the language modeled here), the simple present is often marked with `na` (habitual/general) and past with `li`. Let's look at the evidence again.\n        *   *unasoma* = you read (present)\n        *   *tulisoma* = we read (past)\n        *   The query is just \"they read\". In ILO problems, if the tense isn't specified as \"will\" or \"did\", it usually defaults to the present tense unless context implies otherwise. However, looking at the pattern:\n            *   *ninapenda* (I like) -> Present\n            *   *nilipenda* (I liked) -> Past\n            *   *tulisoma* (we read) -> Past\n            *   *wataimba* (they will sing) -> Future\n        *   Is there a \"they read\" (present) or \"they read\" (past) example? No.\n        *   Let's check the standard Swahili conjugation for \"read\" (*kusoma*).\n            *   Present: *wanasoma* (they are reading / they read)\n            *   Past: *walisoma* (they read)\n        *   The prompt asks for \"they read\". Without a specific tense marker in the English (like \"did read\" or \"will read\"), \"read\" is the base form. In many linguistic contexts, the unmarked form is present. Let's look at the other examples. *unasoma* is \"you read\" (present). *tulisoma* is explicitly \"we read (past)\". The lack of \"(past)\" or \"(future)\" in the query \"they read\" strongly suggests the present tense, parallel to *unasoma*.\n        *   Therefore, Tense = `na` (present).\n    *   **Verb**: \"read\" corresponds to the root `soma`.\n\n3.  **Construct the Morpheme Sequence**:\n    *   Subject: `wa`\n    *   Tense: `na`\n    *   Verb: `soma`\n    *   Sequence: `wa na soma`\n\n4.  **Verification**:\n    *   *wataimba* = wa (they) + ta (future) + imba (sing) = they will sing.\n    *   *tulisoma* = tu (we) + li (past) + soma (read) = we read (past).\n    *   *unasoma* = u (you) + na (present) + soma (read) = you read.\n    *   Query: they read. Assuming present tense based on the unmarked English form matching *unasoma*.\n    *   Result: `wa na soma`.\n\n    *Self-Correction/Refinement*: Could it be past? If the query was \"they read\" meaning past, it would likely be \"they read (past)\" or \"they did read\" to distinguish from present, similar to how *tulisoma* was labeled \"we read (past)\". Since *unasoma* is just \"you read\" (present), \"they read\" is most likely present.\n\n    Final check of morphemes available: `wa`, `na`, `soma` are all in the list.\n</analysis>\n<answers>\nwa na soma\n</answers>",
+      "answer": [
+        "wa",
+        "na",
+        "soma"
+      ],
+      "answer_text": "wa na soma"
+    },
+    {
+      "model": "qwen/qwen3.8-27b",
+      "provider": "groq",
+      "prompt_variant": "no_hint",
+      "raw": "<analysis>\n1.  **Analyze the Evidence Pairs:**\n    *   `ninapenda` → I like\n    *   `unasoma` → you read\n    *   `anacheza` → she plays\n    *   `nilipenda` → I liked\n    *   `tulisoma` → we read (past)\n    *   `utacheza` → you will play\n    *   `wataimba` → they will sing\n    *   `anaimba` → he sings\n\n2.  **Deduce Morphemes:**\n    *   **Subjects (Prefixes):**\n        *   `ni-` = I (from `ninapenda`, `nilipenda`)\n        *   `u-` = you (sg) (from `unasoma`, `utacheza`)\n        *   `a-` = he/she (from `anacheza`, `anaimba`)\n        *   `tu-` = we (from `tulisoma`)\n        *   `wa-` = they (from `wataimba`)\n    *   **Tenses/Aspects (Infixes/Suffixes between subject and verb root):**\n        *   `-na-` = Present tense (from `ninapenda` [I like], `unasoma` [you read], `anacheza` [she plays], `anaimba` [he sings]). Note: In Swahili, this is the present tense marker.\n        *   `-li-` = Past tense (from `nilipenda` [I liked], `tulisoma` [we read]).\n        *   `-ta-` = Future tense (from `utacheza` [you will play], `wataimba` [they will sing]).\n    *   **Verb Roots:**\n        *   `penda` = like\n        *   `soma` = read\n        *   `cheza` = play\n        *   `imba` = sing\n\n3.  **Analyze the Query:**\n    *   Query: \"they read\"\n    *   Subject: \"they\" → `wa`\n    *   Tense: The query is \"they read\". In the absence of specific tense markers in the English prompt (like \"read\" vs \"read\" past, or \"will read\"), we look at the available evidence.\n        *   `unasoma` is \"you read\" (present).\n        *   `tulisoma` is \"we read (past)\".\n        *   Usually, if the English is just \"read\", it can be present or past. However, looking at the pattern of the other queries in typical ILO problems, if no tense is specified, it often defaults to the present tense if the verb root is the same, or we must look for clues.\n        *   Let's check the verb root for \"read\": `soma`.\n        *   Let's check the subject for \"they\": `wa`.\n        *   Let's determine the tense. The prompt says \"they read\".\n            *   If it were past, it would likely be \"they read\" (past) or \"they read\" (present). In English, \"read\" is ambiguous.\n            *   However, let's look at the structure.\n            *   Present: `wa` + `na` + `soma` = `wanasoma`.\n            *   Past: `wa` + `li` + `soma` = `walisoma`.\n            *   Future: `wa` + `ta` + `soma` = `wasomasoma`? No, `wasoma`? No, `wa` + `ta` + `soma` = `wasoma` is not right, it would be `wasoma`? Wait, `wataimba` is `wa` + `ta` + `imba`. So future is `wa` + `ta` + `soma` = `wasoma`? No, `wa` + `ta` + `soma` = `wasoma` is incorrect spelling, it's `wasoma`? No, `wa` + `ta` + `soma` = `wasoma`? Let's re-read `wataimba`. `wa` (they) + `ta` (future) + `imba` (sing).\n            *   So, \"they will read\" would be `wasoma`? No, `wa` + `ta` + `soma` = `wasoma`? No, `wa` + `ta` + `soma` = `wasoma`? The root is `soma`. So `wa` + `ta` + `soma` = `wasoma`? No, `wa` + `ta` + `soma` = `wasoma`?\n            *   Let's look at the English \"they read\". In many linguistic contexts, if the tense isn't specified, and there's a present tense example `unasoma` (you read), it's highly probable the intended meaning is present tense, matching the unmarked \"read\" in `unasoma`.\n            *   Let's check if there is a past tense example for \"they\". No.\n            *   Let's check if there is a present tense example for \"they\". No.\n            *   However, `tulisoma` is explicitly marked \"(past)\". `unasoma` is just \"you read\". This suggests that unmarked \"read\" in the English gloss corresponds to the present tense `-na-`.\n            *   Therefore, \"they read\" likely corresponds to the present tense.\n            *   Subject: `wa`\n            *   Tense: `na`\n            *   Root: `soma`\n            *   Result: `wanasoma`\n\n4.  **Verification:**\n    *   `wa` (they) + `na` (present) + `soma` (read) = `wanasoma`.\n    *   Does this fit the morpheme bank? Yes: `wa`, `na`, `soma`.\n\n5.  **Final Construction:**\n    *   `wanasoma`\n</analysis>\n<answers>\nwanasoma\n</answers>",
+      "answer": [
+        "wa",
+        "na",
+        "soma"
+      ],
+      "answer_text": "wanasoma"
+    }
+  ],
+  "swahili-person-tense:2": [
+    {
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "raw": "<analysis>\nStep 1: Identify the source word for “we sang”. “we” corresponds to the morpheme **tu**. The verb “sing” is **imba**. Past tense is signaled by **li**.\nStep 2: The grammar is [who] + [when] + [verb]; thus we place **tu** (who) before **li** (past) before **imba** (verb).\nStep 3: Concatenate the morphemes in order: **tu** + **li** + **imba** → **tulisimba**.\n</analysis>\n<answers>\ntulisimba\n</answers>",
+      "answer": [
+        "tulisimba"
+      ],
+      "answer_text": "tulisimba"
+    },
+    {
+      "model": "qwen/qwen3.8-27b",
+      "provider": "groq",
+      "raw": "<analysis>\n1.  **Analyze the Structure**: The hint and evidence indicate a Subject-Verb structure where the verb is composed of three parts: `[Subject Prefix] + [Tense Marker] + [Verb Root]`.\n    *   **Subjects**:\n        *   `ni` = I (from *ninapenda*, *nilipenda*)\n        *   `u` = you (sg) (from *unasoma*, *utacheza*)\n        *   `a` = he/she (from *anacheza*, *anaimba*)\n        *   `tu` = we (from *tulisoma*)\n        *   `wa` = they (from *wataimba*)\n    *   **Tenses**:\n        *   `na` = present (from *ninapenda*, *unasoma*, *anacheza*)\n        *   `li` = past (from *nilipenda*, *tulisoma*)\n        *   `ta` = future (from *utacheza*, *wataimba*)\n    *   **Verbs**:\n        *   `penda` = like\n        *   `soma` = read\n        *   `cheza` = play\n        *   `imba` = sing\n\n2.  **Analyze the Query**: \"we sang\"\n    *   **Subject**: \"we\" corresponds to the prefix `tu`.\n    *   **Tense**: \"sang\" is past tense. The past tense marker is `li`.\n    *   **Verb**: \"sing\" corresponds to the root `imba`.\n\n3.  **Compose the Translation**:\n    *   Combine the parts in the order `[Subject] + [Tense] + [Verb]`.\n    *   `tu` + `li` + `imba` = `tulimba`.\n\n4.  **Verification**:\n    *   Compare with *tulisoma* (we read past): `tu` (we) + `li` (past) + `soma` (read).\n    *   The query requires \"we\" + \"past\" + \"sing\".\n    *   Result: `tulimba`.\n</analysis>\n<answers>\ntulimba\n</answers>",
+      "answer": [
+        "tulimba"
+      ],
+      "answer_text": "tulimba"
+    },
+    {
+      "model": "Qwen/Qwen3-32B",
+      "provider": "featherless",
+      "prompt_variant": "decomposition",
+      "raw": "tu li imba",
+      "answer": [
+        "tu",
+        "li",
+        "imba"
+      ],
+      "answer_text": "tu li imba"
+    },
+    {
+      "model": "deepseek-ai/DeepSeek-V3.2",
+      "provider": "featherless",
+      "prompt_variant": "decomposition",
+      "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- The query is \"we sang\". From evidence: \"wataimba\" = they will sing, \"anaimba\" = he sings. So \"imba\" = sing.\n- For \"we\", from evidence: \"tulisoma\" = we read (past). So \"tu\" = we.\n- For tense: \"sang\" is past. From evidence: \"nilipenda\" = I liked, \"tulisoma\" = we read (past). So \"li\" = past.\n- Structure: [who] + [when] + [verb] = tu + li + imba.\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- The structure is consistent: subject prefix + tense marker + verb root.\n- For \"we sang\": subject = tu, tense = li, verb = imba.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- Not applicable here; we are outputting morphemes.\n\n</analysis>\n<answers>\ntu li imba\n</answers>",
+      "answer": [
+        "tu",
+        "li",
+        "imba"
+      ],
+      "answer_text": "tu li imba"
+    },
+    {
+      "model": "zai-org/GLM-4.6",
+      "provider": "featherless",
+      "prompt_variant": "decomposition",
+      "raw": "tu li imba",
+      "answer": [
+        "tu",
+        "li",
+        "imba"
+      ],
+      "answer_text": "tu li imba"
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "prompt_variant": "decomposition",
+      "raw": "tu li imba",
+      "answer": [
+        "tu",
+        "li",
+        "imba"
+      ],
+      "answer_text": "tu li imba"
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "prompt_variant": "no_hint",
+      "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- “we sang” requires the first‑person plural subject, past tense, and the verb “sing”.\n- Subject prefix for “we” is **tu** (as in *tulisoma* “we read (past)”).\n- Past tense marker is **li** (as in *nilipenda* “I liked”, *tulisoma* “we read (past)”).\n- Verb root for “sing” is **imba** (as in *anaimba* “he sings”, *wataimba* “they will sing”).\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- Swahili verb construction: Subject prefix + tense marker + verb root.\n- No additional vowels or affixes appear between these morphemes in the given data.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- Concatenate the morphemes in order: **tu** + **li** + **imba** → **tulimba**.\n</analysis>\n<answers>\ntulimba\n</answers>",
+      "answer": [
+        "tulimba"
+      ],
+      "answer_text": "tulimba"
+    },
+    {
+      "model": "qwen/qwen3.8-27b",
+      "provider": "groq",
+      "prompt_variant": "no_hint",
+      "raw": "<analysis>\n1.  **Analyze the Evidence:**\n    *   `ninapenda` → I like: `ni` (I) + `na` (present tense) + `penda` (like).\n    *   `unasoma` → you read: `u` (you) + `na` (present tense) + `soma` (read).\n    *   `anacheza` → she plays: `a` (she/he) + `na` (present tense) + `cheza` (play).\n    *   `nilipenda` → I liked: `ni` (I) + `li` (past tense) + `penda` (like).\n    *   `tulisoma` → we read (past): `tu` (we) + `li` (past tense) + `soma` (read).\n    *   `utacheza` → you will play: `u` (you) + `ta` (future tense) + `cheza` (play).\n    *   `wataimba` → they will sing: `wa` (they) + `ta` (future tense) + `imba` (sing).\n    *   `anaimba` → he sings: `a` (he) + `na` (present tense) + `imba` (sing).\n\n2.  **Deduce Morphemes:**\n    *   **Subjects:**\n        *   I: `ni`\n        *   You (sg): `u`\n        *   He/She: `a`\n        *   We: `tu`\n        *   They: `wa`\n    *   **Tenses:**\n        *   Present: `na`\n        *   Past: `li`\n        *   Future: `ta`\n    *   **Verbs:**\n        *   like: `penda`\n        *   read: `soma`\n        *   play: `cheza`\n        *   sing: `imba`\n\n3.  **Analyze the Query:**\n    *   Query: \"we sang\"\n    *   Subject: \"we\" → `tu`\n    *   Tense: \"sang\" (past tense of sing) → `li`\n    *   Verb: \"sing\" → `imba`\n\n4.  **Compose the Translation:**\n    *   Order: Subject + Tense + Verb\n    *   Sequence: `tu` + `li` + `imba`\n    *   Result: `tuliimba`\n\n</analysis>\n<answers>\ntuliimba\n</answers>",
+      "answer": [
+        "tu",
+        "li",
+        "imba"
+      ],
+      "answer_text": "tuliimba"
+    }
+  ],
+  "turkish-vowel-harmony:0": [
+    {
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- “eyes” corresponds to the root “göz” (eye).\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- The query is plural, so we need the plural suffix. Vowel harmony dictates using –ler after front vowels. “göz” ends in the front vowel “ö”, so the suffix is –ler.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- Combine root and suffix: göz + ler → gözler.\n</analysis>\n<answers>\ngözler\n</answers>",
+      "answer": [
+        "göz",
+        "ler"
+      ],
+      "answer_text": "göz ler"
+    },
+    {
+      "model": "qwen/qwen3.8-27b",
+      "provider": "groq",
+      "raw": "<analysis>\n1.  **Identify the source word**: The query is \"eyes\". Looking at the evidence, `göz` corresponds to \"eye\".\n2.  **Determine the plural suffix**: The evidence shows plurals like `evler` (houses), `atlar` (horses), `eller` (hands), `kitaplar` (books). The hint explains vowel harmony:\n    *   Back vowels (a, ı, o, u) take `-lar`.\n    *   Front vowels (e, i, ö, ü) take `-ler`.\n3.  **Apply vowel harmony**: The root is `göz`. The last vowel is `ö`. `ö` is a front vowel. Therefore, the plural suffix must be `-ler`.\n4.  **Compose the translation**: Root `göz` + Suffix `ler` = `gözler`.\n</analysis>\n<answers>\ngözler\n</answers>",
+      "answer": [
+        "göz",
+        "ler"
+      ],
+      "answer_text": "göz ler"
+    },
+    {
+      "model": "Qwen/Qwen3-32B",
+      "provider": "featherless",
+      "prompt_variant": "decomposition",
+      "raw": "göz lar",
+      "answer": [
+        "göz",
+        "lar"
+      ],
+      "answer_text": "göz lar"
+    },
+    {
+      "model": "deepseek-ai/DeepSeek-V3.2",
+      "provider": "featherless",
+      "prompt_variant": "decomposition",
+      "raw": "<analysis>\nStep 1: The query is \"eyes\". From the evidence, \"göz\" means \"eye\".  \nStep 2: To form the plural, we apply vowel harmony. The last vowel of \"göz\" is \"ö\", which is a front vowel. According to the hint, front vowels take \"-ler\".  \nStep 3: The morphemes are \"göz\" (root) and \"ler\" (plural suffix).  \n</analysis>\n<answers>\ngöz ler\n</answers>",
+      "answer": [
+        "göz",
+        "ler"
+      ],
+      "answer_text": "göz ler"
+    },
+    {
+      "model": "zai-org/GLM-4.6",
+      "provider": "featherless",
+      "prompt_variant": "decomposition",
+      "raw": "<analysis>\nStep 1: Identify the source word for the query \"Eyes\". From the evidence, \"göz\" means \"eye\".\nStep 2: Note any grammar. \"Eyes\" is plural. The plural suffix in this language follows vowel harmony: -lar after back vowels (a, ı, o, u) and -ler after front vowels (e, i, ö, ü).\nStep 3: The last vowel of \"göz\" is \"ö\", which is a front vowel. Therefore, the plural suffix is \"-ler\". The morphemes are \"göz\" and \"ler\".\n</analysis>\n<answers>\ngöz ler\n</answers>",
+      "answer": [
+        "göz",
+        "ler"
+      ],
+      "answer_text": "göz ler"
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "prompt_variant": "decomposition",
+      "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- The query “eyes” corresponds to the root “göz” (eye) with a plural suffix.\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- Plural suffix follows vowel harmony: last vowel of “göz” is “ö”, a front vowel, so the suffix is –ler.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- Morpheme sequence: göz + ler, taken from the bank.\n\n</analysis>\n<answers>\ngöz ler\n</answers>",
+      "answer": [
+        "göz",
+        "ler"
+      ],
+      "answer_text": "göz ler"
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "prompt_variant": "no_hint",
+      "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- “eyes” corresponds to the base noun “göz” (given in the evidence list).\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- The examples show that plurals are formed by adding the plural suffix “-lar” after back vowels and “-ler” after front vowels. “göz” contains the front vowel “ö”, so the correct plural suffix is “-ler”.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- Combine the base “göz” with the plural suffix “-ler” → “gözler”.\n\nThus the translation for “eyes” is “gözler”.\n</analysis>\n<answers>\ngözler\n</answers>",
+      "answer": [
+        "göz",
+        "ler"
+      ],
+      "answer_text": "gözler"
+    },
+    {
+      "model": "qwen/qwen3.8-27b",
+      "provider": "groq",
+      "prompt_variant": "decomposition",
+      "raw": "<analysis>\n1.  **Identify the source word**: The query is \"eyes\". Looking at the evidence, `göz` corresponds to \"eye\".\n2.  **Determine the plural suffix**: The evidence shows plurals:\n    *   `ev` (house) -> `evler` (houses). Root ends in 'v' (consonant), last vowel is 'e' (front). Suffix is `-ler`.\n    *   `at` (horse) -> `atlar` (horses). Root ends in 't' (consonant), last vowel is 'a' (back). Suffix is `-lar`.\n    *   `el` (hand) -> `eller` (hands). Root ends in 'l' (consonant), last vowel is 'e' (front). Suffix is `-ler`.\n    *   `kitap` (book) -> `kitaplar` (books). Root ends in 'p' (consonant), last vowel is 'a' (back). Suffix is `-lar`.\n    \n    The hint confirms vowel harmony: Back vowels (a, ı, o, u) take `-lar`; Front vowels (e, i, ö, ü) take `-ler`.\n3.  **Apply to the query**:\n    *   Root: `göz`\n    *   Last vowel of root: `ö`\n    *   Vowel class: `ö` is a front vowel.\n    *   Required suffix: `-ler`\n4.  **Compose the morpheme sequence**:\n    *   Root morpheme: `göz`\n    *   Suffix morpheme: `ler`\n    *   Sequence: `göz ler`\n</analysis>\n<answers>\ngöz ler\n</answers>",
+      "answer": [
+        "göz",
+        "ler"
+      ],
+      "answer_text": "göz ler"
+    },
+    {
+      "model": "qwen/qwen3.8-27b",
+      "provider": "groq",
+      "prompt_variant": "no_hint",
+      "raw": "<analysis>\n1.  **Analyze the Evidence**:\n    *   `ev` = house\n    *   `at` = horse\n    *   `kız` = girl\n    *   `göz` = eye\n    *   `gün` = day\n    *   `el` = hand\n    *   `evler` = houses (ev + ler)\n    *   `atlar` = horses (at + lar)\n    *   `eller` = hands (el + ler)\n    *   `kitaplar` = books (kitap + lar)\n\n2.  **Deduce Grammar (Pluralization)**:\n    *   The language uses suffixes for the plural.\n    *   `ev` (ends in vowel 'v') -> `evler` (suffix `ler`).\n    *   `at` (ends in consonant 't') -> `atlar` (suffix `lar`).\n    *   `el` (ends in consonant 'l') -> `eller` (suffix `ler`). Note: `el` ends in a consonant, but takes `ler`. Let's look closer.\n    *   `kitap` (ends in consonant 'p') -> `kitaplar` (suffix `lar`).\n    *   Let's check the vowel harmony rule typically found in Turkish (which this language mimics):\n        *   Back vowels (a, ı, o, u) take `lar`.\n        *   Front vowels (e, i, ö, ü) take `ler`.\n    *   Let's verify with the examples:\n        *   `ev` (e is front) -> `ler`. Correct.\n        *   `at` (a is back) -> `lar`. Correct.\n        *   `el` (e is front) -> `ler`. Correct.\n        *   `kitap` (a is back) -> `lar`. Correct.\n    *   The query is \"eyes\". The singular is `göz`.\n    *   `göz` ends in `z` (consonant) and contains `ö` (front vowel).\n    *   Therefore, the plural suffix should be `ler`.\n    *   Result: `gözler`.\n\n3.  **Construct the Answer**:\n    *   Source word: `göz`\n    *   Suffix: `ler`\n    *   Combined: `gözler`\n\n</analysis>\n<answers>\ngözler\n</answers>",
+      "answer": [
+        "göz",
+        "ler"
+      ],
+      "answer_text": "gözler"
+    }
+  ],
+  "turkish-vowel-harmony:1": [
+    {
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "raw": "<analysis>\nStep 1: Identify the source word for “girls”. The singular “girl” is given as kız.\nStep 2: Determine plural suffix. The root kız ends with the vowel ı, which belongs to the back‑vowel group (a, ı, o, u). According to vowel harmony, back‑vowel roots take the plural suffix -lar.\nStep 3: Combine root and suffix: kız + lar → kızlar.\n</analysis>\n<answers>\nkızlar\n</answers>",
+      "answer": [
+        "kız",
+        "lar"
+      ],
+      "answer_text": "kız lar"
+    },
+    {
+      "model": "qwen/qwen3.8-27b",
+      "provider": "groq",
+      "raw": "<analysis>\n1.  **Identify the source word**: The query is \"girls\". Looking at the evidence, \"kız\" corresponds to \"girl\".\n2.  **Determine the plural suffix**: The evidence shows plurals like \"evler\" (houses), \"atlar\" (horses), \"eller\" (hands), \"kitaplar\" (books). The hint explains vowel harmony:\n    *   Back vowels (a, ı, o, u) take the suffix `-lar`.\n    *   Front vowels (e, i, ö, ü) take the suffix `-ler`.\n3.  **Apply vowel harmony**: The root is `kız`. The last vowel is `ı`. According to the hint, `ı` is a back vowel. Therefore, the correct plural suffix is `-lar`.\n4.  **Compose the translation**: Combine the root `kız` with the suffix `lar` to get `kızlar`.\n</analysis>\n<answers>\nkızlar\n</answers>",
+      "answer": [
+        "kız",
+        "lar"
+      ],
+      "answer_text": "kız lar"
+    },
+    {
+      "model": "Qwen/Qwen3-32B",
+      "provider": "featherless",
+      "prompt_variant": "decomposition",
+      "raw": "kız lar",
+      "answer": [
+        "kız",
+        "lar"
+      ],
+      "answer_text": "kız lar"
+    },
+    {
+      "model": "zai-org/GLM-4.6",
+      "provider": "featherless",
+      "prompt_variant": "decomposition",
+      "raw": "kız lar",
+      "answer": [
+        "kız",
+        "lar"
+      ],
+      "answer_text": "kız lar"
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "prompt_variant": "decomposition",
+      "raw": "<answers>\nkız lar\n</answers>",
+      "answer": [
+        "kız",
+        "lar"
+      ],
+      "answer_text": "kız lar"
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "prompt_variant": "no_hint",
+      "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- The English word “girls” corresponds to the source singular “kız” (given as “girl”).\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- The examples show that plural is formed by adding the suffix ‑lar or ‑ler.\n- The suffix is chosen according to vowel harmony: it matches the last vowel of the root.\n- “kız” ends with the vowel ı (a back vowel), so the plural suffix is ‑lar.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- Combine the root “kız” with the appropriate plural suffix “‑lar” → “kızlar”.\n</analysis>\n<answers>\nkızlar\n</answers>",
+      "answer": [
+        "kız",
+        "lar"
+      ],
+      "answer_text": "kızlar"
+    },
+    {
+      "model": "qwen/qwen3.8-27b",
+      "provider": "groq",
+      "prompt_variant": "decomposition",
+      "raw": "<analysis>\n1.  **Identify the source word**: The query is \"girls\". Looking at the evidence, \"kız\" corresponds to \"girl\".\n2.  **Determine the plural suffix**: The evidence shows plurals like \"evler\" (houses), \"atlar\" (horses), \"eller\" (hands), \"kitaplar\" (books). The hint explains vowel harmony:\n    *   Back vowels (a, ı, o, u) take the suffix `-lar`.\n    *   Front vowels (e, i, ö, ü) take the suffix `-ler`.\n3.  **Apply vowel harmony**: The root is `kız`. The last vowel is `ı`. According to the hint, `ı` is a back vowel. Therefore, the correct plural suffix is `-lar`.\n4.  **Compose the morphemes**: The root is `kız` and the suffix is `lar`.\n5.  **Format the output**: The requested format is the morphemes separated by single spaces.\n\nMorphemes: `kız`, `lar`\n</analysis>\n<answers>\nkız lar\n</answers>",
+      "answer": [
+        "kız",
+        "lar"
+      ],
+      "answer_text": "kız lar"
+    },
+    {
+      "model": "qwen/qwen3.8-27b",
+      "provider": "groq",
+      "prompt_variant": "no_hint",
+      "raw": "<analysis>\n1.  **Analyze the Evidence**:\n    *   `ev` = house\n    *   `at` = horse\n    *   `kız` = girl\n    *   `göz` = eye\n    *   `gün` = day\n    *   `el` = hand\n    *   `evler` = houses (ev + ler)\n    *   `atlar` = horses (at + lar)\n    *   `eller` = hands (el + ler)\n    *   `kitaplar` = books (kitap + lar)\n\n2.  **Deduce Grammar Rules**:\n    *   The language exhibits vowel harmony for the plural suffix.\n    *   The plural suffix is either `lar` or `ler`.\n    *   Looking at the stems:\n        *   `ev` (contains back vowel 'e') -> `evler` (suffix `ler`)\n        *   `at` (contains back vowel 'a') -> `atlar` (suffix `lar`)\n        *   `el` (contains back vowel 'e') -> `eller` (suffix `ler`)\n        *   `kitap` (contains back vowel 'a') -> `kitaplar` (suffix `lar`)\n    *   Wait, let's look closer at Turkish vowel harmony rules which this mimics:\n        *   Back vowels: a, ı, o, u\n        *   Front vowels: e, i, ö, ü\n        *   Suffix `lar` follows back vowels.\n        *   Suffix `ler` follows front vowels.\n    *   Let's re-examine the evidence with this rule:\n        *   `ev` (e is front) -> `evler` (ler). Correct.\n        *   `at` (a is back) -> `atlar` (lar). Correct.\n        *   `el` (e is front) -> `eller` (ler). Correct.\n        *   `kitap` (a is back) -> `kitaplar` (lar). Correct.\n    *   Now look at the target word: `kız` (girl).\n    *   The vowel in `kız` is `ı`. In Turkish, `ı` is a back vowel.\n    *   Therefore, the plural suffix should be `lar`.\n    *   Let's check if there are other clues. The prompt asks for \"girls\".\n    *   Stem: `kız`\n    *   Suffix: `lar` (because `ı` is a back vowel).\n    *   Result: `kızlar`.\n\n3.  **Verify against available morphemes**:\n    *   Available: `ev`, `at`, `kız`, `göz`, `gün`, `el`, `kitap`, `taş`, `lar`, `ler`.\n    *   We need `kız` and `lar`. Both are available.\n\n4.  **Final Construction**:\n    *   Word: `kız`\n    *   Plural suffix: `lar`\n    *   Combined: `kızlar`\n</analysis>\n<answers>\nkızlar\n</answers>",
+      "answer": [
+        "kız",
+        "lar"
+      ],
+      "answer_text": "kızlar"
+    },
+    {
+      "model": "deepseek-ai/DeepSeek-V3.2",
+      "provider": "featherless",
+      "prompt_variant": "decomposition",
+      "raw": "<analysis>\nStep 1: Identify the source word for \"girls\". The singular for \"girl\" is given as \"kız\".  \nStep 2: Apply plural formation. The last vowel of \"kız\" is \"ı\", which is a back vowel. According to vowel harmony, back vowels take \"-lar\".  \nStep 3: The morphemes are \"kız\" (root) and \"lar\" (plural suffix).  \n</analysis>\n<answers>\nkız lar",
+      "answer": [
+        "kız",
+        "lar"
+      ],
+      "answer_text": "kız lar"
+    }
+  ],
+  "turkish-vowel-harmony:2": [
+    {
+      "model": "google/gemma-4-31b-it:free",
+      "provider": "openrouter",
+      "raw": "<analysis>\nStep 1: Identify the source word for \"days\". The root for \"day\" is \"gün\".\nStep 2: Determine the plural suffix. The last vowel in \"gün\" is 'ü'.\nStep 3: Apply vowel harmony. 'ü' is a front vowel (e, i, ö, ü), so the suffix is \"-ler\".\nStep 4: Combine the root and suffix: gün + ler = günler.\n</analysis>\n<answers>\ngünler\n</answers>",
+      "answer": [
+        "gün",
+        "ler"
+      ],
+      "answer_text": "gün ler"
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "raw": "<analysis>\nStep 1: Identify the source word for the query “days”. The root for “day” is **gün** from the evidence list.\nStep 2: Apply plural grammar. The plural suffix is -lar or -ler depending on vowel harmony. The last vowel of the root “gün” is **ü**, a front vowel, so the front‑vowel plural suffix **-ler** is used.\nStep 3: Combine root and plural suffix: **gün + ler → günler**.\n</analysis>\n<answers>\ngünler\n</answers>",
+      "answer": [
+        "gün",
+        "ler"
+      ],
+      "answer_text": "gün ler"
+    },
+    {
+      "model": "qwen/qwen3.8-27b",
+      "provider": "groq",
+      "raw": "<analysis>\n1.  **Identify the source word**: The query is \"days\". Looking at the evidence, `gün` corresponds to \"day\".\n2.  **Determine the plural suffix**: The evidence shows plurals like `evler` (houses), `atlar` (horses), `eller` (hands), `kitaplar` (books). The hint explains vowel harmony:\n    *   Back vowels (a, ı, o, u) take `-lar`.\n    *   Front vowels (e, i, ö, ü) take `-ler`.\n3.  **Apply vowel harmony**: The root is `gün`. The last vowel is `ü`. `ü` is a front vowel. Therefore, the plural suffix must be `-ler`.\n4.  **Compose the translation**: Root `gün` + Suffix `ler` = `günler`.\n</analysis>\n<answers>\ngünler\n</answers>",
+      "answer": [
+        "gün",
+        "ler"
+      ],
+      "answer_text": "gün ler"
+    },
+    {
+      "model": "Qwen/Qwen3-32B",
+      "provider": "featherless",
+      "prompt_variant": "decomposition",
+      "raw": "<analysis>\nStep 1: The root for \"day\" is \"gün\". The plural requires adding either \"lar\" or \"ler\" based on vowel harmony.  \nStep 2: The last vowel of \"gün\" is \"u\" (a back vowel), so the plural suffix must be \"lar\" (back vowel harmony).  \nStep 3: Combine \"gün\" + \"lar\" to form the plural \"days\".  \n</analysis>  \n<answers>  \ngün lar  \n</answers>",
+      "answer": [
+        "gün",
+        "lar"
+      ],
+      "answer_text": "gün lar"
+    },
+    {
+      "model": "deepseek-ai/DeepSeek-V3.2",
+      "provider": "featherless",
+      "prompt_variant": "decomposition",
+      "raw": "<analysis>\nStep 1: The query is \"days\". From the evidence, \"gün\" means \"day\".  \nStep 2: To form the plural, we apply vowel harmony. The last vowel of \"gün\" is \"ü\", which is a front vowel. According to the hint, front vowels take \"-ler\".  \nStep 3: The morphemes are \"gün\" and \"ler\".  \n</analysis>\n<answers>\ngün ler\n</answers>",
+      "answer": [
+        "gün",
+        "ler"
+      ],
+      "answer_text": "gün ler"
+    },
+    {
+      "model": "zai-org/GLM-4.6",
+      "provider": "featherless",
+      "prompt_variant": "decomposition",
+      "raw": "gün ler",
+      "answer": [
+        "gün",
+        "ler"
+      ],
+      "answer_text": "gün ler"
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "prompt_variant": "decomposition",
+      "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- The query “days” corresponds to the plural form of the noun “day”. From the evidence, “gün” = day.\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- Plural is formed with the suffix –lar or –ler according to vowel harmony.\n- “gün” ends with the front rounded vowel “ü”, which belongs to the front‑vowel group. Therefore the plural suffix is –ler.\n\nStep 3: Compose the EXACT target‑language form, preserving notation like You_{sg}, You_{pl}.\n- The morpheme sequence is the root “gün” followed by the plural suffix “ler”.\n\n</analysis>\n<answers>\ngün ler\n</answers>",
+      "answer": [
+        "gün",
+        "ler"
+      ],
+      "answer_text": "gün ler"
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "prompt_variant": "no_hint",
+      "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- The English word “day” corresponds to the morpheme “gün”.\n- The English plural “days” requires the plural suffix.\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- Plural is formed by adding “ler” after front vowels (vowel harmony). “gün” contains the front vowel “ü”, so the correct plural suffix is “ler”.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- Combine “gün” + “ler” → “günler”.\n</analysis>\n<answers>\ngünler\n</answers>",
+      "answer": [
+        "gün",
+        "ler"
+      ],
+      "answer_text": "günler"
+    },
+    {
+      "model": "qwen/qwen3.8-27b",
+      "provider": "groq",
+      "prompt_variant": "decomposition",
+      "raw": "<analysis>\n1.  **Identify the source word**: The query is \"days\". Looking at the evidence, `gün` corresponds to \"day\".\n2.  **Determine the plural suffix**: The evidence shows plurals like `evler` (houses), `atlar` (horses), `eller` (hands), `kitaplar` (books). The hint explains vowel harmony:\n    *   Back vowels (a, ı, o, u) take `-lar`.\n    *   Front vowels (e, i, ö, ü) take `-ler`.\n3.  **Apply vowel harmony**: The root is `gün`. The last vowel is `ü`. `ü` is a front vowel. Therefore, the plural suffix must be `-ler`.\n4.  **Compose the morphemes**: The root is `gün` and the suffix is `ler`.\n5.  **Format the output**: The requested format is the morphemes separated by single spaces.\n\nMorphemes: `gün`, `ler`\n</analysis>\n<answers>\ngün ler\n</answers>",
+      "answer": [
+        "gün",
+        "ler"
+      ],
+      "answer_text": "gün ler"
+    },
+    {
+      "model": "qwen/qwen3.8-27b",
+      "provider": "groq",
+      "prompt_variant": "no_hint",
+      "raw": "<analysis>\n1.  **Analyze the Evidence**:\n    *   `ev` = house\n    *   `at` = horse\n    *   `kız` = girl\n    *   `göz` = eye\n    *   `gün` = day\n    *   `el` = hand\n    *   `evler` = houses (ev + ler)\n    *   `atlar` = horses (at + lar)\n    *   `eller` = hands (el + ler)\n    *   `kitaplar` = books (kitap + lar)\n\n2.  **Deduce Grammar Rules**:\n    *   The language uses suffixes for pluralization.\n    *   The plural suffixes are `lar` and `ler`.\n    *   **Vowel Harmony**:\n        *   `ev` (contains back vowel /e/) -> `evler` (suffix starts with /l/ + back vowel /e/). Wait, `ev` ends in /v/. Let's look at the vowels. `ev` has /e/ (back). Suffix is `ler` (back).\n        *   `at` (contains back vowel /a/) -> `atlar` (suffix starts with /l/ + back vowel /a/).\n        *   `el` (contains back vowel /e/) -> `eller` (suffix starts with /l/ + back vowel /e/).\n        *   `kitap` (contains back vowel /a/) -> `kitaplar` (suffix starts with /l/ + back vowel /a/).\n        *   Let's check for front vowels in the evidence. `kız` (/ı/ is back), `göz` (/ö/ is front), `gün` (/ü/ is front).\n        *   We don't have explicit plural examples for `kız`, `göz`, or `gün` in the evidence list provided, but we can infer the pattern based on standard Turkish-like vowel harmony or simply look at the available morphemes.\n        *   Available morphemes: `ev`, `at`, `kız`, `göz`, `gün`, `el`, `kitap`, `taş`, `lar`, `ler`.\n        *   The suffixes are `lar` and `ler`.\n        *   `lar` follows words with back vowels (a, ı, o, u). Examples: `at` (a) -> `atlar`, `kitap` (a) -> `kitaplar`.\n        *   `ler` follows words with front vowels (e, i, ö, ü). Examples: `ev` (e) -> `evler`, `el` (e) -> `eller`.\n        *   The query is \"days\". The source word for \"day\" is `gün`.\n        *   `gün` contains the vowel `ü`, which is a front vowel.\n        *   Therefore, the plural suffix should be `ler`.\n        *   Result: `gün` + `ler` = `günler`.\n\n3.  **Verify**:\n    *   Source: `gün` (day)\n    *   Target: days (plural)\n    *   Vowel in `gün`: `ü` (front)\n    *   Suffix for front vowels: `ler`\n    *   Construction: `günler`\n\n4.  **Final Check**:\n    *   Does `günler` use only available morphemes? Yes (`gün`, `ler`).\n    *   Does it follow the pattern? Yes.\n</analysis>\n<answers>\ngünler\n</answers>",
+      "answer": [
+        "gün",
+        "ler"
+      ],
+      "answer_text": "günler"
     }
   ]
 }

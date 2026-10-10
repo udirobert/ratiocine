@@ -70,6 +70,20 @@ MAX_RETRIES = 5
 BACKOFF_BASE = 5.0
 
 
+def _decode_json(raw: bytes) -> dict:
+    """Parse a completion body, tolerating trailing bytes.
+
+    Featherless intermittently appends a second object after the completion
+    (json.loads then raises "Extra data"), which threw away whole sweep arms.
+    """
+    text = raw.decode(errors="replace")
+    try:
+        return json.loads(text)
+    except json.JSONDecodeError:
+        obj, _ = json.JSONDecoder().raw_decode(text.lstrip())
+        return obj
+
+
 def _ssl_context():
     try:
         import certifi
@@ -137,7 +151,7 @@ def call_chat(
             with urllib.request.urlopen(
                 req, timeout=timeout, context=_ssl_context()
             ) as resp:
-                data = json.loads(resp.read())
+                data = _decode_json(resp.read())
             return data["choices"][0]["message"]["content"]
         except urllib.error.HTTPError as e:
             body = e.read().decode(errors="replace")[:200]

@@ -183,11 +183,15 @@ def parse_morphemes(
     """Parse a single answer string into morphemes."""
     tiles = tiles or []
     # Extract first line from model output (parse_answers returns per-item answers)
-    parsed = parse_answers(raw, n_expected=1, task_type="translation")
-    if not parsed:
-        return []
-    answer = parsed[0].strip()
-    # Strip punctuation and split on whitespace
+    parsed = [
+        p.strip() for p in parse_answers(raw, n_expected=1, task_type="translation")
+    ]
+    answer = parsed[0] if parsed else ""
+    # parse_answers hands back a bare tag when the answer block is unterminated
+    # (`<answers>\nkız lar`) or the model wrapped the answer itself in one
+    # (`<mikhu n>`) — neither is an answer, so recover the real text instead.
+    if not answer or re.fullmatch(r"</?[a-zA-Z_]+>", answer):
+        return _recover_answer(raw, tiles)
     answer = answer.strip(".!?;:，。")
     # Some models join morphemes with no spaces; if the gold answer is a known
     # segmentation, try to recover by finding contiguous morpheme pieces.
@@ -197,6 +201,26 @@ def parse_morphemes(
             return segmented
         return split_joined_morphemes(answer, gold)
     return [m.strip() for m in re.split(r"\s+", answer) if m.strip()]
+
+
+def _recover_answer(raw: str, tiles: list[str]) -> list[str]:
+    """Best-effort answer when the tag protocol broke down."""
+    tail = raw.rsplit("<answers>", 1)
+    lines = (
+        [line.strip() for line in tail[1].splitlines() if line.strip()]
+        if len(tail) > 1
+        else []
+    )
+    candidates = lines + [c.strip() for c in re.findall(r"<([^<>]+)>", raw)]
+    for cand in candidates:
+        if not cand or re.fullmatch(r"</?[a-zA-Z_]+>", cand):
+            continue
+        if " " in cand:
+            return [m for m in re.split(r"\s+", cand) if m]
+        segmented = segment_from_bank(cand.replace("-", "").replace(" ", ""), tiles)
+        if segmented:
+            return segmented
+    return []
 
 
 def split_joined_morphemes(joined: str, gold: list[str]) -> list[str]:
