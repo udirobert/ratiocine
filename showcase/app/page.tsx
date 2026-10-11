@@ -6,7 +6,6 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
 
 import { GridBackground } from "@/components/ui/grid-background";
-import { track } from "@/lib/analytics";
 
 import { Problem } from "./scenes/problem/index";
 import { Answer } from "./scenes/answer/index";
@@ -105,7 +104,6 @@ const Home = () => {
   // CRT-flash transition into the daily game (mechanic unchanged).
   const handlePlay = useCallback(() => {
     if (phase !== "landing") return;
-    track("play_start");
     savedScroll.current = scrollRef.current?.scrollTop ?? 0;
     setPhase("pre-flash");
     setTimeout(() => {
@@ -199,7 +197,7 @@ const Home = () => {
           pointerEvents: phase === "game" || phase === "expanding" ? "auto" : "none",
         }}
       >
-        <PuzzleView onBack={handleBack} onSolved={setSolvedResult} />
+        <PuzzleView onBack={handleBack} onSolved={setSolvedResult} entry="landing" />
       </div>
 
       {/* Grain edge overlay during CRT expansion */}

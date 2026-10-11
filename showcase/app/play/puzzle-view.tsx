@@ -121,9 +121,10 @@ interface SlotData {
 export interface PuzzleViewProps {
   onBack?: () => void;
   onSolved?: (data: { language: string; score: number; total: number; verdict: string; accentColor: string; timeStr: string }) => void;
+  entry?: "landing";
 }
 
-export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
+export const PuzzleView = ({ onBack, onSolved, entry }: PuzzleViewProps) => {
   const puzzle = useMemo(() => {
     if (typeof window !== "undefined") {
       const params = new URLSearchParams(window.location.search);
@@ -145,9 +146,19 @@ export const PuzzleView = ({ onBack, onSolved }: PuzzleViewProps) => {
   const sfx = useSfx();
   const { count: solveCount, increment: incrementSolveCount } = useSolveCounter();
 
+  // Session start + entry attribution — fires once per mount for every entry
+  // path (landing button, bare /play, challenge link, archive deep link), so
+  // the funnel head counts recipients as well as organic players. `via`
+  // segments it: challenge = shared link (&sc=), deep_link = ?puzzle= with no
+  // share tag (archive rows), direct = bare /play, landing = home page.
   useEffect(() => {
-    const sc = new URLSearchParams(window.location.search).get("sc");
+    const params = new URLSearchParams(window.location.search);
+    const sc = params.get("sc");
     if (sc) track("share_click", { share_variant: sc === "l" ? "linguistic" : "control" });
+    track("play_start", {
+      puzzle: puzzle.id,
+      via: entry ?? (sc ? "challenge" : params.get("puzzle") ? "deep_link" : "direct"),
+    });
   }, []);
 
   // Phase — challenge-link visitors (?puzzle=) skip the warmup gate and
