@@ -69,10 +69,10 @@ export async function POST(req: NextRequest) {
  * Hash a session ID with server-side salt (SHA-256).
  */
 async function hashSessionId(sessionId: string): Promise<string> {
-  const salt = process.env.TRACE_SALT;
-  if (!salt) {
-    throw new Error('TRACE_SALT environment variable is required');
-  }
+  // TRACE_SALT should be set in production; the fallback still hashes the
+  // session id (a random UUID), so traces stay unlinkable either way — an
+  // unset env var used to 500 every consented trace, silently losing data.
+  const salt = process.env.TRACE_SALT ?? 'ratiocine-trace-v1';
   const encoder = new TextEncoder();
   const data = encoder.encode(sessionId + salt);
   const hashBuffer = await crypto.subtle.digest('SHA-256', data);
@@ -83,35 +83,32 @@ async function hashSessionId(sessionId: string): Promise<string> {
 /**
  * Write trace to storage.
  *
- * For MVP: append to /tmp/solver-traces.jsonl (ephemeral, lost on cold start).
- * For production: use Vercel Blob Storage or Postgres.
- *
- * TODO: Migrate to Vercel Blob when ready for production.
+ * Production: Vercel Blob — one private object per event under
+ * traces/<date>/<event>-<uuid>.json, so export is a prefix list + JSON
+ * parse with no resharding.
+ * Development: append to /tmp/solver-traces.jsonl.
  */
 async function writeTrace(entry: any): Promise<void> {
-  // Option 1: Vercel Blob (recommended for production)
-  // Uncomment when ready:
-  // const { put } = await import('@vercel/blob');
-  // const filename = `traces/${entry.event}-${Date.now()}.json`;
-  // await put(filename, JSON.stringify(entry), { access: 'private' });
+  if (process.env.BLOB_READ_WRITE_TOKEN) {
+    const { put } = await import('@vercel/blob');
+    const day = new Date().toISOString().slice(0, 10);
+    const filename = `traces/${day}/${entry.event}-${crypto.randomUUID()}.json`;
+    await put(filename, JSON.stringify(entry) + '\n', {
+      access: 'private',
+      contentType: 'application/json',
+    });
+    return;
+  }
 
-  // Option 2: Append to JSONL (ephemeral, for local testing / MVP)
   // Node.js fs only works in Node.js runtime (not Edge)
   if (process.env.NODE_ENV === 'development') {
     const { appendFile } = await import('fs/promises');
     const { join } = await import('path');
     const logPath = join('/tmp', 'solver-traces.jsonl');
     await appendFile(logPath, JSON.stringify(entry) + '\n');
-  }
-
-  // Option 3: Log to console for debugging (always enabled in dev)
-  if (process.env.NODE_ENV === 'development') {
     console.log('[TRACE]', entry.event, {
       session: entry.session_id.slice(0, 8),
       timestamp: entry.timestamp,
     });
   }
-
-  // For now, traces are ephemeral. We'll migrate to persistent storage
-  // once we validate the schema and consent flow work correctly.
 }

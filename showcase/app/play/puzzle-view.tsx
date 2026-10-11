@@ -23,7 +23,7 @@ import { useSfx, AMBIENT_FREQ } from "./use-sfx";
 import { useSolveCounter } from "./use-solve-counter";
 import { getLevel, setLevel, ghostMs, failHintAt, forfeitAt, autoHintOnFail, type Level } from "./level";
 import { Button } from "@/components/button";
-import { track } from "@/lib/analytics";
+import { track, trackSolverEvent } from "@/lib/analytics";
 import {
   getShareVariant,
   challengeParam,
@@ -159,6 +159,14 @@ export const PuzzleView = ({ onBack, onSolved, entry }: PuzzleViewProps) => {
       puzzle: puzzle.id,
       via: entry ?? (sc ? "challenge" : params.get("puzzle") ? "deep_link" : "direct"),
     });
+    // Research trace — consent-gated, no-ops until the player opts in.
+    const w = window.innerWidth;
+    trackSolverEvent("session_start", {
+      puzzle_id: puzzle.id,
+      puzzle_date: new Date().toISOString().slice(0, 10),
+      viewport: { width: w, height: window.innerHeight },
+      device_type: w < 768 ? "mobile" : w < 1024 ? "tablet" : "desktop",
+    });
   }, []);
 
   // Phase — challenge-link visitors (?puzzle=) skip the warmup gate and
@@ -266,6 +274,10 @@ export const PuzzleView = ({ onBack, onSolved, entry }: PuzzleViewProps) => {
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const startRef = useRef(Date.now());
   const accumRef = useRef(0);
+  // Research-trace clocks/counters — study stint start, drawer open count
+  const studyStartRef = useRef(Date.now());
+  const evidenceOpensRef = useRef(0);
+  const elapsedMs = () => accumRef.current * 1000 + (timerRef.current ? Date.now() - startRef.current : 0);
 
   useEffect(() => {
     if (phase !== "solve") return;
@@ -283,6 +295,16 @@ export const PuzzleView = ({ onBack, onSolved, entry }: PuzzleViewProps) => {
       }
     };
   }, [phase]);
+
+  // Research trace — stamp each study stint so study_complete gets a duration
+  useEffect(() => {
+    if (phase === "study") studyStartRef.current = Date.now();
+  }, [phase]);
+
+  // Research trace — count evidence drawer opens during the session
+  useEffect(() => {
+    if (evidenceOpen) evidenceOpensRef.current += 1;
+  }, [evidenceOpen]);
 
   // Toast helper
   const showToast = useCallback((text: string, ms = 4500) => {
@@ -463,6 +485,13 @@ export const PuzzleView = ({ onBack, onSolved, entry }: PuzzleViewProps) => {
     if (slots[idx].morpheme) {
       sfx.pop();
       if (navigator.vibrate) navigator.vibrate(5);
+      trackSolverEvent("tile_removed", {
+        query_index: currentQ,
+        position: idx,
+        tile_id: slots[idx].morpheme!,
+        elapsed_solve_ms: elapsedMs(),
+        current_answer: slots.map((s, i) => (i === idx ? "" : s.morpheme ?? "")),
+      });
       setAnswers((prev) => {
         const next = [...prev];
         const row = [...next[currentQ]];
@@ -480,6 +509,14 @@ export const PuzzleView = ({ onBack, onSolved, entry }: PuzzleViewProps) => {
     if (emptyIdx === -1) return; // all slots full
     sfx.snap();
     if (navigator.vibrate) navigator.vibrate(10);
+    trackSolverEvent("tile_placed", {
+      query_index: currentQ,
+      position: emptyIdx,
+      tile_id: morpheme,
+      tile_text: morpheme,
+      elapsed_solve_ms: elapsedMs(),
+      current_answer: slots.map((s, i) => (i === emptyIdx ? morpheme : s.morpheme ?? "")),
+    });
     setAnswers((prev) => {
       const next = [...prev];
       const row = [...next[currentQ]];
@@ -499,12 +536,23 @@ export const PuzzleView = ({ onBack, onSolved, entry }: PuzzleViewProps) => {
   const handleClear = useCallback(() => {
     if (isLocked) return;
     sfx.pop();
+    slots.forEach((s, i) => {
+      if (s.morpheme) {
+        trackSolverEvent("tile_removed", {
+          query_index: currentQ,
+          position: i,
+          tile_id: s.morpheme,
+          elapsed_solve_ms: elapsedMs(),
+          current_answer: slots.map(() => ""),
+        });
+      }
+    });
     setAnswers((prev) => {
       const next = [...prev];
       next[currentQ] = next[currentQ].map(() => ({ morpheme: null }));
       return next;
     });
-  }, [isLocked, currentQ, sfx]);
+  }, [isLocked, currentQ, sfx, slots]);
 
   const handleHint = useCallback(() => {
     if (hintsUsed >= puzzle.hints.length) return;
@@ -553,6 +601,24 @@ export const PuzzleView = ({ onBack, onSolved, entry }: PuzzleViewProps) => {
 
     setAttempts((prev) => { const n = [...prev]; n[currentQ] = attempt; return n; });
     setGrades((prev) => new Map(prev).set(query.id, result));
+
+    trackSolverEvent("submit", {
+      attempt_number: attempt,
+      total_solve_time_ms: elapsedMs(),
+      answers: answers.map((row) => row.map((s) => s.morpheme ?? "")),
+      grades: puzzle.queries.flatMap((q, qi) => {
+        const g = qi === currentQ ? result : grades.get(q.id);
+        if (!g) return [];
+        const partial = !g.isCorrect && g.grades.some((x) => x !== "wrong");
+        return [{
+          query_index: qi,
+          verdict: (g.isCorrect ? "correct" : partial ? "partial" : "wrong") as "correct" | "partial" | "wrong",
+          em: g.isCorrect ? 1 : 0,
+        }];
+      }),
+      overall_verdict: result.isCorrect ? "correct" : result.grades.some((g) => g !== "wrong") ? "partial" : "wrong",
+      score,
+    });
 
     if (result.isCorrect) {
       sfx.chime();
@@ -613,7 +679,7 @@ export const PuzzleView = ({ onBack, onSolved, entry }: PuzzleViewProps) => {
       // Arm the "reveal this one" forfeit (threshold by level)
       if (attempt >= forfeitAt(level)) setForfeitArmed(currentQ);
     }
-  }, [isLocked, slots, attempts, currentQ, query, locked, sfx, showToast, level, handleHint]);
+  }, [isLocked, slots, answers, attempts, currentQ, query, grades, puzzle, score, locked, sfx, showToast, level, handleHint]);
 
   // ─── Forfeit: reveal one query (locks it wrong, honestly) ─────────────────
 
@@ -632,6 +698,13 @@ export const PuzzleView = ({ onBack, onSolved, entry }: PuzzleViewProps) => {
     setForfeitArmed(null);
     setAnnounce(`Query ${currentQ + 1} revealed: ${query.answerJoined}`);
     track("query_reveal", { puzzle: puzzle.id, query: query.id });
+    trackSolverEvent("forfeit", {
+      query_index: currentQ,
+      attempt_number: attempts[currentQ],
+      revealed_answer: query.answer,
+      user_answer: slots.map((s) => s.morpheme ?? ""),
+      total_attempts: attempts.reduce((a, b) => a + b, 0),
+    });
     // Auto-advance like a correct solve
     setTimeout(() => {
       const nextUnlocked = locked.findIndex((l, i) => !l && i > currentQ);
@@ -641,7 +714,7 @@ export const PuzzleView = ({ onBack, onSolved, entry }: PuzzleViewProps) => {
         if (first !== -1) setCurrentQ(first);
       }
     }, 600);
-  }, [forfeitArmed, currentQ, isLocked, query, attempts, locked, sfx]);
+  }, [forfeitArmed, currentQ, isLocked, query, attempts, locked, sfx, slots]);
 
   // Reveal the gated evidence specimens (rows hidden at the start)
   const handleRevealGated = useCallback(() => {
@@ -937,6 +1010,12 @@ export const PuzzleView = ({ onBack, onSolved, entry }: PuzzleViewProps) => {
                   if (!studiedOnce) {
                     setStudiedOnce(true);
                     track("study_complete", { puzzle: puzzle.id });
+                    trackSolverEvent("study_complete", {
+                      study_duration_ms: Date.now() - studyStartRef.current,
+                      evidence_drawer_opens: evidenceOpensRef.current,
+                      gated_pairs_revealed: revealedGated ? puzzle.pairs.filter((p) => p.gated).map((p) => String(p.id)) : [],
+                      evidence_interaction: [],
+                    });
                   }
                   sfx.whoosh();
                   setPhase("solve");
@@ -1577,6 +1656,18 @@ export const PuzzleView = ({ onBack, onSolved, entry }: PuzzleViewProps) => {
                     track("ai_verdict", {
                       puzzle: puzzle.id,
                       outcome: humanCorrect > aiCorrect ? "win" : humanCorrect === aiCorrect ? "tie" : "loss",
+                    });
+                    trackSolverEvent("ai_verdict", {
+                      modal_job_id: r.job_id ?? "unknown",
+                      modal_solve_time_ms: Math.round(r.elapsed_s * 1000),
+                      ai_answers: r.pred.map((p) => [p]),
+                      ai_grades: puzzle.queries.map((q, i) => {
+                        const hit = normalizeAnswer(r.pred[i] || "") === normalizeAnswer(q.answerJoined);
+                        return { query_index: i, verdict: (hit ? "correct" : "wrong") as "correct" | "wrong", em: hit ? 1 : 0 };
+                      }),
+                      ai_score: aiCorrect,
+                      human_score: humanCorrect,
+                      human_won: humanCorrect > aiCorrect,
                     });
                   }}
                   onSettled={() => {

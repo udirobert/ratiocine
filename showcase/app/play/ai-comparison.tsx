@@ -113,6 +113,7 @@ export interface AiResult {
   model: string;
   elapsed_s: number;
   explanation?: string;
+  job_id?: string;
 }
 
 interface Props {
@@ -227,6 +228,7 @@ export const AiComparison = ({ puzzle, humanElapsed, humanHints, humanGrades, on
               model: st.result?.model ?? "unknown",
               elapsed_s: st.result?.elapsed_s ?? Math.floor((Date.now() - startRef.current) / 1000),
               explanation: st.result?.explanation,
+              job_id: jobIdRef.current ?? undefined,
             };
             setAiResult(result);
             setCachedResult(puzzle.id, result);
