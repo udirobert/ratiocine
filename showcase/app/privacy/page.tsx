@@ -107,7 +107,7 @@ export default function PrivacyPage() {
             requirements. The consent banner is provided as a courtesy to inform
             users about our research data collection, not as a legal
             requirement. Session IDs are ephemeral (rotate per browser session)
-            and double-hashed server-side with salt.
+            and hashed server-side with salt before storage.
           </p>
         </section>
 

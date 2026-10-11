@@ -10,21 +10,33 @@ several of its boxes had quietly gone stale.
 
 ## Phase 1: Solver Trace Collection
 
-### Implementation ✅ (code complete, production unverified)
+### Implementation ✅ (wired end-to-end 2026-10-11, verified locally; production pending Blob env)
 
 - [x] Solver trace schema — `docs/solver-trace-schema.md`
-- [x] `components/ConsentBanner.tsx` + settings toggle
+- [x] `components/ConsentBanner.tsx` — appears 10s after first solve
+      (listens for `ratiocine:progress-saved`), dispatches `ratiocine:consent`
+      on accept
 - [x] `/privacy` page
-- [x] `/api/log-trace` serverless route, `TRACE_SALT` double-hashing
-- [x] `lib/analytics.ts` event union extended
-- [x] Game instrumentation present in `app/play/`: `session_start`,
-      `study_complete`, `tile_placed`, `tile_removed`, `context_reveal`,
-      `query_reveal`, `hint_used`, `submit`, `first_submit`, `forfeit`,
-      `ai_verdict`, `puzzle_solved`, `shared`, `share_click`, `play_start`
+- [x] `/api/log-trace` → SHA-256-hashed session id (`TRACE_SALT`, fixed-salt
+      fallback) → private Vercel Blob `traces/<date>/`. **`BLOB_READ_WRITE_TOKEN`
+      required in Vercel — without it events are accepted but stored nowhere**
+      (dev falls back to `/tmp/solver-traces.jsonl`)
+- [x] `lib/analytics.ts` — `trackSolverEvent` covers `session_start`,
+      `study_complete`, `tile_placed`, `tile_removed`, `submit`, `forfeit`,
+      `ai_verdict`, `share`; all wired at real interaction points in
+      `puzzle-view.tsx`, consent-gated. `evidence_interaction` captures
+      per-row dwell, trace taps and `shared_with` row linkages;
+      `session_start` anchors on `ratiocine:consent` for mid-session opt-ins
+- [x] Funnel events via `track()`: `play_start` (with `via` attribution:
+      challenge/deep_link/direct/landing), `study_complete`, `first_submit`,
+      `hint_used`, `query_reveal`, `context_reveal`, `evidence_open`,
+      `puzzle_solved`, `shared`, `share_click`, `ai_verdict`
 - [x] Share-copy A/B (`lib/share-ab.ts`): stable variant, `&sc=c|l` on
       challenge links, `share_variant` on `shared`, `share_click` on arrival
-- [ ] Confirm the events actually fire on the production deployment
-      (verified locally with `tsc --noEmit`; not verified in Vercel analytics)
+- [x] Verified end-to-end locally (2026-10-11): consented session wrote
+      `session_start`/`study_complete`/`tile_placed`/`submit` to
+      `/tmp/solver-traces.jsonl` with real interaction data
+- [ ] Confirm events land in Blob on production (needs `BLOB_READ_WRITE_TOKEN`)
 - [ ] Privacy audit before treating collected traces as usable data
 - [ ] Success metric (20+ opt-in sessions/day) — not yet measured
 

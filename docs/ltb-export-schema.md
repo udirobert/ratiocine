@@ -437,14 +437,14 @@ From the [LTB website](https://last-translation-benchmark.vilda.net):
 
 1. **Manually convert `puzzle-data.ts` → `puzzles.json`** for easier scripting
 2. **Implement `export_to_ltb.py`** with full verification logic
-3. **Run our 14B model on all 5 puzzles** to capture its translations (for the `translations` field)
+3. **Run our 14B model on all puzzles** to capture its translations (for the `translations` field) — the pool is now 10 puzzles, not 5
 4. **Run 2-3 SOTA models** (Gemini, GPT, Claude) on our puzzles to show they break
 5. **Write a 1-page summary** explaining why IOL-style problems are valuable for LTB (few-shot, morphology-heavy, rare languages)
 6. **Submit 1-2 example problems** to test the review process before batch-submitting all 25 queries
 
 ## Expected Impact
 
-- **5 puzzles × 5 queries each = 25 LTB entries** (0.7% increase over LTBv1's 3456 examples)
+- **10 puzzles × 5 queries each = up to 50 LTB entries** (1.4% increase over LTBv1's 3456 examples); the first milestone was 5 puzzles / 25 entries
 - **Authorship credit** on LTB V2 paper (150+ co-authors, high-impact venue)
 - **Citations** back to our game as a platform for crowdsourced IOL problems
 - **Community visibility** in the MT / NLP / IOL research communities

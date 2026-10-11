@@ -17,14 +17,14 @@ Together, these position the Ratiocine project as both a competitive IOL-AI syst
 Instrument the daily game to log anonymized solver traces.
 
 ### Tasks
-- [ ] Add analytics events to `showcase/app/play` (study, solve, submit phases)
-- [ ] Implement opt-in consent UI (settings toggle + banner)
-- [ ] Create Vercel API route `/api/log-trace` for trace storage
+- [x] Add analytics events to `showcase/app/play` (study, solve, submit phases) — done 2026-10-11; all six solver events emit at real interaction points
+- [x] Implement opt-in consent UI (banner) — done; appears 10s after first solve, compact on mobile
+- [x] Create Vercel API route `/api/log-trace` for trace storage — done; writes private Vercel Blob objects when `BLOB_READ_WRITE_TOKEN` is set
 - [ ] Test on 10 real sessions (dogfood internally before public launch)
 
 ### Deliverables
-- `showcase/app/api/log-trace/route.ts` (serverless trace logger)
-- `showcase/app/play/components/ConsentBanner.tsx` (opt-in UI)
+- `showcase/app/api/log-trace/route.ts` (serverless trace logger → Vercel Blob)
+- `showcase/components/ConsentBanner.tsx` (opt-in UI)
 - Updated `lib/analytics.ts` with all solver events
 
 ### Success Metrics
@@ -176,9 +176,9 @@ public func attest_human_solve(input : {
 
 ## Recommended Next Steps (Today)
 
-1. **Start Phase 1** — implement the consent banner and analytics events (2 hours)
+1. ~~**Start Phase 1**~~ — done 2026-10-11: consent banner + analytics events + Blob-backed `/api/log-trace` all shipped
 2. **Convert puzzle-data.ts → puzzles.json** — structured export for scripting (30 min)
-3. **Run 14B model on all 25 queries** — capture predictions for LTB export (1 hour)
+3. **Run 14B model on all queries** — capture predictions for LTB export (50 queries across the 10-puzzle pool)
 4. **Draft the LTB 1-page summary** — why IOL problems matter for MT research (1 hour)
 
 Total: ~4.5 hours of work to unlock Phases 2-3.

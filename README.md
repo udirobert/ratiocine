@@ -7,7 +7,8 @@ grammar, vocabulary, and structure from a handful of examples in unfamiliar
 languages. It ships two things:
 
 1. **A competition solver and playable showcase** — IOL-AI 2026 entry
-   (Qwen2.5-14B, best public score 0.1141) plus the Apurinã practice puzzle at
+   (Qwen2.5-14B, best public score 0.1141) plus a daily linguistics deduction
+   game — 10 rotating puzzles with an AI-vs-human verdict — at
    [`ratiocine.vercel.app`](https://ratiocine.vercel.app).
 2. **Ration, a verifiable evaluation logbook** — a Neutron app that, when
    installed in a user's canister, deterministically grades submitted AI

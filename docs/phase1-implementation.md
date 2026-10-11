@@ -1,5 +1,12 @@
 # Phase 1 Implementation Checklist
 
+> **Status: SHIPPED (2026-10-11).** This was the plan; it is now implemented —
+> and the shipped version differs in places (consent appears 10s after the
+> first solve rather than at a fixed point; storage is Vercel Blob, not JSONL;
+> `ConsentBanner` lives at `showcase/components/`, not `showcase/app/play/components/`).
+> For the current state of the pipeline, see `docs/solver-trace-schema.md` and
+> the "daily game" section of `AGENTS.md`. Keep this file as historical context.
+
 ## Goal
 Instrument the daily game to collect anonymized solver traces with opt-in consent.
 
