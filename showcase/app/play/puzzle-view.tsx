@@ -159,15 +159,28 @@ export const PuzzleView = ({ onBack, onSolved, entry }: PuzzleViewProps) => {
       puzzle: puzzle.id,
       via: entry ?? (sc ? "challenge" : params.get("puzzle") ? "deep_link" : "direct"),
     });
-    // Research trace — consent-gated, no-ops until the player opts in.
-    const w = window.innerWidth;
-    trackSolverEvent("session_start", {
-      puzzle_id: puzzle.id,
-      puzzle_date: new Date().toISOString().slice(0, 10),
-      viewport: { width: w, height: window.innerHeight },
-      device_type: w < 768 ? "mobile" : w < 1024 ? "tablet" : "desktop",
-    });
   }, []);
+
+  // Research trace — session anchor. Fires at mount when already consented,
+  // or later on the ratiocine:consent event when consent arrives mid-session.
+  const sessionStartSentRef = useRef(false);
+  useEffect(() => {
+    const maybeStart = () => {
+      if (sessionStartSentRef.current) return;
+      if (localStorage.getItem("ration-research-consent") !== "true") return;
+      sessionStartSentRef.current = true;
+      const w = window.innerWidth;
+      trackSolverEvent("session_start", {
+        puzzle_id: puzzle.id,
+        puzzle_date: new Date().toISOString().slice(0, 10),
+        viewport: { width: w, height: window.innerHeight },
+        device_type: w < 768 ? "mobile" : w < 1024 ? "tablet" : "desktop",
+      });
+    };
+    maybeStart();
+    window.addEventListener("ratiocine:consent", maybeStart);
+    return () => window.removeEventListener("ratiocine:consent", maybeStart);
+  }, [puzzle.id]);
 
   // Phase — challenge-link visitors (?puzzle=) skip the warmup gate and
   // land straight in study; the warmup teaches today's puzzle, which they
@@ -731,6 +744,14 @@ export const PuzzleView = ({ onBack, onSolved, entry }: PuzzleViewProps) => {
     track("shared", { puzzle: puzzle.id, with_ai: Boolean(aiResult), share_variant: variant });
     const streak = progress?.streak ?? 0;
     const text = generateShareText(puzzle, grades, elapsed, hintsUsed, aiResult, streak, variant);
+    trackSolverEvent("share", {
+      share_grid: text,
+      channel: "result_share",
+      final_human_score: score / puzzle.queries.length,
+      final_ai_score: aiResult
+        ? puzzle.queries.filter((q, i) => normalizeAnswer(aiResult.pred[i] || "") === normalizeAnswer(q.answerJoined)).length / puzzle.queries.length
+        : null,
+    });
     // Copy the Wordle-style grid text FIRST (works everywhere, incl. desktop
     // where file-share is unavailable) — then try to upgrade to image share.
     try {
@@ -753,7 +774,7 @@ export const PuzzleView = ({ onBack, onSolved, entry }: PuzzleViewProps) => {
       try { await navigator.clipboard.writeText(text); setCopied(true); setTimeout(() => setCopied(false), 2000); }
       catch { prompt("Copy:", text); }
     }
-  }, [puzzle, grades, elapsed, hintsUsed, aiResult, progress?.streak]);
+  }, [puzzle, grades, elapsed, hintsUsed, aiResult, score, progress?.streak]);
 
   // ─── Keyboard play (desktop) ──────────────────────────────────────────────
 
@@ -1006,7 +1027,7 @@ export const PuzzleView = ({ onBack, onSolved, entry }: PuzzleViewProps) => {
                   sfx.chime();
                   showToast("Shared piece found — it repeats across rows.", 3500);
                 }}
-                onReady={() => {
+                onReady={(interaction) => {
                   if (!studiedOnce) {
                     setStudiedOnce(true);
                     track("study_complete", { puzzle: puzzle.id });
@@ -1014,7 +1035,7 @@ export const PuzzleView = ({ onBack, onSolved, entry }: PuzzleViewProps) => {
                       study_duration_ms: Date.now() - studyStartRef.current,
                       evidence_drawer_opens: evidenceOpensRef.current,
                       gated_pairs_revealed: revealedGated ? puzzle.pairs.filter((p) => p.gated).map((p) => String(p.id)) : [],
-                      evidence_interaction: [],
+                      evidence_interaction: interaction,
                     });
                   }
                   sfx.whoosh();
@@ -1550,6 +1571,14 @@ export const PuzzleView = ({ onBack, onSolved, entry }: PuzzleViewProps) => {
                       onClick={() => {
                         const url = getChallengeUrl(puzzle.id, timeStr) + challengeParam(getShareVariant());
                         track("shared", { puzzle: puzzle.id, with_ai: false, share_variant: getShareVariant(), channel: "challenge_link" });
+                        trackSolverEvent("share", {
+                          share_grid: url,
+                          channel: "challenge_link",
+                          final_human_score: score / puzzle.queries.length,
+                          final_ai_score: aiResult
+                            ? puzzle.queries.filter((q, i) => normalizeAnswer(aiResult.pred[i] || "") === normalizeAnswer(q.answerJoined)).length / puzzle.queries.length
+                            : null,
+                        });
                         navigator.clipboard.writeText(url).then(() => {
                           setCopied(true);
                           setTimeout(() => setCopied(false), 2000);

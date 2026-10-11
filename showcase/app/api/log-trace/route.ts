@@ -33,6 +33,7 @@ export async function POST(req: NextRequest) {
       'submit',
       'forfeit',
       'ai_verdict',
+      'share',
     ];
     if (!validEvents.includes(trace.event)) {
       return NextResponse.json(

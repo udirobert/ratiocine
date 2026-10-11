@@ -33,12 +33,14 @@ Capture human solver behavior in the daily linguistics game to support:
   "evidence_drawer_opens": 2, // how many times they opened the drawer
   "gated_pairs_revealed": ["pair_1", "pair_3"], // which gated evidence they unlocked
   "evidence_interaction": [
-    {"row_id": "ev_1", "dwell_time_ms": 8234, "clicks": 1},
-    {"row_id": "ev_2", "dwell_time_ms": 3421, "clicks": 0},
-    {"row_id": "gated_1", "dwell_time_ms": 12456, "clicks": 2}
+    {"row_id": "ev_1", "dwell_time_ms": 8234, "clicks": 1, "shared_with": ["ev_2", "ev_4"]},
+    {"row_id": "ev_2", "dwell_time_ms": 3421, "clicks": 0, "shared_with": []},
+    {"row_id": "gated_1", "dwell_time_ms": 12456, "clicks": 2, "shared_with": ["ev_3"]}
   ]
 }
 ```
+
+`dwell_time_ms` is page-granular (accumulated time the row's page was displayed). `clicks` counts source-word trace taps on that row. `shared_with` is the union of row ids that row's taps flashed — the comparisons the player actually made; the closest signal to a human morpheme-correspondence table.
 
 ### Solve Phase — Tile Placements
 ```jsonl
@@ -135,22 +137,41 @@ Capture human solver behavior in the daily linguistics game to support:
   "event": "share",
   "timestamp": "2026-09-07T14:38:30.456Z",
   "session_id": "uuid-v4",
-  "share_grid": "🟢🔴🟢\n🤖1.00 😊0.67", // emoji grid copied to clipboard
+  "share_grid": "🟢🔴🟢\n🤖1.00 😊0.67", // text copied to clipboard, or the challenge URL
+  "channel": "result_share", // or "challenge_link"
   "final_human_score": 0.67,
-  "final_ai_score": 1.0
+  "final_ai_score": 1.0 // null when the duel never ran
 }
 ```
 
-## Storage Options
+## Storage — implemented (2026-10-11)
 
-### Option 1: Local JSONL (MVP)
-- Append events to `showcase/public/solver-traces.jsonl` (gitignored)
-- Client-side `fetch('/api/log-trace', {method: 'POST', body: JSON.stringify(event)})`
-- Vercel serverless route appends to a file in `/tmp` (ephemeral) or a persistent volume
-- Export manually for analysis
+The collection pipeline is live: `trackSolverEvent` in `lib/analytics.ts` emits
+all events above at their real interaction points, gated on
+`localStorage["ration-research-consent"] === "true"`. Every event POSTs to
+`/api/log-trace`, which:
 
-**Pros:** Simple, no infrastructure
-**Cons:** Ephemeral, no real-time analysis, privacy concerns if logged server-side
+1. SHA-256-hashes the `session_id` with `TRACE_SALT` (falls back to a fixed
+   salt if unset — session ids are random UUIDs, so unlinkability holds either
+   way, but set the env var in production)
+2. Writes one private Vercel Blob object per event under
+   `traces/<YYYY-MM-DD>/<event>-<uuid>.json` — requires `BLOB_READ_WRITE_TOKEN`
+   (Vercel dashboard → Blob store → env is injected automatically)
+3. In development (no token), appends to `/tmp/solver-traces.jsonl`
+
+**Without `BLOB_READ_WRITE_TOKEN` in production the endpoint returns 200 but
+stores nothing** — check the env var is set before relying on trace volume.
+
+`session_start` fires at mount when the player is already consented, or on the
+`ratiocine:consent` window event when consent is granted mid-session, so every
+consented session has an anchor.
+
+Historical options considered, for reference:
+
+### Option 1: Local JSONL (MVP) — superseded by the Blob path above
+- Append events to `/tmp` on the serverless function (ephemeral)
+
+**Cons:** Ephemeral, no real-time analysis — kept only as the dev fallback
 
 ### Option 2: Neutron Canister Ledger (Privacy-First)
 - Extend the attestation ledger to store anonymized solver traces
@@ -225,8 +246,8 @@ ORDER BY gap DESC;
 
 ## Next Steps
 
-1. **Implement analytics tracking** in `showcase/app/play` components (study, solve, result phases)
-2. **Add opt-in consent UI** (settings toggle + banner)
-3. **Create Vercel API route** `/api/log-trace` for opt-in trace storage
-4. **Write data export script** to convert JSONL → LTB format (see `ltb-export-schema.md`)
+1. ~~**Implement analytics tracking** in `showcase/app/play` components~~ — done (2026-10-11); all events emit at real interaction points
+2. ~~**Add opt-in consent UI** (banner)~~ — done; consent banner appears 10s after first solve
+3. ~~**Create Vercel API route** `/api/log-trace`~~ — done; stores to Vercel Blob when `BLOB_READ_WRITE_TOKEN` is set
+4. **Write data export script** to convert Blob traces → LTB format (see `ltb-export-schema.md`)
 5. **Test on 10 real sessions** before announcing the research program

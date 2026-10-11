@@ -44,6 +44,9 @@ export function ConsentBanner() {
     localStorage.setItem('ration-research-consent', 'true');
     setHasConsented(true);
     setVisible(false);
+    // Lets an in-progress session anchor a session_start trace — consent
+    // arrives mid-puzzle, after mount.
+    window.dispatchEvent(new CustomEvent('ratiocine:consent'));
   };
 
   const handleDecline = () => {

@@ -6,10 +6,17 @@ import { Button } from "@/components/button";
 import { EvidenceCard, sharedRowsFor } from "./evidence-rail";
 import type { Puzzle, PuzzlePair } from "./puzzle-data";
 
+export interface EvidenceInteraction {
+  row_id: number;
+  dwell_time_ms: number;
+  clicks: number;
+  shared_with: number[];
+}
+
 interface StudyPhaseProps {
   puzzle: Puzzle;
   highlightedRows: Set<number>;
-  onReady: () => void;
+  onReady: (interaction: EvidenceInteraction[]) => void;
   /** Skip intro animations — used when returning to evidence mid-solve */
   instant?: boolean;
   /** Fires once, the first time the player traces a source word */
@@ -31,6 +38,14 @@ export const StudyPhase = ({ puzzle, highlightedRows, onReady, instant = false, 
   const gateTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const [loreOpen, setLoreOpen] = useState(false);
+
+  // Research trace — per-row dwell (page-granular), tap counts, and the
+  // row-linkages each trace tap made. This is the deduction signal.
+  const dwellRef = useRef<Map<number, number>>(new Map());
+  const clicksRef = useRef<Map<number, number>>(new Map());
+  const sharedWithRef = useRef<Map<number, Set<number>>>(new Map());
+  const pageRef = useRef(0);
+  const pageEnteredAtRef = useRef(Date.now());
 
   const { theme } = puzzle;
   const pairs = useMemo(() => puzzle.pairs.filter((p) => !p.gated), [puzzle.pairs]);
@@ -65,6 +80,16 @@ export const StudyPhase = ({ puzzle, highlightedRows, onReady, instant = false, 
   const pageCount = Math.max(1, Math.ceil(pairs.length / PAGE_SIZE));
   const pagePairs = pairs.slice(page * PAGE_SIZE, page * PAGE_SIZE + PAGE_SIZE);
 
+  // Bank the time spent on the page we're leaving to that page's rows.
+  useEffect(() => {
+    const dwell = Date.now() - pageEnteredAtRef.current;
+    for (const p of pairs.slice(pageRef.current * PAGE_SIZE, pageRef.current * PAGE_SIZE + PAGE_SIZE)) {
+      dwellRef.current.set(p.id, (dwellRef.current.get(p.id) ?? 0) + dwell);
+    }
+    pageRef.current = page;
+    pageEnteredAtRef.current = Date.now();
+  }, [page, pairs]);
+
   // After title animation settles, start showing rows (skipped in instant mode)
   useEffect(() => {
     if (instant) return;
@@ -94,6 +119,12 @@ export const StudyPhase = ({ puzzle, highlightedRows, onReady, instant = false, 
   // Tap a source word → flash rows that share morphemes
   const handleSourceTap = (pair: PuzzlePair) => {
     const sharedRows = sharedRowsFor(pair, pairs);
+    clicksRef.current.set(pair.id, (clicksRef.current.get(pair.id) ?? 0) + 1);
+    if (sharedRows.size > 0) {
+      const prev = sharedWithRef.current.get(pair.id) ?? new Set<number>();
+      sharedRows.forEach((r) => prev.add(r));
+      sharedWithRef.current.set(pair.id, prev);
+    }
     // First trace is a discovery moment, not just a control
     if (!tracedRef.current) {
       tracedRef.current = true;
@@ -103,6 +134,22 @@ export const StudyPhase = ({ puzzle, highlightedRows, onReady, instant = false, 
     }
     if (sharedRows.size === 0) return;
     flashRows(sharedRows);
+  };
+
+  // Snapshot interactions for the study_complete trace — banks the dwell on
+  // the page currently showing, then serialises every specimen row.
+  const collectInteraction = (): EvidenceInteraction[] => {
+    const dwell = Date.now() - pageEnteredAtRef.current;
+    for (const p of pairs.slice(pageRef.current * PAGE_SIZE, pageRef.current * PAGE_SIZE + PAGE_SIZE)) {
+      dwellRef.current.set(p.id, (dwellRef.current.get(p.id) ?? 0) + dwell);
+    }
+    pageEnteredAtRef.current = Date.now();
+    return pairs.map((p) => ({
+      row_id: p.id,
+      dwell_time_ms: dwellRef.current.get(p.id) ?? 0,
+      clicks: clicksRef.current.get(p.id) ?? 0,
+      shared_with: [...(sharedWithRef.current.get(p.id) ?? [])],
+    }));
   };
 
   // Hint button — flash the rows containing the most common morpheme
@@ -360,7 +407,7 @@ export const StudyPhase = ({ puzzle, highlightedRows, onReady, instant = false, 
             <Button
               variant="primary"
               size="md"
-              onClick={onReady}
+              onClick={() => onReady(collectInteraction())}
               disabled={!ready}
               className="pulse-glow"
             >

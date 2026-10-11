@@ -37,7 +37,8 @@ export type SolverEventType =
   | "tile_removed"
   | "submit"
   | "forfeit"
-  | "ai_verdict";
+  | "ai_verdict"
+  | "share";
 
 export interface SessionStartData {
   puzzle_id: string;
@@ -54,6 +55,8 @@ export interface StudyCompleteData {
     row_id: string | number;
     dwell_time_ms: number;
     clicks: number;
+    /** union of row ids this row's taps linked (the comparisons the player made) */
+    shared_with?: number[];
   }>;
 }
 
@@ -109,6 +112,13 @@ export interface AIVerdictData {
   human_won: boolean;
 }
 
+export interface ShareData {
+  share_grid: string; // what was copied/shared (grid text or challenge URL)
+  channel: "result_share" | "challenge_link";
+  final_human_score: number; // fraction of queries correct
+  final_ai_score: number | null; // null when the duel never ran
+}
+
 export type SolverEventData =
   | SessionStartData
   | StudyCompleteData
@@ -116,7 +126,8 @@ export type SolverEventData =
   | TileRemovedData
   | SubmitData
   | ForfeitData
-  | AIVerdictData;
+  | AIVerdictData
+  | ShareData;
 
 /**
  * Track a solver event for research purposes.

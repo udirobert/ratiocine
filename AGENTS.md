@@ -29,6 +29,14 @@ An IOL-AI competitor and linguistics research platform. Initially built for IOL-
 - Submission config: hybrid CoT for translation/fill_blanks (512 tokens), direct for others (128-256 tokens), tiered max_new_tokens per task type, aggressive time guard fallback at 64 tokens
 - Public/private split: 2 submissions selected for private leaderboard for hedging
 
+### Latest local eval (2026-10-11, full 160-problem run on Modal)
+
+- `hf-pipeline/eval_14b_awq.py` against `Papajams/ratiocine`: **EM 0.0426, chrF 0.2930, score 0.1117** — consistent with the 0.1141 public score, so the local harness mirrors the official scorer.
+- By task type: `fill_blanks` 0.171, `num_to_text` 0.130, `translation` 0.118, `text_to_num` 0.037, **`match_letters` 0.022 on 25% of the set** — the dominant loss. The model guesses letters instead of building a morpheme-correspondence table (verified by reading raw generations, e.g. Zuni `012021020100`: 2/10 letters right).
+- **Bracket-parse A/B (`scripts/rescore_bracket_ab.py`): zero EM gain.** `parse_answers` now strips whole-answer wrapping brackets only when the problem itself shows no bracket notation (9/160 problems legitimately use IPA brackets, e.g. `012005040200`, `012008010100`, `012011020100` — all 17 bracketed gold answers live there). The fix matters for showcase grading (bracket-wrapped correct answers were scored wrong) but on Linguini the model is linguistically wrong on those items, not mis-parsed.
+- **Harness gotcha**: `hf-pipeline/eval_modal.py` CANNOT evaluate `Papajams/ratiocine` — it builds a `BitsAndBytesConfig` and the model is AWQ. Use `eval_14b_awq.py` (pins transformers==4.46.3 + autoawq). Eval runs need the `ungethe` Modal profile (`~/.modal.toml`), where the `huggingface` secret exists.
+- Raw generations dump to `data/eval/` (gitignored) — decode once, re-parse offline for parser A/B experiments with zero generation variance.
+
 ## Neutron / Ration track (ntron.net hackathon)
 
 "Ration" = a **certified reasoning logbook**. The 14B model (hosted on Modal) solves an IOL problem; the Neutron canister then **grades it deterministically in-canister (EM + chrF), SHA-256-hashes the problem + assertion, chain-key-signs the receipt (ecdsa_secp256k1, slot `ration_assertions`), and appends it to a stable ledger**. Cold GPU start is a deliberate "Deduction Theatre / Honest Compute" feature, not a bug.
@@ -213,12 +221,15 @@ To create more training data:
 
 The showcase is a daily linguistics deduction game: study evidence rows → compose answers from morpheme tiles → compare against the 14B model (same EM grading). Key facts:
 
-- **5 puzzles** in `puzzle-data.ts` (Apurinã, Swahili, Turkish, Quechua, Nahuatl) rotate daily via `getTodaysPuzzle()`; `?puzzle=<id>` overrides for challenge links.
-- **Per-puzzle theming** flows through `--puzzle-accent` (set on the puzzle root) and `.pa-*` utility classes in `globals.css`. Never hardcode hex colors in play components.
+- **10 puzzles** in `puzzle-data.ts` (`PUZZLE_POOL`) rotate daily via `getTodaysPuzzle()` (UTC epoch-day index); `?puzzle=<id>` overrides for challenge links and archive rows. IDs: apurina-verb-agreement, swahili-person-tense, turkish-vowel-harmony, quechua-person-endings, nahuatl-both-ends, esperanto-tense, indonesian-plurals, finnish-harmony, maori-pronouns, zulu-noun-class. Known inconsistency: rotation uses UTC days while streaks use local day keys — they can disagree near a timezone edge.
+- **Per-puzzle theming** flows through `--puzzle-accent` (set on the puzzle root) and `.pa-*` utility classes in `globals.css`. Never hardcode hex colors in play components. Shared `Button` (`components/button.tsx`) is the control primitive.
+- **Study phase is earned, not self-certified** (`study-phase.tsx`): the "I've got it →" transition is gated until the player taps a source word to trace a shared morpheme; the "Compare rows" hint or a 20s timer also unlock it, and re-entry mid-solve skips the gate (`instant`). Primer copy frames the method as Compare → Isolate → Test. Default level for new players is `gentle` (`DEFAULT_LEVEL` in `level.ts`) — level tunes help thresholds (fail-hint timing, forfeit arming, auto-hint), never puzzle answers.
+- **Persistent evidence workbench**: evidence stays on screen while solving. Desktop (`lg:`) is a two-pane layout with a docked scrollable rail (`evidence-rail.tsx`); mobile keeps a two-row strip above the clue (expandable via "+N more"; up to 3 pinned rows float to top, a 4th evicts oldest). The ContextPanel drawer is demoted to the full archive — it owns gated pairs (`gated: true`) and lore. `E` focuses the dock on desktop, opens the drawer on mobile.
 - **Forfeit flow**: after 2 failed attempts a "reveal this one" option locks the query wrong (honest share grid `🔍`). `good`/`partial` verdicts are only reachable this way.
-- **Evidence drawer** (ContextPanel) opens mid-solve via the book icon or `E` key; gated pairs (`gated: true`) are revealed from inside the drawer.
-- **A11y**: keyboard play (1–9 place, ⌫ remove, ↵ check, H hint, E evidence), `aria-live` grade announcements, grade symbols on tiles (not color-only), `MotionConfig reducedMotion="user"`, SFX mute persisted in `ration-sfx-muted`.
-- **Analytics**: `lib/analytics.ts` wraps `@vercel/analytics` — funnel events `play_start → study_complete → first_submit → puzzle_solved → shared → ai_verdict`. Share-copy A/B test (48h): `lib/share-ab.ts` assigns a stable `control`/`linguistic` variant (localStorage `ration-share-variant`); `shared` carries `share_variant`, challenge links carry `&sc=c|l` and fire `share_click` on arrival.
+- **A11y**: keyboard play (1–9 place, ⌫ remove, ↵ check, H hint, E evidence — legend gated on `pointer:fine`), `aria-live` grade announcements, grade symbols on tiles (not color-only), `MotionConfig reducedMotion="user"`, SFX mute persisted in `ration-sfx-muted`.
+- **Funnel analytics**: `lib/analytics.ts` wraps `@vercel/analytics` — `play_start → study_complete → first_submit → puzzle_solved → shared → ai_verdict`. `play_start` fires once per `PuzzleView` mount for every entry path with a `via` prop: `challenge` (`&sc=` shared link), `deep_link` (`?puzzle=` without a share tag, e.g. archive rows), `direct` (bare `/play`), `landing` (home button, passed as the `entry` prop). Share-copy A/B: `lib/share-ab.ts` assigns a stable `control`/`linguistic` variant (`ration-share-variant`); `shared`/`share_click` carry `share_variant`, challenge links carry `&sc=c|l`.
+- **Solver research trace** (`trackSolverEvent`, same file): consent-gated on `ration-research-consent === "true"`; every event also POSTs the full payload to `/api/log-trace`, which SHA-256-hashes the session id (`TRACE_SALT`, falls back to a fixed salt if unset) and writes one private Vercel Blob object per event under `traces/<date>/`. **`BLOB_READ_WRITE_TOKEN` is required in Vercel or events are accepted but stored nowhere** (dev falls back to `/tmp/solver-traces.jsonl`). Events wired at real interaction points in `puzzle-view.tsx`: `session_start` (mount if consented, else on the `ratiocine:consent` window event), `study_complete` (duration, drawer opens, gated reveals, per-row `evidence_interaction`), `tile_placed`/`tile_removed` (bulk clear emits one per tile), `submit`, `forfeit`, `ai_verdict` (real Modal job id via `AiResult.job_id`).
+- **Consent timing**: `ConsentBanner` (mounted in `play-client.tsx`) waits for a real solve — `saveProgress()` dispatches `ratiocine:progress-saved` — plus 10s, then shows compact mobile copy. On accept it dispatches `ratiocine:consent`. Keys: `ration-puzzle-progress`, `ration-research-consent`, `ratiocine-seen-coach`, `ratiocine-seen-warmup`, `ration-share-variant`, `ration-sfx-muted`.
 - The timer is intentionally **hidden during solve** and revealed on the result screen (deduction, not speedrun).
 
 ### The home journey (`showcase/app/page.tsx`)
@@ -263,7 +274,7 @@ ratiocine/
 ├── showcase/               # Next.js showcase site (Vercel)
 │   ├── app/
 │   │   ├── page.tsx        # Scene switcher (problem → machine → answer)
-│   │   ├── play/           # Daily linguistics deduction game (5 rotating puzzles)
+│   │   ├── play/           # Daily linguistics deduction game (10 rotating puzzles)
 │   │   └── scenes/
 │   │       ├── problem/    # Real IOL problem + rain refraction shader (postprocessing)
 │   │       ├── machine/    # Mac GLB + CRT HTMLTexture screen + partner logos
@@ -289,17 +300,18 @@ ratiocine/
 ### Game as Research Platform
 
 The daily game (`showcase/app/play`) is designed to collect human solver data:
-- **5 rotating puzzles** (Apurinã, Swahili, Turkish, Quechua, Nahuatl) with morpheme-tile composition
+- **10 rotating puzzles** with morpheme-tile composition
 - **Per-query grading** (EM + partial credit) mirrors the IOL-AI scoring function
 - **Human vs AI comparison** shows where the 14B model fails vs. where humans struggle
-- **Analytics funnel** (`lib/analytics.ts`) tracks solver behavior: study time, attempts, forfeit rate, tile reuse patterns
+- **Two analytics layers** (`lib/analytics.ts`): a Vercel-Analytics funnel (`play_start` with `via` attribution through `ai_verdict`), and a consent-gated research trace (`trackSolverEvent` → `/api/log-trace` → Vercel Blob) capturing tile placements, study behavior, evidence interactions, and AI verdicts — see "The daily game" section for the full event schema
 
 ### Research Deliverables (in progress)
 
 Three parallel tracks to contribute to the IOL/MT research community:
 
-1. **Solver trace collection** — anonymized human reasoning data (tile placements, study time, forfeit patterns)
+1. **Solver trace collection** — anonymized human reasoning data (tile placements, study time, forfeit patterns, evidence interactions)
    - Schema: `docs/solver-trace-schema.md`
+   - **Wired end-to-end (2026-10-11)**: all six events emit client-side and land in Vercel Blob once `BLOB_READ_WRITE_TOKEN` is set in the Vercel project. Before that date the pipeline was built but dead code — no call site invoked it, and the endpoint stored nothing in production.
    - Target: 500+ opt-in sessions/month, contribute to human-AI comparison research
 
 2. **Last Translation Benchmark V2 contributions** — IOL-style morphological reasoning problems
