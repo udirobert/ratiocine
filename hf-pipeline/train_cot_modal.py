@@ -278,6 +278,7 @@ def main(
     epochs: int = 3,
     lora_r: int = 32,
     lr: float = 1e-4,
+    dataset: str = "iol_cot_train.jsonl",
 ):
     """Run CoT fine-tuning on Modal.
 
@@ -287,9 +288,12 @@ def main(
         epochs: Number of training epochs.
         lora_r: LoRA rank (32 for more capacity than the v1 r=16).
         lr: Learning rate (1e-4, lower than v1's 2e-4 for stability).
+        dataset: File under data/synthetic/ to train on
+            (gen_cot_train.jsonl for generated-language CoT, or a merged file).
     """
     train.remote(
         model_name=model_name,
+        dataset_path=f"/root/data/synthetic/{dataset}",
         hf_repo_id=hf_repo_id,
         num_epochs=epochs,
         lora_r=lora_r,
