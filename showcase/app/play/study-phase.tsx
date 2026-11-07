@@ -74,6 +74,10 @@ export const StudyPhase = ({ puzzle, highlightedRows, onReady, instant = false, 
     );
   }, [puzzle.lore.endangerment]);
 
+  // Generated languages get their own badge — "living"/"endangered" are
+  // real-world status labels that don't apply to a language that was never spoken
+  const isSynthetic = puzzle.family.startsWith("Generated");
+
   // Evidence pager — 4 specimens per page so the screen never scrolls.
   // The intro stagger plays on page one; dots guide the rest.
   const PAGE_SIZE = 4;
@@ -266,12 +270,14 @@ export const StudyPhase = ({ puzzle, highlightedRows, onReady, instant = false, 
             </h2>
             <span
               className={`shrink-0 text-[10px] px-2 py-1 rounded-full border font-mono ${
-                isEndangered
-                  ? "border-red-400/30 text-red-300/60"
-                  : "border-emerald-400/30 text-emerald-300/60"
+                isSynthetic
+                  ? "border-violet-400/30 text-violet-300/70"
+                  : isEndangered
+                    ? "border-red-400/30 text-red-300/60"
+                    : "border-emerald-400/30 text-emerald-300/60"
               }`}
             >
-              {isEndangered ? "endangered" : "living"}
+              {isSynthetic ? "synthetic" : isEndangered ? "endangered" : "living"}
             </span>
           </motion.div>
 

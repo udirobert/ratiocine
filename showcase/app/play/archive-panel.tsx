@@ -1,9 +1,12 @@
 "use client";
 
+import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 
 import { PUZZLE_POOL, type PuzzleProgress } from "./puzzle-data";
 import { LEVELS, type Level } from "./level";
+
+type ArchiveFilter = "all" | "classics" | "generated";
 
 interface ArchivePanelProps {
   currentPuzzleId: string;
@@ -19,7 +22,14 @@ interface ArchivePanelProps {
  * today's daily is flagged. Navigation reuses the `?puzzle=` challenge-link
  * routing so links remain shareable.
  */
-export const ArchivePanel = ({ currentPuzzleId, progress, onClose, level, onLevelChange }: ArchivePanelProps) => (
+export const ArchivePanel = ({ currentPuzzleId, progress, onClose, level, onLevelChange }: ArchivePanelProps) => {
+  const [filter, setFilter] = useState<ArchiveFilter>("all");
+  const isGenerated = (p: (typeof PUZZLE_POOL)[number]) => p.family.startsWith("Generated");
+  const visible = PUZZLE_POOL.filter((p) =>
+    filter === "all" ? true : filter === "generated" ? isGenerated(p) : !isGenerated(p),
+  );
+
+  return (
   <motion.div
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
@@ -67,8 +77,34 @@ export const ArchivePanel = ({ currentPuzzleId, progress, onClose, level, onLeve
         </div>
       </div>
 
+      {/* Collection filter — classics vs procedurally generated languages */}
+      <div className="mb-4" role="group" aria-label="Collection filter">
+        <div className="grid grid-cols-3 gap-1.5">
+          {(
+            [
+              ["all", "All"],
+              ["classics", "Classics"],
+              ["generated", "Generated"],
+            ] as Array<[ArchiveFilter, string]>
+          ).map(([id, label]) => (
+            <button
+              key={id}
+              onClick={() => setFilter(id)}
+              aria-pressed={filter === id}
+              className={`rounded-lg border px-2 py-1.5 min-h-[36px] text-[11px] font-mono transition-all ${
+                filter === id
+                  ? "border-white/40 bg-white/10 text-white"
+                  : "border-white/10 text-white/55 hover:border-white/25"
+              }`}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+      </div>
+
       <div className="space-y-2">
-        {[...PUZZLE_POOL].sort((a, b) => a.difficulty - b.difficulty).map((p) => {
+        {[...visible].sort((a, b) => a.difficulty - b.difficulty).map((p) => {
           const cracked = progress?.languagesCracked.includes(p.languageCode) ?? false;
           const isCurrent = p.id === currentPuzzleId;
           return (
@@ -126,4 +162,5 @@ export const ArchivePanel = ({ currentPuzzleId, progress, onClose, level, onLeve
       </div>
     </div>
   </motion.div>
-);
+  );
+};
