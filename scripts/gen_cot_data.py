@@ -38,7 +38,7 @@ PERSONS = gp.PERSONS
 
 def gen_puzzles_for_seed(seed: int, per_family: int):
     rng = random.Random(seed)
-    gens = [gp.gen_vharm, gp.gen_circ, gp.gen_supp]
+    gens = [gp.gen_vharm, gp.gen_circ, gp.gen_supp, gp.gen_syn]
     puzzles = []
     idx = 0
     for _ in range(per_family):
@@ -247,7 +247,75 @@ def analyze_supp(query, meta):
     return steps
 
 
-ANALYZERS = {"vharm": analyze_vharm, "circ": analyze_circ, "supp": analyze_supp}
+def analyze_syn(query, meta):
+    ms = re.findall(r"'([^']+)' means 'the [^']+'", query["prompt"])
+    mv = re.search(r"Translate the verb '([^']+)'", query["prompt"])
+    if len(ms) != 2 or not mv:
+        return None
+    s_stem, o_stem = ms
+    form = mv.group(1)
+    sc = meta["subj_class"].get(s_stem)
+    oc = meta["obj_class"].get(o_stem)
+    if sc is None or oc is None:
+        return None
+    found = None
+    for root, v in meta["vr_verb"].items():
+        if form == gp.pres3(v):
+            found = (root, v, "pres")
+            break
+        if form == gp.past(v):
+            found = (root, v, "past")
+            break
+    if found is None:
+        return None
+    root, verb, tense = found
+
+    pfx = meta["agrP"][sc][tense]
+    sfx = meta["agrS"][oc][tense]
+    morphs = list(query["answer"])
+    if morphs != [pfx, root, sfx]:
+        return None
+
+    s_final = meta["s_final"]
+    o_initial = meta["o_initial"]
+    if sc == "nasal":
+        scue = f"ends in '{s_final['nasal']}' (a nasal)"
+    elif sc == "stop":
+        scue = f"ends in '{s_final['stop']}' (a stop)"
+    else:
+        scue = "ends in a vowel"
+    if oc == "stop":
+        ocue = f"starts with '{o_initial['stop']}' (a stop)"
+    elif oc == "nasal":
+        ocue = f"starts with '{o_initial['nasal']}' (a nasal)"
+    else:
+        ocue = f"starts with '{o_initial['liquid']}' (a liquid)"
+
+    steps = [
+        f"The prompt gives two noun stems and a {tense} verb form: "
+        f"subject '{s_stem}' ('the {meta['subj_map'][s_stem]}'), "
+        f"object '{o_stem}' ('the {meta['obj_map'][o_stem]}'), verb '{form}'.",
+        f"Subject agreement is keyed by the subject noun's class AND tense. "
+        f"'{s_stem}' {scue} → subject class '{sc}'; the {tense} prefix for "
+        f"class '{sc}' is '{pfx}'.",
+        f"Object agreement is keyed by the object noun's class AND tense — "
+        f"note it reads the FIRST sound, not the last. '{o_stem}' {ocue} → "
+        f"object class '{oc}'; the {tense} suffix for class '{oc}' is '{sfx}'.",
+        f"There is no separate tense morpheme: tense is fused inside both "
+        f"conditioned affixes, so both slots must agree on '{tense}'.",
+        f"'{root}' is the root for '{verb}'. Verb template: "
+        f"agr-prefix + root + agr-suffix → "
+        f"{' '.join(morphs)} = '{query['answerJoined']}'.",
+    ]
+    return steps
+
+
+ANALYZERS = {
+    "vharm": analyze_vharm,
+    "circ": analyze_circ,
+    "supp": analyze_supp,
+    "syn": analyze_syn,
+}
 
 
 def main():

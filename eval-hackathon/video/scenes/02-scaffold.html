@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1920px;height:1080px;background:#0a0c12;color:#e8eaf2;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;overflow:hidden}
+.wrap{height:100%;display:flex;flex-direction:column;justify-content:center;padding:0 110px}
+.kicker{font-size:20px;letter-spacing:.35em;color:#a78bfa;text-transform:uppercase;margin-bottom:26px;opacity:0;animation:fadein .7s .2s forwards}
+h2{font-family:ui-sans-serif,system-ui,sans-serif;font-weight:800;font-size:64px;line-height:1.1;margin-bottom:56px;opacity:0;animation:rise .9s .5s forwards}
+.cols{display:flex;gap:40px}
+.card{flex:1;background:#12151f;border:1px solid rgba(255,255,255,.09);border-radius:18px;padding:40px 36px;opacity:0;transform:translateY(30px)}
+.card.a{animation:cardin .8s 1.2s forwards}
+.card.b{animation:cardin .8s 1.7s forwards}
+.card .tag{font-size:15px;letter-spacing:.25em;color:#7c86ad;margin-bottom:18px}
+.card .big{font-family:ui-sans-serif,system-ui,sans-serif;font-weight:800;font-size:88px;line-height:1}
+.card.a .big{color:#34d399}
+.card.b .big{color:#fbbf24}
+.card p{margin-top:22px;font-size:21px;color:#9aa3c0;line-height:1.5}
+.strike{text-decoration:line-through;text-decoration-color:#f87171;text-decoration-thickness:3px}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+@keyframes rise{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+@keyframes cardin{to{opacity:1;transform:none}}
+</style></head><body>
+<div class="wrap">
+  <div class="kicker">the hidden variable</div>
+  <h2>Every linguistics eval hands<br>the model a <span class="strike" style="color:#f87171">scaffold</span>.</h2>
+  <div class="cols">
+    <div class="card a"><div class="tag">WITH SCAFFOLD</div><div class="big">~0.97</div><p>Morpheme bank provided. Composition from a closed inventory — near-perfect for every frontier model, even ciphered.</p></div>
+    <div class="card b"><div class="tag">NO SCAFFOLD</div><div class="big">?</div><p>Novel languages, conditioned grammar, evidence only. This eval removes the frame and measures what remains.</p></div>
+  </div>
+</div></body></html>

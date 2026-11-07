@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1920px;height:1080px;background:#0a0c12;color:#e8eaf2;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;overflow:hidden}
+.wrap{height:100%;display:flex;flex-direction:column;justify-content:center;padding:0 110px}
+.kicker{font-size:20px;letter-spacing:.35em;color:#a78bfa;text-transform:uppercase;margin-bottom:24px;opacity:0;animation:fadein .7s .2s forwards}
+h2{font-family:ui-sans-serif,system-ui,sans-serif;font-weight:800;font-size:60px;margin-bottom:14px;opacity:0;animation:rise .9s .5s forwards}
+.sub{font-size:26px;color:#9aa3c0;margin-bottom:56px;opacity:0;animation:fadein .8s 1.1s forwards}
+.chart{display:flex;flex-direction:column;gap:30px}
+.row{display:flex;align-items:center;gap:30px}
+.row .lbl{width:340px;font-size:24px;color:#cdd3ea;text-align:right}
+.track{flex:1;height:64px;background:#12151f;border-radius:10px;position:relative;overflow:hidden}
+.fill{position:absolute;inset:0;width:0%;border-radius:10px}
+.row .val{width:110px;font-family:ui-sans-serif,system-ui,sans-serif;font-weight:800;font-size:40px}
+.f1 .fill{background:linear-gradient(90deg,#34d399,#6ee7b7)}
+.f2 .fill{background:linear-gradient(90deg,#a78bfa,#c4b5fd)}
+.f3 .fill{background:linear-gradient(90deg,#fbbf24,#fde68a)}
+.f4 .fill{background:linear-gradient(90deg,#fb7185,#fda4af)}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+@keyframes rise{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+</style></head><body>
+<div class="wrap">
+  <div class="kicker">the boundary</div>
+  <h2>Same models. The frame is the variable.</h2>
+  <div class="sub">EM-decomp across conditions — scaffolded vs generated vs real olympiad</div>
+  <div class="chart">
+    <div class="row f1"><div class="lbl">scaffolded · all ablations</div><div class="track"><div class="fill" style="animation:grow 1.6s 1.6s forwards"></div></div><div class="val" style="color:#34d399;opacity:0;animation:fadein .6s 3.0s forwards">~0.96</div></div>
+    <div class="row f2"><div class="lbl">generated · gemini</div><div class="track"><div class="fill" style="width:0%;animation:grow2 1.6s 2.2s forwards"></div></div><div class="val" style="color:#a78bfa;opacity:0;animation:fadein .6s 3.6s forwards">0.97</div></div>
+    <div class="row f3"><div class="lbl">generated · gpt-5.6</div><div class="track"><div class="fill" style="width:0%;animation:grow3 1.6s 2.8s forwards"></div></div><div class="val" style="color:#fbbf24;opacity:0;animation:fadein .6s 4.2s forwards">0.90</div></div>
+    <div class="row f4"><div class="lbl">generated · claude opus</div><div class="track"><div class="fill" style="width:0%;animation:grow4 1.6s 3.4s forwards"></div></div><div class="val" style="color:#fb7185;opacity:0;animation:fadein .6s 4.8s forwards">0.73</div></div>
+    <div class="row" style="margin-top:6px"><div class="lbl" style="color:#8b93b8">generated · qwen 80b</div><div class="track"><div class="fill" style="background:#64748b;width:0%;animation:grow5 1.6s 4.0s forwards"></div></div><div class="val" style="color:#94a3b8;opacity:0;animation:fadein .6s 5.4s forwards">0.28</div></div>
+  </div>
+</div>
+<style>
+@keyframes grow{to{width:96%}}
+@keyframes grow2{to{width:97%}}
+@keyframes grow3{to{width:90%}}
+@keyframes grow4{to{width:73%}}
+@keyframes grow5{to{width:28%}}
+</style>
+</body></html>

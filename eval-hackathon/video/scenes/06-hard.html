@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1920px;height:1080px;background:#0a0c12;color:#e8eaf2;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;overflow:hidden}
+.wrap{height:100%;display:flex;flex-direction:column;justify-content:center;padding:0 110px}
+.kicker{font-size:20px;letter-spacing:.35em;color:#a78bfa;text-transform:uppercase;margin-bottom:24px;opacity:0;animation:fadein .7s .2s forwards}
+h2{font-family:ui-sans-serif,system-ui,sans-serif;font-weight:800;font-size:56px;margin-bottom:48px;opacity:0;animation:rise .9s .5s forwards}
+.rules{display:flex;gap:36px}
+.rule{flex:1;background:#12151f;border:1px solid rgba(255,255,255,.09);border-radius:16px;padding:34px 30px;opacity:0;transform:translateY(30px)}
+.rule:nth-child(1){animation:cardin .8s 1.4s forwards}
+.rule:nth-child(2){animation:cardin .8s 2.0s forwards}
+.rule .tag{font-size:15px;letter-spacing:.25em;color:#a78bfa;margin-bottom:16px}
+.rule h3{font-family:ui-sans-serif,system-ui,sans-serif;font-size:30px;font-weight:700;margin-bottom:14px;color:#e8eaf2}
+.rule p{font-size:20px;color:#9aa3c0;line-height:1.55}
+.rule code{color:#fbbf24;font-size:19px}
+.score{margin-top:40px;display:flex;gap:24px;align-items:center;opacity:0;animation:fadein .8s 3.0s forwards}
+.score .chip{background:#12151f;border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:14px 24px;font-size:21px}
+.score .chip b{font-family:ui-sans-serif,system-ui,sans-serif}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+@keyframes rise{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+@keyframes cardin{to{opacity:1;transform:none}}
+</style></head><body>
+<div class="wrap">
+  <div class="kicker">harder conditioning · gen4 / gen5</div>
+  <h2>Two new ways to break<br>the shortcut.</h2>
+  <div class="rules">
+    <div class="rule"><div class="tag">VHARMX · CONSONANT-CLASS HARMONY</div><h3>Arbitrary class split</h3><p>Harmony class decided by an arbitrary set of <b>initial consonants</b> — no front/back vowel cue. Claude drops 0.76 → <code>0.70</code>.</p></div>
+    <div class="rule"><div class="tag">SYN · POLYPERSONAL AGREEMENT</div><h3>One verb, two bosses</h3><p>Prefix keyed to subject's <b>final</b> sound × tense; suffix to object's <b>initial</b> sound × tense. No tense morpheme — tense hides inside both affixes.</p></div>
+  </div>
+  <div class="score">
+    <div class="chip">gen4 claude <b style="color:#fb7185">0.78</b></div>
+    <div class="chip">gen4 gpt <b style="color:#fbbf24">0.89</b></div>
+    <div class="chip">gen4 gemini <b style="color:#a78bfa">0.96</b></div>
+    <div class="chip" style="border-color:rgba(167,139,250,.4);color:#a78bfa">gen5 syn: frontier drops further</div>
+  </div>
+</div></body></html>

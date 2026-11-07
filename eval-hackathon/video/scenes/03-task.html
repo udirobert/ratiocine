@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1920px;height:1080px;background:#0a0c12;color:#e8eaf2;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;overflow:hidden}
+.wrap{height:100%;display:flex;padding:0 100px;gap:70px;align-items:center}
+.left{flex:1.2}
+.kicker{font-size:20px;letter-spacing:.35em;color:#a78bfa;text-transform:uppercase;margin-bottom:24px;opacity:0;animation:fadein .7s .2s forwards}
+h2{font-family:ui-sans-serif,system-ui,sans-serif;font-weight:800;font-size:58px;line-height:1.12;margin-bottom:40px;opacity:0;animation:rise .9s .5s forwards}
+.fams{display:flex;flex-direction:column;gap:14px}
+.fam{display:flex;align-items:center;gap:16px;background:#12151f;border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:16px 22px;font-size:22px;opacity:0;transform:translateX(-24px)}
+.fam:nth-child(1){animation:slidein .7s 1.3s forwards}
+.fam:nth-child(2){animation:slidein .7s 1.8s forwards}
+.fam:nth-child(3){animation:slidein .7s 2.3s forwards}
+.fam:nth-child(4){animation:slidein .7s 2.8s forwards}
+.fam .dot{width:10px;height:10px;border-radius:50%;background:#a78bfa}
+.fam b{color:#cdd3ea;font-weight:600}
+.fam span{color:#8b93b8;margin-left:auto;font-size:18px}
+.right{flex:1;display:flex;flex-direction:column;gap:22px}
+.q{background:#0f1220;border:1px solid rgba(167,139,250,.25);border-radius:14px;padding:24px 26px;font-size:21px;line-height:1.55;color:#c9cfe6;opacity:0;transform:translateY(20px)}
+.q:nth-child(1){animation:cardin .8s 3.4s forwards}
+.q:nth-child(2){animation:cardin .8s 4.2s forwards}
+.q .lbl{display:block;font-size:14px;letter-spacing:.25em;color:#a78bfa;margin-bottom:10px}
+.q code{color:#fbbf24}
+.badge{align-self:flex-start;background:rgba(52,211,153,.12);border:1px solid rgba(52,211,153,.4);color:#34d399;border-radius:999px;padding:10px 22px;font-size:17px;letter-spacing:.15em;opacity:0;animation:fadein .8s 5.0s forwards}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+@keyframes rise{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+@keyframes slidein{to{opacity:1;transform:none}}
+@keyframes cardin{to{opacity:1;transform:none}}
+</style></head><body>
+<div class="wrap">
+  <div class="left">
+    <div class="kicker">the task</div>
+    <h2>Languages generated<br>per seed. Unlimited supply.</h2>
+    <div class="fams">
+      <div class="fam"><span class="dot"></span><b>Vowel harmony</b> — suffixes copy the root's vowel class<span>vharm</span></div>
+      <div class="fam"><span class="dot"></span><b>Noun-class agreement</b> — circumfix keyed to final sound<span>circ</span></div>
+      <div class="fam"><span class="dot"></span><b>Conditioned suppletion</b> — two stems, tense allomorphy<span>supp</span></div>
+      <div class="fam"><span class="dot"></span><b>Polypersonal agreement</b> — one verb, two nouns<span>syn</span></div>
+    </div>
+  </div>
+  <div class="right">
+    <div class="q"><span class="lbl">EVIDENCE</span>wenou rijonuma rmuli → the wolf calls the tool<br><span style="color:#5b6280">…20 pairs per puzzle</span></div>
+    <div class="q"><span class="lbl">QUERY</span>'lenum' means 'the lion'. 'nrosa' means 'the rope'.<br>Translate the verb 'watched' <code>as it agrees with both nouns</code>.</div>
+    <div class="badge">GRADING: DETERMINISTIC · NO LLM JUDGE</div>
+  </div>
+</div></body></html>

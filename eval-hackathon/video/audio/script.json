@@ -1,0 +1,34 @@
+[
+ {
+  "scene": 1,
+  "text": "Languages that don't exist. Procedurally generated grammars — random morphemes, random phoneme inventories, conditioned rules. Can frontier models learn them? This is the eval."
+ },
+ {
+  "scene": 2,
+  "text": "Every linguistics eval hands the model a scaffold: a morpheme bank, a worked example, a fixed template. We asked what happens when the language itself is invented — vowel harmony, noun-class agreement, conditioned suppletion — so memorization is impossible by construction. Seedable. Unlimited. Contamination-proof."
+ },
+ {
+  "scene": 3,
+  "text": "The task: twenty-four puzzles per dataset, each a miniature language with bilingual evidence pairs and queries requiring novel morphological composition. Grading is deterministic — exact morpheme match, character F-one, morpheme F-one. No language-model judge. Every answer verifiable."
+ },
+ {
+  "scene": 4,
+  "text": "Here's the boundary. With the scaffold — morpheme bank included — frontier models score near-perfect, even when we cipher the orthography or shrink the evidence. The scaffold is the hidden variable in linguistics evals. It was carrying the score."
+ },
+ {
+  "scene": 5,
+  "text": "Remove the frame and the pack splits. On generated languages: Gemini point nine seven, GPT point nine zero, Claude Opus point seven three, Qwen three-next point two eight. Errors concentrate exactly on conditioned structure — the right frame, the wrong variant. Wrong suppletive stem. Wrong harmony allomorph. Wrong agreement slot."
+ },
+ {
+  "scene": 6,
+  "text": "We made it harder. Consonant-class harmony — an arbitrary set of initial consonants, no phonetic shortcut. Then polypersonal agreement: one verb answers to two nouns at once, a prefix keyed to the subject's last sound, a suffix to the object's first, tense fused inside both. Frontier models drop further."
+ },
+ {
+  "scene": 7,
+  "text": "And on real olympiad problems — Linguini, actual IOL tasks — every model sits between point four three and point six three exact match. The limitation isn't morphology. It's discovering the structure of the problem itself."
+ },
+ {
+  "scene": 8,
+  "text": "Every number is reproducible. Stored raw generations — re-grade for zero dollars. Gold answers forty-two of forty-two, corrupted answers zero false passes. Fresh seeds generate fresh languages judges can test themselves. The eval is the artifact."
+ }
+]

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1920px;height:1080px;background:#0a0c12;color:#e8eaf2;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;overflow:hidden;position:relative}
+.grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:64px 64px}
+.rain{position:absolute;inset:0;overflow:hidden;opacity:.14}
+.rain span{position:absolute;font-size:15px;color:#8b93b8;white-space:nowrap;animation:fall linear infinite}
+@keyframes fall{from{transform:translateY(-40px)}to{transform:translateY(1120px)}}
+.wrap{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 120px}
+.kicker{font-size:22px;letter-spacing:.35em;color:#a78bfa;text-transform:uppercase;opacity:0;animation:fadein .8s .3s forwards}
+h1{font-family:ui-sans-serif,system-ui,sans-serif;font-weight:800;font-size:96px;line-height:1.05;letter-spacing:-.02em;margin:36px 0 28px;opacity:0;animation:rise 1s .7s forwards}
+h1 em{font-style:normal;color:#a78bfa}
+.sub{font-size:30px;color:#9aa3c0;line-height:1.5;max-width:1100px;opacity:0;animation:fadein 1s 1.6s forwards}
+.cursor{display:inline-block;width:.55em;height:.9em;background:#a78bfa;vertical-align:-.08em;margin-left:6px;animation:blink 1s steps(1) infinite}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+@keyframes rise{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+@keyframes blink{50%{opacity:0}}
+.tag{margin-top:44px;font-size:20px;color:#5b6280;letter-spacing:.2em;opacity:0;animation:fadein 1s 2.4s forwards}
+</style></head><body>
+<div class="grid"></div><div class="rain" id="rain"></div>
+<div class="wrap">
+  <div class="kicker">ratiocine · eval-hackathon</div>
+  <h1>LANGUAGES THAT<br><em>DON'T EXIST.</em></h1>
+  <div class="sub">Procedurally generated grammars — random morphemes, random phoneme inventories, conditioned rules.<br>Can frontier models learn them? This is the eval.</div>
+  <div class="tag">contamination-proof by construction<span class="cursor"></span></div>
+</div>
+<script>
+const syl=["ka","mi","to","re","lu","sa","vi","no","pe","da","gi","ho","mu","za","ti","ru"];
+const rain=document.getElementById('rain');
+for(let i=0;i<40;i++){const s=document.createElement('span');
+ let w='';for(let j=0;j<3;j++)w+=syl[Math.floor(Math.random()*syl.length)];
+ s.textContent=w;s.style.left=(Math.random()*100)+'%';s.style.top='-60px';
+ s.style.animationDuration=(9+Math.random()*14)+'s';s.style.animationDelay=(-Math.random()*20)+'s';
+ rain.appendChild(s);}
+</script></body></html>

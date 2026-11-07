@@ -12,6 +12,11 @@ Three grammar families, each isolating a different induction skill:
   supp  — conditioned suppletion + allomorphy. Verb stem has two
           allomorphs chosen by the subject prefix's final sound; tense
           suffix allomorphy conditioned by stem-final sound.
+  syn   — polypersonal agreement. Verb carries a prefix keyed by
+          (subject class x tense) and a suffix keyed by (object class x
+          tense); subject class reads the noun's FINAL sound, object
+          class its INITIAL sound, and tense is fused inside both
+          affixes with no dedicated tense morpheme.
 
 Every puzzle is a language that does not exist: random morphemes, random
 phoneme inventories, random class assignments. Contamination-proof by
@@ -64,6 +69,20 @@ NOUNS = [
     "frog",
     "crab",
     "newt",
+]
+OBJECTS = [
+    "rock",
+    "stick",
+    "bowl",
+    "box",
+    "drum",
+    "bell",
+    "coin",
+    "rope",
+    "stone",
+    "gift",
+    "tool",
+    "leaf",
 ]
 
 
@@ -889,6 +908,260 @@ def gen_supp(rng, idx):
     )
 
 
+# ---------------------------------------------------------------- SYNTAX
+
+
+def gen_syn(rng, idx):
+    """Polypersonal agreement with conjunctive conditioning.
+
+    Verb complex = agrP + root + agrS where:
+      - agrP allomorph is keyed by (subject-noun class, tense); subject
+        class is read off the noun's FINAL sound (nasal / vowel / stop)
+      - agrS allomorph is keyed by (object-noun class, tense); object
+        class is read off the noun's INITIAL sound (stop / nasal / liquid)
+    There is no separate tense morpheme — tense is recoverable only through
+    the conditioned affixes. The asymmetry (final vs initial sound) and the
+    two-slot conditioning are what make this family hard.
+    """
+    p = fake_lang(rng, idx)
+    p["family"] = "Generated/polypersonal-agreement"
+    cons = "".join(rng.sample(CONS, 8))
+    allv = VOWELS
+
+    # subject classes by final sound
+    s_final = {
+        "nasal": rng.choice("mn"),
+        "vowel": None,
+        "stop": rng.choice("ptk"),
+    }
+    # object classes by initial sound
+    o_initial = {
+        "stop": rng.choice("ptk"),
+        "nasal": rng.choice("mn"),
+        "liquid": rng.choice("rl"),
+    }
+
+    def subj_stem(kind):
+        body = cvcv(rng, cons, allv)
+        if kind == "nasal":
+            return body + s_final["nasal"]
+        if kind == "stop":
+            return body + s_final["stop"]
+        return body + rng.choice(allv)
+
+    def obj_stem(kind):
+        return o_initial[kind] + cvcv(rng, cons, allv)
+
+    subj_kinds = ["nasal", "vowel", "stop"] * 2
+    rng.shuffle(subj_kinds)
+    obj_kinds = ["stop", "nasal", "liquid"] * 2
+    rng.shuffle(obj_kinds)
+
+    subj_stems, obj_stems = [], []
+    seen = set()
+    for k in subj_kinds:
+        s = subj_stem(k)
+        while s in seen:
+            s = subj_stem(k)
+        seen.add(s)
+        subj_stems.append((s, k))
+    for k in obj_kinds:
+        s = obj_stem(k)
+        while s in seen:
+            s = obj_stem(k)
+        seen.add(s)
+        obj_stems.append((s, k))
+
+    subj_en = rng.sample(NOUNS, 6)
+    obj_en = rng.sample(OBJECTS, 6)
+    subj_map = {s: e for (s, _), e in zip(subj_stems, subj_en)}
+    obj_map = {s: e for (s, _), e in zip(obj_stems, obj_en)}
+    subj_class = dict(subj_stems)
+    obj_class = dict(obj_stems)
+
+    vroots = []
+    verbs_en = rng.sample(VERBS, 6)
+    for v in verbs_en:
+        r = cvcv(rng, cons, allv)
+        while r in vroots:
+            r = cvcv(rng, cons, allv)
+        vroots.append(r)
+    vr_verb = dict(zip(vroots, verbs_en))
+
+    # agreement allomorphs: 3 classes x 2 tenses per slot, all distinct
+    sclasses = ["nasal", "vowel", "stop"]
+    oclasses = ["stop", "nasal", "liquid"]
+    agrP, agrS = {}, {}
+    for classes, store in ((sclasses, agrP), (oclasses, agrS)):
+        forms = set()
+        for c in classes:
+            for t in ("pres", "past"):
+                f = syl(rng, cons, allv)
+                while f in forms:
+                    f = syl(rng, cons, allv)
+                forms.add(f)
+                store.setdefault(c, {})[t] = f
+
+    def build(si, oi, vi, tense):
+        ss, _ = subj_stems[si]
+        os_, _ = obj_stems[oi]
+        sc, oc = subj_class[ss], obj_class[os_]
+        return [ss, agrP[sc][tense], vroots[vi], agrS[oc][tense], os_]
+
+    def gloss(si, oi, vi, tense):
+        v = vr_verb[vroots[vi]]
+        vform = pres3(v) if tense == "pres" else past(v)
+        return (
+            f"the {subj_map[subj_stems[si][0]]} {vform} the {obj_map[obj_stems[oi][0]]}"
+        )
+
+    def vb(si, oi, vi, tense):
+        return build(si, oi, vi, tense)[1:4]
+
+    combos = [
+        (si, oi, vi, t)
+        for si in range(6)
+        for oi in range(6)
+        for vi in range(6)
+        for t in ("pres", "past")
+    ]
+    picked = []
+    seen_c = set()
+
+    def add(si, oi, vi, t):
+        c = (si, oi, vi, t)
+        if c not in seen_c:
+            seen_c.add(c)
+            picked.append(c)
+
+    # every subject noun, every object noun, every verb attested
+    for si in range(6):
+        add(si, rng.randrange(6), rng.randrange(6), rng.choice(["pres", "past"]))
+    for oi in range(6):
+        add(rng.randrange(6), oi, rng.randrange(6), rng.choice(["pres", "past"]))
+    for vi in range(6):
+        add(rng.randrange(6), rng.randrange(6), vi, rng.choice(["pres", "past"]))
+    # every conditioning cell: (subj class x tense) and (obj class x tense)
+    have_p = {(subj_class[subj_stems[c[0]][0]], c[3]) for c in picked}
+    have_s = {(obj_class[obj_stems[c[1]][0]], c[3]) for c in picked}
+    for sc in sclasses:
+        for t in ("pres", "past"):
+            if (sc, t) not in have_p:
+                si = next(
+                    i for i, (s, _) in enumerate(subj_stems) if subj_class[s] == sc
+                )
+                add(si, rng.randrange(6), rng.randrange(6), t)
+                have_p.add((sc, t))
+    for oc in oclasses:
+        for t in ("pres", "past"):
+            if (oc, t) not in have_s:
+                oi = next(i for i, (s, _) in enumerate(obj_stems) if obj_class[s] == oc)
+                add(rng.randrange(6), oi, rng.randrange(6), t)
+                have_s.add((oc, t))
+    while len(picked) < 20:
+        add(*rng.choice(combos))
+    picked = picked[:20]
+
+    pairs = []
+    for si, oi, vi, t in picked:
+        m = build(si, oi, vi, t)
+        ss, os_ = m[0], m[4]
+        src = ss + " " + "".join(m[1:4]) + " " + os_
+        pairs.append({"source": src, "target": gloss(si, oi, vi, t), "morphemes": m})
+
+    ev_set = set(picked)
+
+    def qprompt(si, oi, vi, t):
+        ss, os_ = subj_stems[si][0], obj_stems[oi][0]
+        vform = pres3(vr_verb[vroots[vi]]) if t == "pres" else past(vr_verb[vroots[vi]])
+        return (
+            f"'{ss}' means 'the {subj_map[ss]}'. "
+            f"'{os_}' means 'the {obj_map[os_]}'. "
+            f"Translate the verb '{vform}' as it agrees with both nouns."
+        )
+
+    qitems = []
+    si0, oi0, vi0, t0 = picked[0]
+    vm = vb(si0, oi0, vi0, t0)
+    qitems.append(
+        query(
+            0,
+            qprompt(si0, oi0, vi0, t0),
+            vm,
+            "".join(vm),
+            "tutorial",
+            "This exact verb form is in the notes.",
+        )
+    )
+    qi = 1
+    rest = [c for c in combos if c not in ev_set]
+    rng.shuffle(rest)
+    used = set()
+    for si, oi, vi, t in rest[:5]:
+        used.add((si, oi, vi, t))
+        vm = vb(si, oi, vi, t)
+        qitems.append(query(qi, qprompt(si, oi, vi, t), vm, "".join(vm), "standard"))
+        qi += 1
+    # curveball: combos sitting in the rarest evidence cells on both slots
+    cnt_p = {}
+    cnt_s = {}
+    for si, oi, vi, t in picked:
+        sc = subj_class[subj_stems[si][0]]
+        oc = obj_class[obj_stems[oi][0]]
+        cnt_p[(sc, t)] = cnt_p.get((sc, t), 0) + 1
+        cnt_s[(oc, t)] = cnt_s.get((oc, t), 0) + 1
+
+    def rarity(c):
+        si, oi, _vi, t = c
+        return cnt_p.get((subj_class[subj_stems[si][0]], t), 0) + cnt_s.get(
+            (obj_class[obj_stems[oi][0]], t), 0
+        )
+
+    cb = sorted((c for c in rest if c not in used), key=rarity)
+    for si, oi, vi, t in cb[:2]:
+        vm = vb(si, oi, vi, t)
+        qitems.append(
+            query(
+                qi,
+                qprompt(si, oi, vi, t),
+                vm,
+                "".join(vm),
+                "curveball",
+                "Both agreement slots turn over at once — check each noun.",
+            )
+        )
+        qi += 1
+
+    bank = (
+        [s for s, _ in subj_stems],
+        [s for s, _ in obj_stems],
+        vroots,
+        [agrP[c][t] for c in sclasses for t in ("pres", "past")],
+        [agrS[c][t] for c in oclasses for t in ("pres", "past")],
+    )
+    return emit(
+        p,
+        pairs,
+        qitems,
+        bank,
+        lore=f"{p['language']} verbs agree with BOTH nouns: a prefix keyed "
+        f"to the subject's final sound and a suffix keyed to the object's "
+        f"first sound — and tense hides inside both.",
+        meta={
+            "family": "syn",
+            "subj_class": subj_class,
+            "obj_class": obj_class,
+            "s_final": s_final,
+            "o_initial": o_initial,
+            "subj_map": subj_map,
+            "obj_map": obj_map,
+            "vr_verb": vr_verb,
+            "agrP": agrP,
+            "agrS": agrS,
+        },
+    )
+
+
 # ---------------------------------------------------------------- main
 
 
@@ -908,7 +1181,12 @@ def main():
     rng = random.Random(args.seed)
     puzzles = []
     harmony = gen_vharmx if args.profile == "hard" else gen_vharm
-    gens = [("vharm", harmony), ("circ", gen_circ), ("supp", gen_supp)]
+    gens = [
+        ("vharm", harmony),
+        ("circ", gen_circ),
+        ("supp", gen_supp),
+        ("syn", gen_syn),
+    ]
     idx = 0
     for fam_i in range(args.per_family):
         for gname, gfn in gens:

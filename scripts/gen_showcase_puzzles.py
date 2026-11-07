@@ -62,6 +62,26 @@ FAMILY_INFO = {
         },
         "funFact": "This language suppletes: the same verb has two unrelated stems, and which one appears depends on how the subject prefix ends.",
     },
+    "vharmx": {
+        "difficulty": 5,
+        "taskFrame": "Vowel harmony here is arbitrary: which suffix set a root takes is decided by its first consonant, not its vowels — and the question marker harmonizes one step further.",
+        "verdicts": {
+            "perfect": "Even the arbitrary class split resolved cleanly. Impressive.",
+            "good": "Strong — recheck which consonants pattern together.",
+            "partial": "The class boundary isn't phonetic. Tabulate the onsets.",
+        },
+        "funFact": "In most harmony languages the classes are front vs back vowels. Here the split is an arbitrary set of initial consonants — memorization can't help, only the table can.",
+    },
+    "syn": {
+        "difficulty": 5,
+        "taskFrame": "One verb, two bosses: a prefix agrees with the subject's LAST sound, a suffix with the object's FIRST sound — and tense is hidden inside both.",
+        "verdicts": {
+            "perfect": "Both agreement slots resolved under conjunctive conditioning. Exceptional.",
+            "good": "Nearly — one affix slot picked the wrong cell.",
+            "partial": "Two conditioned affixes, two different phonological cues. Isolate each noun's job.",
+        },
+        "funFact": "The subject's class is read off the noun's final sound; the object's off its initial sound. Same language, opposite edges — and there is no tense suffix to cheat with.",
+    },
 }
 
 
@@ -95,6 +115,12 @@ def _pair_cell(p, meta):
         group = "V" if pi in meta["vfinal"] else "C"
         tense = "pres" if ts[0] == meta["tcons"]["pres"] else "past"
         return (group, tense, "V" if stem[-1] in VOWELS else "C")
+    if fam == "syn":
+        subj, pfx, obj = m[0], m[1], m[4]
+        sc = meta["subj_class"][subj]
+        oc = meta["obj_class"][obj]
+        tense = "pres" if meta["agrP"][sc]["pres"] == pfx else "past"
+        return (sc, tense, oc)
     return None
 
 
@@ -250,7 +276,7 @@ def convert(puzzle, seed, idx):
 
 def gen_for_seed(seed, per_family):
     rng = random.Random(seed)
-    gens = [gp.gen_vharm, gp.gen_circ, gp.gen_supp]
+    gens = [gp.gen_vharm, gp.gen_circ, gp.gen_supp, gp.gen_syn]
     puzzles = []
     idx = 0
     for _ in range(per_family):

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1920px;height:1080px;background:#0a0c12;color:#e8eaf2;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;overflow:hidden}
+.wrap{height:100%;display:flex;flex-direction:column;justify-content:center;padding:0 110px}
+.kicker{font-size:20px;letter-spacing:.35em;color:#a78bfa;text-transform:uppercase;margin-bottom:24px;opacity:0;animation:fadein .7s .2s forwards}
+h2{font-family:ui-sans-serif,system-ui,sans-serif;font-weight:800;font-size:60px;margin-bottom:16px;opacity:0;animation:rise .9s .5s forwards}
+.sub{font-size:27px;color:#9aa3c0;margin-bottom:60px;opacity:0;animation:fadein .8s 1.2s forwards}
+.band{position:relative;height:120px;background:#12151f;border-radius:14px;overflow:hidden;margin-bottom:56px}
+.band .zone{position:absolute;top:0;bottom:0;background:linear-gradient(90deg,rgba(251,113,133,.35),rgba(251,113,133,.15));border-left:2px solid #fb7185;border-right:2px solid #fb7185}
+.band .lbl{position:absolute;top:50%;transform:translateY(-50%);font-family:ui-sans-serif,system-ui,sans-serif;font-weight:800;font-size:44px;color:#fb7185;white-space:nowrap}
+.models{display:flex;justify-content:space-between;padding:0 8px}
+.m{background:#12151f;border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:18px 30px;text-align:center;opacity:0;transform:translateY(20px)}
+.m:nth-child(1){animation:cardin .7s 2.6s forwards}
+.m:nth-child(2){animation:cardin .7s 3.1s forwards}
+.m:nth-child(3){animation:cardin .7s 3.6s forwards}
+.m .n{font-size:16px;color:#7c86ad;letter-spacing:.15em;margin-bottom:8px}
+.m .v{font-family:ui-sans-serif,system-ui,sans-serif;font-weight:800;font-size:52px}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+@keyframes rise{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+@keyframes cardin{to{opacity:1;transform:none}}
+</style></head><body>
+<div class="wrap">
+  <div class="kicker">external validity · linguini / iol</div>
+  <h2>Real olympiad problems.<br>Everyone fails.</h2>
+  <div class="sub">160 problems per model · raw IOL tasks, no morpheme bank</div>
+  <div class="band"><div class="zone" style="left:43%;width:20%"></div><div class="lbl" style="left:45%">0.43 – 0.63 EM</div></div>
+  <div class="models">
+    <div class="m"><div class="n">CLAUDE OPUS 4.8</div><div class="v" style="color:#fb7185">0.434</div></div>
+    <div class="m"><div class="n">GPT-5.6 SOL</div><div class="v" style="color:#fbbf24">0.598</div></div>
+    <div class="m"><div class="n">GEMINI 3.1 PRO</div><div class="v" style="color:#a78bfa">0.633</div></div>
+  </div>
+</div></body></html>

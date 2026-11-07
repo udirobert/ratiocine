@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1920px;height:1080px;background:#0a0c12;color:#e8eaf2;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;overflow:hidden}
+.wrap{height:100%;display:flex;flex-direction:column;justify-content:center;padding:0 110px}
+.kicker{font-size:20px;letter-spacing:.35em;color:#a78bfa;text-transform:uppercase;margin-bottom:24px;opacity:0;animation:fadein .7s .2s forwards}
+h2{font-family:ui-sans-serif,system-ui,sans-serif;font-weight:800;font-size:60px;line-height:1.15;margin-bottom:48px;opacity:0;animation:rise .9s .5s forwards}
+.cmds{display:flex;flex-direction:column;gap:16px;margin-bottom:48px}
+.cmd{background:#0f1220;border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:20px 28px;font-size:24px;color:#c9cfe6;opacity:0;transform:translateX(-20px);display:flex;gap:18px;align-items:center}
+.cmd .pr{color:#a78bfa}
+.cmd .ok{margin-left:auto;color:#34d399;font-size:18px;letter-spacing:.1em}
+.cmd:nth-child(1){animation:slidein .7s 1.4s forwards}
+.cmd:nth-child(2){animation:slidein .7s 2.0s forwards}
+.cmd:nth-child(3){animation:slidein .7s 2.6s forwards}
+.close{font-size:30px;color:#e8eaf2;line-height:1.5;max-width:1300px;opacity:0;animation:fadein .9s 3.4s forwards}
+.close b{color:#a78bfa}
+.end{margin-top:40px;font-size:20px;color:#5b6280;letter-spacing:.2em;opacity:0;animation:fadein .8s 4.4s forwards}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+@keyframes rise{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+@keyframes slidein{to{opacity:1;transform:none}}
+</style></head><body>
+<div class="wrap">
+  <div class="kicker">reproduce · verify</div>
+  <h2>Every number, re-gradeable<br>for <span style="color:#34d399">$0</span>.</h2>
+  <div class="cmds">
+    <div class="cmd"><span class="pr">$</span>python3 eval-hackathon/regrade.py<span class="ok">stored raws → fresh scores</span></div>
+    <div class="cmd"><span class="pr">$</span>python3 eval-hackathon/aggregate.py --markdown<span class="ok">42/42 gold · 0/19 false-pass</span></div>
+    <div class="cmd"><span class="pr">$</span>python3 scripts/gen_puzzles.py --seed 99 --per-family 6<span class="ok">fresh languages, fresh test</span></div>
+  </div>
+  <div class="close">The limitation isn't morphology — models ace it <b>when you hand them the frame</b>.<br>It's discovering conditioned structure in a language that has never existed. <b>That's the eval.</b></div>
+  <div class="end">ratiocine · eval-hackathon · micro1 eval hackathon</div>
+</div></body></html>

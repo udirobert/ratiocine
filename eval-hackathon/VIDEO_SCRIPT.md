@@ -1,77 +1,68 @@
-# Video walkthrough script (~4.5 min)
+# Video walkthrough script (~4 min)
 
-Record screen + voiceover. Suggested flow: terminal visible throughout.
+Screen recording + voiceover. Terminal visible throughout; results tables
+from `aggregate.py --markdown` on screen.
 
-## 0:00–0:30 — The claim
+## 0:00–0:40 — The claim
 
-> "Frontier models ace linguistics puzzles — when you hand them the
-> morpheme bank. Take the scaffold away and they fall apart. This eval
-> measures exactly where that boundary is."
+> "Every linguistics eval hands the model a scaffold — a morpheme bank, a
+> worked example. We asked: what happens when the language doesn't exist
+> at all? These are procedurally generated grammars — random morphemes,
+> random phoneme inventories, conditioned rules. Memorization is impossible
+> by construction."
 
-Show `eval-hackathon/REPORT.md` headline + the two evals.
+Show `scripts/gen_puzzles.py` docstring (the four families) + one generated
+puzzle's evidence pairs.
 
-## 0:30–1:30 — Eval 1: the task
+## 0:40–1:30 — The task
 
-Open `data/puzzles.json` → one puzzle (e.g. Apurinã). Show:
-- evidence pairs (`nhaapitaka` = "I am going")
-- morpheme bank
-- a query
+Open `eval-hackathon/data/puzzles_gen3.json` → one puzzle per family:
+- vharm: evidence pairs, query, morpheme bank
+- circ: discontinuous agreement
+- supp: conditioned suppletion
 
-Run one live call:
+Show `run_eval.py` invocation + one stored raw generation + grader verdict.
 
-```bash
-python3 eval-hackathon/run_eval.py --model gpt-oss-120b --provider neon --limit 0
-```
+## 1:30–2:30 — Results: the boundary
 
-(or show a stored result to avoid live latency — `results/` has raws)
+`aggregate.py --markdown` — the money table:
 
-Show the grader output line: `dec=Y surf=Y chrf=1.00`.
+| Eval | claude | gpt | gemini | qwen |
+|---|---|---|---|---|
+| scaffolded (all ablations) | ~0.94 | ~0.97 | ~1.00 | ~0.93 |
+| generated languages | 0.73 | 0.90 | 0.97 | 0.28 |
+| Linguini (real IOL) | 0.43 | 0.60 | 0.63 | — |
 
-## 1:30–2:30 — The obfuscation intervention
+> "Same models. The only thing that changed is whether the problem had to
+> be discovered or could be looked up."
 
-```bash
-python3 scripts/obfuscate_puzzles.py --seed 1 --output /tmp/puzzles_obf.json
-```
+Per-family breakdown: errors concentrate on conditioned allomorphy —
+show `analyze_failures.py` output (36% wrong suppletive stem etc.).
 
-Show the same puzzle in obfuscated orthography — English glosses intact,
-target-language strings ciphered. Point out vowel/consonant classes are
-preserved so the problem is still solvable — only memorized orthography
-is removed.
+## 2:30–3:15 — gen4/gen5: harder conditioning
 
-Show the results table (`aggregate.py --markdown`): frontier models
-score ~0.92–1.00 in BOTH conditions → "they genuinely induce the
-grammar — the bank is doing the reasoning for them."
+> "We made it harder — consonant-class harmony, then polypersonal
+> agreement where one verb answers to two nouns at once."
 
-## 2:30–3:30 — Eval 2: remove the scaffold
+Show gen4 table (claude 0.78 / gpt 0.89 / gemini 0.96) + gen5 syn-family
+results when available.
 
-Linguini — raw IOL problems, no morpheme bank:
-
-```bash
-python3 eval-hackathon/run_linguni_eval.py --model claude-opus-4-8 --provider neon --limit 10
-```
-
-Show stored results: claude-opus-4-8 EM 0.434 / chrF 0.590 over 160
-problems; per-type table with `text_to_num`/`num_to_text` weakest.
-
-Show one failure transcript (`results/` → a `text_to_num` record):
-model derives correct values in reasoning but can't structure the
-answer — or genuinely fails numeral induction.
-
-## 3:30–4:15 — Grader integrity + reproduce
+## 3:15–3:45 — Grader integrity + reproduce
 
 ```bash
 python3 eval-hackathon/regrade.py          # re-grade raws, $0
 python3 eval-hackathon/aggregate.py --markdown
+python3 scripts/gen_puzzles.py --seed 99 --per-family 6 --out /tmp/fresh.json
 ```
 
-Mention: gold 42/42 pass, corrupted 0/19 false-pass, stdlib-only,
-stored raws → judges can verify every number without API keys.
+Gold 42/42 pass, corrupted 0/19 false-pass, stored raws → every number
+verifiable without API keys. Fresh seed = fresh languages judges can test.
 
-## 4:15–4:45 — Close
+## 3:45–4:15 — Close
 
-> "The limitation isn't that models can't do morphology — it's that
-they can't discover the structure of the problem. Give them the frame
-and they're near-perfect, even in a cipher. Remove the frame and they
-drop to ~43% EM on real olympiad problems. That's the eval."
+> "The limitation isn't that models can't do morphology — they ace it
+> when you hand them the frame. It's that they can't reliably discover
+> conditioned structure in a language that has never existed. That's the
+> eval."
 
-End card: repo path + `eval-hackathon/REPORT.md`.
+End card: repo path + `eval-hackathon/REPORT.md` + submission zip.

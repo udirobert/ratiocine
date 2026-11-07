@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1920px;height:1080px;background:#0a0c12;color:#e8eaf2;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;overflow:hidden}
+.wrap{height:100%;display:flex;flex-direction:column;justify-content:center;padding:0 110px}
+.kicker{font-size:20px;letter-spacing:.35em;color:#a78bfa;text-transform:uppercase;margin-bottom:24px;opacity:0;animation:fadein .7s .2s forwards}
+h2{font-family:ui-sans-serif,system-ui,sans-serif;font-weight:800;font-size:58px;margin-bottom:16px;opacity:0;animation:rise .9s .5s forwards}
+.quote{font-size:30px;color:#fbbf24;font-style:italic;margin-bottom:56px;opacity:0;animation:fadein .8s 1.4s forwards}
+.rows{display:flex;flex-direction:column;gap:26px}
+.row{display:flex;align-items:center;gap:26px}
+.row .lbl{width:430px;font-size:23px;color:#cdd3ea}
+.track{flex:1;height:52px;background:#12151f;border-radius:10px;position:relative;overflow:hidden}
+.fill{position:absolute;inset:0;width:0%;background:linear-gradient(90deg,#fb7185,#fda4af);border-radius:10px}
+.row .pct{width:90px;font-family:ui-sans-serif,system-ui,sans-serif;font-weight:800;font-size:34px;color:#fb7185;text-align:right;opacity:0}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+@keyframes rise{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+</style></head><body>
+<div class="wrap">
+  <div class="kicker">failure taxonomy · claude-opus-4.8 on gen3</div>
+  <h2>Right frame. Wrong variant.</h2>
+  <div class="quote">"Errors concentrate exactly on conditioned structure — not random noise."</div>
+  <div class="rows">
+    <div class="row"><div class="lbl">wrong suppletive stem</div><div class="track"><div class="fill" style="animation:g1 1.5s 2.2s forwards"></div></div><div class="pct" style="animation:fadein .5s 3.4s forwards">36%</div></div>
+    <div class="row"><div class="lbl">wrong harmony allomorph</div><div class="track"><div class="fill" style="animation:g2 1.5s 2.8s forwards"></div></div><div class="pct" style="animation:fadein .5s 4.0s forwards">20%</div></div>
+    <div class="row"><div class="lbl">wrong agreement prefix</div><div class="track"><div class="fill" style="animation:g3 1.5s 3.4s forwards"></div></div><div class="pct" style="animation:fadein .5s 4.6s forwards">13%</div></div>
+    <div class="row"><div class="lbl">wrong agreement suffix</div><div class="track"><div class="fill" style="animation:g4 1.5s 4.0s forwards"></div></div><div class="pct" style="animation:fadein .5s 5.2s forwards">4%</div></div>
+  </div>
+</div>
+<style>
+@keyframes g1{to{width:36%}}@keyframes g2{to{width:20%}}
+@keyframes g3{to{width:13%}}@keyframes g4{to{width:4%}}
+</style>
+</body></html>
