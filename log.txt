@@ -19,3 +19,23 @@
 - Secrets: NEON + PARALLEL keys in .env only (gitignored), never logged.
 - qwen3-next gen3 complete: 0.278 EM (2 trials) — eval discriminates
   0.28→0.97 across capability spectrum. RESULTS/REPORT updated, zip rebuilt.
+
+=== session (post-submission productization) ===
+- Clean-room tested eval-hackathon-submission.zip: found stale aggregate.py
+  (missing gen2/gen3 rows); rebuilt zip via package_submission.sh, re-verified
+  aggregate + live run_eval call (gemini gen-000 7/7) from unpacked artifact.
+- Committed eval-hackathon suite + zip (ba9450f, 89aec12); fixed ruff via
+  per-file-ignores matching repo convention.
+- scripts/gen_cot_data.py: emits iol_cot_train-format CoT examples from gen
+  families using _gen rule metadata; 2760 examples (seeds 100-105, disjoint
+  from eval seeds 7/11/23) -> data/synthetic/gen_cot_train.jsonl (7.8MB).
+- showcase daily game: scripts/gen_showcase_puzzles.py converts gen puzzles
+  to Puzzle shape -> showcase/app/play/gen-puzzles.ts (120 puzzles, seeds
+  200-203); PUZZLE_POOL now 10 classics + 120 generated (~130-day rotation).
+  tsc --noEmit clean; unique languageCodes fixed (base36 suffix).
+- gen_puzzles.py: added vharmx family (--profile hard) — harmony class
+  conditioned on arbitrary initial-consonant subset, removing the phonetic
+  front/back shortcut; generated eval-hackathon/data/puzzles_gen4.json
+  (seed 31, rule-verified 56/56 queries). Fixed vharm root-sampling edge
+  case (all roots one harmony class -> IndexError); gen3 output unchanged.
+- Human baseline not done (needs a human solver).

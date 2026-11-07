@@ -125,9 +125,11 @@ def make_bank(*groups):
     return [sorted(set(g)) for g in groups if g]
 
 
-def emit(puzzle, pairs, queries, bank_groups, lore=""):
+def emit(puzzle, pairs, queries, bank_groups, lore="", meta=None):
     puzzle["pairs"] = pairs
     puzzle["queries"] = queries
+    if meta is not None:
+        puzzle["_gen"] = meta
     puzzle["morphemeBank"] = make_bank(*bank_groups)
     puzzle["hints"] = [
         {
@@ -194,11 +196,16 @@ def gen_vharm(rng, idx):
         persons[i] = x
 
     roots, verbs = [], rng.sample(VERBS, 8)
-    for v in verbs:
-        r = cvcv(rng, cons, allv)
-        while r in roots:
+    while True:
+        roots = []
+        for v in verbs:
             r = cvcv(rng, cons, allv)
-        roots.append(r)
+            while r in roots:
+                r = cvcv(rng, cons, allv)
+            roots.append(r)
+        # harmony induction needs both classes attested
+        if any(r[-1] in front for r in roots) and any(r[-1] in back for r in roots):
+            break
     root_verb = dict(zip(roots, verbs))
 
     tense_cons = {"pres": rng.choice(cons), "past": rng.choice(cons)}
@@ -335,6 +342,209 @@ def gen_vharm(rng, idx):
         qitems,
         bank,
         lore=f"{p['language']} verbs mark tense and questions with vowel harmony.",
+        meta={
+            "family": "vharm",
+            "persons": persons,
+            "root_verb": root_verb,
+            "front": sorted(front),
+            "back": sorted(back),
+            "fv": fv,
+            "bv": bv,
+            "qv_f": qv_f,
+            "qv_b": qv_b,
+            "tense_cons": tense_cons,
+            "q_cons": q_cons,
+        },
+    )
+
+
+# ------------------------------------------------------- VHARMX (hard mode)
+
+
+def gen_vharmx(rng, idx):
+    """Vowel harmony conditioned on an arbitrary consonant class.
+
+    Same long-distance structure as vharm, but the harmony class is not
+    recoverable from vowel quality: a root belongs to class F iff its INITIAL
+    consonant is in a random subset of the inventory. Models must induce a
+    consonant partition from the suffix alternations alone — the phonetic
+    'front/back vowel' shortcut is gone.
+    """
+    p = fake_lang(rng, idx)
+    p["family"] = "Generated/consonant-class-harmony"
+    front = set(rng.sample(["i", "e"], 2))
+    back = set(rng.sample(["a", "o", "u"], 2))
+    allv = sorted(front | back)
+    cons = "".join(rng.sample(CONS, 7))
+    fv = rng.choice(sorted(front))
+    bv = rng.choice(sorted(back))
+    qv_f = rng.choice(sorted(front - {fv}) or sorted(front))
+    qv_b = rng.choice(sorted(back - {bv}) or sorted(back))
+    # arbitrary subset of the consonant inventory defines class F
+    class_cons = set(rng.sample(cons, rng.choice([3, 4])))
+
+    def klass(root):
+        return "F" if root[0] in class_cons else "B"
+
+    def hv_for(root):
+        return fv if klass(root) == "F" else bv
+
+    persons = [syl(rng, cons, allv) for _ in range(6)]
+    persons = [x if x[-1] not in allv else x + rng.choice(cons) for x in persons]
+    persons = [x[:2] + rng.choice(cons) + x[2:] if len(x) == 2 else x for x in persons]
+    seen = set()
+    for i, x in enumerate(persons):
+        while x in seen or len(x) < 3:
+            x = cvcv(rng, cons, allv)[:3]
+        seen.add(x)
+        persons[i] = x
+
+    verbs = rng.sample(VERBS, 8)
+    while True:
+        roots = []
+        for v in verbs:
+            r = cvcv(rng, cons, allv)
+            while r in roots:
+                r = cvcv(rng, cons, allv)
+            roots.append(r)
+        # both consonant classes must be attested for the rule to be learnable
+        if {klass(r) for r in roots} == {"F", "B"}:
+            break
+    root_verb = dict(zip(roots, verbs))
+
+    tense_cons = {"pres": rng.choice(cons), "past": rng.choice(cons)}
+    q_cons = rng.choice(cons)
+
+    def build(person_i, root, tense, is_q):
+        hv = hv_for(root)
+        ts = tense_cons[tense] + hv
+        morphs = [persons[person_i], root, ts]
+        if is_q:
+            qv = qv_f if hv in front else qv_b
+            morphs.append(q_cons + qv)
+        return morphs
+
+    def gloss(person_i, root, tense, is_q):
+        return (
+            qform(PERSONS[person_i], root_verb[root], tense)
+            if is_q
+            else stmt(PERSONS[person_i], root_verb[root], tense)
+        )
+
+    picked = []
+    for pi in range(6):
+        r = rng.choice(roots)
+        picked.append((pi, r, rng.choice(["pres", "past"]), rng.random() < 0.4))
+
+    roots_by_class = {"F": [], "B": []}
+    for r in roots:
+        roots_by_class[klass(r)].append(r)
+
+    def cell(pi, r, t, q):
+        return (klass(r), t, q)
+
+    need = {(c, t, q) for c in "FB" for t in ("pres", "past") for q in (False, True)}
+    have = {cell(*c4) for c4 in picked}
+    for c in sorted(need - have):
+        k, t, q = c
+        rlist = roots_by_class[k]
+        pi = rng.randrange(6)
+        cand = (pi, rlist[0], t, q)
+        if cand not in picked:
+            picked.append(cand)
+        have.add(c)
+    for r in roots:
+        if not any(c[1] == r for c in picked):
+            picked.append(
+                (rng.randrange(6), r, rng.choice(["pres", "past"]), rng.random() < 0.4)
+            )
+    while len(picked) < 20:
+        pi = rng.randrange(6)
+        r = rng.choice(roots)
+        t = rng.choice(["pres", "past"])
+        q = rng.random() < 0.4
+        cand = (pi, r, t, q)
+        if cand not in picked:
+            picked.append(cand)
+    picked = picked[:22]
+
+    pairs = [pair(build(pi, r, t, q), gloss(pi, r, t, q)) for pi, r, t, q in picked]
+
+    qitems = []
+    ev_set = {(pi, r, t, q) for pi, r, t, q in picked}
+    cands = [
+        (pi, r, t, q)
+        for pi in range(6)
+        for r in roots
+        for t in ("pres", "past")
+        for q in (False, True)
+        if (pi, r, t, q) not in ev_set
+    ]
+    rng.shuffle(cands)
+    t_pi, t_r, t_t, t_q = picked[0]
+    qitems.append(
+        query(
+            0,
+            gloss(t_pi, t_r, t_t, t_q),
+            build(t_pi, t_r, t_t, t_q),
+            "".join(build(t_pi, t_r, t_t, t_q)),
+            "tutorial",
+            "Free — this exact phrase is in the notes.",
+        )
+    )
+    qi = 1
+    used = set()
+    for pi, r, t, q in cands[:4]:
+        used.add((pi, r, t, q))
+        m = build(pi, r, t, q)
+        qitems.append(query(qi, gloss(pi, r, t, q), m, "".join(m), "standard"))
+        qi += 1
+    q_cands = [c for c in cands if c[3] and c[0] in (1, 4, 5) and c not in used]
+    pool = q_cands or [c for c in cands if c not in used]
+    for pi, r, t, q in pool[:2]:
+        m = build(pi, r, t, q)
+        qitems.append(
+            query(
+                qi,
+                gloss(pi, r, t, q),
+                m,
+                "".join(m),
+                "curveball",
+                "The harmony class hides in the first consonant, not the vowels.",
+            )
+        )
+        qi += 1
+
+    bank = (
+        persons,
+        roots,
+        sorted(
+            {tense_cons["pres"] + fv, tense_cons["pres"] + bv}
+            | {tense_cons["past"] + fv, tense_cons["past"] + bv}
+        ),
+        [q_cons + qv_f, q_cons + qv_b],
+    )
+    return emit(
+        p,
+        pairs,
+        qitems,
+        bank,
+        lore=f"{p['language']} verbs mark tense and questions with harmony "
+        f"conditioned on the root's initial consonant.",
+        meta={
+            "family": "vharmx",
+            "persons": persons,
+            "root_verb": root_verb,
+            "front": sorted(front),
+            "back": sorted(back),
+            "fv": fv,
+            "bv": bv,
+            "qv_f": qv_f,
+            "qv_b": qv_b,
+            "tense_cons": tense_cons,
+            "q_cons": q_cons,
+            "class_cons": sorted(class_cons),
+        },
     )
 
 
@@ -505,6 +715,16 @@ def gen_circ(rng, idx):
         bank,
         lore=f"{p['language']} verbs agree with their subject noun "
         f"by a matching prefix and suffix.",
+        meta={
+            "family": "circ",
+            "class_map": class_map,
+            "finals": finals,
+            "noun_map": noun_map,
+            "vr_verb": vr_verb,
+            "agr_p": agr_p,
+            "agr_s": agr_s,
+            "tense_suf": tense_suf,
+        },
     )
 
 
@@ -656,6 +876,16 @@ def gen_supp(rng, idx):
         bank,
         lore=f"{p['language']} verbs have two stems chosen by the "
         f"subject prefix's final sound.",
+        meta={
+            "family": "supp",
+            "persons": persons,
+            "vfinal": vfinal,
+            "cfinal": cfinal,
+            "stems": stems,
+            "tcons": tcons,
+            "tv": tv,
+            "tc": tc,
+        },
     )
 
 
@@ -666,12 +896,19 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--seed", type=int, default=7)
     ap.add_argument("--per-family", type=int, default=6)
+    ap.add_argument(
+        "--profile",
+        choices=["std", "hard"],
+        default="std",
+        help="hard swaps vharm for vharmx (consonant-class harmony)",
+    )
     ap.add_argument("--out", required=True)
     args = ap.parse_args()
 
     rng = random.Random(args.seed)
     puzzles = []
-    gens = [("vharm", gen_vharm), ("circ", gen_circ), ("supp", gen_supp)]
+    harmony = gen_vharmx if args.profile == "hard" else gen_vharm
+    gens = [("vharm", harmony), ("circ", gen_circ), ("supp", gen_supp)]
     idx = 0
     for fam_i in range(args.per_family):
         for gname, gfn in gens:
