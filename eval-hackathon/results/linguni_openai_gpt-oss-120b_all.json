@@ -1,0 +1,124 @@
+[
+ {
+  "id": "012023010100",
+  "task_type": "fill_blanks",
+  "context": "Here are two different forms of some verbs in Guazacapán Xinka and their English translations:\n\npiriyʼ | ɨmbirʼi | see\nimʼay | ɨnimʼa | say, tell\naplayʼ | ɨnapalʼa | open (it)\nkʼaniyʼ | ɨŋkʼanʼi | trap\nɬɨknɨyʼ | ɨnɬɨkɨnʼɨ | obey, believe\ntundiyʼ | ɨndunatʼi | play (an instrument)\nʂakʂayʼ | ɨnʂakaʦʼa | steal\nkiʂiyʼ | ɨŋɡiʦʼi | roast\nhɨkʼay | ɨnhɨkʼa | sew, weave\nhɨnɨyʼ | ɨnhɨnʼɨ | learn, know\nyuɬmuyʼ | ɨnyuɬumʼu | suck candy\niplayʼ | ɨnipalʼa | bathe (it)\npʼahniyʼ | ɨmpʼahanʼi | dig\nterʼoy | ɨnderʼo | kill",
+  "query": "Fill the blanks (1-4):\n\nnetkayʼ | (1) | push\nkɨrɨyʼ | (2) | pull\npʼuhruyʼ | (3) | make holes\nherʼoy | (4) | smooth out",
+  "gold": [
+   "ɨnnetakʼa",
+   "ɨŋɡɨrʼɨ",
+   "ɨmpʼuhurʼu",
+   "ɨnherʼo"
+  ],
+  "raw": "",
+  "pred_answers": [
+   "",
+   "",
+   "",
+   ""
+  ],
+  "em": [
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "chrf": [
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "elapsed_s": 6.9,
+  "model": "openai/gpt-oss-120b",
+  "provider": "groq"
+ },
+ {
+  "id": "012023010200",
+  "task_type": "fill_blanks",
+  "context": "Here are two different forms of some verbs in Guazacapán Xinka and their English translations:\n\npiriyʼ | ɨmbirʼi | see\nimʼay | ɨnimʼa | say, tell\naplayʼ | ɨnapalʼa | open (it)\nkʼaniyʼ | ɨŋkʼanʼi | trap\nɬɨknɨyʼ | ɨnɬɨkɨnʼɨ | obey, believe\ntundiyʼ | ɨndunatʼi | play (an instrument)\nʂakʂayʼ | ɨnʂakaʦʼa | steal\nkiʂiyʼ | ɨŋɡiʦʼi | roast\nhɨkʼay | ɨnhɨkʼa | sew, weave\nhɨnɨyʼ | ɨnhɨnʼɨ | learn, know\nyuɬmuyʼ | ɨnyuɬumʼu | suck candy\niplayʼ | ɨnipalʼa | bathe (it)\npʼahniyʼ | ɨmpʼahanʼi | dig\nterʼoy | ɨnderʼo | kill",
+  "query": "Fill the blanks (1-10):\n\nherʼoŋ | (1)\nɨniʂpaʔ | (2)\naplaʔ | (3)\n(4) | it chose (it)\n(5) | I saw (it)\n(6) | I plant (it)\n(7) | it was trapped\n(8) | I leap\n(9) | it is being sewn, woven\n(10) | I was bathed",
+  "gold": [
+   "I smoothed (it) out",
+   "I left",
+   "it was opened",
+   "ʂurʼuy",
+   "pirinʼ",
+   "ɨnʂawaʦʼa",
+   "kʼaaniʔ",
+   "ɨmpʼɨhanaʔ",
+   "ahɨka",
+   "ɨniplaʔ"
+  ],
+  "raw": "",
+  "pred_answers": [
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+  ],
+  "em": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "chrf": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "elapsed_s": 42.5,
+  "model": "openai/gpt-oss-120b",
+  "provider": "groq"
+ },
+ {
+  "id": "012023020100",
+  "task_type": "translation",
+  "context": "Here are some sentences in Apurinã and their approximate English equivalents:\n\n1. nuta sykaru nykanawate uwamukary | I gave my canoe to her.\n2. nykanawate nysykaru uwamukary | I gave my canoe to her.\n3. pita ãtary ĩpurãã | You_{sg} drank the water.\n4. kyky mynaru nyherẽka sytumukary | The man brought my blood to the woman.\n5. herẽkatxi uãtary sytu | The woman drank the blood.\n6. nhiximakyte pixinhikary | You_{sg} remembered my fish (sg).\n7. pitxiparyte umynary kykymukary | She brought your_{sg} banana to the man.\n8. hãtakuru xinhikary naikute | The girl remembered my house.\n9. sytu apy ysykanu nutamukary kyky | The man gave the woman’s bone to me.\n10. nhĩpurããte nãtary | I drank my water.\n11. kywĩtxi apukary | He found the head.\n12. ywa mynanu kyky uky nutamukary | He brought the man’s eye to me.\n13. ximaky nhikary apĩtxi | The fish (sg) ate the bone.\n14. hãtakuru txiparyte napukary | I found the girl’s banana.\n15. ximaky kywy inhikary | He ate the fish’s (sg) head.\n16. hãtakuru uapukaru | She found the girl.",
+  "query": "Translate into English:\n\n17. uwa xinhikaru sytu\n18. txipary nhinhikary\n19. kyky aikute pysykary ywamukary",
+  "gold": [
+   "She remembered the woman.",
+   "I ate the banana.",
+   "You_{sg} gave the man’s house to him."
+  ],
+  "raw": "",
+  "pred_answers": [
+   "",
+   "",
+   ""
+  ],
+  "em": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "chrf": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "elapsed_s": 42.1,
+  "model": "openai/gpt-oss-120b",
+  "provider": "groq"
+ }
+]

@@ -1,0 +1,1200 @@
+[
+ {
+  "puzzle": "apurina-verb-agreement",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "I am eating",
+  "gold": [
+   "ʡɗɪɪ",
+   "ɫəɳɪ",
+   "ɫɪ"
+  ],
+  "gold_joined": "ʡɗɪɪɫəɳɪɫɪ",
+  "raw": "<analysis>\nStep 1: \"I am\" = ʡɗɪɪ, \"eating\" stem = ɫəɳɪ, present progressive suffix = ɫɪ.\nStep 2: Order: subject prefix + verb stem + ɫɪ.\nStep 3: ʡɗɪɪ + ɫəɳɪ + ɫɪ = ʡɗɪɪɫəɳɪɫɪ.\n</analysis>\n<answers>\nʡɗɪɪɫəɳɪɫɪ\n</answers>",
+  "answer_text": "ʡɗɪɪɫəɳɪɫɪ",
+  "morphemes": [
+   "ʡɗɪɪ",
+   "ɫəɳɪ",
+   "ɫɪ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 4.2,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "apurina-verb-agreement",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "we (everyone) are eating",
+  "gold": [
+   "ɫɪɪ",
+   "ɫəɳɪ",
+   "ɫɪ"
+  ],
+  "gold_joined": "ɫɪɪɫəɳɪɫɪ",
+  "raw": "<analysis>\nStep 1: \"we (everyone)\" = ɫɪɪ prefix; \"eating\" stem = ɫəɳɪ; progressive suffix = ɫɪ.\nStep 2: Pattern: subject prefix + stem + ɫɪ.\nStep 3: ɫɪɪ + ɫəɳɪ + ɫɪ.\n</analysis>\n<answers>\nɫɪɪɫəɳɪɫɪ\n</answers>",
+  "answer_text": "ɫɪɪɫəɳɪɫɪ",
+  "morphemes": [
+   "ɫɪɪ",
+   "ɫəɳɪ",
+   "ɫɪ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 3.0,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "apurina-verb-agreement",
+  "query": 2,
+  "difficulty": "standard",
+  "prompt": "you are speaking",
+  "gold": [
+   "ɯ",
+   "ʡøɫɪɳɪ",
+   "ɫɪ"
+  ],
+  "gold_joined": "ɯʡøɫɪɳɪɫɪ",
+  "raw": "<analysis>\nStep 1: \"you\" subject prefix = ɯ; \"speaking\" root = ʡøɫɪɳɪ; progressive suffix = ɫɪ.\nStep 2: ɯ + ʡøɫɪɳɪ + ɫɪ.\nStep 3: ɯʡøɫɪɳɪɫɪ\n</analysis>\n<answers>\nɯ ʡøɫɪɳɪ ɫɪ\n</answers>",
+  "answer_text": "ɯ ʡøɫɪɳɪ ɫɪ",
+  "morphemes": [
+   "ɯ",
+   "ʡøɫɪɳɪ",
+   "ɫɪ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.9,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "apurina-verb-agreement",
+  "query": 3,
+  "difficulty": "standard",
+  "prompt": "we (everyone) are speaking",
+  "gold": [
+   "ɫɪɪ",
+   "ʡøɫɪɳɪ",
+   "ɫɪ"
+  ],
+  "gold_joined": "ɫɪɪʡøɫɪɳɪɫɪ",
+  "raw": "<analysis>\nSubject prefix: ʡɗɪɪ (I), ɯ (you), ɪ (he/she), ɫɪɪ (we everyone).\nVerb stems: ƍʊɳɪ (go), ɫəɳɪ (eat), ʡøɫɪɳɪ (speak).\nSuffix: ɫɪ (present continuous).\nSo \"we are speaking\" = ɫɪɪ + ʡøɫɪɳɪ + ɫɪ.\n</analysis>\n<answers>\nɫɪɪʡøɫɪɳɪɫɪ\n</answers>",
+  "answer_text": "ɫɪɪʡøɫɪɳɪɫɪ",
+  "morphemes": [
+   "ɫɪɪ",
+   "ʡøɫɪɳɪ",
+   "ɫɪ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 3.2,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "apurina-verb-agreement",
+  "query": 4,
+  "difficulty": "standard",
+  "prompt": "he/she is going",
+  "gold": [
+   "ɪ",
+   "ƍʊɳɪ",
+   "ɫɪ"
+  ],
+  "gold_joined": "ɪƍʊɳɪɫɪ",
+  "raw": "<analysis>\nStep 1: \"he/she\" prefix = ɪ, \"going\" root = ƍʊɳɪ, progressive suffix = ɫɪ.\nStep 2: ɪ + ƍʊɳɪ + ɫɪ\nStep 3: ɪƍʊɳɪɫɪ\n</analysis>\n<answers>\nɪ ƍʊɳɪ ɫɪ\n</answers>",
+  "answer_text": "ɪ ƍʊɳɪ ɫɪ",
+  "morphemes": [
+   "ɪ",
+   "ƍʊɳɪ",
+   "ɫɪ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.5,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "swahili-person-tense",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "I will like",
+  "gold": [
+   "ƒɞ",
+   "ʍʊ",
+   "ʠɪƒɺʊ"
+  ],
+  "gold_joined": "ƒɞʍʊʠɪƒɺʊ",
+  "raw": "<analysis>\nSubject prefixes: ƒɞ = I, ɯ = you, ʊ = she/he.\nTense: ƒʊ (present), ƃɞ (past), ʍʊ (future), ʍɯ (we+past?).\nLooking: ƒɞƒʊʠɪƒɺʊ = I(ƒɞ) + present(ƒʊ) + like(ʠɪƒɺʊ).\n\"I will like\" = ƒɞ + ʍʊ(future) + ʠɪƒɺʊ.\n</analysis>\n<answers>\nƒɞʍʊʠɪƒɺʊ\n</answers>",
+  "answer_text": "ƒɞʍʊʠɪƒɺʊ",
+  "morphemes": [
+   "ƒɞ",
+   "ʍʊ",
+   "ʠɪƒɺʊ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 3.6,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "swahili-person-tense",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "they read",
+  "gold": [
+   "ɱʊ",
+   "ƒʊ",
+   "ʡɔɗʊ"
+  ],
+  "gold_joined": "ɱʊƒʊʡɔɗʊ",
+  "raw": "<analysis>\nSubject prefixes: ƒɞ=I, ɯ=you, ʊ=she/he, ʍɯ=we, ɱʊ=they.\nTense markers: ƒʊ=present, ƃɞ=past, ʍʊ=future, ʊ=present(for she/he).\nPattern: subject + tense + root.\nRead root = ʡɔɗʊ. They = ɱʊ. Present = ƒʊ.\nɱʊ + ƒʊ + ʡɔɗʊ\n</analysis>\n<answers>\nɱʊƒʊʡɔɗʊ\n</answers>",
+  "answer_text": "ɱʊƒʊʡɔɗʊ",
+  "morphemes": [
+   "ɱʊ",
+   "ƒʊ",
+   "ʡɔɗʊ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 3.4,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "swahili-person-tense",
+  "query": 2,
+  "difficulty": "curveball",
+  "prompt": "we sang",
+  "gold": [
+   "ʍɯ",
+   "ƃɞ",
+   "ɞɗʈʊ"
+  ],
+  "gold_joined": "ʍɯƃɞɞɗʈʊ",
+  "raw": "<analysis>\nSubject prefixes: ƒɞ=I, ɯ=you, ʊ=she/he, ʍɯ=we, ɱʊ=they.\nTense markers (after subject): ƒʊ=present, ƃɞ=past, ʍʊ=future, ʊ=present(for she/he).\nRoot: ɞɗʈʊ=sing.\n\"we sang\" = we + past + sing = ʍɯ + ƃɞ + ɞɗʈʊ.\n</analysis>\n<answers>\nʍɯƃɞɞɗʈʊ\n</answers>",
+  "answer_text": "ʍɯƃɞɞɗʈʊ",
+  "morphemes": [
+   "ʍɯ",
+   "ƃɞ",
+   "ɞɗʈʊ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 3.5,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "turkish-vowel-harmony",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "eyes",
+  "gold": [
+   "ʜøɳ",
+   "ɸæŧ"
+  ],
+  "gold_joined": "ʜøɳɸæŧ",
+  "raw": "<analysis>\nStep 1: \"eye\" = ʜøɳ. Plural uses suffix. Looking at patterns: æɽ→æɽɸæŧ, œɠ→œɠɸœŧ, æɸ→æɸɸæŧ, ʟɤɠœʛ→ʟɤɠœʛɸœŧ.\nStep 2: The suffix is ɸæŧ or ɸœŧ depending on vowel harmony. Words with æ (æɽ, æɸ) take ɸæŧ. Words with œ (œɠ, ʟɤɠœʛ) take ɸœŧ. For ʜøɳ with ø, likely ɸœŧ (front rounded harmony).\nStep 3: ʜøɳ + ɸœŧ = ʜøɳɸœŧ\n</analysis>\n<answers>\nʜøɳɸœŧ\n</answers>",
+  "answer_text": "ʜøɳɸœŧ",
+  "morphemes": [
+   "ʜøɳ",
+   "ɸœŧ"
+  ],
+  "em_decomp": false,
+  "em_surface": false,
+  "chrf": 0.5667,
+  "morf1": 0.5,
+  "elapsed_s": 4.6,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "turkish-vowel-harmony",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "girls",
+  "gold": [
+   "ʟɱɳ",
+   "ɸœŧ"
+  ],
+  "gold_joined": "ʟɱɳɸœŧ",
+  "raw": "<analysis>\nStep 1: \"girl\" = ʟɱɳ. Plural uses suffix ɸæŧ or ɸœŧ.\nStep 2: The plural suffix appears to depend on vowel harmony. æɽ→æɽɸæŧ (æ vowel), œɠ→œɠɸœŧ (œ vowel), æɸ→æɸɸæŧ (æ), ʟɤɠœʛ→ʟɤɠœʛɸœŧ (last vowel œ). ʟɱɳ has back/front vowel ɱ... likely takes ɸæŧ.\nStep 3: ʟɱɳ + ɸæŧ = ʟɱɳɸæŧ\n</analysis>\n<answers>\nʟɱɳɸæŧ\n</answers>",
+  "answer_text": "ʟɱɳɸæŧ",
+  "morphemes": [
+   "ʟɱɳ",
+   "ɸæŧ"
+  ],
+  "em_decomp": false,
+  "em_surface": false,
+  "chrf": 0.5667,
+  "morf1": 0.5,
+  "elapsed_s": 4.0,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "turkish-vowel-harmony",
+  "query": 2,
+  "difficulty": "curveball",
+  "prompt": "days",
+  "gold": [
+   "ʜəɦ",
+   "ɸæŧ"
+  ],
+  "gold_joined": "ʜəɦɸæŧ",
+  "raw": "<analysis>\nPlural suffix: words with back vowel take ɸœŧ, words with æ take ɸæŧ (vowel harmony).\nʜəɦ → day. The vowel ə is not back/front æ... Looking: æ words take ɸæŧ, others take ɸœŧ. ʜəɦ has ə, use ɸœŧ.\n</analysis>\n<answers>\nʜəɦɸœŧ\n</answers>",
+  "answer_text": "ʜəɦɸœŧ",
+  "morphemes": [
+   "ʜəɦ",
+   "ɸœŧ"
+  ],
+  "em_decomp": false,
+  "em_surface": false,
+  "chrf": 0.5667,
+  "morf1": 0.5,
+  "elapsed_s": 3.3,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "quechua-person-endings",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "I walk",
+  "gold": [
+   "ɮɐʋœ",
+   "ɧœ"
+  ],
+  "gold_joined": "ɮɐʋœɧœ",
+  "raw": "<analysis>\nStep 1: \"walk\" root = ɮɐʋœ. \"I\" suffix = ɧœ (from ʋœɻɤ-ɧœ = I speak).\nStep 2: Root + I suffix.\nStep 3: ɮɐʋœ + ɧœ = ɮɐʋœɧœ\n</analysis>\n<answers>\nɮɐʋœɧœ\n</answers>",
+  "answer_text": "ɮɐʋœɧœ",
+  "morphemes": [
+   "ɮɐʋœ",
+   "ɧœ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.7,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "quechua-person-endings",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "we (all of us) see",
+  "gold": [
+   "ʋœɺɐ",
+   "ɧɬʍœɺ"
+  ],
+  "gold_joined": "ʋœɺɐɧɬʍœɺ",
+  "raw": "<analysis>\nStep 1: \"see\" root = ʋœɺɐ (from ʋœɺɐɧœ \"I see\").\nStep 2: \"we (all of us)\" suffix = ɧɬʍœɺ (from ɧɬʍœɺ in \"we speak/eat\").\nStep 3: ʋœɺɐ + ɧɬʍœɺ.\n</analysis>\n<answers>\nʋœɺɐɧɬʍœɺ\n</answers>",
+  "answer_text": "ʋœɺɐɧɬʍœɺ",
+  "morphemes": [
+   "ʋœɺɐ",
+   "ɧɬʍœɺ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.8,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "quechua-person-endings",
+  "query": 2,
+  "difficulty": "curveball",
+  "prompt": "she eats",
+  "gold": [
+   "ɻœɺʍɐ",
+   "ɧ"
+  ],
+  "gold_joined": "ɻœɺʍɐɧ",
+  "raw": "<analysis>\nStep 1: \"eat\" root = ɻœɺʍɐ. \"she/he\" (3rd person) = ɧ (no suffix, as in \"she speaks\" ʋœɻɤɧ, \"he walks\" ɮɐʋœɧ).\nStep 2: 3rd person singular uses bare ɧ suffix.\nStep 3: ɻœɺʍɐ + ɧ = ɻœɺʍɐɧ\n</analysis>\n<answers>\nɻœɺʍɐɧ\n</answers>",
+  "answer_text": "ɻœɺʍɐɧ",
+  "morphemes": [
+   "ɻœɺʍɐ",
+   "ɧ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.9,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "nahuatl-both-ends",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "I sing",
+  "gold": [
+   "ʝɵ",
+   "ƌæɵƌʉ"
+  ],
+  "gold_joined": "ʝɵƌæɵƌʉ",
+  "raw": "<analysis>\nStep 1: \"I\" = ʝɵ prefix, \"sing\" = ƌæɵƌʉ root.\nStep 2: Singular first person, no plural suffix ɾ.\nStep 3: ʝɵ + ƌæɵƌʉ\n</analysis>\n<answers>\nʝɵƌæɵƌʉ\n</answers>",
+  "answer_text": "ʝɵƌæɵƌʉ",
+  "morphemes": [
+   "ʝɵ",
+   "ƌæɵƌʉ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.5,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "nahuatl-both-ends",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "they cry",
+  "gold": [
+   "ƌɾɶƌʉ",
+   "ɾ"
+  ],
+  "gold_joined": "ƌɾɶƌʉɾ",
+  "raw": "<analysis>\nStep 1: \"cry\" = ƌɾɶƌʉ (from ʝɵƌɾɶƌʉ = I cry).\nStep 2: \"they\" is marked by suffix ɾ and no subject prefix (ƌæɵƌʉɾ = they sing). \"he/they\" have no prefix; plural adds ɾ.\nStep 3: cry stem ƌɾɶƌʉ + ɾ → ƌɾɶƌʉɾ\n</analysis>\n<answers>\nƌɾɶƌʉɾ\n</answers>",
+  "answer_text": "ƌɾɶƌʉɾ",
+  "morphemes": [
+   "ƌɾɶƌʉ",
+   "ɾ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 3.5,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "nahuatl-both-ends",
+  "query": 2,
+  "difficulty": "curveball",
+  "prompt": "we sing",
+  "gold": [
+   "ʝɵ",
+   "ƌæɵƌʉ",
+   "ɾ"
+  ],
+  "gold_joined": "ʝɵƌæɵƌʉɾ",
+  "raw": "<analysis>\nPrefix ʝɵ = I/we, ɽɵ = you, none = he/they. Suffix ɾ = plural (we, they).\n\"sing\" = ƌæɵƌʉ. \"we\" = ʝɵ + root + ɾ.\nSo: ʝɵ ƌæɵƌʉ ɾ\n</analysis>\n<answers>\nʝɵƌæɵƌʉɾ\n</answers>",
+  "answer_text": "ʝɵƌæɵƌʉɾ",
+  "morphemes": [
+   "ʝɵ",
+   "ƌæɵƌʉ",
+   "ɾ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.8,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "esperanto-tense",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "you learned",
+  "gold": [
+   "ɸø",
+   "ʂɶɬʜ",
+   "øɽ"
+  ],
+  "gold_joined": "ɸø ʂɶɬʜøɽ",
+  "raw": "<analysis>\nStep 1: \"you\" = ɸø, \"learn\" root = ʂɶɬʜ.\nStep 2: past tense = øɽ suffix.\nStep 3: ɸø ʂɶɬʜ øɽ\n</analysis>\n<answers>\nɸø ʂɶɬʜøɽ\n</answers>",
+  "answer_text": "ɸø ʂɶɬʜøɽ",
+  "morphemes": [
+   "ɸø",
+   "ʂɶɬʜ",
+   "øɽ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 0.696,
+  "morf1": 1.0,
+  "elapsed_s": 2.8,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "esperanto-tense",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "we learned",
+  "gold": [
+   "ʜø",
+   "ʂɶɬʜ",
+   "øɽ"
+  ],
+  "gold_joined": "ʜø ʂɶɬʜøɽ",
+  "raw": "<analysis>\nStep 1: \"we\" = ʜø, \"learn\" root = ʂɶɬʜ, past tense suffix = øɽ (from ʂɶɬʜøɽ = learned).\nStep 2: Subject pronoun first, then verb root + tense suffix.\nStep 3: ʜø ʂɶɬʜøɽ\n</analysis>\n<answers>\nʜø ʂɶɬʜøɽ\n</answers>",
+  "answer_text": "ʜø ʂɶɬʜøɽ",
+  "morphemes": [
+   "ʜø",
+   "ʂɶɬʜ",
+   "øɽ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 0.696,
+  "morf1": 1.0,
+  "elapsed_s": 3.0,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "esperanto-tense",
+  "query": 2,
+  "difficulty": "standard",
+  "prompt": "I will eat",
+  "gold": [
+   "ƒø",
+   "ƒəʜʡ",
+   "ʌɽ"
+  ],
+  "gold_joined": "ƒø ƒəʜʡʌɽ",
+  "raw": "<analysis>\nStep 1: \"I\" = ƒø, \"eat\" = ƒəʜʡ.\nStep 2: future tense = ʌɽ suffix.\nStep 3: ƒø ƒəʜʡʌɽ\n</analysis>\n<answers>\nƒø ƒəʜʡʌɽ\n</answers>",
+  "answer_text": "ƒø ƒəʜʡʌɽ",
+  "morphemes": [
+   "ƒø",
+   "ƒəʜʡ",
+   "ʌɽ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 0.696,
+  "morf1": 1.0,
+  "elapsed_s": 2.3,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "esperanto-tense",
+  "query": 3,
+  "difficulty": "standard",
+  "prompt": "they eat",
+  "gold": [
+   "øʂø",
+   "ƒəʜʡ",
+   "əɽ"
+  ],
+  "gold_joined": "øʂø ƒəʜʡəɽ",
+  "raw": "<analysis>\nStep 1: \"they\" = øʂø, \"eat\" = ƒəʜʡ, present tense suffix = əɽ\nStep 2: Pronoun + verb stem + tense suffix. Present = əɽ.\nStep 3: øʂø ƒəʜʡəɽ\n</analysis>\n<answers>\nøʂø ƒəʜʡəɽ\n</answers>",
+  "answer_text": "øʂø ƒəʜʡəɽ",
+  "morphemes": [
+   "øʂø",
+   "ƒəʜʡ",
+   "əɽ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 0.699,
+  "morf1": 1.0,
+  "elapsed_s": 2.6,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "esperanto-tense",
+  "query": 4,
+  "difficulty": "standard",
+  "prompt": "he ate",
+  "gold": [
+   "ʂø",
+   "ƒəʜʡ",
+   "øɽ"
+  ],
+  "gold_joined": "ʂø ƒəʜʡøɽ",
+  "raw": "<analysis>\nStep 1: \"he\" → ʂø, \"eat\" → ƒəʜʡ, past tense suffix → ending with ø: øɽ.\nStep 2: Pattern: pronoun + root + tense suffix. Past = øɽ.\nStep 3: ʂø ƒəʜʡøɽ\n</analysis>\n<answers>\nʂø ƒəʜʡøɽ\n</answers>",
+  "answer_text": "ʂø ƒəʜʡøɽ",
+  "morphemes": [
+   "ʂø",
+   "ƒəʜʡ",
+   "øɽ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 0.696,
+  "morf1": 1.0,
+  "elapsed_s": 3.0,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "indonesian-plurals",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "I eat",
+  "gold": [
+   "ʠʊəʊ",
+   "ʂʊɮʊɺ"
+  ],
+  "gold_joined": "ʠʊəʊ ʂʊɮʊɺ",
+  "raw": "<analysis>\nStep 1: \"I\" = ʠʊəʊ, \"eat\" = ʂʊɮʊɺ.\nStep 2: Pronoun precedes verb.\nStep 3: ʠʊəʊ ʂʊɮʊɺ\n</analysis>\n<answers>\nʠʊəʊ ʂʊɮʊɺ\n</answers>",
+  "answer_text": "ʠʊəʊ ʂʊɮʊɺ",
+  "morphemes": [
+   "ʠʊəʊ",
+   "ʂʊɮʊɺ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 0.699,
+  "morf1": 1.0,
+  "elapsed_s": 2.4,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "indonesian-plurals",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "children",
+  "gold": [
+   "ʊɺʊɮ-ʊɺʊɮ"
+  ],
+  "gold_joined": "ʊɺʊɮ-ʊɺʊɮ",
+  "raw": "<analysis>\nStep 1: \"children\" = plural of child. Child = ʊɺʊɮ, plural by reduplication = ʊɺʊɮ-ʊɺʊɮ.\nStep 2: Reduplication for plural.\nStep 3: ʊɺʊɮ-ʊɺʊɮ\n</analysis>\n<answers>\nʊɺʊɮ-ʊɺʊɮ\n</answers>",
+  "answer_text": "ʊɺʊɮ-ʊɺʊɮ",
+  "morphemes": [
+   "ʊɺʊɮ-ʊɺʊɮ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.6,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "indonesian-plurals",
+  "query": 2,
+  "difficulty": "standard",
+  "prompt": "horses",
+  "gold": [
+   "ɮɔʀʊ-ɮɔʀʊ"
+  ],
+  "gold_joined": "ɮɔʀʊ-ɮɔʀʊ",
+  "raw": "<analysis>\nPlural is reduplication: horse ɮɔʀʊ → horses ɮɔʀʊ-ɮɔʀʊ.\n</analysis>\n<answers>\nɮɔʀʊ-ɮɔʀʊ\n</answers>",
+  "answer_text": "ɮɔʀʊ-ɮɔʀʊ",
+  "morphemes": [
+   "ɮɔʀʊ-ɮɔʀʊ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.9,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "indonesian-plurals",
+  "query": 3,
+  "difficulty": "standard",
+  "prompt": "books",
+  "gold": [
+   "ɽɔɮɔ-ɽɔɮɔ"
+  ],
+  "gold_joined": "ɽɔɮɔ-ɽɔɮɔ",
+  "raw": "<analysis>\nStep 1: \"books\" = plural of book \"ɽɔɮɔ\" → reduplication \"ɽɔɮɔ-ɽɔɮɔ\".\nStep 2: Plural formed by reduplication.\nStep 3: ɽɔɮɔ-ɽɔɮɔ\n</analysis>\n<answers>\nɽɔɮɔ-ɽɔɮɔ\n</answers>",
+  "answer_text": "ɽɔɮɔ-ɽɔɮɔ",
+  "morphemes": [
+   "ɽɔɮɔ-ɽɔɮɔ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.6,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "indonesian-plurals",
+  "query": 4,
+  "difficulty": "standard",
+  "prompt": "we eat",
+  "gold": [
+   "ɮʊʂɨ",
+   "ʂʊɮʊɺ"
+  ],
+  "gold_joined": "ɮʊʂɨ ʂʊɮʊɺ",
+  "raw": "<analysis>\n\"we\" = ɮʊʂɨ, \"eat\" = ʂʊɮʊɺ.\n</analysis>\n<answers>\nɮʊʂɨ ʂʊɮʊɺ\n</answers>",
+  "answer_text": "ɮʊʂɨ ʂʊɮʊɺ",
+  "morphemes": [
+   "ɮʊʂɨ",
+   "ʂʊɮʊɺ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 0.699,
+  "morf1": 1.0,
+  "elapsed_s": 2.1,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "finnish-harmony",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "houses",
+  "gold": [
+   "ʄʉɺɪ",
+   "ʄ"
+  ],
+  "gold_joined": "ʄʉɺɪʄ",
+  "raw": "<analysis>\nStep 1: \"houses\" = plural of house = ʄʉɺɪ + ʄ\nStep 2: plural suffix is ʄ\nStep 3: ʄʉɺɪʄ\n</analysis>\n<answers>\nʄʉɺɪʄ\n</answers>",
+  "answer_text": "ʄʉɺɪʄ",
+  "morphemes": [
+   "ʄʉɺɪ",
+   "ʄ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.4,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "finnish-harmony",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "in the house",
+  "gold": [
+   "ʄʉɺɪ",
+   "ɧɧʉ"
+  ],
+  "gold_joined": "ʄʉɺɪɧɧʉ",
+  "raw": "<analysis>\nStep 1: \"in the house\" = house (ʄʉɺɪ) + locative (ɧɧʉ).\nStep 2: Locative suffix shows vowel harmony; house uses ɧɧʉ.\nStep 3: ʄʉɺɪ + ɧɧʉ.\n</analysis>\n<answers>\nʄʉɺɪɧɧʉ\n</answers>",
+  "answer_text": "ʄʉɺɪɧɧʉ",
+  "morphemes": [
+   "ʄʉɺɪ",
+   "ɧɧʉ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.7,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "finnish-harmony",
+  "query": 2,
+  "difficulty": "standard",
+  "prompt": "villages",
+  "gold": [
+   "ʁɘɺæ",
+   "ʄ"
+  ],
+  "gold_joined": "ʁɘɺæʄ",
+  "raw": "<analysis>\nStep 1: \"villages\" = village + plural. Village = ʁɘɺæ, plural suffix = ʄ.\nStep 2: Plural marked by ʄ.\nStep 3: ʁɘɺæʄ\n</analysis>\n<answers>\nʁɘɺæʄ\n</answers>",
+  "answer_text": "ʁɘɺæʄ",
+  "morphemes": [
+   "ʁɘɺæ",
+   "ʄ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.5,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "finnish-harmony",
+  "query": 3,
+  "difficulty": "curveball",
+  "prompt": "in the village",
+  "gold": [
+   "ʁɘɺæ",
+   "ɧɧæ"
+  ],
+  "gold_joined": "ʁɘɺæɧɧæ",
+  "raw": "<analysis>\nvillage = ʁɘɺæ, \"in the\" suffix for village = ɧɧæ (vowel harmony).\n</analysis>\n<answers>\nʁɘɺæɧɧæ\n</answers>",
+  "answer_text": "ʁɘɺæɧɧæ",
+  "morphemes": [
+   "ʁɘɺæ",
+   "ɧɧæ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.3,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "finnish-harmony",
+  "query": 4,
+  "difficulty": "standard",
+  "prompt": "in the school",
+  "gold": [
+   "ʁɪʌɺʌ",
+   "ɧɧʉ"
+  ],
+  "gold_joined": "ʁɪʌɺʌɧɧʉ",
+  "raw": "<analysis>\n\"school\" = ʁɪʌɺʌ, \"in the\" uses ɧɧʉ (as in ʁɪʌɺʌɧɧʉ).\n</analysis>\n<answers>\nʁɪʌɺʌɧɧʉ\n</answers>",
+  "answer_text": "ʁɪʌɺʌɧɧʉ",
+  "morphemes": [
+   "ʁɪʌɺʌ",
+   "ɧɧʉ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.8,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "maori-pronouns",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "we two, not you",
+  "gold": [
+   "ɹɤ",
+   "ʉɘ"
+  ],
+  "gold_joined": "ɹɤʉɘ",
+  "raw": "<analysis>\nStep 1: \"we two, not you\" = ɹɤʉɘ, which breaks into ɹɤ + ʉɘ.\nStep 2: ɹɤ = we/exclusive marker, ʉɘ = dual.\nStep 3: ɹɤ + ʉɘ\n</analysis>\n<answers>\nɹɤ ʉɘ\n</answers>",
+  "answer_text": "ɹɤ ʉɘ",
+  "morphemes": [
+   "ɹɤ",
+   "ʉɘ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.8,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "maori-pronouns",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "all of us, incl. you",
+  "gold": [
+   "ʒɤ",
+   "ʒɨʉ"
+  ],
+  "gold_joined": "ʒɤʒɨʉ",
+  "raw": "<analysis>\n\"all of us, incl. you\" = ʒɤʒɨʉ = ʒɤ + ʒɨʉ\n</analysis>\n<answers>\nʒɤʒɨʉ\n</answers>",
+  "answer_text": "ʒɤʒɨʉ",
+  "morphemes": [
+   "ʒɤ",
+   "ʒɨʉ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.3,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "maori-pronouns",
+  "query": 2,
+  "difficulty": "standard",
+  "prompt": "they two",
+  "gold": [
+   "ɽɤ",
+   "ʉɘ"
+  ],
+  "gold_joined": "ɽɤʉɘ",
+  "raw": "<analysis>\nthey two = ɽɤ (they/dual third) + ʉɘ (dual) = ɽɤʉɘ\n</analysis>\n<answers>\nɽɤʉɘ\n</answers>",
+  "answer_text": "ɽɤʉɘ",
+  "morphemes": [
+   "ɽɤ",
+   "ʉɘ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.4,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "maori-pronouns",
+  "query": 3,
+  "difficulty": "standard",
+  "prompt": "they all",
+  "gold": [
+   "ɽɤ",
+   "ʒɨʉ"
+  ],
+  "gold_joined": "ɽɤʒɨʉ",
+  "raw": "<analysis>\nStep 1: \"they all\" = ɽɤ (they) + ʒɨʉ (plural/all) = ɽɤʒɨʉ\nStep 2: Prefix ɽɤ marks 3rd person \"they\", ʒɨʉ marks plural (more than two).\nStep 3: ɽɤʒɨʉ\n</analysis>\n<answers>\nɽɤʒɨʉ\n</answers>",
+  "answer_text": "ɽɤʒɨʉ",
+  "morphemes": [
+   "ɽɤ",
+   "ʒɨʉ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.5,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "maori-pronouns",
+  "query": 4,
+  "difficulty": "standard",
+  "prompt": "we, not you",
+  "gold": [
+   "ɹɤ",
+   "ʒɨʉ"
+  ],
+  "gold_joined": "ɹɤʒɨʉ",
+  "raw": "<analysis>\n\"we, not you\" = ɹɤʒɨʉ. Prefix ɹɤ (we/they exclusive dual-ish), ʒɨʉ (plural). ɹɤ = exclusive, ʒɨʉ = plural not you.\n</analysis>\n<answers>\nɹɤʒɨʉ\n</answers>",
+  "answer_text": "ɹɤʒɨʉ",
+  "morphemes": [
+   "ɹɤ",
+   "ʒɨʉ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.8,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "zulu-noun-class",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "boy",
+  "gold": [
+   "ɵʒ",
+   "ɱæɽæ"
+  ],
+  "gold_joined": "ɵʒɱæɽæ",
+  "raw": "<analysis>\nStep 1: boy = ɵʒ + ɱæɽæ (singular prefix ɵʒ, root ɱæɽæ).\nStep 2: Singular, no plural marker.\nStep 3: ɵʒɱæɽæ\n</analysis>\n<answers>\nɵʒɱæɽæ\n</answers>",
+  "answer_text": "ɵʒɱæɽæ",
+  "morphemes": [
+   "ɵʒ",
+   "ɱæɽæ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.8,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "zulu-noun-class",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "children",
+  "gold": [
+   "æƃæ",
+   "ɽʄƀæɽæ"
+  ],
+  "gold_joined": "æƃæɽʄƀæɽæ",
+  "raw": "<analysis>\nStep 1: child = ɵʒɽʄƀæɽæ (ɵʒ + ɽʄƀæɽæ), children = æƃæ + ɽʄƀæɽæ.\nStep 2: Plural prefix æƃæ replaces ɵʒ.\nStep 3: æƃæ + ɽʄƀæɽæ = æƃæɽʄƀæɽæ.\n</analysis>\n<answers>\næƃæɽʄƀæɽæ\n</answers>",
+  "answer_text": "æƃæɽʄƀæɽæ",
+  "morphemes": [
+   "æƃæ",
+   "ɽʄƀæɽæ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 3.1,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "zulu-noun-class",
+  "query": 2,
+  "difficulty": "standard",
+  "prompt": "school",
+  "gold": [
+   "ʉʜʉ",
+   "ʛʚɴʚ"
+  ],
+  "gold_joined": "ʉʜʉʛʚɴʚ",
+  "raw": "<analysis>\nStep 1: school → ʉʜʉʛʚɴʚ. Singular prefix ʉʜʉ, root ʛʚɴʚ.\nStep 2: Singular form uses ʉʜʉ.\nStep 3: ʉʜʉ + ʛʚɴʚ\n</analysis>\n<answers>\nʉʜʉ ʛʚɴʚ\n</answers>",
+  "answer_text": "ʉʜʉ ʛʚɴʚ",
+  "morphemes": [
+   "ʉʜʉ",
+   "ʛʚɴʚ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.6,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "zulu-noun-class",
+  "query": 3,
+  "difficulty": "standard",
+  "prompt": "schools",
+  "gold": [
+   "ʉʈʉ",
+   "ʛʚɴʚ"
+  ],
+  "gold_joined": "ʉʈʉʛʚɴʚ",
+  "raw": "<analysis>\nSingular prefix ɵʒ/ʉʜʉ, plural æƃæ/ʉʈʉ. School = ʉʜʉʛʚɴʚ, schools = ʉʈʉʛʚɴʚ.\n</analysis>\n<answers>\nʉʈʉʛʚɴʚ\n</answers>",
+  "answer_text": "ʉʈʉʛʚɴʚ",
+  "morphemes": [
+   "ʉʈʉ",
+   "ʛʚɴʚ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.7,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "zulu-noun-class",
+  "query": 4,
+  "difficulty": "curveball",
+  "prompt": "students",
+  "gold": [
+   "æƃæ",
+   "ɱɵɽɫʉ"
+  ],
+  "gold_joined": "æƃæɱɵɽɫʉ",
+  "raw": "<analysis>\nStep 1: student = ɵʒɱɵɽɫʉ, students = æƃæɱɵɽɫʉ. Plural uses æƃæ prefix replacing ɵʒ.\nStep 2: Plural prefix æƃæ + root ɱɵɽɫʉ.\nStep 3: æƃæ + ɱɵɽɫʉ = æƃæɱɵɽɫʉ.\n</analysis>\n<answers>\næƃæɱɵɽɫʉ\n</answers>",
+  "answer_text": "æƃæɱɵɽɫʉ",
+  "morphemes": [
+   "æƃæ",
+   "ɱɵɽɫʉ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 3.2,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ }
+]

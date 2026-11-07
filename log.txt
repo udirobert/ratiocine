@@ -1,0 +1,21 @@
+
+=== session (eval-hackathon push) ===
+- Judge critique on custom eval (solved ~0.95+): pivoted to harder axes.
+- Added arms: min1 minimal-evidence cover (scripts/make_min_pairs.py),
+  leave-one-out segmentation (eval-hackathon/run_seg_eval.py) — both
+  still ~solved by frontier; documented as scaffolded-control evidence.
+- Built scripts/gen_puzzles.py: procedural novel-language generator,
+  3 grammar families (vharm long-distance harmony, circ noun-class
+  circumfix agreement, supp conditioned suppletion). Seeds gen1/gen2/gen3.
+- Hand-verified gold; found+fixed underdetermined items (unattested
+  persons/nouns/stems) — gen3 is the clean primary set (24 puzzles/184q).
+- Fixed chrf() ZeroDivisionError on short preds; aggregate.py now handles
+  min1/gen1/seg conditions; added analyze_gen.py + analyze_failures.py.
+- Results: gen3 EM-decomp claude 0.725 / gpt-5-6-sol 0.903 /
+  gemini-3-1-pro 0.966 (2 trials). Linguini: claude 0.434 / gpt 0.598 /
+  gemini 0.633. Scaffolded arms all ~0.93-1.00.
+- Rewrote REPORT.md/RESULTS.md/README.md around "scaffold is the hidden
+  variable" spine; regenerated eval-hackathon-submission.zip (~1.7MB).
+- Secrets: NEON + PARALLEL keys in .env only (gitignored), never logged.
+- qwen3-next gen3 complete: 0.278 EM (2 trials) — eval discriminates
+  0.28→0.97 across capability spectrum. RESULTS/REPORT updated, zip rebuilt.

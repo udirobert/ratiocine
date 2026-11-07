@@ -1,0 +1,1200 @@
+[
+ {
+  "puzzle": "apurina-verb-agreement",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "I am eating",
+  "gold": [
+   "nhaa",
+   "kuta",
+   "ka"
+  ],
+  "gold_joined": "nhaakutaka",
+  "raw": "<analysis>\nStep 1: \"I am\" = nhaa (from nhaapitaka). \"eating\" = kuta (from ãkutaka).\nStep 2: Present progressive marker = taka. Structure: subject prefix + verb root + taka.\nStep 3: nhaa + kuta + taka = nhaakutataka.\n</analysis>\n<answers>\nnhaakutataka\n</answers>",
+  "answer_text": "nhaakutataka",
+  "morphemes": [
+   "nhaa",
+   "kuta",
+   "taka"
+  ],
+  "em_decomp": false,
+  "em_surface": false,
+  "chrf": 0.9206,
+  "morf1": 0.6667,
+  "elapsed_s": 2.8,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "apurina-verb-agreement",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "we (everyone) are eating",
+  "gold": [
+   "kaa",
+   "kuta",
+   "ka"
+  ],
+  "gold_joined": "kaakutaka",
+  "raw": "<analysis>\nStep 1: \"we (everyone)\" prefix = kaa, \"eating\" root = kuta, progressive = taka\nStep 2: kaa + kuta + taka\nStep 3: kaakutataka\n</analysis>\n<answers>\nkaakutataka\n</answers>",
+  "answer_text": "kaakutataka",
+  "morphemes": [
+   "kaa",
+   "kuta",
+   "taka"
+  ],
+  "em_decomp": false,
+  "em_surface": false,
+  "chrf": 0.9094,
+  "morf1": 0.6667,
+  "elapsed_s": 2.3,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "apurina-verb-agreement",
+  "query": 2,
+  "difficulty": "standard",
+  "prompt": "you are speaking",
+  "gold": [
+   "ã",
+   "nykata",
+   "ka"
+  ],
+  "gold_joined": "ãnykataka",
+  "raw": "<analysis>\nSubject prefixes: nhaa=I, ã=you, a=he/she, kaa=we.\nVerb stems: pita=go, kuta=eat, nykata=speak.\ntaka = present progressive suffix.\n\"you are speaking\" = ã + nykata + taka.\n</analysis>\n<answers>\nãnykatataka\n</answers>",
+  "answer_text": "ãnykatataka",
+  "morphemes": [
+   "ã",
+   "nykata",
+   "taka"
+  ],
+  "em_decomp": false,
+  "em_surface": false,
+  "chrf": 0.9485,
+  "morf1": 0.6667,
+  "elapsed_s": 2.5,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "apurina-verb-agreement",
+  "query": 3,
+  "difficulty": "standard",
+  "prompt": "we (everyone) are speaking",
+  "gold": [
+   "kaa",
+   "nykata",
+   "ka"
+  ],
+  "gold_joined": "kaanykataka",
+  "raw": "<analysis>\nStep 1: \"we (everyone)\" prefix = kaa, \"speaking\" root = nykata, progressive = taka.\nFrom anykataka: a + nykata + ka? But \"he is speaking\" = anykataka = a + nykata + ka. Wait, taka suffix.\nLet me recheck: nhaa+pita+taka? nhaapitaka = nhaa+pita+ka (going=pita, ka suffix). \nãkutaka = ã+kuta+ka (eating=kuta).\nanykataka = a+nykata+ka (speaking=nykata).\nkaapitaka = kaa+pita+ka (going).\nStep 2: prefix kaa (we everyone) + nykata (speaking) + ka.\nStep 3: kaanykataka\n</analysis>\n<answers>\nkaanykataka\n</answers>",
+  "answer_text": "kaanykataka",
+  "morphemes": [
+   "kaa",
+   "nykata",
+   "ka"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 4.2,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "apurina-verb-agreement",
+  "query": 4,
+  "difficulty": "standard",
+  "prompt": "he/she is going",
+  "gold": [
+   "a",
+   "pita",
+   "ka"
+  ],
+  "gold_joined": "apitaka",
+  "raw": "<analysis>\nSubject prefixes: nhaa=I, ã=you, a=he/she, kaa=we.\nVerb stems: pita=go, kuta=eat, nykata=speak.\nSuffix: taka=present progressive.\n\nWait: \"nhaapitaka\" = nhaa+pita+ka? Actually \"nhaapitaka\" = nhaa+pita+taka? No, it's nhaa+pita+ka... Let me check: ãkutaka = ã+kuta+ka. So suffix is \"ka\" and \"taka\" appears... Actually anykataka = a+nykata+ka. kaapitaka = kaa+pita+ka.\n\nSo subject + stem + ka. He/she going = a+pita+ka = apitaka.\n</analysis>\n<answers>\napitaka\n</answers>",
+  "answer_text": "apitaka",
+  "morphemes": [
+   "a",
+   "pita",
+   "ka"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 4.1,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "swahili-person-tense",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "I will like",
+  "gold": [
+   "ni",
+   "ta",
+   "penda"
+  ],
+  "gold_joined": "nitapenda",
+  "raw": "<analysis>\nStep 1: \"I\" = ni, \"will\" = ta (from wataimba), \"like\" = penda.\nStep 2: Pattern: subject + tense + verb. I=ni, future=ta, like=penda.\nStep 3: ni + ta + penda = nitapenda.\n</analysis>\n<answers>\nnitapenda\n</answers>",
+  "answer_text": "nitapenda",
+  "morphemes": [
+   "ni",
+   "ta",
+   "penda"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.8,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "swahili-person-tense",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "they read",
+  "gold": [
+   "wa",
+   "na",
+   "soma"
+  ],
+  "gold_joined": "wanasoma",
+  "raw": "<analysis>\nSubject prefix: ni=I, tu=we, wa=they. Tense: na=present, li=past, ta=future.\n\"they read\" - no tense marker specified, use present na.\nwa + na + soma\n</analysis>\n<answers>\nwanasoma\n</answers>",
+  "answer_text": "wanasoma",
+  "morphemes": [
+   "wa",
+   "na",
+   "soma"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.2,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "swahili-person-tense",
+  "query": 2,
+  "difficulty": "curveball",
+  "prompt": "we sang",
+  "gold": [
+   "tu",
+   "li",
+   "imba"
+  ],
+  "gold_joined": "tuliimba",
+  "raw": "<analysis>\nStep 1: \"we\" = tu, past tense = li, sing = imba.\nStep 2: Order: subject + tense + verb → tu + li + imba.\nStep 3: tuliimba\n</analysis>\n<answers>\ntuliimba\n</answers>",
+  "answer_text": "tuliimba",
+  "morphemes": [
+   "tu",
+   "li",
+   "imba"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.4,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "turkish-vowel-harmony",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "eyes",
+  "gold": [
+   "göz",
+   "ler"
+  ],
+  "gold_joined": "gözler",
+  "raw": "<analysis>\nStep 1: \"eye\" = göz. Plural suffix: evler (ev+ler), atlar (at+lar). Vowel harmony — göz has front vowel, so use \"ler\".\nStep 2: göz + ler.\nStep 3: gözler\n</analysis>\n<answers>\ngözler\n</answers>",
+  "answer_text": "gözler",
+  "morphemes": [
+   "göz",
+   "ler"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.7,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "turkish-vowel-harmony",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "girls",
+  "gold": [
+   "kız",
+   "lar"
+  ],
+  "gold_joined": "kızlar",
+  "raw": "<analysis>\nStep 1: \"girl\" = kız. Plural suffix: \"evler\" (houses) uses -ler, \"atlar\" (horses) uses -lar. Vowel harmony: back vowels take -lar, front vowels take -ler. kız has back vowel ı, so -lar.\nStep 2: Plural with vowel harmony.\nStep 3: kız + lar.\n</analysis>\n<answers>\nkızlar\n</answers>",
+  "answer_text": "kızlar",
+  "morphemes": [
+   "kız",
+   "lar"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 3.0,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "turkish-vowel-harmony",
+  "query": 2,
+  "difficulty": "curveball",
+  "prompt": "days",
+  "gold": [
+   "gün",
+   "ler"
+  ],
+  "gold_joined": "günler",
+  "raw": "<analysis>\nPlural suffix with vowel harmony. \"gün\" uses front vowel, so \"ler\".\n</analysis>\n<answers>\ngün ler\n</answers>",
+  "answer_text": "gün ler",
+  "morphemes": [
+   "gün",
+   "ler"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.1,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "quechua-person-endings",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "I walk",
+  "gold": [
+   "puri",
+   "ni"
+  ],
+  "gold_joined": "purini",
+  "raw": "<analysis>\nStep 1: \"I\" suffix is -ni (rikuni = I see). \"walk\" root is puri.\nStep 2: Combine root puri + ni.\nStep 3: purini.\n</analysis>\n<answers>\npurini\n</answers>",
+  "answer_text": "purini",
+  "morphemes": [
+   "puri",
+   "ni"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.2,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "quechua-person-endings",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "we (all of us) see",
+  "gold": [
+   "riku",
+   "nchik"
+  ],
+  "gold_joined": "rikunchik",
+  "raw": "<analysis>\nStep 1: \"see\" = riku. \"we (all of us)\" = -nchik.\nStep 2: Combine root + suffix.\nStep 3: rikunchik\n</analysis>\n<answers>\nrikunchik\n</answers>",
+  "answer_text": "rikunchik",
+  "morphemes": [
+   "riku",
+   "nchik"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.0,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "quechua-person-endings",
+  "query": 2,
+  "difficulty": "curveball",
+  "prompt": "she eats",
+  "gold": [
+   "mikhu",
+   "n"
+  ],
+  "gold_joined": "mikhun",
+  "raw": "<analysis>\nStep 1: \"eats\" = mikhu. Third person (he/she) = -n (from purin).\nStep 2: mikhu + n = mikhun.\n</analysis>\n<answers>\nmikhun\n</answers>",
+  "answer_text": "mikhun",
+  "morphemes": [
+   "mikhu",
+   "n"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.2,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "nahuatl-both-ends",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "I sing",
+  "gold": [
+   "ni",
+   "cuica"
+  ],
+  "gold_joined": "nicuica",
+  "raw": "<analysis>\nni = I prefix, cuica = sing. \"nichoca\" = ni+choca (I cry). \"cuicah\" = cuica+h (they). So I sing = ni + cuica.\n</analysis>\n<answers>\nnicuica\n</answers>",
+  "answer_text": "nicuica",
+  "morphemes": [
+   "ni",
+   "cuica"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.3,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "nahuatl-both-ends",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "they cry",
+  "gold": [
+   "choca",
+   "h"
+  ],
+  "gold_joined": "chocah",
+  "raw": "<analysis>\nStep 1: \"nichoca\" = I cry → ni=I, choca=cry. \"cuicah\" = they sing → cuica=sing, h=they plural.\nStep 2: \"they cry\" → choca + h.\nStep 3: chocah\n</analysis>\n<answers>\nchocah\n</answers>",
+  "answer_text": "chocah",
+  "morphemes": [
+   "choca",
+   "h"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.5,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "nahuatl-both-ends",
+  "query": 2,
+  "difficulty": "curveball",
+  "prompt": "we sing",
+  "gold": [
+   "ni",
+   "cuica",
+   "h"
+  ],
+  "gold_joined": "nicuicah",
+  "raw": "<analysis>\nFrom \"nichoca\" = I cry: ni = I, choca = cry.\nFrom \"cuicah\" = they sing: cuica = sing, h = plural.\n\"we\" = ti (first person plural prefix), with plural marker h.\nwe sing = ti + cuica + h\n</analysis>\n<answers>\nticuicah\n</answers>",
+  "answer_text": "ticuicah",
+  "morphemes": [
+   "ti",
+   "cuica",
+   "h"
+  ],
+  "em_decomp": false,
+  "em_surface": false,
+  "chrf": 0.8414,
+  "morf1": 0.6667,
+  "elapsed_s": 3.1,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "esperanto-tense",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "you learned",
+  "gold": [
+   "vi",
+   "lern",
+   "is"
+  ],
+  "gold_joined": "vi lernis",
+  "raw": "<analysis>\nStep 1: \"you\" = vi, \"learn\" = lern, past tense = is\nStep 2: vi + lern + is\nStep 3: vi lernis\n</analysis>\n<answers>\nvi lernis\n</answers>",
+  "answer_text": "vi lernis",
+  "morphemes": [
+   "vi",
+   "lern",
+   "is"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 0.696,
+  "morf1": 1.0,
+  "elapsed_s": 2.2,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "esperanto-tense",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "we learned",
+  "gold": [
+   "ni",
+   "lern",
+   "is"
+  ],
+  "gold_joined": "ni lernis",
+  "raw": "<analysis>\nStep 1: \"we\" = ni, \"learned\" = past tense of lern = lern + is.\nStep 2: ni lernis.\nStep 3: Compose.\n</analysis>\n<answers>\nni lernis\n</answers>",
+  "answer_text": "ni lernis",
+  "morphemes": [
+   "ni",
+   "lern",
+   "is"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 0.696,
+  "morf1": 1.0,
+  "elapsed_s": 1.9,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "esperanto-tense",
+  "query": 2,
+  "difficulty": "standard",
+  "prompt": "I will eat",
+  "gold": [
+   "mi",
+   "manĝ",
+   "os"
+  ],
+  "gold_joined": "mi manĝos",
+  "raw": "<analysis>\nStep 1: \"I\" = mi, \"eat\" = manĝ, future = os.\nStep 2: Subject + verb-root + tense suffix. Future tense uses -os.\nStep 3: mi manĝos\n</analysis>\n<answers>\nmi manĝos\n</answers>",
+  "answer_text": "mi manĝos",
+  "morphemes": [
+   "mi",
+   "manĝ",
+   "os"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 0.696,
+  "morf1": 1.0,
+  "elapsed_s": 2.3,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "esperanto-tense",
+  "query": 3,
+  "difficulty": "standard",
+  "prompt": "they eat",
+  "gold": [
+   "ili",
+   "manĝ",
+   "as"
+  ],
+  "gold_joined": "ili manĝas",
+  "raw": "<analysis>\nthey = ili, eat = manĝ, present = as\n</analysis>\n<answers>\nili manĝas\n</answers>",
+  "answer_text": "ili manĝas",
+  "morphemes": [
+   "ili",
+   "manĝ",
+   "as"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 0.699,
+  "morf1": 1.0,
+  "elapsed_s": 1.6,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "esperanto-tense",
+  "query": 4,
+  "difficulty": "standard",
+  "prompt": "he ate",
+  "gold": [
+   "li",
+   "manĝ",
+   "is"
+  ],
+  "gold_joined": "li manĝis",
+  "raw": "<analysis>\n\"he\" = li, \"ate\" = past of manĝ = manĝ + is\n</analysis>\n<answers>\nli manĝis\n</answers>",
+  "answer_text": "li manĝis",
+  "morphemes": [
+   "li",
+   "manĝ",
+   "is"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 0.696,
+  "morf1": 1.0,
+  "elapsed_s": 2.1,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "indonesian-plurals",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "I eat",
+  "gold": [
+   "saya",
+   "makan"
+  ],
+  "gold_joined": "saya makan",
+  "raw": "<analysis>\nStep 1: \"I\" = saya, \"eat\" = makan.\nStep 2: Word order subject + verb.\nStep 3: saya makan\n</analysis>\n<answers>\nsaya makan\n</answers>",
+  "answer_text": "saya makan",
+  "morphemes": [
+   "saya",
+   "makan"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 0.699,
+  "morf1": 1.0,
+  "elapsed_s": 1.9,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "indonesian-plurals",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "children",
+  "gold": [
+   "anak-anak"
+  ],
+  "gold_joined": "anak-anak",
+  "raw": "<analysis>\nStep 1: \"children\" is the plural of \"anak\" → reduplicated form.\nStep 2: Plurals use reduplication: anak-anak.\nStep 3: anak-anak\n</analysis>\n<answers>\nanak-anak\n</answers>",
+  "answer_text": "anak-anak",
+  "morphemes": [
+   "anak-anak"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.0,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "indonesian-plurals",
+  "query": 2,
+  "difficulty": "standard",
+  "prompt": "horses",
+  "gold": [
+   "kuda-kuda"
+  ],
+  "gold_joined": "kuda-kuda",
+  "raw": "<analysis>\nStep 1: \"horses\" = plural of \"kuda\" (horse). Reduplication forms plural: kuda-kuda.\nStep 2: Reduplication for plural.\nStep 3: kuda-kuda\n</analysis>\n<answers>\nkuda-kuda\n</answers>",
+  "answer_text": "kuda-kuda",
+  "morphemes": [
+   "kuda-kuda"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.3,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "indonesian-plurals",
+  "query": 3,
+  "difficulty": "standard",
+  "prompt": "books",
+  "gold": [
+   "buku-buku"
+  ],
+  "gold_joined": "buku-buku",
+  "raw": "<analysis>\nStep 1: \"books\" = plural of \"buku\" → reduplication \"buku-buku\".\nStep 2: Reduplication marks plural.\nStep 3: buku-buku\n</analysis>\n<answers>\nbuku-buku\n</answers>",
+  "answer_text": "buku-buku",
+  "morphemes": [
+   "buku-buku"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.1,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "indonesian-plurals",
+  "query": 4,
+  "difficulty": "standard",
+  "prompt": "we eat",
+  "gold": [
+   "kami",
+   "makan"
+  ],
+  "gold_joined": "kami makan",
+  "raw": "<analysis>\nStep 1: \"we\" = kami, \"eat\" = makan.\nStep 2: Word order subject + verb.\nStep 3: kami makan.\n</analysis>\n<answers>\nkami makan\n</answers>",
+  "answer_text": "kami makan",
+  "morphemes": [
+   "kami",
+   "makan"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 0.699,
+  "morf1": 1.0,
+  "elapsed_s": 1.9,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "finnish-harmony",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "houses",
+  "gold": [
+   "talo",
+   "t"
+  ],
+  "gold_joined": "talot",
+  "raw": "<analysis>\nStep 1: \"houses\" = plural of talo. Plural marker is \"t\".\nStep 2: talo + t = talot.\nStep 3: Using morphemes: talo, t.\n</analysis>\n<answers>\ntalo t\n</answers>",
+  "answer_text": "talo t",
+  "morphemes": [
+   "talo",
+   "t"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.1,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "finnish-harmony",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "in the house",
+  "gold": [
+   "talo",
+   "ssa"
+  ],
+  "gold_joined": "talossa",
+  "raw": "<analysis>\nStep 1: \"talo\" = house, \"ssa\" = in the (back vowel harmony). House has back vowels, so \"talossa\".\nStep 2: Locative case -ssa/-ssä depends on vowel harmony; talo → ssa.\nStep 3: talo + ssa = talossa.\n</analysis>\n<answers>\ntalossa\n</answers>",
+  "answer_text": "talossa",
+  "morphemes": [
+   "talo",
+   "ssa"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.8,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "finnish-harmony",
+  "query": 2,
+  "difficulty": "standard",
+  "prompt": "villages",
+  "gold": [
+   "kylä",
+   "t"
+  ],
+  "gold_joined": "kylät",
+  "raw": "<analysis>\nStep 1: \"villages\" = kylä (village) + plural marker.\nStep 2: Plural marker is \"t\" (talo+t = houses). Vowel harmony: kylä uses front vowels, but \"t\" is just plural suffix.\nStep 3: kylä + t = kylät.\n</analysis>\n<answers>\nkylät\n</answers>",
+  "answer_text": "kylät",
+  "morphemes": [
+   "kylä",
+   "t"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.8,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "finnish-harmony",
+  "query": 3,
+  "difficulty": "curveball",
+  "prompt": "in the village",
+  "gold": [
+   "kylä",
+   "ssä"
+  ],
+  "gold_joined": "kylässä",
+  "raw": "<analysis>\nStep 1: \"in the village\" = kylä + ssä (vowel harmony front).\nStep 2: kylässä.\nStep 3: Morphemes: kylä, ssä.\n</analysis>\n<answers>\nkylä ssä\n</answers>",
+  "answer_text": "kylä ssä",
+  "morphemes": [
+   "kylä",
+   "ssä"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.2,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "finnish-harmony",
+  "query": 4,
+  "difficulty": "standard",
+  "prompt": "in the school",
+  "gold": [
+   "koulu",
+   "ssa"
+  ],
+  "gold_joined": "koulussa",
+  "raw": "<analysis>\nStep 1: \"in the school\" = koulussa → koulu + ssa\nStep 2: koulu + ssa\n</analysis>\n<answers>\nkoulussa\n</answers>",
+  "answer_text": "koulussa",
+  "morphemes": [
+   "koulu",
+   "ssa"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 1.7,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "maori-pronouns",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "we two, not you",
+  "gold": [
+   "mā",
+   "ua"
+  ],
+  "gold_joined": "māua",
+  "raw": "<analysis>\nmāua = we two, not you → mā + ua\n</analysis>\n<answers>\nmā + ua\n</answers>",
+  "answer_text": "mā + ua",
+  "morphemes": [
+   "mā",
+   "ua"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 1.7,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "maori-pronouns",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "all of us, incl. you",
+  "gold": [
+   "tā",
+   "tou"
+  ],
+  "gold_joined": "tātou",
+  "raw": "<analysis>\nQuery \"all of us, incl. you\" = tātou = tā + tou\n</analysis>\n<answers>\ntā+tou\n</answers>",
+  "answer_text": "tā+tou",
+  "morphemes": [
+   "tā",
+   "tou"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 1.8,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "maori-pronouns",
+  "query": 2,
+  "difficulty": "standard",
+  "prompt": "they two",
+  "gold": [
+   "rā",
+   "ua"
+  ],
+  "gold_joined": "rāua",
+  "raw": "<analysis>\nrāua = they two. rā + ua.\n</analysis>\n<answers>\nrāua\n</answers>",
+  "answer_text": "rāua",
+  "morphemes": [
+   "rā",
+   "ua"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 1.7,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "maori-pronouns",
+  "query": 3,
+  "difficulty": "standard",
+  "prompt": "they all",
+  "gold": [
+   "rā",
+   "tou"
+  ],
+  "gold_joined": "rātou",
+  "raw": "<analysis>\nStep 1: māua = we two not you (mā + ua = dual exclusive). tātou = all of us incl. you (tā + tou = plural inclusive). rāua = they two (rā + ua = third person dual).\nStep 2: \"rā\" = third person. \"ua\" = dual, \"tou\" = plural. \"they all\" = third person plural = rā + tou.\nStep 3: rātou\n</analysis>\n<answers>\nrātou\n</answers>",
+  "answer_text": "rātou",
+  "morphemes": [
+   "rā",
+   "tou"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.9,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "maori-pronouns",
+  "query": 4,
+  "difficulty": "standard",
+  "prompt": "we, not you",
+  "gold": [
+   "mā",
+   "tou"
+  ],
+  "gold_joined": "mātou",
+  "raw": "<analysis>\nmāua = mā + ua → \"we two, not you\" (exclusive dual). The \"ua\" indicates dual (two).\ntātou = tā + tou → inclusive plural.\nrāua = rā + ua → dual (they two).\n\n\"we, not you\" is exclusive, plural (more than two). Base \"mā\" is exclusive. Plural marker \"tou\".\nSo mā + tou = mātou.\n</analysis>\n<answers>\nmātou\n</answers>",
+  "answer_text": "mātou",
+  "morphemes": [
+   "mā",
+   "tou"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 3.0,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "zulu-noun-class",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "boy",
+  "gold": [
+   "um",
+   "fana"
+  ],
+  "gold_joined": "umfana",
+  "raw": "<analysis>\num = singular prefix (class), aba = plural prefix.\numfana would be boy, abafana boys.\n</analysis>\n<answers>\num + fana\n</answers>",
+  "answer_text": "um + fana",
+  "morphemes": [
+   "um",
+   "fana"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.1,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "zulu-noun-class",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "children",
+  "gold": [
+   "aba",
+   "ntwana"
+  ],
+  "gold_joined": "abantwana",
+  "raw": "<analysis>\num-ntwana = child (singular, class 1: um-)\naba-fana = boys (plural, class 2: aba-)\nSo children = plural of child = aba + ntwana\n</analysis>\n<answers>\nabantwana\n</answers>",
+  "answer_text": "abantwana",
+  "morphemes": [
+   "aba",
+   "ntwana"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.1,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "zulu-noun-class",
+  "query": 2,
+  "difficulty": "standard",
+  "prompt": "school",
+  "gold": [
+   "isi",
+   "kolo"
+  ],
+  "gold_joined": "isikolo",
+  "raw": "<analysis>\nisi = singular class prefix, kolo = school root. umntwana→child (um+ntwana), isikolo→school (isi+kolo).\n</analysis>\n<answers>\nisi kolo\n</answers>",
+  "answer_text": "isi kolo",
+  "morphemes": [
+   "isi",
+   "kolo"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.3,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "zulu-noun-class",
+  "query": 3,
+  "difficulty": "standard",
+  "prompt": "schools",
+  "gold": [
+   "izi",
+   "kolo"
+  ],
+  "gold_joined": "izikolo",
+  "raw": "<analysis>\nizi + kolo = izikolo = schools\n</analysis>\n<answers>\nizi kolo\n</answers>",
+  "answer_text": "izi kolo",
+  "morphemes": [
+   "izi",
+   "kolo"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 1.7,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "zulu-noun-class",
+  "query": 4,
+  "difficulty": "curveball",
+  "prompt": "students",
+  "gold": [
+   "aba",
+   "fundi"
+  ],
+  "gold_joined": "abafundi",
+  "raw": "<analysis>\num- = singular, aba- = plural (for people class).\numfundi = student (singular), so plural = aba + fundi.\n</analysis>\n<answers>\nabafundi\n</answers>",
+  "answer_text": "abafundi",
+  "morphemes": [
+   "aba",
+   "fundi"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.1,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ }
+]

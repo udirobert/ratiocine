@@ -1,0 +1,1200 @@
+[
+ {
+  "puzzle": "apurina-verb-agreement",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "I am eating",
+  "gold": [
+   "nhaa",
+   "kuta",
+   "ka"
+  ],
+  "gold_joined": "nhaakutaka",
+  "raw": "<analysis>\nStep 1: Identify the source word for \"I am eating\" from the given examples. The examples explicitly list \"nhaakutaka → I am eating\".\nStep 2: The morphemes for \"I\" (nhaa), \"eat\" (kuta), and the present tense/aspect marker (taka) combine to form \"nhaakutaka\".\nStep 3: Compose the exact target-language form.\n</analysis>\n<answers>\nnhaakutaka\n</answers>",
+  "answer_text": "nhaakutaka",
+  "morphemes": [
+   "nhaa",
+   "kuta",
+   "ka"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 4.6,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "apurina-verb-agreement",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "we (everyone) are eating",
+  "gold": [
+   "kaa",
+   "kuta",
+   "ka"
+  ],
+  "gold_joined": "kaakutaka",
+  "raw": "<analysis>\nStep 1: Identify the source words and morphemes from the examples.\n- \"I\" = nhaa-\n- \"you\" = ã-\n- \"he/she\" = a-\n- \"we (everyone)\" = kaa-\n- \"going\" = -pita-\n- \"eating\" = -kuta-\n- \"speaking\" = -nykata-\n- Present continuous suffix = -taka\n\nStep 2: Apply the grammar to the query \"we (everyone) are eating\".\n- \"we (everyone)\" -> kaa-\n- \"eating\" -> -kuta-\n- present continuous -> -taka\n\nStep 3: Compose the exact target-language form.\n- kaa + kuta + taka = kaakutaka\n</analysis>\n<answers>\nkaakutaka\n</answers>",
+  "answer_text": "kaakutaka",
+  "morphemes": [
+   "kaa",
+   "kuta",
+   "ka"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 5.7,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "apurina-verb-agreement",
+  "query": 2,
+  "difficulty": "standard",
+  "prompt": "you are speaking",
+  "gold": [
+   "ã",
+   "nykata",
+   "ka"
+  ],
+  "gold_joined": "ãnykataka",
+  "raw": "<analysis>\nStep 1: Identify the components for \"you are speaking\".\nFrom the evidence:\n- \"you\" corresponds to the prefix \"ã-\".\n- \"speaking\" corresponds to the root \"nykata\" plus the suffix \"-ka\" (as seen in \"nhaanykataka\" = I am speaking).\nStep 2: Combine the morphemes.\n\"ã-\" + \"nykata\" + \"-ka\" = \"ãnykataka\".\nThis exact word is also provided in the evidence.\nStep 3: The target-language form is \"ãnykataka\".\n</analysis>\n<answers>\nãnykataka\n</answers>",
+  "answer_text": "ãnykataka",
+  "morphemes": [
+   "ã",
+   "nykata",
+   "ka"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 8.4,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "apurina-verb-agreement",
+  "query": 3,
+  "difficulty": "standard",
+  "prompt": "we (everyone) are speaking",
+  "gold": [
+   "kaa",
+   "nykata",
+   "ka"
+  ],
+  "gold_joined": "kaanykataka",
+  "raw": "<analysis>\nStep 1: Identify the prefixes for pronouns. \"I\" is `nhaa`, \"you\" is `ã`, \"he/she\" is `a`, and \"we (everyone)\" is `kaa`.\nStep 2: Identify the verb stems. \"going\" is `pita`, \"eating\" is `kuta`, and \"speaking\" is `nykata`.\nStep 3: Identify the suffix for the present progressive (\"are ...ing\"), which is `ka`.\nStep 4: Combine the morphemes for \"we (everyone) are speaking\": `kaa` + `nykata` + `ka` = `kaanykataka`.\n</analysis>\n<answers>\nkaanykataka\n</answers>",
+  "answer_text": "kaanykataka",
+  "morphemes": [
+   "kaa",
+   "nykata",
+   "ka"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 9.4,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "apurina-verb-agreement",
+  "query": 4,
+  "difficulty": "standard",
+  "prompt": "he/she is going",
+  "gold": [
+   "a",
+   "pita",
+   "ka"
+  ],
+  "gold_joined": "apitaka",
+  "raw": "<analysis>\nStep 1: Identify the source word for \"he/she is going\". From the evidence, \"he/she is going\" corresponds to \"apitaka\".\nStep 2: Break down \"apitaka\" into the available morphemes. The pronouns are \"nhaa\" (I), \"ã\" (you), \"a\" (he/she), \"kaa\" (we). The verbs are \"pita\" (go), \"kuta\" (eat), \"nykata\" (speak). The suffix for present continuous is \"ka\".\nStep 3: Combine the morphemes for \"he/she is going\": a + pita + ka.\n</analysis>\n<answers>\napitaka\n</answers>",
+  "answer_text": "apitaka",
+  "morphemes": [
+   "a",
+   "pita",
+   "ka"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 7.3,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "swahili-person-tense",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "I will like",
+  "gold": [
+   "ni",
+   "ta",
+   "penda"
+  ],
+  "gold_joined": "nitapenda",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- \"I\" corresponds to the prefix `ni-` (from `ninapenda` = I like, `nilipenda` = I liked).\n- \"will\" (future tense) corresponds to the infix `-ta-` (from `utacheza` = you will play, `wataimba` = they will sing).\n- \"like\" corresponds to the root `-penda` (from `ninapenda` = I like, `nilipenda` = I liked).\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- The structure of the verb is Subject + Tense + Verb Root.\n\nStep 3: Compose the EXACT target-language form.\n- ni + ta + penda = nitapenda\n</analysis>\n<answers>\nnitapenda\n</answers>",
+  "answer_text": "nitapenda",
+  "morphemes": [
+   "ni",
+   "ta",
+   "penda"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 6.1,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "swahili-person-tense",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "they read",
+  "gold": [
+   "wa",
+   "na",
+   "soma"
+  ],
+  "gold_joined": "wanasoma",
+  "raw": "<analysis>\nStep 1: Identify the subject, tense, and verb root from the query \"they read\".\n- \"they\" corresponds to the prefix `wa-` (from `wataimba` = they will sing).\n- \"read\" (present tense, since there is no \"(past)\" marker like in \"we read (past)\") corresponds to the tense prefix `na-` (from `unasoma` = you read).\n- \"read\" (verb root) corresponds to `soma` (from `unasoma` and `tulisoma`).\n\nStep 2: Combine the morphemes in the order Subject + Tense + Verb Root.\n- wa + na + soma = wanasoma.\n\nStep 3: The exact target-language form is \"wanasoma\".\n</analysis>\n<answers>\nwanasoma\n</answers>",
+  "answer_text": "wanasoma",
+  "morphemes": [
+   "wa",
+   "na",
+   "soma"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 6.4,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "swahili-person-tense",
+  "query": 2,
+  "difficulty": "curveball",
+  "prompt": "we sang",
+  "gold": [
+   "tu",
+   "li",
+   "imba"
+  ],
+  "gold_joined": "tuliimba",
+  "raw": "<analysis>\nStep 1: Identify the source words and morphemes from the examples.\n- \"I\" = ni-, \"you\" = u-, \"he/she\" = a-, \"we\" = tu-, \"they\" = wa-\n- Present tense = -na-, Past tense = -li-, Future tense = -ta-\n- \"like\" = -penda, \"read\" = -soma, \"play\" = -cheza, \"sing\" = -imba\n\nStep 2: Apply the grammar to the query \"we sang\".\n- \"we\" = tu\n- past tense = li\n- \"sing\" = imba\n\nStep 3: Combine the morphemes in the order Subject + Tense + Verb.\n- tu + li + imba = tuliimba\n</analysis>\n<answers>\ntuliimba\n</answers>",
+  "answer_text": "tuliimba",
+  "morphemes": [
+   "tu",
+   "li",
+   "imba"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 4.8,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "turkish-vowel-harmony",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "eyes",
+  "gold": [
+   "göz",
+   "ler"
+  ],
+  "gold_joined": "gözler",
+  "raw": "<analysis>\nStep 1: Identify the source word for \"eye\", which is \"göz\" from the examples.\nStep 2: Note the plural formation. The examples show \"-ler\" for words with front vowels (ev -> evler, el -> eller) and \"-lar\" for words with back vowels (at -> atlar, kitap -> kitaplar). \"göz\" has the front rounded vowel \"ö\", so it takes \"-ler\".\nStep 3: Combine the morphemes to form \"gözler\".\n</analysis>\n<answers>\ngözler\n</answers>",
+  "answer_text": "gözler",
+  "morphemes": [
+   "göz",
+   "ler"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 5.3,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "turkish-vowel-harmony",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "girls",
+  "gold": [
+   "kız",
+   "lar"
+  ],
+  "gold_joined": "kızlar",
+  "raw": "<analysis>\nStep 1: Identify the source word for \"girl\", which is \"kız\".\nStep 2: Note the plural suffix. The examples show \"-ler\" for front vowels (evler, eller) and \"-lar\" for back vowels (atlar, kitaplar). \"kız\" has a back vowel (ı), so it takes \"-lar\".\nStep 3: Compose the exact target-language form by combining \"kız\" and \"lar\" to form \"kızlar\".\n</analysis>\n<answers>\nkızlar\n</answers>",
+  "answer_text": "kızlar",
+  "morphemes": [
+   "kız",
+   "lar"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 4.8,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "turkish-vowel-harmony",
+  "query": 2,
+  "difficulty": "curveball",
+  "prompt": "days",
+  "gold": [
+   "gün",
+   "ler"
+  ],
+  "gold_joined": "günler",
+  "raw": "<analysis>\nStep 1: Identify the source word for \"day\", which is \"gün\".\nStep 2: Determine the plural suffix. The examples show \"-ler\" for \"ev\" and \"el\" (front vowels) and \"-lar\" for \"at\" and \"kitap\" (back vowels). \"gün\" has a front vowel (ü), so it takes \"-ler\".\nStep 3: Combine them to form \"günler\".\n</analysis>\n<answers>\ngünler\n</answers>",
+  "answer_text": "günler",
+  "morphemes": [
+   "gün",
+   "ler"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 5.5,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "quechua-person-endings",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "I walk",
+  "gold": [
+   "puri",
+   "ni"
+  ],
+  "gold_joined": "purini",
+  "raw": "<analysis>\nStep 1: Identify the source word for the numbered item. \"I walk\" uses the verb \"walk\" (puri) and the first-person singular suffix \"I\" (ni).\nStep 2: Note the grammar. The verb root is followed by the person suffix. From \"purin\" (he walks), the root is \"puri\". From \"rimani\" (I speak) and \"rikuni\" (I see), the suffix for \"I\" is \"ni\".\nStep 3: Compose the exact target-language form: puri + ni = purini.\n</analysis>\n<answers>\npurini\n</answers>",
+  "answer_text": "purini",
+  "morphemes": [
+   "puri",
+   "ni"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 5.1,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "quechua-person-endings",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "we (all of us) see",
+  "gold": [
+   "riku",
+   "nchik"
+  ],
+  "gold_joined": "rikunchik",
+  "raw": "<analysis>\nStep 1: Identify the root for \"see\" from the evidence. \"rikuni\" means \"I see\", and \"ni\" means \"I\", so \"riku\" means \"see\".\nStep 2: Identify the suffix for \"we (all of us)\". \"rimanchik\" means \"we (all of us) speak\", and \"rima\" means \"speak\", so \"nchik\" means \"we (all of us)\".\nStep 3: Combine the root and the suffix to form the target word: riku + nchik = rikunchik.\n</analysis>\n<answers>\nrikunchik\n</answers>",
+  "answer_text": "rikunchik",
+  "morphemes": [
+   "riku",
+   "nchik"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 5.0,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "quechua-person-endings",
+  "query": 2,
+  "difficulty": "curveball",
+  "prompt": "she eats",
+  "gold": [
+   "mikhu",
+   "n"
+  ],
+  "gold_joined": "mikhun",
+  "raw": "<analysis>\nStep 1: Identify the root for \"eat\" from the examples. \"mikhunki\" means \"you eat\", and \"mikhunchik\" means \"we (all of us) eat\". The root for \"eat\" is \"mikhu\".\nStep 2: Identify the suffix for \"she/he\" from the examples. \"riman\" means \"she speaks\", and \"purin\" means \"he walks\". The suffix for \"she/he\" is \"-n\".\nStep 3: Combine the root and suffix to form the target word. \"mikhu\" + \"n\" = \"mikhun\".\n</analysis>\n<answers>\nmikhun\n</answers>",
+  "answer_text": "mikhun",
+  "morphemes": [
+   "mikhu",
+   "n"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 4.5,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "nahuatl-both-ends",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "I sing",
+  "gold": [
+   "ni",
+   "cuica"
+  ],
+  "gold_joined": "nicuica",
+  "raw": "<analysis>\nStep 1: Identify the source word for the numbered item and look up its meaning from the examples.\nThe query is \"I sing\".\n\"sing\" is \"cuica\" (from ticuica = you sing, cuicah = they sing).\n\"I\" is the prefix \"ni-\" (from nicochi = I sleep, nichoca = I cry).\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\nFirst person singular subject takes the prefix \"ni-\" and no suffix.\n\nStep 3: Compose the EXACT target-language form.\nni + cuica = nicuica.\n</analysis>\n<answers>\nnicuica\n</answers>",
+  "answer_text": "nicuica",
+  "morphemes": [
+   "ni",
+   "cuica"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 5.3,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "nahuatl-both-ends",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "they cry",
+  "gold": [
+   "choca",
+   "h"
+  ],
+  "gold_joined": "chocah",
+  "raw": "<analysis>\nStep 1: Identify the root for \"cry\", which is `choca` (from `nichoca` = I cry).\nStep 2: Identify the affixes for \"they\". \"he sleeps\" is `cochi` (no prefix, no suffix). \"they sing\" is `cuicah` (no prefix, suffix `-h`). Thus, \"they\" is marked by a zero prefix and the suffix `-h`.\nStep 3: Combine the root and affixes. `choca` + `h` = `chocah`.\n</analysis>\n<answers>\nchocah\n</answers>",
+  "answer_text": "chocah",
+  "morphemes": [
+   "choca",
+   "h"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 5.1,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "nahuatl-both-ends",
+  "query": 2,
+  "difficulty": "curveball",
+  "prompt": "we sing",
+  "gold": [
+   "ni",
+   "cuica",
+   "h"
+  ],
+  "gold_joined": "nicuicah",
+  "raw": "<analysis>\nStep 1: Identify the root for \"sing\". From \"ticuica\" (you sing) and \"cuicah\" (they sing), the root is \"cuica\".\nStep 2: Identify the affixes for \"we\". From \"nicochih\" (we sleep) and \"nicochi\" (I sleep), the first-person plural is formed with the prefix \"ni-\" and the plural suffix \"-h\".\nStep 3: Combine the morphemes for \"we sing\": ni + cuica + h = nicuicah.\n</analysis>\n<answers>\nnicuicah\n</answers>",
+  "answer_text": "nicuicah",
+  "morphemes": [
+   "ni",
+   "cuica",
+   "h"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 7.3,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "esperanto-tense",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "you learned",
+  "gold": [
+   "vi",
+   "lern",
+   "is"
+  ],
+  "gold_joined": "vi lernis",
+  "raw": "<analysis>\nStep 1: Identify the source words for the query \"you learned\". \"you\" corresponds to \"vi\", \"learn\" corresponds to \"lern\", and the past tense \"ed\" corresponds to \"is\".\nStep 2: The grammar follows a Subject + Verb-Tense structure.\nStep 3: Compose the target-language form: \"vi lernis\".\n</analysis>\n<answers>\nvi lernis\n</answers>",
+  "answer_text": "vi lernis",
+  "morphemes": [
+   "vi",
+   "lern",
+   "is"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 0.696,
+  "morf1": 1.0,
+  "elapsed_s": 6.3,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "esperanto-tense",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "we learned",
+  "gold": [
+   "ni",
+   "lern",
+   "is"
+  ],
+  "gold_joined": "ni lernis",
+  "raw": "<analysis>\nStep 1: Identify the source words for the query \"we learned\". From the evidence, \"we\" corresponds to \"ni\". The verb root for \"learn\" is \"lern\".\nStep 2: Identify the tense. The past tense \"learned\" corresponds to the suffix \"-is\", as seen in \"mi lernis\" (I learned).\nStep 3: Combine the morphemes. The pronoun is \"ni\", and the verb is \"lernis\".\n</analysis>\n<answers>\nni lernis\n</answers>",
+  "answer_text": "ni lernis",
+  "morphemes": [
+   "ni",
+   "lern",
+   "is"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 0.696,
+  "morf1": 1.0,
+  "elapsed_s": 4.3,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "esperanto-tense",
+  "query": 2,
+  "difficulty": "standard",
+  "prompt": "I will eat",
+  "gold": [
+   "mi",
+   "manĝ",
+   "os"
+  ],
+  "gold_joined": "mi manĝos",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\nFrom the evidence:\n\"I\" = mi\n\"eat\" = manĝ-\nFuture tense (\"will\") = -os\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\nThe word order is Subject + Verb. The verb is formed by the root + tense suffix.\n\"will eat\" = manĝ + os = manĝos.\n\nStep 3: Compose the EXACT target-language form.\n\"I will eat\" = mi manĝos.\n</analysis>\n<answers>\nmi manĝos\n</answers>",
+  "answer_text": "mi manĝos",
+  "morphemes": [
+   "mi",
+   "manĝ",
+   "os"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 0.696,
+  "morf1": 1.0,
+  "elapsed_s": 4.7,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "esperanto-tense",
+  "query": 3,
+  "difficulty": "standard",
+  "prompt": "they eat",
+  "gold": [
+   "ili",
+   "manĝ",
+   "as"
+  ],
+  "gold_joined": "ili manĝas",
+  "raw": "<analysis>\nStep 1: Identify the source words for the query \"they eat\". From the examples, \"they\" is \"ili\" and \"eat\" is \"manĝ-\".\nStep 2: Note the grammar. Present tense is indicated by the suffix \"-as\" (e.g., \"mi lernas\" = I learn, \"mi manĝas\" = I eat).\nStep 3: Compose the target-language form. \"they eat\" translates to \"ili manĝas\".\n</analysis>\n<answers>\nili manĝas\n</answers>",
+  "answer_text": "ili manĝas",
+  "morphemes": [
+   "ili",
+   "manĝ",
+   "as"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 0.699,
+  "morf1": 1.0,
+  "elapsed_s": 4.6,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "esperanto-tense",
+  "query": 4,
+  "difficulty": "standard",
+  "prompt": "he ate",
+  "gold": [
+   "li",
+   "manĝ",
+   "is"
+  ],
+  "gold_joined": "li manĝis",
+  "raw": "<analysis>\nStep 1: Identify the source words for \"he ate\". From the evidence, \"he\" corresponds to \"li\". The root for \"eat\" is \"manĝ\" (from \"mi manĝas\" -> \"I eat\").\nStep 2: Note the grammar for the past tense. From \"mi lernis\" -> \"I learned\", the past tense suffix is \"-is\".\nStep 3: Compose the target-language form: \"li\" + \"manĝ\" + \"is\" -> \"li manĝis\".\n</analysis>\n<answers>\nli manĝis\n</answers>",
+  "answer_text": "li manĝis",
+  "morphemes": [
+   "li",
+   "manĝ",
+   "is"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 0.696,
+  "morf1": 1.0,
+  "elapsed_s": 4.6,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "indonesian-plurals",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "I eat",
+  "gold": [
+   "saya",
+   "makan"
+  ],
+  "gold_joined": "saya makan",
+  "raw": "<analysis>\nStep 1: Identify the source word for the numbered item and look up its meaning from the examples.\nThe query is \"I eat\".\nFrom the evidence, \"saya makan\" translates to \"I eat\".\n\nStep 2: Note any grammar that must be applied.\nNo additional grammar rules are needed as the exact phrase is provided in the evidence.\n\nStep 3: Compose the EXACT target-language form.\n\"saya makan\"\n</analysis>\n<answers>\nsaya makan\n</answers>",
+  "answer_text": "saya makan",
+  "morphemes": [
+   "saya",
+   "makan"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 0.699,
+  "morf1": 1.0,
+  "elapsed_s": 4.2,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "indonesian-plurals",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "children",
+  "gold": [
+   "anak-anak"
+  ],
+  "gold_joined": "anak-anak",
+  "raw": "<analysis>\nStep 1: Identify the source word for the numbered item. The query is \"children\".\nStep 2: Look up its meaning from the examples. The evidence shows \"anak-anak → children\".\nStep 3: Compose the exact target-language form. The form is \"anak-anak\".\n</analysis>\n<answers>\nanak-anak\n</answers>",
+  "answer_text": "anak-anak",
+  "morphemes": [
+   "anak-anak"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 4.5,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "indonesian-plurals",
+  "query": 2,
+  "difficulty": "standard",
+  "prompt": "horses",
+  "gold": [
+   "kuda-kuda"
+  ],
+  "gold_joined": "kuda-kuda",
+  "raw": "<analysis>\nStep 1: Identify the source word for the query \"horses\".\nStep 2: From the evidence, \"kuda\" means \"horse\" and \"kuda-kuda\" means \"horses\".\nStep 3: The exact target-language form is \"kuda-kuda\".\n</analysis>\n<answers>\nkuda-kuda\n</answers>",
+  "answer_text": "kuda-kuda",
+  "morphemes": [
+   "kuda-kuda"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 3.8,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "indonesian-plurals",
+  "query": 3,
+  "difficulty": "standard",
+  "prompt": "books",
+  "gold": [
+   "buku-buku"
+  ],
+  "gold_joined": "buku-buku",
+  "raw": "<analysis>\nStep 1: Identify the source word for the numbered item. The query is \"books\".\nStep 2: Look up the meaning from the examples. \"book\" is \"buku\", and \"books\" is \"buku-buku\".\nStep 3: Compose the exact target-language form. The translation is \"buku-buku\".\n</analysis>\n<answers>\nbuku-buku\n</answers>",
+  "answer_text": "buku-buku",
+  "morphemes": [
+   "buku-buku"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 3.6,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "indonesian-plurals",
+  "query": 4,
+  "difficulty": "standard",
+  "prompt": "we eat",
+  "gold": [
+   "kami",
+   "makan"
+  ],
+  "gold_joined": "kami makan",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\nThe query is \"we eat\".\nFrom the evidence, \"kami makan\" translates to \"we eat\".\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\nNo changes needed.\nStep 3: Compose the EXACT target-language form.\n\"kami makan\"\n</analysis>\n<answers>\nkami makan\n</answers>",
+  "answer_text": "kami makan",
+  "morphemes": [
+   "kami",
+   "makan"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 0.699,
+  "morf1": 1.0,
+  "elapsed_s": 5.0,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "finnish-harmony",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "houses",
+  "gold": [
+   "talo",
+   "t"
+  ],
+  "gold_joined": "talot",
+  "raw": "<analysis>\nStep 1: Identify the source word for the query. The query is \"houses\".\nStep 2: From the evidence, \"house\" is \"talo\" and \"houses\" is \"talot\".\nStep 3: The target form is \"talot\".\n</analysis>\n<answers>\ntalot\n</answers>",
+  "answer_text": "talot",
+  "morphemes": [
+   "talo",
+   "t"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 3.4,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "finnish-harmony",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "in the house",
+  "gold": [
+   "talo",
+   "ssa"
+  ],
+  "gold_joined": "talossa",
+  "raw": "<analysis>\nStep 1: Identify the source word for the query. The query is \"in the house\".\nStep 2: Look up the meaning from the examples. \"in the house\" is translated as \"talossa\".\nStep 3: Compose the exact target-language form. The form is \"talossa\".\n</analysis>\n<answers>\ntalossa\n</answers>",
+  "answer_text": "talossa",
+  "morphemes": [
+   "talo",
+   "ssa"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 4.1,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "finnish-harmony",
+  "query": 2,
+  "difficulty": "standard",
+  "prompt": "villages",
+  "gold": [
+   "kylä",
+   "t"
+  ],
+  "gold_joined": "kylät",
+  "raw": "<analysis>\nStep 1: Identify the source word for the numbered item. The query is \"villages\".\nStep 2: From the evidence, \"kylä\" means \"village\" and \"kylät\" means \"villages\". The plural marker is \"-t\".\nStep 3: The exact target-language form for \"villages\" is \"kylät\".\n</analysis>\n<answers>\nkylät\n</answers>",
+  "answer_text": "kylät",
+  "morphemes": [
+   "kylä",
+   "t"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 3.4,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "finnish-harmony",
+  "query": 3,
+  "difficulty": "curveball",
+  "prompt": "in the village",
+  "gold": [
+   "kylä",
+   "ssä"
+  ],
+  "gold_joined": "kylässä",
+  "raw": "<analysis>\nStep 1: Identify the source word for \"village\" which is \"kylä\".\nStep 2: Note the grammar for \"in the\", which is the inessive case suffix \"-ssä\" (due to vowel harmony with ä).\nStep 3: Compose the exact target-language form: \"kylässä\".\n</analysis>\n<answers>\nkylässä\n</answers>",
+  "answer_text": "kylässä",
+  "morphemes": [
+   "kylä",
+   "ssä"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 3.5,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "finnish-harmony",
+  "query": 4,
+  "difficulty": "standard",
+  "prompt": "in the school",
+  "gold": [
+   "koulu",
+   "ssa"
+  ],
+  "gold_joined": "koulussa",
+  "raw": "<analysis>\nStep 1: Identify the source word for the numbered item. The query is \"in the school\".\nStep 2: Note the grammar. From the evidence, \"school\" is \"koulu\", and \"in the school\" is \"koulussa\".\nStep 3: Compose the exact target-language form. The word is \"koulussa\".\n</analysis>\n<answers>\nkoulussa\n</answers>",
+  "answer_text": "koulussa",
+  "morphemes": [
+   "koulu",
+   "ssa"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 3.9,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "maori-pronouns",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "we two, not you",
+  "gold": [
+   "mā",
+   "ua"
+  ],
+  "gold_joined": "māua",
+  "raw": "<analysis>\nStep 1: Identify the source word for the numbered item and look up its meaning from the examples. The query is \"we two, not you\".\nStep 2: Note any grammar (case, tense, agreement) that must be applied. From the evidence, \"we two, not you\" is explicitly given as \"māua\".\nStep 3: Compose the EXACT target-language form. The morphemes available are mā and ua, forming \"māua\".\n</analysis>\n<answers>\nmāua\n</answers>",
+  "answer_text": "māua",
+  "morphemes": [
+   "mā",
+   "ua"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 4.7,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "maori-pronouns",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "all of us, incl. you",
+  "gold": [
+   "tā",
+   "tou"
+  ],
+  "gold_joined": "tātou",
+  "raw": "<analysis>\nStep 1: Identify the source word for the query \"all of us, incl. you\".\nStep 2: From the evidence, \"all of us, incl. you\" is translated as \"tātou\".\nStep 3: The morphemes \"tā\" and \"tou\" combine to form \"tātou\".\n</analysis>\n<answers>\ntātou\n</answers>",
+  "answer_text": "tātou",
+  "morphemes": [
+   "tā",
+   "tou"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 4.4,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "maori-pronouns",
+  "query": 2,
+  "difficulty": "standard",
+  "prompt": "they two",
+  "gold": [
+   "rā",
+   "ua"
+  ],
+  "gold_joined": "rāua",
+  "raw": "<analysis>\nStep 1: Identify the source word for the numbered item. The query is \"they two\".\nStep 2: Note any grammar. From the evidence, \"they two\" is exactly \"rāua\". The morphemes \"rā\" (they) and \"ua\" (two) combine to form \"rāua\".\nStep 3: Compose the exact target-language form. The word is \"rāua\".\n</analysis>\n<answers>\nrāua\n</answers>",
+  "answer_text": "rāua",
+  "morphemes": [
+   "rā",
+   "ua"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 4.9,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "maori-pronouns",
+  "query": 3,
+  "difficulty": "standard",
+  "prompt": "they all",
+  "gold": [
+   "rā",
+   "tou"
+  ],
+  "gold_joined": "rātou",
+  "raw": "<analysis>\nStep 1: Identify the source word for the numbered item and look up its meaning from the examples. The query is \"they all\".\nStep 2: Note any grammar that must be applied. From the evidence, \"they all\" is directly given as \"rātou\".\nStep 3: Compose the EXACT target-language form. The word is \"rātou\".\n</analysis>\n<answers>\nrātou\n</answers>",
+  "answer_text": "rātou",
+  "morphemes": [
+   "rā",
+   "tou"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 4.3,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "maori-pronouns",
+  "query": 4,
+  "difficulty": "standard",
+  "prompt": "we, not you",
+  "gold": [
+   "mā",
+   "tou"
+  ],
+  "gold_joined": "mātou",
+  "raw": "<analysis>\nStep 1: Identify the target meaning \"we, not you\" from the evidence.\nStep 2: The evidence explicitly lists \"mātou → we, not you\".\nStep 3: The word \"mātou\" can be formed from the available morphemes \"mā\" and \"tou\".\n</analysis>\n<answers>\nmātou\n</answers>",
+  "answer_text": "mātou",
+  "morphemes": [
+   "mā",
+   "tou"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 4.3,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "zulu-noun-class",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "boy",
+  "gold": [
+   "um",
+   "fana"
+  ],
+  "gold_joined": "umfana",
+  "raw": "<analysis>\nStep 1: Identify the source word for the query. The query is \"boy\".\nStep 2: Look up \"boy\" in the evidence. The evidence gives \"umfana → boy\".\nStep 3: Compose the exact target-language form. The word for \"boy\" is \"umfana\".\n</analysis>\n<answers>\numfana\n</answers>",
+  "answer_text": "umfana",
+  "morphemes": [
+   "um",
+   "fana"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 3.7,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "zulu-noun-class",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "children",
+  "gold": [
+   "aba",
+   "ntwana"
+  ],
+  "gold_joined": "abantwana",
+  "raw": "<analysis>\nStep 1: Identify the source word for the numbered item and look up its meaning from the examples. The query is \"children\".\nStep 2: Note any grammar (case, tense, agreement) that must be applied. From the evidence, \"child\" is \"umntwana\" and \"children\" is \"abantwana\". The prefix \"aba-\" marks the plural for this noun class, and \"ntwana\" is the root for child.\nStep 3: Compose the EXACT target-language form. The word for \"children\" is \"abantwana\".\n</analysis>\n<answers>\nabantwana\n</answers>",
+  "answer_text": "abantwana",
+  "morphemes": [
+   "aba",
+   "ntwana"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 4.2,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "zulu-noun-class",
+  "query": 2,
+  "difficulty": "standard",
+  "prompt": "school",
+  "gold": [
+   "isi",
+   "kolo"
+  ],
+  "gold_joined": "isikolo",
+  "raw": "<analysis>\nStep 1: Identify the source word for the numbered item. The query is \"school\".\nStep 2: Look up the meaning from the examples. In the evidence, \"isikolo\" translates to \"school\".\nStep 3: Compose the exact target-language form. The word is \"isikolo\".\n</analysis>\n<answers>\nisikolo\n</answers>",
+  "answer_text": "isikolo",
+  "morphemes": [
+   "isi",
+   "kolo"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 3.8,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "zulu-noun-class",
+  "query": 3,
+  "difficulty": "standard",
+  "prompt": "schools",
+  "gold": [
+   "izi",
+   "kolo"
+  ],
+  "gold_joined": "izikolo",
+  "raw": "<analysis>\nStep 1: Identify the source word for the query \"schools\".\nStep 2: From the evidence, \"school\" is \"isikolo\" and \"schools\" is \"izikolo\". \nStep 3: The exact target-language form for \"schools\" is \"izikolo\".\n</analysis>\n<answers>\nizikolo\n</answers>",
+  "answer_text": "izikolo",
+  "morphemes": [
+   "izi",
+   "kolo"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 4.0,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "zulu-noun-class",
+  "query": 4,
+  "difficulty": "curveball",
+  "prompt": "students",
+  "gold": [
+   "aba",
+   "fundi"
+  ],
+  "gold_joined": "abafundi",
+  "raw": "<analysis>\nStep 1: Identify the source word for the query. The query is \"students\".\nStep 2: Look at the evidence to find the translation of \"students\". The evidence explicitly states \"abafundi → students\".\nStep 3: Compose the exact target-language form using the available morphemes. The morphemes are `aba` and `fundi`, which combine to form `abafundi`.\n</analysis>\n<answers>\nabafundi\n</answers>",
+  "answer_text": "abafundi",
+  "morphemes": [
+   "aba",
+   "fundi"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 3.9,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 0
+ }
+]

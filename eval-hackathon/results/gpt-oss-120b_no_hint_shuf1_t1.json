@@ -1,0 +1,1200 @@
+[
+ {
+  "puzzle": "apurina-verb-agreement",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "I am eating",
+  "gold": [
+   "nhaa",
+   "kuta",
+   "ka"
+  ],
+  "gold_joined": "nhaakutaka",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- The query “I am eating” matches the example “nhaakutaka → I am eating”. Thus the source word is “I am eating”.\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- The language builds the verb phrase as: subject prefix + verb root + suffix “ka”.\n- Subject prefix for first‑person singular is “nhaa”.\n- Verb root for “eat” is “kuta”.\n- The suffix “ka” marks the present progressive.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- Concatenating the morphemes: nhaa + kuta + ka → **nhaakutaka**.\n</analysis>\n<answers>\nnhaakutaka\n</answers>",
+  "answer_text": "nhaakutaka",
+  "morphemes": [
+   "nhaa",
+   "kuta",
+   "ka"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 12.4,
+  "model": "gpt-oss-120b",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 1
+ },
+ {
+  "puzzle": "apurina-verb-agreement",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "we (everyone) are eating",
+  "gold": [
+   "kaa",
+   "kuta",
+   "ka"
+  ],
+  "gold_joined": "kaakutaka",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- “we (everyone) are eating” corresponds to the pattern: we‑prefix + eat‑stem + progressive suffix.\n- Prefix for “we (everyone)” = ka (from kaapitaka “we are going”).\n- Stem for “eat” = kuta (from akutaka, nhaakutaka).\n- Progressive suffix = ka (the final morpheme attached to all verbs; e.g., akutaka = a‑kuta‑ka).\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- The language uses a subject prefix, a verb stem, and the suffix ka. No extra epenthetic consonant is needed because the stem kuta does not end in ka.\n\nStep 3: Compose the EXACT target‑language form, preserving notation like You_{sg}, You_{pl}.\n- Combine the morphemes: ka + kuta + ka → kakutaka.\n</analysis>\n<answers>\nkakutaka\n</answers>",
+  "answer_text": "kakutaka",
+  "morphemes": [
+   "ka",
+   "kuta",
+   "ka"
+  ],
+  "em_decomp": false,
+  "em_surface": false,
+  "chrf": 0.8079,
+  "morf1": 0.6667,
+  "elapsed_s": 19.9,
+  "model": "gpt-oss-120b",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 1
+ },
+ {
+  "puzzle": "apurina-verb-agreement",
+  "query": 2,
+  "difficulty": "standard",
+  "prompt": "you are speaking",
+  "gold": [
+   "ã",
+   "nykata",
+   "ka"
+  ],
+  "gold_joined": "ãnykataka",
+  "raw": "<analysis>\nStep 1: Identify the source word for “you are speaking”. The evidence shows ãnykataka corresponds to “you are speaking”.\nStep 2: From the morpheme bank, ãnykataka can be decomposed as ã + nykata + ka, where ã is the second‑person marker, nykata is the verb root “speak”, and ka is the present‑tense marker.\nStep 3: Compose the exact target‑language form using the identified morphemes in order.\n</analysis>\n<answers>\nã nykata ka\n</answers>",
+  "answer_text": "ã nykata ka",
+  "morphemes": [
+   "ã",
+   "nykata",
+   "ka"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 7.7,
+  "model": "gpt-oss-120b",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 1
+ },
+ {
+  "puzzle": "apurina-verb-agreement",
+  "query": 3,
+  "difficulty": "standard",
+  "prompt": "we (everyone) are speaking",
+  "gold": [
+   "kaa",
+   "nykata",
+   "ka"
+  ],
+  "gold_joined": "kaanykataka",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- Pronoun morphemes: ã = you, a = he/she, nhaa = I, kaa = we (everyone).\n- Verb stems (including the internal “ta”): nykata = speak, pita = go, kuta = eat.\n- Sentence‑final morpheme: ka = present‑progressive marker (the “are …” part).\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- Sentence structure is strictly: Pronoun + VerbStem + ka.\n- No additional agreement markers; just concatenate the morphemes in the given order.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- “we (everyone) are speaking” → Pronoun = kaa, VerbStem = nykata, final = ka.\n- Concatenation: kaa + nykata + ka = **kaanykataka**.\n</analysis>\n<answers>\nkaanykataka\n</answers>",
+  "answer_text": "kaanykataka",
+  "morphemes": [
+   "kaa",
+   "nykata",
+   "ka"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 9.1,
+  "model": "gpt-oss-120b",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 1
+ },
+ {
+  "puzzle": "apurina-verb-agreement",
+  "query": 4,
+  "difficulty": "standard",
+  "prompt": "he/she is going",
+  "gold": [
+   "a",
+   "pita",
+   "ka"
+  ],
+  "gold_joined": "apitaka",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- The meaning “he/she is going” already appears in the evidence as **apitaka**.\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- For third‑person singular the pattern is: **a** (subject marker) + verb‑root + **ka** (progressive/continuous suffix).  \n- The verb root for “go” is **pita**.  \n- Hence the required form is **a + pita + ka**.\n\nStep 3: Compose the EXACT target‑language form, preserving notation like You_{sg}, You_{pl}.\n- Concatenating the morphemes gives **apitaka**.\n\n</analysis>\n<answers>\napitaka\n</answers>",
+  "answer_text": "apitaka",
+  "morphemes": [
+   "a",
+   "pita",
+   "ka"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 9.4,
+  "model": "gpt-oss-120b",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 1
+ },
+ {
+  "puzzle": "swahili-person-tense",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "I will like",
+  "gold": [
+   "ni",
+   "ta",
+   "penda"
+  ],
+  "gold_joined": "nitapenda",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- The query “I will like” requires the pronoun “I” (ni), the future tense marker “ta”, and the verb “like” (penda).\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- The language forms verbs by concatenating pronoun + tense + verb root. For “I” (ni) + future (ta) + “like” (penda) the sequence is ni‑ta‑penda.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- The correct morpheme sequence is **nitapenda**.\n</analysis>\n<answers>\nnitapenda\n</answers>",
+  "answer_text": "nitapenda",
+  "morphemes": [
+   "ni",
+   "ta",
+   "penda"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 3.9,
+  "model": "gpt-oss-120b",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 1
+ },
+ {
+  "puzzle": "swahili-person-tense",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "they read",
+  "gold": [
+   "wa",
+   "na",
+   "soma"
+  ],
+  "gold_joined": "wanasoma",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- Subject prefixes: ni = I, u = you (sg), a = he/she, tu = we, m = you (pl), wa = they.\n- Tense markers: na = present, li = past, ta = future.\n- Verb roots: penda = like, soma = read, cheza = play, imba = sing.\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- The language forms verbs as: SubjectPrefix + TenseMarker + VerbRoot.\n- For “they read” we need the third‑person plural subject prefix **wa**, the present tense marker **na**, and the verb root **soma**.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- Concatenate the morphemes: wa + na + soma → **wanasoma**.\n</analysis>\n<answers>\nwanasoma\n</answers>",
+  "answer_text": "wanasoma",
+  "morphemes": [
+   "wa",
+   "na",
+   "soma"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 4.8,
+  "model": "gpt-oss-120b",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 1
+ },
+ {
+  "puzzle": "swahili-person-tense",
+  "query": 2,
+  "difficulty": "curveball",
+  "prompt": "we sang",
+  "gold": [
+   "tu",
+   "li",
+   "imba"
+  ],
+  "gold_joined": "tuliimba",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- “we” = subject morpheme **tu** (from “tulisoma” = we‑past‑read).\n- Past tense = morpheme **li** (from “nilipenda” = I‑past‑like, “tulisoma”).\n- “sang” = verb stem **imba** (from “wataimba” = they‑future‑sing, “anaimba” = he‑present‑sing).\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- Subject‑verb‑tense order is subject + tense + verb, concatenated without spaces.\n- No additional agreement markers needed for first‑person plural.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- Concatenate **tu + li + imba** → **tuliimba**.\n</analysis>\n<answers>\ntuliimba\n</answers>",
+  "answer_text": "tuliimba",
+  "morphemes": [
+   "tu",
+   "li",
+   "imba"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 4.7,
+  "model": "gpt-oss-120b",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 1
+ },
+ {
+  "puzzle": "turkish-vowel-harmony",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "eyes",
+  "gold": [
+   "göz",
+   "ler"
+  ],
+  "gold_joined": "gözler",
+  "raw": "<analysis>\nStep 1: Identify the source word for “eyes”. The singular noun for “eye” is given as “göz”.\nStep 2: Determine the plural formation rule from the evidence. Words ending with front vowels or front consonants take the plural suffix “‑ler” (e.g., “el → eller”, “göz → gözler”, “ev → evler”). Therefore, to form “eyes” we attach “ler” to “göz”.\nStep 3: Combine the morphemes in the correct order: göz + ler → gözler.\n</analysis>\n<answers>\ngözler\n</answers>",
+  "answer_text": "gözler",
+  "morphemes": [
+   "göz",
+   "ler"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.5,
+  "model": "gpt-oss-120b",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 1
+ },
+ {
+  "puzzle": "turkish-vowel-harmony",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "girls",
+  "gold": [
+   "kız",
+   "lar"
+  ],
+  "gold_joined": "kızlar",
+  "raw": "<analysis>\nStep 1: Identify the source word for the query “girls”. From the evidence, “kız” means “girl”. The plural form in the evidence uses the suffix “-lar” (e.g., kitap → kitaplar, at → atlar, kız → ?). Hence “girls” corresponds to “kız” + “lar”.\nStep 2: The language forms plurals by attaching the suffix “-lar” (or “-ler” after front vowels) directly to the noun stem with no additional changes.\nStep 3: Combine the morphemes “kız” and “lar” to produce the target form “kızlar”.\n</analysis>\n<answers>\nkızlar\n</answers>",
+  "answer_text": "kızlar",
+  "morphemes": [
+   "kız",
+   "lar"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.0,
+  "model": "gpt-oss-120b",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 1
+ },
+ {
+  "puzzle": "turkish-vowel-harmony",
+  "query": 2,
+  "difficulty": "curveball",
+  "prompt": "days",
+  "gold": [
+   "gün",
+   "ler"
+  ],
+  "gold_joined": "günler",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- The query \"days\" corresponds to the source noun \"gün\" (day).\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- The task is to produce the plural form. From the evidence, nouns take the plural suffix **-lar** after stems with back vowels and **-ler** after stems with front vowels (vowel harmony). The stem \"gün\" contains the front vowel **ü**, so the correct plural suffix is **-ler**.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- Combine the stem \"gün\" with the suffix \"ler\" → **günler**.\n</analysis>\n<answers>\ngünler\n</answers>",
+  "answer_text": "günler",
+  "morphemes": [
+   "gün",
+   "ler"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.8,
+  "model": "gpt-oss-120b",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 1
+ },
+ {
+  "puzzle": "quechua-person-endings",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "I walk",
+  "gold": [
+   "puri",
+   "ni"
+  ],
+  "gold_joined": "purini",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- “I walk” requires the verb root for “walk” and the first‑person singular suffix.\n- From “purin → he walks” we see the root for “walk” is **puri** and the suffix **n** marks third‑person singular.\n- From “rikuni → I see” and “rimani → I speak” the suffix **ni** marks first‑person singular.\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- The language builds a verb by attaching a person/number suffix directly to the verb root.\n- For first‑person singular the suffix is **ni**.\n\nStep 3: Compose the EXACT target‑language form, preserving notation like You_{sg}, You_{pl}.\n- Combine the root **puri** with the suffix **ni** → **purini**.\n\n</analysis>\n<answers>\npurini\n</answers>",
+  "answer_text": "purini",
+  "morphemes": [
+   "puri",
+   "ni"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 5.6,
+  "model": "gpt-oss-120b",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 1
+ },
+ {
+  "puzzle": "quechua-person-endings",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "we (all of us) see",
+  "gold": [
+   "riku",
+   "nchik"
+  ],
+  "gold_joined": "rikunchik",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- “see” root appears in “rikuni” (I see) and “rikuni” = riku + ni.\n- “we (all of us)” marker is the suffix “nchik”, as seen in “rimanchik” (we speak) = rima + nchik and “mikhunchik” (we eat) = mikhu + nchik.\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- Person/number is expressed by suffixes: ni = 1st sg, n = 3rd sg, nki = 2nd sg, nchik = 1st pl inclusive.\n- The verb root precedes the suffix.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- Combine the root “riku” (see) with the plural inclusive suffix “nchik”.\n- Resulting form: riku + nchik → “rikunchik”.\n</analysis>\n<answers>\nrikunchik\n</answers>",
+  "answer_text": "rikunchik",
+  "morphemes": [
+   "riku",
+   "nchik"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 5.5,
+  "model": "gpt-oss-120b",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 1
+ },
+ {
+  "puzzle": "quechua-person-endings",
+  "query": 2,
+  "difficulty": "curveball",
+  "prompt": "she eats",
+  "gold": [
+   "mikhu",
+   "n"
+  ],
+  "gold_joined": "mikhun",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- Verb “eat” corresponds to the root **mikhu** (seen in *mikhunchik* “we eat”, *mikhunki* “you eat”).\n- The suffix **‑n** marks third‑person singular (she/he) as shown in *riman* “she speaks”, *purin* “he walks”.\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- To form “she + verb”, attach the third‑person singular suffix **‑n** directly to the verb root.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- Combine **mikhu** + **n** → **mikhun**.\n</analysis>\n<answers>\nmikhun\n</answers>",
+  "answer_text": "mikhun",
+  "morphemes": [
+   "mikhu",
+   "n"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 6.2,
+  "model": "gpt-oss-120b",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 1
+ },
+ {
+  "puzzle": "nahuatl-both-ends",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "I sing",
+  "gold": [
+   "ni",
+   "cuica"
+  ],
+  "gold_joined": "nicuica",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- “I” = prefix **ni** (evident from nicochi = I sleep, nichoca = I cry)\n- “sing” = root **cuica** (evident from ticuica = you sing, cuicah = they sing)\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- First‑person singular combines the prefix **ni** directly with the verb root, with no extra suffixes (compare nicochi, nichoca).\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- Combine **ni** + **cuica** → **nicuica**.\n</analysis>\n<answers>\nnicuica\n</answers>",
+  "answer_text": "nicuica",
+  "morphemes": [
+   "ni",
+   "cuica"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 5.8,
+  "model": "gpt-oss-120b",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 1
+ },
+ {
+  "puzzle": "nahuatl-both-ends",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "they cry",
+  "gold": [
+   "choca",
+   "h"
+  ],
+  "gold_joined": "chocah",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- “cochi” = “sleep” (3rd sg)\n- “cuica” = “sing” (3rd sg)\n- “choca” = “cry” (3rd sg)\n- Prefix “ni‑” = 1st person singular\n- Prefix “ti‑” = 2nd person singular\n- Suffix “‑h” = plural (3rd pl or 1st pl)\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- To form “they verb”, attach the plural suffix ‑h to the 3rd sg verb stem, with no person prefix.\n- Therefore “they cry” = “choca” + “h”.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- The required form is “chocah”.\n</analysis>\n<answers>\nchocah\n</answers>",
+  "answer_text": "chocah",
+  "morphemes": [
+   "choca",
+   "h"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 4.7,
+  "model": "gpt-oss-120b",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 1
+ },
+ {
+  "puzzle": "nahuatl-both-ends",
+  "query": 2,
+  "difficulty": "curveball",
+  "prompt": "we sing",
+  "gold": [
+   "ni",
+   "cuica",
+   "h"
+  ],
+  "gold_joined": "nicuicah",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- “cochi” = sleep (verb root)\n- “cuica” = sing (verb root)\n- “choca” = cry (verb root)\n- Prefix “ni-” marks first‑person singular; “ti‑” marks second‑person singular; no prefix marks third‑person singular.\n- Suffix “‑h” marks plural (first‑person plural “we” = ni + h; third‑person plural “they” = (no prefix) + h).\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- Subject is expressed by a prefix (if any) before the verb root.\n- Plural is expressed by suffix “h” after the verb root.\n- Order: [subject prefix] + [verb root] + [plural suffix if needed].\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- “we sing” → first‑person plural = prefix “ni” + plural suffix “h”.\n- Verb “sing” = root “cuica”.\n- Concatenate: ni + cuica + h → **nicuicah**.\n</analysis>\n<answers>\nnicuicah\n</answers>",
+  "answer_text": "nicuicah",
+  "morphemes": [
+   "ni",
+   "cuica",
+   "h"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 7.0,
+  "model": "gpt-oss-120b",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 1
+ },
+ {
+  "puzzle": "esperanto-tense",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "you learned",
+  "gold": [
+   "vi",
+   "lern",
+   "is"
+  ],
+  "gold_joined": "vi lernis",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- “you learned” corresponds to the second‑person singular pronoun “you” → vi.\n- The verb “learn” uses the stem lern.\n- The tense “learned” is past, which in the data is marked by the suffix –is (as seen in mi lernis → I learned).\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- Order is pronoun + verb stem + tense suffix.\n- No additional agreement markers are needed beyond the suffix.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- Combine vi + lern + is → vi lernis.\n</analysis>\n<answers>\nvi lernis\n</answers>",
+  "answer_text": "vi lernis",
+  "morphemes": [
+   "vi",
+   "lern",
+   "is"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 0.696,
+  "morf1": 1.0,
+  "elapsed_s": 2.6,
+  "model": "gpt-oss-120b",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 1
+ },
+ {
+  "puzzle": "esperanto-tense",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "we learned",
+  "gold": [
+   "ni",
+   "lern",
+   "is"
+  ],
+  "gold_joined": "ni lernis",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- The query “we learned” corresponds to the pronoun “we” = ni, the verb root “learn” = lern, and the past tense suffix “learned” = is (as seen in “mi lernis” → I learned).\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- The language uses a simple concatenation: pronoun + verb root + tense suffix. Past tense uses the suffix “is”.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- Combine ni + lern + is → “ni lernis”.\n</analysis>\n<answers>\nni lernis\n</answers>",
+  "answer_text": "ni lernis",
+  "morphemes": [
+   "ni",
+   "lern",
+   "is"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 0.696,
+  "morf1": 1.0,
+  "elapsed_s": 2.1,
+  "model": "gpt-oss-120b",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 1
+ },
+ {
+  "puzzle": "esperanto-tense",
+  "query": 2,
+  "difficulty": "standard",
+  "prompt": "I will eat",
+  "gold": [
+   "mi",
+   "manĝ",
+   "os"
+  ],
+  "gold_joined": "mi manĝos",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- The pronoun “mi” = “I”.\n- The verb stem “manĝ” = “eat”.\n- The suffix “os” = future tense (will).\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- Subject pronoun precedes the verb.\n- Verb is formed by verb stem + tense suffix. Future tense uses “os”.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- Combine: mi + manĝ + os → “mi manĝos”.\n</analysis>\n<answers>\nmi manĝos\n</answers>",
+  "answer_text": "mi manĝos",
+  "morphemes": [
+   "mi",
+   "manĝ",
+   "os"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 0.696,
+  "morf1": 1.0,
+  "elapsed_s": 3.0,
+  "model": "gpt-oss-120b",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 1
+ },
+ {
+  "puzzle": "esperanto-tense",
+  "query": 3,
+  "difficulty": "standard",
+  "prompt": "they eat",
+  "gold": [
+   "ili",
+   "manĝ",
+   "as"
+  ],
+  "gold_joined": "ili manĝas",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- \"they\" corresponds to the pronoun **ili** (as seen in “ili lernas → they learn”).\n- \"eat\" corresponds to the verb stem **manĝ** (as seen in “mi manĝas → I eat”).\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- The sentence is in the present tense, which uses the suffix **as** (e.g., “lernas” for “learn” in present).\n- Word order matches the evidence: pronoun first, then verb stem, then tense suffix.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- Combine pronoun + stem + suffix: **ili manĝas**.\n</analysis>\n<answers>\nili manĝas\n</answers>",
+  "answer_text": "ili manĝas",
+  "morphemes": [
+   "ili",
+   "manĝ",
+   "as"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 0.699,
+  "morf1": 1.0,
+  "elapsed_s": 2.4,
+  "model": "gpt-oss-120b",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 1
+ },
+ {
+  "puzzle": "esperanto-tense",
+  "query": 4,
+  "difficulty": "standard",
+  "prompt": "he ate",
+  "gold": [
+   "li",
+   "manĝ",
+   "is"
+  ],
+  "gold_joined": "li manĝis",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- “he” → li (pronoun for third‑person singular masculine)\n- “ate” → past tense of the verb “to eat”. The verb root is manĝ, and past tense uses the suffix –is, giving manĝis.\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- The verb must agree with the subject in person and number. For third‑person singular, the pronoun li is used and the verb takes the past suffix –is.\n\nStep 3: Compose the EXACT target‑language form, preserving notation like You_{sg}, You_{pl}.\n- Combine pronoun and verb with a space: li manĝis.\n</analysis>\n<answers>\nli manĝis\n</answers>",
+  "answer_text": "li manĝis",
+  "morphemes": [
+   "li",
+   "manĝ",
+   "is"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 0.696,
+  "morf1": 1.0,
+  "elapsed_s": 2.2,
+  "model": "gpt-oss-120b",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 1
+ },
+ {
+  "puzzle": "indonesian-plurals",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "I eat",
+  "gold": [
+   "saya",
+   "makan"
+  ],
+  "gold_joined": "saya makan",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- The English phrase “I eat” corresponds to the bilingual example “saya makan → I eat”.\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- No additional grammatical marking is required; the phrase consists of the pronoun “saya” (I) followed by the verb “makan” (eat).\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- The required morpheme sequence is the two morphemes “saya” and “makan” in that order.\n</analysis>\n<answers>\nsaya makan\nsaya makan\n</answers>",
+  "answer_text": "saya makan",
+  "morphemes": [
+   "saya",
+   "makan"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 0.699,
+  "morf1": 1.0,
+  "elapsed_s": 2.8,
+  "model": "gpt-oss-120b",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 1
+ },
+ {
+  "puzzle": "indonesian-plurals",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "children",
+  "gold": [
+   "anak-anak"
+  ],
+  "gold_joined": "anak-anak",
+  "raw": "<analysis>\nStep 1: Identify the source word for the query “children”. The bilingual evidence directly shows “anak-anak → children”.\nStep 2: No additional grammatical affixes are needed; the plural form is already provided as a single morpheme “anak-anak”.\nStep 3: The exact target-language form is the morpheme “anak-anak”.\n</analysis>\n<answers>\nanak-anak\n</answers>",
+  "answer_text": "anak-anak",
+  "morphemes": [
+   "anak-anak"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 1.5,
+  "model": "gpt-oss-120b",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 1
+ },
+ {
+  "puzzle": "indonesian-plurals",
+  "query": 2,
+  "difficulty": "standard",
+  "prompt": "horses",
+  "gold": [
+   "kuda-kuda"
+  ],
+  "gold_joined": "kuda-kuda",
+  "raw": "<analysis>\nStep 1: Identify the source word for the query “horses”. In the evidence, the singular “horse” is “kuda”, and its plural “horses” appears as “kuda‑kuda”.\nStep 2: The grammar for forming a plural noun in this language is simple reduplication with a hyphen (singular → X, plural → X‑X). No additional case, tense, or agreement markers are needed for a bare noun.\nStep 3: Using the available morphemes, the exact form for “horses” is the reduplicated noun “kuda‑kuda”.\n</analysis>\n<answers>\nkuda-kuda\n</answers>",
+  "answer_text": "kuda-kuda",
+  "morphemes": [
+   "kuda-kuda"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.3,
+  "model": "gpt-oss-120b",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 1
+ },
+ {
+  "puzzle": "indonesian-plurals",
+  "query": 3,
+  "difficulty": "standard",
+  "prompt": "books",
+  "gold": [
+   "buku-buku"
+  ],
+  "gold_joined": "buku-buku",
+  "raw": "<analysis>\nStep 1: Identify the source word for “books”. The evidence shows “buku-buku → books”.\nStep 2: No additional grammar (e.g., case, tense, agreement) is required; the reduplication itself marks plural.\nStep 3: Produce the exact source-language form “buku-buku”.\n</analysis>\n<answers>\nbuku-buku\n</answers>",
+  "answer_text": "buku-buku",
+  "morphemes": [
+   "buku-buku"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 1.8,
+  "model": "gpt-oss-120b",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 1
+ },
+ {
+  "puzzle": "indonesian-plurals",
+  "query": 4,
+  "difficulty": "standard",
+  "prompt": "we eat",
+  "gold": [
+   "kami",
+   "makan"
+  ],
+  "gold_joined": "kami makan",
+  "raw": "<analysis>\nStep 1: Identify the source word for the English phrase “we eat”. The evidence list contains the pair “kami makan → we eat”, directly linking the source phrase “kami makan” to the target meaning.\nStep 2: Note that the grammar is simply a subject pronoun followed by the verb without any affixation or case marking; the morpheme order in the source language mirrors the English order.\nStep 3: Compose the exact source-language form using the tiles from the bank: the pronoun “kami” (we) followed by the verb “makan” (eat), yielding “kami makan”.\n</analysis>\n<answers>\nkami makan\n</answers>",
+  "answer_text": "kami makan",
+  "morphemes": [
+   "kami",
+   "makan"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 0.699,
+  "morf1": 1.0,
+  "elapsed_s": 2.1,
+  "model": "gpt-oss-120b",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 1
+ },
+ {
+  "puzzle": "finnish-harmony",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "houses",
+  "gold": [
+   "talo",
+   "t"
+  ],
+  "gold_joined": "talot",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- The query “houses” matches the plural form of “house”. In the evidence, “talot” is given as the translation for “houses”.\n- The morphemes that compose “talot” are the base noun “talo” (house) plus the plural suffix “t”.\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- No case or additional morphology is required; we need only the plural form.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- Concatenate the morphemes: talo + t → talot.\n</analysis>\n<answers>\ntalot\n</answers>",
+  "answer_text": "talot",
+  "morphemes": [
+   "talo",
+   "t"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 3.4,
+  "model": "gpt-oss-120b",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 1
+ },
+ {
+  "puzzle": "finnish-harmony",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "in the house",
+  "gold": [
+   "talo",
+   "ssa"
+  ],
+  "gold_joined": "talossa",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- The phrase “in the house” corresponds to the Finnish locative form of “house” (talo) with the in‑suffix.\n- In the evidence, “talossa” is explicitly given as “in the house”.\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- The in‑suffix is –ssa after back‑vowel stems (tal-), giving the inessive case.\n- No additional agreement or plural markers are needed.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- Combine the root “talo” with the suffix “ssa” → talo+ssa = talossa.\n</analysis>\n<answers>\ntalossa\n</answers>",
+  "answer_text": "talossa",
+  "morphemes": [
+   "talo",
+   "ssa"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.8,
+  "model": "gpt-oss-120b",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 1
+ },
+ {
+  "puzzle": "finnish-harmony",
+  "query": 2,
+  "difficulty": "standard",
+  "prompt": "villages",
+  "gold": [
+   "kylä",
+   "t"
+  ],
+  "gold_joined": "kylät",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- The target “villages” corresponds to the Finnish word “kylät”, which is shown in the evidence list.\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- Plural nominative is formed by adding the suffix t to the noun stem (e.g., talo → talot, kylä → kylät).\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- The morpheme sequence is the stem “kylä” followed by the plural suffix “t”.\n\n</analysis>\n<answers>\nkylä t\n</answers>",
+  "answer_text": "kylä t",
+  "morphemes": [
+   "kylä",
+   "t"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.0,
+  "model": "gpt-oss-120b",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 1
+ },
+ {
+  "puzzle": "finnish-harmony",
+  "query": 3,
+  "difficulty": "curveball",
+  "prompt": "in the village",
+  "gold": [
+   "kylä",
+   "ssä"
+  ],
+  "gold_joined": "kylässä",
+  "raw": "<analysis>\nStep 1: Identify the source word for “village”. The base noun is kylä (village).\nStep 2: “in the …” uses the locative suffix that matches vowel harmony. Since kylä contains front vowel ä, the appropriate suffix is ssä.\nStep 3: Combine the noun and suffix: kylä + ssä → kylässä.\n</analysis>\n<answers>\nkylässä\n</answers>",
+  "answer_text": "kylässä",
+  "morphemes": [
+   "kylä",
+   "ssä"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.3,
+  "model": "gpt-oss-120b",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 1
+ },
+ {
+  "puzzle": "finnish-harmony",
+  "query": 4,
+  "difficulty": "standard",
+  "prompt": "in the school",
+  "gold": [
+   "koulu",
+   "ssa"
+  ],
+  "gold_joined": "koulussa",
+  "raw": "<analysis>\nStep 1: Identify the source word for “school” → **koulu**. The locative “in” is expressed by the suffix **ssa** (as seen in talossa, koulussa, kylässä).\nStep 2: No additional case, tense, or agreement changes are needed; the noun simply takes the suffix **ssa**.\nStep 3: Combine **koulu** + **ssa** → **koulussa**, the exact form used for “in the school”.\n</analysis>\n<answers>\nkoulussa\n</answers>",
+  "answer_text": "koulussa",
+  "morphemes": [
+   "koulu",
+   "ssa"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.3,
+  "model": "gpt-oss-120b",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 1
+ },
+ {
+  "puzzle": "maori-pronouns",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "we two, not you",
+  "gold": [
+   "mā",
+   "ua"
+  ],
+  "gold_joined": "māua",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- The query “we two, not you” matches the exclusive dual pronoun, which in the evidence is given as **māua**.\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- The pronoun is formed by the exclusive dual prefix **mā‑** plus the dual suffix **‑ua**, giving the sequence **mā + ua**.\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- Combine the morphemes **mā** and **ua** → **māua**.\n</analysis>\n<answers>\nmāua\n</answers>",
+  "answer_text": "māua",
+  "morphemes": [
+   "mā",
+   "ua"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.9,
+  "model": "gpt-oss-120b",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 1
+ },
+ {
+  "puzzle": "maori-pronouns",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "all of us, incl. you",
+  "gold": [
+   "tā",
+   "tou"
+  ],
+  "gold_joined": "tātou",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- The query “all of us, incl. you” corresponds to the meaning given for “tātou” in the evidence list.\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- The form is built from the inclusive first‑person stem “tā” plus the plural suffix “tou”.\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- The morpheme sequence is “tā tou”.\n</analysis>\n<answers>\ntā tou\n</answers>",
+  "answer_text": "tā tou",
+  "morphemes": [
+   "tā",
+   "tou"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 5.7,
+  "model": "gpt-oss-120b",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 1
+ },
+ {
+  "puzzle": "maori-pronouns",
+  "query": 2,
+  "difficulty": "standard",
+  "prompt": "they two",
+  "gold": [
+   "rā",
+   "ua"
+  ],
+  "gold_joined": "rāua",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- The query is “they two”. In the evidence list, “rāua → they two”.\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- The form consists of the third‑person plural stem “rā” plus the dual suffix “ua”. No additional modification is required.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- Concatenate the morphemes in the order shown in the evidence: rā + ua → “rāua”.\n</analysis>\n<answers>\nrāua\n</answers>",
+  "answer_text": "rāua",
+  "morphemes": [
+   "rā",
+   "ua"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 3.2,
+  "model": "gpt-oss-120b",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 1
+ },
+ {
+  "puzzle": "maori-pronouns",
+  "query": 3,
+  "difficulty": "standard",
+  "prompt": "they all",
+  "gold": [
+   "rā",
+   "tou"
+  ],
+  "gold_joined": "rātou",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- The query “they all” corresponds to the English phrase “they all”.\n- From the evidence list we have: rātou → they all.\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- The form rātou is built from the third‑person exclusive prefix “rā” + the plural suffix “tou”. No additional grammatical changes are needed.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- The exact target-language form is “rātou”.\n</analysis>\n<answers>\nrātou\n</answers>",
+  "answer_text": "rātou",
+  "morphemes": [
+   "rā",
+   "tou"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 4.7,
+  "model": "gpt-oss-120b",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 1
+ },
+ {
+  "puzzle": "maori-pronouns",
+  "query": 4,
+  "difficulty": "standard",
+  "prompt": "we, not you",
+  "gold": [
+   "mā",
+   "tou"
+  ],
+  "gold_joined": "mātou",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- The query “we, not you” corresponds to the exclusive first‑person plural. In the evidence list this is given as **mātou** → we, not you.\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- The exclusive plural form is built from the exclusive first‑person prefix **mā‑** plus the plural suffix **‑tou**.\nStep 3: Compose the EXACT target‑language form, preserving notation like You_{sg}, You_{pl}.\n- Combine the morphemes to get **mātou**.\n</analysis>\n<answers>\nmātou\n</answers>",
+  "answer_text": "mātou",
+  "morphemes": [
+   "mā",
+   "tou"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 5.2,
+  "model": "gpt-oss-120b",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 1
+ },
+ {
+  "puzzle": "zulu-noun-class",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "boy",
+  "gold": [
+   "um",
+   "fana"
+  ],
+  "gold_joined": "umfana",
+  "raw": "<analysis>\nStep 1: Identify the source word for the query “boy”. The singular form “boy” appears in the evidence as “umfana”.\nStep 2: The word “umfana” is composed of the morphemes “um” (singular prefix) + “fana” (root meaning “boy”). No additional grammatical affixes are needed.\nStep 3: Assemble the morphemes in the order observed: um + fana → umfana.\n</analysis>\n<answers>\numfana\n</answers>",
+  "answer_text": "umfana",
+  "morphemes": [
+   "um",
+   "fana"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.1,
+  "model": "gpt-oss-120b",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 1
+ },
+ {
+  "puzzle": "zulu-noun-class",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "children",
+  "gold": [
+   "aba",
+   "ntwana"
+  ],
+  "gold_joined": "abantwana",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- The query “children” matches the English word for the plural of “child”. In the evidence, “abantwana” = children.\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- Plural human nouns use the prefix “aba-” combined with the root “ntwana”. No additional affixes are required.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- Combine the morphemes “aba” + “ntwana” → “abantwana”.\n</analysis>\n<answers>\nabantwana\n</answers>",
+  "answer_text": "abantwana",
+  "morphemes": [
+   "aba",
+   "ntwana"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.9,
+  "model": "gpt-oss-120b",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 1
+ },
+ {
+  "puzzle": "zulu-noun-class",
+  "query": 2,
+  "difficulty": "standard",
+  "prompt": "school",
+  "gold": [
+   "isi",
+   "kolo"
+  ],
+  "gold_joined": "isikolo",
+  "raw": "<analysis>\nStep 1: Identify the source word for “school”. The evidence shows “isikolo → school”.\nStep 2: The word “isikolo” is built from the prefix “isi” (class‑5 singular) and the root “kolo”.\nStep 3: Combine the morphemes in the observed order: isi + kolo → “isikolo”.\n</analysis>\n<answers>\nisi kolo\n</answers>",
+  "answer_text": "isi kolo",
+  "morphemes": [
+   "isi",
+   "kolo"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 5.0,
+  "model": "gpt-oss-120b",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 1
+ },
+ {
+  "puzzle": "zulu-noun-class",
+  "query": 3,
+  "difficulty": "standard",
+  "prompt": "schools",
+  "gold": [
+   "izi",
+   "kolo"
+  ],
+  "gold_joined": "izikolo",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- The query is \"schools\". The evidence list already contains the mapping “izikolo → schools”.\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- No additional grammatical changes are required; the plural noun form is directly given as “izikolo”.\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- The exact target-language form for “schools” is “izikolo”.\n</analysis>\n<answers>\nizikolo\n</answers>",
+  "answer_text": "izikolo",
+  "morphemes": [
+   "izi",
+   "kolo"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 1.6,
+  "model": "gpt-oss-120b",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 1
+ },
+ {
+  "puzzle": "zulu-noun-class",
+  "query": 4,
+  "difficulty": "curveball",
+  "prompt": "students",
+  "gold": [
+   "aba",
+   "fundi"
+  ],
+  "gold_joined": "abafundi",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- “students” corresponds to the word “abafundi” in the evidence.\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- No grammatical changes are needed; the plural noun form is directly given as “abafundi”.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- The exact form is “abafundi”.\n</analysis>\n<answers>\nabafundi\n</answers>",
+  "answer_text": "abafundi",
+  "morphemes": [
+   "aba",
+   "fundi"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.2,
+  "model": "gpt-oss-120b",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json",
+  "shuffle_seed": 1
+ }
+]

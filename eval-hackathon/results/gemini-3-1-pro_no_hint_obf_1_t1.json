@@ -1,0 +1,1200 @@
+[
+ {
+  "puzzle": "apurina-verb-agreement",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "I am eating",
+  "gold": [
+   "ʡɗɪɪ",
+   "ɫəɳɪ",
+   "ɫɪ"
+  ],
+  "gold_joined": "ʡɗɪɪɫəɳɪɫɪ",
+  "raw": "<analysis>\nStep 1: Identify the source word for the numbered item. The query is \"I am eating\".\nStep 2: Note the grammar and vocabulary from the examples. \"I am eating\" is explicitly given in the evidence as `ʡɗɪɪɫəɳɪɫɪ`.\nStep 3: Compose the exact target-language form. It matches the evidence exactly.\n</analysis>\n<answers>\nʡɗɪɪɫəɳɪɫɪ\n</answers>",
+  "answer_text": "ʡɗɪɪɫəɳɪɫɪ",
+  "morphemes": [
+   "ʡɗɪɪ",
+   "ɫəɳɪ",
+   "ɫɪ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 7.5,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "apurina-verb-agreement",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "we (everyone) are eating",
+  "gold": [
+   "ɫɪɪ",
+   "ɫəɳɪ",
+   "ɫɪ"
+  ],
+  "gold_joined": "ɫɪɪɫəɳɪɫɪ",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- \"we (everyone)\" corresponds to the prefix `ɫɪɪ`.\n- \"are eating\" corresponds to the stem `ɫəɳɪ` + suffix `ɫɪ` (since `ɫəɳɪ` and `ɫɪ` are in the morpheme bank, making `ɫəɳɪɫɪ`).\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- The structure is SubjectPrefix + VerbStem + Suffix.\n- SubjectPrefix for \"we (everyone)\" = `ɫɪɪ`.\n- Verb for \"eating\" = `ɫəɳɪɫɪ`.\nStep 3: Compose the EXACT target-language form.\n- `ɫɪɪ` + `ɫəɳɪɫɪ` = `ɫɪɪɫəɳɪɫɪ`.\n</analysis>\n<answers>\nɫɪɪɫəɳɪɫɪ\n</answers>",
+  "answer_text": "ɫɪɪɫəɳɪɫɪ",
+  "morphemes": [
+   "ɫɪɪ",
+   "ɫəɳɪ",
+   "ɫɪ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 12.6,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "apurina-verb-agreement",
+  "query": 2,
+  "difficulty": "standard",
+  "prompt": "you are speaking",
+  "gold": [
+   "ɯ",
+   "ʡøɫɪɳɪ",
+   "ɫɪ"
+  ],
+  "gold_joined": "ɯʡøɫɪɳɪɫɪ",
+  "raw": "<analysis>\nStep 1: Identify the source word for the numbered item. The query is \"you are speaking\".\nStep 2: Look up its meaning from the examples. \"you are speaking\" is given exactly in the evidence as ɯʡøɫɪɳɪɫɪ.\nStep 3: Compose the exact target-language form. It is ɯʡøɫɪɳɪɫɪ.\n</analysis>\n<answers>\nɯʡøɫɪɳɪɫɪ\n</answers>",
+  "answer_text": "ɯʡøɫɪɳɪɫɪ",
+  "morphemes": [
+   "ɯ",
+   "ʡøɫɪɳɪ",
+   "ɫɪ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 6.0,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "apurina-verb-agreement",
+  "query": 3,
+  "difficulty": "standard",
+  "prompt": "we (everyone) are speaking",
+  "gold": [
+   "ɫɪɪ",
+   "ʡøɫɪɳɪ",
+   "ɫɪ"
+  ],
+  "gold_joined": "ɫɪɪʡøɫɪɳɪɫɪ",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\nFrom the evidence:\n- \"I\" = ʡɗɪɪ\n- \"you\" = ɯ\n- \"he/she\" = ɪ\n- \"we (everyone)\" = ɫɪɪ\n- \"are going\" = ƍʊɳɪ + ɫɪ\n- \"are eating\" = ɫəɳɪ + ɫɪ\n- \"are speaking\" = ʡøɫɪɳɪ + ɫɪ\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\nThe structure is Subject + Verb stem + ɫɪ.\nFor \"we (everyone) are speaking\", the subject is \"ɫɪɪ\" and the verb is \"ʡøɫɪɳɪ\" + \"ɫɪ\".\n\nStep 3: Compose the EXACT target-language form.\nɫɪɪ + ʡøɫɪɳɪ + ɫɪ = ɫɪɪʡøɫɪɳɪɫɪ\n</analysis>\n<answers>\nɫɪɪʡøɫɪɳɪɫɪ\n</answers>",
+  "answer_text": "ɫɪɪʡøɫɪɳɪɫɪ",
+  "morphemes": [
+   "ɫɪɪ",
+   "ʡøɫɪɳɪ",
+   "ɫɪ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 10.0,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "apurina-verb-agreement",
+  "query": 4,
+  "difficulty": "standard",
+  "prompt": "he/she is going",
+  "gold": [
+   "ɪ",
+   "ƍʊɳɪ",
+   "ɫɪ"
+  ],
+  "gold_joined": "ɪƍʊɳɪɫɪ",
+  "raw": "<analysis>\nStep 1: Identify the source word for the numbered item. The query is \"he/she is going\".\nStep 2: Look up the meaning from the examples. The evidence explicitly states \"ɪƍʊɳɪɫɪ → he/she is going\".\nStep 3: Compose the exact target-language form. It is ɪƍʊɳɪɫɪ.\n</analysis>\n<answers>\nɪƍʊɳɪɫɪ\n</answers>",
+  "answer_text": "ɪƍʊɳɪɫɪ",
+  "morphemes": [
+   "ɪ",
+   "ƍʊɳɪ",
+   "ɫɪ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 5.9,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "swahili-person-tense",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "I will like",
+  "gold": [
+   "ƒɞ",
+   "ʍʊ",
+   "ʠɪƒɺʊ"
+  ],
+  "gold_joined": "ƒɞʍʊʠɪƒɺʊ",
+  "raw": "<analysis>\nStep 1: Identify the components for \"I will like\".\nFrom the evidence:\nPronouns (first prefix):\n- I = ƒɞ\n- you = ɯ\n- she/he = ʊ\n- we = ʍɯ\n- they = ɱʊ\n\nTense markers (second prefix):\n- present = ƒʊ\n- past = ƃɞ\n- future (will) = ʍʊ\n\nVerbs (root):\n- like = ʠɪƒɺʊ\n- read = ʡɔɗʊ\n- play = ɲɫɪħʊ\n- sing = ɞɗʈʊ\n\nStep 2: Apply the grammar rules.\nStructure: [Pronoun] + [Tense] + [Verb]\nFor \"I will like\":\n- I = ƒɞ\n- will = ʍʊ\n- like = ʠɪƒɺʊ\n\nStep 3: Combine the morphemes.\nƒɞ + ʍʊ + ʠɪƒɺʊ = ƒɞʍʊʠɪƒɺʊ\n</analysis>\n<answers>\nƒɞʍʊʠɪƒɺʊ\n</answers>",
+  "answer_text": "ƒɞʍʊʠɪƒɺʊ",
+  "morphemes": [
+   "ƒɞ",
+   "ʍʊ",
+   "ʠɪƒɺʊ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 8.3,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "swahili-person-tense",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "they read",
+  "gold": [
+   "ɱʊ",
+   "ƒʊ",
+   "ʡɔɗʊ"
+  ],
+  "gold_joined": "ɱʊƒʊʡɔɗʊ",
+  "raw": "<analysis>\nStep 1: Identify the subject, tense, and verb from the examples.\nSubjects:\nI = ƒɞ\nyou = ɯ\nshe/he = ʊ\nwe = ʍɯ\nthey = ɱʊ\n\nTense markers:\npresent = ƒʊ (e.g., ƒɞ-ƒʊ-ʠɪƒɺʊ \"I like\")\npast = ƃɞ (e.g., ƒɞ-ƃɞ-ʠɪƒɺʊ \"I liked\")\nfuture = ʍʊ (e.g., ɱʊ-ʍʊ-ɞɗʈʊ \"they will sing\")\n\nVerbs:\nlike = ʠɪƒɺʊ\nread = ʡɔɗʊ\nplay = ɲɫɪħʊ\nsing = ɞɗʈʊ\n\nStep 2: Apply the grammar to the query \"they read\".\nSince \"we read (past)\" was explicitly marked as past in the examples, \"they read\" is in the present tense.\nSubject \"they\" = ɱʊ\nPresent tense = ƒʊ\nVerb \"read\" = ʡɔɗʊ\n\nStep 3: Combine the morphemes in the order Subject-Tense-Verb.\nɱʊ + ƒʊ + ʡɔɗʊ = ɱʊƒʊʡɔɗʊ\n</analysis>\n<answers>\nɱʊƒʊʡɔɗʊ\n</answers>",
+  "answer_text": "ɱʊƒʊʡɔɗʊ",
+  "morphemes": [
+   "ɱʊ",
+   "ƒʊ",
+   "ʡɔɗʊ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 8.8,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "swahili-person-tense",
+  "query": 2,
+  "difficulty": "curveball",
+  "prompt": "we sang",
+  "gold": [
+   "ʍɯ",
+   "ƃɞ",
+   "ɞɗʈʊ"
+  ],
+  "gold_joined": "ʍɯƃɞɞɗʈʊ",
+  "raw": "<analysis>\nStep 1: Identify the components of the words based on the evidence.\n- Pronouns (Prefix):\n  - I = ƒɞ\n  - you = ɯ\n  - he/she = ʊ\n  - we = ʍɯ\n  - they = ɱʊ\n- Tense (Infix):\n  - present = ƒʊ\n  - past = ƃɞ\n  - future = ʍʊ\n- Verbs (Suffix):\n  - like = ʠɪƒɺʊ\n  - read = ʡɔɗʊ\n  - play = ɲɫɪħʊ\n  - sing = ɞɗʈʊ\n\nStep 2: Construct the target word \"we sang\".\n- \"we\" = ʍɯ\n- past tense = ƃɞ\n- \"sing\" = ɞɗʈʊ\n\nStep 3: Combine them in the order Pronoun + Tense + Verb.\n- ʍɯ + ƃɞ + ɞɗʈʊ = ʍɯƃɞɞɗʈʊ\n</analysis>\n<answers>\nʍɯƃɞɞɗʈʊ\n</answers>",
+  "answer_text": "ʍɯƃɞɞɗʈʊ",
+  "morphemes": [
+   "ʍɯ",
+   "ƃɞ",
+   "ɞɗʈʊ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 7.8,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "turkish-vowel-harmony",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "eyes",
+  "gold": [
+   "ʜøɳ",
+   "ɸæŧ"
+  ],
+  "gold_joined": "ʜøɳɸæŧ",
+  "raw": "<analysis>\nStep 1: Identify the source word for \"eye\", which is `ʜøɳ`.\nStep 2: Determine the plural suffix. The evidence shows `ɸæŧ` after words with `æ` (`æɽ`, `æɸ`) and `ɸœŧ` after words with `œ` (`œɠ`, `ʟɤɠœʛ`). Since `ø` is a front rounded vowel like `œ`, and the only available plural suffixes in the tile bank are `ɸœŧ` and `ɸæŧ`, `ɸœŧ` is the appropriate suffix for `ʜøɳ`.\nStep 3: Combine the morphemes to form `ʜøɳɸœŧ`.\n</analysis>\n<answers>\nʜøɳɸœŧ\n</answers>",
+  "answer_text": "ʜøɳɸœŧ",
+  "morphemes": [
+   "ʜøɳ",
+   "ɸœŧ"
+  ],
+  "em_decomp": false,
+  "em_surface": false,
+  "chrf": 0.5667,
+  "morf1": 0.5,
+  "elapsed_s": 9.1,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "turkish-vowel-harmony",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "girls",
+  "gold": [
+   "ʟɱɳ",
+   "ɸœŧ"
+  ],
+  "gold_joined": "ʟɱɳɸœŧ",
+  "raw": "<analysis>\nStep 1: Identify the source word for \"girl\", which is `ʟɱɳ`.\nStep 2: Determine the plural suffix. The examples show `ɸæŧ` and `ɸœŧ` as plural suffixes. `æɽ` (house) and `æɸ` (hand) take `ɸæŧ`, while `œɠ` (horse) and `ʟɤɠœʛ` (book) take `ɸœŧ`. This indicates a vowel harmony or rounding harmony system where unrounded stems take `ɸæŧ` and rounded stems take `ɸœŧ`. The stem `ʟɱɳ` contains the unrounded syllabic consonant `ɱ`, so it should take the unrounded suffix `ɸæŧ`.\nStep 3: Combine the stem and suffix to form `ʟɱɳɸæŧ`.\n</analysis>\n<answers>\nʟɱɳɸæŧ\n</answers>",
+  "answer_text": "ʟɱɳɸæŧ",
+  "morphemes": [
+   "ʟɱɳ",
+   "ɸæŧ"
+  ],
+  "em_decomp": false,
+  "em_surface": false,
+  "chrf": 0.5667,
+  "morf1": 0.5,
+  "elapsed_s": 13.8,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "turkish-vowel-harmony",
+  "query": 2,
+  "difficulty": "curveball",
+  "prompt": "days",
+  "gold": [
+   "ʜəɦ",
+   "ɸæŧ"
+  ],
+  "gold_joined": "ʜəɦɸæŧ",
+  "raw": "<analysis>\nStep 1: Identify the source word for \"day\", which is ʜəɦ.\nStep 2: Determine the plural suffix. The examples show two plural suffixes: ɸæŧ and ɸœŧ. \n- æɽ (house) -> æɽɸæŧ (houses)\n- œɠ (horse) -> œɠɸœŧ (horses)\n- æɸ (hand) -> æɸɸæŧ (hands)\n- ʟɤɠœʛ (book) -> ʟɤɠœʛɸœŧ (books)\nThe suffix vowel harmonizes with the rounding of the root vowel. Unrounded vowels (æ) take the unrounded suffix ɸæŧ, while rounded vowels (œ) take the rounded suffix ɸœŧ. Since the vowel in ʜəɦ (ə) is unrounded, it takes the unrounded plural suffix ɸæŧ.\nStep 3: Combine the root and suffix to get ʜəɦɸæŧ.\n</analysis>\n<answers>\nʜəɦɸæŧ\n</answers>",
+  "answer_text": "ʜəɦɸæŧ",
+  "morphemes": [
+   "ʜəɦ",
+   "ɸæŧ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 9.6,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "quechua-person-endings",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "I walk",
+  "gold": [
+   "ɮɐʋœ",
+   "ɧœ"
+  ],
+  "gold_joined": "ɮɐʋœɧœ",
+  "raw": "<analysis>\nStep 1: Identify the verb base for \"walk\" and the subject suffix for \"I\".\nFrom \"ɮɐʋœɧ\" (he walks) and \"ʋœɻɤɧ\" (she speaks), the third person singular suffix is \"ɧ\". The verb base for \"walk\" is \"ɮɐʋœ\".\nFrom \"ʋœɻɤɧœ\" (I speak) and \"ʋœɺɐɧœ\" (I see), the first person singular suffix for \"I\" is \"ɧœ\".\nStep 2: Combine the verb base and the subject suffix.\n\"walk\" + \"I\" = ɮɐʋœ + ɧœ = ɮɐʋœɧœ.\nStep 3: Compose the exact target-language form.\n</analysis>\n<answers>\nɮɐʋœɧœ\n</answers>",
+  "answer_text": "ɮɐʋœɧœ",
+  "morphemes": [
+   "ɮɐʋœ",
+   "ɧœ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 6.0,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "quechua-person-endings",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "we (all of us) see",
+  "gold": [
+   "ʋœɺɐ",
+   "ɧɬʍœɺ"
+  ],
+  "gold_joined": "ʋœɺɐɧɬʍœɺ",
+  "raw": "<analysis>\nStep 1: Identify the root for \"see\" and the suffix for \"we (all of us)\".\nFrom \"ʋœɺɐɧœ\" (I see), the root for \"see\" is \"ʋœɺɐ\".\nFrom \"ʋœɻɤɧɬʍœɺ\" (we (all of us) speak) and \"ɻœɺʍɐɧɬʍœɺ\" (we (all of us) eat), the suffix for \"we (all of us)\" is \"ɧɬʍœɺ\".\nStep 2: Combine the root and suffix.\n\"see\" + \"we (all of us)\" = ʋœɺɐ + ɧɬʍœɺ = ʋœɺɐɧɬʍœɺ.\nStep 3: Compose the exact target-language form.\n</analysis>\n<answers>\nʋœɺɐɧɬʍœɺ\n</answers>",
+  "answer_text": "ʋœɺɐɧɬʍœɺ",
+  "morphemes": [
+   "ʋœɺɐ",
+   "ɧɬʍœɺ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 6.3,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "quechua-person-endings",
+  "query": 2,
+  "difficulty": "curveball",
+  "prompt": "she eats",
+  "gold": [
+   "ɻœɺʍɐ",
+   "ɧ"
+  ],
+  "gold_joined": "ɻœɺʍɐɧ",
+  "raw": "<analysis>\nStep 1: Identify the verb roots and subject suffixes from the evidence.\n- \"speak\" = ʋœɻɤ\n- \"see\" = ʋœɺɐ\n- \"eat\" = ɻœɺʍɐ\n- \"walk\" = ɮɐʋœ\n\nSubject suffixes:\n- \"I\" = ɧœ\n- \"you\" = ɧɺœ\n- \"she\" / \"he\" = ɧ\n- \"we (all of us)\" = ɧɬʍœɺ\n\nStep 2: Translate the query \"she eats\".\n- \"eat\" = ɻœɺʍɐ\n- \"she\" = ɧ\n- Combine them: ɻœɺʍɐ + ɧ = ɻœɺʍɐɧ\n\nStep 3: Construct the final string.\n</analysis>\n<answers>\nɻœɺʍɐɧ\n</answers>",
+  "answer_text": "ɻœɺʍɐɧ",
+  "morphemes": [
+   "ɻœɺʍɐ",
+   "ɧ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 6.7,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "nahuatl-both-ends",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "I sing",
+  "gold": [
+   "ʝɵ",
+   "ƌæɵƌʉ"
+  ],
+  "gold_joined": "ʝɵƌæɵƌʉ",
+  "raw": "<analysis>\nStep 1: Identify the source word for \"sing\" and the subject prefix for \"I\".\nFrom \"ɽɵƌæɵƌʉ\" (you sing) and \"ƌæɵƌʉɾ\" (they sing), the root for \"sing\" is \"ƌæɵƌʉ\".\nFrom \"ʝɵƌɶƌɾɵ\" (I sleep) and \"ʝɵƌɾɶƌʉ\" (I cry), the prefix for \"I\" is \"ʝɵ\".\nStep 2: Combine the prefix and the root.\n\"I sing\" -> ʝɵ + ƌæɵƌʉ -> ʝɵƌæɵƌʉ.\nStep 3: Compose the exact target-language form.\n</analysis>\n<answers>\nʝɵƌæɵƌʉ\n</answers>",
+  "answer_text": "ʝɵƌæɵƌʉ",
+  "morphemes": [
+   "ʝɵ",
+   "ƌæɵƌʉ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 5.9,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "nahuatl-both-ends",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "they cry",
+  "gold": [
+   "ƌɾɶƌʉ",
+   "ɾ"
+  ],
+  "gold_joined": "ƌɾɶƌʉɾ",
+  "raw": "<analysis>\nStep 1: Identify the root for \"cry\", which is `ƌɾɶƌʉ` based on \"I cry\" (`ʝɵƌɾɶƌʉ`).\nStep 2: Identify the affix for \"they\". \"he sleeps\" is `ƌɶƌɾɵ` (no prefix), and \"they sing\" is `ƌæɵƌʉɾ` (no prefix, suffix `ɾ`). Thus, the 3rd person plural \"they\" takes no prefix and the suffix `ɾ`.\nStep 3: Combine the root and the suffix: `ƌɾɶƌʉ` + `ɾ` = `ƌɾɶƌʉɾ`.\n</analysis>\n<answers>\nƌɾɶƌʉɾ\n</answers>",
+  "answer_text": "ƌɾɶƌʉɾ",
+  "morphemes": [
+   "ƌɾɶƌʉ",
+   "ɾ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 7.8,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "nahuatl-both-ends",
+  "query": 2,
+  "difficulty": "curveball",
+  "prompt": "we sing",
+  "gold": [
+   "ʝɵ",
+   "ƌæɵƌʉ",
+   "ɾ"
+  ],
+  "gold_joined": "ʝɵƌæɵƌʉɾ",
+  "raw": "<analysis>\nStep 1: Identify the source words and affixes from the examples.\n- \"sleep\" is `ƌɶƌɾɵ`\n- \"cry\" is `ƌɾɶƌʉ`\n- \"sing\" is `ƌæɵƌʉ`\n- \"I\" is marked by the prefix `ʝɵ-`\n- \"you\" is marked by the prefix `ɽɵ-`\n- \"he\" has no prefix\n- \"they\" has no prefix but adds the suffix `-ɾ`\n- \"we\" is marked by the prefix `ʝɵ-` (like \"I\") and the suffix `-ɾ` (plural marker).\n\nStep 2: Apply the grammar to the query \"we sing\".\n- Root for \"sing\": `ƌæɵƌʉ`\n- Prefix for \"we\": `ʝɵ-`\n- Suffix for \"we\": `-ɾ`\n\nStep 3: Combine the morphemes.\n- `ʝɵ` + `ƌæɵƌʉ` + `ɾ` = `ʝɵƌæɵƌʉɾ`\n</analysis>\n<answers>\nʝɵƌæɵƌʉɾ\n</answers>",
+  "answer_text": "ʝɵƌæɵƌʉɾ",
+  "morphemes": [
+   "ʝɵ",
+   "ƌæɵƌʉ",
+   "ɾ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 6.2,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "esperanto-tense",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "you learned",
+  "gold": [
+   "ɸø",
+   "ʂɶɬʜ",
+   "øɽ"
+  ],
+  "gold_joined": "ɸø ʂɶɬʜøɽ",
+  "raw": "<analysis>\nStep 1: Identify the source words for the query \"you learned\". From the evidence, \"you\" corresponds to the pronoun `ɸø`. The verb \"learn\" corresponds to the stem `ʂɶɬʜ`.\nStep 2: Identify the tense marker. \"I learn\" uses the suffix `əɽ`, \"I learned\" uses `øɽ`, and \"I will learn\" uses `ʌɽ`. Thus, the past tense suffix is `øɽ`.\nStep 3: Combine the morphemes. The structure is [Pronoun] [Verb stem][Tense suffix]. This gives `ɸø` and `ʂɶɬʜøɽ`.\n</analysis>\n<answers>\nɸø ʂɶɬʜøɽ\n</answers>",
+  "answer_text": "ɸø ʂɶɬʜøɽ",
+  "morphemes": [
+   "ɸø",
+   "ʂɶɬʜ",
+   "øɽ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 0.696,
+  "morf1": 1.0,
+  "elapsed_s": 5.3,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "esperanto-tense",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "we learned",
+  "gold": [
+   "ʜø",
+   "ʂɶɬʜ",
+   "øɽ"
+  ],
+  "gold_joined": "ʜø ʂɶɬʜøɽ",
+  "raw": "<analysis>\nStep 1: Identify the source words for the query \"we learned\".\n- \"we\" corresponds to the pronoun `ʜø` based on \"ʜø ʂɶɬʜəɽ\" (we learn).\n- \"learn\" corresponds to the root `ʂɶɬʜ`.\nStep 2: Note the grammar for the tense.\n- The past tense suffix is `øɽ`, as seen in \"ƒø ʂɶɬʜøɽ\" (I learned) compared to \"ƒø ʂɶɬʜəɽ\" (I learn).\nStep 3: Compose the target-language form.\n- \"we learned\" -> `ʜø` + `ʂɶɬʜ` + `øɽ` -> `ʜø ʂɶɬʜøɽ`.\n</analysis>\n<answers>\nʜø ʂɶɬʜøɽ\n</answers>",
+  "answer_text": "ʜø ʂɶɬʜøɽ",
+  "morphemes": [
+   "ʜø",
+   "ʂɶɬʜ",
+   "øɽ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 0.696,
+  "morf1": 1.0,
+  "elapsed_s": 5.9,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "esperanto-tense",
+  "query": 2,
+  "difficulty": "standard",
+  "prompt": "I will eat",
+  "gold": [
+   "ƒø",
+   "ƒəʜʡ",
+   "ʌɽ"
+  ],
+  "gold_joined": "ƒø ƒəʜʡʌɽ",
+  "raw": "<analysis>\nStep 1: Identify the source words for the query \"I will eat\". From the evidence, \"I\" is `ƒø`, and \"eat\" is `ƒəʜʡ`.\nStep 2: Note the grammar for the future tense. The present tense of \"learn\" is `ʂɶɬʜəɽ`, past is `ʂɶɬʜøɽ`, and future is `ʂɶɬʜʌɽ`. This shows that the future tense suffix is `ʌɽ`.\nStep 3: Compose the target-language form. \"I will eat\" is `ƒø` + `ƒəʜʡ` + `ʌɽ` = `ƒø ƒəʜʡʌɽ`.\n</analysis>\n<answers>\nƒø ƒəʜʡʌɽ\n</answers>",
+  "answer_text": "ƒø ƒəʜʡʌɽ",
+  "morphemes": [
+   "ƒø",
+   "ƒəʜʡ",
+   "ʌɽ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 0.696,
+  "morf1": 1.0,
+  "elapsed_s": 5.9,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "esperanto-tense",
+  "query": 3,
+  "difficulty": "standard",
+  "prompt": "they eat",
+  "gold": [
+   "øʂø",
+   "ƒəʜʡ",
+   "əɽ"
+  ],
+  "gold_joined": "øʂø ƒəʜʡəɽ",
+  "raw": "<analysis>\nStep 1: Identify the source words for \"they\" and \"eat\". From the evidence, \"they\" is `øʂø`, and \"eat\" is `ƒəʜʡ`.\nStep 2: Note the grammar. The present tense marker is `əɽ` (as seen in \"I learn\" `ƒø ʂɶɬʜəɽ` vs \"I learned\" `ƒø ʂɶɬʜøɽ`).\nStep 3: Compose the target-language form. Pronoun followed by Verb+Tense. \"they eat\" -> `øʂø ƒəʜʡəɽ`.\n</analysis>\n<answers>\nøʂø ƒəʜʡəɽ\n</answers>",
+  "answer_text": "øʂø ƒəʜʡəɽ",
+  "morphemes": [
+   "øʂø",
+   "ƒəʜʡ",
+   "əɽ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 0.699,
+  "morf1": 1.0,
+  "elapsed_s": 5.8,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "esperanto-tense",
+  "query": 4,
+  "difficulty": "standard",
+  "prompt": "he ate",
+  "gold": [
+   "ʂø",
+   "ƒəʜʡ",
+   "øɽ"
+  ],
+  "gold_joined": "ʂø ƒəʜʡøɽ",
+  "raw": "<analysis>\nStep 1: Identify the pronouns and verb roots from the examples.\n- \"I\" = ƒø\n- \"you\" = ɸø\n- \"he\" = ʂø\n- \"we\" = ʜø\n- \"they\" = øʂø\n- \"learn\" = ʂɶɬʜ\n- \"eat\" = ƒəʜʡ\n\nStep 2: Identify the tense suffixes.\n- present (\"learn\", \"eat\") = əɽ\n- past (\"learned\") = øɽ\n- future (\"will learn\") = ʌɽ\n\nStep 3: Construct the query \"he ate\".\n- \"he\" = ʂø\n- \"eat\" (past) = ƒəʜʡ + øɽ = ƒəʜʡøɽ\nResult: ʂø ƒəʜʡøɽ\n</analysis>\n<answers>\nʂø ƒəʜʡøɽ\n</answers>",
+  "answer_text": "ʂø ƒəʜʡøɽ",
+  "morphemes": [
+   "ʂø",
+   "ƒəʜʡ",
+   "øɽ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 0.696,
+  "morf1": 1.0,
+  "elapsed_s": 6.4,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "indonesian-plurals",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "I eat",
+  "gold": [
+   "ʠʊəʊ",
+   "ʂʊɮʊɺ"
+  ],
+  "gold_joined": "ʠʊəʊ ʂʊɮʊɺ",
+  "raw": "<analysis>\nStep 1: Identify the source word for the numbered item. The query is \"I eat\".\nStep 2: Look up its meaning from the examples. In the evidence, \"I eat\" is explicitly given as \"ʠʊəʊ ʂʊɮʊɺ\".\nStep 3: Compose the exact target-language form.\n</analysis>\n<answers>\nʠʊəʊ ʂʊɮʊɺ\n</answers>",
+  "answer_text": "ʠʊəʊ ʂʊɮʊɺ",
+  "morphemes": [
+   "ʠʊəʊ",
+   "ʂʊɮʊɺ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 0.699,
+  "morf1": 1.0,
+  "elapsed_s": 4.7,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "indonesian-plurals",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "children",
+  "gold": [
+   "ʊɺʊɮ-ʊɺʊɮ"
+  ],
+  "gold_joined": "ʊɺʊɮ-ʊɺʊɮ",
+  "raw": "<analysis>\nStep 1: Identify the source word for the query \"children\". From the evidence, \"ʊɺʊɮ\" means \"child\", and \"ʊɺʊɮ-ʊɺʊɮ\" means \"children\".\nStep 2: The query is a single word, \"children\".\nStep 3: The exact target-language form is \"ʊɺʊɮ-ʊɺʊɮ\".\n</analysis>\n<answers>\nʊɺʊɮ-ʊɺʊɮ\n</answers>",
+  "answer_text": "ʊɺʊɮ-ʊɺʊɮ",
+  "morphemes": [
+   "ʊɺʊɮ-ʊɺʊɮ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 3.2,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "indonesian-plurals",
+  "query": 2,
+  "difficulty": "standard",
+  "prompt": "horses",
+  "gold": [
+   "ɮɔʀʊ-ɮɔʀʊ"
+  ],
+  "gold_joined": "ɮɔʀʊ-ɮɔʀʊ",
+  "raw": "<analysis>\nStep 1: Identify the source word for the numbered item. The query is \"horses\".\nStep 2: Look up its meaning from the examples. The example \"ɮɔʀʊ-ɮɔʀʊ → horses\" provides the exact translation.\nStep 3: Compose the exact target-language form. The translation is ɮɔʀʊ-ɮɔʀʊ.\n</analysis>\n<answers>\nɮɔʀʊ-ɮɔʀʊ\n</answers>",
+  "answer_text": "ɮɔʀʊ-ɮɔʀʊ",
+  "morphemes": [
+   "ɮɔʀʊ-ɮɔʀʊ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 4.3,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "indonesian-plurals",
+  "query": 3,
+  "difficulty": "standard",
+  "prompt": "books",
+  "gold": [
+   "ɽɔɮɔ-ɽɔɮɔ"
+  ],
+  "gold_joined": "ɽɔɮɔ-ɽɔɮɔ",
+  "raw": "<analysis>\nStep 1: Identify the source word for the query. The query is \"books\".\nStep 2: Look up the meaning from the examples. \"book\" is \"ɽɔɮɔ\", and \"books\" is \"ɽɔɮɔ-ɽɔɮɔ\".\nStep 3: Compose the exact target-language form.\n</analysis>\n<answers>\nɽɔɮɔ-ɽɔɮɔ\n</answers>",
+  "answer_text": "ɽɔɮɔ-ɽɔɮɔ",
+  "morphemes": [
+   "ɽɔɮɔ-ɽɔɮɔ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 4.8,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "indonesian-plurals",
+  "query": 4,
+  "difficulty": "standard",
+  "prompt": "we eat",
+  "gold": [
+   "ɮʊʂɨ",
+   "ʂʊɮʊɺ"
+  ],
+  "gold_joined": "ɮʊʂɨ ʂʊɮʊɺ",
+  "raw": "<analysis>\nStep 1: Identify the source word for the numbered item. The query is \"we eat\".\nStep 2: Look up its meaning from the examples. The evidence explicitly provides \"ɮʊʂɨ ʂʊɮʊɺ → we eat\".\nStep 3: Compose the exact target-language form. The translation is \"ɮʊʂɨ ʂʊɮʊɺ\".\n</analysis>\n<answers>\nɮʊʂɨ ʂʊɮʊɺ\n</answers>",
+  "answer_text": "ɮʊʂɨ ʂʊɮʊɺ",
+  "morphemes": [
+   "ɮʊʂɨ",
+   "ʂʊɮʊɺ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 0.699,
+  "morf1": 1.0,
+  "elapsed_s": 4.5,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "finnish-harmony",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "houses",
+  "gold": [
+   "ʄʉɺɪ",
+   "ʄ"
+  ],
+  "gold_joined": "ʄʉɺɪʄ",
+  "raw": "<analysis>\nStep 1: Identify the source word for \"houses\". The base word for \"house\" is ʄʉɺɪ.\nStep 2: Note the grammar for plural. The plural suffix is ʄ (as seen in ʄʉɺɪʄ \"houses\" and ʁɘɺæʄ \"villages\").\nStep 3: Compose the exact target-language form. ʄʉɺɪ + ʄ = ʄʉɺɪʄ.\n</analysis>\n<answers>\nʄʉɺɪʄ\n</answers>",
+  "answer_text": "ʄʉɺɪʄ",
+  "morphemes": [
+   "ʄʉɺɪ",
+   "ʄ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 4.4,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "finnish-harmony",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "in the house",
+  "gold": [
+   "ʄʉɺɪ",
+   "ɧɧʉ"
+  ],
+  "gold_joined": "ʄʉɺɪɧɧʉ",
+  "raw": "<analysis>\nStep 1: Identify the source word for the query. The query is \"in the house\".\nStep 2: Look up the exact phrase in the given evidence. The evidence states that \"in the house\" translates to \"ʄʉɺɪɧɧʉ\".\nStep 3: Compose the exact target-language form. The morphemes are \"ʄʉɺɪ\" (house) and \"ɧɧʉ\" (in).\n</analysis>\n<answers>\nʄʉɺɪɧɧʉ\n</answers>",
+  "answer_text": "ʄʉɺɪɧɧʉ",
+  "morphemes": [
+   "ʄʉɺɪ",
+   "ɧɧʉ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 4.5,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "finnish-harmony",
+  "query": 2,
+  "difficulty": "standard",
+  "prompt": "villages",
+  "gold": [
+   "ʁɘɺæ",
+   "ʄ"
+  ],
+  "gold_joined": "ʁɘɺæʄ",
+  "raw": "<analysis>\nStep 1: Identify the source word for \"villages\". From the examples, \"village\" is `ʁɘɺæ` and \"villages\" is `ʁɘɺæʄ`.\nStep 2: The plural marker is `ʄ`.\nStep 3: Combine the stem `ʁɘɺæ` with the plural suffix `ʄ` to get `ʁɘɺæʄ`.\n</analysis>\n<answers>\nʁɘɺæʄ\n</answers>",
+  "answer_text": "ʁɘɺæʄ",
+  "morphemes": [
+   "ʁɘɺæ",
+   "ʄ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 3.4,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "finnish-harmony",
+  "query": 3,
+  "difficulty": "curveball",
+  "prompt": "in the village",
+  "gold": [
+   "ʁɘɺæ",
+   "ɧɧæ"
+  ],
+  "gold_joined": "ʁɘɺæɧɧæ",
+  "raw": "<analysis>\nStep 1: Identify the source word for the numbered item. We need to translate \"in the village\".\nStep 2: Look at the evidence provided. \"village\" is ʁɘɺæ. \"in the village\" is explicitly given as ʁɘɺæɧɧæ.\nStep 3: Compose the exact target-language form. The word is ʁɘɺæɧɧæ.\n</analysis>\n<answers>\nʁɘɺæɧɧæ\n</answers>",
+  "answer_text": "ʁɘɺæɧɧæ",
+  "morphemes": [
+   "ʁɘɺæ",
+   "ɧɧæ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 4.4,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "finnish-harmony",
+  "query": 4,
+  "difficulty": "standard",
+  "prompt": "in the school",
+  "gold": [
+   "ʁɪʌɺʌ",
+   "ɧɧʉ"
+  ],
+  "gold_joined": "ʁɪʌɺʌɧɧʉ",
+  "raw": "<analysis>\nStep 1: Identify the source word for the query \"in the school\".\nStep 2: From the evidence, \"school\" is ʁɪʌɺʌ and \"in the school\" is ʁɪʌɺʌɧɧʉ.\nStep 3: Compose the exact target-language form.\n</analysis>\n<answers>\nʁɪʌɺʌɧɧʉ\n</answers>",
+  "answer_text": "ʁɪʌɺʌɧɧʉ",
+  "morphemes": [
+   "ʁɪʌɺʌ",
+   "ɧɧʉ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 4.0,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "maori-pronouns",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "we two, not you",
+  "gold": [
+   "ɹɤ",
+   "ʉɘ"
+  ],
+  "gold_joined": "ɹɤʉɘ",
+  "raw": "<analysis>\nStep 1: Identify the source word for the numbered item. The query is \"we two, not you\".\nStep 2: Look up its meaning from the examples. In the evidence, \"we two, not you\" is explicitly given as \"ɹɤʉɘ\".\nStep 3: Compose the exact target-language form. The translation is \"ɹɤʉɘ\".\n</analysis>\n<answers>\nɹɤʉɘ\n</answers>",
+  "answer_text": "ɹɤʉɘ",
+  "morphemes": [
+   "ɹɤ",
+   "ʉɘ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 4.7,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "maori-pronouns",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "all of us, incl. you",
+  "gold": [
+   "ʒɤ",
+   "ʒɨʉ"
+  ],
+  "gold_joined": "ʒɤʒɨʉ",
+  "raw": "<analysis>\nStep 1: Identify the source word for the query. The query is \"all of us, incl. you\".\nStep 2: Look up the meaning from the examples. The evidence explicitly states \"ʒɤʒɨʉ → all of us, incl. you\".\nStep 3: Compose the exact target-language form. The morphemes used are ʒɤ (inclusive first person) and ʒɨʉ (plural/all). Thus, the sequence is ʒɤʒɨʉ.\n</analysis>\n<answers>\nʒɤʒɨʉ\n</answers>",
+  "answer_text": "ʒɤʒɨʉ",
+  "morphemes": [
+   "ʒɤ",
+   "ʒɨʉ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 5.6,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "maori-pronouns",
+  "query": 2,
+  "difficulty": "standard",
+  "prompt": "they two",
+  "gold": [
+   "ɽɤ",
+   "ʉɘ"
+  ],
+  "gold_joined": "ɽɤʉɘ",
+  "raw": "<analysis>\nStep 1: Identify the source word for the query \"they two\".\nStep 2: From the evidence, \"they two\" is explicitly given as \"ɽɤʉɘ\".\nStep 3: The morphemes available are ɽɤ and ʉɘ, which combine to form ɽɤʉɘ.\n</analysis>\n<answers>\nɽɤʉɘ\n</answers>",
+  "answer_text": "ɽɤʉɘ",
+  "morphemes": [
+   "ɽɤ",
+   "ʉɘ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 3.3,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "maori-pronouns",
+  "query": 3,
+  "difficulty": "standard",
+  "prompt": "they all",
+  "gold": [
+   "ɽɤ",
+   "ʒɨʉ"
+  ],
+  "gold_joined": "ɽɤʒɨʉ",
+  "raw": "<analysis>\nStep 1: Identify the source word for the numbered item. The query is \"they all\".\nStep 2: Note the grammar and vocabulary from the examples. \"they all\" is given directly in the evidence as \"ɽɤʒɨʉ\".\nStep 3: Compose the exact target-language form. It is \"ɽɤʒɨʉ\".\n</analysis>\n<answers>\nɽɤʒɨʉ\n</answers>",
+  "answer_text": "ɽɤʒɨʉ",
+  "morphemes": [
+   "ɽɤ",
+   "ʒɨʉ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 4.3,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "maori-pronouns",
+  "query": 4,
+  "difficulty": "standard",
+  "prompt": "we, not you",
+  "gold": [
+   "ɹɤ",
+   "ʒɨʉ"
+  ],
+  "gold_joined": "ɹɤʒɨʉ",
+  "raw": "<analysis>\nStep 1: Identify the source word for the query. The query is \"we, not you\".\nStep 2: Look up its meaning from the examples. The evidence explicitly states \"ɹɤʒɨʉ → we, not you\".\nStep 3: Compose the exact target-language form. The morphemes are ɹɤ and ʒɨʉ, forming ɹɤʒɨʉ.\n</analysis>\n<answers>\nɹɤʒɨʉ\n</answers>",
+  "answer_text": "ɹɤʒɨʉ",
+  "morphemes": [
+   "ɹɤ",
+   "ʒɨʉ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 5.5,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "zulu-noun-class",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "boy",
+  "gold": [
+   "ɵʒ",
+   "ɱæɽæ"
+  ],
+  "gold_joined": "ɵʒɱæɽæ",
+  "raw": "<analysis>\nStep 1: Identify the source word for the query. The query is \"boy\".\nStep 2: From the evidence, \"boy\" is translated as ɵʒɱæɽæ.\nStep 3: The morphemes available are ɵʒ and ɱæɽæ, which combine to form ɵʒɱæɽæ.\n</analysis>\n<answers>\nɵʒɱæɽæ\n</answers>",
+  "answer_text": "ɵʒɱæɽæ",
+  "morphemes": [
+   "ɵʒ",
+   "ɱæɽæ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 3.9,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "zulu-noun-class",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "children",
+  "gold": [
+   "æƃæ",
+   "ɽʄƀæɽæ"
+  ],
+  "gold_joined": "æƃæɽʄƀæɽæ",
+  "raw": "<analysis>\nStep 1: Identify the source word for the query \"children\".\nStep 2: From the evidence, \"child\" is ɵʒɽʄƀæɽæ and \"children\" is æƃæɽʄƀæɽæ.\nStep 3: The exact target-language form for \"children\" is æƃæɽʄƀæɽæ.\n</analysis>\n<answers>\næƃæɽʄƀæɽæ\n</answers>",
+  "answer_text": "æƃæɽʄƀæɽæ",
+  "morphemes": [
+   "æƃæ",
+   "ɽʄƀæɽæ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 3.7,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "zulu-noun-class",
+  "query": 2,
+  "difficulty": "standard",
+  "prompt": "school",
+  "gold": [
+   "ʉʜʉ",
+   "ʛʚɴʚ"
+  ],
+  "gold_joined": "ʉʜʉʛʚɴʚ",
+  "raw": "<analysis>\nStep 1: Identify the source word for the query \"school\".\nStep 2: From the evidence, \"ʉʜʉʛʚɴʚ\" directly translates to \"school\".\nStep 3: The exact target-language form is ʉʜʉʛʚɴʚ.\n</analysis>\n<answers>\nʉʜʉʛʚɴʚ\n</answers>",
+  "answer_text": "ʉʜʉʛʚɴʚ",
+  "morphemes": [
+   "ʉʜʉ",
+   "ʛʚɴʚ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 4.1,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "zulu-noun-class",
+  "query": 3,
+  "difficulty": "standard",
+  "prompt": "schools",
+  "gold": [
+   "ʉʈʉ",
+   "ʛʚɴʚ"
+  ],
+  "gold_joined": "ʉʈʉʛʚɴʚ",
+  "raw": "<analysis>\nStep 1: Identify the source word for the query \"schools\".\nStep 2: From the evidence, \"schools\" is translated as \"ʉʈʉʛʚɴʚ\".\nStep 3: The morphemes used are ʉʈʉ and ʛʚɴʚ. Combine them to form the exact target-language string.\n</analysis>\n<answers>\nʉʈʉʛʚɴʚ\n</answers>",
+  "answer_text": "ʉʈʉʛʚɴʚ",
+  "morphemes": [
+   "ʉʈʉ",
+   "ʛʚɴʚ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 4.9,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "zulu-noun-class",
+  "query": 4,
+  "difficulty": "curveball",
+  "prompt": "students",
+  "gold": [
+   "æƃæ",
+   "ɱɵɽɫʉ"
+  ],
+  "gold_joined": "æƃæɱɵɽɫʉ",
+  "raw": "<analysis>\nStep 1: Identify the source word for the numbered item. The query is \"students\".\nStep 2: Look up its meaning from the examples. The evidence explicitly contains \"æƃæɱɵɽɫʉ → students\".\nStep 3: Compose the exact target-language form. The prefix for plural animate nouns is \"æƃæ\" (as seen in æƃæ-ɽʄƀæɽæ \"children\", æƃæ-ɱæɽæ \"boys\"), and the root for student is \"ɱɵɽɫʉ\". The combination is \"æƃæɱɵɽɫʉ\".\n</analysis>\n<answers>\næƃæɱɵɽɫʉ\n</answers>",
+  "answer_text": "æƃæɱɵɽɫʉ",
+  "morphemes": [
+   "æƃæ",
+   "ɱɵɽɫʉ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 5.0,
+  "model": "gemini-3-1-pro",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ }
+]

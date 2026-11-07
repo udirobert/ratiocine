@@ -1,0 +1,9479 @@
+[
+ {
+  "id": "gen-000",
+  "language": "Rurowu",
+  "languageCode": "Qrur",
+  "family": "Generated/vowel-harmony",
+  "region": "Synthetic",
+  "taskType": "morphology",
+  "title": "Rurowu field notes",
+  "instruction": "Deduce the grammar and translate.",
+  "difficulty": "hard",
+  "pairs": [
+   {
+    "source": "kipromere",
+    "target": "we played",
+    "morphemes": [
+     "kip",
+     "rome",
+     "re"
+    ]
+   },
+   {
+    "source": "jewromepe",
+    "target": "he plays",
+    "morphemes": [
+     "jew",
+     "rome",
+     "pe"
+    ]
+   },
+   {
+    "source": "pemjumuru",
+    "target": "you cooked",
+    "morphemes": [
+     "pem",
+     "jumu",
+     "ru"
+    ]
+   },
+   {
+    "source": "pemromepeti",
+    "target": "Do you play?",
+    "morphemes": [
+     "pem",
+     "rome",
+     "pe",
+     "ti"
+    ]
+   },
+   {
+    "source": "wekjumupu",
+    "target": "you all cook",
+    "morphemes": [
+     "wek",
+     "jumu",
+     "pu"
+    ]
+   },
+   {
+    "source": "puwjumuputo",
+    "target": "Do they cook?",
+    "morphemes": [
+     "puw",
+     "jumu",
+     "pu",
+     "to"
+    ]
+   },
+   {
+    "source": "kipromereti",
+    "target": "Did we play?",
+    "morphemes": [
+     "kip",
+     "rome",
+     "re",
+     "ti"
+    ]
+   },
+   {
+    "source": "wekjumuruto",
+    "target": "Did you all cook?",
+    "morphemes": [
+     "wek",
+     "jumu",
+     "ru",
+     "to"
+    ]
+   },
+   {
+    "source": "wetjumuru",
+    "target": "I cooked",
+    "morphemes": [
+     "wet",
+     "jumu",
+     "ru"
+    ]
+   },
+   {
+    "source": "wetpomere",
+    "target": "I walked",
+    "morphemes": [
+     "wet",
+     "pome",
+     "re"
+    ]
+   },
+   {
+    "source": "wetwemepeti",
+    "target": "Do I watch?",
+    "morphemes": [
+     "wet",
+     "weme",
+     "pe",
+     "ti"
+    ]
+   },
+   {
+    "source": "wekrotipe",
+    "target": "you all carry",
+    "morphemes": [
+     "wek",
+     "roti",
+     "pe"
+    ]
+   },
+   {
+    "source": "pemmewireti",
+    "target": "Did you smile?",
+    "morphemes": [
+     "pem",
+     "mewi",
+     "re",
+     "ti"
+    ]
+   },
+   {
+    "source": "wekjekireti",
+    "target": "Did you all call?",
+    "morphemes": [
+     "wek",
+     "jeki",
+     "re",
+     "ti"
+    ]
+   }
+  ],
+  "queries": [
+   {
+    "id": 0,
+    "prompt": "we played",
+    "answer": [
+     "kip",
+     "rome",
+     "re"
+    ],
+    "answerJoined": "kipromere",
+    "difficulty": "tutorial",
+    "flavor": "Free — this exact phrase is in the notes.",
+    "hintOnFail": ""
+   },
+   {
+    "id": 1,
+    "prompt": "Do you all call?",
+    "answer": [
+     "wek",
+     "jeki",
+     "pe",
+     "ti"
+    ],
+    "answerJoined": "wekjekipeti",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 2,
+    "prompt": "they smiled",
+    "answer": [
+     "puw",
+     "mewi",
+     "re"
+    ],
+    "answerJoined": "puwmewire",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 3,
+    "prompt": "I smile",
+    "answer": [
+     "wet",
+     "mewi",
+     "pe"
+    ],
+    "answerJoined": "wetmewipe",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 4,
+    "prompt": "Did we smile?",
+    "answer": [
+     "kip",
+     "mewi",
+     "re",
+     "ti"
+    ],
+    "answerJoined": "kipmewireti",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 5,
+    "prompt": "Did you all smile?",
+    "answer": [
+     "wek",
+     "mewi",
+     "re",
+     "ti"
+    ],
+    "answerJoined": "wekmewireti",
+    "difficulty": "curveball",
+    "flavor": "Watch the question marker's vowel.",
+    "hintOnFail": ""
+   },
+   {
+    "id": 6,
+    "prompt": "Did you carry?",
+    "answer": [
+     "pem",
+     "roti",
+     "re",
+     "ti"
+    ],
+    "answerJoined": "pemrotireti",
+    "difficulty": "curveball",
+    "flavor": "Watch the question marker's vowel.",
+    "hintOnFail": ""
+   }
+  ],
+  "morphemeBank": [
+   [
+    "jew",
+    "kip",
+    "pem",
+    "puw",
+    "wek",
+    "wet"
+   ],
+   [
+    "jeki",
+    "jumu",
+    "mewi",
+    "pome",
+    "rome",
+    "roti",
+    "weme",
+    "woje"
+   ],
+   [
+    "pe",
+    "pu",
+    "re",
+    "ru"
+   ],
+   [
+    "ti",
+    "to"
+   ]
+  ],
+  "hints": [
+   {
+    "level": 1,
+    "type": "highlight",
+    "text": "Compare minimal pairs to isolate each morpheme."
+   }
+  ],
+  "lore": "Rurowu verbs mark tense and questions with vowel harmony.",
+  "nextPreview": "",
+  "theme": "synthetic",
+  "verdicts": {}
+ },
+ {
+  "id": "gen-001",
+  "language": "Mekosa",
+  "languageCode": "Qmek",
+  "family": "Generated/noun-class-agreement",
+  "region": "Synthetic",
+  "taskType": "morphology",
+  "title": "Mekosa field notes",
+  "instruction": "Deduce the grammar and translate.",
+  "difficulty": "hard",
+  "pairs": [
+   {
+    "source": "sukoe seponikune",
+    "target": "the cat cleaned",
+    "morphemes": [
+     "sukoe",
+     "se",
+     "poni",
+     "ku",
+     "ne"
+    ]
+   },
+   {
+    "source": "pelit lenalimulu",
+    "target": "the bear calls",
+    "morphemes": [
+     "pelit",
+     "le",
+     "nali",
+     "mu",
+     "lu"
+    ]
+   },
+   {
+    "source": "noreo serilamune",
+    "target": "the newt watches",
+    "morphemes": [
+     "noreo",
+     "se",
+     "rila",
+     "mu",
+     "ne"
+    ]
+   },
+   {
+    "source": "pelit leparamulu",
+    "target": "the bear jumps",
+    "morphemes": [
+     "pelit",
+     "le",
+     "para",
+     "mu",
+     "lu"
+    ]
+   },
+   {
+    "source": "pelit lepanekulu",
+    "target": "the bear cooked",
+    "morphemes": [
+     "pelit",
+     "le",
+     "pane",
+     "ku",
+     "lu"
+    ]
+   },
+   {
+    "source": "ropai sesitimune",
+    "target": "the crab smiles",
+    "morphemes": [
+     "ropai",
+     "se",
+     "siti",
+     "mu",
+     "ne"
+    ]
+   },
+   {
+    "source": "kalut lerilamulu",
+    "target": "the frog watches",
+    "morphemes": [
+     "kalut",
+     "le",
+     "rila",
+     "mu",
+     "lu"
+    ]
+   },
+   {
+    "source": "ropai separamune",
+    "target": "the crab jumps",
+    "morphemes": [
+     "ropai",
+     "se",
+     "para",
+     "mu",
+     "ne"
+    ]
+   },
+   {
+    "source": "petan kuparakulo",
+    "target": "the wolf jumped",
+    "morphemes": [
+     "petan",
+     "ku",
+     "para",
+     "ku",
+     "lo"
+    ]
+   },
+   {
+    "source": "noreo sepanemune",
+    "target": "the newt cooks",
+    "morphemes": [
+     "noreo",
+     "se",
+     "pane",
+     "mu",
+     "ne"
+    ]
+   },
+   {
+    "source": "pelit lerilakulu",
+    "target": "the bear watched",
+    "morphemes": [
+     "pelit",
+     "le",
+     "rila",
+     "ku",
+     "lu"
+    ]
+   },
+   {
+    "source": "lasan kupanemulo",
+    "target": "the deer cooks",
+    "morphemes": [
+     "lasan",
+     "ku",
+     "pane",
+     "mu",
+     "lo"
+    ]
+   },
+   {
+    "source": "leton kuparakulo",
+    "target": "the goat jumped",
+    "morphemes": [
+     "leton",
+     "ku",
+     "para",
+     "ku",
+     "lo"
+    ]
+   },
+   {
+    "source": "leton kunalikulo",
+    "target": "the goat called",
+    "morphemes": [
+     "leton",
+     "ku",
+     "nali",
+     "ku",
+     "lo"
+    ]
+   },
+   {
+    "source": "lasan kusitimulo",
+    "target": "the deer smiles",
+    "morphemes": [
+     "lasan",
+     "ku",
+     "siti",
+     "mu",
+     "lo"
+    ]
+   },
+   {
+    "source": "sukoe seponimune",
+    "target": "the cat cleans",
+    "morphemes": [
+     "sukoe",
+     "se",
+     "poni",
+     "mu",
+     "ne"
+    ]
+   }
+  ],
+  "queries": [
+   {
+    "id": 0,
+    "prompt": "the cat cleaned",
+    "answer": [
+     "sukoe",
+     "se",
+     "poni",
+     "ku",
+     "ne"
+    ],
+    "answerJoined": "sukoe seponikune",
+    "difficulty": "tutorial",
+    "flavor": "This exact clause is in the notes.",
+    "hintOnFail": ""
+   },
+   {
+    "id": 1,
+    "prompt": "the bird calls",
+    "answer": [
+     "tepit",
+     "le",
+     "nali",
+     "mu",
+     "lu"
+    ],
+    "answerJoined": "tepit lenalimulu",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 2,
+    "prompt": "the newt cleans",
+    "answer": [
+     "noreo",
+     "se",
+     "poni",
+     "mu",
+     "ne"
+    ],
+    "answerJoined": "noreo seponimune",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 3,
+    "prompt": "the deer watched",
+    "answer": [
+     "lasan",
+     "ku",
+     "rila",
+     "ku",
+     "lo"
+    ],
+    "answerJoined": "lasan kurilakulo",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 4,
+    "prompt": "the newt smiled",
+    "answer": [
+     "noreo",
+     "se",
+     "siti",
+     "ku",
+     "ne"
+    ],
+    "answerJoined": "noreo sesitikune",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 5,
+    "prompt": "the cat cooked",
+    "answer": [
+     "sukoe",
+     "se",
+     "pane",
+     "ku",
+     "ne"
+    ],
+    "answerJoined": "sukoe sepanekune",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 6,
+    "prompt": "the frog cooked",
+    "answer": [
+     "kalut",
+     "le",
+     "pane",
+     "ku",
+     "lu"
+    ],
+    "answerJoined": "kalut lepanekulu",
+    "difficulty": "curveball",
+    "flavor": "Does the verb 'know' what kind of noun it has?",
+    "hintOnFail": ""
+   },
+   {
+    "id": 7,
+    "prompt": "the bird jumped",
+    "answer": [
+     "tepit",
+     "le",
+     "para",
+     "ku",
+     "lu"
+    ],
+    "answerJoined": "tepit leparakulu",
+    "difficulty": "curveball",
+    "flavor": "Does the verb 'know' what kind of noun it has?",
+    "hintOnFail": ""
+   }
+  ],
+  "morphemeBank": [
+   [
+    "kalut",
+    "lasan",
+    "leton",
+    "noreo",
+    "pelit",
+    "petan",
+    "ropai",
+    "sukoe",
+    "tepit"
+   ],
+   [
+    "ku",
+    "le",
+    "se"
+   ],
+   [
+    "nali",
+    "pane",
+    "para",
+    "poni",
+    "rila",
+    "siti"
+   ],
+   [
+    "lo",
+    "lu",
+    "ne"
+   ],
+   [
+    "ku",
+    "mu"
+   ]
+  ],
+  "hints": [
+   {
+    "level": 1,
+    "type": "highlight",
+    "text": "Compare minimal pairs to isolate each morpheme."
+   }
+  ],
+  "lore": "Mekosa verbs agree with their subject noun by a matching prefix and suffix.",
+  "nextPreview": "",
+  "theme": "synthetic",
+  "verdicts": {}
+ },
+ {
+  "id": "gen-002",
+  "language": "Lesuso",
+  "languageCode": "Qles",
+  "family": "Generated/conditioned-suppletion",
+  "region": "Synthetic",
+  "taskType": "morphology",
+  "title": "Lesuso field notes",
+  "instruction": "Deduce the grammar and translate.",
+  "difficulty": "hard",
+  "pairs": [
+   {
+    "source": "mulomelaku",
+    "target": "we jump",
+    "morphemes": [
+     "mulo",
+     "mela",
+     "ku"
+    ]
+   },
+   {
+    "source": "pejutikape",
+    "target": "he smiled",
+    "morphemes": [
+     "peju",
+     "tika",
+     "pe"
+    ]
+   },
+   {
+    "source": "kalemelape",
+    "target": "they jumped",
+    "morphemes": [
+     "kale",
+     "mela",
+     "pe"
+    ]
+   },
+   {
+    "source": "mulojutipe",
+    "target": "we played",
+    "morphemes": [
+     "mulo",
+     "juti",
+     "pe"
+    ]
+   },
+   {
+    "source": "ketwjapaku",
+    "target": "you clean",
+    "morphemes": [
+     "ketw",
+     "japa",
+     "ku"
+    ]
+   },
+   {
+    "source": "pejusowiku",
+    "target": "he watches",
+    "morphemes": [
+     "peju",
+     "sowi",
+     "ku"
+    ]
+   },
+   {
+    "source": "wakilukope",
+    "target": "I cooked",
+    "morphemes": [
+     "waki",
+     "luko",
+     "pe"
+    ]
+   },
+   {
+    "source": "mulojokipe",
+    "target": "we cleaned",
+    "morphemes": [
+     "mulo",
+     "joki",
+     "pe"
+    ]
+   },
+   {
+    "source": "pejutipuku",
+    "target": "he helps",
+    "morphemes": [
+     "peju",
+     "tipu",
+     "ku"
+    ]
+   },
+   {
+    "source": "kalejutipe",
+    "target": "they played",
+    "morphemes": [
+     "kale",
+     "juti",
+     "pe"
+    ]
+   },
+   {
+    "source": "kaletikape",
+    "target": "they smiled",
+    "morphemes": [
+     "kale",
+     "tika",
+     "pe"
+    ]
+   },
+   {
+    "source": "kalejokipe",
+    "target": "they cleaned",
+    "morphemes": [
+     "kale",
+     "joki",
+     "pe"
+    ]
+   },
+   {
+    "source": "ketwmoweku",
+    "target": "you cook",
+    "morphemes": [
+     "ketw",
+     "mowe",
+     "ku"
+    ]
+   },
+   {
+    "source": "mulosowiku",
+    "target": "we watch",
+    "morphemes": [
+     "mulo",
+     "sowi",
+     "ku"
+    ]
+   },
+   {
+    "source": "kalelukoku",
+    "target": "they cook",
+    "morphemes": [
+     "kale",
+     "luko",
+     "ku"
+    ]
+   },
+   {
+    "source": "ketwsalope",
+    "target": "you watched",
+    "morphemes": [
+     "ketw",
+     "salo",
+     "pe"
+    ]
+   }
+  ],
+  "queries": [
+   {
+    "id": 0,
+    "prompt": "we jump",
+    "answer": [
+     "mulo",
+     "mela",
+     "ku"
+    ],
+    "answerJoined": "mulomelaku",
+    "difficulty": "tutorial",
+    "flavor": "This exact phrase is in the notes.",
+    "hintOnFail": ""
+   },
+   {
+    "id": 1,
+    "prompt": "we help",
+    "answer": [
+     "mulo",
+     "tipu",
+     "ku"
+    ],
+    "answerJoined": "mulotipuku",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 2,
+    "prompt": "he jumped",
+    "answer": [
+     "peju",
+     "mela",
+     "pe"
+    ],
+    "answerJoined": "pejumelape",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 3,
+    "prompt": "I clean",
+    "answer": [
+     "waki",
+     "joki",
+     "ku"
+    ],
+    "answerJoined": "wakijokiku",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 4,
+    "prompt": "you all walk",
+    "answer": [
+     "welo",
+     "wuko",
+     "ku"
+    ],
+    "answerJoined": "welowukoku",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 5,
+    "prompt": "you walked",
+    "answer": [
+     "ketw",
+     "wotu",
+     "pe"
+    ],
+    "answerJoined": "ketwwotupe",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 6,
+    "prompt": "he cleaned",
+    "answer": [
+     "peju",
+     "joki",
+     "pe"
+    ],
+    "answerJoined": "pejujokipe",
+    "difficulty": "curveball",
+    "flavor": "Two things change here — check both.",
+    "hintOnFail": ""
+   },
+   {
+    "id": 7,
+    "prompt": "they watched",
+    "answer": [
+     "kale",
+     "sowi",
+     "pe"
+    ],
+    "answerJoined": "kalesowipe",
+    "difficulty": "curveball",
+    "flavor": "Two things change here — check both.",
+    "hintOnFail": ""
+   }
+  ],
+  "morphemeBank": [
+   [
+    "kale",
+    "ketw",
+    "mulo",
+    "peju",
+    "waki",
+    "welo"
+   ],
+   [
+    "japa",
+    "joki",
+    "jole",
+    "julo",
+    "juti",
+    "luko",
+    "mela",
+    "mowe",
+    "salo",
+    "sowi",
+    "suke",
+    "tika",
+    "tipu",
+    "totu",
+    "wotu",
+    "wuko"
+   ],
+   [
+    "ka",
+    "ku",
+    "pe",
+    "pi"
+   ]
+  ],
+  "hints": [
+   {
+    "level": 1,
+    "type": "highlight",
+    "text": "Compare minimal pairs to isolate each morpheme."
+   }
+  ],
+  "lore": "Lesuso verbs have two stems chosen by the subject prefix's final sound.",
+  "nextPreview": "",
+  "theme": "synthetic",
+  "verdicts": {}
+ },
+ {
+  "id": "gen-003",
+  "language": "Kalemo",
+  "languageCode": "Qkal",
+  "family": "Generated/vowel-harmony",
+  "region": "Synthetic",
+  "taskType": "morphology",
+  "title": "Kalemo field notes",
+  "instruction": "Deduce the grammar and translate.",
+  "difficulty": "hard",
+  "pairs": [
+   {
+    "source": "pumkekijeki",
+    "target": "Do I help?",
+    "morphemes": [
+     "pum",
+     "keki",
+     "je",
+     "ki"
+    ]
+   },
+   {
+    "source": "mejkosujuko",
+    "target": "Does he carry?",
+    "morphemes": [
+     "mej",
+     "kosu",
+     "ju",
+     "ko"
+    ]
+   },
+   {
+    "source": "nenkekije",
+    "target": "you all help",
+    "morphemes": [
+     "nen",
+     "keki",
+     "je"
+    ]
+   },
+   {
+    "source": "nenkekipeki",
+    "target": "Did you all help?",
+    "morphemes": [
+     "nen",
+     "keki",
+     "pe",
+     "ki"
+    ]
+   },
+   {
+    "source": "lojkekipe",
+    "target": "we helped",
+    "morphemes": [
+     "loj",
+     "keki",
+     "pe"
+    ]
+   },
+   {
+    "source": "pemkosuju",
+    "target": "you carry",
+    "morphemes": [
+     "pem",
+     "kosu",
+     "ju"
+    ]
+   },
+   {
+    "source": "mejkosupuko",
+    "target": "Did he carry?",
+    "morphemes": [
+     "mej",
+     "kosu",
+     "pu",
+     "ko"
+    ]
+   },
+   {
+    "source": "nenkosupu",
+    "target": "you all carried",
+    "morphemes": [
+     "nen",
+     "kosu",
+     "pu"
+    ]
+   },
+   {
+    "source": "pummikupu",
+    "target": "I waited",
+    "morphemes": [
+     "pum",
+     "miku",
+     "pu"
+    ]
+   },
+   {
+    "source": "pemlulije",
+    "target": "you smile",
+    "morphemes": [
+     "pem",
+     "luli",
+     "je"
+    ]
+   },
+   {
+    "source": "mejpisupu",
+    "target": "he jumped",
+    "morphemes": [
+     "mej",
+     "pisu",
+     "pu"
+    ]
+   },
+   {
+    "source": "nenpisupu",
+    "target": "you all jumped",
+    "morphemes": [
+     "nen",
+     "pisu",
+     "pu"
+    ]
+   },
+   {
+    "source": "pumpisujuko",
+    "target": "Do I jump?",
+    "morphemes": [
+     "pum",
+     "pisu",
+     "ju",
+     "ko"
+    ]
+   },
+   {
+    "source": "pempisujuko",
+    "target": "Do you jump?",
+    "morphemes": [
+     "pem",
+     "pisu",
+     "ju",
+     "ko"
+    ]
+   }
+  ],
+  "queries": [
+   {
+    "id": 0,
+    "prompt": "Do I help?",
+    "answer": [
+     "pum",
+     "keki",
+     "je",
+     "ki"
+    ],
+    "answerJoined": "pumkekijeki",
+    "difficulty": "tutorial",
+    "flavor": "Free — this exact phrase is in the notes.",
+    "hintOnFail": ""
+   },
+   {
+    "id": 1,
+    "prompt": "I jumped",
+    "answer": [
+     "pum",
+     "pisu",
+     "pu"
+    ],
+    "answerJoined": "pumpisupu",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 2,
+    "prompt": "Do we carry?",
+    "answer": [
+     "loj",
+     "kosu",
+     "ju",
+     "ko"
+    ],
+    "answerJoined": "lojkosujuko",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 3,
+    "prompt": "Do we call?",
+    "answer": [
+     "loj",
+     "supe",
+     "je",
+     "ki"
+    ],
+    "answerJoined": "lojsupejeki",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 4,
+    "prompt": "we played",
+    "answer": [
+     "loj",
+     "keji",
+     "pe"
+    ],
+    "answerJoined": "lojkejipe",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 5,
+    "prompt": "Did you all watch?",
+    "answer": [
+     "nen",
+     "kili",
+     "pe",
+     "ki"
+    ],
+    "answerJoined": "nenkilipeki",
+    "difficulty": "curveball",
+    "flavor": "Watch the question marker's vowel.",
+    "hintOnFail": ""
+   },
+   {
+    "id": 6,
+    "prompt": "Do they jump?",
+    "answer": [
+     "pej",
+     "pisu",
+     "ju",
+     "ko"
+    ],
+    "answerJoined": "pejpisujuko",
+    "difficulty": "curveball",
+    "flavor": "Watch the question marker's vowel.",
+    "hintOnFail": ""
+   }
+  ],
+  "morphemeBank": [
+   [
+    "loj",
+    "mej",
+    "nen",
+    "pej",
+    "pem",
+    "pum"
+   ],
+   [
+    "keji",
+    "keki",
+    "kili",
+    "kosu",
+    "luli",
+    "miku",
+    "pisu",
+    "supe"
+   ],
+   [
+    "je",
+    "ju",
+    "pe",
+    "pu"
+   ],
+   [
+    "ki",
+    "ko"
+   ]
+  ],
+  "hints": [
+   {
+    "level": 1,
+    "type": "highlight",
+    "text": "Compare minimal pairs to isolate each morpheme."
+   }
+  ],
+  "lore": "Kalemo verbs mark tense and questions with vowel harmony.",
+  "nextPreview": "",
+  "theme": "synthetic",
+  "verdicts": {}
+ },
+ {
+  "id": "gen-004",
+  "language": "Muwuwa",
+  "languageCode": "Qmuw",
+  "family": "Generated/noun-class-agreement",
+  "region": "Synthetic",
+  "taskType": "morphology",
+  "title": "Muwuwa field notes",
+  "instruction": "Deduce the grammar and translate.",
+  "difficulty": "hard",
+  "pairs": [
+   {
+    "source": "wetou tupasupana",
+    "target": "the dog helped",
+    "morphemes": [
+     "wetou",
+     "tu",
+     "pasu",
+     "pa",
+     "na"
+    ]
+   },
+   {
+    "source": "tonua tupasupana",
+    "target": "the cat helped",
+    "morphemes": [
+     "tonua",
+     "tu",
+     "pasu",
+     "pa",
+     "na"
+    ]
+   },
+   {
+    "source": "tonua tupasukana",
+    "target": "the cat helps",
+    "morphemes": [
+     "tonua",
+     "tu",
+     "pasu",
+     "ka",
+     "na"
+    ]
+   },
+   {
+    "source": "jukit kesutapanu",
+    "target": "the newt cleaned",
+    "morphemes": [
+     "jukit",
+     "ke",
+     "suta",
+     "pa",
+     "nu"
+    ]
+   },
+   {
+    "source": "sujat kewiwikanu",
+    "target": "the bird cooks",
+    "morphemes": [
+     "sujat",
+     "ke",
+     "wiwi",
+     "ka",
+     "nu"
+    ]
+   },
+   {
+    "source": "nojom jusutakatu",
+    "target": "the lion cleans",
+    "morphemes": [
+     "nojom",
+     "ju",
+     "suta",
+     "ka",
+     "tu"
+    ]
+   },
+   {
+    "source": "tonua tuwiwikana",
+    "target": "the cat cooks",
+    "morphemes": [
+     "tonua",
+     "tu",
+     "wiwi",
+     "ka",
+     "na"
+    ]
+   },
+   {
+    "source": "nojom jurosapatu",
+    "target": "the lion played",
+    "morphemes": [
+     "nojom",
+     "ju",
+     "rosa",
+     "pa",
+     "tu"
+    ]
+   },
+   {
+    "source": "wetou tusutakana",
+    "target": "the dog cleans",
+    "morphemes": [
+     "wetou",
+     "tu",
+     "suta",
+     "ka",
+     "na"
+    ]
+   },
+   {
+    "source": "tipom juwiwikatu",
+    "target": "the wolf cooks",
+    "morphemes": [
+     "tipom",
+     "ju",
+     "wiwi",
+     "ka",
+     "tu"
+    ]
+   },
+   {
+    "source": "wetou turosakana",
+    "target": "the dog plays",
+    "morphemes": [
+     "wetou",
+     "tu",
+     "rosa",
+     "ka",
+     "na"
+    ]
+   },
+   {
+    "source": "tonua tuwiwipana",
+    "target": "the cat cooked",
+    "morphemes": [
+     "tonua",
+     "tu",
+     "wiwi",
+     "pa",
+     "na"
+    ]
+   },
+   {
+    "source": "wetou tunenopana",
+    "target": "the dog smiled",
+    "morphemes": [
+     "wetou",
+     "tu",
+     "neno",
+     "pa",
+     "na"
+    ]
+   },
+   {
+    "source": "wesot kepasupanu",
+    "target": "the crab helped",
+    "morphemes": [
+     "wesot",
+     "ke",
+     "pasu",
+     "pa",
+     "nu"
+    ]
+   },
+   {
+    "source": "wesot kewiwikanu",
+    "target": "the crab cooks",
+    "morphemes": [
+     "wesot",
+     "ke",
+     "wiwi",
+     "ka",
+     "nu"
+    ]
+   },
+   {
+    "source": "wesot kewiwipanu",
+    "target": "the crab cooked",
+    "morphemes": [
+     "wesot",
+     "ke",
+     "wiwi",
+     "pa",
+     "nu"
+    ]
+   }
+  ],
+  "queries": [
+   {
+    "id": 0,
+    "prompt": "the dog helped",
+    "answer": [
+     "wetou",
+     "tu",
+     "pasu",
+     "pa",
+     "na"
+    ],
+    "answerJoined": "wetou tupasupana",
+    "difficulty": "tutorial",
+    "flavor": "This exact clause is in the notes.",
+    "hintOnFail": ""
+   },
+   {
+    "id": 1,
+    "prompt": "the bear plays",
+    "answer": [
+     "pakuo",
+     "tu",
+     "rosa",
+     "ka",
+     "na"
+    ],
+    "answerJoined": "pakuo turosakana",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 2,
+    "prompt": "the newt cooked",
+    "answer": [
+     "jukit",
+     "ke",
+     "wiwi",
+     "pa",
+     "nu"
+    ],
+    "answerJoined": "jukit kewiwipanu",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 3,
+    "prompt": "the bear called",
+    "answer": [
+     "pakuo",
+     "tu",
+     "toji",
+     "pa",
+     "na"
+    ],
+    "answerJoined": "pakuo tutojipana",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 4,
+    "prompt": "the crab calls",
+    "answer": [
+     "wesot",
+     "ke",
+     "toji",
+     "ka",
+     "nu"
+    ],
+    "answerJoined": "wesot ketojikanu",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 5,
+    "prompt": "the fish plays",
+    "answer": [
+     "nutem",
+     "ju",
+     "rosa",
+     "ka",
+     "tu"
+    ],
+    "answerJoined": "nutem jurosakatu",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 6,
+    "prompt": "the bird cleaned",
+    "answer": [
+     "sujat",
+     "ke",
+     "suta",
+     "pa",
+     "nu"
+    ],
+    "answerJoined": "sujat kesutapanu",
+    "difficulty": "curveball",
+    "flavor": "Does the verb 'know' what kind of noun it has?",
+    "hintOnFail": ""
+   },
+   {
+    "id": 7,
+    "prompt": "the newt called",
+    "answer": [
+     "jukit",
+     "ke",
+     "toji",
+     "pa",
+     "nu"
+    ],
+    "answerJoined": "jukit ketojipanu",
+    "difficulty": "curveball",
+    "flavor": "Does the verb 'know' what kind of noun it has?",
+    "hintOnFail": ""
+   }
+  ],
+  "morphemeBank": [
+   [
+    "jukit",
+    "nojom",
+    "nutem",
+    "pakuo",
+    "sujat",
+    "tipom",
+    "tonua",
+    "wesot",
+    "wetou"
+   ],
+   [
+    "ju",
+    "ke",
+    "tu"
+   ],
+   [
+    "neno",
+    "pasu",
+    "rosa",
+    "suta",
+    "toji",
+    "wiwi"
+   ],
+   [
+    "na",
+    "nu",
+    "tu"
+   ],
+   [
+    "ka",
+    "pa"
+   ]
+  ],
+  "hints": [
+   {
+    "level": 1,
+    "type": "highlight",
+    "text": "Compare minimal pairs to isolate each morpheme."
+   }
+  ],
+  "lore": "Muwuwa verbs agree with their subject noun by a matching prefix and suffix.",
+  "nextPreview": "",
+  "theme": "synthetic",
+  "verdicts": {}
+ },
+ {
+  "id": "gen-005",
+  "language": "Merura",
+  "languageCode": "Qmer",
+  "family": "Generated/conditioned-suppletion",
+  "region": "Synthetic",
+  "taskType": "morphology",
+  "title": "Merura field notes",
+  "instruction": "Deduce the grammar and translate.",
+  "difficulty": "hard",
+  "pairs": [
+   {
+    "source": "murusiposo",
+    "target": "I wait",
+    "morphemes": [
+     "muru",
+     "sipo",
+     "so"
+    ]
+   },
+   {
+    "source": "kijaliseso",
+    "target": "they smile",
+    "morphemes": [
+     "kija",
+     "lise",
+     "so"
+    ]
+   },
+   {
+    "source": "pujomimoju",
+    "target": "we played",
+    "morphemes": [
+     "pujo",
+     "mimo",
+     "ju"
+    ]
+   },
+   {
+    "source": "muskkokuju",
+    "target": "you talked",
+    "morphemes": [
+     "musk",
+     "koku",
+     "ju"
+    ]
+   },
+   {
+    "source": "korakaroso",
+    "target": "he helps",
+    "morphemes": [
+     "kora",
+     "karo",
+     "so"
+    ]
+   },
+   {
+    "source": "pujopeposo",
+    "target": "we watch",
+    "morphemes": [
+     "pujo",
+     "pepo",
+     "so"
+    ]
+   },
+   {
+    "source": "korasuriju",
+    "target": "he jumped",
+    "morphemes": [
+     "kora",
+     "suri",
+     "ju"
+    ]
+   },
+   {
+    "source": "kijasiposo",
+    "target": "they wait",
+    "morphemes": [
+     "kija",
+     "sipo",
+     "so"
+    ]
+   },
+   {
+    "source": "koraliseso",
+    "target": "he smiles",
+    "morphemes": [
+     "kora",
+     "lise",
+     "so"
+    ]
+   },
+   {
+    "source": "pasupepoju",
+    "target": "you all watched",
+    "morphemes": [
+     "pasu",
+     "pepo",
+     "ju"
+    ]
+   },
+   {
+    "source": "pujosipoju",
+    "target": "we waited",
+    "morphemes": [
+     "pujo",
+     "sipo",
+     "ju"
+    ]
+   },
+   {
+    "source": "pasupolaso",
+    "target": "you all call",
+    "morphemes": [
+     "pasu",
+     "pola",
+     "so"
+    ]
+   },
+   {
+    "source": "muskkokuso",
+    "target": "you talk",
+    "morphemes": [
+     "musk",
+     "koku",
+     "so"
+    ]
+   },
+   {
+    "source": "pasusuriju",
+    "target": "you all jumped",
+    "morphemes": [
+     "pasu",
+     "suri",
+     "ju"
+    ]
+   },
+   {
+    "source": "kijapepoju",
+    "target": "they watched",
+    "morphemes": [
+     "kija",
+     "pepo",
+     "ju"
+    ]
+   },
+   {
+    "source": "pasumimoju",
+    "target": "you all played",
+    "morphemes": [
+     "pasu",
+     "mimo",
+     "ju"
+    ]
+   }
+  ],
+  "queries": [
+   {
+    "id": 0,
+    "prompt": "I wait",
+    "answer": [
+     "muru",
+     "sipo",
+     "so"
+    ],
+    "answerJoined": "murusiposo",
+    "difficulty": "tutorial",
+    "flavor": "This exact phrase is in the notes.",
+    "hintOnFail": ""
+   },
+   {
+    "id": 1,
+    "prompt": "we jumped",
+    "answer": [
+     "pujo",
+     "suri",
+     "ju"
+    ],
+    "answerJoined": "pujosuriju",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 2,
+    "prompt": "I talked",
+    "answer": [
+     "muru",
+     "kero",
+     "ju"
+    ],
+    "answerJoined": "murukeroju",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 3,
+    "prompt": "we talk",
+    "answer": [
+     "pujo",
+     "kero",
+     "so"
+    ],
+    "answerJoined": "pujokeroso",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 4,
+    "prompt": "they play",
+    "answer": [
+     "kija",
+     "mimo",
+     "so"
+    ],
+    "answerJoined": "kijamimoso",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 5,
+    "prompt": "I waited",
+    "answer": [
+     "muru",
+     "sipo",
+     "ju"
+    ],
+    "answerJoined": "murusipoju",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 6,
+    "prompt": "they jumped",
+    "answer": [
+     "kija",
+     "suri",
+     "ju"
+    ],
+    "answerJoined": "kijasuriju",
+    "difficulty": "curveball",
+    "flavor": "Two things change here — check both.",
+    "hintOnFail": ""
+   },
+   {
+    "id": 7,
+    "prompt": "they waited",
+    "answer": [
+     "kija",
+     "sipo",
+     "ju"
+    ],
+    "answerJoined": "kijasipoju",
+    "difficulty": "curveball",
+    "flavor": "Two things change here — check both.",
+    "hintOnFail": ""
+   }
+  ],
+  "morphemeBank": [
+   [
+    "kija",
+    "kora",
+    "muru",
+    "musk",
+    "pasu",
+    "pujo"
+   ],
+   [
+    "jiju",
+    "karo",
+    "kero",
+    "koku",
+    "lise",
+    "loti",
+    "meme",
+    "mimo",
+    "pepo",
+    "pola",
+    "puki",
+    "sepi",
+    "sipo",
+    "siro",
+    "suri",
+    "teka"
+   ],
+   [
+    "jo",
+    "ju",
+    "se",
+    "so"
+   ]
+  ],
+  "hints": [
+   {
+    "level": 1,
+    "type": "highlight",
+    "text": "Compare minimal pairs to isolate each morpheme."
+   }
+  ],
+  "lore": "Merura verbs have two stems chosen by the subject prefix's final sound.",
+  "nextPreview": "",
+  "theme": "synthetic",
+  "verdicts": {}
+ },
+ {
+  "id": "gen-006",
+  "language": "Nitase",
+  "languageCode": "Qnit",
+  "family": "Generated/vowel-harmony",
+  "region": "Synthetic",
+  "taskType": "morphology",
+  "title": "Nitase field notes",
+  "instruction": "Deduce the grammar and translate.",
+  "difficulty": "hard",
+  "pairs": [
+   {
+    "source": "rirririjire",
+    "target": "Did you watch?",
+    "morphemes": [
+     "rir",
+     "riri",
+     "ji",
+     "re"
+    ]
+   },
+   {
+    "source": "jekriririre",
+    "target": "Does he watch?",
+    "morphemes": [
+     "jek",
+     "riri",
+     "ri",
+     "re"
+    ]
+   },
+   {
+    "source": "jekririji",
+    "target": "he watched",
+    "morphemes": [
+     "jek",
+     "riri",
+     "ji"
+    ]
+   },
+   {
+    "source": "kalrilujura",
+    "target": "Did you all carry?",
+    "morphemes": [
+     "kal",
+     "rilu",
+     "ju",
+     "ra"
+    ]
+   },
+   {
+    "source": "newriluju",
+    "target": "we carried",
+    "morphemes": [
+     "new",
+     "rilu",
+     "ju"
+    ]
+   },
+   {
+    "source": "kalrilurura",
+    "target": "Do you all carry?",
+    "morphemes": [
+     "kal",
+     "rilu",
+     "ru",
+     "ra"
+    ]
+   },
+   {
+    "source": "kalririri",
+    "target": "you all watch",
+    "morphemes": [
+     "kal",
+     "riri",
+     "ri"
+    ]
+   },
+   {
+    "source": "sejriluru",
+    "target": "I carry",
+    "morphemes": [
+     "sej",
+     "rilu",
+     "ru"
+    ]
+   },
+   {
+    "source": "sejjeniji",
+    "target": "I helped",
+    "morphemes": [
+     "sej",
+     "jeni",
+     "ji"
+    ]
+   },
+   {
+    "source": "wanjenirire",
+    "target": "Do they help?",
+    "morphemes": [
+     "wan",
+     "jeni",
+     "ri",
+     "re"
+    ]
+   },
+   {
+    "source": "kalliseri",
+    "target": "you all play",
+    "morphemes": [
+     "kal",
+     "lise",
+     "ri"
+    ]
+   },
+   {
+    "source": "newwenuju",
+    "target": "we jumped",
+    "morphemes": [
+     "new",
+     "wenu",
+     "ju"
+    ]
+   },
+   {
+    "source": "rirkuneri",
+    "target": "you clean",
+    "morphemes": [
+     "rir",
+     "kune",
+     "ri"
+    ]
+   },
+   {
+    "source": "kaljeniji",
+    "target": "you all helped",
+    "morphemes": [
+     "kal",
+     "jeni",
+     "ji"
+    ]
+   }
+  ],
+  "queries": [
+   {
+    "id": 0,
+    "prompt": "Did you watch?",
+    "answer": [
+     "rir",
+     "riri",
+     "ji",
+     "re"
+    ],
+    "answerJoined": "rirririjire",
+    "difficulty": "tutorial",
+    "flavor": "Free — this exact phrase is in the notes.",
+    "hintOnFail": ""
+   },
+   {
+    "id": 1,
+    "prompt": "Do they play?",
+    "answer": [
+     "wan",
+     "lise",
+     "ri",
+     "re"
+    ],
+    "answerJoined": "wanliserire",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 2,
+    "prompt": "I walk",
+    "answer": [
+     "sej",
+     "siwe",
+     "ri"
+    ],
+    "answerJoined": "sejsiweri",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 3,
+    "prompt": "I cleaned",
+    "answer": [
+     "sej",
+     "kune",
+     "ji"
+    ],
+    "answerJoined": "sejkuneji",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 4,
+    "prompt": "Do we clean?",
+    "answer": [
+     "new",
+     "kune",
+     "ri",
+     "re"
+    ],
+    "answerJoined": "newkunerire",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 5,
+    "prompt": "Do you smile?",
+    "answer": [
+     "rir",
+     "wese",
+     "ri",
+     "re"
+    ],
+    "answerJoined": "rirweserire",
+    "difficulty": "curveball",
+    "flavor": "Watch the question marker's vowel.",
+    "hintOnFail": ""
+   },
+   {
+    "id": 6,
+    "prompt": "Do you all walk?",
+    "answer": [
+     "kal",
+     "siwe",
+     "ri",
+     "re"
+    ],
+    "answerJoined": "kalsiwerire",
+    "difficulty": "curveball",
+    "flavor": "Watch the question marker's vowel.",
+    "hintOnFail": ""
+   }
+  ],
+  "morphemeBank": [
+   [
+    "jek",
+    "kal",
+    "new",
+    "rir",
+    "sej",
+    "wan"
+   ],
+   [
+    "jeni",
+    "kune",
+    "lise",
+    "rilu",
+    "riri",
+    "siwe",
+    "wenu",
+    "wese"
+   ],
+   [
+    "ji",
+    "ju",
+    "ri",
+    "ru"
+   ],
+   [
+    "ra",
+    "re"
+   ]
+  ],
+  "hints": [
+   {
+    "level": 1,
+    "type": "highlight",
+    "text": "Compare minimal pairs to isolate each morpheme."
+   }
+  ],
+  "lore": "Nitase verbs mark tense and questions with vowel harmony.",
+  "nextPreview": "",
+  "theme": "synthetic",
+  "verdicts": {}
+ },
+ {
+  "id": "gen-007",
+  "language": "Lowelu",
+  "languageCode": "Qlow",
+  "family": "Generated/noun-class-agreement",
+  "region": "Synthetic",
+  "taskType": "morphology",
+  "title": "Lowelu field notes",
+  "instruction": "Deduce the grammar and translate.",
+  "difficulty": "hard",
+  "pairs": [
+   {
+    "source": "pewik munejemipe",
+    "target": "the bird helps",
+    "morphemes": [
+     "pewik",
+     "mu",
+     "neje",
+     "mi",
+     "pe"
+    ]
+   },
+   {
+    "source": "pewik munejelepe",
+    "target": "the bird helped",
+    "morphemes": [
+     "pewik",
+     "mu",
+     "neje",
+     "le",
+     "pe"
+    ]
+   },
+   {
+    "source": "tonao pinejelena",
+    "target": "the goat helped",
+    "morphemes": [
+     "tonao",
+     "pi",
+     "neje",
+     "le",
+     "na"
+    ]
+   },
+   {
+    "source": "nejak mujutalepe",
+    "target": "the cat cooked",
+    "morphemes": [
+     "nejak",
+     "mu",
+     "juta",
+     "le",
+     "pe"
+    ]
+   },
+   {
+    "source": "wupei pinejelena",
+    "target": "the lion helped",
+    "morphemes": [
+     "wupei",
+     "pi",
+     "neje",
+     "le",
+     "na"
+    ]
+   },
+   {
+    "source": "nejak mupanumipe",
+    "target": "the cat plays",
+    "morphemes": [
+     "nejak",
+     "mu",
+     "panu",
+     "mi",
+     "pe"
+    ]
+   },
+   {
+    "source": "jamam jijutalemi",
+    "target": "the crab cooked",
+    "morphemes": [
+     "jamam",
+     "ji",
+     "juta",
+     "le",
+     "mi"
+    ]
+   },
+   {
+    "source": "jamam jiwimimimi",
+    "target": "the crab talks",
+    "morphemes": [
+     "jamam",
+     "ji",
+     "wimi",
+     "mi",
+     "mi"
+    ]
+   },
+   {
+    "source": "sepak mulatomipe",
+    "target": "the frog calls",
+    "morphemes": [
+     "sepak",
+     "mu",
+     "lato",
+     "mi",
+     "pe"
+    ]
+   },
+   {
+    "source": "tonao pipanulena",
+    "target": "the goat played",
+    "morphemes": [
+     "tonao",
+     "pi",
+     "panu",
+     "le",
+     "na"
+    ]
+   },
+   {
+    "source": "jamam jilatomimi",
+    "target": "the crab calls",
+    "morphemes": [
+     "jamam",
+     "ji",
+     "lato",
+     "mi",
+     "mi"
+    ]
+   },
+   {
+    "source": "sumoe pinejelena",
+    "target": "the wolf helped",
+    "morphemes": [
+     "sumoe",
+     "pi",
+     "neje",
+     "le",
+     "na"
+    ]
+   },
+   {
+    "source": "pewik mupanulepe",
+    "target": "the bird played",
+    "morphemes": [
+     "pewik",
+     "mu",
+     "panu",
+     "le",
+     "pe"
+    ]
+   },
+   {
+    "source": "sepak mujutalepe",
+    "target": "the frog cooked",
+    "morphemes": [
+     "sepak",
+     "mu",
+     "juta",
+     "le",
+     "pe"
+    ]
+   },
+   {
+    "source": "jamam jiwimilemi",
+    "target": "the crab talked",
+    "morphemes": [
+     "jamam",
+     "ji",
+     "wimi",
+     "le",
+     "mi"
+    ]
+   },
+   {
+    "source": "sepak munejelepe",
+    "target": "the frog helped",
+    "morphemes": [
+     "sepak",
+     "mu",
+     "neje",
+     "le",
+     "pe"
+    ]
+   }
+  ],
+  "queries": [
+   {
+    "id": 0,
+    "prompt": "the bird helps",
+    "answer": [
+     "pewik",
+     "mu",
+     "neje",
+     "mi",
+     "pe"
+    ],
+    "answerJoined": "pewik munejemipe",
+    "difficulty": "tutorial",
+    "flavor": "This exact clause is in the notes.",
+    "hintOnFail": ""
+   },
+   {
+    "id": 1,
+    "prompt": "the goat cooked",
+    "answer": [
+     "tonao",
+     "pi",
+     "juta",
+     "le",
+     "na"
+    ],
+    "answerJoined": "tonao pijutalena",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 2,
+    "prompt": "the bear cooks",
+    "answer": [
+     "pusim",
+     "ji",
+     "juta",
+     "mi",
+     "mi"
+    ],
+    "answerJoined": "pusim jijutamimi",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 3,
+    "prompt": "the lion cooked",
+    "answer": [
+     "wupei",
+     "pi",
+     "juta",
+     "le",
+     "na"
+    ],
+    "answerJoined": "wupei pijutalena",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 4,
+    "prompt": "the cat helps",
+    "answer": [
+     "nejak",
+     "mu",
+     "neje",
+     "mi",
+     "pe"
+    ],
+    "answerJoined": "nejak munejemipe",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 5,
+    "prompt": "the frog waits",
+    "answer": [
+     "sepak",
+     "mu",
+     "melo",
+     "mi",
+     "pe"
+    ],
+    "answerJoined": "sepak mumelomipe",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 6,
+    "prompt": "the bird talked",
+    "answer": [
+     "pewik",
+     "mu",
+     "wimi",
+     "le",
+     "pe"
+    ],
+    "answerJoined": "pewik muwimilepe",
+    "difficulty": "curveball",
+    "flavor": "Does the verb 'know' what kind of noun it has?",
+    "hintOnFail": ""
+   },
+   {
+    "id": 7,
+    "prompt": "the cat helped",
+    "answer": [
+     "nejak",
+     "mu",
+     "neje",
+     "le",
+     "pe"
+    ],
+    "answerJoined": "nejak munejelepe",
+    "difficulty": "curveball",
+    "flavor": "Does the verb 'know' what kind of noun it has?",
+    "hintOnFail": ""
+   }
+  ],
+  "morphemeBank": [
+   [
+    "jamam",
+    "nejak",
+    "pewik",
+    "pusim",
+    "sepak",
+    "sumoe",
+    "tonao",
+    "wonom",
+    "wupei"
+   ],
+   [
+    "ji",
+    "mu",
+    "pi"
+   ],
+   [
+    "juta",
+    "lato",
+    "melo",
+    "neje",
+    "panu",
+    "wimi"
+   ],
+   [
+    "mi",
+    "na",
+    "pe"
+   ],
+   [
+    "le",
+    "mi"
+   ]
+  ],
+  "hints": [
+   {
+    "level": 1,
+    "type": "highlight",
+    "text": "Compare minimal pairs to isolate each morpheme."
+   }
+  ],
+  "lore": "Lowelu verbs agree with their subject noun by a matching prefix and suffix.",
+  "nextPreview": "",
+  "theme": "synthetic",
+  "verdicts": {}
+ },
+ {
+  "id": "gen-008",
+  "language": "Somuku",
+  "languageCode": "Qsom",
+  "family": "Generated/conditioned-suppletion",
+  "region": "Synthetic",
+  "taskType": "morphology",
+  "title": "Somuku field notes",
+  "instruction": "Deduce the grammar and translate.",
+  "difficulty": "hard",
+  "pairs": [
+   {
+    "source": "pawirotiti",
+    "target": "he walks",
+    "morphemes": [
+     "pawi",
+     "roti",
+     "ti"
+    ]
+   },
+   {
+    "source": "rosatetoti",
+    "target": "you all carry",
+    "morphemes": [
+     "rosa",
+     "teto",
+     "ti"
+    ]
+   },
+   {
+    "source": "rosatetopa",
+    "target": "you all carried",
+    "morphemes": [
+     "rosa",
+     "teto",
+     "pa"
+    ]
+   },
+   {
+    "source": "wenusuwipa",
+    "target": "we smiled",
+    "morphemes": [
+     "wenu",
+     "suwi",
+     "pa"
+    ]
+   },
+   {
+    "source": "rosawowopa",
+    "target": "you all played",
+    "morphemes": [
+     "rosa",
+     "wowo",
+     "pa"
+    ]
+   },
+   {
+    "source": "rosakiwipa",
+    "target": "you all called",
+    "morphemes": [
+     "rosa",
+     "kiwi",
+     "pa"
+    ]
+   },
+   {
+    "source": "pawiwusupa",
+    "target": "he waited",
+    "morphemes": [
+     "pawi",
+     "wusu",
+     "pa"
+    ]
+   },
+   {
+    "source": "ninsruriti",
+    "target": "you cook",
+    "morphemes": [
+     "nins",
+     "ruri",
+     "ti"
+    ]
+   },
+   {
+    "source": "ranosuwipa",
+    "target": "I smiled",
+    "morphemes": [
+     "rano",
+     "suwi",
+     "pa"
+    ]
+   },
+   {
+    "source": "pawiwusuti",
+    "target": "he waits",
+    "morphemes": [
+     "pawi",
+     "wusu",
+     "ti"
+    ]
+   },
+   {
+    "source": "pawiwowoti",
+    "target": "he plays",
+    "morphemes": [
+     "pawi",
+     "wowo",
+     "ti"
+    ]
+   },
+   {
+    "source": "pawiwureti",
+    "target": "he cooks",
+    "morphemes": [
+     "pawi",
+     "wure",
+     "ti"
+    ]
+   },
+   {
+    "source": "rosawusupa",
+    "target": "you all waited",
+    "morphemes": [
+     "rosa",
+     "wusu",
+     "pa"
+    ]
+   },
+   {
+    "source": "ninskukopa",
+    "target": "you watched",
+    "morphemes": [
+     "nins",
+     "kuko",
+     "pa"
+    ]
+   },
+   {
+    "source": "wenutetoti",
+    "target": "we carry",
+    "morphemes": [
+     "wenu",
+     "teto",
+     "ti"
+    ]
+   },
+   {
+    "source": "pawitetoti",
+    "target": "he carries",
+    "morphemes": [
+     "pawi",
+     "teto",
+     "ti"
+    ]
+   }
+  ],
+  "queries": [
+   {
+    "id": 0,
+    "prompt": "he walks",
+    "answer": [
+     "pawi",
+     "roti",
+     "ti"
+    ],
+    "answerJoined": "pawirotiti",
+    "difficulty": "tutorial",
+    "flavor": "This exact phrase is in the notes.",
+    "hintOnFail": ""
+   },
+   {
+    "id": 1,
+    "prompt": "we wait",
+    "answer": [
+     "wenu",
+     "wusu",
+     "ti"
+    ],
+    "answerJoined": "wenuwusuti",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 2,
+    "prompt": "I call",
+    "answer": [
+     "rano",
+     "kiwi",
+     "ti"
+    ],
+    "answerJoined": "ranokiwiti",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 3,
+    "prompt": "I called",
+    "answer": [
+     "rano",
+     "kiwi",
+     "pa"
+    ],
+    "answerJoined": "ranokiwipa",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 4,
+    "prompt": "he smiles",
+    "answer": [
+     "pawi",
+     "suwi",
+     "ti"
+    ],
+    "answerJoined": "pawisuwiti",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 5,
+    "prompt": "he called",
+    "answer": [
+     "pawi",
+     "kiwi",
+     "pa"
+    ],
+    "answerJoined": "pawikiwipa",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 6,
+    "prompt": "he cooked",
+    "answer": [
+     "pawi",
+     "wure",
+     "pa"
+    ],
+    "answerJoined": "pawiwurepa",
+    "difficulty": "curveball",
+    "flavor": "Two things change here — check both.",
+    "hintOnFail": ""
+   },
+   {
+    "id": 7,
+    "prompt": "they played",
+    "answer": [
+     "rari",
+     "wowo",
+     "pa"
+    ],
+    "answerJoined": "rariwowopa",
+    "difficulty": "curveball",
+    "flavor": "Two things change here — check both.",
+    "hintOnFail": ""
+   }
+  ],
+  "morphemeBank": [
+   [
+    "nins",
+    "pawi",
+    "rano",
+    "rari",
+    "rosa",
+    "wenu"
+   ],
+   [
+    "kiwi",
+    "kuko",
+    "leki",
+    "lopo",
+    "lotu",
+    "rate",
+    "roti",
+    "ruri",
+    "suwi",
+    "tane",
+    "teto",
+    "tuli",
+    "woni",
+    "wowo",
+    "wure",
+    "wusu"
+   ],
+   [
+    "pa",
+    "pi",
+    "ta",
+    "ti"
+   ]
+  ],
+  "hints": [
+   {
+    "level": 1,
+    "type": "highlight",
+    "text": "Compare minimal pairs to isolate each morpheme."
+   }
+  ],
+  "lore": "Somuku verbs have two stems chosen by the subject prefix's final sound.",
+  "nextPreview": "",
+  "theme": "synthetic",
+  "verdicts": {}
+ },
+ {
+  "id": "gen-009",
+  "language": "Wijima",
+  "languageCode": "Qwij",
+  "family": "Generated/vowel-harmony",
+  "region": "Synthetic",
+  "taskType": "morphology",
+  "title": "Wijima field notes",
+  "instruction": "Deduce the grammar and translate.",
+  "difficulty": "hard",
+  "pairs": [
+   {
+    "source": "sajtiwike",
+    "target": "you play",
+    "morphemes": [
+     "saj",
+     "tiwi",
+     "ke"
+    ]
+   },
+   {
+    "source": "kektiwiwe",
+    "target": "I played",
+    "morphemes": [
+     "kek",
+     "tiwi",
+     "we"
+    ]
+   },
+   {
+    "source": "tijlewowa",
+    "target": "we jumped",
+    "morphemes": [
+     "tij",
+     "lewo",
+     "wa"
+    ]
+   },
+   {
+    "source": "kektiwiweji",
+    "target": "Did I play?",
+    "morphemes": [
+     "kek",
+     "tiwi",
+     "we",
+     "ji"
+    ]
+   },
+   {
+    "source": "kektiwikeji",
+    "target": "Do I play?",
+    "morphemes": [
+     "kek",
+     "tiwi",
+     "ke",
+     "ji"
+    ]
+   },
+   {
+    "source": "jaslewowajo",
+    "target": "Did they jump?",
+    "morphemes": [
+     "jas",
+     "lewo",
+     "wa",
+     "jo"
+    ]
+   },
+   {
+    "source": "lotlewoka",
+    "target": "you all jump",
+    "morphemes": [
+     "lot",
+     "lewo",
+     "ka"
+    ]
+   },
+   {
+    "source": "jaslewokajo",
+    "target": "Do they jump?",
+    "morphemes": [
+     "jas",
+     "lewo",
+     "ka",
+     "jo"
+    ]
+   },
+   {
+    "source": "sajtiwiwe",
+    "target": "you played",
+    "morphemes": [
+     "saj",
+     "tiwi",
+     "we"
+    ]
+   },
+   {
+    "source": "kalwijaka",
+    "target": "he carries",
+    "morphemes": [
+     "kal",
+     "wija",
+     "ka"
+    ]
+   },
+   {
+    "source": "lottiwiwe",
+    "target": "you all played",
+    "morphemes": [
+     "lot",
+     "tiwi",
+     "we"
+    ]
+   },
+   {
+    "source": "kekwijawajo",
+    "target": "Did I carry?",
+    "morphemes": [
+     "kek",
+     "wija",
+     "wa",
+     "jo"
+    ]
+   },
+   {
+    "source": "kaltoteke",
+    "target": "he cooks",
+    "morphemes": [
+     "kal",
+     "tote",
+     "ke"
+    ]
+   },
+   {
+    "source": "sajwaloka",
+    "target": "you wait",
+    "morphemes": [
+     "saj",
+     "walo",
+     "ka"
+    ]
+   }
+  ],
+  "queries": [
+   {
+    "id": 0,
+    "prompt": "you play",
+    "answer": [
+     "saj",
+     "tiwi",
+     "ke"
+    ],
+    "answerJoined": "sajtiwike",
+    "difficulty": "tutorial",
+    "flavor": "Free — this exact phrase is in the notes.",
+    "hintOnFail": ""
+   },
+   {
+    "id": 1,
+    "prompt": "Did you cook?",
+    "answer": [
+     "saj",
+     "tote",
+     "we",
+     "ji"
+    ],
+    "answerJoined": "sajtoteweji",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 2,
+    "prompt": "Do you all wait?",
+    "answer": [
+     "lot",
+     "walo",
+     "ka",
+     "jo"
+    ],
+    "answerJoined": "lotwalokajo",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 3,
+    "prompt": "Do you smile?",
+    "answer": [
+     "saj",
+     "wesa",
+     "ka",
+     "jo"
+    ],
+    "answerJoined": "sajwesakajo",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 4,
+    "prompt": "you cook",
+    "answer": [
+     "saj",
+     "tote",
+     "ke"
+    ],
+    "answerJoined": "sajtoteke",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 5,
+    "prompt": "Did you carry?",
+    "answer": [
+     "saj",
+     "wija",
+     "wa",
+     "jo"
+    ],
+    "answerJoined": "sajwijawajo",
+    "difficulty": "curveball",
+    "flavor": "Watch the question marker's vowel.",
+    "hintOnFail": ""
+   },
+   {
+    "id": 6,
+    "prompt": "Did they play?",
+    "answer": [
+     "jas",
+     "tiwi",
+     "we",
+     "ji"
+    ],
+    "answerJoined": "jastiwiweji",
+    "difficulty": "curveball",
+    "flavor": "Watch the question marker's vowel.",
+    "hintOnFail": ""
+   }
+  ],
+  "morphemeBank": [
+   [
+    "jas",
+    "kal",
+    "kek",
+    "lot",
+    "saj",
+    "tij"
+   ],
+   [
+    "lewo",
+    "tite",
+    "tiwi",
+    "tote",
+    "walo",
+    "wesa",
+    "weta",
+    "wija"
+   ],
+   [
+    "ka",
+    "ke",
+    "wa",
+    "we"
+   ],
+   [
+    "ji",
+    "jo"
+   ]
+  ],
+  "hints": [
+   {
+    "level": 1,
+    "type": "highlight",
+    "text": "Compare minimal pairs to isolate each morpheme."
+   }
+  ],
+  "lore": "Wijima verbs mark tense and questions with vowel harmony.",
+  "nextPreview": "",
+  "theme": "synthetic",
+  "verdicts": {}
+ },
+ {
+  "id": "gen-010",
+  "language": "Sowaru",
+  "languageCode": "Qsow",
+  "family": "Generated/noun-class-agreement",
+  "region": "Synthetic",
+  "taskType": "morphology",
+  "title": "Sowaru field notes",
+  "instruction": "Deduce the grammar and translate.",
+  "difficulty": "hard",
+  "pairs": [
+   {
+    "source": "kemii kamepeliku",
+    "target": "the bird cleans",
+    "morphemes": [
+     "kemii",
+     "ka",
+     "mepe",
+     "li",
+     "ku"
+    ]
+   },
+   {
+    "source": "kemii kalukopiku",
+    "target": "the bird smiled",
+    "morphemes": [
+     "kemii",
+     "ka",
+     "luko",
+     "pi",
+     "ku"
+    ]
+   },
+   {
+    "source": "wekit jilonoliko",
+    "target": "the newt waits",
+    "morphemes": [
+     "wekit",
+     "ji",
+     "lono",
+     "li",
+     "ko"
+    ]
+   },
+   {
+    "source": "julao kamepepiku",
+    "target": "the crab cleaned",
+    "morphemes": [
+     "julao",
+     "ka",
+     "mepe",
+     "pi",
+     "ku"
+    ]
+   },
+   {
+    "source": "jonae kalonopiku",
+    "target": "the lion waited",
+    "morphemes": [
+     "jonae",
+     "ka",
+     "lono",
+     "pi",
+     "ku"
+    ]
+   },
+   {
+    "source": "wekit jiweniliko",
+    "target": "the newt jumps",
+    "morphemes": [
+     "wekit",
+     "ji",
+     "weni",
+     "li",
+     "ko"
+    ]
+   },
+   {
+    "source": "mupom rawenipila",
+    "target": "the deer jumped",
+    "morphemes": [
+     "mupom",
+     "ra",
+     "weni",
+     "pi",
+     "la"
+    ]
+   },
+   {
+    "source": "pikom raniwilila",
+    "target": "the fish calls",
+    "morphemes": [
+     "pikom",
+     "ra",
+     "niwi",
+     "li",
+     "la"
+    ]
+   },
+   {
+    "source": "malut jilonopiko",
+    "target": "the frog waited",
+    "morphemes": [
+     "malut",
+     "ji",
+     "lono",
+     "pi",
+     "ko"
+    ]
+   },
+   {
+    "source": "julao kaniwipiku",
+    "target": "the crab called",
+    "morphemes": [
+     "julao",
+     "ka",
+     "niwi",
+     "pi",
+     "ku"
+    ]
+   },
+   {
+    "source": "jemom rawenilila",
+    "target": "the cat jumps",
+    "morphemes": [
+     "jemom",
+     "ra",
+     "weni",
+     "li",
+     "la"
+    ]
+   },
+   {
+    "source": "jonae kaniwiliku",
+    "target": "the lion calls",
+    "morphemes": [
+     "jonae",
+     "ka",
+     "niwi",
+     "li",
+     "ku"
+    ]
+   },
+   {
+    "source": "kemii kamepepiku",
+    "target": "the bird cleaned",
+    "morphemes": [
+     "kemii",
+     "ka",
+     "mepe",
+     "pi",
+     "ku"
+    ]
+   },
+   {
+    "source": "wekit jimepepiko",
+    "target": "the newt cleaned",
+    "morphemes": [
+     "wekit",
+     "ji",
+     "mepe",
+     "pi",
+     "ko"
+    ]
+   },
+   {
+    "source": "jonae kamepepiku",
+    "target": "the lion cleaned",
+    "morphemes": [
+     "jonae",
+     "ka",
+     "mepe",
+     "pi",
+     "ku"
+    ]
+   },
+   {
+    "source": "wekit jilukoliko",
+    "target": "the newt smiles",
+    "morphemes": [
+     "wekit",
+     "ji",
+     "luko",
+     "li",
+     "ko"
+    ]
+   }
+  ],
+  "queries": [
+   {
+    "id": 0,
+    "prompt": "the bird cleans",
+    "answer": [
+     "kemii",
+     "ka",
+     "mepe",
+     "li",
+     "ku"
+    ],
+    "answerJoined": "kemii kamepeliku",
+    "difficulty": "tutorial",
+    "flavor": "This exact clause is in the notes.",
+    "hintOnFail": ""
+   },
+   {
+    "id": 1,
+    "prompt": "the deer waits",
+    "answer": [
+     "mupom",
+     "ra",
+     "lono",
+     "li",
+     "la"
+    ],
+    "answerJoined": "mupom ralonolila",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 2,
+    "prompt": "the lion carried",
+    "answer": [
+     "jonae",
+     "ka",
+     "laro",
+     "pi",
+     "ku"
+    ],
+    "answerJoined": "jonae kalaropiku",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 3,
+    "prompt": "the crab cleans",
+    "answer": [
+     "julao",
+     "ka",
+     "mepe",
+     "li",
+     "ku"
+    ],
+    "answerJoined": "julao kamepeliku",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 4,
+    "prompt": "the deer carries",
+    "answer": [
+     "mupom",
+     "ra",
+     "laro",
+     "li",
+     "la"
+    ],
+    "answerJoined": "mupom ralarolila",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 5,
+    "prompt": "the lion jumps",
+    "answer": [
+     "jonae",
+     "ka",
+     "weni",
+     "li",
+     "ku"
+    ],
+    "answerJoined": "jonae kaweniliku",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 6,
+    "prompt": "the wolf smiled",
+    "answer": [
+     "rawit",
+     "ji",
+     "luko",
+     "pi",
+     "ko"
+    ],
+    "answerJoined": "rawit jilukopiko",
+    "difficulty": "curveball",
+    "flavor": "Does the verb 'know' what kind of noun it has?",
+    "hintOnFail": ""
+   },
+   {
+    "id": 7,
+    "prompt": "the wolf jumped",
+    "answer": [
+     "rawit",
+     "ji",
+     "weni",
+     "pi",
+     "ko"
+    ],
+    "answerJoined": "rawit jiwenipiko",
+    "difficulty": "curveball",
+    "flavor": "Does the verb 'know' what kind of noun it has?",
+    "hintOnFail": ""
+   }
+  ],
+  "morphemeBank": [
+   [
+    "jemom",
+    "jonae",
+    "julao",
+    "kemii",
+    "malut",
+    "mupom",
+    "pikom",
+    "rawit",
+    "wekit"
+   ],
+   [
+    "ji",
+    "ka",
+    "ra"
+   ],
+   [
+    "laro",
+    "lono",
+    "luko",
+    "mepe",
+    "niwi",
+    "weni"
+   ],
+   [
+    "ko",
+    "ku",
+    "la"
+   ],
+   [
+    "li",
+    "pi"
+   ]
+  ],
+  "hints": [
+   {
+    "level": 1,
+    "type": "highlight",
+    "text": "Compare minimal pairs to isolate each morpheme."
+   }
+  ],
+  "lore": "Sowaru verbs agree with their subject noun by a matching prefix and suffix.",
+  "nextPreview": "",
+  "theme": "synthetic",
+  "verdicts": {}
+ },
+ {
+  "id": "gen-011",
+  "language": "Wepeji",
+  "languageCode": "Qwep",
+  "family": "Generated/conditioned-suppletion",
+  "region": "Synthetic",
+  "taskType": "morphology",
+  "title": "Wepeji field notes",
+  "instruction": "Deduce the grammar and translate.",
+  "difficulty": "hard",
+  "pairs": [
+   {
+    "source": "kowaketipo",
+    "target": "you all cleaned",
+    "morphemes": [
+     "kowa",
+     "keti",
+     "po"
+    ]
+   },
+   {
+    "source": "kowamerupo",
+    "target": "you all smiled",
+    "morphemes": [
+     "kowa",
+     "meru",
+     "po"
+    ]
+   },
+   {
+    "source": "winiketima",
+    "target": "they clean",
+    "morphemes": [
+     "wini",
+     "keti",
+     "ma"
+    ]
+   },
+   {
+    "source": "notenunoma",
+    "target": "I carry",
+    "morphemes": [
+     "note",
+     "nuno",
+     "ma"
+    ]
+   },
+   {
+    "source": "winipuwama",
+    "target": "they play",
+    "morphemes": [
+     "wini",
+     "puwa",
+     "ma"
+    ]
+   },
+   {
+    "source": "notewikema",
+    "target": "I jump",
+    "morphemes": [
+     "note",
+     "wike",
+     "ma"
+    ]
+   },
+   {
+    "source": "notetiwopo",
+    "target": "I called",
+    "morphemes": [
+     "note",
+     "tiwo",
+     "po"
+    ]
+   },
+   {
+    "source": "tuwiketima",
+    "target": "we clean",
+    "morphemes": [
+     "tuwi",
+     "keti",
+     "ma"
+    ]
+   },
+   {
+    "source": "tuwipuwama",
+    "target": "we play",
+    "morphemes": [
+     "tuwi",
+     "puwa",
+     "ma"
+    ]
+   },
+   {
+    "source": "mepmkukepo",
+    "target": "you carried",
+    "morphemes": [
+     "mepm",
+     "kuke",
+     "po"
+    ]
+   },
+   {
+    "source": "wininunopo",
+    "target": "they carried",
+    "morphemes": [
+     "wini",
+     "nuno",
+     "po"
+    ]
+   },
+   {
+    "source": "notepawepo",
+    "target": "I waited",
+    "morphemes": [
+     "note",
+     "pawe",
+     "po"
+    ]
+   },
+   {
+    "source": "noteketipo",
+    "target": "I cleaned",
+    "morphemes": [
+     "note",
+     "keti",
+     "po"
+    ]
+   },
+   {
+    "source": "notelukema",
+    "target": "I walk",
+    "morphemes": [
+     "note",
+     "luke",
+     "ma"
+    ]
+   },
+   {
+    "source": "mepmkikepo",
+    "target": "you jumped",
+    "morphemes": [
+     "mepm",
+     "kike",
+     "po"
+    ]
+   },
+   {
+    "source": "winipawema",
+    "target": "they wait",
+    "morphemes": [
+     "wini",
+     "pawe",
+     "ma"
+    ]
+   }
+  ],
+  "queries": [
+   {
+    "id": 0,
+    "prompt": "you all cleaned",
+    "answer": [
+     "kowa",
+     "keti",
+     "po"
+    ],
+    "answerJoined": "kowaketipo",
+    "difficulty": "tutorial",
+    "flavor": "This exact phrase is in the notes.",
+    "hintOnFail": ""
+   },
+   {
+    "id": 1,
+    "prompt": "they smile",
+    "answer": [
+     "wini",
+     "meru",
+     "ma"
+    ],
+    "answerJoined": "winimeruma",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 2,
+    "prompt": "you called",
+    "answer": [
+     "mepm",
+     "ruke",
+     "po"
+    ],
+    "answerJoined": "mepmrukepo",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 3,
+    "prompt": "he called",
+    "answer": [
+     "wotu",
+     "tiwo",
+     "po"
+    ],
+    "answerJoined": "wotutiwopo",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 4,
+    "prompt": "you smiled",
+    "answer": [
+     "mepm",
+     "lena",
+     "po"
+    ],
+    "answerJoined": "mepmlenapo",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 5,
+    "prompt": "we smiled",
+    "answer": [
+     "tuwi",
+     "meru",
+     "po"
+    ],
+    "answerJoined": "tuwimerupo",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 6,
+    "prompt": "they jumped",
+    "answer": [
+     "wini",
+     "wike",
+     "po"
+    ],
+    "answerJoined": "winiwikepo",
+    "difficulty": "curveball",
+    "flavor": "Two things change here — check both.",
+    "hintOnFail": ""
+   },
+   {
+    "id": 7,
+    "prompt": "he played",
+    "answer": [
+     "wotu",
+     "puwa",
+     "po"
+    ],
+    "answerJoined": "wotupuwapo",
+    "difficulty": "curveball",
+    "flavor": "Two things change here — check both.",
+    "hintOnFail": ""
+   }
+  ],
+  "morphemeBank": [
+   [
+    "kowa",
+    "mepm",
+    "note",
+    "tuwi",
+    "wini",
+    "wotu"
+   ],
+   [
+    "kako",
+    "keti",
+    "kike",
+    "kome",
+    "kuke",
+    "lena",
+    "luke",
+    "meru",
+    "nuno",
+    "pawe",
+    "puwa",
+    "rata",
+    "ruke",
+    "tiwo",
+    "weta",
+    "wike"
+   ],
+   [
+    "ma",
+    "po",
+    "pu"
+   ]
+  ],
+  "hints": [
+   {
+    "level": 1,
+    "type": "highlight",
+    "text": "Compare minimal pairs to isolate each morpheme."
+   }
+  ],
+  "lore": "Wepeji verbs have two stems chosen by the subject prefix's final sound.",
+  "nextPreview": "",
+  "theme": "synthetic",
+  "verdicts": {}
+ },
+ {
+  "id": "gen-012",
+  "language": "Lopeji",
+  "languageCode": "Qlop",
+  "family": "Generated/vowel-harmony",
+  "region": "Synthetic",
+  "taskType": "morphology",
+  "title": "Lopeji field notes",
+  "instruction": "Deduce the grammar and translate.",
+  "difficulty": "hard",
+  "pairs": [
+   {
+    "source": "tikmesene",
+    "target": "we clean",
+    "morphemes": [
+     "tik",
+     "mese",
+     "ne"
+    ]
+   },
+   {
+    "source": "tinmesenemi",
+    "target": "Do they clean?",
+    "morphemes": [
+     "tin",
+     "mese",
+     "ne",
+     "mi"
+    ]
+   },
+   {
+    "source": "suksatanuma",
+    "target": "Do you carry?",
+    "morphemes": [
+     "suk",
+     "sata",
+     "nu",
+     "ma"
+    ]
+   },
+   {
+    "source": "tikmesetemi",
+    "target": "Did we clean?",
+    "morphemes": [
+     "tik",
+     "mese",
+     "te",
+     "mi"
+    ]
+   },
+   {
+    "source": "tinmesete",
+    "target": "they cleaned",
+    "morphemes": [
+     "tin",
+     "mese",
+     "te"
+    ]
+   },
+   {
+    "source": "jujsatanu",
+    "target": "he carries",
+    "morphemes": [
+     "juj",
+     "sata",
+     "nu"
+    ]
+   },
+   {
+    "source": "tiksatatu",
+    "target": "we carried",
+    "morphemes": [
+     "tik",
+     "sata",
+     "tu"
+    ]
+   },
+   {
+    "source": "jujsatatuma",
+    "target": "Did he carry?",
+    "morphemes": [
+     "juj",
+     "sata",
+     "tu",
+     "ma"
+    ]
+   },
+   {
+    "source": "tiksatatuma",
+    "target": "Did we carry?",
+    "morphemes": [
+     "tik",
+     "sata",
+     "tu",
+     "ma"
+    ]
+   },
+   {
+    "source": "jujmesenemi",
+    "target": "Does he clean?",
+    "morphemes": [
+     "juj",
+     "mese",
+     "ne",
+     "mi"
+    ]
+   },
+   {
+    "source": "jujmesete",
+    "target": "he cleaned",
+    "morphemes": [
+     "juj",
+     "mese",
+     "te"
+    ]
+   },
+   {
+    "source": "tasninatu",
+    "target": "you all walked",
+    "morphemes": [
+     "tas",
+     "nina",
+     "tu"
+    ]
+   },
+   {
+    "source": "tinnesunuma",
+    "target": "Do they smile?",
+    "morphemes": [
+     "tin",
+     "nesu",
+     "nu",
+     "ma"
+    ]
+   },
+   {
+    "source": "tinmakanu",
+    "target": "they wait",
+    "morphemes": [
+     "tin",
+     "maka",
+     "nu"
+    ]
+   }
+  ],
+  "queries": [
+   {
+    "id": 0,
+    "prompt": "we clean",
+    "answer": [
+     "tik",
+     "mese",
+     "ne"
+    ],
+    "answerJoined": "tikmesene",
+    "difficulty": "tutorial",
+    "flavor": "Free — this exact phrase is in the notes.",
+    "hintOnFail": ""
+   },
+   {
+    "id": 1,
+    "prompt": "Does he walk?",
+    "answer": [
+     "juj",
+     "nina",
+     "nu",
+     "ma"
+    ],
+    "answerJoined": "jujninanuma",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 2,
+    "prompt": "he plays",
+    "answer": [
+     "juj",
+     "meri",
+     "ne"
+    ],
+    "answerJoined": "jujmerine",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 3,
+    "prompt": "Did you all clean?",
+    "answer": [
+     "tas",
+     "mese",
+     "te",
+     "mi"
+    ],
+    "answerJoined": "tasmesetemi",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 4,
+    "prompt": "Did he smile?",
+    "answer": [
+     "juj",
+     "nesu",
+     "tu",
+     "ma"
+    ],
+    "answerJoined": "jujnesutuma",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 5,
+    "prompt": "Did you jump?",
+    "answer": [
+     "suk",
+     "nuju",
+     "tu",
+     "ma"
+    ],
+    "answerJoined": "suknujutuma",
+    "difficulty": "curveball",
+    "flavor": "Watch the question marker's vowel.",
+    "hintOnFail": ""
+   },
+   {
+    "id": 6,
+    "prompt": "Did you all carry?",
+    "answer": [
+     "tas",
+     "sata",
+     "tu",
+     "ma"
+    ],
+    "answerJoined": "tassatatuma",
+    "difficulty": "curveball",
+    "flavor": "Watch the question marker's vowel.",
+    "hintOnFail": ""
+   }
+  ],
+  "morphemeBank": [
+   [
+    "juj",
+    "suk",
+    "taj",
+    "tas",
+    "tik",
+    "tin"
+   ],
+   [
+    "maka",
+    "meri",
+    "mese",
+    "nesu",
+    "nina",
+    "nuju",
+    "sata",
+    "temu"
+   ],
+   [
+    "ne",
+    "nu",
+    "te",
+    "tu"
+   ],
+   [
+    "ma",
+    "mi"
+   ]
+  ],
+  "hints": [
+   {
+    "level": 1,
+    "type": "highlight",
+    "text": "Compare minimal pairs to isolate each morpheme."
+   }
+  ],
+  "lore": "Lopeji verbs mark tense and questions with vowel harmony.",
+  "nextPreview": "",
+  "theme": "synthetic",
+  "verdicts": {}
+ },
+ {
+  "id": "gen-013",
+  "language": "Rorita",
+  "languageCode": "Qror",
+  "family": "Generated/noun-class-agreement",
+  "region": "Synthetic",
+  "taskType": "morphology",
+  "title": "Rorita field notes",
+  "instruction": "Deduce the grammar and translate.",
+  "difficulty": "hard",
+  "pairs": [
+   {
+    "source": "pipie seletelisi",
+    "target": "the bird jumps",
+    "morphemes": [
+     "pipie",
+     "se",
+     "lete",
+     "li",
+     "si"
+    ]
+   },
+   {
+    "source": "tipon suwokimowo",
+    "target": "the dog waited",
+    "morphemes": [
+     "tipon",
+     "su",
+     "woki",
+     "mo",
+     "wo"
+    ]
+   },
+   {
+    "source": "pipie setumelisi",
+    "target": "the bird walks",
+    "morphemes": [
+     "pipie",
+     "se",
+     "tume",
+     "li",
+     "si"
+    ]
+   },
+   {
+    "source": "lotop luwokimowi",
+    "target": "the crab waited",
+    "morphemes": [
+     "lotop",
+     "lu",
+     "woki",
+     "mo",
+     "wi"
+    ]
+   },
+   {
+    "source": "mowen suletemowo",
+    "target": "the lion jumped",
+    "morphemes": [
+     "mowen",
+     "su",
+     "lete",
+     "mo",
+     "wo"
+    ]
+   },
+   {
+    "source": "mowen suwokimowo",
+    "target": "the lion waited",
+    "morphemes": [
+     "mowen",
+     "su",
+     "woki",
+     "mo",
+     "wo"
+    ]
+   },
+   {
+    "source": "puton suleteliwo",
+    "target": "the newt jumps",
+    "morphemes": [
+     "puton",
+     "su",
+     "lete",
+     "li",
+     "wo"
+    ]
+   },
+   {
+    "source": "latep luleteliwi",
+    "target": "the frog jumps",
+    "morphemes": [
+     "latep",
+     "lu",
+     "lete",
+     "li",
+     "wi"
+    ]
+   },
+   {
+    "source": "walua sesilelisi",
+    "target": "the deer talks",
+    "morphemes": [
+     "walua",
+     "se",
+     "sile",
+     "li",
+     "si"
+    ]
+   },
+   {
+    "source": "latep lutumemowi",
+    "target": "the frog walked",
+    "morphemes": [
+     "latep",
+     "lu",
+     "tume",
+     "mo",
+     "wi"
+    ]
+   },
+   {
+    "source": "tipon sutumemowo",
+    "target": "the dog walked",
+    "morphemes": [
+     "tipon",
+     "su",
+     "tume",
+     "mo",
+     "wo"
+    ]
+   },
+   {
+    "source": "pipie seremomosi",
+    "target": "the bird cooked",
+    "morphemes": [
+     "pipie",
+     "se",
+     "remo",
+     "mo",
+     "si"
+    ]
+   },
+   {
+    "source": "mowen susolaliwo",
+    "target": "the lion plays",
+    "morphemes": [
+     "mowen",
+     "su",
+     "sola",
+     "li",
+     "wo"
+    ]
+   },
+   {
+    "source": "mowen suremomowo",
+    "target": "the lion cooked",
+    "morphemes": [
+     "mowen",
+     "su",
+     "remo",
+     "mo",
+     "wo"
+    ]
+   },
+   {
+    "source": "tipon suremoliwo",
+    "target": "the dog cooks",
+    "morphemes": [
+     "tipon",
+     "su",
+     "remo",
+     "li",
+     "wo"
+    ]
+   },
+   {
+    "source": "lotop lutumemowi",
+    "target": "the crab walked",
+    "morphemes": [
+     "lotop",
+     "lu",
+     "tume",
+     "mo",
+     "wi"
+    ]
+   }
+  ],
+  "queries": [
+   {
+    "id": 0,
+    "prompt": "the bird jumps",
+    "answer": [
+     "pipie",
+     "se",
+     "lete",
+     "li",
+     "si"
+    ],
+    "answerJoined": "pipie seletelisi",
+    "difficulty": "tutorial",
+    "flavor": "This exact clause is in the notes.",
+    "hintOnFail": ""
+   },
+   {
+    "id": 1,
+    "prompt": "the dog plays",
+    "answer": [
+     "tipon",
+     "su",
+     "sola",
+     "li",
+     "wo"
+    ],
+    "answerJoined": "tipon susolaliwo",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 2,
+    "prompt": "the newt talked",
+    "answer": [
+     "puton",
+     "su",
+     "sile",
+     "mo",
+     "wo"
+    ],
+    "answerJoined": "puton susilemowo",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 3,
+    "prompt": "the frog talks",
+    "answer": [
+     "latep",
+     "lu",
+     "sile",
+     "li",
+     "wi"
+    ],
+    "answerJoined": "latep lusileliwi",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 4,
+    "prompt": "the newt talks",
+    "answer": [
+     "puton",
+     "su",
+     "sile",
+     "li",
+     "wo"
+    ],
+    "answerJoined": "puton susileliwo",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 5,
+    "prompt": "the bird walked",
+    "answer": [
+     "pipie",
+     "se",
+     "tume",
+     "mo",
+     "si"
+    ],
+    "answerJoined": "pipie setumemosi",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 6,
+    "prompt": "the frog waited",
+    "answer": [
+     "latep",
+     "lu",
+     "woki",
+     "mo",
+     "wi"
+    ],
+    "answerJoined": "latep luwokimowi",
+    "difficulty": "curveball",
+    "flavor": "Does the verb 'know' what kind of noun it has?",
+    "hintOnFail": ""
+   },
+   {
+    "id": 7,
+    "prompt": "the frog cooked",
+    "answer": [
+     "latep",
+     "lu",
+     "remo",
+     "mo",
+     "wi"
+    ],
+    "answerJoined": "latep luremomowi",
+    "difficulty": "curveball",
+    "flavor": "Does the verb 'know' what kind of noun it has?",
+    "hintOnFail": ""
+   }
+  ],
+  "morphemeBank": [
+   [
+    "kiroe",
+    "latep",
+    "lotop",
+    "motup",
+    "mowen",
+    "pipie",
+    "puton",
+    "tipon",
+    "walua"
+   ],
+   [
+    "lu",
+    "se",
+    "su"
+   ],
+   [
+    "lete",
+    "remo",
+    "sile",
+    "sola",
+    "tume",
+    "woki"
+   ],
+   [
+    "si",
+    "wi",
+    "wo"
+   ],
+   [
+    "li",
+    "mo"
+   ]
+  ],
+  "hints": [
+   {
+    "level": 1,
+    "type": "highlight",
+    "text": "Compare minimal pairs to isolate each morpheme."
+   }
+  ],
+  "lore": "Rorita verbs agree with their subject noun by a matching prefix and suffix.",
+  "nextPreview": "",
+  "theme": "synthetic",
+  "verdicts": {}
+ },
+ {
+  "id": "gen-014",
+  "language": "Lesati",
+  "languageCode": "Qles",
+  "family": "Generated/conditioned-suppletion",
+  "region": "Synthetic",
+  "taskType": "morphology",
+  "title": "Lesati field notes",
+  "instruction": "Deduce the grammar and translate.",
+  "difficulty": "hard",
+  "pairs": [
+   {
+    "source": "sekojajajo",
+    "target": "he cooks",
+    "morphemes": [
+     "seko",
+     "jaja",
+     "jo"
+    ]
+   },
+   {
+    "source": "sekomapasu",
+    "target": "he smiled",
+    "morphemes": [
+     "seko",
+     "mapa",
+     "su"
+    ]
+   },
+   {
+    "source": "sekorurosu",
+    "target": "he jumped",
+    "morphemes": [
+     "seko",
+     "ruro",
+     "su"
+    ]
+   },
+   {
+    "source": "tesakawisu",
+    "target": "I cleaned",
+    "morphemes": [
+     "tesa",
+     "kawi",
+     "su"
+    ]
+   },
+   {
+    "source": "mokrjejujo",
+    "target": "you cook",
+    "morphemes": [
+     "mokr",
+     "jeju",
+     "jo"
+    ]
+   },
+   {
+    "source": "sekokawijo",
+    "target": "he cleans",
+    "morphemes": [
+     "seko",
+     "kawi",
+     "jo"
+    ]
+   },
+   {
+    "source": "sekomiwosu",
+    "target": "he helped",
+    "morphemes": [
+     "seko",
+     "miwo",
+     "su"
+    ]
+   },
+   {
+    "source": "mowijajasu",
+    "target": "you all cooked",
+    "morphemes": [
+     "mowi",
+     "jaja",
+     "su"
+    ]
+   },
+   {
+    "source": "posijajajo",
+    "target": "we cook",
+    "morphemes": [
+     "posi",
+     "jaja",
+     "jo"
+    ]
+   },
+   {
+    "source": "mowimapasu",
+    "target": "you all smiled",
+    "morphemes": [
+     "mowi",
+     "mapa",
+     "su"
+    ]
+   },
+   {
+    "source": "mokrrimosu",
+    "target": "you jumped",
+    "morphemes": [
+     "mokr",
+     "rimo",
+     "su"
+    ]
+   },
+   {
+    "source": "sekosomasu",
+    "target": "he called",
+    "morphemes": [
+     "seko",
+     "soma",
+     "su"
+    ]
+   },
+   {
+    "source": "mokrrirosu",
+    "target": "you called",
+    "morphemes": [
+     "mokr",
+     "riro",
+     "su"
+    ]
+   },
+   {
+    "source": "mokrsimasu",
+    "target": "you helped",
+    "morphemes": [
+     "mokr",
+     "sima",
+     "su"
+    ]
+   },
+   {
+    "source": "tesamiwosu",
+    "target": "I helped",
+    "morphemes": [
+     "tesa",
+     "miwo",
+     "su"
+    ]
+   },
+   {
+    "source": "mowipokojo",
+    "target": "you all talk",
+    "morphemes": [
+     "mowi",
+     "poko",
+     "jo"
+    ]
+   }
+  ],
+  "queries": [
+   {
+    "id": 0,
+    "prompt": "he cooks",
+    "answer": [
+     "seko",
+     "jaja",
+     "jo"
+    ],
+    "answerJoined": "sekojajajo",
+    "difficulty": "tutorial",
+    "flavor": "This exact phrase is in the notes.",
+    "hintOnFail": ""
+   },
+   {
+    "id": 1,
+    "prompt": "they help",
+    "answer": [
+     "sosi",
+     "miwo",
+     "jo"
+    ],
+    "answerJoined": "sosimiwojo",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 2,
+    "prompt": "they jumped",
+    "answer": [
+     "sosi",
+     "ruro",
+     "su"
+    ],
+    "answerJoined": "sosirurosu",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 3,
+    "prompt": "you all help",
+    "answer": [
+     "mowi",
+     "miwo",
+     "jo"
+    ],
+    "answerJoined": "mowimiwojo",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 4,
+    "prompt": "I jumped",
+    "answer": [
+     "tesa",
+     "ruro",
+     "su"
+    ],
+    "answerJoined": "tesarurosu",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 5,
+    "prompt": "you all jump",
+    "answer": [
+     "mowi",
+     "ruro",
+     "jo"
+    ],
+    "answerJoined": "mowirurojo",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 6,
+    "prompt": "they watched",
+    "answer": [
+     "sosi",
+     "rita",
+     "su"
+    ],
+    "answerJoined": "sosiritasu",
+    "difficulty": "curveball",
+    "flavor": "Two things change here — check both.",
+    "hintOnFail": ""
+   },
+   {
+    "id": 7,
+    "prompt": "he cleaned",
+    "answer": [
+     "seko",
+     "kawi",
+     "su"
+    ],
+    "answerJoined": "sekokawisu",
+    "difficulty": "curveball",
+    "flavor": "Two things change here — check both.",
+    "hintOnFail": ""
+   }
+  ],
+  "morphemeBank": [
+   [
+    "mokr",
+    "mowi",
+    "posi",
+    "seko",
+    "sosi",
+    "tesa"
+   ],
+   [
+    "jaja",
+    "jeju",
+    "kawi",
+    "kawu",
+    "mapa",
+    "miwo",
+    "poko",
+    "rimo",
+    "riro",
+    "rita",
+    "ruro",
+    "saro",
+    "sima",
+    "soma",
+    "wape",
+    "wuta"
+   ],
+   [
+    "jo",
+    "sa",
+    "su"
+   ]
+  ],
+  "hints": [
+   {
+    "level": 1,
+    "type": "highlight",
+    "text": "Compare minimal pairs to isolate each morpheme."
+   }
+  ],
+  "lore": "Lesati verbs have two stems chosen by the subject prefix's final sound.",
+  "nextPreview": "",
+  "theme": "synthetic",
+  "verdicts": {}
+ },
+ {
+  "id": "gen-015",
+  "language": "Jesasa",
+  "languageCode": "Qjes",
+  "family": "Generated/vowel-harmony",
+  "region": "Synthetic",
+  "taskType": "morphology",
+  "title": "Jesasa field notes",
+  "instruction": "Deduce the grammar and translate.",
+  "difficulty": "hard",
+  "pairs": [
+   {
+    "source": "ristemiseri",
+    "target": "Do I call?",
+    "morphemes": [
+     "ris",
+     "temi",
+     "se",
+     "ri"
+    ]
+   },
+   {
+    "source": "pettemileri",
+    "target": "Did you all call?",
+    "morphemes": [
+     "pet",
+     "temi",
+     "le",
+     "ri"
+    ]
+   },
+   {
+    "source": "lemtemile",
+    "target": "he called",
+    "morphemes": [
+     "lem",
+     "temi",
+     "le"
+    ]
+   },
+   {
+    "source": "pattusalura",
+    "target": "Did we clean?",
+    "morphemes": [
+     "pat",
+     "tusa",
+     "lu",
+     "ra"
+    ]
+   },
+   {
+    "source": "pattemise",
+    "target": "we call",
+    "morphemes": [
+     "pat",
+     "temi",
+     "se"
+    ]
+   },
+   {
+    "source": "lemtusasura",
+    "target": "Does he clean?",
+    "morphemes": [
+     "lem",
+     "tusa",
+     "su",
+     "ra"
+    ]
+   },
+   {
+    "source": "ristusasu",
+    "target": "I clean",
+    "morphemes": [
+     "ris",
+     "tusa",
+     "su"
+    ]
+   },
+   {
+    "source": "lurtusalu",
+    "target": "they cleaned",
+    "morphemes": [
+     "lur",
+     "tusa",
+     "lu"
+    ]
+   },
+   {
+    "source": "murlitulu",
+    "target": "you talked",
+    "morphemes": [
+     "mur",
+     "litu",
+     "lu"
+    ]
+   },
+   {
+    "source": "lemjirile",
+    "target": "he waited",
+    "morphemes": [
+     "lem",
+     "jiri",
+     "le"
+    ]
+   },
+   {
+    "source": "lemrutasu",
+    "target": "he helps",
+    "morphemes": [
+     "lem",
+     "ruta",
+     "su"
+    ]
+   },
+   {
+    "source": "pettemise",
+    "target": "you all call",
+    "morphemes": [
+     "pet",
+     "temi",
+     "se"
+    ]
+   },
+   {
+    "source": "pettusasura",
+    "target": "Do you all clean?",
+    "morphemes": [
+     "pet",
+     "tusa",
+     "su",
+     "ra"
+    ]
+   },
+   {
+    "source": "lurpepile",
+    "target": "they cooked",
+    "morphemes": [
+     "lur",
+     "pepi",
+     "le"
+    ]
+   }
+  ],
+  "queries": [
+   {
+    "id": 0,
+    "prompt": "Do I call?",
+    "answer": [
+     "ris",
+     "temi",
+     "se",
+     "ri"
+    ],
+    "answerJoined": "ristemiseri",
+    "difficulty": "tutorial",
+    "flavor": "Free — this exact phrase is in the notes.",
+    "hintOnFail": ""
+   },
+   {
+    "id": 1,
+    "prompt": "you walk",
+    "answer": [
+     "mur",
+     "ruti",
+     "se"
+    ],
+    "answerJoined": "murrutise",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 2,
+    "prompt": "Do we clean?",
+    "answer": [
+     "pat",
+     "tusa",
+     "su",
+     "ra"
+    ],
+    "answerJoined": "pattusasura",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 3,
+    "prompt": "we cleaned",
+    "answer": [
+     "pat",
+     "tusa",
+     "lu"
+    ],
+    "answerJoined": "pattusalu",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 4,
+    "prompt": "we smiled",
+    "answer": [
+     "pat",
+     "pisi",
+     "le"
+    ],
+    "answerJoined": "patpisile",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 5,
+    "prompt": "Do they walk?",
+    "answer": [
+     "lur",
+     "ruti",
+     "se",
+     "ri"
+    ],
+    "answerJoined": "lurrutiseri",
+    "difficulty": "curveball",
+    "flavor": "Watch the question marker's vowel.",
+    "hintOnFail": ""
+   },
+   {
+    "id": 6,
+    "prompt": "Do you call?",
+    "answer": [
+     "mur",
+     "temi",
+     "se",
+     "ri"
+    ],
+    "answerJoined": "murtemiseri",
+    "difficulty": "curveball",
+    "flavor": "Watch the question marker's vowel.",
+    "hintOnFail": ""
+   }
+  ],
+  "morphemeBank": [
+   [
+    "lem",
+    "lur",
+    "mur",
+    "pat",
+    "pet",
+    "ris"
+   ],
+   [
+    "jiri",
+    "litu",
+    "pepi",
+    "pisi",
+    "ruta",
+    "ruti",
+    "temi",
+    "tusa"
+   ],
+   [
+    "le",
+    "lu",
+    "se",
+    "su"
+   ],
+   [
+    "ra",
+    "ri"
+   ]
+  ],
+  "hints": [
+   {
+    "level": 1,
+    "type": "highlight",
+    "text": "Compare minimal pairs to isolate each morpheme."
+   }
+  ],
+  "lore": "Jesasa verbs mark tense and questions with vowel harmony.",
+  "nextPreview": "",
+  "theme": "synthetic",
+  "verdicts": {}
+ },
+ {
+  "id": "gen-016",
+  "language": "Kokomi",
+  "languageCode": "Qkok",
+  "family": "Generated/noun-class-agreement",
+  "region": "Synthetic",
+  "taskType": "morphology",
+  "title": "Kokomi field notes",
+  "instruction": "Deduce the grammar and translate.",
+  "difficulty": "hard",
+  "pairs": [
+   {
+    "source": "napua siluliwuri",
+    "target": "the cat played",
+    "morphemes": [
+     "napua",
+     "si",
+     "luli",
+     "wu",
+     "ri"
+    ]
+   },
+   {
+    "source": "meman jesanewuwe",
+    "target": "the wolf called",
+    "morphemes": [
+     "meman",
+     "je",
+     "sane",
+     "wu",
+     "we"
+    ]
+   },
+   {
+    "source": "morun jewesowuwe",
+    "target": "the goat cooked",
+    "morphemes": [
+     "morun",
+     "je",
+     "weso",
+     "wu",
+     "we"
+    ]
+   },
+   {
+    "source": "sawit silulisewi",
+    "target": "the newt plays",
+    "morphemes": [
+     "sawit",
+     "si",
+     "luli",
+     "se",
+     "wi"
+    ]
+   },
+   {
+    "source": "morun jewiwusewe",
+    "target": "the goat watches",
+    "morphemes": [
+     "morun",
+     "je",
+     "wiwu",
+     "se",
+     "we"
+    ]
+   },
+   {
+    "source": "meman jepuwusewe",
+    "target": "the wolf smiles",
+    "morphemes": [
+     "meman",
+     "je",
+     "puwu",
+     "se",
+     "we"
+    ]
+   },
+   {
+    "source": "nerae siwiwuwuri",
+    "target": "the fish watched",
+    "morphemes": [
+     "nerae",
+     "si",
+     "wiwu",
+     "wu",
+     "ri"
+    ]
+   },
+   {
+    "source": "leset sisijesewi",
+    "target": "the dog helps",
+    "morphemes": [
+     "leset",
+     "si",
+     "sije",
+     "se",
+     "wi"
+    ]
+   },
+   {
+    "source": "meman jeluliwuwe",
+    "target": "the wolf played",
+    "morphemes": [
+     "meman",
+     "je",
+     "luli",
+     "wu",
+     "we"
+    ]
+   },
+   {
+    "source": "sawit sipuwuwuwi",
+    "target": "the newt smiled",
+    "morphemes": [
+     "sawit",
+     "si",
+     "puwu",
+     "wu",
+     "wi"
+    ]
+   },
+   {
+    "source": "ramuu sisijeseri",
+    "target": "the lion helps",
+    "morphemes": [
+     "ramuu",
+     "si",
+     "sije",
+     "se",
+     "ri"
+    ]
+   },
+   {
+    "source": "nerae sisaneseri",
+    "target": "the fish calls",
+    "morphemes": [
+     "nerae",
+     "si",
+     "sane",
+     "se",
+     "ri"
+    ]
+   },
+   {
+    "source": "morun jepuwuwuwe",
+    "target": "the goat smiled",
+    "morphemes": [
+     "morun",
+     "je",
+     "puwu",
+     "wu",
+     "we"
+    ]
+   },
+   {
+    "source": "nerae siwesowuri",
+    "target": "the fish cooked",
+    "morphemes": [
+     "nerae",
+     "si",
+     "weso",
+     "wu",
+     "ri"
+    ]
+   },
+   {
+    "source": "mopin jelulisewe",
+    "target": "the deer plays",
+    "morphemes": [
+     "mopin",
+     "je",
+     "luli",
+     "se",
+     "we"
+    ]
+   },
+   {
+    "source": "ramuu siluliseri",
+    "target": "the lion plays",
+    "morphemes": [
+     "ramuu",
+     "si",
+     "luli",
+     "se",
+     "ri"
+    ]
+   }
+  ],
+  "queries": [
+   {
+    "id": 0,
+    "prompt": "the cat played",
+    "answer": [
+     "napua",
+     "si",
+     "luli",
+     "wu",
+     "ri"
+    ],
+    "answerJoined": "napua siluliwuri",
+    "difficulty": "tutorial",
+    "flavor": "This exact clause is in the notes.",
+    "hintOnFail": ""
+   },
+   {
+    "id": 1,
+    "prompt": "the newt calls",
+    "answer": [
+     "sawit",
+     "si",
+     "sane",
+     "se",
+     "wi"
+    ],
+    "answerJoined": "sawit sisanesewi",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 2,
+    "prompt": "the fish cooks",
+    "answer": [
+     "nerae",
+     "si",
+     "weso",
+     "se",
+     "ri"
+    ],
+    "answerJoined": "nerae siwesoseri",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 3,
+    "prompt": "the deer watches",
+    "answer": [
+     "mopin",
+     "je",
+     "wiwu",
+     "se",
+     "we"
+    ],
+    "answerJoined": "mopin jewiwusewe",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 4,
+    "prompt": "the wolf watched",
+    "answer": [
+     "meman",
+     "je",
+     "wiwu",
+     "wu",
+     "we"
+    ],
+    "answerJoined": "meman jewiwuwuwe",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 5,
+    "prompt": "the dog played",
+    "answer": [
+     "leset",
+     "si",
+     "luli",
+     "wu",
+     "wi"
+    ],
+    "answerJoined": "leset siluliwuwi",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 6,
+    "prompt": "the dog cooked",
+    "answer": [
+     "leset",
+     "si",
+     "weso",
+     "wu",
+     "wi"
+    ],
+    "answerJoined": "leset siwesowuwi",
+    "difficulty": "curveball",
+    "flavor": "Does the verb 'know' what kind of noun it has?",
+    "hintOnFail": ""
+   },
+   {
+    "id": 7,
+    "prompt": "the crab helped",
+    "answer": [
+     "mumot",
+     "si",
+     "sije",
+     "wu",
+     "wi"
+    ],
+    "answerJoined": "mumot sisijewuwi",
+    "difficulty": "curveball",
+    "flavor": "Does the verb 'know' what kind of noun it has?",
+    "hintOnFail": ""
+   }
+  ],
+  "morphemeBank": [
+   [
+    "leset",
+    "meman",
+    "mopin",
+    "morun",
+    "mumot",
+    "napua",
+    "nerae",
+    "ramuu",
+    "sawit"
+   ],
+   [
+    "je",
+    "si"
+   ],
+   [
+    "luli",
+    "puwu",
+    "sane",
+    "sije",
+    "weso",
+    "wiwu"
+   ],
+   [
+    "ri",
+    "we",
+    "wi"
+   ],
+   [
+    "se",
+    "wu"
+   ]
+  ],
+  "hints": [
+   {
+    "level": 1,
+    "type": "highlight",
+    "text": "Compare minimal pairs to isolate each morpheme."
+   }
+  ],
+  "lore": "Kokomi verbs agree with their subject noun by a matching prefix and suffix.",
+  "nextPreview": "",
+  "theme": "synthetic",
+  "verdicts": {}
+ },
+ {
+  "id": "gen-017",
+  "language": "Lololu",
+  "languageCode": "Qlol",
+  "family": "Generated/conditioned-suppletion",
+  "region": "Synthetic",
+  "taskType": "morphology",
+  "title": "Lololu field notes",
+  "instruction": "Deduce the grammar and translate.",
+  "difficulty": "hard",
+  "pairs": [
+   {
+    "source": "kiknsepoto",
+    "target": "you carry",
+    "morphemes": [
+     "kikn",
+     "sepo",
+     "to"
+    ]
+   },
+   {
+    "source": "papanatawi",
+    "target": "he carried",
+    "morphemes": [
+     "papa",
+     "nata",
+     "wi"
+    ]
+   },
+   {
+    "source": "kiknpinuwi",
+    "target": "you watched",
+    "morphemes": [
+     "kikn",
+     "pinu",
+     "wi"
+    ]
+   },
+   {
+    "source": "likawewuto",
+    "target": "we help",
+    "morphemes": [
+     "lika",
+     "wewu",
+     "to"
+    ]
+   },
+   {
+    "source": "sakulonowi",
+    "target": "I played",
+    "morphemes": [
+     "saku",
+     "lono",
+     "wi"
+    ]
+   },
+   {
+    "source": "nuwalonoto",
+    "target": "they play",
+    "morphemes": [
+     "nuwa",
+     "lono",
+     "to"
+    ]
+   },
+   {
+    "source": "nuwanulito",
+    "target": "they smile",
+    "morphemes": [
+     "nuwa",
+     "nuli",
+     "to"
+    ]
+   },
+   {
+    "source": "papalonowi",
+    "target": "he played",
+    "morphemes": [
+     "papa",
+     "lono",
+     "wi"
+    ]
+   },
+   {
+    "source": "sakuwewuto",
+    "target": "I help",
+    "morphemes": [
+     "saku",
+     "wewu",
+     "to"
+    ]
+   },
+   {
+    "source": "papawewuto",
+    "target": "he helps",
+    "morphemes": [
+     "papa",
+     "wewu",
+     "to"
+    ]
+   },
+   {
+    "source": "sakukanawi",
+    "target": "I called",
+    "morphemes": [
+     "saku",
+     "kana",
+     "wi"
+    ]
+   },
+   {
+    "source": "kikntupito",
+    "target": "you talk",
+    "morphemes": [
+     "kikn",
+     "tupi",
+     "to"
+    ]
+   },
+   {
+    "source": "nuwawewuto",
+    "target": "they help",
+    "morphemes": [
+     "nuwa",
+     "wewu",
+     "to"
+    ]
+   },
+   {
+    "source": "likanatato",
+    "target": "we carry",
+    "morphemes": [
+     "lika",
+     "nata",
+     "to"
+    ]
+   },
+   {
+    "source": "kiknsepowi",
+    "target": "you carried",
+    "morphemes": [
+     "kikn",
+     "sepo",
+     "wi"
+    ]
+   },
+   {
+    "source": "papakanato",
+    "target": "he calls",
+    "morphemes": [
+     "papa",
+     "kana",
+     "to"
+    ]
+   }
+  ],
+  "queries": [
+   {
+    "id": 0,
+    "prompt": "you carry",
+    "answer": [
+     "kikn",
+     "sepo",
+     "to"
+    ],
+    "answerJoined": "kiknsepoto",
+    "difficulty": "tutorial",
+    "flavor": "This exact phrase is in the notes.",
+    "hintOnFail": ""
+   },
+   {
+    "id": 1,
+    "prompt": "you watch",
+    "answer": [
+     "kikn",
+     "pinu",
+     "to"
+    ],
+    "answerJoined": "kiknpinuto",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 2,
+    "prompt": "you smile",
+    "answer": [
+     "kikn",
+     "waka",
+     "to"
+    ],
+    "answerJoined": "kiknwakato",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 3,
+    "prompt": "you all carried",
+    "answer": [
+     "ripo",
+     "nata",
+     "wi"
+    ],
+    "answerJoined": "riponatawi",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 4,
+    "prompt": "they talk",
+    "answer": [
+     "nuwa",
+     "wake",
+     "to"
+    ],
+    "answerJoined": "nuwawaketo",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 5,
+    "prompt": "I helped",
+    "answer": [
+     "saku",
+     "wewu",
+     "wi"
+    ],
+    "answerJoined": "sakuwewuwi",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 6,
+    "prompt": "they watched",
+    "answer": [
+     "nuwa",
+     "nelo",
+     "wi"
+    ],
+    "answerJoined": "nuwanelowi",
+    "difficulty": "curveball",
+    "flavor": "Two things change here — check both.",
+    "hintOnFail": ""
+   },
+   {
+    "id": 7,
+    "prompt": "he talked",
+    "answer": [
+     "papa",
+     "wake",
+     "wi"
+    ],
+    "answerJoined": "papawakewi",
+    "difficulty": "curveball",
+    "flavor": "Two things change here — check both.",
+    "hintOnFail": ""
+   }
+  ],
+  "morphemeBank": [
+   [
+    "kikn",
+    "lika",
+    "nuwa",
+    "papa",
+    "ripo",
+    "saku"
+   ],
+   [
+    "kana",
+    "kiro",
+    "lira",
+    "lono",
+    "nata",
+    "nelo",
+    "neti",
+    "nona",
+    "nuli",
+    "pinu",
+    "sepo",
+    "tapo",
+    "tupi",
+    "waka",
+    "wake",
+    "wewu"
+   ],
+   [
+    "to",
+    "wi"
+   ]
+  ],
+  "hints": [
+   {
+    "level": 1,
+    "type": "highlight",
+    "text": "Compare minimal pairs to isolate each morpheme."
+   }
+  ],
+  "lore": "Lololu verbs have two stems chosen by the subject prefix's final sound.",
+  "nextPreview": "",
+  "theme": "synthetic",
+  "verdicts": {}
+ },
+ {
+  "id": "gen-018",
+  "language": "Tujewi",
+  "languageCode": "Qtuj",
+  "family": "Generated/vowel-harmony",
+  "region": "Synthetic",
+  "taskType": "morphology",
+  "title": "Tujewi field notes",
+  "instruction": "Deduce the grammar and translate.",
+  "difficulty": "hard",
+  "pairs": [
+   {
+    "source": "runseneti",
+    "target": "you carry",
+    "morphemes": [
+     "run",
+     "sene",
+     "ti"
+    ]
+   },
+   {
+    "source": "tensenetite",
+    "target": "Did I carry?",
+    "morphemes": [
+     "ten",
+     "sene",
+     "ti",
+     "te"
+    ]
+   },
+   {
+    "source": "tessenetite",
+    "target": "Do you all carry?",
+    "morphemes": [
+     "tes",
+     "sene",
+     "ti",
+     "te"
+    ]
+   },
+   {
+    "source": "nulsunutu",
+    "target": "they call",
+    "morphemes": [
+     "nul",
+     "sunu",
+     "tu"
+    ]
+   },
+   {
+    "source": "sewsunututo",
+    "target": "Did we call?",
+    "morphemes": [
+     "sew",
+     "sunu",
+     "tu",
+     "to"
+    ]
+   },
+   {
+    "source": "sotsunututo",
+    "target": "Does he call?",
+    "morphemes": [
+     "sot",
+     "sunu",
+     "tu",
+     "to"
+    ]
+   },
+   {
+    "source": "runseneti",
+    "target": "you carried",
+    "morphemes": [
+     "run",
+     "sene",
+     "ti"
+    ]
+   },
+   {
+    "source": "nulsunutu",
+    "target": "they called",
+    "morphemes": [
+     "nul",
+     "sunu",
+     "tu"
+    ]
+   },
+   {
+    "source": "sewpuwotuto",
+    "target": "Do we talk?",
+    "morphemes": [
+     "sew",
+     "puwo",
+     "tu",
+     "to"
+    ]
+   },
+   {
+    "source": "sotterotuto",
+    "target": "Did he watch?",
+    "morphemes": [
+     "sot",
+     "tero",
+     "tu",
+     "to"
+    ]
+   },
+   {
+    "source": "tenseneti",
+    "target": "I carried",
+    "morphemes": [
+     "ten",
+     "sene",
+     "ti"
+    ]
+   },
+   {
+    "source": "sewseneti",
+    "target": "we carry",
+    "morphemes": [
+     "sew",
+     "sene",
+     "ti"
+    ]
+   },
+   {
+    "source": "sewrisitite",
+    "target": "Do we clean?",
+    "morphemes": [
+     "sew",
+     "risi",
+     "ti",
+     "te"
+    ]
+   },
+   {
+    "source": "sotsenetite",
+    "target": "Did he carry?",
+    "morphemes": [
+     "sot",
+     "sene",
+     "ti",
+     "te"
+    ]
+   }
+  ],
+  "queries": [
+   {
+    "id": 0,
+    "prompt": "you carry",
+    "answer": [
+     "run",
+     "sene",
+     "ti"
+    ],
+    "answerJoined": "runseneti",
+    "difficulty": "tutorial",
+    "flavor": "Free — this exact phrase is in the notes.",
+    "hintOnFail": ""
+   },
+   {
+    "id": 1,
+    "prompt": "I help",
+    "answer": [
+     "ten",
+     "riti",
+     "ti"
+    ],
+    "answerJoined": "tenrititi",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 2,
+    "prompt": "they carried",
+    "answer": [
+     "nul",
+     "sene",
+     "ti"
+    ],
+    "answerJoined": "nulseneti",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 3,
+    "prompt": "Do we watch?",
+    "answer": [
+     "sew",
+     "tero",
+     "tu",
+     "to"
+    ],
+    "answerJoined": "sewterotuto",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 4,
+    "prompt": "Did I help?",
+    "answer": [
+     "ten",
+     "riti",
+     "ti",
+     "te"
+    ],
+    "answerJoined": "tenrititite",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 5,
+    "prompt": "Do they clean?",
+    "answer": [
+     "nul",
+     "risi",
+     "ti",
+     "te"
+    ],
+    "answerJoined": "nulrisitite",
+    "difficulty": "curveball",
+    "flavor": "Watch the question marker's vowel.",
+    "hintOnFail": ""
+   },
+   {
+    "id": 6,
+    "prompt": "Do they smile?",
+    "answer": [
+     "nul",
+     "soto",
+     "tu",
+     "to"
+    ],
+    "answerJoined": "nulsototuto",
+    "difficulty": "curveball",
+    "flavor": "Watch the question marker's vowel.",
+    "hintOnFail": ""
+   }
+  ],
+  "morphemeBank": [
+   [
+    "nul",
+    "run",
+    "sew",
+    "sot",
+    "ten",
+    "tes"
+   ],
+   [
+    "puwo",
+    "risi",
+    "riti",
+    "sene",
+    "soto",
+    "sunu",
+    "tero",
+    "tiro"
+   ],
+   [
+    "ti",
+    "tu"
+   ],
+   [
+    "te",
+    "to"
+   ]
+  ],
+  "hints": [
+   {
+    "level": 1,
+    "type": "highlight",
+    "text": "Compare minimal pairs to isolate each morpheme."
+   }
+  ],
+  "lore": "Tujewi verbs mark tense and questions with vowel harmony.",
+  "nextPreview": "",
+  "theme": "synthetic",
+  "verdicts": {}
+ },
+ {
+  "id": "gen-019",
+  "language": "Sutalo",
+  "languageCode": "Qsut",
+  "family": "Generated/noun-class-agreement",
+  "region": "Synthetic",
+  "taskType": "morphology",
+  "title": "Sutalo field notes",
+  "instruction": "Deduce the grammar and translate.",
+  "difficulty": "hard",
+  "pairs": [
+   {
+    "source": "wiwum sumineriwi",
+    "target": "the deer walked",
+    "morphemes": [
+     "wiwum",
+     "su",
+     "mine",
+     "ri",
+     "wi"
+    ]
+   },
+   {
+    "source": "jurei wiminesune",
+    "target": "the bird walks",
+    "morphemes": [
+     "jurei",
+     "wi",
+     "mine",
+     "su",
+     "ne"
+    ]
+   },
+   {
+    "source": "mitea witetusune",
+    "target": "the frog plays",
+    "morphemes": [
+     "mitea",
+     "wi",
+     "tetu",
+     "su",
+     "ne"
+    ]
+   },
+   {
+    "source": "wotio wisijerine",
+    "target": "the dog smiled",
+    "morphemes": [
+     "wotio",
+     "wi",
+     "sije",
+     "ri",
+     "ne"
+    ]
+   },
+   {
+    "source": "rorem sumineriwi",
+    "target": "the cat walked",
+    "morphemes": [
+     "rorem",
+     "su",
+     "mine",
+     "ri",
+     "wi"
+    ]
+   },
+   {
+    "source": "perem sunurisuwi",
+    "target": "the wolf calls",
+    "morphemes": [
+     "perem",
+     "su",
+     "nuri",
+     "su",
+     "wi"
+    ]
+   },
+   {
+    "source": "jurei wijowerine",
+    "target": "the bird watched",
+    "morphemes": [
+     "jurei",
+     "wi",
+     "jowe",
+     "ri",
+     "ne"
+    ]
+   },
+   {
+    "source": "rojap janurisuna",
+    "target": "the goat calls",
+    "morphemes": [
+     "rojap",
+     "ja",
+     "nuri",
+     "su",
+     "na"
+    ]
+   },
+   {
+    "source": "rorem sujowesuwi",
+    "target": "the cat watches",
+    "morphemes": [
+     "rorem",
+     "su",
+     "jowe",
+     "su",
+     "wi"
+    ]
+   },
+   {
+    "source": "wurup jaminerina",
+    "target": "the fish walked",
+    "morphemes": [
+     "wurup",
+     "ja",
+     "mine",
+     "ri",
+     "na"
+    ]
+   },
+   {
+    "source": "mitea wijowesune",
+    "target": "the frog watches",
+    "morphemes": [
+     "mitea",
+     "wi",
+     "jowe",
+     "su",
+     "ne"
+    ]
+   },
+   {
+    "source": "wotio wiminerine",
+    "target": "the dog walked",
+    "morphemes": [
+     "wotio",
+     "wi",
+     "mine",
+     "ri",
+     "ne"
+    ]
+   },
+   {
+    "source": "rojap jajowesuna",
+    "target": "the goat watches",
+    "morphemes": [
+     "rojap",
+     "ja",
+     "jowe",
+     "su",
+     "na"
+    ]
+   },
+   {
+    "source": "jurei wijowesune",
+    "target": "the bird watches",
+    "morphemes": [
+     "jurei",
+     "wi",
+     "jowe",
+     "su",
+     "ne"
+    ]
+   },
+   {
+    "source": "wurup jasijesuna",
+    "target": "the fish smiles",
+    "morphemes": [
+     "wurup",
+     "ja",
+     "sije",
+     "su",
+     "na"
+    ]
+   },
+   {
+    "source": "jurei witetusune",
+    "target": "the bird plays",
+    "morphemes": [
+     "jurei",
+     "wi",
+     "tetu",
+     "su",
+     "ne"
+    ]
+   }
+  ],
+  "queries": [
+   {
+    "id": 0,
+    "prompt": "the deer walked",
+    "answer": [
+     "wiwum",
+     "su",
+     "mine",
+     "ri",
+     "wi"
+    ],
+    "answerJoined": "wiwum sumineriwi",
+    "difficulty": "tutorial",
+    "flavor": "This exact clause is in the notes.",
+    "hintOnFail": ""
+   },
+   {
+    "id": 1,
+    "prompt": "the cat calls",
+    "answer": [
+     "rorem",
+     "su",
+     "nuri",
+     "su",
+     "wi"
+    ],
+    "answerJoined": "rorem sunurisuwi",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 2,
+    "prompt": "the goat called",
+    "answer": [
+     "rojap",
+     "ja",
+     "nuri",
+     "ri",
+     "na"
+    ],
+    "answerJoined": "rojap januririna",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 3,
+    "prompt": "the fish watched",
+    "answer": [
+     "wurup",
+     "ja",
+     "jowe",
+     "ri",
+     "na"
+    ],
+    "answerJoined": "wurup jajowerina",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 4,
+    "prompt": "the bird called",
+    "answer": [
+     "jurei",
+     "wi",
+     "nuri",
+     "ri",
+     "ne"
+    ],
+    "answerJoined": "jurei winuririne",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 5,
+    "prompt": "the frog carried",
+    "answer": [
+     "mitea",
+     "wi",
+     "moru",
+     "ri",
+     "ne"
+    ],
+    "answerJoined": "mitea wimorurine",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 6,
+    "prompt": "the goat smiled",
+    "answer": [
+     "rojap",
+     "ja",
+     "sije",
+     "ri",
+     "na"
+    ],
+    "answerJoined": "rojap jasijerina",
+    "difficulty": "curveball",
+    "flavor": "Does the verb 'know' what kind of noun it has?",
+    "hintOnFail": ""
+   },
+   {
+    "id": 7,
+    "prompt": "the bear smiled",
+    "answer": [
+     "rurap",
+     "ja",
+     "sije",
+     "ri",
+     "na"
+    ],
+    "answerJoined": "rurap jasijerina",
+    "difficulty": "curveball",
+    "flavor": "Does the verb 'know' what kind of noun it has?",
+    "hintOnFail": ""
+   }
+  ],
+  "morphemeBank": [
+   [
+    "jurei",
+    "mitea",
+    "perem",
+    "rojap",
+    "rorem",
+    "rurap",
+    "wiwum",
+    "wotio",
+    "wurup"
+   ],
+   [
+    "ja",
+    "su",
+    "wi"
+   ],
+   [
+    "jowe",
+    "mine",
+    "moru",
+    "nuri",
+    "sije",
+    "tetu"
+   ],
+   [
+    "na",
+    "ne",
+    "wi"
+   ],
+   [
+    "ri",
+    "su"
+   ]
+  ],
+  "hints": [
+   {
+    "level": 1,
+    "type": "highlight",
+    "text": "Compare minimal pairs to isolate each morpheme."
+   }
+  ],
+  "lore": "Sutalo verbs agree with their subject noun by a matching prefix and suffix.",
+  "nextPreview": "",
+  "theme": "synthetic",
+  "verdicts": {}
+ },
+ {
+  "id": "gen-020",
+  "language": "Piropu",
+  "languageCode": "Qpir",
+  "family": "Generated/conditioned-suppletion",
+  "region": "Synthetic",
+  "taskType": "morphology",
+  "title": "Piropu field notes",
+  "instruction": "Deduce the grammar and translate.",
+  "difficulty": "hard",
+  "pairs": [
+   {
+    "source": "wirepatawe",
+    "target": "we played",
+    "morphemes": [
+     "wire",
+     "pata",
+     "we"
+    ]
+   },
+   {
+    "source": "lokisuwowe",
+    "target": "you all jumped",
+    "morphemes": [
+     "loki",
+     "suwo",
+     "we"
+    ]
+   },
+   {
+    "source": "topakerumu",
+    "target": "they smile",
+    "morphemes": [
+     "topa",
+     "keru",
+     "mu"
+    ]
+   },
+   {
+    "source": "lokikaramu",
+    "target": "you all clean",
+    "morphemes": [
+     "loki",
+     "kara",
+     "mu"
+    ]
+   },
+   {
+    "source": "meposuwomu",
+    "target": "he jumps",
+    "morphemes": [
+     "mepo",
+     "suwo",
+     "mu"
+    ]
+   },
+   {
+    "source": "lokitemimu",
+    "target": "you all wait",
+    "morphemes": [
+     "loki",
+     "temi",
+     "mu"
+    ]
+   },
+   {
+    "source": "merkrowewe",
+    "target": "you carried",
+    "morphemes": [
+     "merk",
+     "rowe",
+     "we"
+    ]
+   },
+   {
+    "source": "kupupatamu",
+    "target": "I play",
+    "morphemes": [
+     "kupu",
+     "pata",
+     "mu"
+    ]
+   },
+   {
+    "source": "wirewutewe",
+    "target": "we carried",
+    "morphemes": [
+     "wire",
+     "wute",
+     "we"
+    ]
+   },
+   {
+    "source": "wiresetimu",
+    "target": "we cook",
+    "morphemes": [
+     "wire",
+     "seti",
+     "mu"
+    ]
+   },
+   {
+    "source": "meposuwowe",
+    "target": "he jumped",
+    "morphemes": [
+     "mepo",
+     "suwo",
+     "we"
+    ]
+   },
+   {
+    "source": "lokitokewe",
+    "target": "you all called",
+    "morphemes": [
+     "loki",
+     "toke",
+     "we"
+    ]
+   },
+   {
+    "source": "lokikeruwe",
+    "target": "you all smiled",
+    "morphemes": [
+     "loki",
+     "keru",
+     "we"
+    ]
+   },
+   {
+    "source": "wirekaramu",
+    "target": "we clean",
+    "morphemes": [
+     "wire",
+     "kara",
+     "mu"
+    ]
+   },
+   {
+    "source": "lokisetimu",
+    "target": "you all cook",
+    "morphemes": [
+     "loki",
+     "seti",
+     "mu"
+    ]
+   },
+   {
+    "source": "mepokeruwe",
+    "target": "he smiled",
+    "morphemes": [
+     "mepo",
+     "keru",
+     "we"
+    ]
+   }
+  ],
+  "queries": [
+   {
+    "id": 0,
+    "prompt": "we played",
+    "answer": [
+     "wire",
+     "pata",
+     "we"
+    ],
+    "answerJoined": "wirepatawe",
+    "difficulty": "tutorial",
+    "flavor": "This exact phrase is in the notes.",
+    "hintOnFail": ""
+   },
+   {
+    "id": 1,
+    "prompt": "we called",
+    "answer": [
+     "wire",
+     "toke",
+     "we"
+    ],
+    "answerJoined": "wiretokewe",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 2,
+    "prompt": "they carried",
+    "answer": [
+     "topa",
+     "wute",
+     "we"
+    ],
+    "answerJoined": "topawutewe",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 3,
+    "prompt": "you clean",
+    "answer": [
+     "merk",
+     "roru",
+     "mu"
+    ],
+    "answerJoined": "merkrorumu",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 4,
+    "prompt": "they jumped",
+    "answer": [
+     "topa",
+     "suwo",
+     "we"
+    ],
+    "answerJoined": "topasuwowe",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 5,
+    "prompt": "they wait",
+    "answer": [
+     "topa",
+     "temi",
+     "mu"
+    ],
+    "answerJoined": "topatemimu",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 6,
+    "prompt": "he cooked",
+    "answer": [
+     "mepo",
+     "seti",
+     "we"
+    ],
+    "answerJoined": "meposetiwe",
+    "difficulty": "curveball",
+    "flavor": "Two things change here — check both.",
+    "hintOnFail": ""
+   },
+   {
+    "id": 7,
+    "prompt": "he cleaned",
+    "answer": [
+     "mepo",
+     "kara",
+     "we"
+    ],
+    "answerJoined": "mepokarawe",
+    "difficulty": "curveball",
+    "flavor": "Two things change here — check both.",
+    "hintOnFail": ""
+   }
+  ],
+  "morphemeBank": [
+   [
+    "kupu",
+    "loki",
+    "mepo",
+    "merk",
+    "topa",
+    "wire"
+   ],
+   [
+    "kara",
+    "keru",
+    "mumi",
+    "pata",
+    "peku",
+    "pisa",
+    "roru",
+    "rowe",
+    "seti",
+    "suwo",
+    "tawi",
+    "temi",
+    "toke",
+    "tuwi",
+    "wute"
+   ],
+   [
+    "ma",
+    "mu",
+    "we",
+    "wu"
+   ]
+  ],
+  "hints": [
+   {
+    "level": 1,
+    "type": "highlight",
+    "text": "Compare minimal pairs to isolate each morpheme."
+   }
+  ],
+  "lore": "Piropu verbs have two stems chosen by the subject prefix's final sound.",
+  "nextPreview": "",
+  "theme": "synthetic",
+  "verdicts": {}
+ },
+ {
+  "id": "gen-021",
+  "language": "Pisuro",
+  "languageCode": "Qpis",
+  "family": "Generated/vowel-harmony",
+  "region": "Synthetic",
+  "taskType": "morphology",
+  "title": "Pisuro field notes",
+  "instruction": "Deduce the grammar and translate.",
+  "difficulty": "hard",
+  "pairs": [
+   {
+    "source": "lilsomimire",
+    "target": "Did you all talk?",
+    "morphemes": [
+     "lil",
+     "somi",
+     "mi",
+     "re"
+    ]
+   },
+   {
+    "source": "wirsomikire",
+    "target": "Do I talk?",
+    "morphemes": [
+     "wir",
+     "somi",
+     "ki",
+     "re"
+    ]
+   },
+   {
+    "source": "lilsomimi",
+    "target": "you all talked",
+    "morphemes": [
+     "lil",
+     "somi",
+     "mi"
+    ]
+   },
+   {
+    "source": "lilromokora",
+    "target": "Do you all wait?",
+    "morphemes": [
+     "lil",
+     "romo",
+     "ko",
+     "ra"
+    ]
+   },
+   {
+    "source": "rewsomiki",
+    "target": "he talks",
+    "morphemes": [
+     "rew",
+     "somi",
+     "ki"
+    ]
+   },
+   {
+    "source": "rewromomora",
+    "target": "Did he wait?",
+    "morphemes": [
+     "rew",
+     "romo",
+     "mo",
+     "ra"
+    ]
+   },
+   {
+    "source": "mopromoko",
+    "target": "they wait",
+    "morphemes": [
+     "mop",
+     "romo",
+     "ko"
+    ]
+   },
+   {
+    "source": "kolromomo",
+    "target": "you waited",
+    "morphemes": [
+     "kol",
+     "romo",
+     "mo"
+    ]
+   },
+   {
+    "source": "wirmiwimire",
+    "target": "Did I cook?",
+    "morphemes": [
+     "wir",
+     "miwi",
+     "mi",
+     "re"
+    ]
+   },
+   {
+    "source": "wirmiwimi",
+    "target": "I cooked",
+    "morphemes": [
+     "wir",
+     "miwi",
+     "mi"
+    ]
+   },
+   {
+    "source": "pomsomiki",
+    "target": "we talk",
+    "morphemes": [
+     "pom",
+     "somi",
+     "ki"
+    ]
+   },
+   {
+    "source": "lilpolako",
+    "target": "you all smile",
+    "morphemes": [
+     "lil",
+     "pola",
+     "ko"
+    ]
+   },
+   {
+    "source": "pompemiki",
+    "target": "we call",
+    "morphemes": [
+     "pom",
+     "pemi",
+     "ki"
+    ]
+   },
+   {
+    "source": "pomsekamora",
+    "target": "Did we help?",
+    "morphemes": [
+     "pom",
+     "seka",
+     "mo",
+     "ra"
+    ]
+   }
+  ],
+  "queries": [
+   {
+    "id": 0,
+    "prompt": "Did you all talk?",
+    "answer": [
+     "lil",
+     "somi",
+     "mi",
+     "re"
+    ],
+    "answerJoined": "lilsomimire",
+    "difficulty": "tutorial",
+    "flavor": "Free — this exact phrase is in the notes.",
+    "hintOnFail": ""
+   },
+   {
+    "id": 1,
+    "prompt": "Did I wait?",
+    "answer": [
+     "wir",
+     "romo",
+     "mo",
+     "ra"
+    ],
+    "answerJoined": "wirromomora",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 2,
+    "prompt": "Do we smile?",
+    "answer": [
+     "pom",
+     "pola",
+     "ko",
+     "ra"
+    ],
+    "answerJoined": "pompolakora",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 3,
+    "prompt": "you all cook",
+    "answer": [
+     "lil",
+     "miwi",
+     "ki"
+    ],
+    "answerJoined": "lilmiwiki",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 4,
+    "prompt": "Did we wait?",
+    "answer": [
+     "pom",
+     "romo",
+     "mo",
+     "ra"
+    ],
+    "answerJoined": "pomromomora",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 5,
+    "prompt": "Did they help?",
+    "answer": [
+     "mop",
+     "seka",
+     "mo",
+     "ra"
+    ],
+    "answerJoined": "mopsekamora",
+    "difficulty": "curveball",
+    "flavor": "Watch the question marker's vowel.",
+    "hintOnFail": ""
+   },
+   {
+    "id": 6,
+    "prompt": "Do you all talk?",
+    "answer": [
+     "lil",
+     "somi",
+     "ki",
+     "re"
+    ],
+    "answerJoined": "lilsomikire",
+    "difficulty": "curveball",
+    "flavor": "Watch the question marker's vowel.",
+    "hintOnFail": ""
+   }
+  ],
+  "morphemeBank": [
+   [
+    "kol",
+    "lil",
+    "mop",
+    "pom",
+    "rew",
+    "wir"
+   ],
+   [
+    "lela",
+    "miwi",
+    "pemi",
+    "pola",
+    "romo",
+    "seka",
+    "somi",
+    "wimi"
+   ],
+   [
+    "ki",
+    "ko",
+    "mi",
+    "mo"
+   ],
+   [
+    "ra",
+    "re"
+   ]
+  ],
+  "hints": [
+   {
+    "level": 1,
+    "type": "highlight",
+    "text": "Compare minimal pairs to isolate each morpheme."
+   }
+  ],
+  "lore": "Pisuro verbs mark tense and questions with vowel harmony.",
+  "nextPreview": "",
+  "theme": "synthetic",
+  "verdicts": {}
+ },
+ {
+  "id": "gen-022",
+  "language": "Tuwowa",
+  "languageCode": "Qtuw",
+  "family": "Generated/noun-class-agreement",
+  "region": "Synthetic",
+  "taskType": "morphology",
+  "title": "Tuwowa field notes",
+  "instruction": "Deduce the grammar and translate.",
+  "difficulty": "hard",
+  "pairs": [
+   {
+    "source": "nakon sijojiraje",
+    "target": "the lion calls",
+    "morphemes": [
+     "nakon",
+     "si",
+     "joji",
+     "ra",
+     "je"
+    ]
+   },
+   {
+    "source": "sasip riroterori",
+    "target": "the newt waited",
+    "morphemes": [
+     "sasip",
+     "ri",
+     "rote",
+     "ro",
+     "ri"
+    ]
+   },
+   {
+    "source": "nuken sijojiraje",
+    "target": "the fish calls",
+    "morphemes": [
+     "nuken",
+     "si",
+     "joji",
+     "ra",
+     "je"
+    ]
+   },
+   {
+    "source": "sonan sisijoroje",
+    "target": "the dog watched",
+    "morphemes": [
+     "sonan",
+     "si",
+     "sijo",
+     "ro",
+     "je"
+    ]
+   },
+   {
+    "source": "jutop risijorari",
+    "target": "the cat watches",
+    "morphemes": [
+     "jutop",
+     "ri",
+     "sijo",
+     "ra",
+     "ri"
+    ]
+   },
+   {
+    "source": "sasip rinupurori",
+    "target": "the newt smiled",
+    "morphemes": [
+     "sasip",
+     "ri",
+     "nupu",
+     "ro",
+     "ri"
+    ]
+   },
+   {
+    "source": "nakon sijojiroje",
+    "target": "the lion called",
+    "morphemes": [
+     "nakon",
+     "si",
+     "joji",
+     "ro",
+     "je"
+    ]
+   },
+   {
+    "source": "sesip ritorarori",
+    "target": "the deer cleaned",
+    "morphemes": [
+     "sesip",
+     "ri",
+     "tora",
+     "ro",
+     "ri"
+    ]
+   },
+   {
+    "source": "sonan sitoraraje",
+    "target": "the dog cleans",
+    "morphemes": [
+     "sonan",
+     "si",
+     "tora",
+     "ra",
+     "je"
+    ]
+   },
+   {
+    "source": "nuken sisijoroje",
+    "target": "the fish watched",
+    "morphemes": [
+     "nuken",
+     "si",
+     "sijo",
+     "ro",
+     "je"
+    ]
+   },
+   {
+    "source": "sinuo ritorarale",
+    "target": "the bird cleans",
+    "morphemes": [
+     "sinuo",
+     "ri",
+     "tora",
+     "ra",
+     "le"
+    ]
+   },
+   {
+    "source": "kuroi ritorarale",
+    "target": "the bear cleans",
+    "morphemes": [
+     "kuroi",
+     "ri",
+     "tora",
+     "ra",
+     "le"
+    ]
+   },
+   {
+    "source": "nuken siroteraje",
+    "target": "the fish waits",
+    "morphemes": [
+     "nuken",
+     "si",
+     "rote",
+     "ra",
+     "je"
+    ]
+   },
+   {
+    "source": "kuroi riroterale",
+    "target": "the bear waits",
+    "morphemes": [
+     "kuroi",
+     "ri",
+     "rote",
+     "ra",
+     "le"
+    ]
+   },
+   {
+    "source": "sopae rinupurole",
+    "target": "the crab smiled",
+    "morphemes": [
+     "sopae",
+     "ri",
+     "nupu",
+     "ro",
+     "le"
+    ]
+   },
+   {
+    "source": "sesip rinupurari",
+    "target": "the deer smiles",
+    "morphemes": [
+     "sesip",
+     "ri",
+     "nupu",
+     "ra",
+     "ri"
+    ]
+   }
+  ],
+  "queries": [
+   {
+    "id": 0,
+    "prompt": "the lion calls",
+    "answer": [
+     "nakon",
+     "si",
+     "joji",
+     "ra",
+     "je"
+    ],
+    "answerJoined": "nakon sijojiraje",
+    "difficulty": "tutorial",
+    "flavor": "This exact clause is in the notes.",
+    "hintOnFail": ""
+   },
+   {
+    "id": 1,
+    "prompt": "the bear helps",
+    "answer": [
+     "kuroi",
+     "ri",
+     "nere",
+     "ra",
+     "le"
+    ],
+    "answerJoined": "kuroi rinererale",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 2,
+    "prompt": "the newt watches",
+    "answer": [
+     "sasip",
+     "ri",
+     "sijo",
+     "ra",
+     "ri"
+    ],
+    "answerJoined": "sasip risijorari",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 3,
+    "prompt": "the fish smiled",
+    "answer": [
+     "nuken",
+     "si",
+     "nupu",
+     "ro",
+     "je"
+    ],
+    "answerJoined": "nuken sinupuroje",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 4,
+    "prompt": "the dog smiles",
+    "answer": [
+     "sonan",
+     "si",
+     "nupu",
+     "ra",
+     "je"
+    ],
+    "answerJoined": "sonan sinupuraje",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 5,
+    "prompt": "the deer helps",
+    "answer": [
+     "sesip",
+     "ri",
+     "nere",
+     "ra",
+     "ri"
+    ],
+    "answerJoined": "sesip rinererari",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 6,
+    "prompt": "the cat cleaned",
+    "answer": [
+     "jutop",
+     "ri",
+     "tora",
+     "ro",
+     "ri"
+    ],
+    "answerJoined": "jutop ritorarori",
+    "difficulty": "curveball",
+    "flavor": "Does the verb 'know' what kind of noun it has?",
+    "hintOnFail": ""
+   },
+   {
+    "id": 7,
+    "prompt": "the newt watched",
+    "answer": [
+     "sasip",
+     "ri",
+     "sijo",
+     "ro",
+     "ri"
+    ],
+    "answerJoined": "sasip risijorori",
+    "difficulty": "curveball",
+    "flavor": "Does the verb 'know' what kind of noun it has?",
+    "hintOnFail": ""
+   }
+  ],
+  "morphemeBank": [
+   [
+    "jutop",
+    "kuroi",
+    "nakon",
+    "nuken",
+    "sasip",
+    "sesip",
+    "sinuo",
+    "sonan",
+    "sopae"
+   ],
+   [
+    "ri",
+    "si"
+   ],
+   [
+    "joji",
+    "nere",
+    "nupu",
+    "rote",
+    "sijo",
+    "tora"
+   ],
+   [
+    "je",
+    "le",
+    "ri"
+   ],
+   [
+    "ra",
+    "ro"
+   ]
+  ],
+  "hints": [
+   {
+    "level": 1,
+    "type": "highlight",
+    "text": "Compare minimal pairs to isolate each morpheme."
+   }
+  ],
+  "lore": "Tuwowa verbs agree with their subject noun by a matching prefix and suffix.",
+  "nextPreview": "",
+  "theme": "synthetic",
+  "verdicts": {}
+ },
+ {
+  "id": "gen-023",
+  "language": "Seramo",
+  "languageCode": "Qser",
+  "family": "Generated/conditioned-suppletion",
+  "region": "Synthetic",
+  "taskType": "morphology",
+  "title": "Seramo field notes",
+  "instruction": "Deduce the grammar and translate.",
+  "difficulty": "hard",
+  "pairs": [
+   {
+    "source": "rolkwerese",
+    "target": "you talk",
+    "morphemes": [
+     "rolk",
+     "were",
+     "se"
+    ]
+   },
+   {
+    "source": "tekukosuli",
+    "target": "I walked",
+    "morphemes": [
+     "teku",
+     "kosu",
+     "li"
+    ]
+   },
+   {
+    "source": "marasopise",
+    "target": "we talk",
+    "morphemes": [
+     "mara",
+     "sopi",
+     "se"
+    ]
+   },
+   {
+    "source": "tekusopili",
+    "target": "I talked",
+    "morphemes": [
+     "teku",
+     "sopi",
+     "li"
+    ]
+   },
+   {
+    "source": "patikosuse",
+    "target": "you all walk",
+    "morphemes": [
+     "pati",
+     "kosu",
+     "se"
+    ]
+   },
+   {
+    "source": "rolkwereli",
+    "target": "you talked",
+    "morphemes": [
+     "rolk",
+     "were",
+     "li"
+    ]
+   },
+   {
+    "source": "wusukosuse",
+    "target": "he walks",
+    "morphemes": [
+     "wusu",
+     "kosu",
+     "se"
+    ]
+   },
+   {
+    "source": "marapelise",
+    "target": "we jump",
+    "morphemes": [
+     "mara",
+     "peli",
+     "se"
+    ]
+   },
+   {
+    "source": "marawokuli",
+    "target": "we played",
+    "morphemes": [
+     "mara",
+     "woku",
+     "li"
+    ]
+   },
+   {
+    "source": "tekuketeli",
+    "target": "I cleaned",
+    "morphemes": [
+     "teku",
+     "kete",
+     "li"
+    ]
+   },
+   {
+    "source": "tekukoluse",
+    "target": "I watch",
+    "morphemes": [
+     "teku",
+     "kolu",
+     "se"
+    ]
+   },
+   {
+    "source": "rolkritose",
+    "target": "you jump",
+    "morphemes": [
+     "rolk",
+     "rito",
+     "se"
+    ]
+   },
+   {
+    "source": "patiwokuli",
+    "target": "you all played",
+    "morphemes": [
+     "pati",
+     "woku",
+     "li"
+    ]
+   },
+   {
+    "source": "patiwokuse",
+    "target": "you all play",
+    "morphemes": [
+     "pati",
+     "woku",
+     "se"
+    ]
+   },
+   {
+    "source": "tomekoluli",
+    "target": "they watched",
+    "morphemes": [
+     "tome",
+     "kolu",
+     "li"
+    ]
+   },
+   {
+    "source": "tomesopili",
+    "target": "they talked",
+    "morphemes": [
+     "tome",
+     "sopi",
+     "li"
+    ]
+   }
+  ],
+  "queries": [
+   {
+    "id": 0,
+    "prompt": "you talk",
+    "answer": [
+     "rolk",
+     "were",
+     "se"
+    ],
+    "answerJoined": "rolkwerese",
+    "difficulty": "tutorial",
+    "flavor": "This exact phrase is in the notes.",
+    "hintOnFail": ""
+   },
+   {
+    "id": 1,
+    "prompt": "they cooked",
+    "answer": [
+     "tome",
+     "rara",
+     "li"
+    ],
+    "answerJoined": "tomerarali",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 2,
+    "prompt": "he cleans",
+    "answer": [
+     "wusu",
+     "kete",
+     "se"
+    ],
+    "answerJoined": "wusuketese",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 3,
+    "prompt": "you walked",
+    "answer": [
+     "rolk",
+     "telo",
+     "li"
+    ],
+    "answerJoined": "rolkteloli",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 4,
+    "prompt": "I called",
+    "answer": [
+     "teku",
+     "more",
+     "li"
+    ],
+    "answerJoined": "tekumoreli",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 5,
+    "prompt": "you jumped",
+    "answer": [
+     "rolk",
+     "rito",
+     "li"
+    ],
+    "answerJoined": "rolkritoli",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 6,
+    "prompt": "he watched",
+    "answer": [
+     "wusu",
+     "kolu",
+     "li"
+    ],
+    "answerJoined": "wusukoluli",
+    "difficulty": "curveball",
+    "flavor": "Two things change here — check both.",
+    "hintOnFail": ""
+   },
+   {
+    "id": 7,
+    "prompt": "they walked",
+    "answer": [
+     "tome",
+     "kosu",
+     "li"
+    ],
+    "answerJoined": "tomekosuli",
+    "difficulty": "curveball",
+    "flavor": "Two things change here — check both.",
+    "hintOnFail": ""
+   }
+  ],
+  "morphemeBank": [
+   [
+    "mara",
+    "pati",
+    "rolk",
+    "teku",
+    "tome",
+    "wusu"
+   ],
+   [
+    "kete",
+    "kilu",
+    "kiro",
+    "kolu",
+    "kosu",
+    "loru",
+    "more",
+    "peli",
+    "rara",
+    "rito",
+    "sira",
+    "sopi",
+    "suki",
+    "telo",
+    "were",
+    "woku"
+   ],
+   [
+    "li",
+    "sa",
+    "se"
+   ]
+  ],
+  "hints": [
+   {
+    "level": 1,
+    "type": "highlight",
+    "text": "Compare minimal pairs to isolate each morpheme."
+   }
+  ],
+  "lore": "Seramo verbs have two stems chosen by the subject prefix's final sound.",
+  "nextPreview": "",
+  "theme": "synthetic",
+  "verdicts": {}
+ },
+ {
+  "id": "gen-024",
+  "language": "Kuteto",
+  "languageCode": "Qkut",
+  "family": "Generated/vowel-harmony",
+  "region": "Synthetic",
+  "taskType": "morphology",
+  "title": "Kuteto field notes",
+  "instruction": "Deduce the grammar and translate.",
+  "difficulty": "hard",
+  "pairs": [
+   {
+    "source": "semwasikesi",
+    "target": "Did he help?",
+    "morphemes": [
+     "sem",
+     "wasi",
+     "ke",
+     "si"
+    ]
+   },
+   {
+    "source": "remwasire",
+    "target": "we help",
+    "morphemes": [
+     "rem",
+     "wasi",
+     "re"
+    ]
+   },
+   {
+    "source": "wikwasiresi",
+    "target": "Do I help?",
+    "morphemes": [
+     "wik",
+     "wasi",
+     "re",
+     "si"
+    ]
+   },
+   {
+    "source": "jamkiwakosa",
+    "target": "Did you cook?",
+    "morphemes": [
+     "jam",
+     "kiwa",
+     "ko",
+     "sa"
+    ]
+   },
+   {
+    "source": "jamkiwaro",
+    "target": "you cook",
+    "morphemes": [
+     "jam",
+     "kiwa",
+     "ro"
+    ]
+   },
+   {
+    "source": "wikwasike",
+    "target": "I helped",
+    "morphemes": [
+     "wik",
+     "wasi",
+     "ke"
+    ]
+   },
+   {
+    "source": "semkiwako",
+    "target": "he cooked",
+    "morphemes": [
+     "sem",
+     "kiwa",
+     "ko"
+    ]
+   },
+   {
+    "source": "jamkiwarosa",
+    "target": "Do you cook?",
+    "morphemes": [
+     "jam",
+     "kiwa",
+     "ro",
+     "sa"
+    ]
+   },
+   {
+    "source": "korkiwaro",
+    "target": "they cook",
+    "morphemes": [
+     "kor",
+     "kiwa",
+     "ro"
+    ]
+   },
+   {
+    "source": "remtaroro",
+    "target": "we carry",
+    "morphemes": [
+     "rem",
+     "taro",
+     "ro"
+    ]
+   },
+   {
+    "source": "remmejiresi",
+    "target": "Do we watch?",
+    "morphemes": [
+     "rem",
+     "meji",
+     "re",
+     "si"
+    ]
+   },
+   {
+    "source": "remrokakosa",
+    "target": "Did we wait?",
+    "morphemes": [
+     "rem",
+     "roka",
+     "ko",
+     "sa"
+    ]
+   },
+   {
+    "source": "korkiwako",
+    "target": "they cooked",
+    "morphemes": [
+     "kor",
+     "kiwa",
+     "ko"
+    ]
+   },
+   {
+    "source": "semmejike",
+    "target": "he watched",
+    "morphemes": [
+     "sem",
+     "meji",
+     "ke"
+    ]
+   }
+  ],
+  "queries": [
+   {
+    "id": 0,
+    "prompt": "Did he help?",
+    "answer": [
+     "sem",
+     "wasi",
+     "ke",
+     "si"
+    ],
+    "answerJoined": "semwasikesi",
+    "difficulty": "tutorial",
+    "flavor": "Free — this exact phrase is in the notes.",
+    "hintOnFail": ""
+   },
+   {
+    "id": 1,
+    "prompt": "Do I carry?",
+    "answer": [
+     "wik",
+     "taro",
+     "ro",
+     "sa"
+    ],
+    "answerJoined": "wiktarorosa",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 2,
+    "prompt": "you all cooked",
+    "answer": [
+     "jot",
+     "kiwa",
+     "ko"
+    ],
+    "answerJoined": "jotkiwako",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 3,
+    "prompt": "we jumped",
+    "answer": [
+     "rem",
+     "sate",
+     "ke"
+    ],
+    "answerJoined": "remsateke",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 4,
+    "prompt": "you all play",
+    "answer": [
+     "jot",
+     "raso",
+     "ro"
+    ],
+    "answerJoined": "jotrasoro",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 5,
+    "prompt": "Do you help?",
+    "answer": [
+     "jam",
+     "wasi",
+     "re",
+     "si"
+    ],
+    "answerJoined": "jamwasiresi",
+    "difficulty": "curveball",
+    "flavor": "Watch the question marker's vowel.",
+    "hintOnFail": ""
+   },
+   {
+    "id": 6,
+    "prompt": "Did they carry?",
+    "answer": [
+     "kor",
+     "taro",
+     "ko",
+     "sa"
+    ],
+    "answerJoined": "kortarokosa",
+    "difficulty": "curveball",
+    "flavor": "Watch the question marker's vowel.",
+    "hintOnFail": ""
+   }
+  ],
+  "morphemeBank": [
+   [
+    "jam",
+    "jot",
+    "kor",
+    "rem",
+    "sem",
+    "wik"
+   ],
+   [
+    "jeka",
+    "kiwa",
+    "meji",
+    "raso",
+    "roka",
+    "sate",
+    "taro",
+    "wasi"
+   ],
+   [
+    "ke",
+    "ko",
+    "re",
+    "ro"
+   ],
+   [
+    "sa",
+    "si"
+   ]
+  ],
+  "hints": [
+   {
+    "level": 1,
+    "type": "highlight",
+    "text": "Compare minimal pairs to isolate each morpheme."
+   }
+  ],
+  "lore": "Kuteto verbs mark tense and questions with vowel harmony.",
+  "nextPreview": "",
+  "theme": "synthetic",
+  "verdicts": {}
+ },
+ {
+  "id": "gen-025",
+  "language": "Kejimi",
+  "languageCode": "Qkej",
+  "family": "Generated/noun-class-agreement",
+  "region": "Synthetic",
+  "taskType": "morphology",
+  "title": "Kejimi field notes",
+  "instruction": "Deduce the grammar and translate.",
+  "difficulty": "hard",
+  "pairs": [
+   {
+    "source": "susou lemopasitu",
+    "target": "the goat talks",
+    "morphemes": [
+     "susou",
+     "le",
+     "mopa",
+     "si",
+     "tu"
+    ]
+   },
+   {
+    "source": "resep milusimera",
+    "target": "the wolf jumped",
+    "morphemes": [
+     "resep",
+     "mi",
+     "lusi",
+     "me",
+     "ra"
+    ]
+   },
+   {
+    "source": "pelep mitupesira",
+    "target": "the deer watches",
+    "morphemes": [
+     "pelep",
+     "mi",
+     "tupe",
+     "si",
+     "ra"
+    ]
+   },
+   {
+    "source": "misom tilusisimo",
+    "target": "the frog jumps",
+    "morphemes": [
+     "misom",
+     "ti",
+     "lusi",
+     "si",
+     "mo"
+    ]
+   },
+   {
+    "source": "netue lepapimetu",
+    "target": "the newt carried",
+    "morphemes": [
+     "netue",
+     "le",
+     "papi",
+     "me",
+     "tu"
+    ]
+   },
+   {
+    "source": "tilum timopasimo",
+    "target": "the lion talks",
+    "morphemes": [
+     "tilum",
+     "ti",
+     "mopa",
+     "si",
+     "mo"
+    ]
+   },
+   {
+    "source": "resep mipapimera",
+    "target": "the wolf carried",
+    "morphemes": [
+     "resep",
+     "mi",
+     "papi",
+     "me",
+     "ra"
+    ]
+   },
+   {
+    "source": "resep mimopasira",
+    "target": "the wolf talks",
+    "morphemes": [
+     "resep",
+     "mi",
+     "mopa",
+     "si",
+     "ra"
+    ]
+   },
+   {
+    "source": "reria lelusimetu",
+    "target": "the bird jumped",
+    "morphemes": [
+     "reria",
+     "le",
+     "lusi",
+     "me",
+     "tu"
+    ]
+   },
+   {
+    "source": "netue lepapisitu",
+    "target": "the newt carries",
+    "morphemes": [
+     "netue",
+     "le",
+     "papi",
+     "si",
+     "tu"
+    ]
+   },
+   {
+    "source": "netue lewulositu",
+    "target": "the newt helps",
+    "morphemes": [
+     "netue",
+     "le",
+     "wulo",
+     "si",
+     "tu"
+    ]
+   },
+   {
+    "source": "reria lepapisitu",
+    "target": "the bird carries",
+    "morphemes": [
+     "reria",
+     "le",
+     "papi",
+     "si",
+     "tu"
+    ]
+   },
+   {
+    "source": "pelep milusimera",
+    "target": "the deer jumped",
+    "morphemes": [
+     "pelep",
+     "mi",
+     "lusi",
+     "me",
+     "ra"
+    ]
+   },
+   {
+    "source": "tuwim tilusisimo",
+    "target": "the fish jumps",
+    "morphemes": [
+     "tuwim",
+     "ti",
+     "lusi",
+     "si",
+     "mo"
+    ]
+   },
+   {
+    "source": "tilum tipapisimo",
+    "target": "the lion carries",
+    "morphemes": [
+     "tilum",
+     "ti",
+     "papi",
+     "si",
+     "mo"
+    ]
+   },
+   {
+    "source": "resep mironusira",
+    "target": "the wolf smiles",
+    "morphemes": [
+     "resep",
+     "mi",
+     "ronu",
+     "si",
+     "ra"
+    ]
+   }
+  ],
+  "queries": [
+   {
+    "id": 0,
+    "prompt": "the goat talks",
+    "answer": [
+     "susou",
+     "le",
+     "mopa",
+     "si",
+     "tu"
+    ],
+    "answerJoined": "susou lemopasitu",
+    "difficulty": "tutorial",
+    "flavor": "This exact clause is in the notes.",
+    "hintOnFail": ""
+   },
+   {
+    "id": 1,
+    "prompt": "the lion jumped",
+    "answer": [
+     "tilum",
+     "ti",
+     "lusi",
+     "me",
+     "mo"
+    ],
+    "answerJoined": "tilum tilusimemo",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 2,
+    "prompt": "the cat helped",
+    "answer": [
+     "penep",
+     "mi",
+     "wulo",
+     "me",
+     "ra"
+    ],
+    "answerJoined": "penep miwulomera",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 3,
+    "prompt": "the deer watched",
+    "answer": [
+     "pelep",
+     "mi",
+     "tupe",
+     "me",
+     "ra"
+    ],
+    "answerJoined": "pelep mitupemera",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 4,
+    "prompt": "the frog jumped",
+    "answer": [
+     "misom",
+     "ti",
+     "lusi",
+     "me",
+     "mo"
+    ],
+    "answerJoined": "misom tilusimemo",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 5,
+    "prompt": "the newt watched",
+    "answer": [
+     "netue",
+     "le",
+     "tupe",
+     "me",
+     "tu"
+    ],
+    "answerJoined": "netue letupemetu",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 6,
+    "prompt": "the cat carried",
+    "answer": [
+     "penep",
+     "mi",
+     "papi",
+     "me",
+     "ra"
+    ],
+    "answerJoined": "penep mipapimera",
+    "difficulty": "curveball",
+    "flavor": "Does the verb 'know' what kind of noun it has?",
+    "hintOnFail": ""
+   },
+   {
+    "id": 7,
+    "prompt": "the wolf talked",
+    "answer": [
+     "resep",
+     "mi",
+     "mopa",
+     "me",
+     "ra"
+    ],
+    "answerJoined": "resep mimopamera",
+    "difficulty": "curveball",
+    "flavor": "Does the verb 'know' what kind of noun it has?",
+    "hintOnFail": ""
+   }
+  ],
+  "morphemeBank": [
+   [
+    "misom",
+    "netue",
+    "pelep",
+    "penep",
+    "reria",
+    "resep",
+    "susou",
+    "tilum",
+    "tuwim"
+   ],
+   [
+    "le",
+    "mi",
+    "ti"
+   ],
+   [
+    "lusi",
+    "mopa",
+    "papi",
+    "ronu",
+    "tupe",
+    "wulo"
+   ],
+   [
+    "mo",
+    "ra",
+    "tu"
+   ],
+   [
+    "me",
+    "si"
+   ]
+  ],
+  "hints": [
+   {
+    "level": 1,
+    "type": "highlight",
+    "text": "Compare minimal pairs to isolate each morpheme."
+   }
+  ],
+  "lore": "Kejimi verbs agree with their subject noun by a matching prefix and suffix.",
+  "nextPreview": "",
+  "theme": "synthetic",
+  "verdicts": {}
+ },
+ {
+  "id": "gen-026",
+  "language": "Nalepa",
+  "languageCode": "Qnal",
+  "family": "Generated/conditioned-suppletion",
+  "region": "Synthetic",
+  "taskType": "morphology",
+  "title": "Nalepa field notes",
+  "instruction": "Deduce the grammar and translate.",
+  "difficulty": "hard",
+  "pairs": [
+   {
+    "source": "rapajopira",
+    "target": "he carried",
+    "morphemes": [
+     "rapa",
+     "jopi",
+     "ra"
+    ]
+   },
+   {
+    "source": "jasasujara",
+    "target": "you all watched",
+    "morphemes": [
+     "jasa",
+     "suja",
+     "ra"
+    ]
+   },
+   {
+    "source": "lerejopira",
+    "target": "we carried",
+    "morphemes": [
+     "lere",
+     "jopi",
+     "ra"
+    ]
+   },
+   {
+    "source": "rapasujara",
+    "target": "he watched",
+    "morphemes": [
+     "rapa",
+     "suja",
+     "ra"
+    ]
+   },
+   {
+    "source": "leresujale",
+    "target": "we watch",
+    "morphemes": [
+     "lere",
+     "suja",
+     "le"
+    ]
+   },
+   {
+    "source": "jasajopira",
+    "target": "you all carried",
+    "morphemes": [
+     "jasa",
+     "jopi",
+     "ra"
+    ]
+   },
+   {
+    "source": "lererijura",
+    "target": "we walked",
+    "morphemes": [
+     "lere",
+     "riju",
+     "ra"
+    ]
+   },
+   {
+    "source": "lilasujale",
+    "target": "they watch",
+    "morphemes": [
+     "lila",
+     "suja",
+     "le"
+    ]
+   },
+   {
+    "source": "raparijura",
+    "target": "he walked",
+    "morphemes": [
+     "rapa",
+     "riju",
+     "ra"
+    ]
+   },
+   {
+    "source": "lilalalele",
+    "target": "they smile",
+    "morphemes": [
+     "lila",
+     "lale",
+     "le"
+    ]
+   },
+   {
+    "source": "raparijule",
+    "target": "he walks",
+    "morphemes": [
+     "rapa",
+     "riju",
+     "le"
+    ]
+   },
+   {
+    "source": "lerelalera",
+    "target": "we smiled",
+    "morphemes": [
+     "lere",
+     "lale",
+     "ra"
+    ]
+   },
+   {
+    "source": "rapasujale",
+    "target": "he watches",
+    "morphemes": [
+     "rapa",
+     "suja",
+     "le"
+    ]
+   },
+   {
+    "source": "lilawirule",
+    "target": "they talk",
+    "morphemes": [
+     "lila",
+     "wiru",
+     "le"
+    ]
+   },
+   {
+    "source": "lilasujara",
+    "target": "they watched",
+    "morphemes": [
+     "lila",
+     "suja",
+     "ra"
+    ]
+   },
+   {
+    "source": "jasarijura",
+    "target": "you all walked",
+    "morphemes": [
+     "jasa",
+     "riju",
+     "ra"
+    ]
+   }
+  ],
+  "queries": [
+   {
+    "id": 0,
+    "prompt": "he carried",
+    "answer": [
+     "rapa",
+     "jopi",
+     "ra"
+    ],
+    "answerJoined": "rapajopira",
+    "difficulty": "tutorial",
+    "flavor": "This exact phrase is in the notes.",
+    "hintOnFail": ""
+   },
+   {
+    "id": 1,
+    "prompt": "you waited",
+    "answer": [
+     "nelj",
+     "lawi",
+     "ra"
+    ],
+    "answerJoined": "neljlawira",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 2,
+    "prompt": "we helped",
+    "answer": [
+     "lere",
+     "kowu",
+     "ra"
+    ],
+    "answerJoined": "lerekowura",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 3,
+    "prompt": "they carry",
+    "answer": [
+     "lila",
+     "jopi",
+     "le"
+    ],
+    "answerJoined": "lilajopile",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 4,
+    "prompt": "he smiles",
+    "answer": [
+     "rapa",
+     "lale",
+     "le"
+    ],
+    "answerJoined": "rapalalele",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 5,
+    "prompt": "you jump",
+    "answer": [
+     "nelj",
+     "siwe",
+     "le"
+    ],
+    "answerJoined": "neljsiwele",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 6,
+    "prompt": "they walked",
+    "answer": [
+     "lila",
+     "riju",
+     "ra"
+    ],
+    "answerJoined": "lilarijura",
+    "difficulty": "curveball",
+    "flavor": "Two things change here — check both.",
+    "hintOnFail": ""
+   },
+   {
+    "id": 7,
+    "prompt": "they helped",
+    "answer": [
+     "lila",
+     "kowu",
+     "ra"
+    ],
+    "answerJoined": "lilakowura",
+    "difficulty": "curveball",
+    "flavor": "Two things change here — check both.",
+    "hintOnFail": ""
+   }
+  ],
+  "morphemeBank": [
+   [
+    "jasa",
+    "lere",
+    "lila",
+    "nelj",
+    "rapa",
+    "siri"
+   ],
+   [
+    "jopi",
+    "kaji",
+    "kowu",
+    "lale",
+    "lawi",
+    "leso",
+    "loje",
+    "nuji",
+    "riju",
+    "ropa",
+    "sewa",
+    "siwe",
+    "suja",
+    "wepe",
+    "wiru"
+   ],
+   [
+    "la",
+    "le",
+    "ra",
+    "re"
+   ]
+  ],
+  "hints": [
+   {
+    "level": 1,
+    "type": "highlight",
+    "text": "Compare minimal pairs to isolate each morpheme."
+   }
+  ],
+  "lore": "Nalepa verbs have two stems chosen by the subject prefix's final sound.",
+  "nextPreview": "",
+  "theme": "synthetic",
+  "verdicts": {}
+ },
+ {
+  "id": "gen-027",
+  "language": "Sunini",
+  "languageCode": "Qsun",
+  "family": "Generated/vowel-harmony",
+  "region": "Synthetic",
+  "taskType": "morphology",
+  "title": "Sunini field notes",
+  "instruction": "Deduce the grammar and translate.",
+  "difficulty": "hard",
+  "pairs": [
+   {
+    "source": "rilnilere",
+    "target": "I clean",
+    "morphemes": [
+     "ril",
+     "nile",
+     "re"
+    ]
+   },
+   {
+    "source": "neknileneli",
+    "target": "Did they clean?",
+    "morphemes": [
+     "nek",
+     "nile",
+     "ne",
+     "li"
+    ]
+   },
+   {
+    "source": "rilnilereli",
+    "target": "Do I clean?",
+    "morphemes": [
+     "ril",
+     "nile",
+     "re",
+     "li"
+    ]
+   },
+   {
+    "source": "nekwanaralo",
+    "target": "Do they wait?",
+    "morphemes": [
+     "nek",
+     "wana",
+     "ra",
+     "lo"
+    ]
+   },
+   {
+    "source": "kilwanara",
+    "target": "he waits",
+    "morphemes": [
+     "kil",
+     "wana",
+     "ra"
+    ]
+   },
+   {
+    "source": "kilwananalo",
+    "target": "Did he wait?",
+    "morphemes": [
+     "kil",
+     "wana",
+     "na",
+     "lo"
+    ]
+   },
+   {
+    "source": "wownilene",
+    "target": "you all cleaned",
+    "morphemes": [
+     "wow",
+     "nile",
+     "ne"
+    ]
+   },
+   {
+    "source": "renwanana",
+    "target": "you waited",
+    "morphemes": [
+     "ren",
+     "wana",
+     "na"
+    ]
+   },
+   {
+    "source": "melwelere",
+    "target": "we smile",
+    "morphemes": [
+     "mel",
+     "wele",
+     "re"
+    ]
+   },
+   {
+    "source": "nekwananalo",
+    "target": "Did they wait?",
+    "morphemes": [
+     "nek",
+     "wana",
+     "na",
+     "lo"
+    ]
+   },
+   {
+    "source": "rilnileneli",
+    "target": "Did I clean?",
+    "morphemes": [
+     "ril",
+     "nile",
+     "ne",
+     "li"
+    ]
+   },
+   {
+    "source": "nekpananalo",
+    "target": "Did they call?",
+    "morphemes": [
+     "nek",
+     "pana",
+     "na",
+     "lo"
+    ]
+   },
+   {
+    "source": "melpamire",
+    "target": "we watch",
+    "morphemes": [
+     "mel",
+     "pami",
+     "re"
+    ]
+   },
+   {
+    "source": "wowwepireli",
+    "target": "Do you all jump?",
+    "morphemes": [
+     "wow",
+     "wepi",
+     "re",
+     "li"
+    ]
+   }
+  ],
+  "queries": [
+   {
+    "id": 0,
+    "prompt": "I clean",
+    "answer": [
+     "ril",
+     "nile",
+     "re"
+    ],
+    "answerJoined": "rilnilere",
+    "difficulty": "tutorial",
+    "flavor": "Free — this exact phrase is in the notes.",
+    "hintOnFail": ""
+   },
+   {
+    "id": 1,
+    "prompt": "they smiled",
+    "answer": [
+     "nek",
+     "wele",
+     "ne"
+    ],
+    "answerJoined": "nekwelene",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 2,
+    "prompt": "Do I smile?",
+    "answer": [
+     "ril",
+     "wele",
+     "re",
+     "li"
+    ],
+    "answerJoined": "rilwelereli",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 3,
+    "prompt": "he plays",
+    "answer": [
+     "kil",
+     "neka",
+     "ra"
+    ],
+    "answerJoined": "kilnekara",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 4,
+    "prompt": "Did they watch?",
+    "answer": [
+     "nek",
+     "pami",
+     "ne",
+     "li"
+    ],
+    "answerJoined": "nekpamineli",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 5,
+    "prompt": "Did you play?",
+    "answer": [
+     "ren",
+     "neka",
+     "na",
+     "lo"
+    ],
+    "answerJoined": "rennekanalo",
+    "difficulty": "curveball",
+    "flavor": "Watch the question marker's vowel.",
+    "hintOnFail": ""
+   },
+   {
+    "id": 6,
+    "prompt": "Did you all wait?",
+    "answer": [
+     "wow",
+     "wana",
+     "na",
+     "lo"
+    ],
+    "answerJoined": "wowwananalo",
+    "difficulty": "curveball",
+    "flavor": "Watch the question marker's vowel.",
+    "hintOnFail": ""
+   }
+  ],
+  "morphemeBank": [
+   [
+    "kil",
+    "mel",
+    "nek",
+    "ren",
+    "ril",
+    "wow"
+   ],
+   [
+    "kare",
+    "neka",
+    "nile",
+    "pami",
+    "pana",
+    "wana",
+    "wele",
+    "wepi"
+   ],
+   [
+    "na",
+    "ne",
+    "ra",
+    "re"
+   ],
+   [
+    "li",
+    "lo"
+   ]
+  ],
+  "hints": [
+   {
+    "level": 1,
+    "type": "highlight",
+    "text": "Compare minimal pairs to isolate each morpheme."
+   }
+  ],
+  "lore": "Sunini verbs mark tense and questions with vowel harmony.",
+  "nextPreview": "",
+  "theme": "synthetic",
+  "verdicts": {}
+ },
+ {
+  "id": "gen-028",
+  "language": "Muwanu",
+  "languageCode": "Qmuw",
+  "family": "Generated/noun-class-agreement",
+  "region": "Synthetic",
+  "taskType": "morphology",
+  "title": "Muwanu field notes",
+  "instruction": "Deduce the grammar and translate.",
+  "difficulty": "hard",
+  "pairs": [
+   {
+    "source": "rusep tukepumipa",
+    "target": "the dog carried",
+    "morphemes": [
+     "rusep",
+     "tu",
+     "kepu",
+     "mi",
+     "pa"
+    ]
+   },
+   {
+    "source": "retip tusamemipa",
+    "target": "the fish smiled",
+    "morphemes": [
+     "retip",
+     "tu",
+     "same",
+     "mi",
+     "pa"
+    ]
+   },
+   {
+    "source": "pulum pekosiwume",
+    "target": "the deer jumps",
+    "morphemes": [
+     "pulum",
+     "pe",
+     "kosi",
+     "wu",
+     "me"
+    ]
+   },
+   {
+    "source": "wowum pesamewume",
+    "target": "the crab smiles",
+    "morphemes": [
+     "wowum",
+     "pe",
+     "same",
+     "wu",
+     "me"
+    ]
+   },
+   {
+    "source": "pulum pekamiwume",
+    "target": "the deer cooks",
+    "morphemes": [
+     "pulum",
+     "pe",
+     "kami",
+     "wu",
+     "me"
+    ]
+   },
+   {
+    "source": "pulum peratemime",
+    "target": "the deer cleaned",
+    "morphemes": [
+     "pulum",
+     "pe",
+     "rate",
+     "mi",
+     "me"
+    ]
+   },
+   {
+    "source": "rusep tukosiwupa",
+    "target": "the dog jumps",
+    "morphemes": [
+     "rusep",
+     "tu",
+     "kosi",
+     "wu",
+     "pa"
+    ]
+   },
+   {
+    "source": "retip tusamewupa",
+    "target": "the fish smiles",
+    "morphemes": [
+     "retip",
+     "tu",
+     "same",
+     "wu",
+     "pa"
+    ]
+   },
+   {
+    "source": "rarup tukepumipa",
+    "target": "the newt carried",
+    "morphemes": [
+     "rarup",
+     "tu",
+     "kepu",
+     "mi",
+     "pa"
+    ]
+   },
+   {
+    "source": "pulum peratewume",
+    "target": "the deer cleans",
+    "morphemes": [
+     "pulum",
+     "pe",
+     "rate",
+     "wu",
+     "me"
+    ]
+   },
+   {
+    "source": "wowum pekosomime",
+    "target": "the crab walked",
+    "morphemes": [
+     "wowum",
+     "pe",
+     "koso",
+     "mi",
+     "me"
+    ]
+   },
+   {
+    "source": "womoe pekamiwulo",
+    "target": "the bird cooks",
+    "morphemes": [
+     "womoe",
+     "pe",
+     "kami",
+     "wu",
+     "lo"
+    ]
+   },
+   {
+    "source": "piwia peratemilo",
+    "target": "the goat cleaned",
+    "morphemes": [
+     "piwia",
+     "pe",
+     "rate",
+     "mi",
+     "lo"
+    ]
+   },
+   {
+    "source": "piwia pesamewulo",
+    "target": "the goat smiles",
+    "morphemes": [
+     "piwia",
+     "pe",
+     "same",
+     "wu",
+     "lo"
+    ]
+   },
+   {
+    "source": "kilam pesamemime",
+    "target": "the bear smiled",
+    "morphemes": [
+     "kilam",
+     "pe",
+     "same",
+     "mi",
+     "me"
+    ]
+   },
+   {
+    "source": "womoe pekosiwulo",
+    "target": "the bird jumps",
+    "morphemes": [
+     "womoe",
+     "pe",
+     "kosi",
+     "wu",
+     "lo"
+    ]
+   }
+  ],
+  "queries": [
+   {
+    "id": 0,
+    "prompt": "the dog carried",
+    "answer": [
+     "rusep",
+     "tu",
+     "kepu",
+     "mi",
+     "pa"
+    ],
+    "answerJoined": "rusep tukepumipa",
+    "difficulty": "tutorial",
+    "flavor": "This exact clause is in the notes.",
+    "hintOnFail": ""
+   },
+   {
+    "id": 1,
+    "prompt": "the fish walked",
+    "answer": [
+     "retip",
+     "tu",
+     "koso",
+     "mi",
+     "pa"
+    ],
+    "answerJoined": "retip tukosomipa",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 2,
+    "prompt": "the goat smiled",
+    "answer": [
+     "piwia",
+     "pe",
+     "same",
+     "mi",
+     "lo"
+    ],
+    "answerJoined": "piwia pesamemilo",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 3,
+    "prompt": "the dog cooked",
+    "answer": [
+     "rusep",
+     "tu",
+     "kami",
+     "mi",
+     "pa"
+    ],
+    "answerJoined": "rusep tukamimipa",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 4,
+    "prompt": "the lion smiles",
+    "answer": [
+     "tesuu",
+     "pe",
+     "same",
+     "wu",
+     "lo"
+    ],
+    "answerJoined": "tesuu pesamewulo",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 5,
+    "prompt": "the bird jumped",
+    "answer": [
+     "womoe",
+     "pe",
+     "kosi",
+     "mi",
+     "lo"
+    ],
+    "answerJoined": "womoe pekosimilo",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 6,
+    "prompt": "the newt jumped",
+    "answer": [
+     "rarup",
+     "tu",
+     "kosi",
+     "mi",
+     "pa"
+    ],
+    "answerJoined": "rarup tukosimipa",
+    "difficulty": "curveball",
+    "flavor": "Does the verb 'know' what kind of noun it has?",
+    "hintOnFail": ""
+   },
+   {
+    "id": 7,
+    "prompt": "the dog jumped",
+    "answer": [
+     "rusep",
+     "tu",
+     "kosi",
+     "mi",
+     "pa"
+    ],
+    "answerJoined": "rusep tukosimipa",
+    "difficulty": "curveball",
+    "flavor": "Does the verb 'know' what kind of noun it has?",
+    "hintOnFail": ""
+   }
+  ],
+  "morphemeBank": [
+   [
+    "kilam",
+    "piwia",
+    "pulum",
+    "rarup",
+    "retip",
+    "rusep",
+    "tesuu",
+    "womoe",
+    "wowum"
+   ],
+   [
+    "pe",
+    "tu"
+   ],
+   [
+    "kami",
+    "kepu",
+    "kosi",
+    "koso",
+    "rate",
+    "same"
+   ],
+   [
+    "lo",
+    "me",
+    "pa"
+   ],
+   [
+    "mi",
+    "wu"
+   ]
+  ],
+  "hints": [
+   {
+    "level": 1,
+    "type": "highlight",
+    "text": "Compare minimal pairs to isolate each morpheme."
+   }
+  ],
+  "lore": "Muwanu verbs agree with their subject noun by a matching prefix and suffix.",
+  "nextPreview": "",
+  "theme": "synthetic",
+  "verdicts": {}
+ },
+ {
+  "id": "gen-029",
+  "language": "Nunewi",
+  "languageCode": "Qnun",
+  "family": "Generated/conditioned-suppletion",
+  "region": "Synthetic",
+  "taskType": "morphology",
+  "title": "Nunewi field notes",
+  "instruction": "Deduce the grammar and translate.",
+  "difficulty": "hard",
+  "pairs": [
+   {
+    "source": "liwajiwamo",
+    "target": "we smiled",
+    "morphemes": [
+     "liwa",
+     "jiwa",
+     "mo"
+    ]
+   },
+   {
+    "source": "wisowaremo",
+    "target": "I walked",
+    "morphemes": [
+     "wiso",
+     "ware",
+     "mo"
+    ]
+   },
+   {
+    "source": "liwasujemo",
+    "target": "we carried",
+    "morphemes": [
+     "liwa",
+     "suje",
+     "mo"
+    ]
+   },
+   {
+    "source": "liwawaremo",
+    "target": "we walked",
+    "morphemes": [
+     "liwa",
+     "ware",
+     "mo"
+    ]
+   },
+   {
+    "source": "wisomararo",
+    "target": "I watch",
+    "morphemes": [
+     "wiso",
+     "mara",
+     "ro"
+    ]
+   },
+   {
+    "source": "julipamuro",
+    "target": "you all call",
+    "morphemes": [
+     "juli",
+     "pamu",
+     "ro"
+    ]
+   },
+   {
+    "source": "julimuriro",
+    "target": "you all play",
+    "morphemes": [
+     "juli",
+     "muri",
+     "ro"
+    ]
+   },
+   {
+    "source": "jumemuriro",
+    "target": "they play",
+    "morphemes": [
+     "jume",
+     "muri",
+     "ro"
+    ]
+   },
+   {
+    "source": "wojnliwimo",
+    "target": "you walked",
+    "morphemes": [
+     "wojn",
+     "liwi",
+     "mo"
+    ]
+   },
+   {
+    "source": "lorunaworo",
+    "target": "he jumps",
+    "morphemes": [
+     "loru",
+     "nawo",
+     "ro"
+    ]
+   },
+   {
+    "source": "wojnwusomo",
+    "target": "you watched",
+    "morphemes": [
+     "wojn",
+     "wuso",
+     "mo"
+    ]
+   },
+   {
+    "source": "wojnruwomo",
+    "target": "you played",
+    "morphemes": [
+     "wojn",
+     "ruwo",
+     "mo"
+    ]
+   },
+   {
+    "source": "jumepamumo",
+    "target": "they called",
+    "morphemes": [
+     "jume",
+     "pamu",
+     "mo"
+    ]
+   },
+   {
+    "source": "jumenawomo",
+    "target": "they jumped",
+    "morphemes": [
+     "jume",
+     "nawo",
+     "mo"
+    ]
+   },
+   {
+    "source": "wisomurimo",
+    "target": "I played",
+    "morphemes": [
+     "wiso",
+     "muri",
+     "mo"
+    ]
+   },
+   {
+    "source": "wisomuriro",
+    "target": "I play",
+    "morphemes": [
+     "wiso",
+     "muri",
+     "ro"
+    ]
+   }
+  ],
+  "queries": [
+   {
+    "id": 0,
+    "prompt": "we smiled",
+    "answer": [
+     "liwa",
+     "jiwa",
+     "mo"
+    ],
+    "answerJoined": "liwajiwamo",
+    "difficulty": "tutorial",
+    "flavor": "This exact phrase is in the notes.",
+    "hintOnFail": ""
+   },
+   {
+    "id": 1,
+    "prompt": "I watched",
+    "answer": [
+     "wiso",
+     "mara",
+     "mo"
+    ],
+    "answerJoined": "wisomaramo",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 2,
+    "prompt": "you call",
+    "answer": [
+     "wojn",
+     "lawa",
+     "ro"
+    ],
+    "answerJoined": "wojnlawaro",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 3,
+    "prompt": "he watches",
+    "answer": [
+     "loru",
+     "mara",
+     "ro"
+    ],
+    "answerJoined": "lorumararo",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 4,
+    "prompt": "we call",
+    "answer": [
+     "liwa",
+     "pamu",
+     "ro"
+    ],
+    "answerJoined": "liwapamuro",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 5,
+    "prompt": "you all smiled",
+    "answer": [
+     "juli",
+     "jiwa",
+     "mo"
+    ],
+    "answerJoined": "julijiwamo",
+    "difficulty": "standard",
+    "flavor": "",
+    "hintOnFail": ""
+   },
+   {
+    "id": 6,
+    "prompt": "they smiled",
+    "answer": [
+     "jume",
+     "jiwa",
+     "mo"
+    ],
+    "answerJoined": "jumejiwamo",
+    "difficulty": "curveball",
+    "flavor": "Two things change here — check both.",
+    "hintOnFail": ""
+   },
+   {
+    "id": 7,
+    "prompt": "they watched",
+    "answer": [
+     "jume",
+     "mara",
+     "mo"
+    ],
+    "answerJoined": "jumemaramo",
+    "difficulty": "curveball",
+    "flavor": "Two things change here — check both.",
+    "hintOnFail": ""
+   }
+  ],
+  "morphemeBank": [
+   [
+    "juli",
+    "jume",
+    "liwa",
+    "loru",
+    "wiso",
+    "wojn"
+   ],
+   [
+    "jiwa",
+    "lawa",
+    "liwi",
+    "mara",
+    "mino",
+    "muri",
+    "naje",
+    "nawo",
+    "pamu",
+    "rilo",
+    "ruwo",
+    "suje",
+    "supa",
+    "ware",
+    "wipi",
+    "wuso"
+   ],
+   [
+    "mo",
+    "mu",
+    "ro",
+    "ru"
+   ]
+  ],
+  "hints": [
+   {
+    "level": 1,
+    "type": "highlight",
+    "text": "Compare minimal pairs to isolate each morpheme."
+   }
+  ],
+  "lore": "Nunewi verbs have two stems chosen by the subject prefix's final sound.",
+  "nextPreview": "",
+  "theme": "synthetic",
+  "verdicts": {}
+ }
+]

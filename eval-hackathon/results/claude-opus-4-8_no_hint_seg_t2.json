@@ -1,0 +1,2082 @@
+[
+ {
+  "puzzle": "apurina-verb-agreement",
+  "query": 0,
+  "word": "nhaapitaka",
+  "gloss": "I am going",
+  "gold": [
+   "nhaa",
+   "pita",
+   "ka"
+  ],
+  "pred": [
+   "nhaa",
+   "pita",
+   "ka"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\nnhaa = I, pita = go, ka = present progressive\n</analysis>\n<answers>\nnhaa + pita + ka\n</answers>",
+  "elapsed_s": 1.8,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "apurina-verb-agreement",
+  "query": 1,
+  "word": "ãpitaka",
+  "gloss": "you are going",
+  "gold": [
+   "ã",
+   "pita",
+   "ka"
+  ],
+  "pred": [
+   "ã",
+   "pita",
+   "ka"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\nã = you, pita = go, ka = present/progressive\n</analysis>\n<answers>\nã + pita + ka\n</answers>",
+  "elapsed_s": 1.8,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "apurina-verb-agreement",
+  "query": 2,
+  "word": "apitaka",
+  "gloss": "he/she is going",
+  "gold": [
+   "a",
+   "pita",
+   "ka"
+  ],
+  "pred": [
+   "a",
+   "pita",
+   "ka"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\na (he/she) + pita (go) + ka (present progressive)\n</analysis>\n<answers>\na + pita + ka\n</answers>",
+  "elapsed_s": 1.9,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "apurina-verb-agreement",
+  "query": 3,
+  "word": "nhaakutaka",
+  "gloss": "I am eating",
+  "gold": [
+   "nhaa",
+   "kuta",
+   "ka"
+  ],
+  "pred": [
+   "nhaa",
+   "kuta",
+   "ka"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\nnhaa (I) + kuta (eat) + ka (progressive)\n</analysis>\n<answers>\nnhaa + kuta + ka\n</answers>",
+  "elapsed_s": 1.6,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "apurina-verb-agreement",
+  "query": 4,
+  "word": "ãkutaka",
+  "gloss": "you are eating",
+  "gold": [
+   "ã",
+   "kuta",
+   "ka"
+  ],
+  "pred": [
+   "ã",
+   "kuta",
+   "ka"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\nã (you) + kuta (eat) + ka (present)\n</analysis>\n<answers>\nã + kuta + ka\n</answers>",
+  "elapsed_s": 1.9,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "apurina-verb-agreement",
+  "query": 5,
+  "word": "akutaka",
+  "gloss": "he/she is eating",
+  "gold": [
+   "a",
+   "kuta",
+   "ka"
+  ],
+  "pred": [
+   "a",
+   "kuta",
+   "ka"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\nStep 1: akutaka = he/she (a) + eat (kuta) + present (ka)\nStep 2: a-prefix for he/she, -ka present suffix.\nStep 3: a + kuta + ka\n</analysis>\n<answers>\na + kuta + ka\n</answers>",
+  "elapsed_s": 2.3,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "apurina-verb-agreement",
+  "query": 6,
+  "word": "nhaanykataka",
+  "gloss": "I am speaking",
+  "gold": [
+   "nhaa",
+   "nykata",
+   "ka"
+  ],
+  "pred": [
+   "nhaa",
+   "nykata",
+   "ka"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\nStep 1: nhaa = I, nykata = speaking, ka = present continuous\nStep 2: prefix nhaa (I) + root nykata + ka\nStep 3: nhaa + nykata + ka\n</analysis>\n<answers>\nnhaa + nykata + ka\n</answers>",
+  "elapsed_s": 2.4,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "apurina-verb-agreement",
+  "query": 7,
+  "word": "ãnykataka",
+  "gloss": "you are speaking",
+  "gold": [
+   "ã",
+   "nykata",
+   "ka"
+  ],
+  "pred": [
+   "ã",
+   "nykata",
+   "ka"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\nã = you, nykata = speak, ka = present continuous\n</analysis>\n<answers>\nã + nykata + ka\n</answers>",
+  "elapsed_s": 1.7,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "apurina-verb-agreement",
+  "query": 8,
+  "word": "anykataka",
+  "gloss": "he/she is speaking",
+  "gold": [
+   "a",
+   "nykata",
+   "ka"
+  ],
+  "pred": [
+   "a",
+   "nykata",
+   "ka"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\na (he/she) + nykata (speak) + ka (present progressive)\n</analysis>\n<answers>\na + nykata + ka\n</answers>",
+  "elapsed_s": 2.1,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "apurina-verb-agreement",
+  "query": 9,
+  "word": "kaapitaka",
+  "gloss": "we (everyone) are going",
+  "gold": [
+   "kaa",
+   "pita",
+   "ka"
+  ],
+  "pred": [
+   "kaa",
+   "pita",
+   "ka"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\nStep 1: 'kaapitaka' = we are going. Prefix \"kaa\" for we, \"pita\" go, \"ka\" progressive.\nStep 2: Follow prefix + stem + ka pattern.\nStep 3: kaa + pita + ka\n</analysis>\n<answers>\nkaa + pita + ka\n</answers>",
+  "elapsed_s": 2.5,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "swahili-person-tense",
+  "query": 0,
+  "word": "ninapenda",
+  "gloss": "I like",
+  "gold": [
+   "ni",
+   "na",
+   "penda"
+  ],
+  "pred": [
+   "ni",
+   "na",
+   "penda"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\nni = I, na = present, penda = like\n</analysis>\n<answers>\nni + na + penda\n</answers>",
+  "elapsed_s": 1.7,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "swahili-person-tense",
+  "query": 1,
+  "word": "unasoma",
+  "gloss": "you read",
+  "gold": [
+   "u",
+   "na",
+   "soma"
+  ],
+  "pred": [
+   "u",
+   "na",
+   "soma"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\nu (you) + na (present) + soma (read)\n</analysis>\n<answers>\nu + na + soma\n</answers>",
+  "elapsed_s": 1.5,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "swahili-person-tense",
+  "query": 2,
+  "word": "anacheza",
+  "gloss": "she plays",
+  "gold": [
+   "a",
+   "na",
+   "cheza"
+  ],
+  "pred": [
+   "a",
+   "na",
+   "cheza"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\na (he/she) + na (present) + cheza (play)\n</analysis>\n<answers>\na + na + cheza\n</answers>",
+  "elapsed_s": 1.5,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "swahili-person-tense",
+  "query": 3,
+  "word": "nilipenda",
+  "gloss": "I liked",
+  "gold": [
+   "ni",
+   "li",
+   "penda"
+  ],
+  "pred": [
+   "ni",
+   "li",
+   "penda"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\nni = I, li = past, penda = like\n</analysis>\n<answers>\nni + li + penda\n</answers>",
+  "elapsed_s": 1.6,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "swahili-person-tense",
+  "query": 4,
+  "word": "tulisoma",
+  "gloss": "we read (past)",
+  "gold": [
+   "tu",
+   "li",
+   "soma"
+  ],
+  "pred": [
+   "tu",
+   "li",
+   "soma"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\ntu = we, li = past, soma = read\n</analysis>\n<answers>\ntu + li + soma\n</answers>",
+  "elapsed_s": 1.4,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "swahili-person-tense",
+  "query": 5,
+  "word": "utacheza",
+  "gloss": "you will play",
+  "gold": [
+   "u",
+   "ta",
+   "cheza"
+  ],
+  "pred": [
+   "u",
+   "ta",
+   "cheza"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\nu (you) + ta (future) + cheza (play)\n</analysis>\n<answers>\nu + ta + cheza\n</answers>",
+  "elapsed_s": 1.7,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "swahili-person-tense",
+  "query": 6,
+  "word": "wataimba",
+  "gloss": "they will sing",
+  "gold": [
+   "wa",
+   "ta",
+   "imba"
+  ],
+  "pred": [
+   "wa",
+   "ta",
+   "imba"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\nwa (they) + ta (future) + imba (sing)\n</analysis>\n<answers>\nwa + ta + imba\n</answers>",
+  "elapsed_s": 2.0,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "swahili-person-tense",
+  "query": 7,
+  "word": "anaimba",
+  "gloss": "he sings",
+  "gold": [
+   "a",
+   "na",
+   "imba"
+  ],
+  "pred": [
+   "a",
+   "na",
+   "imba"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\na (he/she) + na (present) + imba (sing)\n</analysis>\n<answers>\na + na + imba\n</answers>",
+  "elapsed_s": 1.5,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "turkish-vowel-harmony",
+  "query": 0,
+  "word": "ev",
+  "gloss": "house",
+  "gold": [
+   "ev"
+  ],
+  "pred": [
+   "ev"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\n'ev' is the singular form meaning house, a single morpheme.\n</analysis>\n<answers>\nev\n</answers>",
+  "elapsed_s": 3.0,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "turkish-vowel-harmony",
+  "query": 1,
+  "word": "at",
+  "gloss": "horse",
+  "gold": [
+   "at"
+  ],
+  "pred": [
+   "at"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\n'at' is the singular form (horse), no plural suffix. It is a single morpheme.\n</analysis>\n<answers>\nat\n</answers>",
+  "elapsed_s": 1.8,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "turkish-vowel-harmony",
+  "query": 2,
+  "word": "kız",
+  "gloss": "girl",
+  "gold": [
+   "kız"
+  ],
+  "pred": [
+   "kız"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\n'kız' is a singular noun root with no plural suffix.\n</analysis>\n<answers>\nkız\n</answers>",
+  "elapsed_s": 1.8,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "turkish-vowel-harmony",
+  "query": 3,
+  "word": "göz",
+  "gloss": "eye",
+  "gold": [
+   "göz"
+  ],
+  "pred": [
+   "göz"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\n'göz' is a singular noun, no suffix needed.\n</analysis>\n<answers>\ngöz\n</answers>",
+  "elapsed_s": 1.7,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "turkish-vowel-harmony",
+  "query": 4,
+  "word": "gün",
+  "gloss": "day",
+  "gold": [
+   "gün"
+  ],
+  "pred": [
+   "gün"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\n'gün' is singular, no plural suffix.\n</analysis>\n<answers>\ngün\n</answers>",
+  "elapsed_s": 1.6,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "turkish-vowel-harmony",
+  "query": 5,
+  "word": "el",
+  "gloss": "hand",
+  "gold": [
+   "el"
+  ],
+  "pred": [
+   "el"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\n'el' is the singular root for hand, as seen in 'eller' = el + ler.\n</analysis>\n<answers>\nel\n</answers>",
+  "elapsed_s": 1.6,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "turkish-vowel-harmony",
+  "query": 6,
+  "word": "evler",
+  "gloss": "houses",
+  "gold": [
+   "ev",
+   "ler"
+  ],
+  "pred": [
+   "ev",
+   "ler"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\nev = house, plural suffix -ler (front vowel harmony, like el→eller).\n</analysis>\n<answers>\nev + ler\n</answers>",
+  "elapsed_s": 1.6,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "turkish-vowel-harmony",
+  "query": 7,
+  "word": "atlar",
+  "gloss": "horses",
+  "gold": [
+   "at",
+   "lar"
+  ],
+  "pred": [
+   "at",
+   "lar"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\n'atlar' = horses. at = horse, plural suffix with back vowel = lar.\n</analysis>\n<answers>\nat + lar\n</answers>",
+  "elapsed_s": 1.7,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "turkish-vowel-harmony",
+  "query": 8,
+  "word": "eller",
+  "gloss": "hands",
+  "gold": [
+   "el",
+   "ler"
+  ],
+  "pred": [
+   "el",
+   "ler"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\n'eller' = hands. 'el' = hand, plural suffix. After front vowel 'e', vowel harmony gives 'ler'.\n</analysis>\n<answers>\nel + ler\n</answers>",
+  "elapsed_s": 1.6,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "turkish-vowel-harmony",
+  "query": 9,
+  "word": "kitaplar",
+  "gloss": "books",
+  "gold": [
+   "kitap",
+   "lar"
+  ],
+  "pred": [
+   "kitap",
+   "lar"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\nkitaplar = kitap (book) + lar (plural, back vowel harmony).\n</analysis>\n<answers>\nkitap + lar\n</answers>",
+  "elapsed_s": 1.6,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "quechua-person-endings",
+  "query": 0,
+  "word": "rimani",
+  "gloss": "I speak",
+  "gold": [
+   "rima",
+   "ni"
+  ],
+  "pred": [
+   "rima",
+   "ni"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\nrima = speak, -ni = I\n</analysis>\n<answers>\nrima + ni\n</answers>",
+  "elapsed_s": 1.4,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "quechua-person-endings",
+  "query": 1,
+  "word": "rimanki",
+  "gloss": "you speak",
+  "gold": [
+   "rima",
+   "nki"
+  ],
+  "pred": [
+   "rima",
+   "nki"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\nrimanki = rima (speak) + nki (you)\n</analysis>\n<answers>\nrima + nki\n</answers>",
+  "elapsed_s": 1.6,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "quechua-person-endings",
+  "query": 2,
+  "word": "riman",
+  "gloss": "she speaks",
+  "gold": [
+   "rima",
+   "n"
+  ],
+  "pred": [
+   "rima",
+   "n"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\nriman = rima (speak) + n (3rd person).\n</analysis>\n<answers>\nrima + n\n</answers>",
+  "elapsed_s": 1.7,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "quechua-person-endings",
+  "query": 3,
+  "word": "rikuni",
+  "gloss": "I see",
+  "gold": [
+   "riku",
+   "ni"
+  ],
+  "pred": [
+   "riku",
+   "ni"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\nStep 1: 'rikuni' means \"I see\". Root is \"riku\" (see), suffix -ni (I).\nStep 2: Based on pattern rima+ni, mikhu+ni.\nStep 3: riku + ni\n</analysis>\n<answers>\nriku + ni\n</answers>",
+  "elapsed_s": 2.5,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "quechua-person-endings",
+  "query": 4,
+  "word": "mikhunki",
+  "gloss": "you eat",
+  "gold": [
+   "mikhu",
+   "nki"
+  ],
+  "pred": [
+   "mikhu",
+   "nki"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\nmikhu = eat, nki = you (2sg)\n</analysis>\n<answers>\nmikhu + nki\n</answers>",
+  "elapsed_s": 1.6,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "quechua-person-endings",
+  "query": 5,
+  "word": "purin",
+  "gloss": "he walks",
+  "gold": [
+   "puri",
+   "n"
+  ],
+  "pred": [
+   "puri",
+   "n"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\n'purin' = he walks. Root puri + n (3rd person).\n</analysis>\n<answers>\npuri + n\n</answers>",
+  "elapsed_s": 1.6,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "quechua-person-endings",
+  "query": 6,
+  "word": "rimanchik",
+  "gloss": "we (all of us) speak",
+  "gold": [
+   "rima",
+   "nchik"
+  ],
+  "pred": [
+   "rima",
+   "nchik"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\nrima = speak, -nchik = we (all of us)\n</analysis>\n<answers>\nrima + nchik\n</answers>",
+  "elapsed_s": 1.4,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "quechua-person-endings",
+  "query": 7,
+  "word": "mikhunchik",
+  "gloss": "we (all of us) eat",
+  "gold": [
+   "mikhu",
+   "nchik"
+  ],
+  "pred": [
+   "mikhu",
+   "nchik"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\nmikhu = eat, nchik = we (all of us)\n</analysis>\n<answers>\nmikhu + nchik\n</answers>",
+  "elapsed_s": 1.5,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "nahuatl-both-ends",
+  "query": 0,
+  "word": "nicochi",
+  "gloss": "I sleep",
+  "gold": [
+   "ni",
+   "cochi"
+  ],
+  "pred": [
+   "ni",
+   "cochi"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\nni = I, cochi = sleep. No plural -h since singular.\n</analysis>\n<answers>\nni + cochi\n</answers>",
+  "elapsed_s": 1.8,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "nahuatl-both-ends",
+  "query": 1,
+  "word": "ticochi",
+  "gloss": "you sleep",
+  "gold": [
+   "ti",
+   "cochi"
+  ],
+  "pred": [
+   "ti",
+   "cochi"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\nti = you, cochi = sleep\n</analysis>\n<answers>\nti + cochi\n</answers>",
+  "elapsed_s": 1.6,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "nahuatl-both-ends",
+  "query": 2,
+  "word": "cochi",
+  "gloss": "he sleeps",
+  "gold": [
+   "cochi"
+  ],
+  "pred": [
+   "cochi"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\n\"cochi\" with no prefix/suffix means \"he sleeps\" (3rd person singular, no marker).\n</analysis>\n<answers>\ncochi\n</answers>",
+  "elapsed_s": 1.9,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "nahuatl-both-ends",
+  "query": 3,
+  "word": "nichoca",
+  "gloss": "I cry",
+  "gold": [
+   "ni",
+   "choca"
+  ],
+  "pred": [
+   "ni",
+   "choca"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\nni = I, choca = cry\n</analysis>\n<answers>\nni + choca\n</answers>",
+  "elapsed_s": 1.7,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "nahuatl-both-ends",
+  "query": 4,
+  "word": "ticuica",
+  "gloss": "you sing",
+  "gold": [
+   "ti",
+   "cuica"
+  ],
+  "pred": [
+   "ti",
+   "cuica"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\nti = you, cuica = sing\n</analysis>\n<answers>\nti + cuica\n</answers>",
+  "elapsed_s": 1.6,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "nahuatl-both-ends",
+  "query": 5,
+  "word": "cuicah",
+  "gloss": "they sing",
+  "gold": [
+   "cuica",
+   "h"
+  ],
+  "pred": [
+   "cuica",
+   "h"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\nStep 1: cuica = sing, -h = plural suffix. \"They sing\" = cuica + h (no prefix for 3rd person).\n</analysis>\n<answers>\ncuica + h\n</answers>",
+  "elapsed_s": 2.2,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "nahuatl-both-ends",
+  "query": 6,
+  "word": "nicochih",
+  "gloss": "we sleep",
+  "gold": [
+   "ni",
+   "cochi",
+   "h"
+  ],
+  "pred": [
+   "ni",
+   "cochi",
+   "h"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\nni = I/first person, cochi = sleep, h = plural. \"we sleep\" = ni + cochi + h\n</analysis>\n<answers>\nni + cochi + h\n</answers>",
+  "elapsed_s": 1.9,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "esperanto-tense",
+  "query": 0,
+  "word": "mi lernas",
+  "gloss": "I learn",
+  "gold": [
+   "mi",
+   "lern",
+   "as"
+  ],
+  "pred": [
+   "mi",
+   "lern",
+   "as"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\nmi = I, lern = learn root, as = present tense.\n</analysis>\n<answers>\nmi + lern + as\n</answers>",
+  "elapsed_s": 1.8,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "esperanto-tense",
+  "query": 1,
+  "word": "mi lernis",
+  "gloss": "I learned",
+  "gold": [
+   "mi",
+   "lern",
+   "is"
+  ],
+  "pred": [
+   "mi",
+   "lern",
+   "is"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\n-is = past tense marker.\n</analysis>\n<answers>\nmi + lern + is\n</answers>",
+  "elapsed_s": 1.3,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "esperanto-tense",
+  "query": 2,
+  "word": "mi lernos",
+  "gloss": "I will learn",
+  "gold": [
+   "mi",
+   "lern",
+   "os"
+  ],
+  "pred": [
+   "mi",
+   "lern",
+   "os"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\nStep 1: mi = I, lern = learn, future tense -os.\nStep 2: Future tense marker -os parallels -as (present), -is (past).\nStep 3: mi + lern + os\n</analysis>\n<answers>\nmi + lern + os\n</answers>",
+  "elapsed_s": 2.3,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "esperanto-tense",
+  "query": 3,
+  "word": "vi lernas",
+  "gloss": "you learn",
+  "gold": [
+   "vi",
+   "lern",
+   "as"
+  ],
+  "pred": [
+   "vi",
+   "lern",
+   "as"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\n'vi' = you, 'lern' = learn, 'as' = present tense.\n</analysis>\n<answers>\nvi + lern + as\n</answers>",
+  "elapsed_s": 1.8,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "esperanto-tense",
+  "query": 4,
+  "word": "li lernas",
+  "gloss": "he learns",
+  "gold": [
+   "li",
+   "lern",
+   "as"
+  ],
+  "pred": [
+   "li",
+   "lern",
+   "as"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\n'li' = he, 'lern' = learn, 'as' = present tense.\n</analysis>\n<answers>\nli + lern + as\n</answers>",
+  "elapsed_s": 1.7,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "esperanto-tense",
+  "query": 5,
+  "word": "ni lernas",
+  "gloss": "we learn",
+  "gold": [
+   "ni",
+   "lern",
+   "as"
+  ],
+  "pred": [
+   "ni",
+   "lern",
+   "as"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\n'ni' = we, 'lern' = learn, 'as' = present tense.\n</analysis>\n<answers>\nni + lern + as\n</answers>",
+  "elapsed_s": 1.7,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "esperanto-tense",
+  "query": 6,
+  "word": "mi manĝas",
+  "gloss": "I eat",
+  "gold": [
+   "mi",
+   "manĝ",
+   "as"
+  ],
+  "pred": [
+   "mi",
+   "manĝ",
+   "as"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\nmi = I, manĝ = eat root, as = present tense.\n</analysis>\n<answers>\nmi + manĝ + as\n</answers>",
+  "elapsed_s": 1.8,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "esperanto-tense",
+  "query": 7,
+  "word": "ili lernas",
+  "gloss": "they learn",
+  "gold": [
+   "ili",
+   "lern",
+   "as"
+  ],
+  "pred": [
+   "ili",
+   "lern",
+   "as"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\n'ili' = they, 'lern' = learn, 'as' = present tense.\n</analysis>\n<answers>\nili + lern + as\n</answers>",
+  "elapsed_s": 1.8,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "indonesian-plurals",
+  "query": 0,
+  "word": "anak",
+  "gloss": "child",
+  "gold": [
+   "anak"
+  ],
+  "pred": [
+   "anak"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\n'anak' is a single morpheme meaning child; reduplication (anak-anak) makes plural.\n</analysis>\n<answers>\nanak\n</answers>",
+  "elapsed_s": 1.7,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "indonesian-plurals",
+  "query": 1,
+  "word": "anak-anak",
+  "gloss": "children",
+  "gold": [
+   "anak-anak"
+  ],
+  "pred": [
+   "anak-anak"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\nReduplication for plurals: buku-buku, kuda-kuda. So anak-anak = anak + anak with hyphen.\n</analysis>\n<answers>\nanak-anak\n</answers>",
+  "elapsed_s": 1.9,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "indonesian-plurals",
+  "query": 2,
+  "word": "kuda",
+  "gloss": "horse",
+  "gold": [
+   "kuda"
+  ],
+  "pred": [
+   "kuda"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\n'kuda' is a single morpheme meaning horse; plural is reduplication kuda-kuda.\n</analysis>\n<answers>\nkuda\n</answers>",
+  "elapsed_s": 1.8,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "indonesian-plurals",
+  "query": 3,
+  "word": "kuda-kuda",
+  "gloss": "horses",
+  "gold": [
+   "kuda-kuda"
+  ],
+  "pred": [
+   "kuda-kuda"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\nReduplication for plural: kuda-kuda.\n</analysis>\n<answers>\nkuda-kuda\n</answers>",
+  "elapsed_s": 1.6,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "indonesian-plurals",
+  "query": 4,
+  "word": "saya makan",
+  "gloss": "I eat",
+  "gold": [
+   "saya",
+   "makan"
+  ],
+  "pred": [
+   "saya",
+   "makan"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\n'saya makan' = I eat. Following pattern mereka makan → mereka + makan.\n</analysis>\n<answers>\nsaya + makan\n</answers>",
+  "elapsed_s": 2.7,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "indonesian-plurals",
+  "query": 5,
+  "word": "mereka makan",
+  "gloss": "they eat",
+  "gold": [
+   "mereka",
+   "makan"
+  ],
+  "pred": [
+   "mereka",
+   "makan"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\nmereka = they, makan = eat\n</analysis>\n<answers>\nmereka + makan\n</answers>",
+  "elapsed_s": 1.6,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "indonesian-plurals",
+  "query": 6,
+  "word": "buku",
+  "gloss": "book",
+  "gold": [
+   "buku"
+  ],
+  "pred": [
+   "buku"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\n'buku' is singular, a single root morpheme.\n</analysis>\n<answers>\nbuku\n</answers>",
+  "elapsed_s": 1.5,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "indonesian-plurals",
+  "query": 7,
+  "word": "buku-buku",
+  "gloss": "books",
+  "gold": [
+   "buku-buku"
+  ],
+  "pred": [
+   "buku-buku"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\nReduplication for plural: buku → buku-buku.\n</analysis>\n<answers>\nbuku-buku\n</answers>",
+  "elapsed_s": 1.8,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "indonesian-plurals",
+  "query": 8,
+  "word": "kami makan",
+  "gloss": "we eat",
+  "gold": [
+   "kami",
+   "makan"
+  ],
+  "pred": [
+   "kami",
+   "makan"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\n'kami makan' = we eat; two words: kami (we) + makan (eat).\n</analysis>\n<answers>\nkami + makan\n</answers>",
+  "elapsed_s": 1.9,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "finnish-harmony",
+  "query": 0,
+  "word": "talo",
+  "gloss": "house",
+  "gold": [
+   "talo"
+  ],
+  "pred": [
+   "talo"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\n'talo' is the bare stem meaning house, no affixes.\n</analysis>\n<answers>\ntalo\n</answers>",
+  "elapsed_s": 1.7,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "finnish-harmony",
+  "query": 1,
+  "word": "talot",
+  "gloss": "houses",
+  "gold": [
+   "talo",
+   "t"
+  ],
+  "pred": [
+   "talo",
+   "t"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\ntalo = house, plural suffix -t\n</analysis>\n<answers>\ntalo + t\n</answers>",
+  "elapsed_s": 1.6,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "finnish-harmony",
+  "query": 2,
+  "word": "talossa",
+  "gloss": "in the house",
+  "gold": [
+   "talo",
+   "ssa"
+  ],
+  "pred": [
+   "talo",
+   "ssa"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\ntalo = house; -ssa = in (inessive, back vowel harmony).\n</analysis>\n<answers>\ntalo + ssa\n</answers>",
+  "elapsed_s": 1.9,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "finnish-harmony",
+  "query": 3,
+  "word": "kylä",
+  "gloss": "village",
+  "gold": [
+   "kylä"
+  ],
+  "pred": [
+   "kylä"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\n'kylä' is the base form, no suffix.\n</analysis>\n<answers>\nkylä\n</answers>",
+  "elapsed_s": 1.5,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "finnish-harmony",
+  "query": 4,
+  "word": "kylät",
+  "gloss": "villages",
+  "gold": [
+   "kylä",
+   "t"
+  ],
+  "pred": [
+   "kylä",
+   "t"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\nkylä = village, plural suffix = t\n</analysis>\n<answers>\nkylä + t\n</answers>",
+  "elapsed_s": 3.8,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "finnish-harmony",
+  "query": 5,
+  "word": "kylässä",
+  "gloss": "in the village",
+  "gold": [
+   "kylä",
+   "ssä"
+  ],
+  "pred": [
+   "kylä",
+   "ssä"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\nStep 1: 'kylässä' = in the village. Root kylä + inessive -ssä (vowel harmony variant of -ssa).\nStep 2: segment root + case.\nStep 3: kylä + ssä\n</analysis>\n<answers>\nkylä + ssä\n</answers>",
+  "elapsed_s": 2.2,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "finnish-harmony",
+  "query": 6,
+  "word": "koulu",
+  "gloss": "school",
+  "gold": [
+   "koulu"
+  ],
+  "pred": [
+   "koulu"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\nStep 1: 'koulu' is the bare stem meaning school.\nStep 2: No plural -t or inessive -ssa suffix; it's the base form.\nStep 3: Just the stem.\n</analysis>\n<answers>\nkoulu\n</answers>",
+  "elapsed_s": 2.3,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "finnish-harmony",
+  "query": 7,
+  "word": "koulut",
+  "gloss": "schools",
+  "gold": [
+   "koulu",
+   "t"
+  ],
+  "pred": [
+   "koulu",
+   "t"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\n'koulut' = schools = koulu + t (plural marker)\n</analysis>\n<answers>\nkoulu + t\n</answers>",
+  "elapsed_s": 1.8,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "finnish-harmony",
+  "query": 8,
+  "word": "koulussa",
+  "gloss": "in the school",
+  "gold": [
+   "koulu",
+   "ssa"
+  ],
+  "pred": [
+   "koulu",
+   "ssa"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\nkoulu = school, -ssa = in (vowel harmony: back vowel → ssa)\n</analysis>\n<answers>\nkoulu + ssa\n</answers>",
+  "elapsed_s": 4.1,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "maori-pronouns",
+  "query": 0,
+  "word": "au",
+  "gloss": "I",
+  "gold": [
+   "au"
+  ],
+  "pred": [
+   "au"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\n'au' meaning \"I\" is a single morpheme - it doesn't follow the dual/plural pattern.\n</analysis>\n<answers>\nau\n</answers>",
+  "elapsed_s": 2.0,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "maori-pronouns",
+  "query": 1,
+  "word": "koe",
+  "gloss": "you",
+  "gold": [
+   "koe"
+  ],
+  "pred": [
+   "koe"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\n'koe' means \"you\" (singular). It doesn't appear to decompose into the dual/plural morphemes shown (ua/tou) or the mā/tā/rā exclusive/inclusive prefixes. It's a simple singular pronoun like au and ia.\n</analysis>\n<answers>\nkoe\n</answers>",
+  "elapsed_s": 2.4,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "maori-pronouns",
+  "query": 2,
+  "word": "ia",
+  "gloss": "he/she",
+  "gold": [
+   "ia"
+  ],
+  "pred": [
+   "ia"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\n'ia' (he/she) is singular third person, not decomposable like the dual/plural forms.\n</analysis>\n<answers>\nia\n</answers>",
+  "elapsed_s": 1.9,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "maori-pronouns",
+  "query": 3,
+  "word": "māua",
+  "gloss": "we two, not you",
+  "gold": [
+   "mā",
+   "ua"
+  ],
+  "pred": [
+   "mā",
+   "ua"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\n'mā' = we/not-you (exclusive), 'ua' = dual. So māua = mā + ua\n</analysis>\n<answers>\nmā + ua\n</answers>",
+  "elapsed_s": 1.8,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "maori-pronouns",
+  "query": 4,
+  "word": "tāua",
+  "gloss": "you and I",
+  "gold": [
+   "tā",
+   "ua"
+  ],
+  "pred": [
+   "tā",
+   "ua"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\nStep 1: \"tāua\" = you and I (dual inclusive).\nStep 2: Pattern: \"tā\" = inclusive stem (as in tātou), \"ua\" = dual suffix.\nStep 3: Combine tā + ua.\n</analysis>\n<answers>\ntā + ua\n</answers>",
+  "elapsed_s": 2.3,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "maori-pronouns",
+  "query": 5,
+  "word": "mātou",
+  "gloss": "we, not you",
+  "gold": [
+   "mā",
+   "tou"
+  ],
+  "pred": [
+   "mā",
+   "tou"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\n'mā' = we/not you exclusive base, 'tou' = plural (more than two).\n</analysis>\n<answers>\nmā + tou\n</answers>",
+  "elapsed_s": 2.0,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "maori-pronouns",
+  "query": 6,
+  "word": "tātou",
+  "gloss": "all of us, incl. you",
+  "gold": [
+   "tā",
+   "tou"
+  ],
+  "pred": [
+   "tā",
+   "tou"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\ntā = inclusive (you and I), tou = plural (more than two)\n</analysis>\n<answers>\ntā + tou\n</answers>",
+  "elapsed_s": 1.8,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "maori-pronouns",
+  "query": 7,
+  "word": "rāua",
+  "gloss": "they two",
+  "gold": [
+   "rā",
+   "ua"
+  ],
+  "pred": [
+   "rā",
+   "ua"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\nStep 1: 'rāua' = they two. The 'rā-' prefix means third person (they), '-ua' means dual (two).\nStep 2: Following pattern rā + tou (they all), rāua = rā + ua.\nStep 3: Apply.\n</analysis>\n<answers>\nrā + ua\n</answers>",
+  "elapsed_s": 2.5,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "maori-pronouns",
+  "query": 8,
+  "word": "rātou",
+  "gloss": "they all",
+  "gold": [
+   "rā",
+   "tou"
+  ],
+  "pred": [
+   "rā",
+   "tou"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\nrā = they, tou = plural/more than two\n</analysis>\n<answers>\nrā + tou\n</answers>",
+  "elapsed_s": 1.9,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "zulu-noun-class",
+  "query": 0,
+  "word": "umntwana",
+  "gloss": "child",
+  "gold": [
+   "um",
+   "ntwana"
+  ],
+  "pred": [
+   "um",
+   "ntwana"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\nSingular prefix um, root ntwana.\n</analysis>\n<answers>\num + ntwana\n</answers>",
+  "elapsed_s": 1.7,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "zulu-noun-class",
+  "query": 1,
+  "word": "abantwana",
+  "gloss": "children",
+  "gold": [
+   "aba",
+   "ntwana"
+  ],
+  "pred": [
+   "aba",
+   "ntwana"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\n\"abantwana\" = children, plural of umntwana (um + ntwana). Plural prefix is aba.\n</analysis>\n<answers>\naba + ntwana\n</answers>",
+  "elapsed_s": 1.6,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "zulu-noun-class",
+  "query": 2,
+  "word": "umfana",
+  "gloss": "boy",
+  "gold": [
+   "um",
+   "fana"
+  ],
+  "pred": [
+   "um",
+   "fana"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\num (singular class prefix) + fana (boy stem).\n</analysis>\n<answers>\num + fana\n</answers>",
+  "elapsed_s": 1.8,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "zulu-noun-class",
+  "query": 3,
+  "word": "abafana",
+  "gloss": "boys",
+  "gold": [
+   "aba",
+   "fana"
+  ],
+  "pred": [
+   "aba",
+   "fana"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\naba (plural prefix for class 1/2 nouns) + fana (boy root)\n</analysis>\n<answers>\naba + fana\n</answers>",
+  "elapsed_s": 1.8,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "zulu-noun-class",
+  "query": 4,
+  "word": "isikolo",
+  "gloss": "school",
+  "gold": [
+   "isi",
+   "kolo"
+  ],
+  "pred": [
+   "isi",
+   "kolo"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\nizi = plural prefix (schools), so singular is isi.\n</analysis>\n<answers>\nisi + kolo\n</answers>",
+  "elapsed_s": 1.9,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "zulu-noun-class",
+  "query": 5,
+  "word": "izikolo",
+  "gloss": "schools",
+  "gold": [
+   "izi",
+   "kolo"
+  ],
+  "pred": [
+   "izi",
+   "kolo"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\nSingular isi- becomes plural izi- (as um→aba for class 1/2, isi→izi for class 7/8).\n</analysis>\n<answers>\nizi + kolo\n</answers>",
+  "elapsed_s": 2.3,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "zulu-noun-class",
+  "query": 6,
+  "word": "umfundi",
+  "gloss": "student",
+  "gold": [
+   "um",
+   "fundi"
+  ],
+  "pred": [
+   "um",
+   "fundi"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\num (singular) + fundi (student root)\n</analysis>\n<answers>\num + fundi\n</answers>",
+  "elapsed_s": 1.8,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ },
+ {
+  "puzzle": "zulu-noun-class",
+  "query": 7,
+  "word": "abafundi",
+  "gloss": "students",
+  "gold": [
+   "aba",
+   "fundi"
+  ],
+  "pred": [
+   "aba",
+   "fundi"
+  ],
+  "em_decomp": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "raw": "<analysis>\nStep 1: 'abafundi' = students, plural of 'umfundi' (student).\nStep 2: Plural human prefix is 'aba' (as in abantwana, abafana). Stem 'fundi'.\nStep 3: aba + fundi\n</analysis>\n<answers>\naba + fundi\n</answers>",
+  "elapsed_s": 2.0,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "prompt_variant": "seg",
+  "trial": "2",
+  "puzzles_file": "/Users/udingethe/Dev/ratiocine/data/puzzles.json"
+ }
+]

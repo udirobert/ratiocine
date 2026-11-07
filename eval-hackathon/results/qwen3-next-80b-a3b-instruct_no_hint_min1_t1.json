@@ -1,0 +1,1202 @@
+[
+ {
+  "puzzle": "apurina-verb-agreement",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "I am eating",
+  "gold": [
+   "nhaa",
+   "kuta",
+   "ka"
+  ],
+  "gold_joined": "nhaakutaka",
+  "raw": "<analysis>\nStep 1: Analyze the evidence to extract morpheme meanings.\n\nWe have:\n\n- nhaapitaka → I am going  \n- ãkutaka → you are eating  \n- anykataka → he/she is speaking  \n- kaapitaka → we (everyone) are going  \n\nAvailable morphemes: nhaa, ã, a, kaa, pita, kuta, nykata, ka, taka\n\nWe need to break down each word into its components.\n\nLet’s look at the verb stem (action) and subject marker separately.\n\nCommon ending: all words end in “-taka” — likely a present-tense marker or verb suffix.\n\nSo remove “-taka” from each:\n\n- nhaapitaka → nhaa + pita + taka  \n- ãkutaka → ã + kuta + taka  \n- anykataka → any + kata + taka? But “anykataka” has “nykata” in the tile bank — so perhaps “nykata” is one morpheme?  \nWait — tile bank has “nykata”, not “anykata”. So “anykataka” must be broken as: a + nykata + ka? But that doesn’t match.\n\nWait — look at “anykataka” — possible breakdown:\n\nPossible morphemes: “a”, “nykata”, “ka”, “taka” — but “nykata” is one tile.\n\nSo split:\n\n- nhaapitaka: nhaa + pita + taka  \n- ãkutaka: ã + kuta + taka  \n- anykataka: a + nykata + ka? → No, ends in “taka”\n\nWait — “anykataka” — if we assume “taka” is the ending, then “anykata” is left.\n\nBut “nykata” is a morpheme — perhaps “anykata” = a + nykata?\n\nThat matches: a + nykata → “anykata”, then + taka = “anykataka” → he/she is speaking.\n\nSimilarly:\n\n- nhaapitaka = nhaa + pita + taka → I am going  \n- ãkutaka = ã + kuta + taka → you are eating  \n- anykataka = a + nykata + taka → he/she is speaking  \n- kaapitaka = kaa + pita + taka → we (everyone) are going\n\nNow, compare:\n\nSubject markers:\n\n- nhaa → I  \n- ã → you (sg)  \n- a → he/she  \n- kaa → we (everyone)\n\nAction verbs:\n\n- pita → go  \n- kuta → eat  \n- nykata → speak\n\nSuffix: taka = present tense\n\nWe are missing one morpheme from the list: “ka” and “a” — “a” is used for he/she, “ka” is unused? But we used “a” as subject for he/she, so “ka” may be redundant? Wait — “ka” is in the tile bank but not obviously used.\n\nWait — look at kaapitaka: kaa + pita + taka — so “kaa” not “ka”. So “ka” is a separate morpheme? But in the breakdown, we have “kaa” as a morpheme. So perhaps “kaa” is one unit.\n\nSimilarly, \"nykata\" is one unit (so \"nykata\" is not \"ny\" + \"kata\").\n\nSo morphemes used:\n\n- Subject: nhaa (I), ã (you), a (he/she), kaa (we)\n- Verb: pita (go), kuta (eat), nykata (speak)\n- Tense: taka\n\nMorphemes in tile bank: nhaa, ã, a, kaa, pita, kuta, nykata, ka, taka\n\nLeftover: “ka” — unused? But must be used or question can’t be solved.\n\nNow query: I am eating\n\n“I” = nhaa  \n“eating” = kuta  \n“present tense” = taka\n\nSo: nhaa + kuta + taka = nhaakutaka\n\nBut check: is “kuta” the root for eating? Yes — from ãkutaka → you eating → ã + kuta + taka\n\nSo “I am eating” = nhaa + kuta + taka → nhaakutaka\n\nBut we have the morpheme “ka” left — perhaps we made a mistake?\n\nWait — in “kaapitaka”, we used “kaa” — which is in the tile bank.\n\nBut “ka” is also a tile. So perhaps in some cases it’s a separate morpheme.\n\nBut in “nhaapitaka” — if we broke as nhaa + pita + taka, that uses 3 morphemes.\n\n“nhaa” is 4 letters, \"pita\" 4, \"taka\" 4 — total 12, \"nhaapitaka\" is 10 letters — wait, count:\n\nnhaapitaka: n-h-a-a-p-i-t-a-k-a → 10 letters  \nnhaa = 4, pita = 4, taka = 4 → 12? That doesn’t fit.\n\nWait — “nhaapitaka” — 10 characters\n\nIf “nhaa” is 4, then “pitaka” is 6? or “pita” is 4? “pita” is 4 letters, but then “ka” is 2? so nhaa (4) + pita (4) + ka? But we have taka as a tile.\n\nWait — maybe “taka” is not separate? Perhaps the ending is “-ka”?\n\nLet me re-examine lengths.\n\nWords:\n\n1. nhaapitaka → 10 chars  \n2. ãkutaka → 7 chars  \n3. anykataka → 9 chars  \n4. kaapitaka → 9 chars\n\nMorphemes in bank: nhaa (4), ã (1), a (1), kaa (3), pita (4), kuta (4), nykata (6), ka (2), taka (4)\n\nLet’s try to fit with different segmentation.\n\nTry: maybe the verb suffix is “-ka”?\n\nThen:\n\nnhaapitaka → nhaa + pita + ka → 4+4+2=10 → matches  \nãkutaka → ã + kuta + ka → 1+4+2=7 → matches  \nanykataka → a + nykata + ka → 1+6+2=9 → matches  \nkaapitaka → kaa + pita + ka → 3+4+2=9 → matches\n\nPerfect!\n\nTense suffix is “ka” — not “taka”!\n\nBut “taka” is in the tile bank — what is it then?\n\nWait — “nykata” is one morpheme: 6 letters — fits “anykataka” = a + nykata + ka → “anykata” + “ka” = “anykataka”\n\nSo “taka” must be a red herring? Or misused?\n\nWait — the tile bank contains “taka” but if the ending is “ka”, then “taka” as a whole isn’t used. But perhaps “taka” is a typo or distractor? Or perhaps I misread.\n\nWait — look again at “ãkutaka” — 7 characters: ã-k-u-t-a-k-a → if it’s ã + kuta + ka → kuta is k-u-t-a (4 letters), then + ka (k-a) → but then it would be ã + kuta + ka = \"ãkuta\" + \"ka\" = \"ãkutaka\" — yes, works.\n\nBut “kuta” is the verb for “eat” — so “kuta” is 4 letters, and the suffix is “ka”, not “taka”.\n\nBut then what is “taka”? Why is it in the tile bank?\n\nUnless... perhaps “taka” is not a suffix — maybe it’s part of the verb?\n\nWait — \"nhaapitaka\" — maybe it's nhaa + pita + ka — so \"t\" is part of \"pita\"? But \"pita\" is in the tile bank.\n\nPerhaps the spelling is misleading.\n\nWait — \"pita\" = p-i-t-a? So in \"nhaapitaka\", if we break as:\n\nnhaa (n-h-a-a) + pita (p-i-t-a) + ka (k-a) → nhaa + pita + ka = n-h-a-a-p-i-t-a-k-a → 10 characters, matches.\n\nIn ãkutaka: ã + kuta (k-u-t-a) + ka = ã-k-u-t-a-k-a → 7 characters.\n\nIn anykataka: a (a) + nykata (n-y-k-a-t-a) + ka (k-a) → a-n-y-k-a-t-a-k-a → 9 characters\n\nIn kaapitaka: kaa (k-a-a) + pita (p-i-t-a) + ka (k-a) → k-a-a-p-i-t-a-k-a → 9 characters\n\nAll match.\n\nSo verb root: pita = go, kuta = eat, nykata = speak\n\nSubject: nhaa = I, ã = you_{sg}, a = he/she, kaa = we_{pl}\n\nSuffix = ka → present tense\n\nNow, the tile bank includes “taka” — but in all words, the “t” and “a” are parts of the roots (pita, kuta, nykata), not the suffix.\n\nSo “taka” is not used as a unit — it is composed of parts of verb roots and the suffix. But since it’s given as a tile, perhaps it’s a red herring — or we are forced to use it? But our breakdown doesn’t require taka as a unit.\n\nTherefore, we ignore “taka” as a single morpheme for this analysis — it is not used as a standalone morpheme in the verbs.\n\nNow, query: I am eating\n\nI = nhaa  \neating = kuta  \npresent tense = ka\n\nSo: nhaa + kuta + ka = nhaakutaka\n\nBut let’s check spelling: “nhaa” + “kuta” = “nhaakuta”, then + “ka” = “nhaakutaka”\n\nIs this different from “nhaapitaka”? Yes — different root.\n\nAnd we have all morphemes: nhaa (used), kuta (used), ka (used) — “taka” is not used as a unit, which is fine — tile bank lists morphemes that may or may not be used in the query.\n\nSo final translation: nhaakutaka\n\nBut wait — in “anykataka”, the verb is “nykata” — note: nykata ends in “a”, so adding “ka” gives “nykataka” — so no doubling.\n\nSimilarly, “kuta” + “ka” = “kutaka”\n\nSo “nhaa” + “kuta” + “ka” = nhaa+kuta+ka → nhaakutaka\n\nCorrect.\n\nSo answer: nhaakutaka\n</analysis>\n<answers>\nnhaakutaka\n</answers>",
+  "answer_text": "nhaakutaka",
+  "morphemes": [
+   "nhaa",
+   "kuta",
+   "ka"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 12.2,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "apurina-verb-agreement",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "we (everyone) are eating",
+  "gold": [
+   "kaa",
+   "kuta",
+   "ka"
+  ],
+  "gold_joined": "kaakutaka",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n\nWe are given:\n- nhaapitaka → I am going\n- ãkutaka → you are eating\n- anykataka → he/she is speaking\n- kaapitaka → we (everyone) are going\n\nWe need to find: we (everyone) are eating\n\nBreak down the known words:\n\n1. nhaapitaka → I am going  \n   Possible breakdown: nhaa + pita + ka  \n   → “nhaa” = I, “pita” = go, “ka” = ??? (perhaps verb ending)\n\n2. ãkutaka → you are eating  \n   Breakdown: ã + kuta + ka  \n   → “ã” = you, “kuta” = eat, “ka” = ?\n\n3. anykataka → he/she is speaking  \n   Breakdown: anykata + ka?  \n   But note: the available morphemes include “nykata”, not “anykata”.  \n   Likely a typo or variant — “anykataka” → should be “nykata” + “ka”?  \n   But “anykataka” has 8 letters: a-n-y-k-a-t-k-a  \n   Morpheme list has “nykata” (6 letters) → perhaps “anykataka” = a + nykata + ka?  \n   But “a” is also a morpheme — maybe prefix?\n\nWait — let’s align the morphemes properly.\n\nAvailable morphemes: nhaa, ã, a, kaa, pita, kuta, nykata, ka, taka\n\nNote: “taka” is listed — but in “nhaapitaka”, “ka” appears at end — perhaps “ka” is the verb marker? But “taka” is also available.\n\nSo perhaps “-taka” is a unit? But “ãkutaka” ends in “-taka”, and “anykataka” ends in “-taka” too? Wait — “anykataka” ends with “-ka”, not “-taka”.\n\n“anykataka”: a-n-y-k-a-t-k-a → 8 letters.\n\nLet’s try splitting:\n\nIs “anykataka” = a + nykata + ka?  \n→ “nykata” is in morpheme list → so “a” + “nykata” + “ka” = 1+6+2 = 9 — too long.\n\nWait — maybe “nykata” is 6 letters: n-y-k-a-t-a → so “anykataka” = a + n + y + k + a + t + k + a — 8 letters.\n\nPerhaps “anykataka” is actually meant to be: “a” + “nykata” + “ka” → but “nykata” is 6 letters → a+nykata+ka = 9 letters?  \nBut “anykataka” has 8 letters → a-n-y-k-a-t-k-a\n\nWait — perhaps “nykata” is being miswritten. Let’s count the letters in “anykataka”:  \na n y k a t k a → positions: 1 2 3 4 5 6 7 8\n\nPerhaps: “a” (1) + “nykata” (2-7: n y k a t a?) — but position 6 is “t”, 7 is “k” — doesn't match.\n\nAlternative: Perhaps “anykataka” is “nykata” + “ka” but written with an extra “a”?\n\nWait — perhaps “a” is a prefix for third person?  \n“ãkutaka” = you are eating → “ã” + “kuta” + “ka”  \n“nhaapitaka” = I am going → “nhaa” + “pita” + “ka”  \n“kaapitaka” = we are going → “kaa” + “pita” + “ka”\n\nAh! Now we see a pattern.\n\nLet’s re-examine:\n\n- nhaapitaka → I am going → nhaa + pita + ka  \n- kaapitaka → we (everyone) are going → kaa + pita + ka  \n  → So “kaa” = we (everyone)\n\n- ãkutaka → you are eating → ã + kuta + ka  \n- anykataka → he/she is speaking → a + nykata + ka\n\nNotice:  \nSubject prefixes:  \n- I → nhaa  \n- you → ã  \n- we (everyone) → kaa  \n- he/she → a  \n\nVerb roots:  \n- go → pita  \n- eat → kuta  \n- speak → nykata  \n\nVerb ending: ka (appears in all)\n\nSo structure: [SUBJECT] + [VERB ROOT] + [ka]\n\nFor “we (everyone) are eating” → we = kaa, eat = kuta, verb ending = ka  \n→ kaa + kuta + ka = kaakutaka\n\nBut check available morphemes: we have “kaa”, “kuta”, “ka” — all present.\n\nBut wait — is the verb ending “ka” or “taka”?\n\nIn the word “ãkutaka” — if it’s ã + kuta + ka → 1+4+2=7 letters: ã-k-u-t-a-k-a → 7 letters — matches “ãkutaka” (7 letters).\n\nSimilarly: nhaapitaka → n-h-a-a-p-i-t-a-k-a → 10 letters?  \nWait — let’s count:\n\n“nhaapitaka” → n-h-a-a-p-i-t-a-k-a → 10 characters  \nBut if split as nhaa (4) + pita (4) + ka (2) → 10 → ✔️\n\n“ãkutaka” → ã (1) + kuta (4) + ka (2) = 7 → ã-k-u-t-a-k-a → 7 characters → ✔️\n\n“anykataka” → a (1) + nykata (6) + ka (2) = 9?  \nBut “anykataka” is 8 letters: a-n-y-k-a-t-k-a\n\nWait — there’s inconsistency.\n\n“nykata” is 6 letters → n-y-k-a-t-a\n\nSo “a” + “nykata” + “ka” = a + n y k a t a + k a → a n y k a t a k a → 9 letters\n\nBut given: “anykataka” — let’s spell it: a-n-y-k-a-t-k-a → 8 letters.\n\nThere’s a mismatch.\n\nPerhaps “nykata” is actually 5 letters? But it’s listed as “nykata” — 6 letters.\n\nWait — what if it’s “nykata” without the final ‘a’, or the “a” is shared?\n\nAlternative: perhaps “anykataka” is “a” + “nykat” + “aka”? Not in morpheme list.\n\nWait — maybe the “a” in “anykataka” is NOT a separate morpheme — perhaps it’s part of the verb.\n\nPerhaps “anykataka” → “nykata” + “ka” → but then why the first “a”?\n\nMaybe it’s a typo and should be “nykataka” → then: nykata + ka = 6+2=8 → matches.\n\nLet me check: “nykataka” = n-y-k-a-t-a-k-a → 8 characters.\n\nGiven: “anykataka” — perhaps it’s meant to be “nykataka”? Otherwise, it doesn’t fit.\n\nGiven the hint says nothing, and morpheme list includes “nykata”, and “ka”, then likely “anykataka” is a typo and should be “nykataka”.\n\nIn many linguistic puzzles, mis-spelled forms occur due to transcription.\n\nAssume: “anykataka” is meant to be “nykataka” → “nykata” + “ka” = he/she is speaking\n\nThen pattern solidifies:\n\nSubject prefixes:\n- I: nhaa\n- you: ã\n- we (everyone): kaa\n- he/she: (zero prefix? or “n”?) — wait, “nykata” starts with n — is the subject prefix for he/she just “n”? Not in list.\n\nWait — in “nykataka” (assuming corrected), if no prefix, then subject he/she has no overt marker — but then what about “a” in “anykataka”? It must be a prefix.\n\nPerhaps the subject prefix for he/she is “a”, and the verb root is “nykata”, but “nykata” is spelled with an ‘a’ at the end — so “a” + “nykata” would be “anykata” + “ka” → “anykataska”? No.\n\nWait — perhaps the verb root for speak is “nykat”, and “a” is part of the root? But morpheme list says “nykata”, not “nykat”.\n\nLet me check the original: “anykataka” — delete the ‘n’? Or maybe it’s “a-ny-kata-ka” — but “kata” not in the list.\n\nAnother idea: perhaps “nykata” is the complete verb root for speak, and “a” is the third person subject marker, so the whole word is a + nykata + ka → but that’s 1+6+2=9, and “anykataka” is 8.\n\nUnless “nykata” is 5 letters? Let's count: n-y-k-a-t-a → 6 letters.\n\nUnless the word is misspelled in the problem.\n\nGiven that “nhaapitaka” = nhaa + pita + ka (10 letters)  \n“ãkutaka” = ã + kuta + ka (7 letters)  \n“kaapitaka” = kaa + pita + ka (9 letters: k-a-a-p-i-t-a-k-a → 9 letters)  \n“anykataka” = a-n-y-k-a-t-k-a → 8 letters.\n\nIf “kuta” for eat is 4 letters, “pita” for go is 4, so for speak “nykata” should be 4? But it’s 6.\n\nAlternative: maybe “taka” is the verb ending, not “ka”.\n\nTry:  \n“nhaapitaka” → nhaa + pita + taka? → 4+4+4=12 → no, only 10 letters.\n\n“nhaapitaka” — split as nhaa + pita + ka → 4+4+2=10 ✔️\n\n“ãkutaka” → ã + kuta + ka → 1+4+2=7 ✔️\n\n“kaapitaka” → kaa + pita + ka → 3+4+2=9 → k-a-a-p-i-t-a-k-a → 9 characters ✔️\n\nNow “anykataka” — if we assume it’s a + nykat + a + ka? Not possible.\n\nWait — perhaps “nykata” is a typo and should be “nykat” — but morpheme list says “nykata”.\n\nWait — look at the available morphemes: “taka” is in the list — perhaps the final part is “taka”?\n\nTry:  \n“nhaapitaka” = nhaa + pita + taka? → 4+4+4=12 — but word is 10 letters.\n\nUnless it’s nhaa + pita + ka → 4+4+2=10 — better.\n\nNow for “anykataka” — perhaps the “a” at start is a subject, and “nykata” is verb, and “k” and “a” are separate?\n\n“anykataka” = a + nykata + k + a? — no, not in morpheme list.\n\nPerhaps it’s: a + nykata + ka — but that’s 9, but written as 8.\n\nLooking again: “anykataka” — perhaps it’s \"a\" + \"nykata\" with the last 'a' shared? But no.\n\nAnother possibility: “nykata” is not the root — perhaps “kata” is the root? But “kata” isn’t in the list, “kuta” is.\n\nLet me hypothesize that the “a” in “anykataka” is a mistake, and it should be “nykataka” — which is 8 letters: n-y-k-a-t-a-k-a → and “nykata” (6) + “ka” (2) = 8 — perfect.\n\nI think we must assume a typo in the problem: “anykataka” should be “nykataka” → meaning he/she is speaking → subject “none”, verb “nykata” + “ka”.\n\nBut then why does “nhaa” and “ã” and “kaa” have prefixes, and he/she has none? That violates full syncretism usually.\n\nIn many languages, third person is unmarked.\n\nSo perhaps:  \nSubject morphemes:  \n- I: nhaa  \n- you: ã  \n- we: kaa  \n- he/she: (zero)\n\nThen verb root:  \n- go: pita  \n- eat: kuta  \n- speak: nykata  \n\nVerb ending: ka\n\nThus:\n\n“nhaapitaka” = nhaa pita ka  \n“ãkutaka” = ã kuta ka  \n“nykataka” = nykata ka  ← assumed correction  \n“kaapitaka” = kaa pita ka\n\nThen for “we (everyone) are eating”: kaa + kuta + ka = kaakutaka\n\nNow, we must check if “kaakutaka” is correctly formed.\n\nBut wait — “kaa” is 3 letters, “kuta” is 4, “ka” is 2 → 3+4+2=9 letters → k-a-a-k-u-t-a-k-a\n\nIs that acceptable? Yes.\n\nIs “kaakutaka” valid? We have morphemes: “kaa” (we), “kuta” (eat), “ka” (verb ending) — all available.\n\nSo final answer: kaakutaka\n\nBut let’s check: Is “taka” ever used? We didn’t use it. But maybe the verb ending is “taka”, not “ka”.\n\nWait — what if the verb ending is “taka”, and the words are:\n\n“nhaapitaka” = nhaa + pita + taka → 4+4+4=12 — but word is 10 chars — too long.\n\n“ãkutaka” = ã + kuta + taka → 1+4+4=9 — but word is 7 — too long.\n\nSo “ka” is the verb ending.\n\nAlso, “taka” is listed as a morpheme — perhaps it's a red herring, or for another word.\n\nWe have to go with the evidence: in all words, the last two letters are “ka”.\n\nSo we use “ka” as the verb ending.\n\nTherefore, for “we (everyone) are eating”: kaa + kuta + ka = kaakutaka\n\nWe must write it: kaakutaka\n\nNote: “kuta” and “ka” are both morphemes — joined directly.\n\nAnswer: kaakutaka\n\n</analysis>\n<answers>\nkaakutaka\n</answers>",
+  "answer_text": "kaakutaka",
+  "morphemes": [
+   "kaa",
+   "kuta",
+   "ka"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 18.1,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "apurina-verb-agreement",
+  "query": 2,
+  "difficulty": "standard",
+  "prompt": "you are speaking",
+  "gold": [
+   "ã",
+   "nykata",
+   "ka"
+  ],
+  "gold_joined": "ãnykataka",
+  "raw": "<analysis>\nStep 1: Analyze the evidence to extract morpheme boundaries and meanings.\n\nGiven evidence:\n\n1. nhaapitaka → I am going  \n2. ãkutaka → you are eating  \n3. anykataka → he/she is speaking  \n4. kaapitaka → we (everyone) are going  \n\nAvailable morphemes: nhaa, ã, a, kaa, pita, kuta, nykata, ka, taka\n\nWe need to split each word into morphemes matching the given list.\n\nLet’s try breaking down each word:\n\n- nhaapitaka → likely nhaa + pita + ka? But \"taka\" is available, not \"ka\".  \nWait — \"taka\" is last 4 letters in all:  \n- nhaapitaka → ends in \"taka\"  \n- ãkutaka → ends in \"taka\"  \n- anykataka → ends in \"taka\"  \n- kaapitaka → ends in \"taka\"\n\nSo \"taka\" is likely the verb suffix for present continuous (\"are ___\").\n\nNow remove \"taka\" from each:\n\n- nhaapita  \n- ãkuta  \n- anykata  \n- kaapita  \n\nNow look for patterns:\n\n- nhaapita → I am going  \n- ãkuta → you are eating  \n- anykata → he/she is speaking  \n- kaapita → we are going  \n\nNow split these:\n\nLook at \"nhaapita\" → possible: nhaa + pita?  \n\"kaapita\" → kaa + pita?  \n\"ãkuta\" → ã + kuta?  \n\"anykata\" → any + kata? — but \"any\" is not in tile bank. But \"nykata\" is.\n\nWait — \"anykata\" — maybe \"a\" + \"nykata\"? \"a\" and \"nykata\" are available.\n\nLet’s test:\n\n- nhaapita → nhaa + pita  \n- kaapita → kaa + pita  \n- ãkuta → ã + kuta  \n- anykata → a + nykata  \n\nCheck if these morphemes are in the list:\n\n→ nhaa, kaa, ã, a, pita, kuta, nykata — YES.\n\nNow meanings:\n\n- nhaa → I  \n- kaa → we (everyone)  \n- ã → you  \n- a → he/she? (since anykataka = a + nykata + taka = he/she is speaking)  \n- pita → going  \n- kuta → eating  \n- nykata → speaking  \n\nBut wait — \"anykataka\" was given as \"he/she is speaking\". We broke it as \"a\" + \"nykata\" + \"taka\". So \"a\" = he/she.\n\nConfirm:\n\n- nhaa + pita + taka → I am going ✔  \n- ã + kuta + taka → you are eating ✔  \n- a + nykata + taka → he/she is speaking ✔  \n- kaa + pita + taka → we (everyone) are going ✔  \n\nPerfect.\n\nSo morpheme assignments:\n\n- Subject pronouns:  \n  - nhaa = I  \n  - ã = you  \n  - a = he/she  \n  - kaa = we (everyone)  \n\n- Verbs:  \n  - pita = go  \n  - kuta = eat  \n  - nykata = speak  \n\n- Suffix:  \n  - taka = present continuous marker  \n\nNow query: \"you are speaking\"\n\n\"you\" = ã  \n\"speaking\" = nykata  \n\"are ___\" = taka  \n\nSo: ã + nykata + taka → ãnykatataka\n\nWait — but look at \"anykataka\" — that was he/she speaking → a + nykata + taka = anykatataka\n\nNote: \"a\" + \"nykata\" → written as \"anykata\" (not \"anykata\" with space). So the morpheme \"a\" and \"nykata\" fuse to \"anykata\".\n\nSimilarly, if we do \"ã\" + \"nykata\", should it be \"ãnykata\"?\n\nYes — but morphemes are given as \"ã\" and \"nykata\", and \"a\" + \"nykata\" = \"anykata\" — so \"a\" + \"nykata\" = \"anykata\" → meaning the \"a\" drops its vowel or they combine phonologically into \"any\".\n\nSimilarly, \"ã\" + \"nykata\" → should be \"ãnykata\"? But \"ã\" already has a nasal vowel — likely \"ãnykata\" is the form.\n\nBut wait — in \"anykataka\", the subject morpheme \"a\" + \"nykata\" → \"anykata\" — so the \"a\" is not kept separately? Meaning: \"a\" + \"nykata\" → \"anykata\" (phonological fusion)\n\nSimilarly, \"ã\" + \"nykata\" → \"ãnykata\" — but how does that spell?\n\nCompare to \"nhaapita\" — \"nhaa\" + \"pita\" = \"nhaapita\", no fusion — so fusion depends on the subject.\n\nActually, looking at:\n\n- \"nhaa\" + \"pita\" → nhaapita  \n- \"ã\" + \"kuta\" → ãkuta  \n- \"a\" + \"nykata\" → anykata → here the \"a\" becomes \"an\"?\n\nWait — this suggests the subject morpheme may change form depending on the verb root? Unlikely.\n\nAlternative: perhaps \"a\" is not the root — maybe \"nykata\" is the full verb root? But the tile bank includes \"nykata\" as a separate morpheme.\n\nPerhaps the subject morphemes are:\n\n- nhaa → I  \n- ã → you  \n- nyka → he/she? — but \"nykata\" is given as a root.\n\nWait — another possibility:\n\nMaybe the subject is embedded in the verb.\n\nBut \"anykataka\" = he/she is speaking → break as: a + nykata + taka\n\nSimilarly, ã + kuta + taka = ãkutaka\n\nSo why does \"a\" + \"nykata\" become \"anykata\"? Because the \"a\" becomes \"an\" before \"nykata\"?\n\nThat is, subject pronouns may elide or assimilate based on phonological environment:\n\n- a + nykata → anykata  \n- a + kuta → akuta? But that’s not the form — \"akuta\" would be expected, but we don’t have \"akuta\" — we have \"ãkuta\", which is \"you\", not \"he/she\".\n\nWait — the \"a\" in \"anykata\" is the 3rd person singular subject, and it changes form when merging with \"nykata\" to \"anykata\".\n\nBut \"ã\" is a different morpheme — second person.\n\nSo for verb roots starting with consonants, subject + verb is direct:\n\n- ã + kuta → ãkuta  \n- nhaa + pita → nhaapita  \n- kaa + pita → kaapita  \n\nBut \"nykata\" starts with a nasal consonant /ŋ/ (as in \"ny\").\n\nThe 3rd person subject \"a\" becomes \"an\" before nasal consonant → \"an\" + \"ykata\" → \"anykata\" (with phonological change)\n\nSimilarly, we don't have examples of \"a\" + \"kuta\" — so we don't know if \"a\" becomes \"akuta\" — we only have ã + kuta = ãkuta.\n\nSo for \"you are speaking\" = ã + nykata + taka\n\nSince \"ã\" ends in a nasal vowel and \"nykata\" begins with nasal consonant, does it assimilate? Possibly → ãnykata?\n\nBut in examples, we don't have \"ã\" followed by \"nykata\" — only \"a\" + \"nykata\" → \"anykata\"\n\nSo let’s mimic the pattern:\n\nFor subject pronoun + verb:\n\n- nhaa + pita → nhaapita — no change  \n- ã + kuta → ãkuta — no change  \n- a + nykata → anykata — \"a\" becomes \"an\" before nasal  \n\nSo for \"ã\" + \"nykata\" → since \"ã\" is already nasal, it may not change? → ãnykata\n\nBut in the target word, we must use only the provided morphemes: \"ã\", \"nykata\", \"taka\"\n\nSo even if phonologically it might fuse, we are to compose from the morphemes given.\n\nIn \"anykataka\", the morphemes are \"a\" + \"nykata\" + \"taka\" → written as \"anykatataka\" — wait, no: \"anykataka\" has 8 letters: a-n-y-k-a-t-a-k-a? Wait no:\n\nWait — \"anykataka\" is 9 letters: a-n-y-k-a-t-a-k-a? Wait, it's written as \"anykataka\" — let’s count:\n\na-n-y-k-a-t-a-k-a → 9 → but \"nykata\" is 6 letters, \"a\" is 1, \"taka\" is 4? That doesn't fit.\n\nWait — \"taka\" is 4 letters, \"nykata\" should be 6? But \"anykataka\" is 9 letters.\n\nLet’s spell:\n\n\"anykataka\" → 9 letters\n\nIf it’s a + nykata + taka → \"a\" (1) + \"nykata\" (6) + \"taka\" (4) = 11 — too many.\n\nContradiction.\n\nWait — perhaps \"nykata\" is only 5 letters? Let me check:\n\ntile bank: nykata — that’s n-y-k-a-t-a → 6 letters.\n\nBut \"anykataka\" is a-n-y-k-a-t-a-k-a → 9 letters.\n\nSo if it’s \"anykata\" + \"ka\"? But \"ka\" is a morpheme.\n\nWait — maybe the morphemes are not separate as we thought.\n\nAlternative break:\n\nLook again:\n\nnhaapitaka — n-h-a-a-p-i-t-a-k-a → 10 letters\n\nPerhaps the last 4 are always \"taka\" — so remove \"taka\" → \"nhaapita\" (6 letters)\n\nSimilarly, ãkutaka → ã-k-u-t-a-k-a → 7 letters; minus \"taka\" → ãkuta (4 letters)\n\nanykataka → a-n-y-k-a-t-a-k-a → 9 letters; minus \"taka\" → anykata (5 letters)\n\nkaapitaka → k-a-a-p-i-t-a-k-a → 9 letters; minus \"taka\" → kaapita (5 letters)\n\nNow:\n\n- nhaapita (6) = nhaa (4) + pita? pita is 4 → 4+4=8 too big. nhaa=4, pita=4 → 8, but we have only 6.\n\nWait — nhaapita = nhaa (4) + pita? But 4+4=8≠6.\n\nUnless pita is 2? But pita is given as a morpheme — 4 letters.\n\nThis suggests that morphemes are overlapping or our initial assumption is wrong.\n\nWait — tile bank includes:\n\nnhaa, ã, a, kaa, pita, kuta, nykata, ka, taka\n\nAll are given as separate morphemes, so probably the words are concatenations.\n\nLet’s map:\n\n\"nhaapitaka\" = nhaa + pita + taka → 4 + 4 + 4 = 12 letters → but \"nhaapitaka\" is 10 letters → n-h-a-a-p-i-t-a-k-a → 10.\n\nSo 10 = 4 + 4 + 2? Wait — \"taka\" is 4, but last 4: \"taka\" = last 4 → yes, positions 7-10: t-a-k-a.\n\nSo positions 1-6: n-h-a-a-p-i → 6 letters → nhaa is 4 letters → n-h-a-a → then p-i? Not pita.\n\n\"pita\" is p-i-t-a — 4 letters — but in nhaapitaka, after nhaa we have p-i, then t-a? But then the \"t\" and \"a\" are part of \"taka\".\n\nSo maybe \"pita\" is not used as \"pita\", but \"pi\"?\n\nBut \"pi\" is not a tile.\n\nAnother idea: maybe \"taka\" is not always at the end? Or perhaps \"ka\" is a suffix?\n\nLook: nhaapitaka → if you split as nhaa + pi + taka? But \"pi\" is not a tile — tiles are pita, not pi.\n\nTiles: nhaa, ã, a, kaa, pita, kuta, nykata, ka, taka\n\nAll are 2–6 letters.\n\nTry this:\n\nPerhaps \"pita\" is the verb root, and \"ka\" is a marker? But \"ka\" is available.\n\nTry:\n\nnhaapitaka — if it were nhaa + pita + ka — 4+4+2=10 — fits!\n\nBut the word ends with \"ka\", but we expect \"taka\" to be the ending.\n\nBut \"taka\" is a tile.\n\nAnother idea: perhaps \"taka\" is \"ta\" + \"ka\"? But the tiles list \"taka\" as one morpheme.\n\nThe tile bank says \"taka\" is one morpheme.\n\nLet’s assume the words are built as:\n\nSubject + Verb + Tense\n\nAnd discovery: all end with \"taka\"\n\nSo:\n\n1. nhaapitaka → [nhaa] + [pita] + [taka]? 4+4+4=12, but word is 10 → no.\n\nLet’s spell each word with letter count:\n\n- nhaapitaka: n-h-a-a-p-i-t-a-k-a → 10 letters  \n- ãkutaka: ã-k-u-t-a-k-a → 7 letters  \n- anykataka: a-n-y-k-a-t-a-k-a → 9 letters  \n- kaapitaka: k-a-a-p-i-t-a-k-a → 9 letters\n\nNow:\n\nIf \"taka\" is a 4-letter suffix, then the remains are:\n\n- nhaapitaka minus taka → nhaapit → 6 letters? n-h-a-a-p-i-t — 7? Wait: word is 10 letters, taka is 4 → remove last 4: positions 7-10: t-a-k-a → so first 6: n-h-a-a-p-i → \"nhaapi\" — not a tile.\n\nPerhaps \"taka\" is 2 letters? But \"taka\" is given as a morpheme — 4 letters.\n\nUnless \"ka\" is the verb marker, and \"ta\" is something else — but we have to use the exact tiles.\n\nLet’s TRY splitting with \"ka\" as a verb infix or suffix.\n\nAssume \"ka\" is the present continuous marker — but it appears in the middle.\n\nnhaapitaka — if we take \"ka\" as the last two letters → \"ka\" — then \"nhaapita\" = prefix? 8 letters.\n\nStill not matching tiles.\n\nPerhaps \"taka\" is not the suffix — maybe each verb ends in \"a\", and \"t\" and \"k\" are part of the verb.\n\nLet’s look for common endings.\n\nAll words end in \"a\". So \"a\" is a morpheme?\n\n\"ãkutaka\" ends with \"ka\" — last two letters -(ka)\n\n\"anykataka\" — ends with \"ka\"\n\n\"kattaka\" — ends with \"ka\"\n\n\"nhaapitaka\" — ends with \"ka\"\n\nSo the last two letters of every word are \"ka\"\n\n\"ka\" is a provided morpheme.\n\nSo if \"ka\" is the verb suffix (present tense?)\n\nThen remove \"ka\" from each:\n\n- nhaapitaka → nhaapita  \n- ãkutaka → ãkuta  \n- anykataka → anykata  \n- kaapitaka → kaapita  \n\nNow, these are 6, 5, 5, 6 letters.\n\nNow we have tiles: pita, kuta, nykata, nhaa, ã, a, kaa\n\nNow nhaapita = nhaa + pita → 4+4=8 → but we have 6 letters → n-h-a-a-p-i → only 6, not 8.\n\nnhaa is 4, pita is 4, but we only have room for 6.\n\nUnless pita is not used — perhaps the verb is \"pit\" — but not in tiles.\n\nAlternative: maybe \"pita\" is \"pi\" + \"t\" — but no.\n\nTry: nhaapita — maybe nhaa + pi + ta? But \"ta\" not a tile.\n\nWait — perhaps \"nhaa\" is \"nha\" + \"a\", and we have \"a\" as a tile.\n\nTile \"a\" is available.\n\nSo what if \"nhaapita\" is \"nha\" + \"a\" + \"pi\" + \"ta\"? No — not matching.\n\nLet me list the morphemes again: nhaa, ã, a, kaa, pita, kuta, nykata, ka, taka\n\nWe must use only these.\n\nAnother idea: perhaps \"taka\" is \"ta\" + \"ka\", but the tile says \"taka\" — we must use it whole.\n\nOr perhaps the morphemes are not independent in the way we think — maybe they are combined differently.\n\nLook at \"ãkutaka\" — 7 letters.\n\nIf \"ka\" is last two → \"ãkuta\" is 5 letters.\n\nIf \"taka\" is last four — doesn't fit.\n\nUnless the word is (pronoun) + (verb) + (ka) — and \"t\" is part of the verb.\n\nFor ãkutaka — 7 letters — if \"ka\" is last, then \"ãkut\" = 4 letters.\n\n\"ã\" is 1, \"kut\" — 3? But tile \"kuta\" is 4 letters.\n\n\"kuta\" is \"k-u-t-a\" — 4 letters.\n\nSo \"",
+  "answer_text": "nhaapitaka → I am going",
+  "morphemes": [
+   "nhaa",
+   "pita",
+   "ka",
+   "→",
+   "I",
+   "am",
+   "going"
+  ],
+  "em_decomp": false,
+  "em_surface": false,
+  "chrf": 0.2986,
+  "morf1": 0.2,
+  "elapsed_s": 22.5,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "apurina-verb-agreement",
+  "query": 3,
+  "difficulty": "standard",
+  "prompt": "we (everyone) are speaking",
+  "gold": [
+   "kaa",
+   "nykata",
+   "ka"
+  ],
+  "gold_joined": "kaanykataka",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n\nWe have:\n- nhaapitaka → I am going\n- ãkutaka → you are eating\n- anykataka → he/she is speaking\n- kaapitaka → we (everyone) are going\n\nWe need to find: we (everyone) are speaking\n\nBreak down the known words into morphemes from the tile bank: nhaa, ã, a, kaa, pita, kuta, nykata, ka, taka\n\nLet’s segment each word:\n\n1. nhaapitaka → nhaa + pita + ka? or nhaa + pita + ka? → but “taka” is a morpheme, so likely: nhaa + pita + taka\n=> I + go + ? → “taka” is likely the present tense marker (same in all)\n\n2. ãkutaka → ã + kuta + taka → you + eat + ?\n\n3. anykataka → ??? → “anykata” not in tile bank, but “nykata” is — perhaps \"a\" + \"nykata\"? But tile bank has “a” and “nykata”\n\nWait — “anykataka” → could this be \"a\" + \"nykata\" + \"ka\"? But we have “nykata” as a tile, and “ka” as a tile, and “taka” as a tile.\n\nWait — maybe “anykataka” is a + nykata + ka? But then we have “taka” as a tile, so perhaps it’s a + nykata + taka?\n\nBut “anykataka” has 9 letters: a-n-y-k-a-t-a-k-a — so 9.\n\nTile: “nykata” is 6 letters, “a” is 1, “ka” is 2 — too many.\n\nWait — perhaps “anykataka” is a-nykata-ka? But “nykata” is one tile, and “ka” is a tile, and “taka” is another tile — can’t be.\n\nWait — maybe “anykataka” = a + nykata + ka? But we have “taka” as a tile, so likely the ending is “taka” in all.\n\nSo perhaps “anykataka” = a + nykata + taka — yes, that fits: 1 + 6 + 3 = 10? “anykataka” is 9 letters.\n\nWait — count: a-n-y-k-a-t-a-k-a → 9 characters.\n\n“nykata” is 6 letters: n-y-k-a-t-a → then “a” + “nykata” + “ka” = 1+6+2=9 — yes!\n\nSo: anykataka = a + nykata + ka? but then what is “taka”?\n\nBut we have “taka” as a morpheme, and it appears in others.\n\nWait — look at the endings:\n\nnhaapitaka → ends in “taka”\n\nãkutaka → ends in “taka”\n\nanykataka → ends in “taka”? last 4 letters are “taka” → yes! “-taka”\n\nSo \"anykataka\" = a + nykata + taka? But that’s “a” (1) + “nykata” (6) + “taka” (4) = 11 — but “anykataka” is 9 letters.\n\nWait — contradiction.\n\nLet’s spell again:\n\n“anykataka” — positions:\n\n1:a, 2:n, 3:y, 4:k, 5:a, 6:t, 7:a, 8:k, 9:a → 9 letters\n\nBut “nykata” is 6 letters: n,y,k,a,t,a → so positions 2-7: n,y,k,a,t,a — that matches 2-7.\n\nThen we have position 1: a, and 8-9: k,a\n\nSo “a” + “nykata” + “ka”\n\nBut we have tile “ka” and “taka” — so “taka” isn’t in this word? But other words have it.\n\nAlternatively, “anykataka” = “a” + “nykata” + “ka” — skipping “taka”\n\nBut look at “ãkutaka” → a-ã-k-u-t-a-k-a? “ã” is one letter, “kuta” is 4, “taka” is 4 — “ãkutaka” is 7 letters: ã-k-u-t-a-k-a — yes.\n\nSo “ãkutaka” = ã + kuta + taka → ã=you, kuta=eat, taka=present\n\nSimilarly, nhaapitaka = nhaa + pita + taka → nhaa=I, pita=go\n\nkaapitaka = kaa + pita + taka → kaa=we, pita=go\n\n“anykataka” = ? + nykata + taka? → But it’s spelled “anykataka” — if it’s “a” + “nykata” + “ka”, that’s not taka.\n\nWait — what if “anykataka” is “a” + “nykata” + “ka” and “ka” is not “taka”?\n\nBut then why do the others end in “taka”?\n\nUnless “anykataka” is misread? No, the example is given as “anykataka”\n\nWait — maybe the tile “nykata” is actually “nykata” as the verb root, and “taka” is not the suffix here? That breaks pattern.\n\nAlternative: Perhaps the “a” at the beginning of “anykataka” is the subject pronoun, and “nykata” is the verb, and “ka” is the tense? But then why do others end in “taka”?\n\nWait — perhaps the suffix is “-taka” for all, but “anykataka” has an extra “a”?\n\nLet’s recheck the example: “anykataka” → if we assume the verb root is “nykata” and suffix is “-ka”, but the others use “-taka” — inconsistency.\n\nWait — look again:\n\nnhaapitaka = 9 letters → n-h-a-a-p-i-t-a-k-a? Wait no, the word is “nhaapitaka” — likely nhaa + pita + taka\n\nnhaa:4, pita:4, taka:4 → total 12? too long.\n\nnhaapitaka — let's break into 4+4+4 is too long.\n\nPerhaps:\n\nnhaa (3): n-h-a? not 4.\n\nWord: n-h-a-a-p-i-t-a-k-a — 10 letters.\n\nDivide:\n\n- Subject: nhaa (4 letters)\n\n- Verb: pita (4 letters)\n\n- Tense: taka (2 letters? t-a-k-a is 4)\n\nStill not fitting.\n\nAlternative: perhaps morphemes are:\n\nnhaa, ã, kaa — subject pronouns\n\npita, kuta, nykata — verb roots\n\ntaka — tense marker\n\nThen:\n\nnhaapitaka → nhaa + pita + taka → I + go + tense → 4+4+4=12? “nhaapitaka” has 10 letters.\n\nWait — “nhaapitaka” — n h a a p i t a k a → 10 chars\n\nPerhaps:\nnhaa (4) + pita (4) = 8, then taka (2)? but taka is 4 letters.\n\nBut “ka” is a tile? Maybe it’s t + a + k + a — 4 letters.\n\nAnother possibility: maybe the “ka” is a suffix, and “t” is part of the verb? But we have “pita” as a tile.\n\nWait — maybe “pita” + “ka” = pita + ka = “pitaka”, but the word is “pitaka”?\n\nBut the given word is “nhaapitaka” — so perhaps “nhaa” + “pita” + “ka” — “ka” is the tense?\n\nBut then ãkutaka → ã + kuta + ka? → “kutaka”? That would be 7 letters: ã-k-u-t-a-k-a — yes, 7 letters.\n\n“ãkutaka” is 7: positions: ã,k,u,t,a,k,a → so if “kuta” is k,u,t,a — 4 letters — then ã + kuta + ka? But ka is 2 letters — that would be 1+4+2=7 — yes.\n\nSimilarly, nhaapitaka: n,h,a,a,p,i,t,a,k,a — 10 letters.\n\nnhaa = n,h,a,a (4) — pita = p,i,t,a (4) — ka = k,a (2) — total 10 — yes!\n\nBut we have a tile called “taka”, not “ka” as a separate tense? But we also have “ka” as a tile.\n\nSimilarly, kaapitaka: k,a,a,p,i,t,a,k,a — 9 letters?\n\nk,a,a — that’s 3, but we have “kaa” as a tile? Ah! “kaa” is one tile (3 letters)\n\nSo:\n\nkaapitaka = kaa + pita + ka → we + go + tense — 3 + 4 + 2 = 9 — matches.\n\nNow anykataka: a,n,y,k,a,t,a,k,a — 9 letters.\n\nIf subject = “a” (1 letter), verb = “nykata” (6 letters), tense = “ka” (2 letters) → 1+6+2=9 — perfect.\n\nAnd “nykata” is one tile!\n\nSo now we can reconstruct:\n\nSubject pronouns:\n- nhaa → I\n- ã → you (sg)\n- a → he/she? maybe — wait, “anykataka” is he/she speaking — so “a” is third person singular subject\n- kaa → we (everyone)\n\nVerb roots:\n- pita → go\n- kuta → eat\n- nykata → speak\n\nTense marker:\n- ka → present tense (all end in \"ka\", not \"taka\" — so \"taka\" tile is not used as tense? But it's in the tile bank)\n\nWait — contradiction: tile bank has “taka”, but in our analysis, surname ends in “ka”, not “taka”.\n\nBut look: ãkutaka — ends in “ka”? No — it ends in “ka”, but the last two letters are “ka”, but the word is “ãkutaka” — last three letters are “taka” — so actually it is ending in “taka”\n\nWait — ãkutaka: ã-k-u-t-a-k-a → letters: 1.ã, 2.k, 3.u, 4.t, 5.a, 6.k, 7.a\n\nSo positions 4-7: t-a-k-a → “taka” — yes!\n\nSimilarly, nhaapitaka: n-h-a-a-p-i-t-a-k-a — letters 6-9: t-a-k-a → “taka”\n\nkaapitaka: k-a-a-p-i-t-a-k-a — letters 6-9: t-a-k-a → “taka”\n\nanykataka: a-n-y-k-a-t-a-k-a — letters 6-9: t-a-k-a → “taka”!\n\nOh! So actually: the ending is “taka” — which is 4 letters — and it’s the suffix in all.\n\nSo:\n\nnhaapitaka → nhaa (4) + pita (4) + taka (4) = 12? But “nhaapitaka” has 10 letters.\n\nWait — nhaapitaka: n h a a p i t a k a → 10 letters.\n\nLet’s index:\n\n1:n, 2:h, 3:a, 4:a, 5:p, 6:i, 7:t, 8:a, 9:k, 10:a\n\nSo first 4: n h a a → nhaa\n\nMiddle: p i → p i? but “pita” is p-i-t-a — so positions 5:p, 6:i, 7:t, 8:a → *pita*\n\nThen 9:k, 10:a → ka\n\nBut then “taka” is not untouched — t is in pita.\n\nWait — perhaps “pita” contains the t? So verb root is “pita”, suffix is “ka”, and the “t” is part of the verb root.\n\nSimilarly, “kuta” = k-u-t-a — so “t” is in verb root.\n\n“nykata” = n-y-k-a-t-a — so “t” is part of verb root.\n\nSo then: all words are Subject + VerbRoot + Tense\n\nTense = “ka” — 2 letters: k,a\n\nThen:\n\nnhaapitaka = nhaa + pita + ka → 4+4+2=10\n\nãkutaka = ã + kuta + ka → 1+4+2=7 — matches\n\nkaapitaka = kaa + pita + ka → 3+4+2=9 — matches\n\nanykataka = a + nykata + ka → 1+6+2=9 — matches\n\nPerfect!\n\nSo tense = ka (not taka). But the tile bank includes “taka” — so why is it there? Possibly a distractor? Or perhaps we misread.\n\nBut tile bank: nhaa, ã, a, kaa, pita, kuta, nykata, ka, taka\n\nWe are using: nhaa, ã, a, kaa, pita, kuta, nykata, ka — “taka” is not used.\n\nSo “taka” is a red herring or perhaps used elsewhere — but not in these examples.\n\nSo grammatical structure: Subject + VerbRoot + ka (present tense)\n\nSubjects:\n- nhaa: I\n- ã: you_{sg}\n- a: he/she\n- kaa: we_{everyone}\n\nVerbs:\n- pita: go\n- kuta: eat\n- nykata: speak\n\nWe need: we (everyone) are speaking → subject = kaa, verb = nykata, tense = ka\n\nSo: kaa + nykata + ka → “kaanykataska”? Wait, concatenation:\n\nkaa + nykata + ka = kaa + nykata + ka → \"kaanykataka\"\n\nBut spell: k-a-a-n-y-k-a-t-a-k-a\n\nIs that 11 letters? kaa=3, nykata=6, ka=2 → 11\n\nBut “kaanykataka” — yes, 11 letters.\n\nWe must output the exact form: kaa + nykata + ka = “kaanykataka”\n\nBut in examples, kaapitaka = kaa + pita + ka = k-a-a-p-i-t-a-k-a — so no hyphen, direct concatenation.\n\nSo: kaa + nykata + ka = “kaanykataka”\n\nBut write it out: k-a-a-n-y-k-a-t-a-k-a → “kaanykataka”\n\nIs that correct? Yes.\n\nStep 2: Grammar — no case, no agreement beyond this subject-verb-tense pattern.\n\nStep 3: Output the exact morpheme sequence: kaa + nykata + ka → “kaanykataka”\n\n<answers>\nkaanykataka\n</answers>",
+  "answer_text": "kaanykataka",
+  "morphemes": [
+   "kaa",
+   "nykata",
+   "ka"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 19.2,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "apurina-verb-agreement",
+  "query": 4,
+  "difficulty": "standard",
+  "prompt": "he/she is going",
+  "gold": [
+   "a",
+   "pita",
+   "ka"
+  ],
+  "gold_joined": "apitaka",
+  "raw": "<analysis>\nStep 1: Analyze the evidence to extract morpheme meanings.\n\nWe have:\n\n1. nhaapitaka → I am going  \n2. ãkutaka → you are eating  \n3. anykataka → he/she is speaking  \n4. kaapitaka → we (everyone) are going  \n\nAvailable morphemes: nhaa, ã, a, kaa, pita, kuta, nykata, ka, taka\n\nNote: The verb endings all end in \"-taka\". This is likely the present-tense marker for all persons, so \"taka\" = \"is [verbing]\".\n\nLet’s break down each word:\n\n- nhaapitaka = nhaa + pita + taka → \"I am going\" → so \"nhaa\" = I, \"pita\" = go\n- ãkutaka = ã + kuta + taka → \"you are eating\" → so \"ã\" = you_{sg}, \"kuta\" = eat\n- anykataka = a + nykata + taka → \"he/she is speaking\" → so \"a\" = he/she, \"nykata\" = speak\n- kaapitaka = kaa + pita + taka → \"we (everyone) are going\" → so \"kaa\" = we_{pl}, \"pita\" = go\n\nWait: But in \"anykataka\", the subject morpheme is \"a\", not \"any\". The morpheme list includes \"nykata\" but not \"any\". So likely \"a\" is the subject and \"nykata\" is the verb. This fits: a + nykata + taka.\n\nSo subject morphemes:\n\n- nhaa → I  \n- ã → you_{sg}  \n- a → he/she  \n- kaa → we_{pl} (everyone)\n\nVerb roots:\n\n- pita → go  \n- kuta → eat  \n- nykata → speak  \n\nAnd \"-taka\" is the present tense marker for all.\n\nNow query: \"he/she is going\"\n\nSubject: he/she → \"a\"  \nVerb: go → \"pita\"  \nTense: is → \"taka\"\n\nSo morpheme sequence: a + pita + taka → \"apitaka\"\n\nBut wait — is there any vowel harmony or consonant change? Let’s check:\n\n- nhaapitaka (I go) — nhaa + pita + taka → no vowel change\n- kaapitaka (we go) — kaa + pita + taka → kaa + pita = kaapita, then +taka → kaapitaka\n\nSimilarly, \"a\" + \"pita\" should be \"apita\" + \"taka\" → \"apitaka\"\n\nBut in the evidence, \"anykataka\" is \"a\" + \"nykata\" → \"anykataka\" — wait, this is \"a\" + \"nykata\" = \"anykata\", then +taka → \"anykataka\"?\n\nBut \"a\" + \"nykata\" should be \"anykata\" — so maybe there’s a vowel elision or phonological change?\n\nWait — \"a\" + \"nykata\" → \"anykata\"? That suggests \"a\" + \"nykata\" becomes \"anykata\" possibly because \"a\" + \"n\" → \"an\" + \"y...\"?\n\nBut that doesn't help with \"a\" + \"pita\".\n\nAlternatively, maybe \"a\" is actually \"an\" when before certain consonants?\n\nLook: \"anykataka\" — if subject is \"an\", then it would be an + nykata + taka → \"anykataka\" — that matches perfectly.\n\nWait! What if the subject morpheme for \"he/she\" is \"an\", not \"a\"?\n\nBut the available morphemes are: nhaa, ã, a, kaa, pita, kuta, nykata, ka, taka\n\nWe don’t have \"an\" — we have \"a\".\n\nSo then \"anykataka\" = a + nykata + taka → but phonetically it's \"anykataka\", not \"anikataka\" or \"a nykataka\".\n\nPerhaps the \"n\" in \"nykata\" is being absorbed or something? But \"a\" + \"nykata\" does not phonetically = \"anykata\" unless \"a\" + \"n\" → \"an\", which suggests that \"a\" might be functioning as a prefix that triggers a nasalization or assimilation? Or perhaps \"a\" is not the subject — perhaps the subject \"he/she\" is \"any\"?\n\nBut \"any\" is not in the morpheme list. The morpheme list has \"nykata\" — verb — and \"a\".\n\nWait, let’s look again at \"anykataka\".\n\nIf \"nykata\" = speak, and \"taka\" = verbal suffix, then \"any\" might be subject.\n\nBut \"any\" isn't a provided morpheme. The provided morphemes include: a, but not any.\n\nSo perhaps \"a\" + \"nykata\" = \"anykata\", meaning that when \"a\" precedes a vowel-initial morpheme? No, \"nykata\" starts with consonant \"n\".\n\nWait — what if the subject morpheme \"he/she\" is \"an\", and \"a\" is something else? But we have \"a\" as a morpheme, not \"an\".\n\nAlternatively, maybe the subject for he/she is \"an\", and the list has a typo or we’re misreading? But the provided morphemes are: nhaa, ã, a, kaa, pita, kuta, nykata, ka, taka\n\nSo \"a\" is the only single \"a\".\n\nLet’s assume the he/she subject is \"a\", and the word \"anykataka\" is formed by \"a\" + \"nykata\" + \"taka\", and the \"n\" is part of the verb, so the phonetic form becomes \"an\" + \"ykata\" → \"anykata\", which may be a phonological process: when \"a\" is followed by \"ny\", it becomes \"any\".\n\nBut that’s ad hoc.\n\nWait — look at \"nhaapitaka\": \"nhaa\" + \"pita\" — no change.\n\n\"kaapitaka\": \"kaa\" + \"pita\" — \"kaa\" ends in \"a\", \"pita\" starts with \"p\" — no change.\n\n\"ãkutaka\": \"ã\" + \"kuta\" — \"ã\" is like \"a\" with nasal, and \"kuta\" starts with \"k\" — no change.\n\nBut \"a\" + \"nykata\": \"a\" + \"n\" — so perhaps \"a\" + \"n\" → \"an\" — a phonological rule: when subject \"a\" is followed by a nasal-initial verb root, assimilate to \"an\".\n\nThen \"a\" + \"nykata\" → \"an\" + \"nykata\" = \"anykata\" → then add \"taka\" → \"anykataka\".\n\nSo subject \"a\" becomes \"an\" before verbs starting with nasal consonants? But \"pita\" and \"kuta\" don't start with nasal, so they keep \"a\" as \"a\".\n\nFor \"he/she is going\", the verb is \"pita\", which starts with \"p\", not nasal → so no assimilation → subject \"a\" remains \"a\", verb \"pita\", tense \"taka\" → \"apitaka\".\n\nThus: \"he/she is going\" → \"apitaka\"\n\nNow check: the morphemes used are \"a\" + \"pita\" + \"taka\" — all in the list.\n\nPattern holds.\n\nSo correct form: apitaka\n</analysis>\n<answers>\napitaka\n</answers>\napitaka",
+  "answer_text": "apitaka",
+  "morphemes": [
+   "a",
+   "pita",
+   "ka"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 8.8,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "swahili-person-tense",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "I will like",
+  "gold": [
+   "ni",
+   "ta",
+   "penda"
+  ],
+  "gold_joined": "nitapenda",
+  "raw": "<analysis>\nStep 1: Analyze the given examples to extract morpheme meanings and structure.\n\nEvidence:\n- ninapenda → I like\n  - \"ni\" = I (subject prefix)\n  - \"penda\" = like (verb root)\n  - So: ni + penda → I like → present tense? (no tense marker)\n\n- tulisoma → we read (past)\n  - \"tu\" = we (subject prefix)\n  - \"li\" = past tense marker (since present would be *tusoma? – not given, but contrast with future below)\n  - \"soma\" = read (verb root)\n  - Structure:tu + li + soma → we read (past)\n\n- wataimba → they will sing\n  - \"wa\" = they (subject prefix)\n  - \"ta\" = future tense marker\n  - \"imba\" = sing (verb root)\n  - Structure: wa + ta + imba → they will sing\n\nSo pattern:\n[Subject prefix] + [Tense marker] + [Verb root]\n\nTense markers:\n- Present: no tense marker (e.g., ninapenda → ni + penda)\n- Past: li (tulisoma)\n- Future: ta (wataimba)\n\nSubject prefixes:\n- ni = I\n- tu = we\n- wa = they\n\nVerb roots:\n- penda = like\n- soma = read\n- imba = sing\n\nNow, query: \"I will like\"\n\nWe need:\n- Subject: I → \"ni\"\n- Future tense: \"ta\"\n- Verb: like → \"penda\"\n\nSo: ni + ta + penda → nitapenda\n\nBut wait — in evidence, present form is \"ninapenda\" — is that structured as ni + na + penda?\n\nLet’s reevaluate because “ninapenda” has an extra “na” — perhaps the present tense uses a marker “na”?\n\nBreak “ninapenda”:\n- ni + na + penda → I like\n\nSimilarly, if “tulisoma” is tu + li + soma → past\n\nThen “wataimba” is wa + ta + imba → future\n\nSo perhaps the structure is:\n[Subject] + [Tense] + [Verb]\n\nTense markers:\n- Present: na\n- Past: li\n- Future: ta\n\nThen:\n- ninapenda → ni + na + penda → I like (present)\n- tulisoma → tu + li + soma → we read (past)\n- wataimba → wa + ta + imba → they will sing (future)\n\nThis fits perfectly.\n\nSo for “I will like”:\n- Subject: ni\n- Future: ta\n- Verb: penda\n\n→ ni + ta + penda = nitapenda\n\nCheck: Is \"na\" only used for present? Yes, and we have no present for other persons, but the pattern holds.\n\nAlso, the available morphemes include \"na\", which we now assign as present tense marker.\n\nSo “I will like” = nitapenda\n\nNo other morpheme fits.\n\nAnswer: nitapenda\n</analysis>\n<answers>\nnitapenda\n</answers>",
+  "answer_text": "nitapenda",
+  "morphemes": [
+   "ni",
+   "ta",
+   "penda"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 4.6,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "swahili-person-tense",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "they read",
+  "gold": [
+   "wa",
+   "na",
+   "soma"
+  ],
+  "gold_joined": "wanasoma",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n\nFrom the evidence:\n- ninapenda → I like\n  - \"ni\" = I\n  - \"penda\" = like\n  - \"na\" = present tense marker? (since \"penda\" is present)\n- tulisoma → we read (past)\n  - \"tu\" = we\n  - \"li\" = past tense marker\n  - \"soma\" = read\n- wataimba → they will sing\n  - \"wa\" = they\n  - \"ta\" = future tense marker\n  - \"imba\" = sing\n\nSo:\nSubject prefixes:\n- ni = I\n- tu = we\n- wa = they\n\nTense markers:\n- na = present (in ninapenda, between subject and verb)\n- li = past (in tulisoma, after subject)\n- ta = future (in wataimba, after subject)\n\nVerbs:\n- penda = like\n- soma = read\n- imba = sing\n\nIn \"ninapenda\": ni + na + penda → I + present + like\nIn \"tulisoma\": tu + li + soma → we + past + read\nIn \"wataimba\": wa + ta + imba → they + future + sing\n\nSo word order is: SUBJECT + TENSE + VERB\n\nQuery: \"they read\" → we need past tense (since no time marker is given, but past is the only one used for completed action — and \"tulisoma\" is \"we read (past)\", so \"they read\" would be past tense)\n\nSubject for \"they\" = \"wa\"\nTense for past = \"li\"\nVerb for \"read\" = \"soma\"\n\nSo: wa + li + soma → walisoma\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- Subject prefixes agree with person/number.\n- Tense markers are fixed and infix between subject and verb.\n- Verb root remains unchanged.\n\nStep 3: Compose the EXACT target-language form.\n\"they read\" (past) → wa + li + soma = walisoma\n</analysis>\n<walisoma>",
+  "answer_text": "",
+  "morphemes": [
+   "wa",
+   "li",
+   "soma"
+  ],
+  "em_decomp": false,
+  "em_surface": false,
+  "chrf": 0.4637,
+  "morf1": 0.6667,
+  "elapsed_s": 2.8,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "swahili-person-tense",
+  "query": 2,
+  "difficulty": "curveball",
+  "prompt": "we sang",
+  "gold": [
+   "tu",
+   "li",
+   "imba"
+  ],
+  "gold_joined": "tuliimba",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n\nFrom the evidence:\n- ninapenda → I like\n  - \"ni-\" = I (1st person singular subject)\n  - \"-penda\" = like\n\n- tulisoma → we read (past)\n  - \"tu-\" = we (1st person plural subject)\n  - \"li-\" = past tense marker\n  - \"-soma\" = read\n\n- wataimba → they will sing\n  - \"wa-\" = they (3rd person plural subject)\n  - \"ta-\" = future tense marker\n  - \"-imba\" = sing\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n\nWord order is subject + tense + verb root.\n- Subject prefixes: ni- (I), tu- (we), wa- (they)\n- Tense markers: li- (past), ta- (future); present has no overt marker (as in ninapenda = I like, no tense marker before penda)\n- Verb roots: penda=like, soma=read, imba=sing\n\nWe are translating: \"we sang\" → past tense, 1st person plural → subject = tu-, tense = li-, verb = imba? No — wait, \"sang\" is past of \"sing\", and \"sing\" is imba. But in the evidence, \"we read\" is tulisoma = tu-li-soma.\n\nSo \"we sang\" should follow same pattern: tu-li-imba.\n\nBut wait — in the evidence, \"wataimba\" is they will sing: wa-ta-imba → subject + future + verb.\n\nSimilarly, \"tulisoma\" = tu-li-soma → subject + past + verb.\n\nSo \"we sang\" = past tense, 1st person plural → \"tu\" + \"li\" + \"imba\"\n\nIs \"imba\" the root for \"sing\"? Yes, from \"wataimba\" = they will sing → wa-ta-imba.\n\nTherefore: \"we sang\" → tu-li-imba\n\nStep 3: Compose the EXACT target-language form, preserving notation.\n\nTarget: tu + li + imba → tulimba\n\nNote: In \"tulisoma\", the \"li\" is directly attached to \"tu\" and then \"soma\". No vowels inserted — so it's a direct concatenation: tu + li + imba = tulimba.\n\nVocabulary used: tu (we), li (past), imba (sing)\n\nAll morphemes are in the tile bank.\n</analysis>\n<answers>\ntulimba\n</answers>",
+  "answer_text": "tulimba",
+  "morphemes": [
+   "tu",
+   "li",
+   "imba"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 3.0,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "turkish-vowel-harmony",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "eyes",
+  "gold": [
+   "göz",
+   "ler"
+  ],
+  "gold_joined": "gözler",
+  "raw": "<analysis>\nStep 1: From the evidence:\n- \"kız\" → girl (singular)\n- \"göz\" → eye (singular)\n- \"gün\" → day (singular)\n- \"evler\" → houses → \"ev\" (house) + \"ler\" (plural suffix)\n- \"atlar\" → horses → \"at\" (horse) + \"lar\" (plural suffix)\n\nStep 2: Observe plural formation:\n- \"ev\" + \"ler\" = \"evler\"\n- \"at\" + \"lar\" = \"atlar\"\n\nThe plural suffix varies: -ler after front vowels (e, i, ö, ü), -lar after back vowels (a, ı, o, u). This is vowel harmony.\n\n- \"göz\" ends in 'ö' → front vowel → plural suffix should be -ler.\n- So \"göz\" + \"ler\" → \"gözler\" = eyes.\n\nStep 3: The morphemes available include \"göz\" and \"ler\", and \"eyes\" is the plural of \"eye\", which is \"göz\".\n\nThus, the correct morpheme sequence for \"eyes\" is \"göz\" + \"ler\" = \"gözler\".\n</analysis>\n<gözler>",
+  "answer_text": "<gözler>",
+  "morphemes": [
+   "<gözler>"
+  ],
+  "em_decomp": false,
+  "em_surface": false,
+  "chrf": 0.915,
+  "morf1": 0.0,
+  "elapsed_s": 1.9,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "turkish-vowel-harmony",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "girls",
+  "gold": [
+   "kız",
+   "lar"
+  ],
+  "gold_joined": "kızlar",
+  "raw": "<analysis>\nStep 1: From the evidence:\n- \"kız\" = girl\n- \"evler\" = houses → \"ev\" = house, \"ler\" = plural\n- \"atlar\" = horses → \"at\" = horse, \"lar\" = plural\n\nSo the plural markers are \"-ler\" and \"-lar\", which appear to be vowel-harmonized variants.\n\nStep 2: The word for \"girl\" is \"kız\". To make it plural, we need the appropriate plural suffix. The root ends in a back vowel (ı), so according to Turkish vowel harmony, the plural suffix should be \"-lar\" (not \"-ler\", which is for front vowels).\n\nStep 3: \"kız\" + \"lar\" = \"kızlar\"\n\nThus, \"girls\" translates to \"kızlar\".\n</analysis>\n<answers>\nkızlar\n</answers>",
+  "answer_text": "kızlar",
+  "morphemes": [
+   "kız",
+   "lar"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.3,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "turkish-vowel-harmony",
+  "query": 2,
+  "difficulty": "curveball",
+  "prompt": "days",
+  "gold": [
+   "gün",
+   "ler"
+  ],
+  "gold_joined": "günler",
+  "raw": "<analysis>\nStep 1: From the evidence, we see singular forms: kız (girl), göz (eye), gün (day), ev (house), at (horse). The plural forms are: evler (houses), atlar (horses). This implies that the plural suffix is either -ler or -lar.\n\nStep 2: Note the vowel harmony:\n- ev → evler: 'e' is a front vowel → uses -ler\n- at → atlar: 'a' is a back vowel → uses -lar\n\nThus, the plural suffix assimilates to vowel harmony: front vowels take -ler, back vowels take -lar.\n\nStep 3: For \"days\", the base is \"gün\". The vowel in \"gün\" is 'ü', which is a front vowel. Therefore, the plural suffix should be -ler.\n\nSo: gün + ler = günler\n\nThis matches the pattern observed in evler and contrasts with atlar.\n\nNo other morphemes are needed; the tile bank includes \"gün\" and \"ler\".\n</analysis>\n<answers>\ngünler\n</answers>",
+  "answer_text": "günler",
+  "morphemes": [
+   "gün",
+   "ler"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.0,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "quechua-person-endings",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "I walk",
+  "gold": [
+   "puri",
+   "ni"
+  ],
+  "gold_joined": "purini",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n\nFrom the evidence:\n- rikuni → I see → Split into riku + ni → “see” + “I”\n- purin → he walks → “walk” + “he” (but note: “he” is not explicitly marked by a suffix here, since purin = puri + n; possibly “n” = he)\n- mikhunchik → we (all of us) eat → “eat” + “we (all)”\n\nMorpheme breakdown:\n- riku = see\n- puri = walk\n- mikhu = eat\n- ni = I\n- n = he (from purin = puri + n)\n- nchik = we (all of us) (from mikhunchik = mikhu + nchik)\n\nNote: rikuni uses “ni” for “I”, but purin uses “n” for “he”. So the person marking differs.\n\nNow, \"I walk\" → we need the verb \"walk\" (puri) + the pronoun for \"I\" (ni)\n\nSo: puri + ni = purini\n\nCheck consistency:\n- rikuni = riku (see) + ni (I) → I see ✓\n- purin = puri (walk) + n (he) → he walks ✓\n- mikhunchik = mikhu (eat) + nchik (we) → we eat ✓\n\nThus, for \"I walk\": puri + ni → purini\n\nStep 2: Note any grammar — person suffixes are attached directly to the verb stem.\n\nStep 3: Compose exact target form: purini\n</analysis>\n<answers>\npurini\n</answers>",
+  "answer_text": "purini",
+  "morphemes": [
+   "puri",
+   "ni"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.8,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "quechua-person-endings",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "we (all of us) see",
+  "gold": [
+   "riku",
+   "nchik"
+  ],
+  "gold_joined": "rikunchik",
+  "raw": "<analysis>\nStep 1: Analyze the evidence to extract morpheme meanings.\n\nFrom:\n- rikuni → I see\n- purin → he walks\n- mikhunchik → we (all of us) eat\n\nBreak down:\n\nrikuni: likely = riku + ni  \n→ riku = \"see\", ni = \"I\" (1st person singular)\n\npurin: likely = puri + n  \n→ puri = \"walk\", n = \"he\" (3rd person singular)\n\nmikhunchik: likely = mikhu + nchik  \n→ mikhu = \"eat\", nchik = \"we (all of us)\" (1st person plural inclusive)\n\nNote: ni and n both appear to be 1st and 3rd person singular subject markers. nchik is distinct for plural \"we\".\n\nThis suggests:\n- Subject markers:  \n  - ni → I  \n  - n → he  \n  - nchik → we (all of us)\n\nAnd verb roots:\n- riku → see  \n- puri → walk  \n- mikhu → eat\n\nStep 2: Grammar pattern\n\nThe pattern is: [verb root] + [subject marker]\n\n- I see → riku + ni → rikuni  \n- he walks → puri + n → purin  \n- we (all of us) eat → mikhu + nchik → mikhunchik\n\nSo for \"we (all of us) see\", we need:  \nverb root \"riku\" + subject marker \"nchik\" → riku + nchik\n\nStep 3: Construct exact form\n\nriku + nchik = rikunchik\n\nBut note: in \"rikuni\", the root is \"riku\" and suffix is \"ni\".  \nIn \"mikhunchik\", the root is \"mikhu\" and suffix is \"nchik\".\n\nNo phonological changes observed between root and suffix, so we can directly concatenate.\n\nThus, \"we (all of us) see\" = rikunchik\n\nCheck available morphemes: riku and nchik are both in the tile bank.\n\nAnswer: rikunchik\n</analysis>\n<answers>\nrikunchik\n</answers>",
+  "answer_text": "rikunchik",
+  "morphemes": [
+   "riku",
+   "nchik"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.7,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "quechua-person-endings",
+  "query": 2,
+  "difficulty": "curveball",
+  "prompt": "she eats",
+  "gold": [
+   "mikhu",
+   "n"
+  ],
+  "gold_joined": "mikhun",
+  "raw": "<analysis>\nStep 1: Analyze the evidence to extract morpheme meanings.\n\n- rikuni → I see  \n  Break down: riku + ni → “see” + “I”  \n  So: riku = see, ni = I\n\n- purin → he walks  \n  Break down: puri + n → “walk” + “he”  \n  So: puri = walk, n = he\n\n- mikhunchik → we (all of us) eat  \n  Break down: mikhu + nchik → “eat” + “we (all of us)”  \n  So: mikhu = eat, nchik = we (all of us)\n\nStep 2: Determine person markers:\n\nFrom above:\n- ni = I (1sg)\n- n = he (3sg)\n- nchik = we (all of us) (1pl)\n\nWe need \"she eats\". So we need the 3sg pronoun marker for \"she\" — but we already have \"n\" for \"he\". Are \"he\" and \"she\" distinguished? In the evidence, \"purin\" = he walks, and we have no \"she\" example. But since \"n\" is used for \"he\", and no other 3sg marker appears, it's likely that the language uses the same marker for \"he\" and \"she\" — i.e., 3sg is unmarked for gender. This is common in many languages.\n\nSo \"she\" = same as \"he\" → n\n\nWe know \"mikhu\" = eat\n\nThus: \"she eats\" = mikhu + n → mikhun\n\nStep 3: Check morpheme availability.\n\nAvailable morphemes: rima, riku, mikhu, puri, taki, ni, nki, n, nchik\n\nWe have mikhu and n → both available.\n\nSo: mikhu + n = mikhun\n\nNote: there is \"nki\" and \"nchik\" but those are for other persons (nchik = we all; nki not used yet). We have \"n\" for he, so for she, same.\n\nNo evidence suggests gender distinction, so \"she\" = \"n\"\n\nThus: \"she eats\" = mikhun\n\n</analysis>\n<answers>\nmikhun\n</answers>",
+  "answer_text": "mikhun",
+  "morphemes": [
+   "mikhu",
+   "n"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.9,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "nahuatl-both-ends",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "I sing",
+  "gold": [
+   "ni",
+   "cuica"
+  ],
+  "gold_joined": "nicuica",
+  "raw": "<analysis>\nStep 1: Analyze the given evidence.\n- nichoca → I cry\n- cuicah → they sing\n\nBreak down \"nichoca\":\n- \"ni\" is likely the 1st person singular subject marker (\"I\")\n- \"choca\" is likely the verb root for \"cry\"\n\nBreak down \"cuicah\":\n- \"cuica\" is likely the verb root for \"sing\"\n- \"h\" is likely the 3rd person plural subject marker (\"they\")\n\nStep 2: Identify the pattern.\n- \"I [verb]\" = \"ni\" + verb root → nichoca = ni + choca\n- \"They [verb]\" = verb root + \"h\" → cuicah = cuica + h\n\nSo the structure is:\n- 1st person singular: ni + verb-root\n- 3rd person plural: verb-root + h\n\nWe need to translate: \"I sing\"\n\n- \"sing\" = cuica (from cuicah)\n- \"I\" = ni\n\nSo: \"I sing\" = ni + cuica → nicuica\n\nStep 3: Construct the exact form.\nThe morpheme sequence is ni + cuica → nicuica\n\nNo suffix needed for \"I\", unlike \"they\" which needs \"-h\".\n</analysis>\n<answers>\nnicuica\n</answers>",
+  "answer_text": "nicuica",
+  "morphemes": [
+   "ni",
+   "cuica"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.1,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "nahuatl-both-ends",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "they cry",
+  "gold": [
+   "choca",
+   "h"
+  ],
+  "gold_joined": "chocah",
+  "raw": "<analysis>\nStep 1: From the evidence:\n- \"nichoca\" → \"I cry\"\n- \"cuicah\" → \"they sing\"\n\nWe need to find the morphemes for \"they\" and \"cry\".\n\nBreak down \"nichoca\":\n- \"ni\" is likely the first-person singular subject marker (I)\n- \"choca\" is likely the verb root for \"cry\"\n\nBreak down \"cuicah\":\n- \"cuica\" is likely the verb root for \"sing\"\n- \"h\" is likely the third-person plural subject marker (they)\n\nStep 2: Grammar pattern:\n- Subject markers: \"ni\" = I, \"h\" = they\n- Verb roots: \"choca\" = cry, \"cuica\" = sing\n- The verb root is directly followed by the subject marker? Not exactly — in \"nichoca\", subject + verb root; in \"cuicah\", verb root + subject marker.\n\nSo order seems to be:\n- For \"I\": Subject + Verb root → ni + choca → nichoca\n- For \"they\": Verb root + Subject → cuica + h → cuicah\n\nSo subject marking is prefix for 1st person, suffix for 3rd person plural.\n\nWe now need \"they cry\" → verb root \"choca\" + subject marker \"h\" → \"chocah\"\n\nStep 3: Construct \"they cry\" as \"choca\" + \"h\" → \"chocah\"\n\nNo other morphology required; the pattern is consistent.\n</analysis>\n<answers>\nchocah\n</answers>",
+  "answer_text": "chocah",
+  "morphemes": [
+   "choca",
+   "h"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.4,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "nahuatl-both-ends",
+  "query": 2,
+  "difficulty": "curveball",
+  "prompt": "we sing",
+  "gold": [
+   "ni",
+   "cuica",
+   "h"
+  ],
+  "gold_joined": "nicuicah",
+  "raw": "<analysis>\nStep 1: Analyze the given examples:\n\n- \"nichoca\" → \"I cry\"\n  - Break into possible morphemes: \"ni\" + \"choca\" or \"nichoca\" as a whole.\n  - \"ni\" is likely the 1st person singular subject marker (since “I” is involved).\n  - \"choca\" might mean \"cry\".\n\n- \"cuicah\" → \"they sing\"\n  - Break into: \"cuica\" + \"h\"\n  - \"cuica\" likely means \"sing\", and \"h\" likely marks 3rd person plural subject (\"they\").\n\nStep 2: Confirm morpheme boundaries:\n\nFrom \"nichoca\" = \"ni\" + \"choca\" → \"I cry\"\nFrom \"cuicah\" = \"cuica\" + \"h\" → \"they sing\"\n\nNote: \"choca\" ≠ \"cuica\" — different verbs. So \"choca\" = \"cry\", \"cuica\" = \"sing\".\n\nWe now need \"we sing\".\n\nWe know:\n- \"cuica\" = sing\n- \"h\" = they (3pl subject)\n\nWhat marks \"we\"?\n\nWe have available morphemes: ni, ti, xi, cochi, choca, cuica, h\n\n\"ni\" = I\n\"h\" = they\n\nWe need \"we\" — likely \"ti\" or \"xi\".\n\nWe don’t have a direct example for \"we\", but in many Mesoamerican languages (like Nahuatl, which this resembles), \"ti-\" is 1st person plural subject.\n\nAlso note: \"cochi\" is unused — perhaps \"cochi\" = sleep? But we don’t have evidence for it, and our target is \"we sing\", so we focus on verb \"sing\" and subject marker.\n\nAssuming:\n- \"ni\" = I (1sg)\n- \"ti\" = we (1pl)\n- \"h\" = they (3pl)\n\nThen \"we sing\" = \"ti\" + \"cuica\"\n\nIs there a suffix needed? In \"cuicah\" the \"h\" is attached directly to the verb stem — so perhaps the subject marker is a prefix and the plural marker is a suffix only for 3rd person? Or maybe \"h\" is the 3pl marker specifically, and 1pl has no suffix.\n\nIn \"nichoca\" — \"ni\" (I) + \"choca\" (cry) — no suffix.\n\nIn \"cuicah\" — \"cuica\" (sing) + \"h\" (they) — suffix for 3pl.\n\nThat implies subject markers are prefixes for 1st and 2nd person, and suffixes for 3rd person? That’s inconsistent.\n\nAlternative interpretation: maybe \"h\" is not a subject marker but a verb ending for 3rd person plural? Perhaps the verb root is \"cuica\", and \"h\" marks 3pl.\n\nThen \"ni\" + \"choca\" → \"I cry\" — subject prefix.\n\nSo perhaps ALL subject markers are prefixes, but 3pl has an exception: no prefix, but suffix \"h\"?\n\nThat's odd.\n\nAlternative: perhaps the verb root is \"cuic\" and \"a\" is a vowel suffix? But \"cuicah\" ends in \"h\".\n\nWait — \"cuicah\" = they sing. Maybe \"cuica\" is the verb root, and \"h\" is the 3pl subject suffix.\n\nSimilarly, maybe \"choca\" is the verb root for cry, and \"ni\" is 1sg subject prefix.\n\nNow: for “we sing”, we need 1pl subject prefix + \"cuica\".\n\nWe have \"ti\" available — perhaps \"ti\" = we.\n\nSo: \"ti\" + \"cuica\" = \"ticuica\"?\n\nBut we must consider: is the verb root \"cuica\" or \"cuic\"?\n\nNote: in Nahuatl, \"cuīca\" means \"to sing\" — and \"nicuīca\" = I sing, \"ticuīca\" = we sing, \"cuīcah\" = they sing.\n\nYes! This resembles Nahuatl.\n\nIn Nahuatl:\n- \"ni-\" = I\n- \"ti-\" = we\n- \"cuīca\" = sing\n- \"-h\" = 3rd person plural suffix\n\nSo:\n- nichoca → ni-choca → I cry (choca = cry)\n- cuicah → cuica-h → they sing\n\nSo pattern:\n- Subject for 1st person singular: prefix \"ni-\"\n- Subject for 1st person plural: prefix \"ti-\"\n- Subject for 3rd person plural: suffix \"-h\"\n- Verb roots: \"choca\" (cry), \"cuica\" (sing)\n\nTherefore, \"we sing\" = ti- + cuica = \"ticuica\"\n\nBut wait — \"cuicah\" is \"cuica\" + \"h\" — no prefix. So for 3rd person plural, no prefix, only suffix. For 1st person, prefix only.\n\nSo \"we sing\" = ti + cuica = \"ticuica\"\n\nIs \"ti\" available? Yes.\n\nSo answer: \"ticuica\"\n\nCheck: no other morpheme needed. \"cochi\", \"xi\" unused — not needed. \"xi\" might be \"you (sg)\" or similar, but we don't need it.\n\n<answers>\nticuica\n</answers>",
+  "answer_text": "ticuica",
+  "morphemes": [
+   "ti",
+   "cuica"
+  ],
+  "em_decomp": false,
+  "em_surface": false,
+  "chrf": 0.7049,
+  "morf1": 0.4,
+  "elapsed_s": 6.8,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "esperanto-tense",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "you learned",
+  "gold": [
+   "vi",
+   "lern",
+   "is"
+  ],
+  "gold_joined": "vi lernis",
+  "raw": "<analysis>\nStep 1: From the evidence, we extract morpheme meanings:\n- mi = I\n- vi = you_{sg}\n- li = he\n- ni = we\n- ili = they\n- lern = learn\n- manĝ = eat\n- as = present tense (e.g., lernas = learn, manĝas = eat)\n- is = past tense (e.g., lernis = learned)\n- os = future tense (e.g., lernos = will learn)\n\nStep 2: Grammar pattern:\n- Subject pronouns (mi, vi, li, etc.) are separate words.\n- Verb roots (lern, manĝ) are followed by tense suffixes: as (present), is (past), os (future).\n- Word order is subject + verb-root + tense-morpheme.\n- “You learned” requires: subject = vi (you_{sg}), verb root = lern (learn), tense = is (past).\n\nStep 3: Combine morphemes as used in examples: vi + lern + is → vi lernis\n</analysis>\n<answers>\nvi lernis\n</answers>",
+  "answer_text": "vi lernis",
+  "morphemes": [
+   "vi",
+   "lern",
+   "is"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 0.696,
+  "morf1": 1.0,
+  "elapsed_s": 1.6,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "esperanto-tense",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "we learned",
+  "gold": [
+   "ni",
+   "lern",
+   "is"
+  ],
+  "gold_joined": "ni lernis",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n\nFrom the evidence:\n- \"mi\" = I\n- \"vi\" = you (sg)\n- \"li\" = he\n- \"ni\" = we\n- \"ili\" = they\n- \"lern\" = learn (root)\n- \"manĝ\" = eat (root)\n- \"as\" = present tense\n- \"is\" = past tense\n- \"os\" = future tense\n\nFrom \"mi lernas\" → I learn (present)\n\"mi lernis\" → I learned (past)\n\"mi lernos\" → I will learn (future)\n\nSame pattern holds for \"vi lernas\", \"li lernas\", etc. The subject pronoun is separate from the verb root and tense suffix.\n\nWe observe:\nSubject pronouns: mi, vi, li, ni, ili\nVerb root: lern, manĝ\nTense suffixes: as (present), is (past), os (future)\n\nSo verb structure is: [subject] + [root] + [tense]\n\nWe need to translate: \"we learned\"\n\n\"we\" = \"ni\"\n\"learn\" = \"lern\"\n\"past tense\" = \"is\"\n\nTherefore: \"ni\" + \"lern\" + \"is\" → \"ni lernis\"\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n\nNo case system. Subject-verb word order is consistent: subject + root + tense. No agreement beyond the subject pronoun matching the person. Tense is marked morphologically by suffix only.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n\nThe query asks for \"we learned\". From the evidence, \"we\" is \"ni\", \"learn\" is \"lern\", \"past tense\" is \"is\".\n\nSo the exact form is: ni lernis\n</analysis>\n<answers>\nni lernis\n</answers>",
+  "answer_text": "ni lernis",
+  "morphemes": [
+   "ni",
+   "lern",
+   "is"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 0.696,
+  "morf1": 1.0,
+  "elapsed_s": 2.5,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "esperanto-tense",
+  "query": 2,
+  "difficulty": "standard",
+  "prompt": "I will eat",
+  "gold": [
+   "mi",
+   "manĝ",
+   "os"
+  ],
+  "gold_joined": "mi manĝos",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n\nFrom the evidence:\n- mi = I\n- vi = you (sg)\n- li = he\n- ni = we\n- ili = they\n- lern = learn (root)\n- manĝ = eat (root)\n- as = present tense (e.g., lernas = learn, manĝas = eat)\n- is = past tense (e.g., lernis = learned)\n- os = future tense (e.g., lernos = will learn)\n\nThe pattern is: subject pronoun + root + tense suffix\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n\nNo case marking. Verb agrees with subject via subject pronoun. Tense is marked by suffix: as (present), is (past), os (future). The root is unchanged.\n\nTo form \"I will eat\":\n- subject: mi\n- root: manĝ (for \"eat\")\n- future tense: os\n\nSo: mi + manĝ + os → mi manĝos\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n\nThe target is: \"I will eat\" → mi manĝos\n\nNo special notation needed beyond what's given; \"mi\" and \"manĝos\" are directly from the tile bank.\n</analysis>\n<answers>\nmi manĝos\n</answers>",
+  "answer_text": "mi manĝos",
+  "morphemes": [
+   "mi",
+   "manĝ",
+   "os"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 0.696,
+  "morf1": 1.0,
+  "elapsed_s": 1.9,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "esperanto-tense",
+  "query": 3,
+  "difficulty": "standard",
+  "prompt": "they eat",
+  "gold": [
+   "ili",
+   "manĝ",
+   "as"
+  ],
+  "gold_joined": "ili manĝas",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n\nFrom the evidence:\n- \"mi\" = I\n- \"vi\" = you (sg)\n- \"li\" = he\n- \"ni\" = we\n- \"ili\" = they\n- \"lern\" = learn\n- \"manĝ\" = eat\n- \"as\" = present tense\n- \"is\" = past tense\n- \"os\" = future tense\n\nThe structure is: [subject pronoun] + [root verb] + [tense suffix]\n\nFor \"they eat\":\n- subject: \"ili\" (they)\n- verb root: \"manĝ\" (eat)\n- tense: present → \"as\"\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n\nNo case markings. Subject-verb agreement is already reflected in the pronoun use (each subject pronoun is paired with the same verb tense form — the verb root + tense suffix is invariant across subjects). So \"ili\" + \"manĝ\" + \"as\" is the correct form.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n\nThe query asks for \"they eat\" — so we construct: ili + manĝ + as → \"ili manĝas\"\n\nThis matches the pattern seen in \"ili lernas\" (they learn), so \"ili manĝas\" is the correct and exact translation.\n</analysis>\n<answers>\nili manĝas\n</answers>",
+  "answer_text": "ili manĝas",
+  "morphemes": [
+   "ili",
+   "manĝ",
+   "as"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 0.699,
+  "morf1": 1.0,
+  "elapsed_s": 2.0,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "esperanto-tense",
+  "query": 4,
+  "difficulty": "standard",
+  "prompt": "he ate",
+  "gold": [
+   "li",
+   "manĝ",
+   "is"
+  ],
+  "gold_joined": "li manĝis",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n\nFrom the evidence:\n- \"mi\" = I\n- \"vi\" = you (sg)\n- \"li\" = he\n- \"ni\" = we\n- \"ili\" = they\n- \"lern\" = learn\n- \"manĝ\" = eat\n- \"as\" = present tense\n- \"is\" = past tense\n- \"os\" = future tense\n\nWe see that the subject pronouns (mi, vi, li, ni, ili) are separate morphemes, followed by the verb root (lern, manĝ), then a tense suffix (as, is, os).\n\nExamples:\n- mi lernas → I learn (present)\n- mi lernis → I learned (past)\n- mi lernos → I will learn (future)\n- mi manĝas → I eat (present)\n\nSo the structure is: [subject] [verb root] [tense suffix]\n\nFor \"he ate\":\n- subject = \"li\" (he)\n- verb = \"eat\" → root = \"manĝ\"\n- tense = past → suffix = \"is\"\n\nThus: \"li\" + \"manĝ\" + \"is\" → \"li manĝis\"\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n\nNo case marking. Subject-verb order is fixed: subject + verb root + tense. Verb agrees with subject in person/number via the subject pronoun — no separate verb conjugation. The tense suffix is consistent across all subjects.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n\nThe query is \"he ate\" → \"li manĝis\"\n</analysis>\n<answers>\nli manĝis\n</answers>",
+  "answer_text": "li manĝis",
+  "morphemes": [
+   "li",
+   "manĝ",
+   "is"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 0.696,
+  "morf1": 1.0,
+  "elapsed_s": 3.1,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "indonesian-plurals",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "I eat",
+  "gold": [
+   "saya",
+   "makan"
+  ],
+  "gold_joined": "saya makan",
+  "raw": "<analysis>\nStep 1: From the evidence:\n- \"saya makan\" → \"I eat\" → so \"saya\" means \"I\", and \"makan\" means \"eat\".\n- \"kami makan\" → \"we eat\" → so \"kami\" means \"we\".\n- \"anak-anak\", \"kuda-kuda\", \"buku-buku\" are plural forms of \"anak\" (child), \"kuda\" (horse), \"buku\" (book), respectively. The plural is formed by reduplication: X → X-X.\n\nStep 2: The grammar is Subject-Verb order. The verb \"makan\" does not change for person or number. The subject pronouns are \"saya\" (I), \"kami\" (we), and \"mereka\" (they — though not used in examples, it's in the tile bank). No other inflection on verbs.\n\nStep 3: The query is \"I eat\". From the evidence, \"I\" is \"saya\", and \"eat\" is \"makan\". The correct order is Subject-Verb: \"saya makan\".\n\nThe morphemes needed are \"saya\" and \"makan\", both are directly given in the available morphemes.\n\nThe answer is exactly: \"saya makan\"\n</analysis>\n<answers>\nsaya makan\n</answers>",
+  "answer_text": "saya makan",
+  "morphemes": [
+   "saya",
+   "makan"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 0.699,
+  "morf1": 1.0,
+  "elapsed_s": 2.1,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "indonesian-plurals",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "children",
+  "gold": [
+   "anak-anak"
+  ],
+  "gold_joined": "anak-anak",
+  "raw": "<analysis>\nStep 1: From the evidence, we see:\n- \"saya makan\" → \"I eat\"\n- \"kami makan\" → \"we eat\"\n- \"anak-anak\" → \"children\"\n- \"kuda-kuda\" → \"horses\"\n- \"buku-buku\" → \"books\"\n\nThis indicates that the reduplicated form (e.g., noun + hyphen + same noun) means the plural form of the noun.\nSo \"anak\" → \"child\", and \"anak-anak\" → \"children\".\n\nStep 2: Grammar observation:\n- Plural formation: reduplication of the root noun (X → X-X)\n- \"anak-anak\" is already given as the translation for \"children\", so we do not need to produce it from scratch — we just need to output the correct target form.\n\nStep 3: The query is \"children\", which directly corresponds to \"anak-anak\" in the evidence.\n\nWe are to output the exact target-language form, and \"anak-anak\" is provided in the examples as the translation for \"children\".\n\nThus, the answer is simply \"anak-anak\".\n</analysis>\n<answers>\nanak-anak\n</answers>",
+  "answer_text": "anak-anak",
+  "morphemes": [
+   "anak-anak"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 1.6,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "indonesian-plurals",
+  "query": 2,
+  "difficulty": "standard",
+  "prompt": "horses",
+  "gold": [
+   "kuda-kuda"
+  ],
+  "gold_joined": "kuda-kuda",
+  "raw": "<analysis>\nStep 1: From the evidence, we see that:\n- \"saya makan\" → \"I eat\"\n- \"kami makan\" → \"we eat\"\n- \"anak-anak\" → \"children\"\n- \"kuda-kuda\" → \"horses\"\n- \"buku-buku\" → \"books\"\n\nThis shows a pattern: reduplication (repeating the word) forms the plural. \nSo \"kuda\" (horse) → \"kuda-kuda\" (horses).\n\nStep 2: Grammar: The plural is formed by reduplication, not by any suffix or separate morpheme. The word \"kuda-kuda\" is already given as the plural form of \"kuda\".\n\nStep 3: The query is \"horses\", which directly corresponds to \"kuda-kuda\" from the evidence.\n\nThus, the correct morpheme sequence is \"kuda-kuda\".\n</analysis>\n<answers>\nkuda-kuda\n</answers>",
+  "answer_text": "kuda-kuda",
+  "morphemes": [
+   "kuda-kuda"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 1.4,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "indonesian-plurals",
+  "query": 3,
+  "difficulty": "standard",
+  "prompt": "books",
+  "gold": [
+   "buku-buku"
+  ],
+  "gold_joined": "buku-buku",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\nFrom the evidence:\n- \"saya makan\" → \"I eat\"\n- \"kami makan\" → \"we eat\"\n- \"anak-anak\" → \"children\"\n- \"kuda-kuda\" → \"horses\"\n- \"buku-buku\" → \"books\"\n\nWe observe that:\n- \"saya\" = I\n- \"kami\" = we\n- \"makan\" = eat\n- \"anak\" + \"-anak\" = children (reduplication for plural)\n- \"kuda\" + \"-kuda\" = horses (reduplication for plural)\n- \"buku\" + \"-buku\" = books (reduplication for plural)\n\nSo the pattern for plural nouns is reduplication: root + root → plural form.\n\nThe query is \"books\", which corresponds directly to \"buku-buku\" in the evidence.\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\nNo grammar beyond morphology needed — \"books\" is a bare noun, no verb or subject involved. The translation is simply the noun form in its plural state.\n\nStep 3: Compose the EXACT target-language form, preserving notation.\nThe target-language form for \"books\" is \"buku-buku\", as shown in the evidence.\n\nNo other morphemes are needed.\n</analysis>\n<answers>\nbuku-buku\n</answers>",
+  "answer_text": "buku-buku",
+  "morphemes": [
+   "buku-buku"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.0,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "indonesian-plurals",
+  "query": 4,
+  "difficulty": "standard",
+  "prompt": "we eat",
+  "gold": [
+   "kami",
+   "makan"
+  ],
+  "gold_joined": "kami makan",
+  "raw": "<analysis>\nStep 1: From the evidence:\n- \"saya makan\" → \"I eat\" → so \"saya\" = I, \"makan\" = eat\n- \"kami makan\" → \"we eat\" → so \"kami\" = we, \"makan\" = eat (consistent)\n- \"anak-anak\" = children, \"kuda-kuda\" = horses, \"buku-buku\" = books → reduplication marks plural\n\nStep 2: Grammar notes:\n- The verb \"makan\" does not change for subject (no agreement)\n- Subject pronouns are separate words: saya (I), kami (we), mereka (they — not used here but in tile bank)\n- The target is “we eat”, which directly corresponds to “kami makan” from the evidence\n\nStep 3: The correct morpheme sequence for “we eat” is simply “kami makan” as given directly in the evidence.\n\nNote: The tile bank includes all necessary morphemes: kami and makan are both present and used exactly as in the evidence.\n</analysis>\n<answers>\nkami makan\n</answers>",
+  "answer_text": "kami makan",
+  "morphemes": [
+   "kami",
+   "makan"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 0.699,
+  "morf1": 1.0,
+  "elapsed_s": 1.7,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "finnish-harmony",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "houses",
+  "gold": [
+   "talo",
+   "t"
+  ],
+  "gold_joined": "talot",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n\nWe are given:\n- talot → houses\n- kylässä → in the village\n- koulussa → in the school\n\nWe are to translate \"houses\" into the source language.\n\nFrom \"talot\" → \"houses\", we see that \"talot\" is the plural form of \"talo\" (which must mean \"house\").\n\nFrom \"kylässä\" → \"in the village\", we see that \"kylä\" = \"village\" and \"-ssä\" = \"in the\" (inessive case).\nFrom \"koulussa\" → \"in the school\", we see that \"koulu\" = \"school\" and \"-ssa\" = \"in the\" (inessive case).\n\nNotice:\n- \"kylässä\" uses -ssä (with umlauted ö/ä harmony)\n- \"koulussa\" uses -ssa (with a-harmony)\n\nThis suggests Finnish vowel harmony: back vowels (a, o, u) take -ssa; front vowels (ä, ö, y) take -ssä.\n\nNow, \"talo\" has back vowels (a, o), so its inessive would be \"talossa\", not \"talossä\".\n\nBut we are not asked for \"in the houses\", we are asked for \"houses\".\n\nWe have: talot → houses\nSo the plural suffix is \"-t\" attached to \"talo\".\n\nWe are given morphemes: talo, kylä, koulu, t, ssa, ssä\n\nTo form \"houses\", we use the base \"talo\" + plural suffix \"t\" → \"talot\"\n\nNo case suffix needed — we just need the nominative plural form.\n\nStep 2: Note any grammar\n\nPlural in Finnish for nouns ending in -o is typically made by adding -t, with no vowel harmony change for the plural suffix itself. The root vowel harmony affects case suffixes, not plural.\n\n\"talo\" + \"t\" = \"talot\" — matches the evidence.\n\nStep 3: Compose the EXACT target-language form\n\nThe target is \"houses\" → \"talot\"\n\nNo other affixes needed.\n</analysis>\n<answers>\ntalot\n</answers>",
+  "answer_text": "talot",
+  "morphemes": [
+   "talo",
+   "t"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.8,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "finnish-harmony",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "in the house",
+  "gold": [
+   "talo",
+   "ssa"
+  ],
+  "gold_joined": "talossa",
+  "raw": "<analysis>\nStep 1: Analyze the given examples.\n- \"talot\" → \"houses\": The base \"talo\" (house) + \"-t\" (plural marker).\n- \"kylässä\" → \"in the village\": The base \"kylä\" (village) + \"-ssä\" (inessive case, \"in\").\n- \"koulussa\" → \"in the school\": The base \"koulu\" (school) + \"-ssa\" (inessive case, \"in\").\n\nStep 2: Note the grammar and patterns.\n- The inessive case (\"in\") is marked by suffixes: \"-ssä\" after words ending in a vowel (kylä → kylässä), and \"-ssa\" after words ending in a consonant (koulu → koulussa).\n- \"talo\" ends in a vowel \"o\", so the inessive form should follow the pattern of \"kylässä\" → use \"-ssä\".\n- Therefore, \"in the house\" = \"talo\" + \"ssä\" = \"talossa\"? Wait — here's a catch.\n\nBut wait — \"talot\" is plural, not inessive. The singular form of \"talo\" is \"talo\". The inessive of \"talo\" should be \"talossa\", not \"talossä\", because:\n\nIn Finnish, the inessive suffix is \"-ssa\" after a consonant or a vowel? Actually, Finnish uses \"-ssa\" after most stems regardless of vowel/consonant? But note: \"kylä\" ends in vowel → \"kylässä\", \"koulu\" ends in vowel → \"koulussa\". Inconsistency?\n\nActually, in Finnish:\n- Words ending in -a/-ä undergo a change: -a → -assa, -ä → -ässä?  \nBut \"kylä\" → \"kylässä\" (not *kyläassa)  \n\"talo\" → \"talossa\"\n\nSo the rule is:\n- If the stem ends in a vowel, the inessive adds the suffix matching the vowel harmony: front vowel (ä, ö, y) → -ssä; back vowel (a, o, u) → -ssa.\n\n\"kylä\" ends in front vowel ä → \"kylässä\"  \n\"koulu\" ends in back vowel o → \"koulussa\"  \n\"talo\" ends in back vowel o → should be \"talossa\"\n\nBut the evidence shows \"kylässä\" and \"koulussa\", which confirms vowel harmony.\n\nTherefore, \"talo\" (ends in 'o' — back vowel) → inessive = talo + ssa = talossa\n\nAvailable morphemes: talo, kylä, koulu, t, ssa, ssä\n\nSo, to form \"in the house\": talo + ssa → talossa\n\nNote: None of the evidence gives \"talossa\", but \"talot\" is plural nominative. We must apply the pattern.\n\nThus, \"in the house\" = talossa\n\nStep 3: Compose the exact form: use morphemes given: \"talo\" + \"ssa\" → \"talossa\"\n</analysis>\n<answers>\ntalossa\n</answers>",
+  "answer_text": "talossa",
+  "morphemes": [
+   "talo",
+   "ssa"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 3.8,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "finnish-harmony",
+  "query": 2,
+  "difficulty": "standard",
+  "prompt": "villages",
+  "gold": [
+   "kylä",
+   "t"
+  ],
+  "gold_joined": "kylät",
+  "raw": "<analysis>\nStep 1: Analyze the evidence pairs:\n- \"talot\" → \"houses\": The singular form \"talo\" (house) + \"-t\" = \"talot\" (plural). So \"-t\" is the plural suffix.\n- \"kylässä\" → \"in the village\": \"kylä\" (village) + \"-ssä\" = \"kylässä\". So \"-ssä\" is the inessive case suffix (in).\n- \"koulussa\" → \"in the school\": \"koulu\" (school) + \"-ssa\" = \"koulussa\". So \"-ssa\" is the inessive case suffix — note the vowel harmony: \"-ssa\" for back-vowel roots, \"-ssä\" for front-vowel roots.\n\nStep 2: Note grammar rules:\n- Plural is formed by adding \"-t\" to the stem.\n- Inessive (\"in\") is formed by adding \"-ssa\" after back vowels (a, o, u) and \"-ssä\" after front vowels (ä, ö, y).\n- The root \"kylä\" ends in front vowel \"ä\", so uses \"-ssä\".\n- The root \"koulu\" ends in back vowel \"u\", so uses \"-ssa\".\n- The root \"talo\" ends in back vowel \"o\", and plural is \"talot\" → \"talo\" + \"t\".\n\nStep 3: Form \"villages\":\n- \"village\" in Finnish is \"kylä\".\n- Plural of \"kylä\" is \"kylät\" (kylä + t).\n- But the query is \"villages\" — without any case marker. So we output the plural nominative form.\n\nThus, \"villages\" = \"kylät\".\n\nAvailable morphemes include \"kylä\" and \"t\", so \"kylä\" + \"t\" = \"kylät\".\n\nNote: The tile bank includes \"kylä\" and \"t\", so we form \"kylät\".\n</analysis>\n<answers>\nkylät\n</answers>",
+  "answer_text": "kylät",
+  "morphemes": [
+   "kylä",
+   "t"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.8,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "finnish-harmony",
+  "query": 3,
+  "difficulty": "curveball",
+  "prompt": "in the village",
+  "gold": [
+   "kylä",
+   "ssä"
+  ],
+  "gold_joined": "kylässä",
+  "raw": "<analysis>\nStep 1: From the evidence:\n- \"talot\" → \"houses\": This suggests that \"talot\" is the plural form of \"talo\". The suffix \"-t\" likely marks plural.\n- \"kylässä\" → \"in the village\": The root \"kylä\" is clearly the word for \"village\", and \"-ssä\" is the case ending meaning \"in\".\n- \"koulussa\" → \"in the school\": The root \"koulu\" is \"school\", and \"-ssa\" is the case ending meaning \"in\".\n\nStep 2: Grammar observation:\n- The endings \"-ssa\" and \"-ssä\" are locative case markers meaning \"in\". The difference is vowel harmony: \n  - \"koulu\" ends in 'u' → takes \"-ssa\"\n  - \"kylä\" ends in 'ä' → takes \"-ssä\"\n  - \"talo\" ends in 'o' → would take \"-ssa\", but \"talot\" is plural, so the locative would be \"talossa\" (not given, but pattern holds)\n\nStep 3: The query is \"in the village\". The root is \"kylä\", and the locative suffix for words ending in 'ä' is \"-ssä\". \nSo the correct form is \"kylässä\".\n\nNo other morphemes are needed — this is directly given in the evidence.\n</analysis>\n<answers>\nkylässä\n</answers>",
+  "answer_text": "kylässä",
+  "morphemes": [
+   "kylä",
+   "ssä"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.0,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "finnish-harmony",
+  "query": 4,
+  "difficulty": "standard",
+  "prompt": "in the school",
+  "gold": [
+   "koulu",
+   "ssa"
+  ],
+  "gold_joined": "koulussa",
+  "raw": "<analysis>\nStep 1: From the examples:\n- \"talot\" → \"houses\": This suggests \"talot\" is composed of \"talo\" (house) + \"t\" (plural marker).\n- \"kylässä\" → \"in the village\": This suggests \"kylä\" (village) + \"ssä\" (locative case, \"in\").\n- \"koulussa\" → \"in the school\": This suggests \"koulu\" (school) + \"ssa\" (locative case, \"in\").\n\nStep 2: Observe the locative suffix pattern:\n- \"kylä\" ends in a vowel, takes \"-ssä\"\n- \"koulu\" ends in a vowel, takes \"-ssa\"\n- This indicates vowel harmony: front vowels (ä, ö, y) trigger the front variant \"-ssä\"; back vowels (a, o, u) trigger the back variant \"-ssa\".\n\nBut note: \"talot\" uses \"-t\" for plural — so plural is marked by \"-t\", while locative is marked by \"-ssa\"/\"-ssä\".\n\nThe query is \"in the school\", which corresponds to the Finnish word \"koulussa\" — and we already know from the evidence that \"koulussa\" = \"in the school\".\n\nWe are to reconstruct \"in the school\" using the available morphemes: talo, kylä, koulu, t, ssa, ssä.\n\nWe need:\n- Root: koulu (school)\n- Locative suffix: ssa (because \"koulu\" ends in -u, a back vowel → uses ssa, not ssä)\n\nSo: koulu + ssa = koulussa\n\nStep 3: The exact target form is \"koulussa\", as given in the evidence.\n\nWe do not need to add anything else — the query is \"in the school\", and the evidence directly gives us the translation.\n\nThe morpheme sequence is \"koulu\" + \"ssa\".\n</analysis>\n<answers>\nkoulussa\n</answers>",
+  "answer_text": "koulussa",
+  "morphemes": [
+   "koulu",
+   "ssa"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.4,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "maori-pronouns",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "we two, not you",
+  "gold": [
+   "mā",
+   "ua"
+  ],
+  "gold_joined": "māua",
+  "raw": "<analysis>\nStep 1: From the evidence:\n- māua → we two, not you\n- tātou → all of us, including you\n- rāua → they two\n\nWe need to find the morpheme sequence for \"we two, not you\", which is already given as \"māua\".\n\nSo we break down the known forms:\n- māua = we two, not you → morphemes: mā + ua\n- tātou = all of us, incl. you → morphemes: tā + tou\n- rāua = they two → morphemes: rā + ua\n\nObserving the pattern:\n- \"ua\" consistently appears in the dual form (two people): māua, rāua → suggests \"ua\" = dual marker\n- \"mā\" is used for \"we two, not you\"\n- \"rā\" is used for \"they two\"\n- \"tā\" is used for \"all of us, including you\"\n- \"tou\" appears only in tātou → likely = inclusive first-person plural marker\n\nStep 2: The morphemes are:\n- mā = exclusive dual first person (we two, not you)\n- rā = dual third person (they two)\n- tā = inclusive first person plural (we including you)\n- ua = dual marker\n- tou = inclusive plural marker (used only with tā)\n\nThus, \"we two, not you\" is formed by mā + ua → māua\n\nStep 3: The query is \"we two, not you\", and we already have it directly in the evidence as māua.\n\nSo the morpheme sequence is: mā + ua\n</analysis>\n<answers>\nmāua\n</answers>\nmāua",
+  "answer_text": "māua",
+  "morphemes": [
+   "mā",
+   "ua"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.6,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "maori-pronouns",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "all of us, incl. you",
+  "gold": [
+   "tā",
+   "tou"
+  ],
+  "gold_joined": "tātou",
+  "raw": "<analysis>\nStep 1: From the evidence:\n- māua → we two, not you → \"mā\" + \"ua\" means \"we two (exclusive)\"\n- tātou → all of us, incl. you → \"tā\" + \"tou\" means \"we all (inclusive)\"\n- rāua → they two → \"rā\" + \"ua\" means \"they two\"\n\nWe can deduce:\n- \"ua\" = two people\n- \"tou\" = all (inclusive, including you)\n- \"mā\" = we (exclusive)\n- \"tā\" = we (inclusive)\n- \"rā\" = they\n\nThe morpheme \"tātou\" = \"tā\" + \"tou\" = \"all of us, including you\"\n\nWe are asked for \"all of us, incl. you\" — which is exactly tātou.\n\nStep 2: Grammar is expressed by combination of root + suffix.\nThere is no inflection needed beyond the fixed morpheme combination.\n\nStep 3: The correct morpheme sequence is tā + tou → tātou.\n\nNo other combination from the tile bank matches this meaning.\n</analysis>\n<answers>\ntātou\n</answers>",
+  "answer_text": "tātou",
+  "morphemes": [
+   "tā",
+   "tou"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.1,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "maori-pronouns",
+  "query": 2,
+  "difficulty": "standard",
+  "prompt": "they two",
+  "gold": [
+   "rā",
+   "ua"
+  ],
+  "gold_joined": "rāua",
+  "raw": "<analysis>\nStep 1: We are given three examples:\n- māua → we two, not you\n- tātou → all of us, including you\n- rāua → they two\n\nWe need to find the morpheme sequence for \"they two\", which is already given as rāua. So the answer is directly provided in the examples.\n\nBut let’s verify the morpheme breakdown to confirm the pattern and ensure correctness:\n\nFrom māua = we two (excluding you):\n- mā + ua → we two\n\nFrom tātou = all of us (including you):\n- tā + tou → we (inclusive)\n\nFrom rāua = they two:\n- rā + ua → they two\n\nSo the pattern is:\n- mā + ua → we two (exclusive)\n- rā + ua → they two\n- tā + tou → we (inclusive, plural)\n\nThus, \"they two\" = rā + ua = rāua, as shown.\n\nThe morphemes used are: rā and ua.\n\nStep 2: Grammar: The pattern shows a two-person pronoun system with dual number. The first element (mā, tā, rā) likely indicates person/number type:\n- mā = we (exclusive)\n- tā = we (inclusive)\n- rā = they\n\nThe second element (ua, tou) may indicate number:\n- ua = dual (two people)\n- tou = plural (inclusive group including you)\n\nSo for \"they two\", it's clearly rā + ua.\n\nStep 3: The exact target form for \"they two\" is rāua, as directly given.\n\nWe do not need to reconstruct from the tile bank beyond confirming: rā and ua are available and used.\n</analysis>\n<answers>\nrāua\n</answers>",
+  "answer_text": "rāua",
+  "morphemes": [
+   "rā",
+   "ua"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.6,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "maori-pronouns",
+  "query": 3,
+  "difficulty": "standard",
+  "prompt": "they all",
+  "gold": [
+   "rā",
+   "tou"
+  ],
+  "gold_joined": "rātou",
+  "raw": "<analysis>\nStep 1: Analyze the given evidence to deduce morpheme meanings.\n\nWe have:\n- māua → we two, not you\n- tātou → all of us, including you\n- rāua → they two\n\nBreak down the morphemes:\n\n- māua = mā + ua → “we two (exclusive)”\n- tātou = tā + tou → “we all (inclusive)”\n- rāua = rā + ua → “they two”\n\nThis suggests:\n- The first part (mā, tā, rā) indicates the person/number group:\n    - mā = we (exclusive)\n    - tā = we (inclusive)\n    - rā = they\n- The second part (ua, tou) indicates number:\n    - ua = two (dual)\n    - tou = all (plural, inclusive)\n\nSo:\n- ua = dual (two people)\n- tou = plural (all, inclusive)\n\nWe need to translate “they all” — meaning plural they (not just two).\n\nFrom rāua = they two → rā = they, ua = dual\n\nTherefore, “they all” should use rā + tou → rātou\n\nCheck consistency: \n- rā + ua = rāua = they two ✅\n- tā + tou = tātou = we all inclusive ✅\n- So rā + tou = rātou = they all ✅\n\nThis follows the pattern clearly.\n\nAvailable morphemes include: rā and tou — both are present.\n\nStep 2: Grammar — word order is prefix + suffix (demonstrative + number marker), and no additional agreement is needed.\n\nStep 3: The translation for “they all” is rātou.\n\nNote: The example “tātou” combines tā + tou without space — same pattern.\n</analysis>\n<answers>\nrātou\n</answers>",
+  "answer_text": "rātou",
+  "morphemes": [
+   "rā",
+   "tou"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.3,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "maori-pronouns",
+  "query": 4,
+  "difficulty": "standard",
+  "prompt": "we, not you",
+  "gold": [
+   "mā",
+   "tou"
+  ],
+  "gold_joined": "mātou",
+  "raw": "<analysis>\nStep 1: From the evidence:\n- māua → we two, not you\n- tātou → all of us, including you\n- rāua → they two\n\nWe observe that the structure appears to be a combination of a possessive/pronoun prefix + a dual marker.\n\nBreak down:\n- māua: mā + ua → \"we two, not you\"\n- tātou: tā + tou → \"all of us, including you\"\n- rāua: rā + ua → \"they two\"\n\nSo:\n- ua appears to be the dual marker (for two people)\n- tou appears to be the plural/inclusive marker (for group including you)\n- mā is the exclusive 1st person dual marker (we two, not you)\n- tā is the inclusive 1st person plural marker (all of us including you)\n- rā is the third person dual marker (they two)\n\nWe are asked to translate: \"we, not you\" — which corresponds exactly to the meaning of māua.\n\nSo the morpheme sequence is: mā + ua\n\nStep 2: No additional grammar needed — this is a simple pronoun form, and the evidence already gives us the exact form for \"we, not you\".\n\nStep 3: The target form is māua.\n\nThe available morphemes include all needed: mā and ua are both in the tile bank.\n\nTherefore, the answer is māua.\n</analysis>\n<answers>\nmāua\n</answers>",
+  "answer_text": "māua",
+  "morphemes": [
+   "mā",
+   "ua"
+  ],
+  "em_decomp": false,
+  "em_surface": false,
+  "chrf": 0.2221,
+  "morf1": 0.5,
+  "elapsed_s": 2.0,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "zulu-noun-class",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "boy",
+  "gold": [
+   "um",
+   "fana"
+  ],
+  "gold_joined": "umfana",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n\nFrom the evidence:\n- umntwana → child → suggests \"um-\" + \"ntwana\"\n- abafana → boys → suggests \"aba-\" + \"fana\"\n- isikolo → school → suggests \"isi-\" + \"kolo\"\n- izikolo → schools → suggests \"izi-\" + \"kolo\"\n- umfundi → student → suggests \"um-\" + \"fundi\"\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n\nWe observe a pattern of noun classes in Bantu languages:\n- Singular prefixes: um- (for umntwana, umfundi), isi- (for isikolo)\n- Plural prefixes: aba- (for abafana), izi- (for izikolo)\n\nThus:\n- um- : singular class 1 (humans)\n- aba- : plural class 2 (humans)\n- isi- : singular class 7 (non-humans, abstract)\n- izi- : plural class 8 (non-humans, abstract)\n\nThe root for \"boy\" appears to be \"fana\", since \"abafana\" = \"boys\" → plural form.\n\nSo the singular form for \"boy\" should be \"umfana\", using the singular class 1 prefix \"um-\" + root \"fana\".\n\nWe have available morphemes: um, aba, isi, izi, ntwana, fana, kolo, fundi — so \"fana\" and \"um\" are both available.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n\nThe query is \"boy\" — singular.\n\nWe know:\n- abafana → boys (plural)\n- so the singular must be um + fana → umfana\n\nNo other form fits.\n\nThus, \"boy\" = umfana\n</analysis>\n<answers>\numfana\n</answers>",
+  "answer_text": "umfana",
+  "morphemes": [
+   "um",
+   "fana"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.4,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "zulu-noun-class",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "children",
+  "gold": [
+   "aba",
+   "ntwana"
+  ],
+  "gold_joined": "abantwana",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n\nFrom the evidence:\n- umntwana → child → breaks into um + ntwana\n- abafana → boys → breaks into aba + fana\n- isikolo → school → breaks into isi + kolo\n- izikolo → schools → breaks into izi + kolo\n- umfundi → student → breaks into um + fundi\n\nWe see a pattern of noun classes:\n- um... → singular (child, student)\n- aba... → plural of um... (boys — note that \"fana\" is the root for boy, and \"abafana\" = plural boys)\n- isi... → singular (school)\n- izi... → plural of isi... (schools)\n\nSo:\n- um... → singular class\n- aba... → plural class for um... nouns (like child → boys? Wait — \"child\" is umntwana, but \"boys\" is abafana — different root!)\n\nWait — \"child\" is umntwana, but \"boys\" is abafana. Is \"ntwana\" = child and \"fana\" = boy?\n\nYes: \n- umntwana (child) → singular\n- abafana (boys) → plural — so the plural of \"child\" would be \"abantwana\" (not given), but \"boys\" is a different noun: \"fana\" = boy → abafana = boys.\n\nSo we must distinguish:\n- \"ntwana\" = child → singular umntwana, plural likely abantwana\n- \"fana\" = boy → singular ufana? (not given), plural abafana\n- \"kolo\" = school → singular isikolo, plural izikolo\n- \"fundi\" = student → singular umfundi, plural amafundi? (not given)\n\nBut the query is \"children\" — plural of child.\n\nSince \"child\" = umntwana, and plural forms in Bantu typically use class 2 prefix — which for class 1 (um-) nouns is aba-.\n\nSo plural of umntwana → abantwana.\n\nBut wait — \"abafana\" means \"boys\", not \"children\". So \"ntwana\" is child, and \"fana\" is boy.\n\nTherefore, for \"children\" we need the plural of \"ntwana\" → abantwana.\n\nAvailable morphemes: um, aba, isi, izi, ntwana, fana, kolo, fundi\n\nSo: abantwana = aba + ntwana\n\nBut note: \"abafana\" = aba + fana — so the morpheme \"aba\" is directly attached to \"fana\", no vowel change. So likely \"aba\" + \"ntwana\" = abantwana.\n\nYes — \"ntwana\" starts with 'n', so \"aba\" + \"ntwana\" = abantwana (no glottal or vowel deletion indicated in examples).\n\nThus, \"children\" → abantwana → aba + ntwana\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n\nNo case or tense — just noun pluralization.\n\nPattern:\n- Singular: um + root\n- Plural for um-class nouns: aba + root\n\nSo: child = um + ntwana\nchildren = aba + ntwana\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n\nTarget: children → abantwana → morphemes: aba + ntwana\n\nWe are not given \"abantwana\" explicitly, but we are given \"abafana\" for boys, and \"umntwana\" for child. The parallel is clear.\n\nThus, the correct morpheme sequence for \"children\" is: aba + ntwana\n</analysis>\n<answers>\nabantwana\n</answers>",
+  "answer_text": "abantwana",
+  "morphemes": [
+   "aba",
+   "ntwana"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 5.3,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "zulu-noun-class",
+  "query": 2,
+  "difficulty": "standard",
+  "prompt": "school",
+  "gold": [
+   "isi",
+   "kolo"
+  ],
+  "gold_joined": "isikolo",
+  "raw": "<analysis>\nStep 1: From the evidence:\n- umntwana → child: “um” + “ntwana”\n- abafana → boys: “aba” + “fana”\n- isikolo → school: “isi” + “kolo”\n- izikolo → schools: “izi” + “kolo”\n- umfundi → student: “um” + “fundi”\n\nObserving the patterns:\n- Singular forms use prefix um- (umntwana, umfundi) or isi- (isikolo)\n- Plural forms use aba- (abafana) or izi- (izikolo)\n- The roots are: ntwana, fana, kolo, fundi\n\nNote that “school” is singular: isikolo → school\nThus, the morphemes for “school” are “isi” + “kolo”\n\nStep 2: No grammar (tense, agreement) needed — just correct morpheme combination for the word “school” as given in evidence.\n\nStep 3: The exact morpheme sequence for “school” is “isi” + “kolo” → isikolo\n\nThis matches the given evidence directly.\n</analysis>\n<answers>\nisikolo\n</answers>",
+  "answer_text": "isikolo",
+  "morphemes": [
+   "isi",
+   "kolo"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 1.9,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "zulu-noun-class",
+  "query": 3,
+  "difficulty": "standard",
+  "prompt": "schools",
+  "gold": [
+   "izi",
+   "kolo"
+  ],
+  "gold_joined": "izikolo",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n\nWe are given:\n\n- umntwana → child\n- abafana → boys\n- isikolo → school\n- izikolo → schools\n- umfundi → student\n\nWe are to find the translation for \"schools\".\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n\nThis appears to be a Bantu language (likely Zulu or similar) with noun classes and prefixes for singular/plural.\n\nBreak down the words:\n\n- umntwana → child  \n  um- + ntwana → singular child\n\n- abafana → boys  \n  aba- + fana → plural boys\n\n- isikolo → school  \n  isi- + kolo → singular school\n\n- izikolo → schools  \n  izi- + kolo → plural schools\n\n- umfundi → student  \n  um- + fundi → singular student\n\nWe see a pattern of noun class prefixes:\n\n- um- (singular class 1) → umntwana, umfundi  \n- aba- (plural class 2) → abafana  \n- isi- (singular class 7) → isikolo  \n- izi- (plural class 7) → izikolo  \n\nThus, \"school\" is isi-kolo (singular), and \"schools\" is izi-kolo (plural).\n\nAvailable morphemes include: izi and kolo — which exactly form izikolo.\n\nStep 3: Compose the EXACT target-language form.\n\nThe query is \"schools\", which directly corresponds to izikolo in the evidence.\n\nWe are to use the given morphemes: izi + kolo\n\nThus, the correct morpheme sequence is: izi + kolo → izikolo\n\n</analysis>\n<answers>\nizikolo\n</answers>",
+  "answer_text": "izikolo",
+  "morphemes": [
+   "izi",
+   "kolo"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.7,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "zulu-noun-class",
+  "query": 4,
+  "difficulty": "curveball",
+  "prompt": "students",
+  "gold": [
+   "aba",
+   "fundi"
+  ],
+  "gold_joined": "abafundi",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n\nFrom the examples:\n- umntwana → child → breaks into um- + ntwana\n- abafana → boys → breaks into aba- + fana\n- isikolo → school → breaks into isi- + kolo\n- izikolo → schools → breaks into izi- + kolo\n- umfundi → student → breaks into um- + fundi\n\nWe can deduce:\n- um- : singular prefix (child, student)\n- aba- : plural prefix for class 2 (boys)\n- isi- : singular prefix (school)\n- izi- : plural prefix for class 7 (schools)\n- ntwana : child (root)\n- fana : boy (root)\n- kolo : school (root)\n- fundi : student (root)\n\nThe pattern suggests:\n- Class 1 (um-) singular → Class 2 (aba-) plural for people (umntwana → abantwana? — but we have abafana for boys, not abantwana; however, umfundi → ? must be plural of student)\n- Class 7 (isi-) singular → Class 8 (izi-) plural for things (isikolo → izikolo)\n\nBut umfundi is singular student (Class 1), so plural should be Class 2: aba- + fundi → abafundi\n\nWe don’t have \"abantwana\" in examples, but we do have \"abafana\" for boys (so fana = boy root). Similarly, fundi = student root → plural = aba + fundi = abafundi\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n\nWe are translating \"students\", plural.\n\nThe pattern for human subjects:\n- Singular: um- + root (umfundi)\n- Plural: aba- + root → abafundi\n\nThis matches the pattern seen in:\n- umntwana → child (Class 1)\n- abafana → boys (Class 2) — note: “fana” is the root, and “ntwana” is different root; so plural prefix changes from um- to aba-\n\nSo, umfundi (student) → plural is abafundi\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n\nWe are to output \"students\" — which corresponds to abafundi.\n\nSo: abafundi\n</analysis>\n<answers>\nabafundi\n</answers>",
+  "answer_text": "abafundi",
+  "morphemes": [
+   "aba",
+   "fundi"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 3.0,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_min1.json",
+  "shuffle_seed": 0
+ }
+]

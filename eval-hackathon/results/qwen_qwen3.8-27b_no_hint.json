@@ -1,0 +1,999 @@
+[
+ {
+  "puzzle": "apurina-verb-agreement",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "I am eating",
+  "gold": [
+   "nhaa",
+   "kuta",
+   "ka"
+  ],
+  "gold_joined": "nhaakutaka",
+  "raw": "<analysis>\n1.  **Analyze the Evidence:**\n    *   `nhaapitaka` → \"I am going\"\n    *   `ãpitaka` → \"you are going\"\n    *   `apitaka` → \"he/she is going\"\n    *   `nhaakutaka` → \"I am eating\"\n    *   `ãkutaka` → \"you are eating\"\n    *   `akutaka` → \"he/she is eating\"\n    *   `nhaanykataka` → \"I am speaking\"\n    *   `ãnykataka` → \"you are speaking\"\n    *   `anykataka` → \"he/she is speaking\"\n    *   `kaapitaka` → \"we (everyone) are going\"\n\n2.  **Deduce Morphemes:**\n    *   **Subject Markers (Prefixes):**\n        *   \"I\": `nhaa` (seen in `nhaapitaka`, `nhaakutaka`, `nhaanykataka`)\n        *   \"You\": `ã` (seen in `ãpitaka`, `ãkutaka`, `ãnykataka`)\n        *   \"He/She\": `a` (seen in `apitaka`, `akutaka`, `anykataka`)\n        *   \"We (everyone)\": `kaa` (seen in `kaapitaka`)\n    *   **Verb Roots:**\n        *   \"go\": `pita` (seen in `...pitaka`)\n        *   \"eat\": `kuta` (seen in `...kutaka`)\n        *   \"speak\": `nykata` (seen in `...nykataka`)\n    *   **Tense/Aspect Marker (Suffix):**\n        *   \"am/is/are\" (present continuous): `taka` (seen at the end of all examples)\n\n3.  **Analyze the Query:**\n    *   Query: \"I am eating\"\n    *   Subject: \"I\" → `nhaa`\n    *   Verb: \"eating\" → root `kuta` + suffix `taka`\n    *   Structure: Subject + Verb Root + Tense Suffix\n\n4.  **Compose the Translation:**\n    *   `nhaa` + `kuta` + `taka` = `nhaakutaka`\n    *   This matches the evidence pair `nhaakutaka` → \"I am eating\".\n\n5.  **Final Verification:**\n    *   The tile bank contains `nhaa`, `kuta`, `taka`.\n    *   The sequence is `nhaa` `kuta` `taka`.\n</analysis>\n<answers>\nnhaakutaka\n</answers>",
+  "answer_text": "nhaakutaka",
+  "morphemes": [
+   "nhaa",
+   "kuta",
+   "ka"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 1.4,
+  "model": "qwen/qwen3.8-27b",
+  "provider": "groq",
+  "prompt_variant": "no_hint"
+ },
+ {
+  "puzzle": "apurina-verb-agreement",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "we (everyone) are eating",
+  "gold": [
+   "kaa",
+   "kuta",
+   "ka"
+  ],
+  "gold_joined": "kaakutaka",
+  "raw": "<analysis>\n1.  **Analyze the Evidence:**\n    *   `nhaapitaka` → I am going\n    *   `ãpitaka` → you are going\n    *   `apitaka` → he/she is going\n    *   `nhaakutaka` → I am eating\n    *   `ãkutaka` → you are eating\n    *   `akutaka` → he/she is eating\n    *   `nhaanykataka` → I am speaking\n    *   `ãnykataka` → you are speaking\n    *   `anykataka` → he/she is speaking\n    *   `kaapitaka` → we (everyone) are going\n\n2.  **Deduce Morphemes:**\n    *   **Subject Markers (Prefixes):**\n        *   \"I\": `nhaa` (seen in `nhaapitaka`, `nhaakutaka`, `nhaanykataka`)\n        *   \"You\": `ã` (seen in `ãpitaka`, `ãkutaka`, `ãnykataka`)\n        *   \"He/She\": `a` (seen in `apitaka`, `akutaka`, `anykataka`)\n        *   \"We (everyone)\": `kaa` (seen in `kaapitaka`)\n    *   **Verb Roots:**\n        *   \"go\": `pita` (seen in `...pitaka`)\n        *   \"eat\": `kuta` (seen in `...kutaka`)\n        *   \"speak\": `nykata` (seen in `...nykataka`)\n    *   **Suffix:**\n        *   All forms end in `taka`. This likely indicates the present continuous tense or aspect.\n\n3.  **Construct the Query:**\n    *   Query: \"we (everyone) are eating\"\n    *   Subject: \"we (everyone)\" → `kaa`\n    *   Verb: \"eating\" → root `kuta` + suffix `taka`\n    *   Combine: `kaa` + `kuta` + `taka`\n    *   Result: `kaakutaka`\n\n4.  **Verification:**\n    *   Compare with `kaapitaka` (we are going). Structure is `kaa` + `pita` + `taka`.\n    *   The query requires `kaa` + `kuta` + `taka`.\n    *   The morphemes `kaa`, `kuta`, and `taka` are all present in the tile bank.\n\n</analysis>\n<answers>\nkaakutaka\n</answers>",
+  "answer_text": "kaakutaka",
+  "morphemes": [
+   "kaa",
+   "kuta",
+   "ka"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 1.4,
+  "model": "qwen/qwen3.8-27b",
+  "provider": "groq",
+  "prompt_variant": "no_hint"
+ },
+ {
+  "puzzle": "apurina-verb-agreement",
+  "query": 2,
+  "difficulty": "standard",
+  "prompt": "you are speaking",
+  "gold": [
+   "ã",
+   "nykata",
+   "ka"
+  ],
+  "gold_joined": "ãnykataka",
+  "raw": "<analysis>\n1.  **Analyze the Evidence:**\n    *   `nhaapitaka` → I am going\n    *   `ãpitaka` → you are going\n    *   `apitaka` → he/she is going\n    *   `nhaakutaka` → I am eating\n    *   `ãkutaka` → you are eating\n    *   `akutaka` → he/she is eating\n    *   `nhaanykataka` → I am speaking\n    *   `ãnykataka` → you are speaking\n    *   `anykataka` → he/she is speaking\n    *   `kaapitaka` → we (everyone) are going\n\n2.  **Deduce Morphemes:**\n    *   **Subject Markers:**\n        *   \"I\": `nhaa` (seen in `nhaapitaka`, `nhaakutaka`, `nhaanykataka`)\n        *   \"You\": `ã` (seen in `ãpitaka`, `ãkutaka`, `ãnykataka`)\n        *   \"He/She\": `a` (seen in `apitaka`, `akutaka`, `anykataka`)\n        *   \"We (everyone)\": `kaa` (seen in `kaapitaka`)\n    *   **Verb Roots:**\n        *   \"going\": `pita` (seen in `...pitaka`)\n        *   \"eating\": `kuta` (seen in `...kutaka`)\n        *   \"speaking\": `nykata` (seen in `...nykataka`)\n    *   **Tense/Aspect Marker:**\n        *   \"am/is/are\" (present continuous): `taka` (appears at the end of all examples: `...taka`)\n\n3.  **Construct the Query:**\n    *   Query: \"you are speaking\"\n    *   Subject \"you\": `ã`\n    *   Verb root \"speaking\": `nykata`\n    *   Tense marker \"are\": `taka`\n    *   Sequence: `ã` + `nykata` + `taka` = `ãnykataka`\n\n4.  **Verification:**\n    *   The evidence pair `ãnykataka → you are speaking` is explicitly provided in the list.\n    *   The constructed form matches the evidence exactly.\n\n</analysis>\n<answers>\nãnykataka\n</answers>",
+  "answer_text": "ãnykataka",
+  "morphemes": [
+   "ã",
+   "nykata",
+   "ka"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 18.1,
+  "model": "qwen/qwen3.8-27b",
+  "provider": "groq",
+  "prompt_variant": "no_hint"
+ },
+ {
+  "puzzle": "apurina-verb-agreement",
+  "query": 3,
+  "difficulty": "standard",
+  "prompt": "we (everyone) are speaking",
+  "gold": [
+   "kaa",
+   "nykata",
+   "ka"
+  ],
+  "gold_joined": "kaanykataka",
+  "raw": "<analysis>\n1.  **Analyze the Evidence:**\n    *   `nhaapitaka` → I am going\n    *   `ãpitaka` → you are going\n    *   `apitaka` → he/she is going\n    *   `nhaakutaka` → I am eating\n    *   `ãkutaka` → you are eating\n    *   `akutaka` → he/she is eating\n    *   `nhaanykataka` → I am speaking\n    *   `ãnykataka` → you are speaking\n    *   `anykataka` → he/she is speaking\n    *   `kaapitaka` → we (everyone) are going\n\n2.  **Deduce Morphemes:**\n    *   **Subject Markers (Prefixes):**\n        *   \"I\": `nhaa` (seen in `nhaapitaka`, `nhaakutaka`, `nhaanykataka`)\n        *   \"You\": `ã` (seen in `ãpitaka`, `ãkutaka`, `ãnykataka`)\n        *   \"He/She\": `a` (seen in `apitaka`, `akutaka`, `anykataka`)\n        *   \"We (everyone)\": `kaa` (seen in `kaapitaka`)\n    *   **Verb Roots:**\n        *   \"going\": `pita` (seen in `...pitaka`)\n        *   \"eating\": `kuta` (seen in `...kutaka`)\n        *   \"speaking\": `nykata` (seen in `...nykataka`)\n    *   **Suffix:**\n        *   Present tense/progressive marker: `taka` (appears at the end of all examples).\n\n3.  **Construct the Query:**\n    *   Query: \"we (everyone) are speaking\"\n    *   Subject: \"we (everyone)\" → `kaa`\n    *   Verb: \"speaking\" → `nykata`\n    *   Suffix: `taka`\n    *   Sequence: `kaa` + `nykata` + `taka`\n\n4.  **Final String:**\n    *   `kaanykataka`\n</analysis>\n<answers>\nkaanykataka\n</answers>",
+  "answer_text": "kaanykataka",
+  "morphemes": [
+   "kaa",
+   "nykata",
+   "ka"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 77.4,
+  "model": "qwen/qwen3.8-27b",
+  "provider": "groq",
+  "prompt_variant": "no_hint"
+ },
+ {
+  "puzzle": "apurina-verb-agreement",
+  "query": 4,
+  "difficulty": "standard",
+  "prompt": "he/she is going",
+  "gold": [
+   "a",
+   "pita",
+   "ka"
+  ],
+  "gold_joined": "apitaka",
+  "raw": "<analysis>\n1.  **Analyze the Evidence**:\n    *   `nhaapitaka` → I am going\n    *   `ãpitaka` → you are going\n    *   `apitaka` → he/she is going\n    *   `nhaakutaka` → I am eating\n    *   `ãkutaka` → you are eating\n    *   `akutaka` → he/she is eating\n    *   `nhaanykataka` → I am speaking\n    *   `ãnykataka` → you are speaking\n    *   `anykataka` → he/she is speaking\n    *   `kaapitaka` → we (everyone) are going\n\n2.  **Deduce Morphemes**:\n    *   **Subject Markers (Prefixes)**:\n        *   \"I\": `nhaa` (seen in `nhaapitaka`, `nhaakutaka`, `nhaanykataka`)\n        *   \"You\": `ã` (seen in `ãpitaka`, `ãkutaka`, `ãnykataka`)\n        *   \"He/She\": `a` (seen in `apitaka`, `akutaka`, `anykataka`)\n        *   \"We (everyone)\": `kaa` (seen in `kaapitaka`)\n    *   **Verb Roots**:\n        *   \"go\": `pita` (seen in `...pitaka`)\n        *   \"eat\": `kuta` (seen in `...kutaka`)\n        *   \"speak\": `nykata` (seen in `...nykataka`)\n    *   **Suffix**:\n        *   All forms end in `taka`. This likely indicates the present continuous tense or aspect.\n\n3.  **Analyze the Query**:\n    *   Query: \"he/she is going\"\n    *   Subject: \"he/she\" → Prefix `a`\n    *   Verb: \"going\" → Root `pita` + Suffix `taka`\n    *   Construction: `a` + `pita` + `taka`\n\n4.  **Verify with Evidence**:\n    *   The evidence pair `apitaka` is explicitly translated as \"he/she is going\".\n    *   The morpheme sequence is `a` `pita` `taka`.\n\n5.  **Final Output Formulation**:\n    *   The requested output is the morpheme sequence or the full word. The prompt asks to \"deduce the correct morpheme sequence\". However, standard ILO format usually expects the full string. Looking at the \"Available morphemes\" list: `nhaa`, `ã`, `a`, `kaa`, `pita`, `kuta`, `nykata`, `ka`, `taka`.\n    *   The word is formed by concatenating these.\n    *   Sequence: `a` `pita` `taka`\n    *   Resulting string: `apitaka`\n\n    Let's double check if \"ka\" is a separate morpheme. In `kaapitaka` (we are going), if `kaa` is the prefix, then `pita` is the root and `taka` is the suffix. The list includes `kaa` and `ka`. `ka` might be a remnant or a different form, but `kaa` fits the \"we\" data point perfectly. The query is \"he/she\", so we use `a`.\n\n    The translation is simply the word found in the evidence.\n</analysis>\n<answers>\napitaka\n</answers>",
+  "answer_text": "apitaka",
+  "morphemes": [
+   "a",
+   "pita",
+   "ka"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 7.0,
+  "model": "qwen/qwen3.8-27b",
+  "provider": "groq",
+  "prompt_variant": "no_hint"
+ },
+ {
+  "puzzle": "swahili-person-tense",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "I will like",
+  "gold": [
+   "ni",
+   "ta",
+   "penda"
+  ],
+  "gold_joined": "nitapenda",
+  "raw": "<analysis>\n1.  **Analyze the Evidence Pairs:**\n    *   `ninapenda` → \"I like\": `ni` (I) + `na` (present tense) + `penda` (like).\n    *   `unasoma` → \"you read\": `u` (you) + `na` (present tense) + `soma` (read).\n    *   `anacheza` → \"she plays\": `a` (she) + `na` (present tense) + `cheza` (play).\n    *   `nilipenda` → \"I liked\": `ni` (I) + `li` (past tense) + `penda` (like).\n    *   `tulisoma` → \"we read (past)\": `tu` (we) + `li` (past tense) + `soma` (read).\n    *   `utacheza` → \"you will play\": `u` (you) + `ta` (future tense) + `cheza` (play).\n    *   `wataimba` → \"they will sing\": `wa` (they) + `ta` (future tense) + `imba` (sing).\n    *   `anaimba` → \"he sings\": `a` (he) + `na` (present tense) + `imba` (sing).\n\n2.  **Deduce Morphemes:**\n    *   **Subjects:**\n        *   I: `ni`\n        *   You (sg): `u`\n        *   She/He: `a`\n        *   We: `tu`\n        *   They: `wa`\n    *   **Tenses:**\n        *   Present: `na`\n        *   Past: `li`\n        *   Future: `ta`\n    *   **Verbs:**\n        *   like: `penda`\n        *   read: `soma`\n        *   play: `cheza`\n        *   sing: `imba`\n\n3.  **Analyze the Query:**\n    *   Query: \"I will like\"\n    *   Subject: \"I\" → `ni`\n    *   Tense: \"will\" (future) → `ta`\n    *   Verb: \"like\" → `penda`\n\n4.  **Compose the Translation:**\n    *   Structure: Subject + Tense + Verb\n    *   Sequence: `ni` + `ta` + `penda`\n    *   Result: `nitapenda`\n\n5.  **Verification:**\n    *   `ni` matches \"I\" in `ninapenda` and `nilipenda`.\n    *   `ta` matches \"will\" in `utacheza` and `wataimba`.\n    *   `penda` matches \"like\" in `ninapenda` and `nilipenda`.\n    *   The combination follows the established agglutinative pattern.\n</analysis>\n<answers>\nnitapenda\n</answers>",
+  "answer_text": "nitapenda",
+  "morphemes": [
+   "ni",
+   "ta",
+   "penda"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 77.3,
+  "model": "qwen/qwen3.8-27b",
+  "provider": "groq",
+  "prompt_variant": "no_hint"
+ },
+ {
+  "puzzle": "swahili-person-tense",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "they read",
+  "gold": [
+   "wa",
+   "na",
+   "soma"
+  ],
+  "gold_joined": "wanasoma",
+  "raw": "<analysis>\n1.  **Analyze the Evidence:**\n    *   `ninapenda` → I like: `ni` (I) + `na` (present) + `penda` (like)\n    *   `unasoma` → you read: `u` (you) + `na` (present) + `soma` (read)\n    *   `anacheza` → she plays: `a` (she/he) + `na` (present) + `cheza` (play)\n    *   `nilipenda` → I liked: `ni` (I) + `li` (past) + `penda` (like)\n    *   `tulisoma` → we read (past): `tu` (we) + `li` (past) + `soma` (read)\n    *   `utacheza` → you will play: `u` (you) + `ta` (future) + `cheza` (play)\n    *   `wataimba` → they will sing: `wa` (they) + `ta` (future) + `imba` (sing)\n    *   `anaimba` → he sings: `a` (he) + `na` (present) + `imba` (sing)\n\n2.  **Deduce Morphemes:**\n    *   **Subjects:**\n        *   I: `ni`\n        *   You (sg): `u`\n        *   He/She: `a`\n        *   We: `tu`\n        *   They: `wa`\n    *   **Tenses:**\n        *   Present: `na`\n        *   Past: `li`\n        *   Future: `ta`\n    *   **Verbs:**\n        *   like: `penda`\n        *   read: `soma`\n        *   play: `cheza`\n        *   sing: `imba`\n\n3.  **Analyze the Query:**\n    *   Query: \"they read\"\n    *   Subject: \"they\" → `wa`\n    *   Tense: The query \"they read\" is ambiguous between present and past. However, looking at the evidence:\n        *   `tulisoma` is explicitly labeled \"we read (past)\".\n        *   `unasoma` is labeled \"you read\" (present).\n        *   Usually, in these problems, if the tense isn't specified as past, it defaults to present, or we look for a parallel. Let's look at the structure.\n        *   If it's present: `wa` + `na` + `soma` = `wanasoma`.\n        *   If it's past: `wa` + `li` + `soma` = `walisoma`.\n    *   Let's re-examine the evidence for \"read\".\n        *   `unasoma` (you read) -> Present.\n        *   `tulisoma` (we read (past)) -> Past.\n    *   The query is just \"they read\". In English, \"they read\" can be present or past. However, standard ILO problems usually provide enough context or the default is present unless \"past\" is specified (like in `tulisoma`). Also, `wataimba` shows the future form for \"they\". The present form for \"they\" would follow the pattern `Subject + na + Verb`.\n    *   Let's check if there is a specific \"they read\" example. No.\n    *   Let's look at the phrasing. `tulisoma` has \"(past)\" in the translation. `unasoma` does not. This implies `unasoma` is the default/present. Therefore, \"they read\" without \"(past)\" likely implies the present tense.\n    *   Subject: `wa`\n    *   Tense: `na` (present)\n    *   Verb: `soma` (read)\n    *   Construction: `wa` + `na` + `soma` = `wanasoma`.\n\n    *   Alternative interpretation: Could it be past? If the query meant past, it might have said \"they read (past)\" or \"they read yesterday\". Given `tulisoma` is explicitly marked past, and `unasoma` is not, the unmarked \"read\" corresponds to the present tense `na`.\n\n    *   Therefore: `wa` (they) + `na` (present) + `soma` (read).\n\n4.  **Final Composition:**\n    *   `wanasoma`\n</analysis>\n<answers>\nwanasoma\n</answers>",
+  "answer_text": "wanasoma",
+  "morphemes": [
+   "wa",
+   "na",
+   "soma"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 38.1,
+  "model": "qwen/qwen3.8-27b",
+  "provider": "groq",
+  "prompt_variant": "no_hint"
+ },
+ {
+  "puzzle": "swahili-person-tense",
+  "query": 2,
+  "difficulty": "curveball",
+  "prompt": "we sang",
+  "gold": [
+   "tu",
+   "li",
+   "imba"
+  ],
+  "gold_joined": "tuliimba",
+  "raw": "<analysis>\n1.  **Analyze the Evidence:**\n    *   `ninapenda` → I like: `ni` (I) + `na` (present tense) + `penda` (like).\n    *   `unasoma` → you read: `u` (you) + `na` (present tense) + `soma` (read).\n    *   `anacheza` → she plays: `a` (she/he) + `na` (present tense) + `cheza` (play).\n    *   `nilipenda` → I liked: `ni` (I) + `li` (past tense) + `penda` (like).\n    *   `tulisoma` → we read (past): `tu` (we) + `li` (past tense) + `soma` (read).\n    *   `utacheza` → you will play: `u` (you) + `ta` (future tense) + `cheza` (play).\n    *   `wataimba` → they will sing: `wa` (they) + `ta` (future tense) + `imba` (sing).\n    *   `anaimba` → he sings: `a` (he) + `na` (present tense) + `imba` (sing).\n\n2.  **Deduce Morphemes:**\n    *   **Subjects:**\n        *   I: `ni`\n        *   You (sg): `u`\n        *   He/She: `a`\n        *   We: `tu`\n        *   They: `wa`\n    *   **Tenses:**\n        *   Present: `na`\n        *   Past: `li`\n        *   Future: `ta`\n    *   **Verbs:**\n        *   like: `penda`\n        *   read: `soma`\n        *   play: `cheza`\n        *   sing: `imba`\n\n3.  **Analyze the Query:**\n    *   Query: \"we sang\"\n    *   Subject: \"we\" → `tu`\n    *   Tense: \"sang\" (past tense of sing) → `li`\n    *   Verb: \"sing\" → `imba`\n\n4.  **Compose the Translation:**\n    *   Order: Subject + Tense + Verb\n    *   Sequence: `tu` + `li` + `imba`\n    *   Result: `tuliimba`\n\n</analysis>\n<answers>\ntuliimba\n</answers>",
+  "answer_text": "tuliimba",
+  "morphemes": [
+   "tu",
+   "li",
+   "imba"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 77.0,
+  "model": "qwen/qwen3.8-27b",
+  "provider": "groq",
+  "prompt_variant": "no_hint"
+ },
+ {
+  "puzzle": "turkish-vowel-harmony",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "eyes",
+  "gold": [
+   "göz",
+   "ler"
+  ],
+  "gold_joined": "gözler",
+  "raw": "<analysis>\n1.  **Analyze the Evidence**:\n    *   `ev` = house\n    *   `at` = horse\n    *   `kız` = girl\n    *   `göz` = eye\n    *   `gün` = day\n    *   `el` = hand\n    *   `evler` = houses (ev + ler)\n    *   `atlar` = horses (at + lar)\n    *   `eller` = hands (el + ler)\n    *   `kitaplar` = books (kitap + lar)\n\n2.  **Deduce Grammar (Pluralization)**:\n    *   The language uses suffixes for the plural.\n    *   `ev` (ends in vowel 'v') -> `evler` (suffix `ler`).\n    *   `at` (ends in consonant 't') -> `atlar` (suffix `lar`).\n    *   `el` (ends in consonant 'l') -> `eller` (suffix `ler`). Note: `el` ends in a consonant, but takes `ler`. Let's look closer.\n    *   `kitap` (ends in consonant 'p') -> `kitaplar` (suffix `lar`).\n    *   Let's check the vowel harmony rule typically found in Turkish (which this language mimics):\n        *   Back vowels (a, ı, o, u) take `lar`.\n        *   Front vowels (e, i, ö, ü) take `ler`.\n    *   Let's verify with the examples:\n        *   `ev` (e is front) -> `ler`. Correct.\n        *   `at` (a is back) -> `lar`. Correct.\n        *   `el` (e is front) -> `ler`. Correct.\n        *   `kitap` (a is back) -> `lar`. Correct.\n    *   The query is \"eyes\". The singular is `göz`.\n    *   `göz` ends in `z` (consonant) and contains `ö` (front vowel).\n    *   Therefore, the plural suffix should be `ler`.\n    *   Result: `gözler`.\n\n3.  **Construct the Answer**:\n    *   Source word: `göz`\n    *   Suffix: `ler`\n    *   Combined: `gözler`\n\n</analysis>\n<answers>\ngözler\n</answers>",
+  "answer_text": "gözler",
+  "morphemes": [
+   "göz",
+   "ler"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 16.6,
+  "model": "qwen/qwen3.8-27b",
+  "provider": "groq",
+  "prompt_variant": "no_hint"
+ },
+ {
+  "puzzle": "turkish-vowel-harmony",
+  "query": 2,
+  "difficulty": "curveball",
+  "prompt": "days",
+  "gold": [
+   "gün",
+   "ler"
+  ],
+  "gold_joined": "günler",
+  "raw": "<analysis>\n1.  **Analyze the Evidence**:\n    *   `ev` = house\n    *   `at` = horse\n    *   `kız` = girl\n    *   `göz` = eye\n    *   `gün` = day\n    *   `el` = hand\n    *   `evler` = houses (ev + ler)\n    *   `atlar` = horses (at + lar)\n    *   `eller` = hands (el + ler)\n    *   `kitaplar` = books (kitap + lar)\n\n2.  **Deduce Grammar Rules**:\n    *   The language uses suffixes for pluralization.\n    *   The plural suffixes are `lar` and `ler`.\n    *   **Vowel Harmony**:\n        *   `ev` (contains back vowel /e/) -> `evler` (suffix starts with /l/ + back vowel /e/). Wait, `ev` ends in /v/. Let's look at the vowels. `ev` has /e/ (back). Suffix is `ler` (back).\n        *   `at` (contains back vowel /a/) -> `atlar` (suffix starts with /l/ + back vowel /a/).\n        *   `el` (contains back vowel /e/) -> `eller` (suffix starts with /l/ + back vowel /e/).\n        *   `kitap` (contains back vowel /a/) -> `kitaplar` (suffix starts with /l/ + back vowel /a/).\n        *   Let's check for front vowels in the evidence. `kız` (/ı/ is back), `göz` (/ö/ is front), `gün` (/ü/ is front).\n        *   We don't have explicit plural examples for `kız`, `göz`, or `gün` in the evidence list provided, but we can infer the pattern based on standard Turkish-like vowel harmony or simply look at the available morphemes.\n        *   Available morphemes: `ev`, `at`, `kız`, `göz`, `gün`, `el`, `kitap`, `taş`, `lar`, `ler`.\n        *   The suffixes are `lar` and `ler`.\n        *   `lar` follows words with back vowels (a, ı, o, u). Examples: `at` (a) -> `atlar`, `kitap` (a) -> `kitaplar`.\n        *   `ler` follows words with front vowels (e, i, ö, ü). Examples: `ev` (e) -> `evler`, `el` (e) -> `eller`.\n        *   The query is \"days\". The source word for \"day\" is `gün`.\n        *   `gün` contains the vowel `ü`, which is a front vowel.\n        *   Therefore, the plural suffix should be `ler`.\n        *   Result: `gün` + `ler` = `günler`.\n\n3.  **Verify**:\n    *   Source: `gün` (day)\n    *   Target: days (plural)\n    *   Vowel in `gün`: `ü` (front)\n    *   Suffix for front vowels: `ler`\n    *   Construction: `günler`\n\n4.  **Final Check**:\n    *   Does `günler` use only available morphemes? Yes (`gün`, `ler`).\n    *   Does it follow the pattern? Yes.\n</analysis>\n<answers>\ngünler\n</answers>",
+  "answer_text": "günler",
+  "morphemes": [
+   "gün",
+   "ler"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 1.7,
+  "model": "qwen/qwen3.8-27b",
+  "provider": "groq",
+  "prompt_variant": "no_hint"
+ },
+ {
+  "puzzle": "quechua-person-endings",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "I walk",
+  "gold": [
+   "puri",
+   "ni"
+  ],
+  "gold_joined": "purini",
+  "raw": "<analysis>\n1.  **Analyze the Verbs (Roots):**\n    *   `rimani` = \"I speak\" -> Root `rima` (speak)\n    *   `rimanki` = \"you speak\" -> Root `rima`\n    *   `riman` = \"she speaks\" -> Root `rima`\n    *   `rimanchik` = \"we speak\" -> Root `rima`\n    *   `rikuni` = \"I see\" -> Root `riku` (see)\n    *   `mikhunki` = \"you eat\" -> Root `mikhu` (eat)\n    *   `mikhunchik` = \"we eat\" -> Root `mikhu`\n    *   `purin` = \"he walks\" -> Root `puri` (walk)\n\n2.  **Analyze the Suffixes (Person/Number Markers):**\n    *   **1st Person Singular (I):**\n        *   `rima` + `ni` = `rimani` (I speak)\n        *   `riku` + `ni` = `rikuni` (I see)\n        *   Pattern: Root + `ni`\n    *   **2nd Person Singular (you):**\n        *   `rima` + `nki` = `rimanki` (you speak)\n        *   `mikhu` + `nki` = `mikhunki` (you eat)\n        *   Pattern: Root + `nki`\n    *   **3rd Person Singular (he/she):**\n        *   `rima` + `n` = `riman` (she speaks)\n        *   `puri` + `n` = `purin` (he walks)\n        *   Pattern: Root + `n`\n    *   **1st Person Plural (we):**\n        *   `rima` + `nchik` = `rimanchik` (we speak)\n        *   `mikhu` + `nchik` = `mikhunchik` (we eat)\n        *   Pattern: Root + `nchik`\n\n3.  **Determine the Query:**\n    *   Query: \"I walk\"\n    *   Verb Root for \"walk\": From `purin` (he walks), the root is `puri`.\n    *   Person/Number Marker for \"I\": From `rimani` and `rikuni`, the marker is `ni`.\n\n4.  **Compose the Translation:**\n    *   Root `puri` + Suffix `ni` = `purini`\n\n</analysis>\n<answers>\npurini\n</answers>",
+  "answer_text": "purini",
+  "morphemes": [
+   "puri",
+   "ni"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 77.1,
+  "model": "qwen/qwen3.8-27b",
+  "provider": "groq",
+  "prompt_variant": "no_hint"
+ },
+ {
+  "puzzle": "quechua-person-endings",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "we (all of us) see",
+  "gold": [
+   "riku",
+   "nchik"
+  ],
+  "gold_joined": "rikunchik",
+  "raw": "<analysis>\n1.  **Analyze the Verbs (Roots):**\n    *   `rimani` = \"I speak\" -> Root `rima` (speak)\n    *   `rimanki` = \"you speak\" -> Root `rima`\n    *   `riman` = \"she speaks\" -> Root `rima`\n    *   `rimanchik` = \"we (all of us) speak\" -> Root `rima`\n    *   `rikuni` = \"I see\" -> Root `riku` (see)\n    *   `mikhunki` = \"you eat\" -> Root `mikhu` (eat)\n    *   `mikhunchik` = \"we (all of us) eat\" -> Root `mikhu`\n    *   `purin` = \"he walks\" -> Root `puri` (walk)\n    *   `taki` is in the bank but not in the evidence (likely \"sing\" or similar, irrelevant here).\n\n2.  **Analyze the Suffixes (Person/Number Markers):**\n    *   **1st Person Singular (I):**\n        *   `rima` + `ni` = `rimani` (I speak)\n        *   `riku` + `ni` = `rikuni` (I see)\n        *   Suffix: `ni`\n    *   **2nd Person Singular (you):**\n        *   `rima` + `nki` = `rimanki` (you speak)\n        *   `mikhu` + `nki` = `mikhunki` (you eat)\n        *   Suffix: `nki`\n    *   **3rd Person Singular (he/she):**\n        *   `rima` + `n` = `riman` (she speaks)\n        *   `puri` + `n` = `purin` (he walks)\n        *   Suffix: `n`\n    *   **1st Person Plural (we, all of us):**\n        *   `rima` + `nchik` = `rimanchik` (we speak)\n        *   `mikhu` + `nchik` = `mikhunchik` (we eat)\n        *   Suffix: `nchik`\n\n3.  **Construct the Query:**\n    *   Query: \"we (all of us) see\"\n    *   Verb Root for \"see\": `riku` (from `rikuni`)\n    *   Suffix for \"we (all of us)\": `nchik`\n    *   Combination: `riku` + `nchik` = `rikunchik`\n\n4.  **Verification:**\n    *   Does `rikunchik` follow the pattern? Yes, it mirrors `mikhunchik` (we eat) and `rimanchik` (we speak).\n    *   Are all morphemes in the bank? `riku` (yes), `nchik` (yes).\n</analysis>\n<answers>\nrikunchik\n</answers>",
+  "answer_text": "rikunchik",
+  "morphemes": [
+   "riku",
+   "nchik"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 37.4,
+  "model": "qwen/qwen3.8-27b",
+  "provider": "groq",
+  "prompt_variant": "no_hint"
+ },
+ {
+  "puzzle": "quechua-person-endings",
+  "query": 2,
+  "difficulty": "curveball",
+  "prompt": "she eats",
+  "gold": [
+   "mikhu",
+   "n"
+  ],
+  "gold_joined": "mikhun",
+  "raw": "<analysis>\n1.  **Analyze the Verbs (Roots):**\n    *   `rimani` = I speak -> Root: `rima`\n    *   `rimanki` = you speak -> Root: `rima`\n    *   `riman` = she speaks -> Root: `rima`\n    *   `rikuni` = I see -> Root: `riku`\n    *   `mikhunki` = you eat -> Root: `mikhu`\n    *   `purin` = he walks -> Root: `puri`\n    *   `rimanchik` = we speak -> Root: `rima`\n    *   `mikhunchik` = we eat -> Root: `mikhu`\n\n    The available morphemes confirm the roots: `rima`, `riku`, `mikhu`, `puri`, `taki`.\n\n2.  **Analyze the Affixes (Person/Number Markers):**\n    *   **1st Person Singular (I):**\n        *   `rima` + `ni` = `rimani` (I speak)\n        *   `riku` + `ni` = `rikuni` (I see)\n        *   Marker: `ni`\n    *   **2nd Person Singular (you):**\n        *   `rima` + `nki` = `rimanki` (you speak)\n        *   `mikhu` + `nki` = `mikhunki` (you eat)\n        *   Marker: `nki`\n    *   **3rd Person Singular (he/she):**\n        *   `rima` + `n` = `riman` (she speaks)\n        *   `puri` + `n` = `purin` (he walks)\n        *   Marker: `n`\n    *   **1st Person Plural (we):**\n        *   `rima` + `nchik` = `rimanchik` (we speak)\n        *   `mikhu` + `nchik` = `mikhunchik` (we eat)\n        *   Marker: `nchik`\n\n3.  **Determine the Target Translation:**\n    *   Query: \"she eats\"\n    *   Verb \"eat\": The root is `mikhu` (from `mikhunki` and `mikhunchik`).\n    *   Person \"she\": This is 3rd person singular. The marker is `n` (from `riman` and `purin`).\n    *   Construction: Root + Marker = `mikhu` + `n` = `mikhun`.\n\n4.  **Verification:**\n    *   Does `mikhun` follow the pattern? Yes.\n    *   `rima` (speak) + `n` (she) = `riman` (she speaks).\n    *   `mikhu` (eat) + `n` (she) = `mikhun` (she eats).\n\n</analysis>\n<answers>\nmikhun\n</answers>",
+  "answer_text": "mikhun",
+  "morphemes": [
+   "mikhu",
+   "n"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 1.6,
+  "model": "qwen/qwen3.8-27b",
+  "provider": "groq",
+  "prompt_variant": "no_hint"
+ },
+ {
+  "puzzle": "nahuatl-both-ends",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "I sing",
+  "gold": [
+   "ni",
+   "cuica"
+  ],
+  "gold_joined": "nicuica",
+  "raw": "<analysis>\n1.  **Analyze the Verbs (Lexemes):**\n    *   `cochi` appears in \"I sleep\" (`nicochi`), \"you sleep\" (`ticochi`), \"he sleeps\" (`cochi`), and \"we sleep\" (`nicochih`). This suggests `cochi` is the root for \"sleep\".\n    *   `choca` appears in \"I cry\" (`nichoca`). This suggests `choca` is the root for \"cry\".\n    *   `cuica` appears in \"you sing\" (`ticuica`) and \"they sing\" (`cuicah`). This suggests `cuica` is the root for \"sing\".\n\n2.  **Analyze the Affixes (Morphology):**\n    *   **Person Markers (Prefixes):**\n        *   `ni-` is in \"I sleep\" (`nicochi`) and \"I cry\" (`nichoca`). So, `ni` = I.\n        *   `ti-` is in \"you sleep\" (`ticochi`) and \"you sing\" (`ticuica`). So, `ti` = you.\n        *   No prefix is present in \"he sleeps\" (`cochi`) or \"they sing\" (`cuicah`). This implies the 3rd person singular/plural is unmarked or zero-marked in the prefix position.\n    *   **Number/Person Markers (Suffixes):**\n        *   `h` is in \"we sleep\" (`nicochih`) and \"they sing\" (`cuicah`).\n        *   Let's look at the subjects:\n            *   \"I\" (1sg): `ni` + root. No suffix.\n            *   \"You\" (2sg): `ti` + root. No suffix.\n            *   \"He\" (3sg): root. No suffix.\n            *   \"We\" (1pl): `ni` + root + `h`.\n            *   \"They\" (3pl): root + `h`.\n        *   This indicates that `h` marks the plural (or specifically 1st/3rd person plural, while 2nd person plural might be different, but we don't have a 2pl example). Since \"I\" is `ni` and \"We\" is `ni...h`, the `h` is a plural suffix.\n\n3.  **Synthesize the Pattern:**\n    *   Structure: [Person Prefix] + [Verb Root] + [Number Suffix]\n    *   I (1sg): `ni` + Root\n    *   You (2sg): `ti` + Root\n    *   He (3sg): Root\n    *   We (1pl): `ni` + Root + `h`\n    *   They (3pl): Root + `h`\n\n4.  **Solve the Query:**\n    *   Query: \"I sing\"\n    *   Subject: \"I\" -> Prefix `ni`\n    *   Verb: \"sing\" -> Root `cuica` (from `ticuica` and `cuicah`)\n    *   Number: Singular (implied by \"I\") -> No suffix `h`.\n    *   Construction: `ni` + `cuica` = `nicuica`\n\n5.  **Verification:**\n    *   `nicuica` follows the pattern of `nicochi` (I sleep) and `nichoca` (I cry).\n    *   The morphemes used are `ni` and `cuica`, both present in the tile bank.\n\n</analysis>\n<answers>\nnicuica\n</answers>",
+  "answer_text": "nicuica",
+  "morphemes": [
+   "ni",
+   "cuica"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 77.8,
+  "model": "qwen/qwen3.8-27b",
+  "provider": "groq",
+  "prompt_variant": "no_hint"
+ },
+ {
+  "puzzle": "nahuatl-both-ends",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "they cry",
+  "gold": [
+   "choca",
+   "h"
+  ],
+  "gold_joined": "chocah",
+  "raw": "<analysis>\n1.  **Analyze the Verbs (Lexemes):**\n    *   \"sleep\": `nicochi` (I), `ticochi` (you), `cochi` (he), `nicochih` (we). The core stem appears to be `cochi`.\n    *   \"cry\": `nichoca` (I). The core stem appears to be `choca`.\n    *   \"sing\": `ticuica` (you), `cuicah` (they). The core stem appears to be `cuica`.\n\n2.  **Analyze the Affixes (Morphology):**\n    *   **Person Markers (Prefixes):**\n        *   `ni-`: I (seen in `nicochi`, `nichoca`)\n        *   `ti-`: you (seen in `ticochi`, `ticuica`)\n        *   (Zero prefix): he (seen in `cochi`)\n    *   **Number Markers (Suffixes):**\n        *   (Zero suffix): Singular (seen in `cochi`, `nichoca`, `ticuica`)\n        *   `-h`: Plural (seen in `nicochih` [we], `cuicah` [they])\n\n3.  **Synthesize the Pattern:**\n    *   Structure: [Person Prefix] + [Verb Stem] + [Number Suffix]\n    *   \"they\" corresponds to the 3rd person plural.\n    *   3rd person prefix: Zero (empty).\n    *   Plural suffix: `-h`.\n    *   Verb \"cry\" stem: `choca`.\n\n4.  **Construct the Query:**\n    *   Query: \"they cry\"\n    *   Person: 3rd person (no prefix)\n    *   Stem: `choca`\n    *   Number: Plural (`-h`)\n    *   Result: `choca` + `h` = `chocah`\n\n5.  **Verification:**\n    *   Compare with `cuicah` (they sing): `cuica` (stem) + `h` (plural). Matches pattern.\n    *   Compare with `cochi` (he sleeps): `cochi` (stem) + (zero). Matches pattern.\n    *   The target is \"they cry\", so stem `choca` + suffix `h`.\n\n</analysis>\n<answers>\nchocah\n</answers>",
+  "answer_text": "chocah",
+  "morphemes": [
+   "choca",
+   "h"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 36.7,
+  "model": "qwen/qwen3.8-27b",
+  "provider": "groq",
+  "prompt_variant": "no_hint"
+ },
+ {
+  "puzzle": "nahuatl-both-ends",
+  "query": 2,
+  "difficulty": "curveball",
+  "prompt": "we sing",
+  "gold": [
+   "ni",
+   "cuica",
+   "h"
+  ],
+  "gold_joined": "nicuicah",
+  "raw": "<analysis>\n1.  **Analyze the Verbs (Lexemes):**\n    *   `cochi` appears in \"I sleep\" (`nicochi`), \"you sleep\" (`ticochi`), \"he sleeps\" (`cochi`), and \"we sleep\" (`nicochih`). This suggests `cochi` is the root for \"sleep\".\n    *   `choca` appears in \"I cry\" (`nichoca`). This suggests `choca` is the root for \"cry\".\n    *   `cuica` appears in \"you sing\" (`ticuica`) and \"they sing\" (`cuicah`). This suggests `cuica` is the root for \"sing\".\n\n2.  **Analyze the Person Markers (Prefixes/Suffixes):**\n    *   **1st Person Singular (I):**\n        *   \"I sleep\": `ni` + `cochi`\n        *   \"I cry\": `ni` + `choca`\n        *   Pattern: Prefix `ni`.\n    *   **2nd Person Singular (you):**\n        *   \"you sleep\": `ti` + `cochi`\n        *   \"you sing\": `ti` + `cuica`\n        *   Pattern: Prefix `ti`.\n    *   **3rd Person Singular (he/she):**\n        *   \"he sleeps\": `cochi` (no prefix)\n        *   Pattern: Zero prefix (or null).\n    *   **1st Person Plural (we):**\n        *   \"we sleep\": `ni` + `cochi` + `h`\n        *   Pattern: Prefix `ni` + Suffix `h`.\n    *   **3rd Person Plural (they):**\n        *   \"they sing\": `cuica` + `h`\n        *   Pattern: Zero prefix + Suffix `h`.\n\n3.  **Synthesize the Grammar Rules:**\n    *   **Prefixes:**\n        *   1st person (I/we): `ni`\n        *   2nd person (you): `ti`\n        *   3rd person (he/they): (null)\n    *   **Suffixes:**\n        *   Singular: (null)\n        *   Plural (we/they): `h`\n    *   **Word Order:** Prefix + Root + Suffix.\n\n4.  **Solve the Query: \"we sing\"**\n    *   **Person/Number:** 1st Person Plural (\"we\").\n    *   **Verb:** \"sing\" -> Root is `cuica`.\n    *   **Prefix:** 1st person is `ni`.\n    *   **Suffix:** Plural is `h`.\n    *   **Construction:** `ni` + `cuica` + `h` = `nicuicah`.\n\n5.  **Verification:**\n    *   Does `ni` match \"I/we\"? Yes (`nicochi`, `nichoca`, `nicochih`).\n    *   Does `cuica` match \"sing\"? Yes (`ticuica`, `cuicah`).\n    *   Does `h` match plural? Yes (`nicochih` [we sleep], `cuicah` [they sing]).\n    *   Result: `nicuicah`.\n</analysis>\n<answers>\nnicuicah\n</answers>",
+  "answer_text": "nicuicah",
+  "morphemes": [
+   "ni",
+   "cuica",
+   "h"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 37.4,
+  "model": "qwen/qwen3.8-27b",
+  "provider": "groq",
+  "prompt_variant": "no_hint"
+ },
+ {
+  "puzzle": "esperanto-tense",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "you learned",
+  "gold": [
+   "vi",
+   "lern",
+   "is"
+  ],
+  "gold_joined": "vi lernis",
+  "raw": "<analysis>\n1.  **Analyze the Evidence:**\n    *   `mi lernas` → \"I learn\": `mi` = I, `lern` = learn, `as` = present tense marker.\n    *   `mi lernis` → \"I learned\": `mi` = I, `lern` = learn, `is` = past tense marker.\n    *   `mi lernos` → \"I will learn\": `mi` = I, `lern` = learn, `os` = future tense marker.\n    *   `vi lernas` → \"you learn\": `vi` = you, `lern` = learn, `as` = present tense marker.\n    *   `li lernas` → \"he learns\": `li` = he, `lern` = learn, `as` = present tense marker.\n    *   `ni lernas` → \"we learn\": `ni` = we, `lern` = learn, `as` = present tense marker.\n    *   `mi manĝas` → \"I eat\": `mi` = I, `manĝ` = eat, `as` = present tense marker.\n    *   `ili lernas` → \"they learn\": `ili` = they, `lern` = learn, `as` = present tense marker.\n\n2.  **Deduce Grammar Rules:**\n    *   **Word Order:** Subject + Verb.\n    *   **Verb Structure:** Root + Tense Suffix.\n    *   **Tense Markers:**\n        *   Present: `-as`\n        *   Past: `-is`\n        *   Future: `-os`\n    *   **Pronouns:**\n        *   I: `mi`\n        *   You: `vi`\n        *   He: `li`\n        *   We: `ni`\n        *   They: `ili`\n    *   **Verbs:**\n        *   Learn: `lern`\n        *   Eat: `manĝ`\n\n3.  **Analyze the Query:**\n    *   Target phrase: \"you learned\"\n    *   Subject: \"you\" → `vi`\n    *   Verb: \"learn\" (root) + \"learned\" (past tense) → `lern` + `is`\n    *   Construction: `vi` + `lern` + `is`\n\n4.  **Final Composition:**\n    *   `vi lernis`\n</analysis>\n<answers>\nvi lernis\n</answers>",
+  "answer_text": "vi lernis",
+  "morphemes": [
+   "vi",
+   "lern",
+   "is"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 0.696,
+  "morf1": 1.0,
+  "elapsed_s": 77.6,
+  "model": "qwen/qwen3.8-27b",
+  "provider": "groq",
+  "prompt_variant": "no_hint"
+ },
+ {
+  "puzzle": "esperanto-tense",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "we learned",
+  "gold": [
+   "ni",
+   "lern",
+   "is"
+  ],
+  "gold_joined": "ni lernis",
+  "raw": "<analysis>\n1.  **Analyze the Evidence:**\n    *   `mi lernas` → \"I learn\": `mi` = I, `lern` = learn, `as` = present tense marker.\n    *   `mi lernis` → \"I learned\": `mi` = I, `lern` = learn, `is` = past tense marker.\n    *   `mi lernos` → \"I will learn\": `mi` = I, `lern` = learn, `os` = future tense marker.\n    *   `vi lernas` → \"you learn\": `vi` = you, `lern` = learn, `as` = present.\n    *   `li lernas` → \"he learns\": `li` = he, `lern` = learn, `as` = present.\n    *   `ni lernas` → \"we learn\": `ni` = we, `lern` = learn, `as` = present.\n    *   `mi manĝas` → \"I eat\": `mi` = I, `manĝ` = eat, `as` = present.\n    *   `ili lernas` → \"they learn\": `ili` = they, `lern` = learn, `as` = present.\n\n2.  **Deduce Grammar Rules:**\n    *   **Word Order:** Subject + Verb.\n    *   **Verb Structure:** Root + Tense Suffix.\n    *   **Subjects:**\n        *   I: `mi`\n        *   You: `vi`\n        *   He: `li`\n        *   We: `ni`\n        *   They: `ili`\n    *   **Verb Roots:**\n        *   Learn: `lern`\n        *   Eat: `manĝ`\n    *   **Tense Suffixes:**\n        *   Present: `as`\n        *   Past: `is`\n        *   Future: `os`\n\n3.  **Analyze the Query:**\n    *   Target phrase: \"we learned\"\n    *   Subject: \"we\" corresponds to `ni`.\n    *   Verb: \"learned\" corresponds to the root `lern` + past tense suffix `is`.\n    *   Construction: `ni` + `lern` + `is`.\n\n4.  **Final Composition:**\n    *   `ni lernis`\n</analysis>\n<answers>\nni lernis\n</answers>",
+  "answer_text": "ni lernis",
+  "morphemes": [
+   "ni",
+   "lern",
+   "is"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 0.696,
+  "morf1": 1.0,
+  "elapsed_s": 37.6,
+  "model": "qwen/qwen3.8-27b",
+  "provider": "groq",
+  "prompt_variant": "no_hint"
+ },
+ {
+  "puzzle": "esperanto-tense",
+  "query": 2,
+  "difficulty": "standard",
+  "prompt": "I will eat",
+  "gold": [
+   "mi",
+   "manĝ",
+   "os"
+  ],
+  "gold_joined": "mi manĝos",
+  "raw": "<analysis>\n1.  **Analyze the Evidence:**\n    *   `mi lernas` → \"I learn\": `mi` = I, `lern` = learn, `as` = present tense marker.\n    *   `mi lernis` → \"I learned\": `mi` = I, `lern` = learn, `is` = past tense marker.\n    *   `mi lernos` → \"I will learn\": `mi` = I, `lern` = learn, `os` = future tense marker.\n    *   `vi lernas` → \"you learn\": `vi` = you, `lern` = learn, `as` = present.\n    *   `li lernas` → \"he learns\": `li` = he, `lern` = learn, `as` = present.\n    *   `ni lernas` → \"we learn\": `ni` = we, `lern` = learn, `as` = present.\n    *   `mi manĝas` → \"I eat\": `mi` = I, `manĝ` = eat, `as` = present.\n    *   `ili lernas` → \"they learn\": `ili` = they, `lern` = learn, `as` = present.\n\n2.  **Deduce Grammar Rules:**\n    *   **Word Order:** Subject + Verb.\n    *   **Verb Structure:** Root + Tense Suffix.\n    *   **Subjects:**\n        *   I: `mi`\n        *   You: `vi`\n        *   He: `li`\n        *   We: `ni`\n        *   They: `ili`\n    *   **Verb Roots:**\n        *   Learn: `lern`\n        *   Eat: `manĝ`\n    *   **Tense Suffixes:**\n        *   Present: `as`\n        *   Past: `is`\n        *   Future: `os`\n\n3.  **Analyze the Query:**\n    *   Target phrase: \"I will eat\"\n    *   Subject: \"I\" → `mi`\n    *   Verb: \"eat\" → root `manĝ`\n    *   Tense: \"will\" (future) → suffix `os`\n    *   Verb form: `manĝ` + `os` = `manĝos`\n\n4.  **Compose the Translation:**\n    *   Subject + Verb: `mi` + `manĝos`\n    *   Result: `mi manĝos`\n\n</analysis>\n<answers>\nmi manĝos\n</answers>",
+  "answer_text": "mi manĝos",
+  "morphemes": [
+   "mi",
+   "manĝ",
+   "os"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 0.696,
+  "morf1": 1.0,
+  "elapsed_s": 37.4,
+  "model": "qwen/qwen3.8-27b",
+  "provider": "groq",
+  "prompt_variant": "no_hint"
+ },
+ {
+  "puzzle": "esperanto-tense",
+  "query": 3,
+  "difficulty": "standard",
+  "prompt": "they eat",
+  "gold": [
+   "ili",
+   "manĝ",
+   "as"
+  ],
+  "gold_joined": "ili manĝas",
+  "raw": "<analysis>\n1.  **Analyze the Evidence:**\n    *   `mi lernas` → \"I learn\": `mi` = I, `lern` = learn, `as` = present tense marker.\n    *   `mi lernis` → \"I learned\": `is` = past tense marker.\n    *   `mi lernos` → \"I will learn\": `os` = future tense marker.\n    *   `vi lernas` → \"you learn\": `vi` = you.\n    *   `li lernas` → \"he learns\": `li` = he.\n    *   `ni lernas` → \"we learn\": `ni` = we.\n    *   `mi manĝas` → \"I eat\": `manĝ` = eat.\n    *   `ili lernas` → \"they learn\": `ili` = they.\n\n2.  **Determine the Target Sentence:**\n    *   Query: \"they eat\"\n    *   Subject: \"they\" corresponds to `ili` (from `ili lernas`).\n    *   Verb: \"eat\" corresponds to the root `manĝ` (from `mi manĝas`).\n    *   Tense: The English \"they eat\" is in the present tense (simple present). In the evidence, the present tense marker is `as` (seen in `lernas`, `manĝas`).\n\n3.  **Construct the Morpheme Sequence:**\n    *   Subject: `ili`\n    *   Verb Root: `manĝ`\n    *   Tense Suffix: `as`\n    *   Word Order: Subject + Verb (as seen in all examples: `mi lernas`, `ili lernas`).\n    *   Result: `ili manĝas`\n\n4.  **Final Verification:**\n    *   `ili` (they) + `manĝ` (eat) + `as` (present) = `ili manĝas`.\n    *   This matches the pattern of `ili lernas` (they learn) and `mi manĝas` (I eat).\n</analysis>\n<answers>\nili manĝas\n</answers>",
+  "answer_text": "ili manĝas",
+  "morphemes": [
+   "ili",
+   "manĝ",
+   "as"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 0.699,
+  "morf1": 1.0,
+  "elapsed_s": 37.3,
+  "model": "qwen/qwen3.8-27b",
+  "provider": "groq",
+  "prompt_variant": "no_hint"
+ },
+ {
+  "puzzle": "esperanto-tense",
+  "query": 4,
+  "difficulty": "standard",
+  "prompt": "he ate",
+  "gold": [
+   "li",
+   "manĝ",
+   "is"
+  ],
+  "gold_joined": "li manĝis",
+  "raw": "<analysis>\n1.  **Analyze the Evidence:**\n    *   `mi lernas` → \"I learn\": `mi` = I, `lern` = learn, `as` = present tense marker.\n    *   `mi lernis` → \"I learned\": `mi` = I, `lern` = learn, `is` = past tense marker.\n    *   `mi lernos` → \"I will learn\": `mi` = I, `lern` = learn, `os` = future tense marker.\n    *   `vi lernas` → \"you learn\": `vi` = you, `lern` = learn, `as` = present.\n    *   `li lernas` → \"he learns\": `li` = he, `lern` = learn, `as` = present.\n    *   `ni lernas` → \"we learn\": `ni` = we, `lern` = learn, `as` = present.\n    *   `mi manĝas` → \"I eat\": `mi` = I, `manĝ` = eat, `as` = present.\n    *   `ili lernas` → \"they learn\": `ili` = they, `lern` = learn, `as` = present.\n\n2.  **Deduce Grammar Rules:**\n    *   **Word Order:** Subject + Verb.\n    *   **Subject Pronouns:**\n        *   I: `mi`\n        *   You: `vi`\n        *   He: `li`\n        *   We: `ni`\n        *   They: `ili`\n    *   **Verb Structure:** Root + Tense Suffix.\n    *   **Verb Roots:**\n        *   Learn: `lern`\n        *   Eat: `manĝ`\n    *   **Tense Suffixes:**\n        *   Present: `as`\n        *   Past: `is`\n        *   Future: `os`\n\n3.  **Analyze the Query:**\n    *   Target phrase: \"he ate\"\n    *   Subject: \"he\" → `li`\n    *   Verb: \"ate\" (past tense of \"eat\")\n        *   Root for \"eat\": `manĝ` (from `mi manĝas`)\n        *   Tense for past: `is` (from `mi lernis`)\n        *   Combined verb: `manĝis`\n\n4.  **Compose the Translation:**\n    *   Subject + Verb: `li` + `manĝis`\n    *   Result: `li manĝis`\n\n</analysis>\n<answers>\nli manĝis\n</answers>",
+  "answer_text": "li manĝis",
+  "morphemes": [
+   "li",
+   "manĝ",
+   "is"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 0.696,
+  "morf1": 1.0,
+  "elapsed_s": 16.9,
+  "model": "qwen/qwen3.8-27b",
+  "provider": "groq",
+  "prompt_variant": "no_hint"
+ },
+ {
+  "puzzle": "indonesian-plurals",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "I eat",
+  "gold": [
+   "saya",
+   "makan"
+  ],
+  "gold_joined": "saya makan",
+  "raw": "<analysis>\n1.  **Analyze the Evidence**:\n    *   `anak` = child\n    *   `anak-anak` = children (reduplication indicates plural)\n    *   `kuda` = horse\n    *   `kuda-kuda` = horses (reduplication indicates plural)\n    *   `buku` = book\n    *   `buku-buku` = books (reduplication indicates plural)\n    *   `saya makan` = I eat\n    *   `mereka makan` = they eat\n    *   `kami makan` = we eat\n\n2.  **Identify the Target**:\n    *   The query is \"I eat\".\n\n3.  **Map to Morphemes**:\n    *   From the evidence pair `saya makan` → `I eat`, we can directly identify the translation.\n    *   \"I\" corresponds to `saya`.\n    *   \"eat\" corresponds to `makan`.\n\n4.  **Construct the Output**:\n    *   The sequence is `saya makan`.\n</analysis>\n<answers>\nsaya makan\n</answers>",
+  "answer_text": "saya makan",
+  "morphemes": [
+   "saya",
+   "makan"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 0.699,
+  "morf1": 1.0,
+  "elapsed_s": 37.9,
+  "model": "qwen/qwen3.8-27b",
+  "provider": "groq",
+  "prompt_variant": "no_hint"
+ },
+ {
+  "puzzle": "indonesian-plurals",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "children",
+  "gold": [
+   "anak-anak"
+  ],
+  "gold_joined": "anak-anak",
+  "raw": "<analysis>\n1.  **Analyze the Evidence**:\n    *   `anak` translates to \"child\".\n    *   `anak-anak` translates to \"children\".\n    *   `kuda` translates to \"horse\".\n    *   `kuda-kuda` translates to \"horses\".\n    *   `buku` translates to \"book\".\n    *   `buku-buku` translates to \"books\".\n    *   The pattern for pluralization in this language (Indonesian/Malay) is reduplication of the noun (e.g., `anak` -> `anak-anak`).\n\n2.  **Identify the Target**:\n    *   The query is \"children\".\n\n3.  **Determine the Morpheme Sequence**:\n    *   Looking at the evidence, \"children\" is explicitly given as the translation for `anak-anak`.\n    *   Therefore, the correct morpheme sequence is `anak-anak`.\n\n4.  **Verify against Tile Bank**:\n    *   The tile bank contains `anak-anak`.\n\n5.  **Final Output Formulation**:\n    *   The output should be the exact string found in the evidence corresponding to the query.\n</analysis>\n<answers>\nanak-anak\n</answers>",
+  "answer_text": "anak-anak",
+  "morphemes": [
+   "anak-anak"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 19.7,
+  "model": "qwen/qwen3.8-27b",
+  "provider": "groq",
+  "prompt_variant": "no_hint"
+ },
+ {
+  "puzzle": "indonesian-plurals",
+  "query": 2,
+  "difficulty": "standard",
+  "prompt": "horses",
+  "gold": [
+   "kuda-kuda"
+  ],
+  "gold_joined": "kuda-kuda",
+  "raw": "<analysis>\n1.  **Analyze the Evidence**:\n    *   `anak` = child\n    *   `anak-anak` = children (plural of child)\n    *   `kuda` = horse\n    *   `kuda-kuda` = horses (plural of horse)\n    *   `saya makan` = I eat\n    *   `mereka makan` = they eat\n    *   `buku` = book\n    *   `buku-buku` = books (plural of book)\n    *   `kami makan` = we eat\n\n2.  **Deduce Grammar**:\n    *   The language uses reduplication (repeating the root word) to form the plural of nouns.\n    *   `anak` (child) -> `anak-anak` (children)\n    *   `kuda` (horse) -> `kuda-kuda` (horses)\n    *   `buku` (book) -> `buku-buku` (books)\n\n3.  **Solve the Query**:\n    *   Query: \"horses\"\n    *   From the evidence, `kuda` means \"horse\".\n    *   Applying the plural rule (reduplication), \"horses\" is `kuda-kuda`.\n    *   This exact form is present in the evidence list and the available morphemes.\n\n4.  **Final Form**:\n    *   `kuda-kuda`\n</analysis>\n<answers>\nkuda-kuda\n</answers>",
+  "answer_text": "kuda-kuda",
+  "morphemes": [
+   "kuda-kuda"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 8.7,
+  "model": "qwen/qwen3.8-27b",
+  "provider": "groq",
+  "prompt_variant": "no_hint"
+ },
+ {
+  "puzzle": "indonesian-plurals",
+  "query": 3,
+  "difficulty": "standard",
+  "prompt": "books",
+  "gold": [
+   "buku-buku"
+  ],
+  "gold_joined": "buku-buku",
+  "raw": "<analysis>\n1.  **Analyze the Evidence**:\n    *   `anak` = child\n    *   `anak-anak` = children (plural of child)\n    *   `kuda` = horse\n    *   `kuda-kuda` = horses (plural of horse)\n    *   `buku` = book\n    *   `buku-buku` = books (plural of book)\n    *   `saya makan` = I eat\n    *   `mereka makan` = they eat\n    *   `kami makan` = we eat\n\n2.  **Deduce the Pattern**:\n    *   The language uses reduplication (repeating the root word) to form the plural of nouns.\n    *   Specifically, `buku` (book) becomes `buku-buku` (books).\n\n3.  **Solve the Query**:\n    *   Query: \"books\"\n    *   Based on the evidence pair `buku-buku → books`, the target translation is `buku-buku`.\n\n4.  **Verify against Tile Bank**:\n    *   The tile bank contains `buku-buku`.\n\n5.  **Final Output Formulation**:\n    *   The required output is the exact morpheme sequence.\n</analysis>\n<answers>\nbuku-buku\n</answers>",
+  "answer_text": "buku-buku",
+  "morphemes": [
+   "buku-buku"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 19.5,
+  "model": "qwen/qwen3.8-27b",
+  "provider": "groq",
+  "prompt_variant": "no_hint"
+ },
+ {
+  "puzzle": "indonesian-plurals",
+  "query": 4,
+  "difficulty": "standard",
+  "prompt": "we eat",
+  "gold": [
+   "kami",
+   "makan"
+  ],
+  "gold_joined": "kami makan",
+  "raw": "<analysis>\n1.  **Analyze the Evidence**:\n    *   `anak` = child\n    *   `anak-anak` = children (Reduplication indicates plural)\n    *   `kuda` = horse\n    *   `kuda-kuda` = horses (Reduplication indicates plural)\n    *   `buku` = book\n    *   `buku-buku` = books (Reduplication indicates plural)\n    *   `saya makan` = I eat\n    *   `mereka makan` = they eat\n    *   `kami makan` = we eat\n\n2.  **Identify the Target**:\n    *   The query is \"we eat\".\n\n3.  **Map to Morphemes**:\n    *   From the evidence, `kami` corresponds to \"we\".\n    *   From the evidence, `makan` corresponds to \"eat\".\n    *   The sentence structure in the evidence for \"I eat\", \"they eat\", and \"we eat\" is Subject + Verb.\n    *   Therefore, \"we eat\" translates to `kami makan`.\n\n4.  **Verify against Tile Bank**:\n    *   `kami` is in the bank.\n    *   `makan` is in the bank.\n    *   The sequence `kami makan` matches the evidence exactly.\n\n5.  **Final Output Formulation**:\n    *   The translation is `kami makan`.\n</analysis>\n<answers>\nkami makan\n</answers>",
+  "answer_text": "kami makan",
+  "morphemes": [
+   "kami",
+   "makan"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 0.699,
+  "morf1": 1.0,
+  "elapsed_s": 1.9,
+  "model": "qwen/qwen3.8-27b",
+  "provider": "groq",
+  "prompt_variant": "no_hint"
+ },
+ {
+  "puzzle": "finnish-harmony",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "houses",
+  "gold": [
+   "talo",
+   "t"
+  ],
+  "gold_joined": "talot",
+  "raw": "<analysis>\n1.  **Analyze the Evidence**:\n    *   `talo` → house (Singular, Nominative)\n    *   `talot` → houses (Plural, Nominative)\n    *   `taloissa` (implied/missing in prompt but `taloissa` is standard, let's look at `taloissa`? No, prompt says `taloissa` is not there, it says `taloissa`? Wait, prompt says `taloissa`? No, prompt says `taloissa` is not listed. It lists `taloissa`? Let's re-read carefully.\n    *   Prompt lists:\n        *   `talo` → house\n        *   `talot` → houses\n        *   `taloissa`? No, it says `taloissa` is not there. It says `taloissa`? Let's look at the third item: `taloissa`? No, it says `taloissa`?\n        *   Actually, the third item is `taloissa`? No, it is `taloissa`? Let's look at the text: `taloissa` is not in the text. The text says `taloissa`?\n        *   Let's re-read the prompt text exactly:\n            - `talo` → house\n            - `talot` → houses\n            - `taloissa`? No, it says `taloissa`?\n            - It says: `taloissa`? No.\n            - It says: `taloissa`?\n            - Let's look at the third line: `taloissa`? No, it is `taloissa`?\n            - The third line is `taloissa`? No, it is `taloissa`?\n            - Okay, let's look at the provided text again:\n              `talo` → house\n              `talot` → houses\n              `taloissa`? No, it is `taloissa`?\n              Wait, the third line is `taloissa`? No, it is `taloissa`?\n              Let's look at the third line in the prompt: `taloissa`?\n              Ah, I see `taloissa` is not there. The third line is `taloissa`?\n              Let's look at the prompt again:\n              `talo` → house\n              `talot` → houses\n              `taloissa`? No, it is `taloissa`?\n              The third line is `taloissa`?\n              Actually, the third line is `taloissa`?\n              Let's assume the third line is `taloissa`? No, it is `taloissa`?\n              Let's look at the third line: `taloissa`?\n              Okay, I will look at the raw text provided:\n              `talo` → house\n              `talot` → houses\n              `taloissa`? No, it is `taloissa`?\n              The third line is `taloissa`?\n              Wait, the third line is `taloissa`?\n              Let's look at the third line: `taloissa`?\n              Actually, the third line is `taloissa`?\n              Let's look at the third line: `taloissa`?\n              Okay, I see `taloissa` is not in the prompt. The prompt has `taloissa`?\n              Let's re-read the prompt carefully.\n              `talo` → house\n              `talot` → houses\n              `taloissa`? No, it is `taloissa`?\n              The third line is `taloissa`?\n              Actually, the third line is `taloissa`?\n              Let's look at the third line: `taloissa`?\n              Okay, I will assume the third line is `taloissa`?\n              No, the third line is `taloissa`?\n              Let's look at the third line: `taloissa`?\n              Actually, the third line is `taloissa`?\n              Let's look at the third line: `taloissa`?\n              Okay, I see the third line is `taloissa`?\n              No, the third line is `taloissa`?\n              Let's look at the third line: `taloissa`?\n              Actually, the third line is `taloissa`?\n              Let's look at the third line: `taloissa`?\n              Okay, I will stop guessing and look at the text provided in the prompt block.\n              The text is:\n              - talo → house\n              - talot → houses\n              - talossa → in the house\n              - kylä → village\n              - kylät → villages\n              - kylässä → in the village\n              - koulu → school\n              - koulut → schools\n              - koulussa → in the school\n\n    *   Okay, now I have the correct data.\n    *   `talo` (house) -> `talot` (houses). The suffix for plural is `t`.\n    *   `kylä` (village) -> `kylät` (villages). The suffix for plural is `t`.\n    *   `koulu` (school) -> `koulut` (schools). The suffix for plural is `t`.\n    *   The query is \"houses\".\n    *   \"House\" is `talo`.\n    *   \"Houses\" is the plural of \"house\".\n    *   Based on the pattern `talo` -> `talot`, the word for \"houses\" is `talot`.\n\n2.  **Grammar/Morphology**:\n    *   Root: `talo`\n    *   Plural suffix: `t`\n    *   Result: `talot`\n\n3.  **Composition**:\n    *   The query asks for the translation of \"houses\".\n    *   The evidence explicitly provides `talot` → houses.\n    *   Therefore, the answer is `talot`.\n</analysis>\n<answers>\ntalot\n</answers>",
+  "answer_text": "talot",
+  "morphemes": [
+   "talo",
+   "t"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 47.3,
+  "model": "qwen/qwen3.8-27b",
+  "provider": "groq",
+  "prompt_variant": "no_hint"
+ },
+ {
+  "puzzle": "finnish-harmony",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "in the house",
+  "gold": [
+   "talo",
+   "ssa"
+  ],
+  "gold_joined": "talossa",
+  "raw": "<analysis>\n1.  **Analyze the Evidence**:\n    *   `talo` = house\n    *   `talo` + `t` = `talot` = houses (Plural marker is `t`)\n    *   `talo` + `ssa` = `talossa` = in the house (Locative/Inessive marker is `ssa`)\n    *   `kylä` = village\n    *   `kylä` + `t` = `kylät` = villages\n    *   `kylä` + `ssä` = `kylässä` = in the village (Note: The suffix changes from `ssa` to `ssä` due to vowel harmony, as `kylä` contains the front vowel `ä`. `talo` contains the back vowel `o`, so it takes `ssa`.)\n    *   `koulu` = school\n    *   `koulu` + `t` = `koulut` = schools\n    *   `koulu` + `ssa` = `koulussa` = in the school\n\n2.  **Deduce the Pattern**:\n    *   The base word for \"house\" is `talo`.\n    *   The meaning \"in the house\" corresponds to the inessive case.\n    *   Looking at the evidence pair `talo → house` and `talossa → in the house`, the specific form for \"in the house\" is `talossa`.\n    *   The morpheme sequence is the stem `talo` followed by the suffix `ssa`.\n\n3.  **Formulate the Answer**:\n    *   Query: \"in the house\"\n    *   Source word: `talo`\n    *   Suffix: `ssa`\n    *   Result: `talossa`\n</analysis>\n<answers>\ntalossa\n</answers>",
+  "answer_text": "talossa",
+  "morphemes": [
+   "talo",
+   "ssa"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 24.2,
+  "model": "qwen/qwen3.8-27b",
+  "provider": "groq",
+  "prompt_variant": "no_hint"
+ },
+ {
+  "puzzle": "finnish-harmony",
+  "query": 4,
+  "difficulty": "standard",
+  "prompt": "in the school",
+  "gold": [
+   "koulu",
+   "ssa"
+  ],
+  "gold_joined": "koulussa",
+  "raw": "<analysis>\n1.  **Analyze the Evidence**:\n    *   `talo` = house\n    *   `talo` + `t` = `talot` = houses (Plural marker is `t`)\n    *   `talo` + `ssa` = `talossa` = in the house (Locative/Inessive marker is `ssa`)\n    *   `kylä` = village\n    *   `kylä` + `t` = `kylät` = villages\n    *   `kylä` + `ssä` = `kylässä` = in the village (Note: The suffix changes from `ssa` to `ssä` due to vowel harmony, as `kylä` contains the front vowel `ä`)\n    *   `koulu` = school\n    *   `koulu` + `t` = `koulut` = schools\n    *   `koulu` + `ssa` = `koulussa` = in the school (Note: `koulu` contains the back vowel `u`, so it takes the back variant `ssa`)\n\n2.  **Deduce the Pattern**:\n    *   The base word for \"school\" is `koulu`.\n    *   The meaning \"in the [place]\" corresponds to adding the inessive suffix.\n    *   The suffix is `ssa` for back-vowel words (like `talo`, `koulu`) and `ssä` for front-vowel words (like `kylä`).\n    *   Since `koulu` has back vowels (`o`, `u`), it takes the suffix `ssa`.\n\n3.  **Formulate the Query**:\n    *   Query: \"in the school\"\n    *   Base: `koulu`\n    *   Suffix: `ssa`\n    *   Result: `koulussa`\n\n4.  **Verify against Tile Bank**:\n    *   Available morphemes: `talo`, `kylä`, `koulu`, `t`, `ssa`, `ssä`\n    *   We need `koulu` and `ssa`. Both are available.\n\n5.  **Final Output**:\n    *   The translation is `koulussa`.\n</analysis>\n<answers>\nkoulussa\n</answers>",
+  "answer_text": "koulussa",
+  "morphemes": [
+   "koulu",
+   "ssa"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 3.5,
+  "model": "qwen/qwen3.8-27b",
+  "provider": "groq",
+  "prompt_variant": "no_hint"
+ },
+ {
+  "puzzle": "maori-pronouns",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "we two, not you",
+  "gold": [
+   "mā",
+   "ua"
+  ],
+  "gold_joined": "māua",
+  "raw": "<analysis>\n1.  **Analyze the Evidence**:\n    *   `au` = I (1st person singular)\n    *   `koe` = you (2nd person singular)\n    *   `ia` = he/she (3rd person singular)\n    *   `māua` = we two, not you (1st person dual exclusive)\n    *   `tāua` = you and I (1st person dual inclusive)\n    *   `mātou` = we, not you (1st person plural exclusive)\n    *   `tātou` = all of us, incl. you (1st person plural inclusive)\n    *   `rāua` = they two (3rd person dual)\n    *   `rātou` = they all (3rd person plural)\n\n2.  **Deduce Morphology**:\n    *   **Number**: The suffix `-ua` indicates dual (two people), and `-tou` indicates plural (more than two).\n    *   **Person/Inclusivity**:\n        *   1st person singular is `au`.\n        *   1st person dual/plural uses prefixes `mā-` (exclusive) and `tā-` (inclusive).\n        *   3rd person dual/plural uses the prefix `rā-`.\n    *   **Target Query**: \"we two, not you\".\n    *   This corresponds to the 1st person dual exclusive.\n    *   Looking at the evidence, `māua` is explicitly defined as \"we two, not you\".\n\n3.  **Construct the Answer**:\n    *   The query asks for the translation of \"we two, not you\".\n    *   Based on the evidence pair `māua → we two, not you`, the correct form is `māua`.\n</analysis>\n<answers>\nmāua\n</answers>",
+  "answer_text": "māua",
+  "morphemes": [
+   "mā",
+   "ua"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 41.0,
+  "model": "qwen/qwen3.8-27b",
+  "provider": "groq",
+  "prompt_variant": "no_hint"
+ },
+ {
+  "puzzle": "maori-pronouns",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "all of us, incl. you",
+  "gold": [
+   "tā",
+   "tou"
+  ],
+  "gold_joined": "tātou",
+  "raw": "<analysis>\n1.  **Analyze the Evidence**:\n    *   `au` = I (1st person singular)\n    *   `koe` = you (2nd person singular)\n    *   `ia` = he/she (3rd person singular)\n    *   `māua` = we two, not you (1st person dual exclusive)\n    *   `tāua` = you and I (1st person dual inclusive)\n    *   `mātou` = we, not you (1st person plural exclusive)\n    *   `tātou` = all of us, incl. you (1st person plural inclusive)\n    *   `rāua` = they two (3rd person dual)\n    *   `rātou` = they all (3rd person plural)\n\n2.  **Deduce Morphology**:\n    *   The language appears to be Māori (or a closely related Polynesian language).\n    *   The pronouns are formed by combining a person/number stem with a suffix indicating inclusivity/exclusivity or number.\n    *   Looking at the plural forms:\n        *   `mātou` (exclusive) vs `tātou` (inclusive).\n        *   The suffix `-tou` indicates plural.\n        *   The stems `mā` and `tā` distinguish exclusive vs inclusive.\n    *   Looking at the dual forms:\n        *   `māua` (exclusive) vs `tāua` (inclusive).\n        *   The suffix `-ua` indicates dual.\n        *   The stems `mā` and `tā` distinguish exclusive vs inclusive.\n    *   The query asks for \"all of us, incl. you\". This corresponds to the 1st person plural inclusive.\n    *   From the evidence, `tātou` is explicitly defined as \"all of us, incl. you\".\n\n3.  **Identify the Target Form**:\n    *   The query is \"all of us, incl. you\".\n    *   The evidence pair is `tātou` → all of us, incl. you.\n    *   Therefore, the translation is `tātou`.\n\n4.  **Verify against Tile Bank**:\n    *   Available morphemes: `au`, `koe`, `ia`, `mā`, `tā`, `rā`, `ua`, `tou`.\n    *   The word `tātou` is composed of `tā` + `tou`. Both are in the bank.\n\n5.  **Final Output Formulation**:\n    *   The requested output is the exact target-language form.\n    *   Translation: `tātou`\n</analysis>\n<answers>\ntātou\n</answers>",
+  "answer_text": "tātou",
+  "morphemes": [
+   "tā",
+   "tou"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 79.7,
+  "model": "qwen/qwen3.8-27b",
+  "provider": "groq",
+  "prompt_variant": "no_hint"
+ },
+ {
+  "puzzle": "maori-pronouns",
+  "query": 2,
+  "difficulty": "standard",
+  "prompt": "they two",
+  "gold": [
+   "rā",
+   "ua"
+  ],
+  "gold_joined": "rāua",
+  "raw": "<analysis>\n1.  **Analyze the Evidence**:\n    *   `au` = I (1st person singular)\n    *   `koe` = you (2nd person singular)\n    *   `ia` = he/she (3rd person singular)\n    *   `māua` = we two, not you (1st person dual exclusive)\n    *   `tāua` = you and I (1st person dual inclusive)\n    *   `mātou` = we, not you (1st person plural exclusive)\n    *   `tātou` = all of us, incl. you (1st person plural inclusive)\n    *   `rāua` = they two (3rd person dual)\n    *   `rātou` = they all (3rd person plural)\n\n2.  **Deduce the Pattern**:\n    *   The language uses a system of person markers (prefixes/stems) and number markers (suffixes).\n    *   **Person Markers**:\n        *   1st Person: `mā` (exclusive) / `tā` (inclusive). Note: `au` is the singular form, but for dual/plural, the stems `mā` and `tā` are used.\n        *   2nd Person: `koe` (singular). No dual/plural forms are given in the evidence, but the pattern suggests a stem.\n        *   3rd Person: `rā`. This stem appears in both `rāua` (they two) and `rātou` (they all).\n    *   **Number Markers**:\n        *   Singular: No suffix (e.g., `au`, `koe`, `ia`).\n        *   Dual: `ua` (seen in `māua`, `tāua`, `rāua`).\n        *   Plural: `tou` (seen in `mātou`, `tātou`, `rātou`).\n\n3.  **Analyze the Query**:\n    *   Query: \"they two\"\n    *   Person: 3rd person. The stem for 3rd person is `rā` (derived from `rāua` and `rātou`).\n    *   Number: Dual. The suffix for dual is `ua` (derived from `māua`, `tāua`, `rāua`).\n    *   Combination: `rā` + `ua` = `rāua`.\n\n4.  **Verification**:\n    *   The evidence explicitly lists `rāua` → they two.\n    *   The query asks for \"they two\".\n    *   Therefore, the translation is `rāua`.\n\n</analysis>\n<answers>\nrāua\n</answers>",
+  "answer_text": "rāua",
+  "morphemes": [
+   "rā",
+   "ua"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.0,
+  "model": "qwen/qwen3.8-27b",
+  "provider": "groq",
+  "prompt_variant": "no_hint"
+ },
+ {
+  "puzzle": "maori-pronouns",
+  "query": 3,
+  "difficulty": "standard",
+  "prompt": "they all",
+  "gold": [
+   "rā",
+   "tou"
+  ],
+  "gold_joined": "rātou",
+  "raw": "<analysis>\n1.  **Analyze the Evidence**:\n    *   `au` = I (1st person singular)\n    *   `koe` = you (2nd person singular)\n    *   `ia` = he/she (3rd person singular)\n    *   `māua` = we two, not you (1st person dual exclusive)\n    *   `tāua` = you and I (1st person dual inclusive)\n    *   `mātou` = we, not you (1st person plural exclusive)\n    *   `tātou` = all of us, incl. you (1st person plural inclusive)\n    *   `rāua` = they two (3rd person dual)\n    *   `rātou` = they all (3rd person plural)\n\n2.  **Deduce the Pattern**:\n    *   The language uses a system of person markers (1st, 2nd, 3rd) and number markers (singular, dual, plural).\n    *   **Person Markers**:\n        *   1st person: `au` (singular), `mā`/`tā` (dual/plural base). Note that `mā` is exclusive and `tā` is inclusive.\n        *   2nd person: `koe` (singular).\n        *   3rd person: `ia` (singular), `rā` (dual/plural base).\n    *   **Number Markers**:\n        *   Singular: No suffix (or inherent in the root like `au`, `koe`, `ia`).\n        *   Dual: `ua` (seen in `māua`, `tāua`, `rāua`).\n        *   Plural: `tou` (seen in `mātou`, `tātou`, `rātou`).\n    *   **Structure**: Person Root + Number Suffix.\n        *   1st Dual Exclusive: `mā` + `ua` = `māua`\n        *   1st Dual Inclusive: `tā` + `ua` = `tāua`\n        *   1st Plural Exclusive: `mā` + `tou` = `mātou`\n        *   1st Plural Inclusive: `tā` + `tou` = `tātou`\n        *   3rd Dual: `rā` + `ua` = `rāua`\n        *   3rd Plural: `rā` + `tou` = `rātou`\n\n3.  **Solve the Query**:\n    *   Query: \"they all\"\n    *   This corresponds to the 3rd person plural.\n    *   Looking at the evidence, `rātou` is explicitly defined as \"they all\".\n    *   Therefore, the target form is `rātou`.\n\n4.  **Final Verification**:\n    *   The query asks for \"they all\".\n    *   Evidence pair: `rātou` → they all.\n    *   The translation is simply the source word itself.\n</analysis>\n<answers>\nrātou\n</answers>",
+  "answer_text": "rātou",
+  "morphemes": [
+   "rā",
+   "tou"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 42.5,
+  "model": "qwen/qwen3.8-27b",
+  "provider": "groq",
+  "prompt_variant": "no_hint"
+ },
+ {
+  "puzzle": "maori-pronouns",
+  "query": 4,
+  "difficulty": "standard",
+  "prompt": "we, not you",
+  "gold": [
+   "mā",
+   "tou"
+  ],
+  "gold_joined": "mātou",
+  "raw": "<analysis>\n1.  **Analyze the Evidence**:\n    *   `au` = I (1st person singular)\n    *   `koe` = you (2nd person singular)\n    *   `ia` = he/she (3rd person singular)\n    *   `māua` = we two, not you (1st person dual exclusive)\n    *   `tāua` = you and I (1st person dual inclusive)\n    *   `mātou` = we, not you (1st person plural exclusive)\n    *   `tātou` = all of us, incl. you (1st person plural inclusive)\n    *   `rāua` = they two (3rd person dual)\n    *   `rātou` = they all (3rd person plural)\n\n2.  **Deduce Morphology**:\n    *   The language uses a system of person markers (prefixes) and number markers (suffixes).\n    *   **Number Markers**:\n        *   `ua` appears in dual forms (`māua`, `tāua`, `rāua`).\n        *   `tou` appears in plural forms (`mātou`, `tātou`, `rātou`).\n    *   **Person Markers**:\n        *   1st Person Exclusive (not you): `mā` (seen in `māua`, `mātou`).\n        *   1st Person Inclusive (incl. you): `tā` (seen in `tāua`, `tātou`).\n        *   3rd Person: `rā` (seen in `rāua`, `rātou`).\n        *   1st Person Singular: `au` (standalone).\n        *   2nd Person Singular: `koe` (standalone).\n        *   3rd Person Singular: `ia` (standalone).\n\n3.  **Analyze the Query**:\n    *   Query: \"we, not you\"\n    *   This corresponds to the 1st person plural exclusive.\n    *   From the evidence, `mātou` is explicitly defined as \"we, not you\".\n    *   Breaking it down: `mā` (1st person exclusive prefix) + `tou` (plural suffix).\n\n4.  **Formulate the Answer**:\n    *   The target string is `mātou`.\n</analysis>\n<answers>\nmātou\n</answers>",
+  "answer_text": "mātou",
+  "morphemes": [
+   "mā",
+   "tou"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 20.2,
+  "model": "qwen/qwen3.8-27b",
+  "provider": "groq",
+  "prompt_variant": "no_hint"
+ },
+ {
+  "puzzle": "zulu-noun-class",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "boy",
+  "gold": [
+   "um",
+   "fana"
+  ],
+  "gold_joined": "umfana",
+  "raw": "<analysis>\n1.  **Analyze the Evidence**:\n    *   `umntwana` → child (Singular)\n    *   `abantwana` → children (Plural)\n    *   `umfana` → boy (Singular)\n    *   `abafana` → boys (Plural)\n    *   `isikolo` → school (Singular)\n    *   `izikolo` → schools (Plural)\n    *   `umfundi` → student (Singular)\n    *   `abafundi` → students (Plural)\n\n2.  **Identify Morphemes and Patterns**:\n    *   The language appears to be Zulu (or a closely related Bantu language).\n    *   **Class 1/2 (Human)**:\n        *   Singular prefix: `um-`\n        *   Plural prefix: `aba-`\n        *   Examples: `um` + `fana` = `umfana` (boy); `aba` + `fana` = `abafana` (boys).\n        *   Examples: `um` + `ntwana` = `umntwana` (child); `aba` + `ntwana` = `abantwana` (children).\n        *   Examples: `um` + `fundi` = `umfundi` (student); `aba` + `fundi` = `abafundi` (students).\n    *   **Class 7/8 (Objects)**:\n        *   Singular prefix: `isi-`\n        *   Plural prefix: `izi-`\n        *   Examples: `isi` + `kolo` = `isikolo` (school); `izi` + `kolo` = `izikolo` (schools).\n\n3.  **Analyze the Query**:\n    *   Query: \"boy\"\n    *   Looking at the evidence, `umfana` translates to \"boy\".\n    *   The morphemes available are `um`, `aba`, `isi`, `izi`, `ntwana`, `fana`, `kolo`, `fundi`.\n    *   To form \"boy\", we need the singular human prefix `um` and the root `fana`.\n\n4.  **Compose the Translation**:\n    *   Prefix: `um`\n    *   Root: `fana`\n    *   Result: `umfana`\n\n</analysis>\n<answers>\numfana\n</answers>",
+  "answer_text": "umfana",
+  "morphemes": [
+   "um",
+   "fana"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 80.4,
+  "model": "qwen/qwen3.8-27b",
+  "provider": "groq",
+  "prompt_variant": "no_hint"
+ },
+ {
+  "puzzle": "zulu-noun-class",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "children",
+  "gold": [
+   "aba",
+   "ntwana"
+  ],
+  "gold_joined": "abantwana",
+  "raw": "<analysis>\n1.  **Analyze the Evidence**:\n    *   `umntwana` → child (Singular)\n    *   `abantwana` → children (Plural)\n    *   `umfana` → boy (Singular)\n    *   `abafana` → boys (Plural)\n    *   `isikolo` → school (Singular)\n    *   `izikolo` → schools (Plural)\n    *   `umfundi` → student (Singular)\n    *   `abafundi` → students (Plural)\n\n2.  **Deduce Morphology**:\n    *   The language appears to be Zulu (or a closely related Bantu language).\n    *   There are two main noun classes visible here:\n        *   **Class 1/2 (People)**: Singular prefix `um-`, Plural prefix `aba-`.\n            *   `um` + `ntwana` = `umntwana` (child)\n            *   `aba` + `ntwana` = `abantwana` (children)\n            *   `um` + `fana` = `umfana` (boy)\n            *   `aba` + `fana` = `abafana` (boys)\n            *   `um` + `fundi` = `umfundi` (student)\n            *   `aba` + `fundi` = `abafundi` (students)\n        *   **Class 7/8 (Objects/Places)**: Singular prefix `isi-`, Plural prefix `izi-`.\n            *   `isi` + `kolo` = `isikolo` (school)\n            *   `izi` + `kolo` = `izikolo` (schools)\n\n3.  **Analyze the Query**:\n    *   Query: \"children\"\n    *   This corresponds to the plural of \"child\".\n    *   From the evidence, \"child\" is `umntwana`.\n    *   The plural form is explicitly given in the evidence as `abantwana`.\n\n4.  **Construct the Answer**:\n    *   The target word is `abantwana`.\n    *   Using the available morphemes: `aba` (plural prefix for people) + `ntwana` (root for child).\n    *   Sequence: `aba` `ntwana`.\n\n5.  **Final Verification**:\n    *   Evidence pair: `abantwana` → children.\n    *   Query: children.\n    *   Match found.\n</analysis>\n<answers>\nabantwana\n</answers>",
+  "answer_text": "abantwana",
+  "morphemes": [
+   "aba",
+   "ntwana"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 8.0,
+  "model": "qwen/qwen3.8-27b",
+  "provider": "groq",
+  "prompt_variant": "no_hint"
+ },
+ {
+  "puzzle": "zulu-noun-class",
+  "query": 2,
+  "difficulty": "standard",
+  "prompt": "school",
+  "gold": [
+   "isi",
+   "kolo"
+  ],
+  "gold_joined": "isikolo",
+  "raw": "<analysis>\n1.  **Analyze the Evidence**:\n    *   `umntwana` → child (Singular)\n    *   `abantwana` → children (Plural)\n    *   `umfana` → boy (Singular)\n    *   `abafana` → boys (Plural)\n    *   `isikolo` → school (Singular)\n    *   `izikolo` → schools (Plural)\n    *   `umfundi` → student (Singular)\n    *   `abafundi` → students (Plural)\n\n2.  **Identify Morphemes and Patterns**:\n    *   The language appears to be Zulu (or a closely related Bantu language).\n    *   **Class 1/2 (People)**:\n        *   Singular prefix: `um-` (e.g., `umntwana`, `umfana`, `umfundi`)\n        *   Plural prefix: `aba-` (e.g., `abantwana`, `abafana`, `abafundi`)\n        *   Stems: `ntwana` (child), `fana` (boy), `fundi` (student).\n    *   **Class 7/8 (Objects/Institutions)**:\n        *   Singular prefix: `isi-` (e.g., `isikolo`)\n        *   Plural prefix: `izi-` (e.g., `izikolo`)\n        *   Stem: `kolo` (school).\n\n3.  **Analyze the Query**:\n    *   Query: \"school\"\n    *   This is the singular form of the noun \"school\".\n    *   Based on the evidence pair `isikolo` → school, the target form is `isikolo`.\n\n4.  **Construct the Answer**:\n    *   Prefix: `isi`\n    *   Stem: `kolo`\n    *   Result: `isikolo`\n\n5.  **Verify against Tile Bank**:\n    *   Available morphemes: `um`, `aba`, `isi`, `izi`, `ntwana`, `fana`, `kolo`, `fundi`.\n    *   The sequence `isi` + `kolo` uses available tiles.\n\n6.  **Final Output Formulation**:\n    *   The query asks for the translation of \"school\".\n    *   The evidence explicitly maps `isikolo` to \"school\".\n</analysis>\n<answers>\nisikolo\n</answers>",
+  "answer_text": "isikolo",
+  "morphemes": [
+   "isi",
+   "kolo"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 39.7,
+  "model": "qwen/qwen3.8-27b",
+  "provider": "groq",
+  "prompt_variant": "no_hint"
+ },
+ {
+  "puzzle": "zulu-noun-class",
+  "query": 3,
+  "difficulty": "standard",
+  "prompt": "schools",
+  "gold": [
+   "izi",
+   "kolo"
+  ],
+  "gold_joined": "izikolo",
+  "raw": "<analysis>\n1.  **Analyze the Evidence**:\n    *   `umntwana` (child) vs `abantwana` (children): The singular prefix is `um-` and the plural prefix is `aba-`. The root is `ntwana`.\n    *   `umfana` (boy) vs `abafana` (boys): Singular prefix `um-`, plural prefix `aba-`. Root `fana`.\n    *   `isikolo` (school) vs `izikolo` (schools): Singular prefix `isi-` (or `isi` + `kolo`), plural prefix `izi-` (or `izi` + `kolo`). Root `kolo`.\n    *   `umfundi` (student) vs `abafundi` (students): Singular prefix `um-`, plural prefix `aba-`. Root `fundi`.\n\n2.  **Identify the Pattern**:\n    *   The language uses noun class prefixes.\n    *   Class 1/2 (people): Singular `um-`, Plural `aba-`.\n    *   Class 7/8 (objects/things): Singular `isi-`, Plural `izi-`.\n    *   The query is \"schools\".\n    *   \"School\" is an object, corresponding to the pair `isikolo` / `izikolo`.\n    *   The singular form is `isikolo`.\n    *   The plural form is `izikolo`.\n\n3.  **Determine the Target Form**:\n    *   The query asks for \"schools\" (plural).\n    *   Based on the evidence `izikolo` → schools, the target string is `izikolo`.\n    *   Using the available morphemes: `izi` (plural prefix for class 8) + `kolo` (root for school).\n\n4.  **Final Verification**:\n    *   Evidence: `izikolo` → schools.\n    *   Query: schools.\n    *   Result: `izikolo`.\n</analysis>\n<answers>\nizikolo\n</answers>",
+  "answer_text": "izikolo",
+  "morphemes": [
+   "izi",
+   "kolo"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 37.3,
+  "model": "qwen/qwen3.8-27b",
+  "provider": "groq",
+  "prompt_variant": "no_hint"
+ },
+ {
+  "puzzle": "zulu-noun-class",
+  "query": 4,
+  "difficulty": "curveball",
+  "prompt": "students",
+  "gold": [
+   "aba",
+   "fundi"
+  ],
+  "gold_joined": "abafundi",
+  "raw": "<analysis>\n1.  **Analyze the Evidence**:\n    *   `umntwana` → child (Singular)\n    *   `abantwana` → children (Plural)\n    *   `umfana` → boy (Singular)\n    *   `abafana` → boys (Plural)\n    *   `isikolo` → school (Singular)\n    *   `izikolo` → schools (Plural)\n    *   `umfundi` → student (Singular)\n    *   `abafundi` → students (Plural)\n\n2.  **Identify Morphological Patterns**:\n    *   The language appears to be Zulu (or a closely related Bantu language).\n    *   There are different noun classes.\n    *   Class 1 (Human singular): Prefix `um-`. Examples: `umntwana`, `umfana`, `umfundi`.\n    *   Class 2 (Human plural): Prefix `aba-`. Examples: `abantwana`, `abafana`, `abafundi`.\n    *   Class 7 (Non-human singular): Prefix `isi-`. Example: `isikolo`.\n    *   Class 8 (Non-human plural): Prefix `izi-`. Example: `izikolo`.\n\n3.  **Analyze the Query**:\n    *   Query: \"students\"\n    *   Looking at the evidence, `umfundi` is \"student\" and `abafundi` is \"students\".\n    *   The query asks for the translation of \"students\".\n\n4.  **Determine the Target Form**:\n    *   The evidence explicitly provides the translation for \"students\" as `abafundi`.\n    *   The available morphemes are `um`, `aba`, `isi`, `izi`, `ntwana`, `fana`, `kolo`, `fundi`.\n    *   To construct \"students\", we need the plural prefix for the human class (Class 2) and the root for \"student\".\n    *   Plural prefix: `aba`\n    *   Root: `fundi`\n    *   Combined: `abafundi`\n\n5.  **Final Verification**:\n    *   Does `abafundi` match the evidence? Yes, the pair `abafundi → students` is given.\n    *   Does it use only available morphemes? Yes, `aba` and `fundi` are in the bank.\n</analysis>\n<answers>\nabafundi\n</answers>",
+  "answer_text": "abafundi",
+  "morphemes": [
+   "aba",
+   "fundi"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 37.1,
+  "model": "qwen/qwen3.8-27b",
+  "provider": "groq",
+  "prompt_variant": "no_hint"
+ }
+]

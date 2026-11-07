@@ -133,6 +133,14 @@ def build_context(puzzle: dict, query: dict, prompt_variant: str = "default") ->
 
 VOWELS = set("aeiouã")
 
+# Models emit typographic dashes (U+2010..U+2015, minus sign, small/fullwidth
+# hyphen) where the data uses ASCII '-'. Normalize before any comparison.
+UNICODE_DASHES = dict.fromkeys(map(ord, "‐‑‒–—―−﹣－"), "-")
+
+
+def normalize_dashes(s: str) -> str:
+    return s.translate(UNICODE_DASHES)
+
 
 def segment_from_bank(joined: str, tiles: list[str]) -> list[str] | None:
     """Segment a joined word using the puzzle's tile bank.
@@ -177,6 +185,45 @@ def surface_forms(morphs: list[str]) -> set[str]:
     return {exact, elided}
 
 
+def segment_from_bank_elided(joined: str, tiles: list[str]) -> list[str] | None:
+    """Segment like segment_from_bank, but allow vowel elision at boundaries.
+
+    Bantu-style phonology drops the first char of a morpheme when the
+    previous morpheme ends in a vowel and it begins with one ('tu'+'li'+'imba'
+    surfaces as 'tulimba'). Exact matching fails on such forms; this variant
+    lets a vowel-initial tile match its remainder after a vowel-final tile.
+    """
+    bank = sorted(set(tiles), key=len, reverse=True)
+    memo: dict[tuple[int, bool], list[str] | None] = {}
+
+    def walk(i: int, prev_vowel: bool) -> list[str] | None:
+        if i == len(joined):
+            return []
+        key = (i, prev_vowel)
+        if key in memo:
+            return memo[key]
+        for tile in bank:
+            if joined.startswith(tile, i):
+                rest = walk(i + len(tile), tile[-1] in VOWELS)
+                if rest is not None:
+                    memo[key] = [tile, *rest]
+                    return memo[key]
+            if (
+                prev_vowel
+                and len(tile) > 1
+                and tile[0] in VOWELS
+                and joined.startswith(tile[1:], i)
+            ):
+                rest = walk(i + len(tile) - 1, tile[-1] in VOWELS)
+                if rest is not None:
+                    memo[key] = [tile, *rest]
+                    return memo[key]
+        memo[key] = None
+        return None
+
+    return walk(0, False)
+
+
 def parse_morphemes(
     raw: str, gold: list[str], tiles: list[str] | None = None
 ) -> list[str]:
@@ -192,15 +239,50 @@ def parse_morphemes(
     # (`<mikhu n>`) — neither is an answer, so recover the real text instead.
     if not answer or re.fullmatch(r"</?[a-zA-Z_]+>", answer):
         return _recover_answer(raw, tiles)
-    answer = answer.strip(".!?;:，。")
+    answer = normalize_dashes(answer.strip(".!?;:，。"))
     # Some models join morphemes with no spaces; if the gold answer is a known
     # segmentation, try to recover by finding contiguous morpheme pieces.
     if " " not in answer:
-        segmented = segment_from_bank(answer.replace("-", ""), tiles) or []
-        if segmented:
-            return segmented
+        # Try the answer verbatim first: bank tiles may themselves contain
+        # hyphens ('anak-anak' is a single morpheme in Indonesian-plurals).
+        # Only strip boundary markers as a fallback.
+        for variant in (
+            answer,
+            answer.replace("-", ""),
+            answer.replace("+", ""),
+            answer.replace("-", "").replace("+", ""),
+        ):
+            segmented = segment_from_bank(variant, tiles)
+            if segmented:
+                return segmented
+        stripped = answer.replace("-", "").replace("+", "")
+        elided = segment_from_bank_elided(stripped, tiles)
+        if elided:
+            return elided
         return split_joined_morphemes(answer, gold)
-    return [m.strip() for m in re.split(r"\s+", answer) if m.strip()]
+    # Whitespace-split, then refine: a token that is not itself a bank tile
+    # may hide internal boundaries the model didn't mark ('ni lernis' where
+    # gold is ni+lern+is). Segment such tokens against the bank.
+    return _segment_spaced(answer, tiles)
+
+
+def _segment_spaced(answer: str, tiles: list[str]) -> list[str]:
+    tiles_set = set(tiles)
+    out: list[str] = []
+    for tok in (m.strip() for m in re.split(r"\s+", answer) if m.strip()):
+        core = tok.strip(".,!?;:，。")
+        if core in tiles_set:
+            out.append(core)
+            continue
+        core_norm = normalize_dashes(core).replace("-", "").replace("+", "")
+        seg = segment_from_bank(core_norm, tiles) or (
+            segment_from_bank_elided(core_norm, tiles)
+        )
+        if seg and len(seg) > 1:
+            out.extend(seg)
+        else:
+            out.append(core)
+    return out
 
 
 def _recover_answer(raw: str, tiles: list[str]) -> list[str]:
@@ -216,8 +298,10 @@ def _recover_answer(raw: str, tiles: list[str]) -> list[str]:
         if not cand or re.fullmatch(r"</?[a-zA-Z_]+>", cand):
             continue
         if " " in cand:
-            return [m for m in re.split(r"\s+", cand) if m]
-        segmented = segment_from_bank(cand.replace("-", "").replace(" ", ""), tiles)
+            return _segment_spaced(normalize_dashes(cand), tiles)
+        segmented = segment_from_bank(
+            normalize_dashes(cand).replace("-", "").replace(" ", ""), tiles
+        )
         if segmented:
             return segmented
     return []

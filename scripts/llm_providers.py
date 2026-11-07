@@ -63,6 +63,13 @@ PROVIDERS = [
         "env_key": "GOOGLE_API_KEY",
         "default_url": "https://generativelanguage.googleapis.com/v1beta/openai",
     },
+    {
+        # Neon AI Gateway — frontier models (claude-*, gpt-*, gemini-*, grok-*)
+        "name": "neon",
+        "env_key": "NEON_AI_GATEWAY_TOKEN",
+        "env_url": "NEON_AI_GATEWAY_BASE_URL",
+        "default_url": "",
+    },
 ]
 
 RETRYABLE = {429, 500, 502, 503, 504}
@@ -156,7 +163,11 @@ def call_chat(
         except urllib.error.HTTPError as e:
             body = e.read().decode(errors="replace")[:200]
             last = RuntimeError(f"{provider['name']} HTTP {e.code}: {body}")
-            if e.code not in RETRYABLE:
+            # Neon gateway intermittently routes to an upstream that rejects
+            # requests claiming a temperature parameter even when none was
+            # sent — flaky, worth retrying on the same provider.
+            flaky_temp = e.code == 400 and "temperature" in body
+            if e.code not in RETRYABLE and not flaky_temp:
                 raise last from e
         except (urllib.error.URLError, TimeoutError) as e:
             last = RuntimeError(f"{provider['name']} network error: {e}")

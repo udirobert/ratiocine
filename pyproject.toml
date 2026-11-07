@@ -31,6 +31,8 @@ ignore = [
 "hf-pipeline/train_modal.py" = ["T20", "B007"]
 "hf-pipeline/eval_modal.py" = ["T20"]
 "scripts/*.py" = ["T20"]  # report/probe/run CLIs print to stdout by design
+"scripts/gen_puzzles.py" = ["B007", "F841", "B905"]  # research generator; unused loop slots are intentional
+"eval-hackathon/*.py" = ["T20", "B007"]  # eval CLIs print progress; loop vars name trial/seed slots
 
 [tool.ruff.format]
 quote-style = "double"

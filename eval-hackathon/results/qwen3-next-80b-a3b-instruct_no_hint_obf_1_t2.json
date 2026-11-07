@@ -1,0 +1,1209 @@
+[
+ {
+  "puzzle": "apurina-verb-agreement",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "I am eating",
+  "gold": [
+   "ʡɗɪɪ",
+   "ɫəɳɪ",
+   "ɫɪ"
+  ],
+  "gold_joined": "ʡɗɪɪɫəɳɪɫɪ",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n\nWe are given 10 evidence pairs showing verb phrases in a language with subject agreement and verb roots. The query is \"I am eating\", and we must form it using the available morphemes.\n\nFrom the examples:\n- \"I am going\" = ʡɗɪɪƍʊɳɪɫɪ → ʡɗɪɪ + ƍʊɳɪ + ɫɪ\n- \"you are going\" = ɯƍʊɳɪɫɪ → ɯ + ƍʊɳɪ + ɫɪ\n- \"he/she is going\" = ɪƍʊɳɪɫɪ → ɪ + ƍʊɳɪ + ɫɪ\n- \"I am eating\" = ʡɗɪɪɫəɳɪɫɪ → ʡɗɪɪ + ɫəɳɪ + ɫɪ\n- \"you are eating\" = ɯɫəɳɪɫɪ → ɯ + ɫəɳɪ + ɫɪ\n- \"he/she is eating\" = ɪɫəɳɪɫɪ → ɪ + ɫəɳɪ + ɫɪ\n- \"I am speaking\" = ʡɗɪɪʡøɫɪɳɪɫɪ → ʡɗɪɪ + ʡøɫɪɳɪ + ɫɪ\n- \"you are speaking\" = ɯʡøɫɪɳɪɫɪ → ɯ + ʡøɫɪɳɪ + ɫɪ\n- \"he/she is speaking\" = ɪʡøɫɪɳɪɫɪ → ɪ + ʡøɫɪɳɪ + ɫɪ\n- \"we (everyone) are going\" = ɫɪɪƍʊɳɪɫɪ → ɫɪɪ + ƍʊɳɪ + ɫɪ\n\nObservation:\n- Subject prefixes:  \n  - I = ʡɗɪɪ  \n  - you = ɯ  \n  - he/she = ɪ  \n  - we = ɫɪɪ  \n- Verb roots:  \n  - go = ƍʊɳɪ  \n  - eat = ɫəɳɪ  \n  - speak = ʡøɫɪɳɪ  \n- Suffix = ɫɪ consistently appears at the end of all forms.\n\nBut note: in \"I am going\" = ʡɗɪɪƍʊɳɪɫɪ, the suffix after the verb root is ɫɪ, but the last two morphemes are ƍʊɳɪ + ɫɪ.\n\nWait — look at \"I am eating\": ʡɗɪɪɫəɳɪɫɪ → this is ʡɗɪɪ + ɫəɳɪ + ɫɪ. So the suffix is always ɫɪ.\n\nBut then what about ɳɪɫɪ? Look at the available morphemes: ɳɪɫɪ is given as a morpheme.\n\nWait —  \"ʡɗɪɪƍʊɳɪɫɪ\" → if we break into available morphemes:  \nPossible segmentation: ʡɗɪɪ + ƍʊɳɪ + ɫɪ → but ɳɪɫɪ is listed as a morpheme, so perhaps ƍʊ + ɳɪɫɪ? No — ƍʊɳɪɫɪ is not in the morpheme list. In the morpheme list, we have:  \nAvailable: ʡɗɪɪ, ɯ, ɪ, ɫɪɪ, ƍʊɳɪ, ɫəɳɪ, ʡøɫɪɳɪ, ɫɪ, ɳɪɫɪ\n\nAh! So ƍʊɳɪ is a single morpheme (go), ɫəɳɪ is eat, ʡøɫɪɳɪ is speak, and ɫɪ is the suffix? But then why is ɳɪɫɪ listed?\n\nLook again:\n\n\"I am going\" = ʡɗɪɪƎʊɳɪɫɪ → 3 parts: subject + verb root + ?  \nBut \"ɳɪɫɪ\" is listed as an available morpheme.\n\nWait — maybe the structure is: subject + verb root + ɳɪɫɪ? But then \"I am going\" would be ʡɗɪɪ + ƍʊ + ɳɪɫɪ? But ƍʊ is not a morpheme.\n\nAlternatively: perhaps the verb root includes ɳɪ, and ɫɪ is separate? Let’s try matching available morphemes:\n\nEvidence: ʡɗɪɪƍʊɳɪɫɪ  \nMorphemes available: ʡɗɪɪ, ƍʊɳɪ, ɫɪ — yes, and ƍʊɳɪ is an available morpheme.  \nSimilarly: ɫəɳɪ and ʡøɫɪɳɪ are available.\n\nSo verb roots are:  \n- go → ƍʊɳɪ  \n- eat → ɫəɳɪ  \n- speak → ʡøɫɪɳɪ  \n\nAnd then ɫɪ is added to each? But \"I am going\" = ʡɗɪɪ + ƍʊɳɪ + ɫɪ → 4 morphemes? No: ʡɗɪɪ + ƍʊɳɪ + ɫɪ = three morphemes.\n\nBut look at the example: ʡɗɪɪƍʊɳɪɫɪ — if ƍʊɳɪ is a morpheme and ɫɪ is another, then the string is ʡɗɪɪ + ƍʊɳɪ + ɫɪ.\n\nBut then why is \"ɳɪɫɪ\" in the available morpheme list? Is it a red herring? Or is it used elsewhere?\n\nWait — the tenth example: \"we (everyone) are going\" = ɫɪɪƍʊɳɪɫɪ  \n→ ɫɪɪ + ƍʊɳɪ + ɫɪ\n\nSo ლɪɪ is 'we', ƍʊɳɪ is 'go', ɫɪ is...?\n\nBut then what is ɳɪɫɪ? It is in the available morphemes but not obviously used. Perhaps it’s a misdirect? Or perhaps the suffix is ɳɪɫɪ?\n\nWait — let's test that.\n\nSuppose the full verb form is: subject + verb_root + ɳɪɫɪ?\n\nThen \"I am going\": ʡɗɪɪ + ƍʊ + ɳɪɫɪ → but ƍʊ is not a morpheme; only ƍʊɳɪ is.\n\nWait — if we assume the verb root ends in ɳɪ and the suffix is ɫɪ, then:\n\n\"go\" = ƍʊɳɪ — so ƍʊ is the stem, and ɳɪ is part of it? But ɳɪ is not a separate morpheme.\n\nAlternatively, maybe the verb root is ƍʊ, and ɳɪɫɪ is the inflectional suffix? But then:\n\n\"go\" → ƍʊ + ɳɪɫɪ → ƍʊɳɪɫɪ — but the example has ƍʊɳɪɫɪ — that matches!\n\nWait — let’s re-analyze \"I am going\" = ʡɗɪɪƍʊɳɪɫɪ\n\nIf ɳɪɫɪ is a suffix meaning \"present tense\" (like \"am/is/are doing\"), then:\n\nI → ʡɗɪɪ  \ngo → ƍʊ  \npresent → ɳɪɫɪ  \nThen: ʡɗɪɪ + ƍʊ + ɳɪɫɪ = ʡɗɪɪƍʊɳɪɫɪ — matches!\n\nBut ƍʊ is NOT listed as a morpheme. Available morphemes: ƍʊɳɪ — not ƍʊ.\n\nSimilarly, \"eat\" = ɫəɳɪ — which would then be ɫə + ɳɪ — and then + ɫɪ? But then it becomes ɫəɳɪɫɪ — but the word is ʡɗɪɪɫəɳɪɫɪ — so ɫəɳɪ is listed as one morpheme.\n\nThe available morphemes are:  \n- ʡɗɪɪ (I)  \n- ɯ (you)  \n- ɪ (he/she)  \n- ɫɪɪ (we)  \n- ƍʊɳɪ (go)  \n- ɫəɳɪ (eat)  \n- ʡøɫɪɳɪ (speak)  \n- ɫɪ (???)  \n- ɳɪɫɪ (???)\n\nWait — look at the \"eat\" form: ʡɗɪɪɫəɳɪɫɪ  \nIf ɫəɳɪ is one morpheme (eat), and then ɫɪ is added, that's 3 parts.\n\nBut also: ʡɗɪɪ + ɫəɳɪ + ɫɪ — yes, matches.\n\nBut then ɳɪɫɪ is also listed. Why?\n\nUnless ɳɪɫɪ is not used as a suffix — perhaps it’s a red herring? Or perhaps in some forms the ɳɪ is shared?\n\nWait — all verb stems end in ɳɪ:  \ngo → ƍʊɳɪ  \neat → ɫəɳɪ  \nspeak → ʡøɫɪɳɪ  \n\nBut then we have ɫɪ as a separate suffix in all of them. So maybe ɳɪ is part of the root, and ɫɪ is the tense/aspect particle (present continuous?).\n\nAnd ɳɪɫɪ is listed — but it’s never used as a unit. The word ɳɪɫɪ never appears as a substring? Let’s check:\n\nIn \"I am going\": ƍʊɳɪɫɪ — substring ɳɪɫɪ exists: positions 4-7?  \nLet me index:  \nʡ ｄ ɪ ɪ  dar ʊ ɳ ɪ ɫ ɪ — wait, it's a string: ʡɗɪɪƍʊɳɪɫɪ\n\nBreak:  \n- ʡɗɪɪ (4 chars)  \n- ƍʊ (2)  \n- ɳɪ (2)  \n- ɫɪ (2)  \nTotal: 4+2+2+2=10 — matches.\n\nNow, ɳɪ + ɫɪ = ɳɪɫɪ — so ɳɪɫɪ is literally the last two morphemes. But it's not used as a single unit; it's formed from two separate morphemes: ɳɪ is part of the verb root, and ɫɪ is the suffix.\n\nBut the available morphemes include both ƍʊɳɪ and ɳɪɫɪ — meaning ƍʊɳɪ is supplied as, so we must use ƍʊɳɪ as a whole.\n\nSo for \"eat\": ɫəɳɪ is the whole verb root → then + ɫɪ → so ɫəɳɪɫɪ\n\nSo the pattern is:\n\n[subject] + [verb root] + [ɫɪ]\n\nAnd the verb roots are:  \n- go → ƍʊɳɪ  \n- eat → ɫəɳɪ  \n- speak → ʡøɫɪɳɪ\n\nSubject:  \n- I → ʡɗɪɪ  \n- you → ɯ  \n- he/she → ɪ  \n- we → ɫɪɪ\n\nQuery: \"I am eating\"  \n→ subject: ʡɗɪɪ  \n→ verb root: ɫəɳɪ  \n→ suffix: ɫɪ\n\nSo full form: ʡɗɪɪ + ɫəɳɪ + ɫɪ = ʡɗɪɪɫəɳɪɫɪ\n\nThis is exactly the 4th example, already given: ʡɗɪɪɫəɳɪɫɪ → I am eating.\n\nSo we have confirmed the structure.\n\nStep 2: Grammar — no agreement changes, no case or tense beyond subject + verb root + ɫɪ. All sentences follow Subject + VerbRoot + ɫɪ.\n\nStep 3: Compose the exact form: ʡɗɪɪɫəɳɪɫɪ\n\n</analysis>\n<answers>\nʡɗɪɪɫəɳɪɫɪ\n</answers>",
+  "answer_text": "ʡɗɪɪɫəɳɪɫɪ",
+  "morphemes": [
+   "ʡɗɪɪ",
+   "ɫəɳɪ",
+   "ɫɪ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 13.2,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "apurina-verb-agreement",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "we (everyone) are eating",
+  "gold": [
+   "ɫɪɪ",
+   "ɫəɳɪ",
+   "ɫɪ"
+  ],
+  "gold_joined": "ɫɪɪɫəɳɪɫɪ",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n\nWe are given 9 evidence pairs and a tile bank of morphemes. The goal is to translate \"we (everyone) are eating\".\n\nLet’s analyze the data:\n\nFirst, isolate the verb root and subject prefixes.\n\nFrom \"I am going\": ʡɗɪɪƍʊɳɪɫɪ  \n\"you are going\": ɯƍʊɳɪɫɪ  \n\"he/she is going\": ɪétrangerɪɫɪ → wait, let me check: it's ɪƍʊɳɪɫɪ\n\nSo for \"going\":\n- I: ʡɗɪɪ + ƍʊɳɪ + ɫɪ? → but the full word is ʡɗɪɪƍʊɳɪɫɪ\n- You: ɯ + ƍʊɳɪ + ɫɪ? → ɯƍʊɳɪɫɪ\n- He/She: ɪ + ƍʊɳɪ + ɫɪ? → ɪƍʊɳɪɫɪ\n\nSo it seems the structure is: [Subject prefix] + [verb root for go] + [some ending]\n\nBut note: the ending part ɫɪ appears in all — perhaps it's a tense/aspect marker? But then we see \"eating\" and \"speaking\" have different verb roots but similar endings.\n\nLook at eating:\n- I: ʡɗɪɪɫəɳɪɫɪ\n- You: ɯɫəɳɪɫɪ\n- He/She: ɪɫəɳɪɫɪ\n\nAnd speaking:\n- I: ʡɗɪɪʡøɫɪɳɪɫɪ\n- You: ɯʡøɫɪɳɪɫɪ\n- He/She: ɪʡøɫɪɳɪɫɪ\n\nPattern:  \nSubject prefix + Verb root + ɳɪɫɪ\n\nWait — let’s break down:\n\nGo: ƍʊɳɪ  \nEat: ɫəɳɪ  \nSpeak: ʡøɫɪɳɪ\n\nNote the endings:\n- Go: 派遣² ƍʊɳɪ + ɫɪ? → full = ʡɗɪɪƍʊɳɪɫɪ\nBut “ɫɪ” is listed in the tile bank separately.\n\nCompare all three:\ngoing: ʡɗɪɪ + ƍʊɳɪ + ɫɪ? → ʡɗɪɪƍʊɳɪɫɪ  \neating: ʡɗɪɪ + ɫəɳɪ + ɫɪ? → ʡɗɪɪɫəɳɪɫɪ  \nspeaking: ʡɗɪɪ + ʡøɫɪɳɪ + ɫɪ? → ʡɗɪɪʡøɫɪɳɪɫɪ\n\nWait — that’s not matching. Let’s look at the core ending: ɳɪɫɪ\n\nIn going: ƍʊɳɪɫɪ → can this be ƍʊ + ɳɪɫɪ?  \nIn eating: ɫəɳɪɫɪ → ɫə + ɳɪɫɪ?  \nIn speaking: ʡøɫɪɳɪɫɪ → ʡøɫɪ + ɳɪɫɪ?\n\nSo perhaps the verb root is: ƍʊ, ɫə, ʡøɫɪ — and then + ɳɪɫɪ?\n\nBut ƍʊ is not in the tile bank — ƍʊɳɪ is.\n\nTile bank has: ƍʊɳɪ, ɫəɳɪ, ʡøɫɪɳɪ\n\nSo perhaps:\nGo: ƍʊɳɪ  \nEat: ɫəɳɪ  \nSpeak: ʡøɫɪɳɪ\n\nThen each verb is: Subject prefix + Verb root + ɫɪ?\n\nBut let's look:\n\nI go: ʡɗɪɪ + ƍʊɳɪ + ɫɪ? → ʡɗɪɪƍʊɳɪɫɪ → matches  \nYou go: ɯ + ƍʊɳɪ + ɫɪ? → ɯƍʊɳɪɫɪ → matches  \nHe/She go: ɪ + ƍʊɳɪ + ɫɪ? → ɪƍʊɳɪɫɪ → matches  \n\nI eat: ʡɗɪɪ + ɫəɳɪ + ɫɪ? → ʡɗɪɪɫəɳɪɫɪ → matches  \nYou eat: ɯ + ɫəɳɪ + ɫɪ? → ɯɫəɳɪɫɪ → matches  \nHe/She eat: ɪ + ɫəɳɪ + ɫɪ? → ɪɫəɳɪɫɪ → matches  \n\nI speak: ʡɗɪɪ + ʡøɫɪɳɪ + ɫɪ? → ʡɗɪɪʡøɫɪɳɪɫɪ → matches  \nYou speak: ɯ + ʡøɫɪɳɪ + ɫɪ? → ɯʡøɫɪɳɪɫɪ → matches  \nHe/She speak: ɪ + ʡøɫɪɳɪ + ɫɪ? → ɪʡøɫɪɳɪɫɪ → matches  \n\nSo the pattern is:\n\n[Subject prefix] + [Verb root] + ɫɪ\n\nWhere:\nSubject prefixes:\n- I: ʡɗɪɪ\n- You: ɯ\n- He/She: ɪ\n\nVerb roots:\n- go: ƍʊɳɪ\n- eat: ɫəɳɪ\n- speak: ʡøɫɪɳɪ\n\nSuffix: ɫɪ\n\nWait — but the full verb is 針對動詞 + ɫɪ? But ɫɪ is listed as a separate morpheme. So the verb is composed of subject + verb_root + ɫɪ\n\nNow, we are given another example:  \n\"we (everyone) are going\": ɫɪɪƍʊɳɪɫɪ\n\nSo: ɫɪɪ + ƍʊɳɪ + ɫɪ\n\nSo “we (everyone)” = ɫɪɪ\n\nThus:\n\nSubjects:\n- I: ʡɗɪɪ  \n- You: ɯ  \n- He/She: ɪ  \n- We (everyone): ɫɪɪ  \n\nAll verbs use the same suffix: ɫɪ\n\nNow the query: \"we (everyone) are eating\"\n\nWe = ɫɪɪ  \nEat = ɫəɳɪ  \nSuffix = ɫɪ\n\nSo: ɫɪɪ + ɫəɳɪ + ɫɪ = ɫɪɪɫəɳɪɫɪ\n\nCheck tile bank: ɫɪɪ, ɫəɳɪ, ɫɪ are all available.\n\nSo this is the correct sequence.\n\nStep 2: Grammar — no agreement issues beyond subject prefix for person, and verb root matches the action. Tense/aspect is consistent: all present continuous/progressive.\n\nStep 3: So \"we (everyone) are eating\" = ɫɪɪɫəɳɪɫɪ\n\n</analysis>\n<answers>\nɫɪɪɫəɳɪɫɪ\n</answers>",
+  "answer_text": "ɫɪɪɫəɳɪɫɪ",
+  "morphemes": [
+   "ɫɪɪ",
+   "ɫəɳɪ",
+   "ɫɪ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 7.8,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "apurina-verb-agreement",
+  "query": 2,
+  "difficulty": "standard",
+  "prompt": "you are speaking",
+  "gold": [
+   "ɯ",
+   "ʡøɫɪɳɪ",
+   "ɫɪ"
+  ],
+  "gold_joined": "ɯʡøɫɪɳɪɫɪ",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n\nWe are given 10 bilingual pairs and need to deduce the morpheme structure.\n\nLook at the verbs:\n\nFor “going”:\n- I am going → ʡɗɪɪƍʊɳɪɫɪ\n- you are going → ɯƍʊɳɪɫɪ\n- he/she is going → ɪƍʊɳɪɫɪ\n- we are going → ɫɪɪƍʊɳɪɫɪ\n\nFor “eating”:\n- I am eating → ʡɗɪɪɫəɳɪɫɪ\n- you are eating → ɯɫəɳɪɫɪ\n- he/she is eating → ɪɫəɳɪɫɪ\n\nFor “speaking”:\n- I am speaking → ʡɗɪɪʡøɫɪɳɪɫɪ\n- you are speaking → ɯʡøɫɪɳɪɫɪ\n- he/she is speaking → ɪʡøɫɪɳɪɫɪ\n\nWe can isolate the subject pronouns:\n\n- I → ʡɗɪɪ (always prefix)\n- you → ɯ (always prefix)\n- he/she → ɪ (always prefix)\n- we → ɫɪɪ (prefix)\n\nNow look at the verb stems:\n\n“going” → ƍʊɳɪ\n“eating” → ɫəɳɪ\n“speaking” → ʡøɫɪɳɪ\n\nAnd all of them end in ɫɪ\n\nWait — let's look at the full forms:\n\nGoing: ʡɗɪɪ + ƍʊɳɪ + ɫɪ → but the word is ʡɗɪɪƍʊɳɪɫɪ, so it ends in ɫɪ\n\nBut we also see ɳɪɫɪ at the end of all verbs.\n\nWait — compare:\n\n- ʡɗɪɪƍʊɳɪɫɪ → I am going\n- ʡɗɪɪɫəɳɪɫɪ → I am eating\n- ʡɗɪɪʡøɫɪɳɪɫɪ → I am speaking\n\nNotice that the verb root is always followed by ɳɪɫɪ? Let's break it down.\n\nTry stripping the subject and the ending.\n\nLooking at:\n\nI am going → ʡɗɪɪ + ƍʊɳɪ + ɫɪ → but it’s ʡɗɪɪƍʊɳɪɫɪ → could ƍʊɳɪ + ɫɪ = ƍʊɳɪɫɪ?\n\nBut then eating is ʡɗɪɪɫəɳɪɫɪ → ɫəɳɪ + ɫɪ? That would be ɫəɳɪɫɪ, but we have ɫəɳɪɫɪ — yes, matches.\n\nSpeaking: ʡɗɪɪʡøɫɪɳɪɫɪ → ʡøɫɪɳɪ + ɫɪ? But it's written as ʡøɫɪɳɪɫɪ.\n\nWait — the shared ending across all is ɳɪɫɪ.\n\nWait, let's look at:\n\n- going: ƍʊɳɪɫɪ → but we have ƍʊɳɪɫɪ\n- eating: ɫəɳɪɫɪ\n- speaking: ʡøɫɪɳɪɫɪ\n\nWait — ƍʊɳɪɫɪ, ɫəɳɪɫɪ, ʡøɫɪɳɪɫɪ — so the verb root is:\n\n- going: ƍʊ\n- eating: ɫə\n- speaking: ʡøɫɪ\n\nAnd then all have ɳɪɫɪ at the end? But ƍʊ + ɳɪɫɪ = ƍʊɳɪɫɪ — yes\n\nSimilarly:\n- ɫə + ɳɪɫɪ = ɫəɳɪɫɪ\n- ʡøɫɪ + ɳɪɫɪ = ʡøɫɪɳɪɫɪ\n\nSo the verb stem is the base (ƍʊ, ɫə, ʡøɫɪ), and then ɳɪɫɪ is the fixed verbal ending.\n\nBut then what is ɫɪ? It’s not appearing as a separate morpheme.\n\nWait — the available morphemes include ɫɪ and ɳɪɫɪ. So perhaps ɳɪɫɪ is a single morpheme? Or ɳɪ and ɫɪ?\n\nBut look at the word for “we are going”: ɫɪɪƍʊɳɪɫɪ\n\nWe can see:\n\nSubject “we” = ɫɪɪ\n\nVerb root “go” = ƍʊ\n\nThen ɳɪɫɪ — same as before.\n\nSo the structure is:\n\n[subject] + [verb root] + ɳɪɫɪ\n\nBut wait — for “you are going” it’s ɯƍʊɳɪɫɪ — subject ɯ, root ƍʊ, ending ɳɪɫɪ\n\nSimilarly, “he/she is going” → ɪƍʊɳɪɫɪ\n\nSo the verb root is always directly followed by ɳɪɫɪ.\n\nTherefore, ɳɪɫɪ is the verbal inflection for present tense (am/is/are going/eating/speaking).\n\nNow, what is ɫɪ? It appears in the available morphemes, and we have “ɫɪɪ” as the plural “we”.\n\nBut in the forms we see, we never have a standalone ɫɪ — so ɫɪ might be part of the plural marker ɫɪɪ.\n\nInput morphemes: ʡɗɪɪ, ɯ, ɪ, ɫɪɪ, ƍʊɳɪ, ɫəɳɪ, ʡøɫɪɳɪ, ɫɪ, ɳɪɫɪ\n\nWait — look at ƍʊɳɪ — is that a morpheme? But in “I am going”, it’s ʡɗɪɪ + ƍʊ + ɳɪɫɪ. But ƍʊɳɪ is listed as a morpheme? That suggests ƍʊɳɪ is one unit? But then where does the ɫɪ come from?\n\nWait — contradiction.\n\nLet me re-express the forms with possible morpheme segmentation:\n\nI am going: ʡɗɪɪ + ƍʊ + ɳɪɫɪ → but ƍʊ is not listed. Instead, ƍʊɳɪ is listed.\n\nPerhaps the verb root includes the ɳ? Then:\n\nI am going: ʡɗɪɪ + ƍʊɳɪ + ɫɪ → but the string is ʡɗɪɪƍʊɳɪɫɪ → so if ƍʊɳɪ is a morpheme and ɫɪ is a morpheme, then ƍʊɳɪ + ɫɪ = ƍʊɳɪɫɪ — that matches.\n\nSimilarly, I am eating: ʡɗɪɪ + ɫəɳɪ + ɫɪ = ʡɗɪɪɫəɳɪɫɪ → perfect.\n\nI am speaking: ʡɗɪɪ + ʡøɫɪɳɪ + ɫɪ = ʡɗɪɪʡøɫɪɳɪɫɪ → perfect.\n\nNow, “you are going”: ɯ + ƍʊɳɪ + ɫɪ → ɯƍʊɳɪɫɪ → matches.\n\n“You are eating”: ɯ + ɫəɳɪ + ɫɪ → ɯɫəɳɪɫɪ → matches.\n\n“You are speaking”: ɯ + ʡøɫɪɳɪ + ɫɪ → ɯʡøɫɪɳɪɫɪ → this is our query.\n\nBut the available morphemes include ɫɪ and ɳɪɫɪ — here we’re using ɳɪ and ɫɪ as separate? But ɳɪɫɪ is also available as one morpheme.\n\nWait — the available morphemes are: ʡɗɪɪ, ɯ, ɪ, ɫɪɪ, ƍʊɳɪ, ɫəɳɪ, ʡøɫɪɳɪ, ɫɪ, ɳɪɫɪ\n\nBut if we use ɳɪɫɪ as a single morpheme, then the verb forms would be:\n\nI am going: ʡɗɪɪ + ƍʊ + ɳɪɫɪ — but ƍʊ isn't listed, only ƍʊɳɪ is.\n\nSo instead, ƍʊɳɪ is a single verb root morpheme, and ɫɪ is the person/number marker?\n\nWait — then “I am going” = ʡɗɪɪ + ƍʊɳɪ + ɫɪ → that’s 4 morphemes? But what is the function of ɫɪ?\n\nIn all cases, the ending is ɫɪ — and it's always there.\n\nAlso, in “we are going”: ɫɪɪ + ƍʊɳɪ + ɫɪ → ɫɪɪƍʊɳɪɫɪ — so we have two subject morphemes: ɫɪɪ and ɫɪ? That would be redundant.\n\nAlternatively — perhaps ɳɪɫɪ is the verb ending, and the ɫɪ is not separate.\n\nBut then how do we account for ɫɪ in the morpheme list?\n\nWait — in “I am going”: ʡɗɪɪƍʊɳɪɫɪ — if we break into ʡɗɪɪ + ƍʊɳɪ + ɫɪ, and ƍʊɳɪ is a morpheme and ɫɪ is a morpheme, that makes sense.\n\nBut then why is ɳɪɫɪ also listed?\n\nPossibility: the ɳɪɫɪ is a red herring, and the verb ending is actually just ɫɪ — but then the verb root ends in ɳɪ?\n\nNo — verb roots are ƍʊ, ɫə, ʡøɫɪ — which are not ending in ɳɪ.\n\nBut the given morphemes are ƍʊɳɪ, ɫəɳɪ, ʡøɫɪɳɪ — so these are the full verb root morphemes: they include the ɳɪ as part of the root.\n\nThen the ɫɪ is a suffix meaning “present tense” or “action ongoing”.\n\nSo structure:\n\n[subject] + [verb root morpheme] + [ɫɪ]\n\nFor example:\n\nI am going: ʡɗɪɪ (I) + ƍʊɳɪ (go) + ɫɪ (present) → ʡɗɪɪƍʊɳɪɫɪ\n\nI am eating: ʡɗɪɪ + ɫəɳɪ + ɫɪ = ʡɗɪɪɫəɳɪɫɪ\n\nI am speaking: ʡɗɪɪ + ʡøɫɪɳɪ + ɫɪ = ʡɗɪɪʡøɫɪɳɪɫɪ\n\nYou are going: ɯ + ƍʊɳɪ + ɫɪ = ɯƍʊɳɪɫɪ → matches\n\nYou are eating: ɯ + ɫəɳɪ + ɫɪ = ɯɫəɳɪɫɪ → matches\n\nYou are speaking: ɯ + ʡøɫɪɳɪ + ɫɪ = ɯʡøɫɪɳɪɫɪ → this is our answer.\n\nWe are given ɫɪ in the morpheme list — so we use that.\n\nNotice: ɳɪɫɪ is also listed, but we never use it as a unit — we use ɳɪ as part of the verb root and ɫɪ as a separate suffix.\n\nSo ɳɪɫɪ may be a distractor or perhaps used elsewhere, but not needed here.\n\nFor “we are going”: ɫɪɪ + ƍʊɳɪ + ɫɪ = ɫɪɪƍʊɳɪɫɪ — again, ɫɪɪ is the subject, then verb root, then ɫɪ.\n\nSo the ɫɪ at the end is invariant for all persons.\n\nThus, for “you are speaking”, we need:\n\nSubject: ɯ\n\nVerb root for speaking: ʡøɫɪɳɪ\n\nTense suffix: ɫɪ\n\nCombine: ɯ + ʡøɫɪɳɪ + ɫɪ = ɯʡøɫɪɳɪɫɪ\n\nThis matches the pattern perfectly.\n\nStep 2: Note any grammar — structure is Subject + VerbRoot + ɫɪ\n\nVerb roots are given as ƍʊɳɪ, ɫəɳɪ, ʡøɫɪɳɪ — so ɳɪ is part of the verb root, not a separate tense or aspect marker.\n\nThe ɫɪ is a present-tense/incomplete-aspect suffix, same for all subjects.\n\nStep 3: Compose the exact target-language form.\n\nQuery: you are speaking → subject = ɯ, verb = ʡøɫɪɳɪ, suffix = ɫɪ\n\nSo: ɯʡøɫɪɳɪɫɪ\n\n<answers>\nɯʡøɫɪɳɪɫɪ\n</answers>",
+  "answer_text": "ɯʡøɫɪɳɪɫɪ",
+  "morphemes": [
+   "ɯ",
+   "ʡøɫɪɳɪ",
+   "ɫɪ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 15.7,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "apurina-verb-agreement",
+  "query": 3,
+  "difficulty": "standard",
+  "prompt": "we (everyone) are speaking",
+  "gold": [
+   "ɫɪɪ",
+   "ʡøɫɪɳɪ",
+   "ɫɪ"
+  ],
+  "gold_joined": "ɫɪɪʡøɫɪɳɪɫɪ",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n\nWe are given 9 evidence pairs. Let’s break them down to find patterns.\n\nObserving the verbs:\n\n- Going: ƍʊɳɪɫɪ\n- Eating: ɫəɳɪɫɪ\n- Speaking: ʡøɫɪɳɪɫɪ\n\nThe verb root appears to be:\n- ƍʊɳɪ → go\n- ɫəɳɪ → eat\n- ʡøɫɪɳɪ → speak\n\nNote: The verb ending for all is ɫɪ (or attached to ɳɪɫɪ? Let's look deeper).\n\nNow, the subject prefixes:\n\n- I: ʡɗɪɪ [appears before all verbs: ʡɗɪɪƍʊɳɪɫɪ, ʡɗɪɪɫəɳɪɫɪ, ʡɗɪɪʡøɫɪɳɪɫɪ]\n- You (sg): ɯ [ɯƍʊɳɪɫɪ, ɯɫəɳɪɫɪ, ɯʡøɫɪɳɪɫɪ]\n- He/she: ɪ [ɪƍʊɳɪɫɪ, ɪɫəɳɪɫɪ, ɪʡøɫɪɳɪɫɪ]\n- We (everyone): ɫɪɪ [ɫɪɪƍʊɳɪɫɪ]\n\nSo subject prefixes:\n- I → ʡɗɪɪ\n- You_{sg} → ɯ\n- He/She → ɪ\n- We (everyone) → ɫɪɪ\n\nNow, looking at the verb endings:\n\nAll verbs end in ɳɪɫɪ.\n\nBut the roots are:\n- go → ƍʊɳɪ\n- eat → ɫəɳɪ\n- speak → ʡøɫɪɳɪ\n\nWait — ƍʊɳɪ, ɫəɳɪ, ʡøɫɪɳɪ — these all end in ɳɪ, and then there is an additional ɫɪ at the end? Let's reconstruct:\n\nFor \"I am going\": ʡɗɪɪ + ƍʊɳɪ + ɫɪ → ʡɗɪɪƍʊɳɪɫɪ\n\nBut the given word is ʡɗɪɪƍʊɳɪɫɪ — so it’s prefix + verb stem + ɫɪ.\n\nSimilarly, \"I am eating\": ʡɗɪɪ + ɫəɳɪ + ɫɪ → ʡɗɪɪɫəɳɪɫɪ — correct.\n\n\"I am speaking\": ʡɗɪɪ + ʡøɫɪɳɪ + ɫɪ → ʡɗɪɪʡøɫɪɳɪɫɪ — correct.\n\nWait — but the verb stems themselves end in ɳɪ? Let’s isolate:\n\n- go: ƍʊɳɪ\n- eat: ɫəɳɪ\n- speak: ʡøɫɪɳɪ\n\nSo the verb stem is: [root] + ɳɪ, and then an additional ɫɪ? That seems redundant.\n\nBut note: the verb stems are:\n\n- go: ƍʊɳɪ\n- eat: ɫəɳɪ\n- speak: ʡøɫɪɳɪ\n\nThese all end in ɳɪ, and then the word ends in ɫɪ → so total verb ending is ɳɪɫɪ.\n\nSo the pattern is:\n\n[subject prefix] + [verb root] + ɳɪ + ɫɪ\n\nBut wait — for speaking: the root is ʡøɫɪ, then + ɳɪ → ʡøɫɪɳɪ, then + ɫɪ → ʡøɫɪɳɪɫɪ.\n\nBut ʡøɫɪɳɪ is the full verb stem? Then why does it have ɳɪ internally?\n\nLooking at the available morphemes, we have: ƍʊɳɪ, ɫəɳɪ, ʡøɫɪɳɪ, ɫɪ, ɳɪɫɪ\n\nAh! Notice that ɳɪɫɪ is listed as one of the available morphemes.\n\nLet’s reanalyze:\n\nThe entire verb phrase seems to be:\n\n[subject] + [verb stem] + ɳɪɫɪ\n\nBut for \"go\": ƍʊɳɪ + ɳɪɫɪ → ƍʊɳɪɳɪɫɪ? No, the example is ʡɗɪɪƍʊɳɪɫɪ — so ƍʊɳɪ is one unit, then ɫɪ? But ƍʊɳɪɫɪ — so verb = ƍʊɳɪ + ɫɪ? But ɳɪ is part of the root.\n\nActually, from the available morphemes, we are told these are the morphemes:\n\nAvailable: ʡɗɪɪ, ɯ, ɪ, ɫɪɪ, ƍʊɳɪ, ɫəɳɪ, ʡøɫɪɳɪ, ɫɪ, ɳɪɫɪ\n\nSo let’s try to parse the words using these morphemes:\n\n- I am going: ʡɗɪɪ + ƍʊɳɪ + ɫɪ → but ƍʊɳɪ and ɫɪ are separate → matches: ʡɗɪɪ + ƍʊɳɪ + ɫɪ = ʡɗɪɪƍʊɳɪɫɪ ✓\n\nWait, but \"go\" is ƍʊɳɪ and then ɫɪ? But that leaves no role for ɳɪɫɪ.\n\nBut note: we also have ɳɪɫɪ as a separate morpheme. Let's see if 酃ɪ is a separate morpheme.\n\nTry parsing \"I am going\": ʡɗɪɪ + ƍʊ + ɳɪ + ɫɪ? But ƍʊ is not a morpheme.\n\nAll available morphemes are given as whole units.\n\nSo let's assume the structure is:\n\n[subject] + [verb root]\n\nwhere the verb root is one of: ƍʊɳɪ, ɫəɳɪ, ʡøɫɪɳɪ — and then the ending ɳɪɫɪ is NOT needed?\n\nWait, no — all words end in ɫɪ or ɳɪɫɪ.\n\nLook at:\n\n- ʡɗɪɪƍʊɳɪɫɪ — has ƍʊɳɪ and then ɫɪ at the end? But ƍʊɳɪ ends in ɳɪ, and then ɫɪ — so ɳɪɫɪ is concatenated.\n\nBut \"ɳɪɫɪ\" is a listed morpheme. So perhaps the verb is [verb root] + ɳɪɫɪ? Then:\n\nI am going: ʡɗɪɪ + ƍʊɳɪ + ɳɪɫɪ? That would be ʡɗɪɪƍʊɳɪɳɪɫɪ — too long. But the word is ʡɗɪɪƍʊɳɪɫɪ — which is only 4 morphemes? No, linky it as:\n\nIt seems ƍʊɳɪ is one morpheme, and ɫɪ is another. But then why is ɳɪɫɪ listed?\n\nLet me try alternative:\n\nPerhaps the verb stem is always followed by ɳɪɫɪ — but then:\n\n\"go\" → ƍʊ + ɳɪɫɪ? But the morpheme is ƍʊɳɪ — not ƍʊ.\n\nI think the correct parsing is:\n\nAll verb forms are:\n\n[subject] + [verb stem] + [aspect/tense marker]\n\nBut looking again:\n\nThe verb stems are:\n\n- go: ƍʊɳɪ\n- eat: ɫəɳɪ\n- speak: ʡøɫɪɳɪ\n\nAnd then each one is followed by — what? ɫɪ?\n\nBut wait — in all cases, the entire verb ends with ɳɪɫɪ? No:\n\n- go: ƍʊɳɪɫɪ → ends with ɳɪɫɪ? ƍʊ+ɳɪ+ɫɪ → ends in ɳɪɫɪ ✓\n- eat: ɫəɳɪɫɪ → ends in ɳɪɫɪ ✓\n- speak: ʡøɫɪɳɪɫɪ → ends in ɳɪɫɪ ✓\n\nSo the verb stem is: [root] + ɳɪ — and then + ɫɪ? But then ɳɪ + ɫɪ = ɳɪɫɪ.\n\nSo the verb is [root] + ɳɪɫɪ? But then why is ƍʊɳɪ listed separately? Let's see the morphemes given:\n\nWe have ƍʊɳɪ, ɫəɳɪ, ʡøɫɪɳɪ — these are the verb roots including ɳɪ?\n\nAnd then there’s also ɫɪ and ɳɪɫɪ as separate morphemes.\n\nWait — ɳɪɫɪ is a two-morpheme unit? But we’re told it's one of the available morphemes.\n\nPerhaps the verb is [root] + ɳɪ + ɫɪ? But then ɳɪ and ɫí are separate — but ɳɪɫɪ is also given as a morpheme.\n\nThis is confusing.\n\nAlternative approach:\n\nWrite the verb forms with their components based on patterns:\n\nI am going: ʡɗɪɪ + ƍʊɳɪ + ɫɪ → 5 morphemes? But ƍʊɳɪ and ɫɪ are two morphemes.\n\nTotal word: ʡɗɪɪ + ƍʊɳɪ + ɫɪ — 3 morphemes.\n\nSimilarly: I am eating: ʡɗɪɪ + ɫəɳɪ + ɫɪ — 3 morphemes.\n\nI am speaking: ʡɗɪɪ + ʡøɫɪɳɪ + ɫɪ — 3 morphemes.\n\nBut the available morphemes list also includes ɳɪɫɪ. And if we use ɳɪɫɪ as a unit, then:\n\nFor \"I am going\": ʡɗɪɪ + ƍʊ + ɳɪɫɪ? But ƍʊ is not a morpheme.\n\nUnless the verb root does NOT include ɳɪ.\n\nLook at the available morphemes: ƍʊɳɪ, ɫəɳɪ, ʡøɫɪɳɪ — these are all the verb stems as given. Then the final ɫɪ is separate? But in the word, it's ƍʊɳɪ + ɫɪ → which is 5 characters + 2 = 7, but ƍʊɳɪ is 4 characters, ɫɪ is 2 → total 6, matches ʡɗɪɪ (4) + ƍʊɳɪ (4) + ɫɪ (2) = 10? That doesn't add.\n\nLet's count characters:\n\n- ʡɗɪɪƍʊɳɪɫɪ → 10 characters\n\nesplitting:\n\n- ʡɗɪɪ = 4\n- ƍʊɳɪ = 4\n- ɫɪ = 2\n\n4+4+2=10 — fits.\n\nSimilarly: ʡɗɪɪɫəɳɪɫɪ → 4 + 4 + 2 = 10\n\nSo the structure is: subject + verb-root + ɫɪ\n\nBut then what is ɳɪɫɪ for? And why is it listed?\n\nWait, perhaps there is a mistake: the verb-root includes ɳɪ? Then the last ɫɪ is simplex.\n\nBut the available morphemes list includes ɳɪɫɪ as an option.\n\nAlso, look at the last example: ɫɪɪƍʊɳɪɫɪ → we are going\n\nSubject: ɫɪɪ\n\nVerb-root: ƍʊɳɪ\n\nEnding: ɫɪ\n\nSo structure: [subject] + [verb root (including ɳɪ)] + ɫɪ\n\nBut then ɳɪɫɪ as a morpheme is redundant? Why is it given?\n\nWait — perhaps ɫɪ is NOT the final ending, but ɳɪɫɪ is?\n\nBut then ƍʊɳɪ + ɳɪɫɪ = ƍʊɳɪɳɪɫɪ — 12 chars — but we have 10.\n\nSo it must be:\n\nThe verb root is: ƍʊ, ɫə, ʡøɫɪ — but these are not listed. Instead, ƍʊɳɪ is listed — so ɳɪ is part of the root. Then ɫɪ is the tense/aspect suffix for \"present continuous\".\n\nSo when we have \"we are speaking\", we need:\n\nSubject: we (everyone) → ɫɪɪ\n\nVerb: speak → ʡøɫɪɳɪ\n\nTense: ɫɪ\n\nSo: ɫɪɪ + ʡøɫɪɳɪ + ɫɪ\n\nBut ʡøɫɪɳɪ is one morpheme, ɫɪ is another.\n\nSo: ɫɪɪʡøɫɪɳɪɫɪ\n\nIs that the answer?\n\nCheck against available morphemes: yes, we have:\n\n- ɫɪɪ (we)\n- ʡøɫɪɳɪ (speak)\n- ɫɪ (present tense stem?)\n\nBut wait — all the examples use ɫɪ as the final syllable. But in the available morphemes, we also have ɳɪɫɪ.\n\nWhy is ɳɪɫɪ listed?\n\nPerhaps for some verbs it's different? But all examples are consistent: verb root ends in ɳɪ, then + ɫɪ.\n\nNow, for the query: \"we (everyone) are speaking\"\n\nSubject: ɫɪɪ\n\nVerb root: ʡøɫɪɳɪ\n\nTense: ɫɪ\n\nSo total: ɫɪɪ + ʡøɫɪɳɪ + ɫɪ = ɫɪɪʡøɫɪɳɪɫɪ\n\nIs there any conflict?\n\nLook at verb objects: go, eat, speak — all follow same structure.\n\nWe (everyone): ɫɪɪƍʊɳɪɫɪ — which matches: ɫɪɪ + ƍʊɳɪ + ɫɪ\n\nSo for speaking: ɫɪɪ + ʡøɫɪɳɪ + ɫɪ = ɫɪɪʡøɫɪɳɪɫɪ\n\nNow, check if this is a valid string from given morphemes: yes, all pieces are in the available list.\n\nStep 2: Grammar — no agreement needed beyond subject-verb. Root verb includes internal ɳɪ; final ɫɪ is fixed for \"present continuous\".\n\nStep 3: Compose exact target form: ɫɪɪʡøɫɪɳɪɫɪ\n\n</analysis>\n<answers>\nɫɪɪʡøɫɪɳɪɫɪ\n</answers>",
+  "answer_text": "ɫɪɪʡøɫɪɳɪɫɪ",
+  "morphemes": [
+   "ɫɪɪ",
+   "ʡøɫɪɳɪ",
+   "ɫɪ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 14.7,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "apurina-verb-agreement",
+  "query": 4,
+  "difficulty": "standard",
+  "prompt": "he/she is going",
+  "gold": [
+   "ɪ",
+   "ƍʊɳɪ",
+   "ɫɪ"
+  ],
+  "gold_joined": "ɪƍʊɳɪɫɪ",
+  "raw": "<analysis>\nStep 1: From the evidence, we can break down the verbs into components:\n\nThe verb structure consistently ends in \"ɳɪɫɪ\", which appears in all examples and likely means \"is ___ing\" or the present continuous suffix.\n\nWe see three subject markers:\n- ʡɗɪɪ → I (appears in \"I am going\", \"I am eating\", \"I am speaking\")\n- ɯ → you (sg) (appears in \"you are going\", \"you are eating\", \"you are speaking\")\n- ɪ → he/she (appears in \"he/she is going\", \"he/she is eating\", \"he/she is speaking\")\n\nAlso note:\n- ɫɪɪ → we (everyone) (appears in \"we are going\")\n\nFor the verb roots:\n- ƍʊɳɪ → \"go\"\n- ɫəɳɪ → \"eat\"\n- ʡøɫɪɳɪ → \"speak\"\n\nEach verb stem is preceded by the subject morpheme and followed by ɳɪɫɪ.\n\nSo the general pattern is:\n[SUBJECT] + [VERB-STEM] + ɳɪɫɪ\n\nFor \"he/she is going\":\n- Subject: ɪ\n- Verb-stem for \"go\": ƍʊɳɪ\n- Suffix: ɳɪɫɪ\n\nTherefore: ɪ + ƍʊɳɪ + ɳɪɫɪ → ɪƍʊɳɪɫɪ\n\nStep 2: Grammar — the pattern is agglutinative, no agreement or case noted beyond subject prefix + verb root + suffix. Order is fixed: Subject + Verb + -ɳɪɫɪ.\n\nStep 3: The query is \"he/she is going\" → we have direct evidence for this exact form: \"ɪƍʊɳɪɫɪ\"\n\nWe are to output the exact target-language form based on the evidence.\n\nThe morphemes we need: ɪ, ƍʊɳɪ, ɳɪɫɪ — all provided in the tile bank.\n</analysis>\n<answers>\nɪƍʊɳɪɫɪ\n</answers>",
+  "answer_text": "ɪƍʊɳɪɫɪ",
+  "morphemes": [
+   "ɪ",
+   "ƍʊɳɪ",
+   "ɫɪ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.5,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "swahili-person-tense",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "I will like",
+  "gold": [
+   "ƒɞ",
+   "ʍʊ",
+   "ʠɪƒɺʊ"
+  ],
+  "gold_joined": "ƒɞʍʊʠɪƒɺʊ",
+  "raw": "<analysis>\nStep 1: Identify the morphemes for subject and verb in each example.\n\nFrom the evidence:\n\n- ƒɞƒʊʠɪƒɺʊ → I like  \n  → Subject \"I\" = ƒɞ  \n  → Verb \"like\" = ƒʊʠɪƒɺʊ  \n\n- ɯƒʊʡɔɗʊ → you read  \n  → Subject \"you_{sg}\" = ɯ  \n  → Verb \"read\" = ƒʊʡɔɗʊ  \n\n- ʊƒʊɲɫɪħʊ → she plays  \n  → Subject \"she\" = ʊ  \n  → Verb \"play\" = ƒʊɲɫɪħʊ  \n\n- ƒɞƃɞʠɪƒɺʊ → I liked  \n  → Subject \"I\" = ƒɞ  \n  → Past tense? = ƃɞ  \n  → Root verb \"like\" = ʠɪƒɺʊ  \n  → So ƃɞ is past tense marker attached before the verb root  \n\n- ʍɯƃɞʡɔɗʊ → we read (past)  \n  → Subject \"we\" = ʍɯ  \n  → Past tense = ƃɞ  \n  → Verb \"read\" = ʡɔɗʊ  \n\n- ɯʍʊɲɫɪħʊ → you will play  \n  → Subject \"you_{pl}\" = ɯʍʊ  \n  → Verb \"play\" = ɲɫɪħʊ  \n  → So future tense? — wait, no past here, but ɯʍʊ is \"you_{pl}\"  \n  → So perhaps ʍʊ is future marker? But it's attached to subject?  \n\n- ɱʊʍʊɞɗʈʊ → they will sing  \n  → Subject \"they\" = ɱʊ  \n  → Then ʍʊ?  \n  → Verb \"sing\" = ɞɗʈʊ  \n  → So ʍʊ might be future marker that comes before verb  \n\nWait — look at verb forms:\n\n- ʠɪƒɺʊ = like  \n- ʡɔɗʊ = read  \n- ɲɫɪħʊ = play  \n- ɞɗʈʊ = sing  \n\nPast: ƒɞ + ƃɞ + ʠɪƒɺʊ → I liked  \nPast: ʍɯ + ƃɞ + ʡɔɗʊ → we read (past)  \nSo ƃɞ = past tense marker — appears between subject and verb root.\n\nFuture:  \n- ɯʍʊɲɫɪħʊ → you_{pl} will play → subject = ɯʍʊ, verb = ɲɫɪħʊ  \n  → So ʍʊ is attached to subject? But then ɱʊʍʊɞɗʈʊ → they will sing → subject = ɱʊ, then ʍʊ, then verb.  \n\nSo pattern:  \n\nFor \"you_{pl}\" = ɯʍʊ — so \"you_{sg}\" = ɯ, and ʍʊ is a future marker? But why is it attached to subject?  \n\nAlternative hypothesis: Subjects have inherent person/number, and future is marked by a suffix ʍʊ on the subject.\n\nLet’s list subjects:\n\n- I → ƒɞ  \n- you_{sg} → ɯ  \n- she → ʊ  \n- we → ʍɯ  \n- you_{pl} → ɯʍʊ  \n- they → ɱʊ  \n\nSo perhaps:\n\n- I = ƒɞ  \n- you_{sg} = ɯ  \n- she = ʊ  \n- we = ʍ + ɯ  \n- you_{pl} = ɯ + ʍʊ? → doesn't match.  \nWait: we = ʍɯ, you_{pl} = ɯʍʊ — so order matters.  \n\nLet’s consider:\n\n- Subject prefixes:\n  - I: ƒɞ\n  - you_{sg}: ɯ\n  - she: ʊ\n  - we: ʍɯ → so ʍ- + ɯ\n  - they: ɱʊ → so ɱ- + ʊ\n  - you_{pl}: ɯʍʊ → ɯ + ʍʊ — inconsistent!\n\nBut ɯʍʊ = you_{pl}, ʍɯ = we. So not simply additive.\n\nAlternative: maybe ʍʊ is future marker, and subject forms are combined.\n\nLook at verb roots:\n\n- like → ʠɪƒɺʊ  \n- read → ʡɔɗʊ  \n- play → ɲɫɪħʊ  \n- sing → ɞɗʈʊ  \n\nPast tense: ƃɞ inserted between subject and verb root.\n\nFuture: ʍʊ inserted between subject and verb? But in ɯʍʊɲɫɪħʊ — here ʍʊ is after ɯ and before ɲɫɪħʊ. So perhaps the future marker is ʍʊ, and it attaches directly before the verb root.\n\nBut in ɯʍʊɲɫɪħʊ → ɯ + ʍʊ + ɲɫɪħʊ → so subject = ɯ, future = ʍʊ, verb = ɲɫɪħʊ? But then why is it written as one word? Maybe subject = ɯ (you_{sg}), future = ʍʊ, verb = ɲɫɪħʊ → but the gloss says \"you will play\" — meaning plural?\n\nWait: the gloss says \"you will play\" for ɯʍʊɲɫɪħʊ — could that be \"you_{pl}\"?\n\nThen ɯʍʊ = \"you_{pl}\" as a compound subject form.\n\nSimilarly, ɱʊ = \"they\", ʍɯ = \"we\"\n\nSo maybe subjects are:\n\nI = ƒɞ  \nyou_{sg} = ɯ  \nshe = ʊ  \nwe = ʍɯ  \nyou_{pl} = ɯʍʊ  \nthey = ɱʊ  \n\nSo the future marker is not a separate morpheme before the verb, but is included in the subject form:   ɯʍʊ = you_{pl} + future?\n\nBut then look at ɱʊʍʊɞɗʈʊ → they will sing → ɱʊ + ʍʊ + ɞɗʈʊ → so now future is ʍʊ inserted between subject (they) and verb.\n\nInconsistent?\n\nUnless the future marker is ʍʊ and it’s added after the subject and before the verb.\n\nThen:\n\n- ɯʍʊɲɫɪħʊ → you_{pl} will play → subject = ɯ, future = ʍʊ, verb = ɲɫɪħʊ → but then why is it written as ɯʍʊ and not ɯ + ʍʊ? Probably written as a single unit — so ɯ is you_{sg}, but ɯʍʊ is you_{pl} with future.\n\nWait — unless ʍʊ is always the future marker, and subject forms are:\n\n- I = ƒɞ  \n- you_{sg} = ɯ  \n- she = ʊ  \n- we = ʍɯ  \n- you_{pl} = ɯ + ʍʊ → ɯʍʊ  \n- they = ɱʊ  \n\nThen future marking:\n\n- For you_{pl}: ɯ + ʍʊ → ɯʍʊ (subject form) then verb  \n- For they: ɱʊ (subject) + ʍʊ (future) + verb → ɱʊʍʊɞɗʈʊ  \n\nInconsistent — why is future attached to subject in one case and separate in the other?\n\nPerhaps: ʍʊ is not a subject affix but a tense marker that is inserted right before the verb — and subject forms are prefixed.\n\nBut in \"you will play\" = ɯʍʊɲɫɪħʊ — if we break as: [you_{pl}] = ɯʍʊ, then verb = ɲɫɪħʊ  \nIn \"they will sing\" = ɱʊ + ʍʊ + ɞɗʈʊ — so here subject is ɱʊ (they), future marker = ʍʊ, verb = ɞɗʈʊ  \n\nSo if subjects are:\n\n- I = ƒɞ  \n- you_{sg} = ɯ  \n- she = ʊ  \n- we = ʍɯ  \n- you_{pl} = ɯʍʊ → this seems to be a different subject form  \n- they = ɱʊ  \n\nThen for future tense, we have two patterns:\n\n1. Some subjects already incorporate future marker (you_{pl} = ɯʍʊ)  \n2. Others add ʍʊ between subject and verb (they = ɱʊ + ʍʊ + verb)\n\nBut this is inconsistent.\n\nAlternative: perhaps ʍʊ is always the future marker, and subject forms do not include it — then why is \"you will play\" ɯʍʊɲɫɪħʊ and not ɯ + ʍʊ + ɲɫɪħʊ? It is that — ɯ + ʍʊ + ɲɫɪħʊ.\n\nSimilarly, ɱʊ + ʍʊ + ɞɗʈʊ.\n\nSo ɯʍʊ is not a single morpheme — it's the subject \"you_{pl}\" = ɯ + ʍʊ? But we also have \"you_{sg} = ɯ\" — so how is \"you_{pl}\" formed?\n\nWait — look at ʍɯ = we → so ʍ + ɯ  \nAnd ɯʍʊ = you_{pl} → ɯ + ʍ + ʊ?  \n\nBut we already have ʊ = she.\n\nThis is messy.\n\nLet’s look at verb roots again.\n\nAll verbs end in:\n\n- ʠɪƒɺʊ: like  \n- ʡɔɗʊ: read  \n- ɲɫɪħʊ: play  \n- ɞɗʈʊ: sing  \n\nNote that each verb ends in a syllable with ʊ — perhaps ʊ is a stative/infinitive ending?\n\nBut in \"I like\" = ƒɞƒʊʠɪƒɺʊ — so ƒʊ is attached to verb root?\n\nWait, \"I like\" = ƒɞƒʊʠɪƒɺʊ  \n\"I liked\" = ƒɞƃɞʠɪƒɺʊ  \n\nSo in present, it’s ƒɞ + ƒʊ + ʠɪƒɺʊ?  \nIn past, ƒɞ + ƃɞ + ʠɪƒɺʊ  \n\nSo perhaps ƒʊ = present tense marker?  \n\nCheck \"you read\" = ɯƒʊʡɔɗʊ → so ɯ + ƒʊ + ʡɔɗʊ  \n\"she plays\" = ʊƒʊɲɫɪħʊ → ʊ + ƒʊ + ɲɫɪħʊ  \n\"he sings\" = ʊƒʊɞɗʈʊ → ʊ + ƒʊ + ɞɗʈʊ — wait, \"he\" is ʊ? But \"she\" is ʊ as well?\n\nProblem: both \"she plays\" and \"he sings\" are ʊƒʊ... — so ʊ = he/she? Third person singular?\n\nYes! So:\n\n- I = ƒɞ  \n- you_{sg} = ɯ  \n- he/she = ʊ  \n- we = ʍɯ  \n- you_{pl} = ɯʍʊ  \n- they = ɱʊ  \n\nNow tenses:\n\n- Present: subject + ƒʊ + verb-root  \n- Past: subject + ƃɞ + verb-root  \n- Future: subject + ʍʊ + verb-root  \n\nCheck:\n\nPresent:  \n- I like: ƒɞ + ƒʊ + ʠɪƒɺʊ → OK  \n- you read: ɯ + ƒʊ + ʡɔɗʊ → OK  \n- she plays: ʊ + ƒʊ + ɲɫɪħʊ → OK  \n- he sings: ʊ + ƒʊ + ɞɗʈʊ → OK  \n\nPast:  \n- I liked: ƒɞ + ƃ貂 + ʠɪƒɺʊ → OK  \n- we read (past): ʍɯ + ƃ貂 + ʡɔɗʊ → OK  \n\nFuture:  \n- you will play: ɯ + ʍʊ + ɲɫɪħʊ — BUT the example is ɯʍʊɲɫɪħʊ → which is exactly ɯ + ʍʊ + ɲɫɪħʊ ♻  \n- they will sing: ɱʊ + ʍʊ + ɞɗʈʊ → perfectly  \n\nSo why is \"you will play\" written as ɯʍʊɲɫɪħʊ and not ɯ ʍʊ ɲɫɪħʊ? Because the morphemes are concatenated — nothing hidden. So ɯ + ʍʊ = you_{pl} — but wait, \"you_{sg}\" is ɯ, so \"you_{pl}\" is not ɯʍʊ? But ɯʍʊ is used for \"you will play\" — and we are told it means \"you will play\", not \"you_{pl} will play\".\n\nLook back at the gloss:\n\n- ɯʍʊɲɫɪħʊ → you will play  \n- ɱʊʍʊɞɗʈʊ → they will sing  \n\nSo if \"you will play\" = ɯ + ʍʊ + ɲɫɪħʊ, then \"you\" = ɯ (singular), and ʍʊ is future. So why doesn't \"you_{pl} will play\" use a different subject?\n\nWait — perhaps the subject for \"you\" is always ɯ, and plural is not marked on subject — but then why is \"we\" = ʍɯ?\n\nWe have distinct plural subjects:\n\n- we = ʍɯ  \n- they = ɱʊ  \n- you_{pl} = ? — in ɯʍʊ, if we interpret ɯ as you_{sg}, then ɯʍʊ might be \"you_{sg} future\" — but it says \"you will play\" (no plural indicated in gloss).\n\nWait, the text says: \"you will play\" — in English, \"you\" can be singular or plural — perhaps the language distinguishes it only in some cases?\n\nWait — check \"we read (past)\" is ʍɯƃ貂ʡɔɗʊ — so plural is marked on subject for \"we\", but not for \"you\"? But in \"you will play\" — it's written as ɯʍʊ — if that’s you_{sg} + future, then how is you_{pl} formed?\n\nPerhaps there is no separate you_{pl} subject form? But look at the available morphemes: ɯʍʊ is listed, so it must be a unit.\n\nBut the gloss says \"you will play\" — not \"you_{pl} will play\".\n\nSo perhaps in this language, \"you\" — whether singular or plural — is expressed by ɯ when not future, and by ɯʍʊ when future? But that's unlikely.\n\nAnother possibility: ʍʊ is a plural marker — so:\n\n- you_{sg} = ɯ  \n- you_{pl} = ɯ + ʍʊ → ɯʍʊ  \n- they = ɱʊ  \n- we = ʍ + ɯ → ʍɯ (plural of you_{sg}? But we = \"we\")\n\nWait: we = ʍɯ, you_{pl} = ɯʍʊ — different formation.\n\nPerhaps it’s subject + tense + verb, and person/number is attached to subject.\n\nLet me define subject forms again:\n\n- I = ƒɞ  \n- you_{sg} = ɯ  \n- he/she = ʊ  \n- we = ʍɯ — so ʍ marks plural, and ɯ is the 2nd person — so we = \"2pl\"? Not standard.\n\nWait — what if ʍ is plural marker, and:\n\n- ɯ = you_{sg}  \n- ʍɯ = we — ʍ + 1st person? But then we = plural of I? Not standard.\n\nPerhaps:\n\n- ƒɞ = I  \n- ɯ = you_{sg}  \n- ʊ = he/she  \n- ʍ + ɯ = we (plural you? No)  \n- ɯ + ʍʊ = you_{pl} — then ʍʊ = plural marker? But ʍʊ is two morphemes: ʍ and ʊ? Then ʊ is also in \"she\".\n\nConflict: she = ʊ, so ʊ is a person marker.\n\nLet me avoid overcomplicating.\n\nFrom the future examples:\n\n- you will play = ɯʍʊɲɫɪħʊ → morphemes: ɯ, ʍʊ, ɲɫɪħʊ  \n- they will sing = ɱʊʍʊɞɗʈʊ → ɱʊ, ʍʊ, ɞɗʈʊ  \n\nSo Future marker = ʍʊ — and it is attached directly before the verb root.\n\nPerson/subject:\n\n- I: ƒɞ  \n- you_{sg}: ɯ  \n- he/she: ʊ  \n- we: ʍɯ  \n- they: ɱʊ  \n- you_{pl}: ? — in ɯʍʊ, it's ɯ + ʍʊ — so ʍʊ here is acting as a pluralizer for \"you\" → so you_{pl} = ɯ + ʍʊ\n\nBut then for \"they\", it's ɱʊ — no ʍʊ suffix.\n\nSo you_{pl} = ɯ + ʍʊ (plural marker)  \nthey = ɱʊ (but why not ɱ + ʊ?) — no: ʊ is \"he/she\", so ɱʊ = they (clearly default form)\n\nSo subject forms are:\n\n- I = ƒɞ  \n- you_{sg} = ɯ  \n- you_{pl} = ɯ + ʍʊ  \n- he/she = ʊ  \n- we = ʍ + ɯ  \n- they = ɱ + ʊ = ɱʊ  \n\nTense:\n\n- Present = ƒʊ (between subject and verb)  \n- Past = ƃ貂 (between subject and verb)  \n- Future = ʍʊ (between subject and verb)  \n\nWait — but in \"you_{sg} will play\" = ɯ + ʍʊ + ɲɫɪħʊ — so future marker = ʍʊ  \nIn \"you_{pl} will play\" — if \"you_{pl}\" = ɯʍʊ, then we would have: ɯʍʊ + ʍʊ + verb? → ɯʍʊʍʊɲɫɪħʊ — which is not the case.\n\nBut the example \"you will play\" is ɯʍʊɲɫɪħʊ — and it’s glossed as \"you will play\" — it does not say plural.\n\nI think the translation \"you will play\" is ambiguous in English — it could be singular or plural.\n\nBut the morpheme ɯʍʊ is a single unit in the morpheme list, so we must take it as an atomic subject form for \"you (pl)\"? But then why does ɯʍʊ appear with verb ɲɫɪħʊ → and the gloss says \"you will play\" — so perhaps the language doesn’t distinguish \"you\" singular/plural in all contexts, or \"you\" is always plural in",
+  "answer_text": "Some subjects already incorporate future marker (you_{pl} = ɯʍʊ)",
+  "morphemes": [
+   "Some",
+   "subjects",
+   "already",
+   "incorporate",
+   "future",
+   "marker",
+   "(you_{pl}",
+   "=",
+   "ɯʍʊ)"
+  ],
+  "em_decomp": false,
+  "em_surface": false,
+  "chrf": 0.0416,
+  "morf1": 0.0,
+  "elapsed_s": 21.2,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "swahili-person-tense",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "they read",
+  "gold": [
+   "ɱʊ",
+   "ƒʊ",
+   "ʡɔɗʊ"
+  ],
+  "gold_joined": "ɱʊƒʊʡɔɗʊ",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n\nWe are given 8 evidence pairs. We must extract the morphemes and their meanings by comparing the forms.\n\nList of evidence with glosses:\n\n1. ƒɞƒʊʠɪƒɺʊ → I like  \n2. ɯƒʊʡɔɗʊ → you read  \n3. ʊƒʊɲɫɪħʊ → she plays  \n4. ƒɞƃɞʠɪƒɺʊ → I liked  \n5. ʍɯƃɞʡɔɗʊ → we read (past)  \n6. ɯʍʊɲɫɪħʊ → you will play  \n7. ɱʊʍʊɞɗʈʊ → they will sing  \n8. ʊƒʊɞɗʈʊ → he sings  \n\nAvailable morphemes:  \nƒɞ, ɯ, ʊ, ʍɯ, ɱʊ, ɗ, ƒʊ, ƃɞ, ʍʊ, ʠɪƒɺʊ, ʡɔɗʊ, ɲɫɪħʊ, ɞɗʈʊ\n\nLet’s break down each example into morphemes.\n\nStart with verb roots that recur:\n\n- ʠɪƒɺʊ appears in 1 and 4 → “like” and “liked” → likely the verb root for “like”, with tense distinction.\n- ʡɔɗʊ appears in 2 and 5 → “read” and “read (past)” → root for “read”\n- ɲɫɪħʊ appears in 3 and 6 → “plays” and “will play” → root for “play”\n- ɞɗʈʊ appears in 7 and 8 → “sing” and “will sing” → root for “sing”\n\nWait — 7 is “they will sing” = ɱʊʍʊɞɗʈʊ  \n8 is “he sings” = ʊƒʊɞɗʈʊ  \n\nSo ɞɗʈʊ is the verb root for “sing”, and the subject and tense are encoded elsewhere.\n\nLet’s analyze subject markers:\n\nLook at subject prefixes:\n\n- \"I\" appears in 1 and 4: ƒɞ... → must be \"I\"  \n  1: ƒɞƒʊʠɪƒɺʊ → I like  \n  4: ƒɞƃɞʠɪƒɺʊ → I liked  \n  So same subject: ƒɞ, different tense: ƒʊ vs ƃɞ → likely ƒʊ = present, ƃɞ = past?  \n  But wait, ƒʊ appears in 1 as second morpheme, and in 2 and 3 as second morpheme too.\n\nBreakdown by position:\n\nAssume the structure is: [SUBJECT] [TENSE?] [VERB-ROOT]\n\nBut the verb roots are long: ʠɪƒɺʊ, ʡɔɗʊ, etc. — so they are likely entire verb stems.\n\nLet’s check subject markers:\n\nFrom 1: ƒɞƒʊʠɪƒɺʊ → \"I like\" → subject \"I\" = ƒɞ?  \nBut 2: ɯƒʊʡɔɗʊ → \"you read\" → subject = ɯ?  \n3: ʊƒʊɲɫɪħʊ → \"she plays\" → subject = ʊ?  \n8: ʊƒʊɞɗʈʊ → \"he sings\" → subject = ʊ? — matches 3 (she) → so ʊ = he/she?  \n5: ʍɯƃɞʡɔɗʊ → \"we read (past)\" → subject = ʍɯ?  \n6: ɯʍʊɲɫɪħʊ → \"you will play\" — subject = ɯʍʊ? Wait this is 3 morphemes — contradiction.\n\nWait, maybe subject is single morpheme:\n\nTry aligning:\n\n1. ƒɞ + ƒʊ + ʠɪƒɺʊ → I + ? + like  \n   4. ƒɞ + ƃɞ + ʠɪƒɺʊ → I + ? + liked  \n   So same subject: ƒɞ  \n   Tense: ƒʊ vs ƃɞ → maybe ƒʊ = present, ƃɞ = past?\n\n2. ɯ + ƒʊ + ʡɔɗʊ → you + present + read  \n5. ʍɯ + ƃɞ + ʡɔɗʊ → we + past + read  \nSo ʍɯ = we?  \nAnd ɯ = you?\n\n3. ʊ + ƒʊ + ɲɫɪħʊ → she + present + play  \n8. ʊ + ƒʊ + ɞɗʈʊ → he + present + sing  \n→ So ʊ = he/she\n\n6. ɯ + ʍʊ + ɲɫɪħʊ → you + ? + play → \"you will play\"  \nOh! ɯ is \"you\", but we have ʍʊ as another morpheme → tense?  \n\n7. ɱʊ + ʍʊ + ɞɗʈʊ → they + ? + sing → \"they will sing\"\n\nIf 6 = ɯ + ʍʊ + ɲɫɪħʊ → you (sg) will play  \n7 = ɱʊ + ʍʊ + ɞɗʈʊ → they will sing  \nThen ʍʊ = future?  \n\nIn 5: ʍɯ + ƃɞ + ʡɔɗʊ → we (pl) past read  \nWe see ʍɯ = we (pl) — which is ʍ + ɯ? So ʍ is plural marker?\n\nLet’s hypothesize:\n\nSubjects:\n\n- I → ƒɞ  \n- you (sg) → ɯ  \n- he/she → ʊ  \n- we (pl) → ʍɯ = ʍ + ɯ  \n- they (pl) → ɱʊ  \n\nTenses:\n\n- Present: ƒʊ (appears with I, you, she, he)  \n- Past: ƃɞ (appears with I, we)  \n- Future: ʍʊ (appears with you and they)\n\nVerb stems:\n\n- like → ʠɪƒɺʊ  \n- read → ʡɔɗʊ  \n- play → ɲɫɪħʊ  \n- sing → ɞɗʈʊ  \n\nNow let’s verify:\n\n1. I like → ƒɞ (I) + ƒʊ (present) + ʠɪƒɺʊ (like) → ✓  \n4. I liked → ƒɞ (I) + ƃɞ (past) + ʠɪƒɺʊ → ✓  \n2. you read → ɯ (you) + ƒʊ (present) + ʡɔɗʊ (read) → ✓  \n5. we read (past) → ʍɯ (we) + ƃɞ (past) + ʡɔɗʊ → ✓  \n3. she plays → ʊ (she) + ƒʊ (present) + ɲɫɪħʊ (play) → ✓  \n8. he sings → ʊ (he) + ƒʊ (present) + ɞɗʈʊ (sing) → ✓  \n6. you will play → ɯ (you) + ʍʊ (future) + ɲɫɪħʊ (play) → ✓  \n7. they will sing → ɱʊ (they) + ʍʊ (future) + ɞɗʈʊ (sing) → ✓\n\nPerfect.\n\nNow, the query: “they read”\n\nSubject: they → ɱʊ  \nVerb: read → ʡɔɗʊ  \nTense: present? The query says “they read” — no tense specified, but in evidence, we have “we read (past)” explicitly marked as past, and “you read” as present.\n\nIn pair 2: “you read” = present  \nIn pair 5: “we read (past)” = past\n\nSo “they read” without any tense indicator likely means present tense.\n\nThus: they (ɱʊ) + present (ƒʊ) + read (ʡɔɗʊ) → ɱʊ + ƒʊ + ʡɔɗʊ\n\nBut wait — we have ɱʊ (they) + ƒʊ (present) + ʡɔɗʊ (read)\n\nIs this sequence attested? Not directly, but we know:\n\n- ɱʊ is used in 7 with future: ɱʊʍʊɞɗʈʊ  \n- ƒʊ is used as present tense marker with other subjects  \n- ʡɔɗʊ is the verb root for “read”\n\nNo evidence shows ɱʊ with ƒʊ, but the pattern is clear:\n\n- Subject + Tense + Verb-root\n\nSo for “they read” (present), it should be: ɱʊ ƒʊ ʡɔɗʊ\n\nThus: ɱʊƒʊʡɔɗʊ\n\nCheck morpheme list: yes, all are available: ɱʊ, ƒʊ, ʡɔɗʊ\n\nNo other interpretation makes sense.\n\nStep 2: Grammar — subject + tense + verb root. Subject and tense are prefixes in this order.\n\nStep 3: Compose exact form: ɱʊƒʊʡɔɗʊ\n\nNote: no spaces in output — concatenate exactly as in evidence.\n\n<answers>\nɱʊƒʊʡɔɗʊ\n</answers>",
+  "answer_text": "ɱʊƒʊʡɔɗʊ",
+  "morphemes": [
+   "ɱʊ",
+   "ƒʊ",
+   "ʡɔɗʊ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 10.5,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "swahili-person-tense",
+  "query": 2,
+  "difficulty": "curveball",
+  "prompt": "we sang",
+  "gold": [
+   "ʍɯ",
+   "ƃɞ",
+   "ɞɗʈʊ"
+  ],
+  "gold_joined": "ʍɯƃɞɞɗʈʊ",
+  "raw": "<analysis>\nStep 1: Identify meanings of morphemes from examples.\n\nFrom:\n- ƒɞƒʊʠɪƒɺʊ → I like → so ƒɞ = I, ƒʊ = like? But wait, ƒɞƃɞʠɪƒɺʊ → I liked. So ƒɞ = I, ʠɪƒɺʊ = like, and ƃɞ = past?\n- ɯƒʊʡɔɗʊ → you read → so ɯ = you_{sg}, ƒʊ = ? , ʡɔɗʊ = read. But ɯƒʊ is \"you\", so maybe ƒʊ is not a separate morpheme here? Wait — look across:\n\nLet’s re-analyze with consistent morpheme breakdowns.\n\nList all examples with possible morpheme separation:\n\n1. ƒɞƒʊʠɪƒɺʊ → I like  \n2. ɯƒʊʡɔɗʊ → you read  \n3. ʊƒʊɲɫɪħʊ → she plays  \n4. ƒɞƃɞʠɪƒɺʊ → I liked  \n5. ʍɯƃɞʡɔɗʊ → we read (past)  \n6. ɯʍʊɲɫɪħʊ → you will play  \n7. ɱʊʍʊɞɗʈʊ → they will sing  \n8. ʊƒʊɞɗʈʊ → he sings  \n\nNow, compare 1 and 4:  \n- ƒɞƒʊʠɪƒɺʊ → I like  \n- ƒɞƃɞʠɪƒɺʊ → I liked  \nDifference: ƒʊ → ƃɞ  \nSo likely, ƒʊ = present tense marker, ƃɞ = past tense marker  \nAnd ʠɪƒɺʊ = \"like\" (same in both)\n\nSimilarly, look at 2 and 5:  \n- ɯƒʊʡɔɗʊ → you_{sg} read  \n- ʍɯƃɞʡɔɗʊ → we read (past)  \nCompare: ɯ → ʍɯ, ƒʊ → ƃɞ, ʡɔɗʊ same  \nSo ʍɯ = we, ƒʊ = present, ƃɞ = past  \nAnd ʡɔɗʊ = read  \n\nNow 3 and 6:  \n- ʊƒʊɲɫɪħʊ → she plays  \n- ɯʍʊɲɫɪħʊ → you_{pl} will play  \nHere, ɲɫɪħʊ = plays / will play? Not consistent tense.  \nBut ʊƒʊ → she, ɯʍʊ → you_{pl}  \nSo perhaps ʊ = she, ɯʍʊ = you_{pl}  \nAnd ɲɫɪħʊ = play (but appears in both present and future? That’s odd.)\n\nBut look at 8:  \n- ʊƒʊɞɗʈʊ → he sings → ʊ = he, ƒʊ = present, ɞɗʈʊ = sing  \n\nNow 7:  \n- ɱʊʍʊɞɗʈʊ → they will sing → ɱʊ = they? ʍʊ = future? ɞɗʈʊ = sing\n\nCompare 3 and 8:  \n- ʊƒʊɲɫɪħʊ → she plays  \n- ʊƒʊɞɗʈʊ → he sings  \nSo ʊƒʊ = he/she + present  \nSo ʊ = he/she? But in 6: ɯʍʊɲɫɪħʊ → you_{pl} will play — so ɯʍʊ = you_{pl}, and ʍʊ might be future?\n\nTry to isolate:\n\nSubject pronouns:\n- I → ƒɞ  \n- you_{sg} → ɯ  \n- he → ʊ  \n- she → ʊ (same as he? But different context) — wait, ʊ is used for both \"he\" and \"she\" — so perhaps ʊ = third person singular  \n- we → ʍɯ  \n- you_{pl} → ɯʍʊ? But in 6, we have ɯʍʊ — that’s you_{pl}  \nBut in 2: ɯƒʊʡɔɗʊ → you_{sg} read → so ɯ + ƒʊ = you_{sg} present  \nIn 6: ɯʍʊɲɫɪħʊ → you_{pl} will play — so ɯʍʊ = you_{pl} → so you_{pl} = ɯ + ʍʊ? But ʍʊ is also in 7: ɱʊʍʊɞɗʈʊ → they will sing → so ʍʊ = future?\n\nSo ʍʊ = future marker\n\nThen:  \n- ʊƒʊɲɫɪħʊ → she plays → ʊ = she, ƒʊ = present, ɲɫɪħʊ = play  \n- ɯʍʊɲɫɪħʊ → you_{pl} will play → ɯʍʊ = you_{pl}, ʍʊ = future? But then ɯʍʊ would be you_{pl} + future? But ɯ is already you_{sg} — inconsistency.\n\nLet’s try a different approach. Maybe subject is one morpheme, then tense/mode, then verb.\n\nTry to group:\n\nSubjects:\n- I: ƒɞ  \n- you_{sg}: ɯ  \n- he/she: ʊ  \n- we: ʍɯ  \n- you_{pl}: ʍʊ? But in 6: ɯʍʊ → so subject = ɯʍʊ? That's 3 morphemes.  \n- they: ɱʊ\n\nTense/mode:\n- present: ƒʊ  \n- past: ƃɞ  \n- future: ʍʊ\n\nVerbs:\n- like: ʠɪƒɺʊ  \n- read: ʡɔɗʊ  \n- play: ɲɫɪħʊ  \n- sing: ɞɗʈʊ\n\nNow test:\n\n1. ƒɞ + ƒʊ + ʠɪƒɺʊ = I + present + like → I like ✓  \n2. ɯ + ƒʊ + ʡɔɗʊ = you_{sg} + present + read → you read ✓  \n3. ʊ + ƒʊ + ɲɫɪħʊ = he/she + present + play → she plays ✓  \n4. ƒɞ + ƃɞ + ʠɪƒɺʊ = I + past + like → I liked ✓  \n5. ʍɯ + ƃɞ + ʡɔɗʊ = we + past + read → we read (past) ✓  \n6. ɯ + ʍʊ + ɲɫɪħʊ = you_{sg} + future + play? But it says \"you will play\" — and it's \"you_{pl}\" in the translation. Contradiction.\n\nWait — example 6: “ɯʍʊɲɫɪħʊ → you will play” → translation says “you_{pl} will play”\n\nSo the subject is “ɯʍʊ” — meaning you_{pl} = ɯʍʊ — so it's a single bound morpheme for you_{pl}? But then ɯ is not you_{sg} by itself?\n\nAlternative hypothesis: Maybe you_{pl} = ʍʊ, and ɯ is something else.\n\nBut in 2: ɯƒʊʡɔɗʊ → you_{sg} read → ɯ is clearly you_{sg}  \nIn 6: ɯʍʊɲɫɪħʊ → you_{pl} will play → so ɯʍʊ = you_{pl}? That implies you_{pl} = ɯ + ʍʊ — but then you_{sg} = ɯ, you_{pl} = ɯ + ʍʊ? That’s odd.\n\nBut look at 7: ɱʊʍʊɞɗʈʊ → they will sing → if ʍʊ = future, then ɱʊ = they, ʍʊ = future, ɞɗʈʊ = sing → ✓  \nThen 6: ɯʍʊɲɫɪħʊ → you_{pl} will play → so ɯʍʊ = you_{pl} — meaning you_{pl} = ɯʍʊ? But then why is you_{sg} just ɯ? Inconsistency.\n\nWait — perhaps the subject is encoded as:\n- I: ƒɞ  \n- you_{sg}: ɯ  \n- he: ʊ  \n- she: ʊ  \n- we: ʍɯ  \n- you_{pl}: ʍʊ  \n- they: ɱʊ  \n\nNow check:\n\nExample 6: ɯʍʊɲɫɪħʊ → you_{pl} will play → but that would be you_{sg} + you_{pl} + play? Impossible.\n\nUnless... you_{pl} is ʍʊ and ɯ is a future marker? But then example 2: ɯƒʊʡɔɗʊ → you_{sg} read → if ɯ = future, then it would be future + present? Conflict.\n\nWait — maybe example 6 is misread? The input says:  \n“ɯʍʊɲɫɪħʊ → you will play” — and the translation says you_{pl}, so the subject is \"you_{pl}\" = ɯʍʊ  \nBut then what is \"ɯ\" by itself in \"ɯƒʊʡɔɗʊ\"? That must be \"you_{sg}\" — so we have:\n\n- you_{sg}: ɯ  \n- you_{pl}: ɯʍʊ — i.e., you_{pl} = you_{sg} + future marker? That’s inconsistent.\n\nAlternative idea: Perhaps the subject for you_{pl} is just ʍʊ — and example 6 is written as ɯʍʊ but that’s a mistake? But we have to work with given data.\n\nWait — look at example 5: ʍɯƃɞʡɔɗʊ → we read (past) → subject = ʍɯ  \nSo we = ʍɯ → ʍ + ɯ?  \nThen you_{pl} = ʍʊ? But example 6: ɯʍʊ — that’s ɯ + ʍʊ — different order.\n\nMaybe word order is SUBJECT–TENSE–VERB\n\nAnd subject morphemes are:\n\nI = ƒɞ  \nyou_{sg} = ɯ  \nhe = ʊ  \nshe = ʊ  \nwe = ʍɯ  \nyou_{pl} = ʍʊ  \nthey = ɱʊ  \n\nBut then example 6: ɯʍʊɲɫɪħʊ → why is it ɯ + ʍʊ? That’s you_{sg} + you_{pl}? No.\n\nUnless... perhaps “ɯʍʊ” is a single morpheme for you_{pl}? But then why is “ʍɯ” for we? Different order.\n\nAnother possibility: “ʍʊ” is the future marker, and “ɯ” is you_{sg} in example 2, but in example 6, you_{pl} is ʍʊ, and there is no \"ɯ\" — but the word is ɯʍʊ.\n\nWait — maybe it's a mistake and example 6 should be ʍʊɲɫɪħʊ? But the input says ɯʍʊɲɫɪħʊ.\n\nLet me assume that ʍʊ = future, and the subject \"you_{pl}\" is ʍʊ — but then why is there a ɯ before it? \n\nUnless: the subject for you_{pl} is encoded as ɯ + ʍʊ, meaning you_{pl} = ɯ + ʍʊ — but then you_{sg} = ɯ, and you_{pl} = you_{sg} + future? That doesn't make sense.\n\nWait — perhaps ʍʊ is a plural marker? \n\nTry:  \n- you_{sg} = ɯ  \n- you_{pl} = ɯ + ʍʊ — pluralizing the subject  \n- we = ʍɯ — which might be plural + you? No.\n\nBut we = ʍɯ  \nthey = ɱʊ  \n\nMaybe ʍ = pluralizer?  \nThen we = ʍ + ɯ? But ɯ is you_{sg} — then we = plural-you? That doesn’t make sense.\n\nAlternative breakthrough:\n\nCompare example 2 and 6:\n\n2: ɯƒʊʡɔɗʊ → you_{sg} read  \n6: ɯʍʊɲɫɪħʊ → you_{pl} will play  \n\nCommon prefix: ɯ — could be the base for “you”, and then ƒʊ = present, ʍʊ = future? But ʍʊ is three letters.\n\nWhat if:\n\n- Subject:\n  - I → ƒɞ\n  - you_{sg} → ɯ\n  - he → ʊ\n  - she → ʊ\n  - we → ʍɯ\n  - you_{pl} → ʍʊ\n  - they → ɱʊ\n\nThen example 6: ɯʍʊɲɫɪħʊ → has ɯ and ʍʊ — two subjects? Impossible.\n\nUnless it's a typo in the problem? But we must work with what is given.\n\nWait — maybe in example 6, “ɯʍʊ” is not subject + future, but subject = “ʍʊ” and “ɯ” is a tense marker? But then example 2 has ɯ as subject.\n\nPerhaps the subjects are:\n\n- I: ƒɞ  \n- you_{sg}: ɯ  \n- you_{pl}: ʍʊ  \n- he: ʊ  \n- she: ʊ  \n- we: ʍɯ  \n- they: ɱʊ  \n\nThen example 6: ɯʍʊɲɫɪħʊ — this can't be, because there are two subject markers: ɯ and ʍʊ.\n\nUnless — ɯ is not subject. Maybe ɯ = future? But example 2: ɯƒʊʡɔɗʊ → if ɯ = future, then it's future + present + read? Meaningless.\n\nNew idea: Maybe the word order is SUBJECT–VERB–TENSE? But ƒɞƒʊʠɪƒɺʊ — subject, then ƒʊ, then verb.\n\nNo — ƒɞ + ƒʊ + ʠɪƒɺʊ — likely subject + tense + verb.\n\nSo tense marker is between subject and verb.\n\nFor you_{pl}: how is it formed?\n\nLook at 7: ɱʊʍʊɞɗʈʊ → they will sing → subject = ɱʊ, tense = ʍʊ, verb = ɞɗʈʊ → so ʍʊ = future tense\n\nThen 6: ɯʍʊɲɫɪħʊ → you will play — and it’s you_{pl} — so subject = ɯ, tense = ʍʊ, verb = ɲɫɪħʊ — but ɯ is you_{sg}, so this should be “you_{sg} will play”, not “you_{pl}”.\n\nBut the translation says “you_{pl} will play”. So it must be that ɯʍʊ = you_{pl}, meaning that you_{pl} is a single morpheme = ɯʍʊ — and we must accept that you_{pl} is not derived from ɯ, it's a composite morpheme.\n\nSimilarly, we = ʍɯ — composite.\n\nSo morpheme list provided includes: ʍɯ, ʍʊ, ɱʊ — so these are fixed morphemes for subject.\n\nSo we have:\n\nSubject morphemes:\n- I → ƒɞ\n- you_{sg} → ɯ\n- he → ʊ\n- she → ʊ (same as he)\n- we → ʍɯ\n- you_{pl} → ɯʍʊ? But ɯʍʊ is not in the morpheme list! Wait — the available morphemes are: ƒɞ, ɯ, ʊ, ʍɯ, ɱʊ, ɗ, ƒʊ, ƃɞ, ʍʊ, ʠɪƒɺʊ, ʡɔɗʊ, ɲɫɪħʊ, ɞɗʈʊ\n\n— ɯʍʊ is NOT in the list! But the example contains it.\n\nWait — contradiction.\n\nExample 6: \"ɯʍʊɲɫɪħʊ\" — this must be composed of morphemes from the list.\n\nGiven morphemes: ɯ, ʍʊ — both are in the list.\n\nSo ɯʍʊ = ɯ + ʍʊ\n\nMeaning: you_{sg} + future = you_{pl} future? That makes no sense.\n\nUnless the \"you_{pl}\" in the translation is a mistake? But we can't assume that.\n\nAnother possibility: perhaps \"ɯʍʊ\" is \"you_{pl}\" and is a single morpheme, but it's not listed? But the problem says \"available morphemes\" and lists ɯ and ʍʊ separately — so we must use them.\n\nWait — look at the example 5: ʍɯƃɞʡɔɗʊ — we read (past)\n\nʍɯ is in the morpheme list — so we = ʍɯ\n\nSimilarly, in example 6: ɯʍʊ — that’s ɯ + ʍʊ — and ʍʊ is a morpheme\n\nSo likely, ʍʊ = future tense, and   ɯ = you_{sg}\n\nSo “you will play” should be ɯ + ʍʊ + ɲɫɪħʊ → you_{sg} will play\n\nBut the translation says “you_{pl} will play” — so either:\n\n1. There's a translation error, or\n2. The subject ɯ in this context does not mean you_{sg} — but then what?\n\nWait — perhaps the subject ɯ in example 2 and 6 are different? But that’s unlikely.\n\nFinal hypothesis: The translation says “you will play”, and labeled as You_{pl} — BUT — in the source, it’s ɯʍʊ — and since ʍʊ = future, and ɯ is subject — then for “you_{pl} will play”, the subject must be a different morpheme — but the only subject for you_{pl} that fits the morpheme list is ʍʊ — meaning, you_{pl} = ʍʊ.\n\nAnd example 6 is miswritten? Or maybe “ɯʍʊ” is a typo and should be “ʍʊɲɫɪħʊ”.\n\nBecause:\n\nIf you_{pl} = ʍʊ, then example 6: ʍʊɲɫɪħʊ → you_{pl} will play — matches if ʍʊ = you_{pl} and ɲɫɪħʊ = play — but then what is the future? We have no past/future in example 6.\n\nBut ʍʊ is already used as future in example 7: ɱʊʍʊɞɗʈʊ → they will sing — if ʍʊ = future, then we can't have ʍʊ = you_{pl}.\n\nSo ʍʊ cannot be both.\n\nUnless: ʍʊ is Future, and you_{pl} = ʍʊ — impossible.\n\nSo we have to accept that example 6 has subject = ɯ and tense =",
+  "answer_text": "ƒɞƒʊʠɪƒɺʊ → I like",
+  "morphemes": [
+   "ƒɞ",
+   "ƒʊ",
+   "ʠɪƒɺʊ",
+   "→",
+   "I",
+   "like"
+  ],
+  "em_decomp": false,
+  "em_surface": false,
+  "chrf": 0.0532,
+  "morf1": 0.0,
+  "elapsed_s": 19.9,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "turkish-vowel-harmony",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "eyes",
+  "gold": [
+   "ʜøɳ",
+   "ɸæŧ"
+  ],
+  "gold_joined": "ʜøɳɸæŧ",
+  "raw": "<analysis>\nStep 1: We are given a set of base words and their plural forms. From the evidence:\n\n- singular: æɽ → house; plural: æɽɸæŧ → houses\n- singular: œɠ → horse; plural: œɠɸœŧ → horses\n- singular: æɸ → hand; plural: æɸɸæŧ → hands\n- singular: ʟɤɠœʛ → book; plural: ʟɤɠœʛɸœŧ → books\n\nObserving the plural formation:\n\n- house → houses: æɽ → æɽ + ɸæŧ\n- horse → horses: œɠ → œɠ + ɸœŧ\n- hand → hands: æɸ → æɸ + ɸæŧ\n- book → books: ʟɤɠœʛ → ʟɤɠœʛ + ɸœŧ\n\nNotice that the plural suffix is NOT uniform: sometimes it’s ɸæŧ, sometimes ɸœŧ.\n\nLooking closer:\n\n- When the singular ends in a vowel (æɽ, æɸ), the plural uses ɸæŧ\n- When the singular ends in a consonant (œɠ, ʟɤɠœʛ), the plural uses ɸœŧ\n\nWait — let’s check:\n\n- æɽ ends in vowel /ɽ/ — plural suffix: ɸæŧ\n- œɠ ends in consonant /ɠ/ — plural suffix: ɸœŧ\n- æɸ ends in consonant /ɸ/ — plural suffix: ɸæŧ ← contradicts\n\nThat doesn’t hold. Let’s reexamine.\n\nTry looking at the final sound of the singular and the plural suffix added:\n\n- æɽ (ends in /ɽ/) → adds ɸæŧ → æɽɸæŧ\n- œɠ (ends in /ɠ/) → adds ɸœŧ → œɠɸœŧ\n- æɸ (ends in /ɸ/) → adds ɸæŧ → æɸɸæŧ ← ambiguity: ends in ɸ, yet uses ɸæŧ\n\nPerhaps the suffix is determined by the last vowel in the stem? Let's look at vowel harmony.\n\nAnother idea:\n\nMaybe ɸæŧ and ɸœŧ are two plural morphemes, and the choice depends on the vowel preceding.\n\n- æɽ → ends in /a/ (if æ = /a/) → uses ɸæŧ\n- œɠ → ends in /o/ (if œ = /o/) → uses ɸœŧ\n- æɸ → ends in /a/ → uses ɸæŧ\n- ʟɤɠœʛ → ends in œ (which is /o/) → uses ɸœŧ\n\nThis fits!\n\nPresume:\n- æ = /a/\n- œ = /o/\n- ɤ = /ə/ or /e/\n\nThen:\n- æɽ → ends in /a/ → plural suffix = ɸæŧ\n- œɠ → ends in /o/ → plural suffix = ɸœŧ\n- æɸ → ends in /a/ → plural suffix = ɸæŧ\n- ʟɤɠœʛ → ends in /o/ (œ) → plural suffix = ɸœŧ\n\nSo the rule is:\n- If the singular noun ends in a front vowel (æ = /a/), plural = -ɸæŧ\n- If the singular noun ends in a back vowel (œ = /o/), plural = -ɸœŧ\n\nNow, the query is: **eyes**\n\nWe are given: ʜøɳ → eye (singular)\n\nWhat vowel does ʜøɳ end in?\n\nBreak down: ʜøɳ → ends in /ɳ/ (a consonant), but the vowel before is ø.\n\nWhat is ø? It’s a mid-back rounded vowel, similar to œ? Or different?\n\nIn the evidence, œ is used for \"horse\" and \"books\" (as part of ʟɤɠœʛ), and it triggered ɸœŧ.\n\nNow, ʜøɳ ends in /ɳ/, but the last vowel is ø.\n\nWe have no other example ending in ø.\n\nBut note: ʜøɳ is the only body part with this vowel.\n\nIn ʟɤɠœʛ, the ending vowel is œ, and plural is ɸœŧ.\n\nIs ø the same as œ? Probably not — they are distinct symbols.\n\nSo we have:\n\n- æ = /a/ → plural suffix ɸæŧ\n- œ = /o/ → plural suffix ɸœŧ\n- ø = ??? — must determine.\n\nIs there any word ending in ø? Only ʜøɳ.\n\nWe need to decide the plural suffix for ʜøɳ.\n\nWe do NOT have a plural form of ʜøɳ given. But we must deduce.\n\nLook at the available morphemes: we must form \"eyes\" using only the available morphemes.\n\nAvailable morphemes: æɽ, œɠ, ʟɱɳ, ʜøɳ, ʜəɦ, æɸ, ʟɤɠœʛ, ɠœʠ, ɸœŧ, ɸæŧ\n\nWe are to form \"eyes\" — meaning plural of \"eye\" = ʜøɳ\n\nPossible plural suffixes: ɸœŧ or ɸæŧ\n\nWe need to infer which one applies to ʜøɳ.\n\nThe vowel in ʜøɳ is ø. Is ø similar to œ? In many languages, ø and œ are allophones or closely related, but here they are written as two different symbols — so they are likely distinct phonemes.\n\nIs there any reason to prefer one affix over another?\n\nLook at the other plural forms:\n\n- ɸæŧ is used after æ (which is front low /a/)\n- ɸœŧ is used after œ (back mid /o/)\n\nø is a front mid vowel — phonetically, it's more like æ than œ? But æ is low, ø is mid.\n\nWe need to look at the vowel harmony system.\n\nOther vowels present: ə (in ʜəɦ), ɤ (in ʟɤɠœʛ)\n\nNo other nouns end in ø.\n\nBut perhaps we can look at the general pattern of suffixes.\n\nNotice: all plural suffixes start with ɸ.\n\nThen the second part is either æ or œ.\n\nDoes the suffix match the vowel of the stem?\n\nIn æɽ → ɸæŧ → stem vowel æ matches suffix vowel æ — harmony.\n\nIn œɠ → ɸœŧ → stem vowel œ matches suffix vowel œ — harmony.\n\nIn æɸ → ɸæŧ → stem vowel æ matches suffix vowel æ — harmony.\n\nIn ʟɤɠœʛ → ɸœŧ → stem vowel œ matches suffix vowel œ — harmony.\n\nSo the pattern is: **vowel harmony** — the plural suffix vowel matches the last vowel of the stem.\n\nTherefore, for ʜøɳ — the last vowel is ø — so we need a plural suffix ending in ø.\n\nBut available suffixes are only ɸæŧ and ɸœŧ — NO ɸøŧ.\n\nWe do NOT have a morpheme ɸøŧ.\n\nAvailable morphemes: ɸœŧ and ɸæŧ are the only plural markers.\n\nSo we have a problem.\n\nUnless... ø is interpreted as œ?\n\nBut they are written differently.\n\nWait — look again at the morpheme list:\n\nAvailable: æɽ, œɠ, ʟɱɳ, ʜøɳ, ʜəɦ, æɸ, ʟɤɠœʛ, ɠœʠ, ɸœŧ, ɸæŧ\n\nNote: ʟɤɠœʛ is the word for book — it contains œ.\n\nAnd its plural is ʟɤɠœʛɸœŧ — so œ is used as a vowel in the stem.\n\nNow, ʜøɳ contains ø — not œ.\n\nAnd we have no plural morpheme with ø.\n\nAre we allowed to use one of the available plural suffixes anyway?\n\nPerhaps ø is actually meant to be the same as œ? Or maybe it's a typo? But we must work with the given data.\n\nAlternative hypothesis:\n\nMaybe the ɸæŧ and ɸœŧ are not strictly vowel-specific, but rather based on other features.\n\nNotice:\n\n- æɽ ends in consonant /ɽ/\n- œɠ ends in /ɠ/\n- æɸ ends in /ɸ/\n- ʟɤɠœʛ ends in /ʛ/\n\nThe suffix is added directly, and the variation: when the last vowel is æ → use ɸæŧ; when last vowel is œ → use ɸœŧ.\n\nNow, in ʜøɳ, the last vowel is ø.\n\nWe have no example with ø.\n\nBut perhaps we can reason that since there is a distinct symbol ø, and it is NOT œ, and we have no such suffix as ɸøŧ, then we must use the closest available.\n\nBut this is dangerous.\n\nWait — look at the hint: none.\n\nWe must deduce from pattern.\n\nAnother possibility: maybe the vowel of the suffix is not matching the stem's vowel, but the stem's last consonant? But that doesn't fit — æɽ ends in /ɽ/, which is a liquid; æɸ ends in /ɸ/, which is a fricative — both use ɸæŧ.\n\nNo pattern.\n\nLet’s look at the AVAILABLE morphemes again.\n\nWe have to form \"eyes\" — plural of eye = ʜøɳ\n\nWe have 2 plural suffixes: ɸæŧ and ɸœŧ\n\nWe MUST choose one.\n\nPerhaps there's a typo in the problem, and ʜøɳ is meant to end in œ? But it’s written as ø.\n\nWait — in the word ʟɤɠœʛ, we have œ — a different symbol from ø.\n\nIn Unicode, œ and ø are different: œ is latin small ligature oe (U+0153), ø is latin small letter o stroke (U+00F8).\n\nThey are used distinctly in the corpus.\n\nSo we cannot assume they are the same.\n\nBut then how do we pluralize ʜøɳ?\n\nWe don’t have the correct suffix.\n\nUnless — the plural marker is always ɸCŧ where C = the stem’s last vowel? But we are not given ɸøŧ.\n\nSo the only logical conclusion is that we are expected to use ɸœŧ, because ø and œ are phonetically similar, and perhaps in this language, they are interchangeable, or we misread.\n\nBut that’s not rigorous.\n\nWait — look at the singular word for eye: ʜøɳ\n\nIs there any other word with ø?\n\nNo.\n\nBut note: we have ʜəɦ → day, which has ə.\n\nNo help.\n\nAnother idea — maybe the plural suffix is determined by the first vowel? But æɽ has first vowel æ, uses ɸæŧ; œɠ has first vowel œ, uses ɸœŧ — matches!\n\nAlso, æɸ — first vowel æ → ɸæŧ\n\nʟɤɠœʛ — first vowel ʟ — consonant, second vowel ɤ, third vowel œ → last vowel œ → uses ɸœŧ\n\nBut in æɸ — first and only vowel is æ.\n\nSo the rule is: the plural suffix vowel matches the **last vowel** of the stem.\n\nNow, ʜøɳ — the last vowel is ø.\n\nWe need a suffix vowel ø — not available.\n\nTherefore, the only way is if ø is not a vowel that requires a special suffix — perhaps all non-æ, non-œ vowels default to one?\n\nBut we have no data.\n\nWait — what if we misread the structure?\n\nLook at ʙøɳ — is ø the vowel? Yes.\n\nPerhaps the plural marker is always ɸœŧ for all consonant-final stems? But æɸ is consonant-final and uses ɸæŧ.\n\nUnless — the vowel harmony is based on the vowel before the final consonant.\n\nIn ʜøɳ, if we consider the vowel before the /ɳ/ is ø — and since ø is a front vowel (like æ), perhaps ɸæŧ is used.\n\nIn IPA:\n- æ = /a/ (low central)\n- ø = /ø/ (close-mid front rounded)\n- œ = /ø/ or /œ/ — often used for open-mid front rounded\n\nIn many languages, /ø/ and /œ/ are allophones.\n\nBut here, both symbols are used: œ appears in œɠ and ʟɤɠœʛ; ø appears only in ʜøɳ.\n\nThis is critical.\n\nIf we assume that ø and œ are the same vowel sound, despite different spelling, then ʜøɳ ends in œ-like vowel → use ɸœŧ.\n\nThen eyes = ʜøɳ + ɸœŧ = ʜøɳɸœŧ\n\nThat’s the only valid option, otherwise the system is broken.\n\nMoreover, the morpheme list does not contain ɸøŧ — so it must be that the intended suffix for ʜøɳ is ɸœŧ.\n\nPerhaps it’s a transcription variation — or an oversight.\n\nIn the absence of ɸøŧ, we must use ɸœŧ, since ø and œ are similar rounded front vowels, whereas æ is low unrounded.\n\nSo we assume vowel harmony: front rounded vowels → ɸœᵗ\n\nThus:\n\n**eyes = ʜøɳ + ɸœŧ = ʜøɳɸœŧ**\n\nStep 2: Grammar — plural is formed by adding suffix, no agreement, no case, just suffixation.\n\nStep 3: The target form is ʜøɳɸœŧ\n\nWe must output exactly that.\n\nNote: We are not allowed to use other morphemes like ɠœʠ or ʟɱɳ — they are unrelated.\n\nAvailable: ʜøɳ and ɸœŧ are in the list.\n\nSo the answer is the concatenation of ʜøɳ and ɸœŧ.\n\n<answers>\nʜøɳɸœŧ\n</answers>",
+  "answer_text": "ʜøɳɸœŧ",
+  "morphemes": [
+   "ʜøɳ",
+   "ɸœŧ"
+  ],
+  "em_decomp": false,
+  "em_surface": false,
+  "chrf": 0.5667,
+  "morf1": 0.5,
+  "elapsed_s": 13.9,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "turkish-vowel-harmony",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "girls",
+  "gold": [
+   "ʟɱɳ",
+   "ɸœŧ"
+  ],
+  "gold_joined": "ʟɱɳɸœŧ",
+  "raw": "<analysis>\nStep 1: Identify the source word for \"girls\" and examine the pattern.\n\nWe are given:\n- ʟɱɳ → girl (singular)\n- æɽ → house → æɽɸæŧ → houses (plural)\n- œɠ → horse → œɠɸœŧ → horses (plural)\n- æɸ → hand → æɸɸæŧ → hands (plural)\n- ʟɤɠœʛ → book (since ʟɤɠœʛɸœŧ → books)\n\nWe note the plural formation:\n- house → houses: æɽ → æɽɸæŧ\n- horse → horses: œɠ → œɠɸœŧ\n- hand → hands: æɸ → æɸɸæŧ\n- book → books: ʟɤɠœʛ → ʟɤɠœʛɸœŧ\n\nPattern: To form plural, the singular noun is followed by either ɸæŧ or ɸœŧ.\n\nBut observe:\n- æɽ → æɽɸæŧ → ends in ɸæŧ\n- œɠ → œɠɸœŧ → ends in ɸœŧ\n- æɸ → æɸɸæŧ → ends in ɸæŧ\n- ʟɤɠœʛ → ʟɤɠœʛɸœŧ → ends in ɸœŧ\n\nIs there a rule? Let’s check the final phoneme of the root:\n\n- æɽ ends in /ɽ/ → plural suffix: ɸæŧ\n- œɠ ends in /ɠ/ → plural suffix: ɸœŧ\n- æɸ ends in /ɸ/ → plural suffix: ɸæŧ\n- ʟɤɠœʛ ends in /ʛ/ → plural suffix: ɸœŧ\n\nIt seems that plural suffix depends on the final consonant:\n- If root ends in a “stop” or “voiced stop” like /ɽ/, /ɠ/, /ɸ/ → use ɸæŧ? But /ɸ/ is voiceless fricative.\n\nAlternative: look at the suffixes themselves.\n\nWe have two plural morphemes: ɸæŧ and ɸœŧ.\n\nNote that:\n- æɽ (ends in vowel-like /ɽ/?) → ɸæŧ\n- œɠ (ends in /ɠ/) → ɸœŧ\n- æɸ (ends in /ɸ/) → ɸæŧ\n- ʟɤɠœʛ (ends in /ʛ/) → ɸœŧ\n\nPerhaps the plural suffix is determined by the vowel in the root? Not clear.\n\nWait — look at the morphemes available:\n\nWe are told the available morphemes are:\n\næɽ, œɠ, ʟɱɳ, ʜøɳ, ʜəɦ, æɸ, ʟɤɠœʛ, ɠœʠ, ɸœŧ, ɸæŧ\n\nWe don’t have ɠœʠ used in any example, so maybe irrelevant for now.\n\nNotice:\n\nAll plural forms are formed by adding a suffix to the singular noun.\n\nBut look at the two suffixes: ɸœŧ and ɸæŧ.\n\nIn the plural forms:\n\n- æɽɸæŧ → houses\n- œɠɸœŧ → horses\n- æɸɸæŧ → hands\n- ʟɤɠœʛɸœŧ → books\n\nThe suffix alternates: ɸæŧ after æɽ and æɸ, ɸœŧ after œɠ and ʟɤɠœʛ.\n\nWhat do æɽ and æɸ have in common? Both begin with æ.\n\nœɠ and ʟɤɠœʛ both begin with œ? œɠ begins with œ, ʟɤɠœʛ begins with ʟ — no.\n\nPerhaps it’s based on the final consonant’s voicing or place.\n\nAnother idea: maybe the plural suffix is not determined by the noun, but the noun morphology includes a plural marker that varies based on some phonological feature.\n\nWait — let's consider the possibility that the plural suffix is always ɸœŧ, but for some nouns a different suffix is used? But that doesn't explain the patterns.\n\nAlternatively, is ɸæŧ and ɸœŧ a pair of allomorphs based on the final consonant?\n\nLet’s try to group:\n\nNouns ending in a consonant that is a voiced stop? \n\n- æɽ: ends in /ɽ/ — voiced retroflex approximant? Possibly voiced.\n- œɠ: ends in /ɠ/ — voiced velar stop.\n- æɸ: ends in /ɸ/ — voiceless bilabial fricative.\n- ʟɤɠœʛ: ends in /ʛ/ — voiced uvular implosive? Possibly voiced.\n\nSo: æɽ → ɸæŧ, œɠ → ɸœŧ, æɸ → ɸæŧ, ʟɤɠœʛ → ɸœŧ\n\nNo clear voicing pattern: æɽ (voiced) → ɸæŧ, œɠ (voiced) → ɸœŧ — so not voicing.\n\nWhat about vowel harmony? Let’s examine vowels:\n\n- æɽ → æ → ɸæŧ — same vowel? æ\n- œɠ → œ → ɸœŧ — same vowel? œ\n- æɸ → æ → ɸæŧ — same vowel? æ\n- ʟɤɠœʛ → ends in œ → ɸœŧ — œ\n\nSo: the plural suffix matches the vowel of the root’s final vowel.\n\nWait:\n\n- æɽ — root vowel is æ — suffix is ɸæŧ → uses æ\n- œɠ — root vowel is œ — suffix is ɸœŧ → uses œ\n- æɸ — root vowel is æ — suffix is ɸæŧ → uses æ\n- ʟɤɠœʛ — root vowel: ʟɤɠœʛ — the vowel in the last syllable is œ → suffix ɸœŧ\n\nSo the pattern: plural suffix = ɸ + [vowel of the final syllable of the noun] + ŧ\n\nThus, the plural suffix is determined by the final vowel of the noun root.\n\nTherefore:\n\nFor “girl” = ʟɱɳ — what is the vowel? The word is ʟɱɳ — has no vowel written? Wait — maybe it’s a consonant cluster.\n\nBut wait — ʟɱɳ — written with three consonants. What vowel is there?\n\nIn the available morphemes, we have no vowel in ʟɱɳ. It’s likely that ʟɱɳ is a single morpheme, and perhaps it ends in /ɳ/, which is a nasal, and we need to assume it has a vowel? But it’s written without one.\n\nPerhaps all these words are phonemic and we are to treat the final phoneme.\n\nIn the plural forms:\n\nWhen the noun ends in a vowel? But we don’t have any noun ending in a vowel.\n\nAll given nouns end in consonants.\n\nBut in ʟɱɳ — ends in /ɳ/ — a voiced alveolar nasal.\n\nNow, which plural suffix should it take?\n\nWe need to see if the vowel quality of the suffix is determined by the vowel in the noun root.\n\nBut ʟɱɳ has no visible vowel.\n\nPerhaps in this language, nouns like ʟɱɳ, ʜøɳ (eye), ʜəɦ (day) are CV or CVC with implicit vowels?\n\nIn ʜøɳ → eye — has vowel ø\n\nʜəɦ → day — has vowel ə\n\nSo perhaps:\n\n- ʟɱɳ — is it pronounced as ʟəɱɳ? Or ʟaɱɳ? But written without vowel.\n\nWait — the morphemes are given as atomic units: ʟɱɳ is a morpheme. So we have to assume it has no internal vowel — meaning the plural suffix might be determined by some default.\n\nBut we have no example of a noun with ending /ɳ/ or /ɦ/ taking a plural.\n\nWe must extrapolate.\n\nLook at ʟɤɠœʛ — 3 syllables: ʟɤ-ɠœ-ʛ? Or ʟ-ɤɠœʛ? Not clear.\n\nKey insight: All the plural suffixes we see are either ɸæŧ or ɸœŧ.\n\nThe vowel in the suffix matches the vowel of the last syllable of the noun.\n\nLet’s break down the nouns:\n\n1. æɽ — [æ.ɽ] → vowel æ → plural suffix ɸæŧ → matches\n2. œɠ — [œ.ɠ] → vowel œ → plural suffix ɸœŧ → matches\n3. æɸ — [æ.ɸ] → vowel æ → plural suffix ɸæŧ → matches\n4. ʟɤɠœʛ — [ʟ.ɤ.ɠ.œ.ʛ] — the last vowel is œ → suffix ɸœŧ → matches\n\nSo the rule: plural suffix = ɸ + [last vowel of noun] + ŧ\n\nNow, what is the last vowel of ʟɱɳ (girl)?\n\nThe word is written as ʟɱɳ — no vowel shown. But in a language with consonant clusters, the vowel may be suppressed in orthography? Or perhaps ʟɱɳ has an implicit vowel.\n\nSince ʜøɳ (eye) has vowel ø, and ʜəɦ (day) has vowel ə, perhaps ʟɱɳ has an inherent vowel.\n\nBut what vowel? We have no example.\n\nCompare to ʜøɳ (eye) — ends in /ɳ/ — same as ʟɱɳ ends in /ɳ/ — so maybe vowel is the same?\n\nʜøɳ → eye → what is its plural? Not given.\n\nWe don’t have the plural of “eye” or “day” or “girl”.\n\nSo we have to infer the vowel of ʟɱɳ.\n\nBut — look at the available morphemes. The only one with [ɳ] is ʟɱɳ and ʜøɳ.\n\nʜøɳ ends in /ɳ/ but has vowel ø.\n\nIs it possible that ʟɱɳ has vowel ə? Or æ? Or œ?\n\nWe don’t know.\n\nAlternative hypothesis: perhaps the plural suffix is always ɸœŧ, except for words that begin with æ — then it's ɸæŧ?\n\nCheck:\n\n- æɽ → begins with æ → ɸæŧ → fits\n- æɸ → begins with æ → ɸæŧ → fits\n- œɠ → begins with œ → ɸœŧ → fits\n- ʟɤɠœʛ → begins with ʟ → ɸœŧ → fits\n\nSo: if the noun begins with a vowel in the set {æ}, use ɸæŧ; if it begins with any other consonant, use ɸœŧ.\n\nThen ʟɱɳ begins with ʟ → not æ → so plural should be ʟɱɳ + ɸœŧ → ʟɱɳɸœŧ\n\nBut is ʟɱɳ a single syllable? Yes, and begins with ʟ (a lateral).\n\nSo using this pattern: if the morpheme begins with æ, use ɸæŧ; else, use ɸœŧ.\n\nThat's simpler and consistent.\n\nThus:\n\n- ʟɱɳ → begins with ʟ → not æ → use ɸœŧ → ʟɱɳɸœŧ\n\nIs this consistent with the given plural forms? Yes.\n\n- æɽ → æ → ɸæŧ\n- œɠ → œ → ≠ æ → ɸœŧ\n- æɸ → æ → ɸæŧ\n- ʟɤɠœʛ → ʟ → ≠ æ → ɸœŧ\n\nPerfect.\n\nThus, rule: \n- If noun begins with æ → plural suffix = ɸæŧ\n- Else → plural suffix = ɸœŧ\n\nTherefore, for \"girls\" → ʟɱɳ → begins with ʟ → use ɸœŧ → ʟɱɳɸœŧ\n\nNow, is ɸœŧ in the available morphemes? Yes.\n\nAnd ʟɱɳ is given.\n\nSo answer is ʟɱɳɸœŧ\n\nBut wait — we have a morpheme ɠœʠ — unused. Maybe for something else? Not needed.\n\nStep 2: Grammar — no agreement, just suffixation.\n\nStep 3: Output exact form: ʟɱɳɸœŧ\n\n<answers>\nʟɱɳɸœŧ\n</answers>",
+  "answer_text": "ʟɱɳɸœŧ",
+  "morphemes": [
+   "ʟɱɳ",
+   "ɸœŧ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 13.5,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "turkish-vowel-harmony",
+  "query": 2,
+  "difficulty": "curveball",
+  "prompt": "days",
+  "gold": [
+   "ʜəɦ",
+   "ɸæŧ"
+  ],
+  "gold_joined": "ʜəɦɸæŧ",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n\nWe are given:\n- æɽ → house\n- œɠ → horse\n- ʟɱɳ → girl\n- ʜøɳ → eye\n- ʜəɦ → day\n- æɸ → hand\n\nAnd their plural forms:\n- æɽɸæŧ → houses → so \"house\" + \"ɸæŧ\" = plural\n- œɠɸœŧ → horses → \"horse\" + \"ɸœŧ\" = plural\n- æɸɸæŧ → hands → \"hand\" + \"ɸæŧ\" = plural\n- ʟɤɠœʛɸœŧ → books → this is a new word, but note it ends in ɸœŧ, so likely plural\n\nObserving the pluralization pattern:\n\nFor house (æɽ) → houses (æɽɸæŧ) → suffix = ɸæŧ  \nFor hand (æɸ) → hands (æɸɸæŧ) → suffix = ɸæŧ  \nFor horse (œɠ) → horses (œɠɸœŧ) → suffix = ɸœŧ  \n\nSo there are two plural suffixes: ɸæŧ and ɸœŧ.\n\nWhat determines which one?\n\nLet’s look at the root final consonant:\n\n- æɽ ends in /ɽ/ → uses ɸæŧ  \n- æɸ ends in /ɸ/ → uses ɸæŧ  \n- œɠ ends in /ɠ/ → uses ɸœŧ  \n\nSo perhaps the suffix assimilates to the final consonant of the noun root?\n\nBut note: ɸæŧ is used after æɽ and æɸ — both end in voiceless or fricative-like consonants? /ɽ/ and /ɸ/ — unclear.\n\nAlternatively, look at the plural suffixes and the final sound of the noun:\n\n- æɽ (ends in /ɽ/) → ɸæŧ  \n- æɸ (ends in /ɸ/) → ɸæŧ  \n- œɠ (ends in /ɠ/) → ɸœŧ  \n\nNow, ɸæŧ has /æ/ as the vowel, ɸœŧ has /œ/ as the vowel. Maybe it’s based on the vowel harmony?\n\nBut the roots don’t have vowels that clearly match: æɽ has æ, œɠ has œ, æɸ has æ.\n\nSo perhaps plural suffix vowel matches the root vowel?\n\n- æɽ (æ) → ɸæŧ (æ) → match  \n- æɸ (æ) → ɸæŧ (æ) → match  \n- œɠ (œ) → ɸœŧ (œ) → match  \n\nYes! That’s a consistent pattern.\n\nSo the plural suffix is constructed as: [voiceless fricative] + [root vowel] + [t]\n\nThe fricative is always ɸ, then the vowel is the same as the last vowel of the noun root, then ŧ.\n\nSo:\n- For æɽ → last vowel = æ → plural = æɽ + ɸæŧ  \n- For œɠ → last vowel = œ → plural = œɠ + ɸœŧ  \n- For æɸ → last vowel = æ → plural = æɸ + ɸæŧ  \n\nTherefore, for \"day\" = ʜəɦ → the last vowel is ə.\n\nSo plural of day should be: ʜəɦ + ɸəŧ\n\nBut is \"ɸəŧ\" available in the morpheme list?\n\nAvailable morphemes: æɽ, œɠ, ʟɱɳ, ʜøɳ, ʜəɦ, æɸ, ʟɤɠœʛ, ɠœʠ, ɸœŧ, ɸæŧ\n\nWe have ɸœŧ and ɸæŧ — but no ɸəŧ.\n\nWait. That’s a problem.\n\nBut wait — we have another example: ʟɤɠœʛɸœŧ → books\n\nWhat is ʟɤɠœʛ? It must be \"book\". It ends in œ, so plural suffix is ɸœŧ → consistent.\n\nBut now we need to form \"days\" = plural of ʜəɦ.\n\nThe root is ʜəɦ — vowel is ə.\n\nWe need a plural suffix with vowel ə → ɸəŧ\n\nBut ɸəŧ is not listed in the available morphemes.\n\nAvailable: ɸœŧ, ɸæŧ — only those two.\n\nSo is there another possibility?\n\nPerhaps the plural suffix is not depending on the root vowel, but on the final consonant?\n\nLet’s check final consonants:\n\n- æɽ ends in /ɽ/ → plural ɸæŧ  \n- æɸ ends in /ɸ/ → plural ɸæŧ  \n- œɠ ends in /ɠ/ → plural ɸœŧ  \n\nNow /ɽ/ and /ɸ/ are both not voiced stops? /ɽ/ is a flapped approximant, /ɸ/ is voiceless bilabial fricative, /ɠ/ is voiced velar stop.\n\nMaybe the vowel of the suffix is determined not by the root vowel, but by something else?\n\nWait — looking at ʜəɦ. It ends in /ɦ/ — a voiced glottal fricative.\n\nNow, if we look back — maybe the plural suffix’s vowel is determined by the final consonant's voicing?\n\n- /ɽ/ — voiced → used ɸæŧ? but æ is not related  \nThis doesn’t help.\n\nWait — maybe I made a mistake.\n\nAnother possibility: maybe the ɸæŧ and ɸœŧ are not suffixes in isolation, but part of a pattern.\n\nLook at ʜəɦ — day. We have no plural form given.\n\nBut we need to form \"days\".\n\nAvailable morphemes are fixed. Only two plural morphemes: ɸœŧ and ɸæŧ.\n\nSo if we must choose one, we look for a rule.\n\nNotice:\n\n- ʜəɦ → the vowel is ə\n\nBut the plural morphemes are ɸæŧ and ɸœŧ — no ɸəŧ.\n\nUnless — perhaps the vowel assimilates, but only if the root vowel is æ or œ? What if ə is treated as æ?\n\nIn many languages, ə is a neutral vowel that can assimilate or be borrowed as æ/ε.\n\nBut we have no evidence for that.\n\nAlternatively, think: the word ʜəɦ ends in /ɦ/ — which is a glottal sound. What do the other words end in?\n\n- æɽ ends in /ɽ/ → ɸæŧ  \n- æɸ ends in /ɸ/ → ɸæŧ  \n- œɠ ends in /ɠ/ → ɸœŧ  \n\n/ɽ/ and /ɸ/ are both alveolar or labial? /ɽ/ is alveolar, /ɸ/ is labial, /ɠ/ is velar.\n\nNo clear category.\n\nPerhaps it's about vowel height or backness?\n\n- æ is low front  \n- œ is mid front  \n- ə is mid central\n\nStill no clear mapping.\n\nWait — let's look at the given plural morphemes: ɸæŧ and ɸœŧ.\n\nThe only vowels in the morphemes are æ and œ.\n\nThen maybe the plural vowel is determined not by harmony, but by morphological class? Something else?\n\nBut we have only three examples: two with æ and one with œ.\n\nNow, ʜəɦ — the vowel is ə. But ə is close to œ in some phonetic systems.\n\nPerhaps ə is realized as œ in the plural? But that's a stretch.\n\nAnother idea:\n\nMaybe the \"ɸ\" in the suffix is the plural marker, and the vowel is determined by the final consonant or stress? No.\n\nWait — what if the plural is formed by adding the suffix, but the vowel of the suffix is always the same as the root’s vowel — but if the root’s vowel is not æ or œ, we pick the closest?\n\nBut ə is central, æ is front low, œ is front mid — ə is closer to œ.\n\nBut without evidence, we can't assume.\n\nWait — let’s look at the morpheme list again.\n\nAvailable morphemes: ɸœŧ, ɸæŧ — only two.\n\nSo, given that, and that ʜəɦ is the only one with vowel ə, we must map it to one of the two.\n\nNow, consider the word ʟɤɠœʛ → books → ends in œ → plural ɸœŧ — and œ matches.\n\nIn ʜəɦ, the vowel is ə — is ə a reduced form of œ? Unlikely.\n\nIn some orthographies, ə is used for a schwa, while œ is a distinct vowel.\n\nBut perhaps in this language, the plural suffix always uses æ or œ — maybe for nouns that are “animate” and “inanimate”? No evidence.\n\nWait — look at the dictionary:\n\n- æɽ → house → inanimate → used ɸæŧ  \n- œɠ → horse → animate → used ɸœŧ  \n- æɸ → hand → animate? → used ɸæŧ — contradiction, because hand is animate but uses ɸæŧ, same as house.\n\nSo not animacy.\n\nHand is human, house is not — but both use ɸæŧ.\n\nHorse is animal, uses ɸœŧ.\n\nGirl is ʟɱɳ — unknown plural.\n\nEye is ʜøɳ — unknown plural.\n\nSo horse is the only animate noun we have plural for that uses ɸœŧ.\n\nBut hand is animate and uses ɸæŧ.\n\nSo that doesn't work.\n\nWait — perhaps it's the final consonant voicing:\n\n- æɽ ends in /ɽ/ — voiced — uses ɸæŧ  \n- æɸ ends in /ɸ/ — voiceless — uses ɸæŧ  \n- œɠ ends in /ɠ/ — voiced — uses ɸœŧ\n\nSo voiced doesn’t determine.\n\nWhat if the vowel of the suffix matches the vowel of the root ONLY if the root vowel is æ or œ? But ə is different.\n\nPerhaps there is a mistake.\n\nAnother idea: maybe the plural suffix is not vowel-based, but the root vowel is replaced?\n\nNo — the examples show that the root is unchanged: æɽ → æɽɸæŧ — so root remains.\n\nWe must form \"days\" using available morphemes.\n\nAvailable plural suffixes: ɸæŧ and ɸœŧ.\n\nWhat would make sense?\n\nWe have:\n\n- house (æɽ) → ɸæŧ  \n- hand (æɸ) → ɸæŧ  \n- horse (œɠ) → ɸœŧ  \n\nNow, day: ʜəɦ — the vowel is ə.\n\nBut if we look at ɸæŧ, the vowel is æ — which is close phonetically to ə in some dialects, though not identical.\n\nBut we have no other noun with ə.\n\nNow — look at the word books: ʟɤɠœʛ — likely ends in œ, use ɸœŧ.\n\nBut ʜəɦ — no vowel match.\n\nWait — perhaps the vowel of the suffix is determined by the first vowel of the root? But ʜəɦ has only one vowel, ə.\n\nSo we have to pick.\n\nBut maybe there’s a pattern: words with vowel æ use ɸæŧ. Words with vowel œ use ɸœŧ. What about ə?\n\nPerhaps ə is considered a variant of œ? Or perhaps it’s an error.\n\nAlternatively, maybe the suffix vowel is always æ unless the root ends in a labial or round vowel?\n\nBut œɠ ends in /ɠ/ but vowel is œ.\n\nI think the most consistent pattern is that the plural suffix vowel matches the root vowel.\n\nBut since ə is not available, maybe ə → æ by some rule?\n\nBut we have another idea: maybe ə is not a vowel, but part of the consonant cluster?\n\nNo, ʜəɦ is clearly a two-consonant word with a vowel in between.\n\nPerhaps the writing omits diacritics? Unlikely.\n\nWait — what if the plural suffix vowel is determined by the consonant after the root? No.\n\nAnother observation:\n\n- ɸæŧ is used for: æɽ and æɸ — both start with æ? But œɠ starts with œ, uses ɸœŧ.\n\nIs the first vowel of the root determining the plural?\n\nCheck:\n\n- æɽ → first vowel æ → ɸæŧ  \n- æɸ → first vowel æ → ɸæŧ  \n- œɠ → first vowel œ → ɸœŧ  \n- ʟɤɠœʛ → first vowel ɤ? — ʟɤɠœʛ — let’s see: likely ɬ-ɤ-ɠ-œ-ʛ — the first vowel is ɤ — but plural is ɸœŧ — not matching.\n\nSo first vowel ɤ but plural suffix vowel œ — so no.\n\nThus, only the vowel of the noun root determines the suffix vowel, and it must match.\n\nBut ʜəɦ has vowel ə — and we don’t have a ɸəŧ morpheme.\n\nTherefore, the only possibility is that ə is treated as œ — because both are front rounded? Wait — ə is unrounded.\n\nə is central unrounded.\n\nœ is front rounded.\n\nNot similar.\n\nPerhaps the language simplifies ə to æ in morphological processes?\n\nWe have no other example.\n\nAlternatively, maybe ə is a typo or miswritten, and it should be œ? But we must work with what's given.\n\nPerhaps \"days\" is formed with ɸæŧ because ə is closer to æ than to œ? But that’s phonetic speculation.\n\nWait — let’s look at the available morphemes again.\n\nWe have: ɸœŧ and ɸæŧ — that’s all.\n\nAnd we must form \"days\".\n\nSince ʜəɦ is the word for \"day\", and we need its plural.\n\nGiven that the only plural morphemes are ɸæŧ and ɸœŧ, and we have two nouns with æ and one with œ, perhaps the vowel of the suffix is aligned with the root vowel if it is æ or œ, else default to one.\n\nBut what default?\n\nIn the absence of ɸəŧ, and since ə is a schwa, many languages default to æ or ə → æ.\n\nAlso, the word ʜəɦ — the ə is a mid-central vowel, which in some systems is transcribed as ɚ or ə, but often orthographically replaced with æ if no distinction.\n\nPerhaps in this system, ə is written as ə, but treated as æ for pluralization.\n\nWe have no evidence.\n\nBut note: ʟɤɠœʛ — that word has multiple vowels: ɤ and œ — plural uses ɸœŧ — so it picked the last vowel? œ is the last.\n\nIn ʜəɦ, there’s only one vowel: ə — is there a \"default\" fallback?\n\nPerhaps ə is perceived as œ? But that doesn’t make sense.\n\nAnother idea: perhaps the plural suffix vowel is determined by the spelling? But we don’t have logoscriptoric rules.\n\nLet’s look at the morpheme list: is ə even an option? No, the only vowel morphemes in suffixes are æ and œ.\n\nSo we must choose between ɸæŧ and ɸœŧ.\n\nNow, among the examples:\n\n- Two nouns use ɸæŧ: æɽ and æɸ — both have æ\n\n- One uses ɸœŧ: œɠ — has œ\n\n- ʜəɦ has ə — not æ or œ.\n\nSo perhaps ə is mapped to the most common: ɸæŧ? Or maybe to the least.\n\nBut this is weak.\n\nBut wait — the word ʜəɦ — if we consider that ə might be pronounced near œ in some accents? Maybe not.\n\nPerhaps there's a consonant-based rule.\n\nLet’s look at the final consonant of the root:\n\n- æɽ ends in /ɽ/ → ɸæŧ  \n- æɸ ends in /ɸ/ → ɸæŧ  \n- œɠ ends in /ɠ/ → ɸœŧ  \n- ʜəɦ ends in /ɦ/ → ?\n\n/ɦ/ is a voiced glottal fricative.\n\n/ɽ/ is voiced alveolar flap.\n\n/ɸ/ is voiceless bilabial fricative.\n\n/ɠ/ is voiced velar stop.\n\nNone match.\n\nBut /ɦ/ and /ɽ/ are both voiced — so maybe voiced consonants use ɸæŧ? But œɠ is voiced and uses ɸœŧ — contradiction.\n\nSo not that.\n\nPerhaps it’s based on the syllable structure or something else.\n\nI think the only logical path is: since ə is not æ or œ, and we have to pick one, and since ə is central and low-mid, and æ is open front, perhaps the system treats ə as æ — especially since ɸæŧ is the more common plural marker.\n\nMoreover, in many languages, schwa is a neutral vowel that may assimilate to preceding or following vowels — here there is no following vowel, so perhaps it defaults to æ.\n\nWe have no evidence to prefer œ.\n\nThus, I will assume that ə → æ for plural formation, and form \"days\" as ʜəɦ + ɸæŧ\n\nSo: ʜəɦɸæŧ\n\nNow, check the available morphemes: we have both ʜəɦ and ɸæŧ — yes.\n\nSo the answer should be: ʜəɦɸæŧ\n\nBut let's confirm with the morphemes: ɸæŧ is available, yes.\n\nSo, units: root ʜəɦ, plural suffix ɸæŧ.\n\nThus, \"days\" = ʜəɦɸæŧ\n\n</analysis>\n<answers>\nʜəɦɸæŧ\n</answers>",
+  "answer_text": "ʜəɦɸæŧ",
+  "morphemes": [
+   "ʜəɦ",
+   "ɸæŧ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 17.6,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "quechua-person-endings",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "I walk",
+  "gold": [
+   "ɮɐʋœ",
+   "ɧœ"
+  ],
+  "gold_joined": "ɮɐʋœɧœ",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n\nWe are given 8 evidence pairs. We must deduce the morphemes for verbs and subjects.\n\nLet’s break down the evidence:\n\n1. ʋœɻɤɧœ → I speak  \n2. ʋœɻɤɧɺœ → you speak  \n3. ʋœɻɤɧ → she speaks  \n4. ʋœɺɐɧœ → I see  \n5. ɻœɺʍɐɧɺœ → you eat  \n6. ɮɐʋœɧ → he walks  \n7. ʋœɻɤɧɬʍœɺ → we (all of us) speak  \n8. ɻœɺʍɐɧɬʍœɺ → we (all of us) eat  \n\nLet’s isolate the verb roots:\n\n- For “speak”:  \n  - ʋœɻɤɧœ → I speak  \n  - ʋœɻɤɧɺœ → you speak  \n  - ʋœɻɤɧ → she speaks  \n  - ʋœɻɤɧɬʍœɺ → we speak  \n  → So the root for “speak” is ʋœɻɤ + some suffixes\n\n- For “see”:  \n  - ʋœɺɐɧœ → I see  \n  → So ʋœɺɐ is the root for “see”\n\n- For “eat”:  \n  - ɻœɺʍɐɧɺœ → you eat  \n  - ɻœɺʍɐɧɬʍœɺ → we eat  \n  → So root for “eat” is ɻœɺʍɐ\n\n- For “walk”:  \n  - ɮɐʋœɧ → he walks  \n  → So root for “walk” is ɮɐʋœ\n\nNow let’s look at person suffixes:\n\nFrom “speak” (ʋœɻɤ):\n\n- I: ʋœɻɤ + ɧœ  \n- You: ʋœɻɤ + ɧɺœ  \n- She: ʋœɻɤ + ɧ  \n- We: ʋœɻɤ + ɧɬʍœɺ  \n\nSo person suffixes seem to be:\n\n- I: ɧœ  \n- You: ɧɺœ  \n- She: ɧ  \n- We: ɧɬʍœɺ  \n\nCheck if this applies to “see” (ʋœɺɐ):\n\n- I see: ʋœɺɐ + ɧœ → matches pattern\n\nCheck “eat” (ɻœɺʍɐ):\n\n- You eat: ɻœɺʍɐ + ɧɺœ → matches  \n- We eat: ɻœɺʍɐ + ɧɬʍœɺ → matches  \n\nSo person suffixes are consistent across verbs.\n\nNow, “he walks”: ɮɐʋœ + ɧ  \n\nBut we have no “I walk”, “you walk”, “we walk” yet.\n\nWe need “I walk”: So we need the root for “walk” (ɮɐʋœ) + the suffix for “I” which is ɧœ\n\nSo: ɮɐʋœ + ɧœ → ɮɐʋœɧœ\n\nCheck: all other person suffixes follow the same pattern.\n\nFrom “she speaks”: ʋœɻɤ + ɧ → so third person singular is just ɧ\n\nFrom “he walks”: ɮɐʋœ + ɧ → consistent\n\nSo “I walk” = walk-root + I-suffix = ɮɐʋœ + ɧœ = ɮɐʋœɧœ\n\nAvailable morphemes include: ɮɐʋœ and ɧœ — both are in the list.\n\nThus the morpheme sequence is: ɮɐʋœ + ɧœ\n\nStep 2: Grammar — consistent person agreement suffixes:  \n- ɧœ → 1st person singular (I)  \n- ɧɺœ → 2nd person singular (you)  \n- ɧ → 3rd person singular (she/he)  \n- ɧɬʍœɺ → 1st person plural (we)\n\nNo tense or other morphology apparent — all in present tense.\n\nStep 3: Composition — for “I walk” → root: ɮɐʋœ, person suffix: ɧœ → ɮɐɜɧœ\n\nWait — the root is ɮɐʋœ, not ɮɐɜ. Let's recheck spelling: in the evidence it's ɮɐʋœɧ → he walks.\n\nSo the morpheme is: ɮɐʋœ for “walk”, and ɧœ for “I”\n\nThus: ɮɐʋœɧœ\n\nNo other combinations possible — this is the only logical one.\n\nAll morphemes used are in the tile bank.\n\nSo final answer: ɮɐʋœɧœ\n</analysis>\n<answers>\nɮɐʋœɧœ\n</answers>",
+  "answer_text": "ɮɐʋœɧœ",
+  "morphemes": [
+   "ɮɐʋœ",
+   "ɧœ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 5.6,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "quechua-person-endings",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "we (all of us) see",
+  "gold": [
+   "ʋœɺɐ",
+   "ɧɬʍœɺ"
+  ],
+  "gold_joined": "ʋœɺɐɧɬʍœɺ",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n\nWe are given 8 examples and need to deduce the morphemes for:\n- Verb roots: speak, see, eat, walk\n- Subject markers: I, you (sg), she, he, we (all of us)\n\nBreak down the evidence:\n\n1. ʋœɻɤɧœ → I speak  \n2. ʋœɻɤɧɺœ → you speak  \n3. ʋœɻɤɧ → she speaks  \n4. ʋœɺɐɧœ → I see  \n5. ɻœɺʍɐɧɺœ → you eat  \n6. ɮɐʋœɧ → he walks  \n7. ʋœɻɤɧɬʍœɺ → we (all of us) speak  \n8. ɻœɺʍɐɧɬʍœɺ → we (all of us) eat  \n\nLook for patterns:\n\nVerb roots:\n- \"speak\" appears in 1,2,3,7 → morpheme ʋœɻɤ\n- \"see\" appears in 4 → morpheme ʋœɺɐ\n- \"eat\" appears in 5,8 → morpheme ɻœɺʍɐ\n- \"walk\" appears in 6 → morpheme ɮɐʋœ\n\nSubject markers:\n- I: appears in 1 and 4 → suffix ɧœ\n- you (sg): appears in 2 and 5 → suffix ɧɺœ\n- she: appears in 3 → suffix ɧ (no final vowel)\n- he: appears in 6 → suffix ɧ (same as she? But root is different — ɮɐʋœɧ)\n- we (all of us): appears in 7 and 8 → suffix ɧɬʍœɺ\n\nSo the pattern is:\n[verb root] + [subject suffix]\n\nSubject suffixes:\n- I → ɧœ\n- you (sg) → ɧɺœ\n- she → ɧ\n- he → ɧ  (same as she? But root differs)\n- we (all of us) → ɧɬʍœɺ\n\nFor \"she\" and \"he\", both use ɧ, but different verb roots. So ɧ is the 3rd person singular (gender-neutral? or context determines gender).\n\nNow the query: \"we (all of us) see\"\n\nWe know:\n- \"see\" = ʋœɺɐ (from example 4: ʋœɺɐɧœ = I see)\n- \"we (all of us)\" = ɧɬʍœɺ (from examples 7 and 8)\n\nSo combine: ʋœɺɐ + ɧɬʍœɺ = ʋœɺɐɧɬʍœɺ\n\nCheck: this follows the same pattern as ʋœɻɤɧɬʍœɺ (we speak) and ɻœɺʍɐɧɬʍœɺ (we eat).\n\nSo the morpheme sequence is: ʋœɺɐ + ɧɬʍœɺ\n\nAvailable morphemes include both: ʋœɺɐ and ɧɬʍœɺ — both are in the list.\n</analysis>\n<answers>\nʋœɺɐɧɬʍœɺ\n</answers>",
+  "answer_text": "ʋœɺɐɧɬʍœɺ",
+  "morphemes": [
+   "ʋœɺɐ",
+   "ɧɬʍœɺ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 4.5,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "quechua-person-endings",
+  "query": 2,
+  "difficulty": "curveball",
+  "prompt": "she eats",
+  "gold": [
+   "ɻœɺʍɐ",
+   "ɧ"
+  ],
+  "gold_joined": "ɻœɺʍɐɧ",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n\nWe are given pairs of words and meanings. Let's break down each example to extract morphemes.\n\nLook at the verbs:\n\n- ʋœɻɤɧœ → I speak\n- ʋœɻɤɧɺœ → you speak\n- ʋœɻɤɧ → she speaks\n- ʋœɺɐɧœ → I see\n- ɻœɺʍɐɧɺœ → you eat\n- ɮɐʋœɧ → he walks\n- ʋœɻɤɧɬʍœɺ → we (all of us) speak\n- ɻœɺʍɐɧɬʍœɺ → we (all of us) eat\n\nGroup by verb root:\n\nVerb roots:\n- ʋœɻɤ → \"speak\" (appears in I speak, you speak, she speaks, we speak)\n- ʋœɺɐ → \"see\" (I see only)\n- ɻœɺʍɐ → \"eat\" (you eat, we eat)\n- ɮɐʋœ → \"walk\" (he walks)\n\nNow look at subject markers:\n\nFor \"speak\":\n- I speak: ʋœɻɤ + ɧœ\n- you speak: ʋœɻɤ + ɧɺœ\n- she speaks: ʋœɻɤ + ɧ\n- we speak: ʋœɻɤ + ɧɬʍœɺ\n\nPattern:\n- I → ɧœ\n- you → ɧɺœ\n- she → ɧ\n- we → ɧɬʍœɺ\n\nSimilarly for \"eat\":\n- you eat: ɻœɺʍɐ + ɧɺœ\n- we eat: ɻœɺʍɐ + ɧɬʍœɺ\n\nSo subject markers seem to be:\n- ɧœ → I\n- ɧɺœ → you\n- ɧ → she\n- ɧɬʍœɺ → we\n\nNow check \"see\":\n- I see: ʋœɺɐ + ɧœ → matches subject marker pattern\n\n\"Walk\":\n- he walks: ɮɐʋœ + ɧ → wait, this is different. \"he\" is using ɧ, which was used for \"she\" in speak.\n\nIn \"she speaks\" it's ʋœɻɤ + ɧ\nIn \"he walks\" it's ɮɐʋœ + ɧ\n\nSo ɧ is used for both she and he? That suggests ɧ is 3rd person singular (gender-neutral? or merged).\n\nWait — perhaps ɧ is the 3rd person singular marker, regardless of gender.\n\nBut then why does \"she speaks\" and \"he walks\" both use ɧ? And \"I\" and \"you\" have distinct markers.\n\nSo subject markers:\n- I: ɧœ\n- you: ɧɺœ\n- she/he: ɧ\n- we: ɧɬʍœɺ\n\nNow — what about the verb roots?\n\n- speak: ʋœɻɤ\n- see: ʋœɺɐ\n- eat: ɻœɺʍɐ\n- walk: ɮɐʋœ\n\nWe need: \"she eats\"\n\nSo: verb root for eat = ɻœɺʍɐ\n3rd person singular subject = ɧ\n\nThus: ɻœɺʍɐ + ɧ → \"she eats\"\n\nNow check available morphemes list:\nAvailable: ʋœɻɤ, ʋœɺɐ, ɻœɺʍɐ, ɮɐʋœ, ɸɤɺœ, ɧœ, ɧɺœ, ɧ, ɧɬʍœɺ\n\nYes, ɻœɺʍɐ and ɧ are both in the list.\n\nSo \"she eats\" = ɻœɺʍɐ + ɧ\n\nNote: there is no reason to add anything else. No indication of gender distinction in 3rd person, and \"she speaks\" uses just ɧ, as does \"he walks\".\n\nTherefore, morpheme sequence is: ɻœɺʍɐ + ɧ\n\n→ ɻœɺʍɐɧ\n\nStep 2: Note any grammar\n\nNo tense marking — all examples are present tense.\nNo agreement beyond subject.\nNo vowel harmony or consonant mutation observed.\n\nStep 3: Compose exact target form\n\n\"she eats\" = ɻœɺʍɐɧ\n</analysis>\n<answers>\nɻœɺʍɐɧ\n</answers>",
+  "answer_text": "ɻœɺʍɐɧ",
+  "morphemes": [
+   "ɻœɺʍɐ",
+   "ɧ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 5.4,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "nahuatl-both-ends",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "I sing",
+  "gold": [
+   "ʝɵ",
+   "ƌæɵƌʉ"
+  ],
+  "gold_joined": "ʝɵƌæɵƌʉ",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n\nWe are given several examples:\n\n1. ʝɵƌɶƌɾɵ → I sleep  \n2. ɽɵƌɶƌɾɵ → you sleep  \n3. ƌɶƌɾɵ → he sleeps  \n4.  Jehɵƌɾɶƌʉ → I cry  \n5. ɽɵƌæɵƌʉ → you sing  \n6. ƌæɵƌʉɾ → they sing  \n7. ʝɵƌɶƌɾɵɾ → we sleep  \n\nWe need to deduce the morpheme for “I sing”.\n\nFirst, observe the verb stems:\n\n- For “sleep”:  \n  - I sleep: ʝɵƌɶƌɾɵ  \n  - you sleep: ɽɵƌɶƌɾɵ  \n  - he sleeps: ƌɶƌɾɵ  \n  - we sleep: ʝɵƌɶƌɾɵɾ  \n\nNotice:  \n- ʝɵ appears when “I” is subject  \n- ɽɵ appears when “you” is subject  \n- No prefix when “he” is subject  \n- ɾ is added when “we” is subject → so ɾ = we  \n\nThus:  \n- ʝɵ = I  \n- ɽɵ = you  \n- (empty) = he  \n- ɾ = we  \n\nNow look at the verb roots:\n\n- “sleep” appears as ƌɶƌɾɵ  \n- “cry” appears as ƌɾɶƌʉ  \n- “sing” appears as ƌæɵƌʉ  \n\nCheck:  \n- ʝɵƌɶƌɾɵ → I sleep → “I” + “sleep”  \n- ʝɵƌɾɶƌʉ → I cry → “I” + “cry”  \n- ɽɵƌæɵƌʉ → you sing → “you” + “sing”  \n- ƌæɵƌʉɾ → they sing → “sing” + “they”  \n\nWait — inconsistency: “they sing” is ƌæɵƌʉɾ — so the “they” suffix is attached at the END. But “we sleep” is ʝɵƌɶƌɾɵɾ — so “we” is a suffix here too?\n\nBut “I sleep” is ʝɵƌɶƌɾɵ — prefix, and “we sleep” is that same verb + ɾ → so perhaps ɾ is a suffix for “we”, but in “they sing” it’s also a suffix. So ɾ = “we” and “they”?\n\nConflict:  \n- ʝɵƌɶƌɾɵ → I sleep  \n- ʝɵƌɶƌɾɵɾ → we sleep → so ɾ = we added to “I sleep”  \n- ƌæɵƌʉɾ → they sing → ɾ added to “sing”\n\nSo perhaps ɾ is not uniquely “we” — or perhaps the “he” form has no prefix/suffix, and all others add to it?\n\nLet’s re-analyze verb roots:\n\nVerb stem for sleep: ƌɶƌɾɵ  \n- I sleep: ʝɵ + ƌɶƌɾɵ  \n- You sleep: ɽɵ + ƌɶƌɾɵ  \n- He sleeps: ƌɶƌɾɵ (no prefix)  \n- We sleep: ʝɵ + ƌɶƌɾɵ + ɾ\n\nVerb stem for cry: ƌɾɶƌʉ  \n- I cry: ʝɵ + ƌɾɶƌʉ  \n\nVerb stem for sing: ƌæɵƌʉ  \n- You sing: ɽɵ + ƌæɵƌʉ  \n- They sing: ƌæɵƌʉ + ɾ  \n\nSo pattern emerges:\n\nSubject markers:\n- I: prefix ʝɵ  \n- You: prefix ɽɵ  \n- He: no marker (zero)  \n- We: suffix ɾ added to the I-form → so we = ʝɵ + ɾ? But then why is “we sleep” = ʝɵƌɶƌɾɵɾ? So perhaps ɾ is “we” and is attached at the end, regardless of subject? But “they sing” = ƌæɵƌʉɾ — no ʝɵ? So ɾ = we AND they? That can't be.\n\nWait — perhaps ɾ is a plural marker? But “they” and “we” are both plural.\n\nLook again:\n\nWe sleep: ʝɵ ƌɶƌɾɵ ɾ — combines I + sleep + we? That doesn’t make sense grammatically.\n\nAlternative idea: perhaps the verb form has a stem and subject suffixes, and “he” is the base.\n\nLet me try to extract the verb stem without subject markers:\n\nFor sleep:  \n- He sleeps: ƌɶƌɾɵ  \n- I sleep: ʝɵ + ƌɶƌɾɵ  \n- You sleep: ɽɵ + ƌɶƌɾɵ  \n- We sleep: ƌɶƌɾɵ + ɾ → so “we” = suffix ɾ attached to the stem  \nBUT ʝɵ is also there? Wait, the example is: ʝɵƌɶƌɾɵɾ — that’s “I” + sleep + “we”? That would be redundant.\n\nUnless \"we\" is formed by adding ɾ to the “I” form? But then “you” + ɾ would be “you pl.” — but we don’t have “you pl.” in the examples.\n\nBut look at “they sing”: ƌæɵƌʉɾ → stem “sing” + ɾ → so ɾ = plural subject?  \n\n“we sleep” = ʝɵƌɶƌɾɵɾ → that’s “I” + sleep + ɾ — so is “we” = “I” + plural? That’s strange.\n\nWait — maybe the suffix ɾ is actually “they”?\n\nThen:  \n- ƌæɵƌʉɾ → they sing  \n- ʝɵƌɶƌɾɵɾ → we sleep: so if ɾ = they, then ʝɵ...ɾ would be “I they” — nonsense.\n\nAlternative: ɾ = “we” — then “they” must be something else? But “they sing” is only ƌæɵƌʉɾ — no other prefix. So what is the subject for “they”? Is there no subject marker? But “he” is unmarked. So perhaps:\n\nSubject coding:\n- I: ʝɵ (prefix)  \n- You: ɽɵ (prefix)  \n- He: Ø (no marker)  \n- We: are formed by adding ɾ to the I-form → ʝɵ + verb + ɾ  \n- They: are formed by adding ɾ to the he-form → verb + ɾ  \n\nCheck:\n\nSleep:  \n- He: ƌɶƌɾɵ  \n- They: ƌɶƌɾɵɾ? — BUT the example says we sleep is ʝɵƌɶƌɾɵɾ → so “we” = I-variant + ɾ, not he-variant + ң.\n\nBut we have no example of “they sleep”. Only “we sleep” and “they sing”.\n\nSo for sing:\n\n- He sings: ?? (not given)  \n- They sing: ƌæɵƌʉɾ → so ɾ indicates plural subject\n\nFor sleep:\n\n- He sleeps: ƌɶƌɾɵ  \n- We sleep: ʝɵƌɶƌɾɵɾ — this is I + sleep + ɾ → meaning “we” = I + plural / collective?\n\nThat seems inconsistent.\n\nBut notice: possible rule — the “I” and “you” construct the verb with a prefix, and “he” is base. Then “we” = prefix + suffix ɾ, and “they” = base + suffix ɾ.\n\nSo:\n\n- I: ʝɵ + verb-stem  \n- You: ɽɵ + verb-stem  \n- He: verb-stem  \n- We: ʝɵ + verb-stem + ɾ  \n- They: verb-stem + ɾ  \n\nVerify:\n\nSleep:  \n- I sleep: ʝɵ + ƌɶƌɾɵ = ʝɵƌɶƌɾɵ ✔  \n- You sleep: ɽɵ + ƌɶƌɾɵ = ɽɵƌɶƌɾɵ ✔  \n- He sleeps: ƌɶƌɾɵ ✔  \n- We sleep: ʝɵ + ƌɶƌɾɵ + ɾ = ʝɵƌɶƌɾɵɾ ✔  \n- They sing: ƌæɵƌʉ + ɾ = ƌæɵƌʉɾ ✔  \n\nNow check cry:  \n- I cry: ʝɵ + ƌɾɶƌʉ = ʝɵƌɾɶƌʉ ✔  \n- We cry? Not given.  \n- He cries? Not given.  \n- They cry? Not given.  \n\nNow “you sing”: ɽɵ + ƌæɵƌʉ = ɽɵƌæɵƌʉ ✔  \n\nSo the pattern holds.\n\nSo the verb morphemes are fixed stems:\n\n- sleep: ƌɶƌɾɵ  \n- cry: ƌɾɶƌʉ  \n- sing: ƌæɵƌʉ  \n\nSubject markers:\n\n- I: ʝɵ (prefix)  \n- You: ɽɵ (prefix)  \n- He: Ø  \n- We: ʝɵ + verb + ɾ  \n- They: verb + ɾ  \n\nThus, “I sing” = I + sing = ʝɵ + ƌæɵƌʉ\n\nNow verify against given:\n\nYou sing: ɽɵ + ƌæɵƌʉ = ɽɵƌæɵƌʉ ✔  \nThey sing: ƌæɵƌʉ + ɾ = ƌæɵƌʉɾ ✔  \n\nSo I sing = ʝɵ + ƌæɵƌʉ\n\nNow check available morphemes:\n\nAvailable:  \n- ʝɵ → I (we need this)  \n- ɽɵ → you  \n- ɧɵ → ??? (unused — perhaps for something else, but not needed)  \n- ƌɶƌɾɵ → sleep  \n- ƌɾɶƌʉ → cry  \n- ƌæɵƌʉ → sing  \n- ɾ → plural/we/they suffix  \n\nSo the morpheme for “I sing” is: ʝɵ + ƌæɵƌʉ\n\nStep 2: Grammar — no tense or agreement beyond subject prefixes/suffixes. “I sing” is present tense, subject I, so no suffix needed. Just prefix + stem.\n\nStep 3: EXACT form: ʝɵƌæɵƌʉ\n\nNo extra letters.\n\n</analysis>\n<answers>\nʝɵƌæɵƌʉ\n</answers>",
+  "answer_text": "ʝɵƌæɵƌʉ",
+  "morphemes": [
+   "ʝɵ",
+   "ƌæɵƌʉ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 10.8,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "nahuatl-both-ends",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "they cry",
+  "gold": [
+   "ƌɾɶƌʉ",
+   "ɾ"
+  ],
+  "gold_joined": "ƌɾɶƌʉɾ",
+  "raw": "<analysis>\nStep 1: Identify the morphemes in the evidence.\n\nFrom \"I sleep\" = ʝɵƌɶƌɾɵ → we see \"ʝɵ\" is likely \"I\"\nFrom \"you sleep\" = ɽɵƌɶƌɾɵ → \"ɽɵ\" is likely \"you_{sg}\"\nFrom \"he sleeps\" = ƌɶƌɾɵ → no subject prefix, so maybe \"he\" is unmarked or zero\nFrom \"I cry\" = ʝɵƌɾɶƌʉ → \"ʝɵ\" again, so subject \"I\" is consistent → verb root for \"cry\" seems to be \"ƌɾɶƌʉ\"\nFrom \"you sing\" = ɽɵƌæɵƌʉ → \"ɽɵ\" for \"you_{sg}\", verb root \"ƌæɵƌʉ\" for \"sing\"\nFrom \"they sing\" = ƌæɵƌʉɾ → subject prefix missing, but ends with \"ɾ\" → likely \"they\" is marked by suffix \"ɾ\"\nFrom \"we sleep\" = ʝɵƌɶƌɾɵɾ → \"ʝɵ\" (I) + \"ɾ\" → so \"we\" = \"I\" + \"ɾ\" → thus \"ɾ\" suffix on subject = plural\n\nSo subject marking:\n- I: ʝɵ\n- you_{sg}: ɽɵ\n- he: (empty) — zero prefix\n- we: ʝɵ + ɾ = ʝɵɾ\n- they: (empty) + ɾ = ɾ → but in \"they sing\" = ƌæɵƌʉɾ → the \"ɾ\" is suffix to the verb, not subject? Wait.\n\nWait: \"they sing\" = ƌæɵƌʉɾ — the verb root is \"ƌæɵƌʉ\" (from \"you sing\" = ɽɵƌæɵƌʉ). So \"ɾ\" is attached to the verb, and since \"he sleeps\" = ƌɶƌɾɵ (no subject prefix), and \"they sing\" = ƌæɵƌʉɾ — the only difference is the \"ɾ\". This suggests \"ɾ\" is the third person plural marker on the verb, not the subject.\n\nBut wait: \"we sleep\" = ʝɵƌɶƌɾɵɾ → here, \"ʝɵ\" (I) + \"ɾ\" at end → so \"we\" = \"I\" + \"ɾ\"? But verb root is \"ƌɶƌɾɵ\" — so perhaps \"ɾ\" is a plural marker on the subject, not the verb.\n\nLet’s re-analyze:\n\nPattern of subject prefixes:\n- I: ʝɵ\n- you_{sg}: ɽɵ\n- he: (nothing) — base form\n- we: ʝɵ + ɾ → ʝɵƌɶƌɾɵɾ — so \"ɾ\" is a suffix added to the subject marker? But it’s attached after the verb?\n\nWait — look at structure:\n\nAll forms have the verb root. Let’s abstract verb roots:\n\nSleep: ƌɶƌɾɵ\nCry: ? → from \"I cry\" = ʝɵƌɾɶƌʉ → probably ƌɾɶƌʉ\nSing: ƌæɵƌʉ\n\nSo verb roots are:\n- sleep: ƌɶƌɾɵ\n- cry: ƌɾɶƌʉ\n- sing: ƌæɵƌʉ\n\nNow subject marking:\n\nI sleep: ʝɵ + ƌɶƌɾɵ → [I] + [sleep]\nyou sleep: ɽɵ + ƌɶƌɾɵ → [you] + [sleep]\nhe sleeps: ƌɶƌɾɵ → [sleep] → no subject marker → he is default\n\nwe sleep: ʝɵ + ƌɶƌɾɵ + ɾ → [I] + [sleep] + [plural marker]? But we is plural\n\nthey sing: ƌæɵƌʉ + ɾ → [sing] + [plural?] → they\n\nSo pattern:\n\nSubject prefixes:\n- I: ʝɵ\n- you_{sg}: ɽɵ\n- he: (none)\n- we: ʝɵ + ɾ → but ʝɵ is already \"I\", and adding ɾ makes it \"we\"\n\nWait, \"we sleep\" = ʝɵƌɶƌɾɵɾ — so it's [I] + [verb] + [ɾ] — so the \"ɾ\" might be a plural suffix for the subject?\n\nAnd \"they sing\" = [verb] + [ɾ] → so [he/sing] + [ɾ] = [they/sing]\n\nThis suggests: the \"ɾ\" suffix can be used to mark plural subjects, either attached to the subject prefix or to the verb if no subject prefix.\n\nBut \"he\" has no prefix, so \"he\" + ɾ = \"they\" → ƌæɵƌʉ + ɾ\n\nAnd \"I\" + ɾ = \"we\" → ʝɵ + verb + ɾ\n\nSo we can deduce:\n\n- Subject markers:\n  - 1st person singular: ʝɵ\n  - 2nd person singular: ɽɵ\n  - 3rd person singular: (zero)\n  - 1st person plural: ʝɵ + ɾ\n  - 3rd person plural: (zero) + ɾ → so just the suffix ɾ on the verb\n\nNow for the query: they cry\n\nCry verb root: from \"I cry\" = ʝɵ + ƌɾɶƌʉ → so cry = ƌɾɶƌʉ\n\nThey = 3rd person plural = verb root + ɾ\n\nSo: ƌɾɶƌʉ + ɾ = ƌɾɶƌʉɾ\n\nLet’s check consistency:\n\n- \"they sing\" = ƌæɵƌʉ + ɾ = ƌæɵƌʉɾ → matches\n- So \"they cry\" = ƌɾɶƌʉ + ր = ƌɾɶƌʉɾ\n\nYes.\n\nWe see no other morphemes are needed. The available morphemes include ƌɾɶƌʉ (cry) and ɾ (plural marker).\n\nSo \"they cry\" = ƌɾɶƌʉɾ\n\nStep 2: Grammar: 3rd person plural subject requires suffix ɾ on the verb root. No subject prefix.\n\nStep 3: Exact output: ƌɾɶƌʉɾ\n</analysis>\n<answers>\nƌɾɶƌʉɾ\n</answers>\nƌɾɶƌʉɾ",
+  "answer_text": "ƌɾɶƌʉɾ",
+  "morphemes": [
+   "ƌɾɶƌʉ",
+   "ɾ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 8.1,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "nahuatl-both-ends",
+  "query": 2,
+  "difficulty": "curveball",
+  "prompt": "we sing",
+  "gold": [
+   "ʝɵ",
+   "ƌæɵƌʉ",
+   "ɾ"
+  ],
+  "gold_joined": "ʝɵƌæɵƌʉɾ",
+  "raw": "<analysis>\nStep 1: Identify morphemes from the examples.\n\nFirst, isolate the verb stems:\n\n- \"I sleep\" = ʝɵƌɶƌɾɵ → subject \"I\" = ʝɵ, verb = ƌɶƌɾɵ  \n- \"you sleep\" = ɽɵƌɶƌɾɵ → subject \"you\" = ɽɵ, verb = ƌɶƌɾɵ  \n- \"he sleeps\" = ƌɶƌɾɵ → subject \"he\" = (zero? or inherent), verb = ƌɶƌɾɵ  \n- \"I cry\" = ʝɵƌɾɶƌʉ → subject \"I\" = ʝɵ, verb = ƌɾɶƌʉ  \n- \"you sing\" = ɽɵƌæɵƌʉ → subject \"you\" = ɽɵ, verb = ƌæɵƌʉ  \n- \"they sing\" = ƌæɵƌʉɾ → subject \"they\" = ɾ, verb = ƌæɵƌʉ  \n- \"we sleep\" = ʝɵƌɶƌɾɵɾ → subject \"we\" = ʝɵ + ɾ? or ɾ alone? But note it’s ʝɵ at start + ƌɶƌɾɵ + ɾ\n\nObserve the verb roots:\n- sleep: ƌɶƌɾɵ  \n- cry: ƌɾɶƌʉ  \n- sing: ƌæɵƌʉ  \n\nPatterns:\n\nSubject markers:\n- I: ʝɵ (appears in “I sleep”, “I cry”, “we sleep”)\n- you: ɽɵ (appears in “you sleep”, “you sing”)\n- he: no prefix (base form ƌɶƌɾɵ = he sleeps)\n- they: ɾ suffix on verb (ƌæɵƌʉɾ = they sing)\n- we: ʝɵ + ɾ = ʝɵƌɶƌɾɵɾ → “we sleep”\n\nSo:\n- I = ʝɵ\n- you = ɽɵ  \n- he = ∅ (zero)\n- they = ɾ (suffix on verb)\n- we = ʝɵ + ɾ → so “we” is ʝɵ + ɾ\n\nVerb roots:\n- sleep = ƌɶƌɾɵ  \n- cry = ƌɾɶƌʉ  \n- sing = ƌæɵƌʉ  \n\nNote: “they sing” = ƌæɵƌʉ + ɾ → they = ɾ suffix  \n“we sleep” = ʝɵ + ƌɶƌɾɵ + ɾ → we = ʝɵ + ɾ (prefix + suffix)\n\nBut wait — “I sleep” = ʝɵ + ƌɶƌɾɵ — no suffix  \n“we sleep” = ʝɵ + ƌɶƌɾɵ + ɾ — so “we” = “I” + “they” marker? That suggests “we” = 1st person plural = ʝɵ (I) + ɾ (they)\n\nSimilarly, “they sing” = ƌæɵƌʉ + ɾ  \nSo “we sing” must be: ʝɵ + ƌæɵƌʉ + ɾ → because “I sing” would be ʝɵ + ƌæɵƌʉ, and “we” adds ɾ to that.\n\nIs “I sing” attested? No, but we have:\n- I cry = ʝɵ + ƌɾɶomp; ƌʉ → pattern holds  \n- you sing = ɽɵ + ƌæɵƌʉ  \n- they sing = ƌæɵƌʉ + ɾ  \n- we sleep = ʝɵ + ƌɶƌɾɵ + ɾ\n\nTherefore, structure is:\n\n[Subject] + [Verb] + [Plural marker if plural]\n\nSubject markers:\n- 1sg: ʝɵ\n- 2sg: ɽɵ\n- 3sg: ∅\n- 3pl: ɾ (suffix)\n- 1pl: ʝɵ + ɾ → i.e., 1sg + 3pl\n\nSo for “we sing”:\n- We = 1pl = ʝɵ + ɾ\n- Sing verb = ƌæɵƌʉ\n\nSo: ʝɵ + ƌæɵƌʉ + ɾ → ʝɵƌæɵƌʉɾ\n\nCheck: could ɾ be attached differently? In “they sing” it’s verb + ɾ, and “we sleep” is subject + verb + ɾ. So “we” requires ʝɵ prefix + ɾ suffix — likely a compound marker.\n\nNo other pattern fits.\n\nAvailable morphemes list includes: ʝɵ, ɽɵ, ɧɵ, ƌɶƌɾɵ, ƌɾɶƌʉ, ƌæɵƌʉ, ɾ\n\nWe need: ʝɵ, ƌæɵƌʉ, ɾ → all available.\n\nThus, “we sing” = ʝɵƌæɵƌʉɾ\n\nStep 2: Grammar — subject + verb + plural marker if plural.\n\nStep 3: Compose exact form → ʝɵƌæɵƌʉɾ\n</analysis>\n<answers>\nʝɵƌæɵƌʉɾ\n</answers>",
+  "answer_text": "ʝɵƌæɵƌʉɾ",
+  "morphemes": [
+   "ʝɵ",
+   "ƌæɵƌʉ",
+   "ɾ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 7.3,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "esperanto-tense",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "you learned",
+  "gold": [
+   "ɸø",
+   "ʂɶɬʜ",
+   "øɽ"
+  ],
+  "gold_joined": "ɸø ʂɶɬʜøɽ",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n\nWe are given multiple verb forms with different subjects and tenses.\n\nFirst, break down the known verb forms:\n\nFor \"learn\":\n- ƒø ʂɶɬʜəɽ → I learn (present)\n- ƒø ʂɶɬʜøɽ → I learned (past)\n- ƒø ʂɶɬʜʌɽ → I will learn (future)\n\nSo, ʂɶɬʜ is the verb root \"learn\".\n\nThe endings vary by tense:\n- əɽ → present\n- øɽ → past\n- ʌɽ → future\n\nSubject pronouns:\n- ƒø → I\n- ɸø → you_{sg}\n- ʂø → he\n- ʜø → we\n- øʂø → they\n\nFor \"eat\":\n- ƒø ƒəʜʡəɽ → I eat → so ƒəʜʡ is the verb root \"eat\", with present tense əɽ\n\nSo general structure: [subject pronoun] [verb root] [tense suffix]\n\nWe are asked to translate: “you learned”\n\n“You” is ɸø (from evidence: ɸø ʂɶɬʜəɽ → you learn)\n\n“Learned” is past tense → tensed with øɽ (from ƒø ʂɶɬʜøɽ → I learned)\n\nSo: subject = ɸø, verb root = ʂɶɬʜ, tense = øɽ\n\n→ ɸø ʂɶɬʜøɽ\n\nStep 2: Note any grammar — all morphemes are separate, no agreement issues; word order is always [subject] [verb root] [tense]\n\nStep 3: Compose exact target form: ɸø ʂɶɬʜøɽ\n\nNote: The query asks for “you learned” — that is, the translation into the language of the evidence, using the available morphemes.\n\nWe have all parts: ɸø, ʂɶɬʜ, øɽ — all in the tile bank.\n</analysis>\n<answers>\nɸø ʂɶɬʜøɽ\n</answers>",
+  "answer_text": "ɸø ʂɶɬʜøɽ",
+  "morphemes": [
+   "ɸø",
+   "ʂɶɬʜ",
+   "øɽ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 0.696,
+  "morf1": 1.0,
+  "elapsed_s": 2.8,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "esperanto-tense",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "we learned",
+  "gold": [
+   "ʜø",
+   "ʂɶɬʜ",
+   "øɽ"
+  ],
+  "gold_joined": "ʜø ʂɶɬʜøɽ",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n\nFrom the evidence:\n- Subject pronouns appear as separate morphemes before the verb root:\n  - ƒø → I\n  - ɸø → you_{sg}\n  - ʂø → he\n  - ʜø → we\n  - øʂø → they\n\n- Verb roots:\n  - ʂɶɬʜ → learn\n  - ƒəʜʡ → eat\n\n- Tense/aspect suffixes:\n  - əɽ → present tense (appears in: I learn, you learn, he learns, we learn, they learn)\n  - øɽ → past tense (I learned → ƒø ʂɶɬʜøɽ)\n  - ʌɽ → future tense (I will learn → ƒø ʂɶɬʜʌɽ)\n\nSo the pattern is:\n[subject] [verb root] [tense suffix]\n\nFor \"learn\":\n- Present: ʂɶɬʜ + əɽ → ʂɶɬʜəɽ\n- Past: ʂɶɬʜ + øɽ → ʂɶɬʜøɽ\n- Future: ʂɶɬʜ + ʌɽ → ʂɶɬʜʌɽ\n\nFor \"we\" → subject = ʜø\n\nQuery: \"we learned\" → subject = ʜø, verb = learn (root = ʂɶɬʜ), tense = past (suffix = øɽ)\n\nSo: ʜø + ʂɶɬʜ + øɽ → ʜø ʂɶɬʜøɽ\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- No case marking observed.\n- Subject-verb agreement: subject pronoun is a separate prefix, verb root + suffix conveys tense. No agreement morphology on the verb beyond the suffix.\n- Word order is always: subject + verb-root + tense-suffix\n\nStep 3: Compose the EXACT target-language form.\nWe learned → ʜø ʂɶɬʜøɽ\n\nAll morphemes are in the tile bank: ʜø, ʂɶɬʜ, øɽ — all present.\n</analysis>\n<answers>\nʜø ʂɶɬʜøɽ\n</answers>",
+  "answer_text": "ʜø ʂɶɬʜøɽ",
+  "morphemes": [
+   "ʜø",
+   "ʂɶɬʜ",
+   "øɽ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 0.696,
+  "morf1": 1.0,
+  "elapsed_s": 3.7,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "esperanto-tense",
+  "query": 2,
+  "difficulty": "standard",
+  "prompt": "I will eat",
+  "gold": [
+   "ƒø",
+   "ƒəʜʡ",
+   "ʌɽ"
+  ],
+  "gold_joined": "ƒø ƒəʜʡʌɽ",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n\nWe are given several clauses in the form: [pronoun/morpheme] [verb root] [tense suffix] → English translation.\n\nFirst, analyze the verb constructions:\n\nAll verb forms end in one of: əɽ, øɽ, ʌɽ\n\nFrom the examples:\n- I learn → ƒø ʂɶɬʜəɽ → so əɽ = present tense\n- I learned → ƒø ʂɶɬʜøɽ → so øɽ = past tense\n- I will learn → ƒø ʂɶɬʜʌɽ → so ʌɽ = future tense\n\nSo the tense suffixes are:\n- əɽ → present\n- øɽ → past\n- ʌɽ → future\n\nNow the verb roots:\n- ʂɶɬʜ → “learn” (found in all learn examples)\n- ƒəʜʡ → “eat” (from ƒø ƒəʜʡəɽ → I eat)\n\nNow subject pronouns:\n- ƒø → I (appears in “I learn”, “I learned”, “I will learn”, “I eat”)\n- ɸø → you (sg) — “you learn”\n- ʂø → he — “he learns”\n- ʜø → we — “we learn”\n- øʂø → they — “they learn”\n\nSo subject forms are:\n- I: ƒø\n- you_{sg}: ɸø\n- he: ʂø\n- we: ʜø\n- they: øʂø\n\nNow the query is: “I will eat”\n\nWe need:\n- Subject: “I” → ƒø\n- Verb root: “eat” → ƒəʜʡ\n- Tense: future → ʌɽ\n\nSo concatenate: ƒø + ƒəʜʡ + ʌɽ → ƒø ƒəʜʡʌɽ\n\nNote: The morphemes given include ƒəʜʡ and ʌɽ separately, so we combine them directly.\n\nNo evidence of any other morphological rules (like vowel harmony or assimilation), so we assume concatenation as-is.\n\nStep 2: Note grammar — subject-verb agreement is already handled by the pronoun prefix, tense by suffix. Order is subject + verb root + tense suffix.\n\nStep 3: Compose exact target form: ƒø ƒəʜʡʌɽ\n</analysis>\n<answers>\nƒø ƒəʜʡʌɽ\n</answers>",
+  "answer_text": "ƒø ƒəʜʡʌɽ",
+  "morphemes": [
+   "ƒø",
+   "ƒəʜʡ",
+   "ʌɽ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 0.696,
+  "morf1": 1.0,
+  "elapsed_s": 2.9,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "esperanto-tense",
+  "query": 3,
+  "difficulty": "standard",
+  "prompt": "they eat",
+  "gold": [
+   "øʂø",
+   "ƒəʜʡ",
+   "əɽ"
+  ],
+  "gold_joined": "øʂø ƒəʜʡəɽ",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n\nWe are given bilingual pairs:\n\n- ƒø ʂɶɬʜəɽ → I learn  \n- ƒø ʂɶɬʜøɽ → I learned  \n- ƒø ʂɶɬʜʌɽ → I will learn  \n- ɸø ʂɶɬʜəɽ → you learn  \n- ʂø ʂɶɬʜəɽ → he learns  \n- ʜø ʂɶɬʜəɽ → we learn  \n- ƒø ƒəʜʡəɽ → I eat  \n- øʂø ʂɶɬʜəɽ → they learn  \n\nWe are to find the translation for “they eat”.\n\nLet’s break down the known forms.\n\nFirst, observe the verb stems:\n\n- ʂɶɬʜ → root for “learn”  \n- ƒəʜʡ → root for “eat”\n\nNow the subject prefixes:\n\n- ƒø → I (appears in “I learn”, “I learned”, “I will learn”, “I eat”)  \n- ɸø → you (sg)  \n- ʂø → he  \n- ʜø → we  \n- øʂø → they (only one example: “they learn”)\n\nSo subject pronouns are:\n\n- I: ƒø  \n- You_{sg}: ɸø  \n- He: ʂø  \n- We: ʜø  \n- They: øʂø\n\nNow, the verb endings:\n\nFor “learn”:\n\n- əɽ → present tense (“I learn”, “you learn”, etc.)  \n- øɽ → past tense (“I learned”)  \n- ʌɽ → future tense (“I will learn”)\n\nSo the verb morphology appears to be:\n\n[subject] + [verb root] + [tense suffix]\n\nFor “eat”, we only have one form: ƒø ƒəʜʡəɽ → I eat\n\nThis matches the pattern: subject ƒø + verb root ƒəʜʡ + tense suffix əɽ (present)\n\nSo for “they eat” → subject = øʂø, verb root = ƒəʜʡ, tense = present (əɽ)\n\nThus: øʂø + ƒəʜʡ + əɽ → øʂø ƒəʜʡəɽ\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n\n- The subject is marked by a prefix.  \n- The verb root is invariant.  \n- The tense suffix attaches to the end.  \n- Present tense uses əɽ for both verbs (learn and eat).  \n- “They” is marked by øʂø, as seen in “they learn” = øʂø ʂɶɬʜəɽ  \n→ So “they eat” should follow the same structure.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n\nTarget: they eat → øʂø ƒəʜʡəɽ\n\nWe can verify consistency: “they learn” = øʂø ʂɶɬʜəɽ  \nSo replacing the verb root with ƒəʜʡ gives the correct form.\n\nNo other morphemes are needed.\n</analysis>\n<answers>\nøʂø ƒəʜʡəɽ\n</answers>\nøʂø ƒəʜʡəɽ",
+  "answer_text": "øʂø ƒəʜʡəɽ",
+  "morphemes": [
+   "øʂø",
+   "ƒəʜʡ",
+   "əɽ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 0.699,
+  "morf1": 1.0,
+  "elapsed_s": 3.8,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "esperanto-tense",
+  "query": 4,
+  "difficulty": "standard",
+  "prompt": "he ate",
+  "gold": [
+   "ʂø",
+   "ƒəʜʡ",
+   "øɽ"
+  ],
+  "gold_joined": "ʂø ƒəʜʡøɽ",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n\nWe are given several verb forms with subject pronouns and verb roots.\n\nFrom the examples, we can extract subject pronouns:\n- ƒø → I\n- ɸø → you_{sg}\n- ʂø → he\n- ʜø → we\n- øʂø → they\n\nVerb roots and tense markers:\n- ʂɶɬʜəɽ → learn (present)\n- ʂɶɬʜøɽ → learned (past)\n- ʂɶɬʜʌɽ → will learn (future)\n- ƒəʜʡəɽ → eat (present)\n\nSo, clearly:\n- The verb root for \"learn\" is ʂɶɬʜ\n- The verb root for \"eat\" is ƒəʜʡ\n- The suffixes for tense:\n  - əɽ → present\n  - øɽ → past\n  - ʌɽ → future\n\nWe are asked to translate: \"he ate\"\n\nWe know:\n- \"he\" = ʂø (from \"ʂø ʂɶɬʜəɽ → he learns\")\n- \"ate\" = past tense of \"eat\"\n\nThe verb \"eat\" in present is ƒəʜʡəɽ → so past tense would be formed by replacing əɽ with øɽ → ƒəʜʡøɽ\n\nTherefore, \"he ate\" = ʂø + ƒəʜʡøɽ → ʂø ƒəʜʡøɽ\n\nStep 2: Grammar\n- Subject pronoun comes before the verb.\n- Verb is formed by root + tense suffix.\n- Tense suffixes are: əɽ (present), øɽ (past), ʌɽ (future)\n\nStep 3: Compose exact form\n- Subject: ʂø (he)\n- Verb root: ƒəʜʡ (eat)\n- Past tense suffix: øɽ\n→ ʂø ƒəʜʡøɽ\n\nWe must use only the given morphemes. ƒəʜʡ and øɽ are in the tile bank. ʂø is in the bank.\n\nSo the morpheme sequence is: ʂø ƒəʜʡøɽ\n\nNote: øɽ is given as a morpheme, so we can combine ƒəʜʡ + øɽ = ƒəʜʡøɽ (no space needed in output).\n</analysis>\n<answers>\nʂø ƒəʜʡøɽ\n</answers>",
+  "answer_text": "ʂø ƒəʜʡøɽ",
+  "morphemes": [
+   "ʂø",
+   "ƒəʜʡ",
+   "øɽ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 0.696,
+  "morf1": 1.0,
+  "elapsed_s": 3.0,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "indonesian-plurals",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "I eat",
+  "gold": [
+   "ʠʊəʊ",
+   "ʂʊɮʊɺ"
+  ],
+  "gold_joined": "ʠʊəʊ ʂʊɮʊɺ",
+  "raw": "<analysis>\nStep 1: From the evidence, we see that:\n- \"ʊɺʊɮ\" = child, and \"ʊɺʊɮ-ʊɺʊɮ\" = children → plural is formed by reduplication.\n- Similarly, \"ɮɔʀʊ\" = horse, \"ɮɔʀʊ-ɮɔʀʊ\" = horses → same reduplication pattern.\n- \"ɽɔɮɔ\" = book, \"ɽɔɮɔ-ɽɔɮɔ\" = books → again, reduplication for plural.\n- For verbs: \"ʠʊəʊ ʂʊɮʊɺ\" = I eat → so \"ʠʊəʊ\" = I, \"ʂʊɮʊɺ\" = eat\n- \"ɮʊʂɨ ʂʊɮʊɺ\" = we eat → \"ɮʊʂɨ\" = we, \"ʂʊɮʊɺ\" = eat\n- \"ʂɶθɶɮʊ ʂʊɮʊɺ\" = they eat → \"ʂɶθɶɮʊ\" = they, \"ʂʊɮʊɺ\" = eat\n\nSo the verb \"eat\" is consistently \"ʂʊɮʊɺ\", and subject pronouns are:\n- I → ʠʊəʊ\n- we → ɮʊʂɨ\n- they → ʂɶθɶɮʊ\n\nStep 2: Grammar is straightforward: subject pronoun + verb. No agreement suffixes, no tense changes — all verbs are base form “eat” and same for all subjects. Word order is Subject + Verb.\n\nStep 3: The query is “I eat”. From above, “I” = ʠʊəʊ, “eat” = ʂʊɮʊɺ. So the correct sequence is: ʠʊəʊ ʂʊɮʊɺ\n\nThis is directly given as evidence, so no deduction beyond confirmation.\n</analysis>\n<answers>\nʠʊəʊ ʂʊɮʊɺ\n</answers>",
+  "answer_text": "ʠʊəʊ ʂʊɮʊɺ",
+  "morphemes": [
+   "ʠʊəʊ",
+   "ʂʊɮʊɺ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 0.699,
+  "morf1": 1.0,
+  "elapsed_s": 2.7,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "indonesian-plurals",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "children",
+  "gold": [
+   "ʊɺʊɮ-ʊɺʊɮ"
+  ],
+  "gold_joined": "ʊɺʊɮ-ʊɺʊɮ",
+  "raw": "<analysis>\nStep 1: From the evidence, we observe that singular nouns are single morphemes (e.g., ʊɺʊɮ → child, ɮɔʀʊ → horse, ɽɔɮɔ → book), and their plural forms are formed by reduplication: ʊɺʊɮ-ʊɺʊɮ → children, ɮɔʀʊ-ɮɔʀʊ → horses, ɽɔɮɔ-ɽɔɮɔ → books.\n\nStep 2: The pattern for plurality is clear: reduplicate the singular noun morpheme.\n\nStep 3: The query is \"children\", which we know from the evidence is ʊɺʊɮ-ʊɺʊɮ.\n\nThus, the correct translation is the reduplicated form of \"child\".\n</analysis>\n<answers>\nʊɺʊɮ-ʊɺʊɮ\n</answers>",
+  "answer_text": "ʊɺʊɮ-ʊɺʊɮ",
+  "morphemes": [
+   "ʊɺʊɮ-ʊɺʊɮ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 1.4,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "indonesian-plurals",
+  "query": 2,
+  "difficulty": "standard",
+  "prompt": "horses",
+  "gold": [
+   "ɮɔʀʊ-ɮɔʀʊ"
+  ],
+  "gold_joined": "ɮɔʀʊ-ɮɔʀʊ",
+  "raw": "<analysis>\nStep 1: From the evidence, we see that nouns are pluralized by reduplication:\n- ʊɺʊɮ → child → ʊɺʊɮ-ʊɺʊɮ → children\n- ɮɔʀʊ → horse → ɮɔʀʊ-ɮɔʀʊ → horses\n- ɽɔɮɔ → book → ɽɔɮɔ-ɽɔɮɔ → books\n\nThis pattern is consistent: plural form of a noun is formed by repeating the noun itself.\n\nStep 2: The query is “horses”. The singular form of “horse” is given as ɮɔʀʊ. Therefore, following the reduplication pattern, plural “horses” is ɮɔʀʊ-ɮɔʀʊ.\n\nStep 3: No other morphemes or grammar rules are needed — the plural is formed by simple reduplication, and “horses” is directly given as an example in the evidence.\n\nThus, the translation is ɮɔʀʊ-ɮɔʀʊ.\n</analysis>\n<answers>\nɮɔʀʊ-ɮɔʀʊ\n</answers>",
+  "answer_text": "ɮɔʀʊ-ɮɔʀʊ",
+  "morphemes": [
+   "ɮɔʀʊ-ɮɔʀʊ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.0,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "indonesian-plurals",
+  "query": 3,
+  "difficulty": "standard",
+  "prompt": "books",
+  "gold": [
+   "ɽɔɮɔ-ɽɔɮɔ"
+  ],
+  "gold_joined": "ɽɔɮɔ-ɽɔɮɔ",
+  "raw": "<analysis>\nStep 1: From the evidence, we see that singular nouns are:  \n- ʊɺʊɮ → child  \n- ɮɔʀʊ → horse  \n- ɽɔɮɔ → book  \n\nAnd their plural forms are formed by reduplication:  \n- ʊɺʊɮ-ʊɺʊɮ → children  \n- ɮɔʀʊ-ɮɔʀʊ → horses  \n- ɽɔɮɔ-ɽɔɮɔ → books  \n\nThis is a clear pattern: plural = reduplication of the singular noun.\n\nThe query is \"books\", which corresponds to the plural of \"book\".  \nFrom the evidence, \"book\" is ɽɔɮɔ, so \"books\" is ɽɔɮɔ-ɽɔɮɔ.\n\nStep 2: No grammar beyond reduplication is needed. The form is directly given in the examples.\n\nStep 3: The exact target form for \"books\" is ɽɔɮɔ-ɽɔɮɔ.\n</analysis>\n<answers>\nɽɔɮɔ-ɽɔɮɔ\n</answers>",
+  "answer_text": "ɽɔɮɔ-ɽɔɮɔ",
+  "morphemes": [
+   "ɽɔɮɔ-ɽɔɮɔ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 1.7,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "indonesian-plurals",
+  "query": 4,
+  "difficulty": "standard",
+  "prompt": "we eat",
+  "gold": [
+   "ɮʊʂɨ",
+   "ʂʊɮʊɺ"
+  ],
+  "gold_joined": "ɮʊʂɨ ʂʊɮʊɺ",
+  "raw": "<analysis>\nStep 1: From the evidence, we see that:\n- \"ʊɺʊɮ\" means \"child\", and \"ʊɺʊɮ-ʊɺʊɮ\" means \"children\" → plural is formed by reduplication.\n- Similarly, \"ɮɔʀʊ\" → \"horse\", \"ɮɔʀʊ-ɮɔʀʊ\" → \"horses\"; \"ɽɔɮɔ\" → \"book\", \"ɽɔɮɔ-ɽɔɮɔ\" → \"books\" → consistent reduplication for plural nouns.\n\nFor verbs:\n- \"ʠʊəʊ ʂʊɮʊɺ\" → \"I eat\"\n- \"ʂɶθɶɮʊ ʂʊɮʊɺ\" → \"they eat\"\n- \"ɮʊʂɨ ʂʊɮʊɺ\" → \"we eat\"\n\nThe verb root \"ʂʊɮʊɺ\" is consistent across all three and means \"eat\". The subject pronouns are:\n- \"ʠʊəʊ\" = I\n- \"ʂɶθɶɮʊ\" = they\n- \"ɮʊʂɨ\" = we\n\nStep 2: Grammar pattern: Subject pronoun + verb root. No tense or agreement markers beyond the subject pronoun. Verb root is invariant.\n\nStep 3: The query is \"we eat\". From the evidence, \"we eat\" is directly given as \"ɮʊʂɨ ʂʊɮʊɺ\".\n\nWe select the exact morphemes from the available list: \"ɮʊʂɨ\" and \"ʂʊɮʊɺ\".\n</analysis>\n<answers>\nɮʊʂɨ ʂʊɮʊɺ\n</answers>",
+  "answer_text": "ɮʊʂɨ ʂʊɮʊɺ",
+  "morphemes": [
+   "ɮʊʂɨ",
+   "ʂʊɮʊɺ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 0.699,
+  "morf1": 1.0,
+  "elapsed_s": 2.5,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "finnish-harmony",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "houses",
+  "gold": [
+   "ʄʉɺɪ",
+   "ʄ"
+  ],
+  "gold_joined": "ʄʉɺɪʄ",
+  "raw": "<analysis>\nStep 1: From the evidence, we see that:\n- ʄʉɺɪ → house\n- ʄʉɺɪʄ → houses\n- ʁɘɺæ → village\n- ʁɘɺæʄ → villages\n- ʁɪʌɺʌ → school\n- ʁɪʌɺʌʄ → schools\n\nThis shows a consistent pattern: the base noun form (e.g., ʄʉɺɪ, ʁɘɺæ, ʁɪʌɺʌ) becomes plural by adding the suffix ʄ.\n\nTherefore, \"houses\" is formed by taking the base word for \"house\" (ʄʉɺɪ) and adding the plural suffix ʄ → ʄʉɺɪʄ.\n\nStep 2: Grammar: The plural is formed by a suffix -ʄ attached directly to the noun root. No other affixes or changes are needed.\n\nStep 3: The target translation for \"houses\" is therefore ʄʉɺɪʄ, as directly shown in the evidence.\n\nNo other morphemes (like ɧɧʉ or ɧɧæ, which indicate \"in the...\") are needed for \"houses\" — only the plural suffix.\n</analysis>\n<answers>\nʄʉɺɪʄ\n</answers>",
+  "answer_text": "ʄʉɺɪʄ",
+  "morphemes": [
+   "ʄʉɺɪ",
+   "ʄ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.3,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "finnish-harmony",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "in the house",
+  "gold": [
+   "ʄʉɺɪ",
+   "ɧɧʉ"
+  ],
+  "gold_joined": "ʄʉɺɪɧɧʉ",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n\nFrom the evidence:\n- \"ʄʉɺɪ\" = house\n- \"ʄʉɺɪʄ\" = houses → so \"ʄ\" is the plural suffix\n- \"ʄʉɺɪɧɧʉ\" = in the house → so \"ɧɧʉ\" is the locative suffix meaning \"in the\"\n\nSimilarly:\n- \"ʁɘɺæ\" = village\n- \"ʁɘɺæʄ\" = villages → confirms \"ʄ\" = plural\n- \"ʁɘɺæɧɧæ\" = in the village → \"ɧɧæ\" = locative for \"in the\" (vowel match: æ → æ)\n\n- \"ʁɪʌɺʌ\" = school\n- \"ʁɪʌɺʌʄ\" = schools → confirms \"ʄ\" = plural\n- \"ʁɪʌɺʌɧɧʉ\" = in the school → \"ɧɧʉ\" = locative (u-match: ʉ → ʉ)\n\nPattern:\n- Base noun: ʄʉɺɪ, ʁɘɺæ, ʁɪʌɺʌ\n- Plural: base + ʄ\n- Locative (in the): base + ɧɧʉ if the base ends in ʉ (house, school), or base + ɧɧæ if it ends in æ (village)\n\nSo the locative suffix is conditioned by the final vowel of the noun:\n- If the noun ends in ʉ → use ɧɧʉ\n- If the noun ends in æ → use ɧɧæ\n\n\"ʄʉɺɪ\" ends in ɪ — but the locative is ʄʉɺɪɧɧʉ → so the locative suffix is ɧɧʉ, used regardless of the noun's final vowel? But wait: \"ʁɘɺæ\" ends in æ, and takes ɧɧæ. \"ʁɪʌɺʌ\" ends in ʌ, takes ɧɧʉ. So it's not the final vowel of the noun root — it's a system where:\n\n- ɧɧʉ is used for ʄʉɺɪ (house) and ʁɪʌɺʌ (school)\n- ɧɧæ is used for ʁɘɺæ (village)\n\nObserve:\n- house: ʄʉɺɪ → ends in ɪ\n- school: ʁɪʌɺʌ → ends in ʌ\n- village: ʁɘɺæ → ends in æ\n\nLocative:\n- house + ɧɧʉ → ʄʉɺɪɧɧʉ\n- village + ɧɧæ → ʁɘɺæɧɧæ\n- school + ɧɧʉ → ʁɪʌɺʌɧɧʉ\n\nThis suggests the locative suffix matches the vowel of the noun in some way, but ɪ, ʌ, æ are all different.\n\nWait — perhaps the locative suffix is not marked for vowel harmony but is fixed:\n\nBut then why ɧɧʉ for house and school, and ɧɧæ for village?\n\nLook at the vowel endings again:\n\n- ʄʉɺɪ → ends in ɪ → locative: ɧɧʉ\n- ʁɪʌɺʌ → ends in ʌ → locative: ɧɧʉ\n- ʁɘɺæ → ends in æ → locative: ɧϟæ\n\nSo the locative suffix ɧɧʉ is used for nouns ending in a \"u-like\" vowel (ʉ, ʌ, ɪ? — but ɪ is not u-like) — that doesn’t hold.\n\nAlternative idea: The locative suffix is actually ɧɧ + vowel that matches the last vowel of the noun?\n\nBut house: ʄʉɺɪ → last vowel ɪ, but locative suffix is ɧɧʉ — doesn’t match.\n\nPerhaps the locative suffix is always ɧɧʉ for \"in the\" — but then village is ɧɧæ. Inconsistent.\n\nWait — look at the vowel in the suffix:\n\n- house: ɪ → ʉ\n- village: æ → æ\n- school: ʌ → ʉ\n\nSo vowels in the base: ɪ, æ, ʌ\nCorresponding locative vowels: ʉ, æ, ʉ\n\nThat is, when the base ends in a front vowel (ɪ, æ) — but ɪ is front, æ is also front — yet ɪ takes ʉ and æ takes æ? Contradiction.\n\nWhat if the locative suffix is actually the vowel of the final syllable, but the suffix is added as a whole?\n\nPerhaps there's no vowel harmony. Maybe the locative is marked by two forms: one for animate/inanimate? Or perhaps based on the plural suffix behavior?\n\nWait — perhaps the locative suffix is actually the same as the plural suffix but with a vowel change? No — plural is ʄ for all.\n\nWait — maybe the locative suffix is ɧɧ + the vowel that is the last vowel in the noun?\n\nBut house ends in ɪ — ɧɧʉ ≠ ɧɧɪ\nSchool ends in ʌ — ɧɧʉ — matches? ʌ and ʉ are both back, rounded? But ɪ is front.\n\nActually, ʉ is a close rounded front vowel, ʌ is open-mid back unrounded, ɪ is near-close near-front unrounded, æ is near-open front unrounded.\n\nSo not a clear grouping.\n\nBut note: house and school both have locative ɧɧʉ — and their last vowel is different: ɪ and ʌ.\n\nVillage ends in  æ → takes ɧɧæ.\n\nSo — perhaps the locative suffix is ɧɧʉ for 2 out of 3 nouns, and ɧɧæ for 1?\n\nThat seems arbitrary.\n\nBut think: maybe the locative suffix ɧɧʉ is the general form, and ɧɧæ is a variant for village? Or vice versa?\n\nBut the data is symmetric.\n\nPerhaps the suffixes are based on the vowel in the penultimate syllable?\n\nhouse: ʄʉɺɪ → penultimate: ʉ\nvillage: ʁɘɺæ → penultimate: ɘ\nschool: ʁɪʌɺʌ → penultimate: ʌ\n\nLocative suffixes: ʉ, æ, ʉ\n\nSo: for house: penultimate ʉ → locative ʉ\nvillage: penultimate ɘ → locative æ → mismatch\nschool: penultimate ʌ → locative ʉ → mismatch\n\nStill no.\n\nWait — what if the locative suffix is *always* ɧɧʉ, but for village, the base changes? But village is given as ʁɘɺæɧɧæ, so it’s consistent.\n\nAnother idea: Perhaps the locative suffix has two forms: one with u-vowel for \"place\" nouns and æ for \"village\"? But why?\n\nWait — look at the plural: all plural forms use ʄ — no vowel change.\n\nSo perhaps the locative is:\n\n- ɧɧʉ is used after nouns whose last vowel is not æ\n- ɧɧæ is used after nouns ending in æ\n\nhouse: ends in ɪ — not æ → use ɧɧʉ ✓\nschool: ends in ʌ — not æ → use ɧɧʉ ✓\nvillage: ends in æ → use ɧɧæ ✓\n\nYes! This pattern holds.\n\nSo general rule:\n- To form \"in the X\", attach ɧɧʉ to the noun if the noun ends in any vowel except æ\n- Attach ɧɧæ if the noun ends in æ\n\nThus, for \"in the house\": house = ʄʉɺɪ (ends in ɪ ≠ æ) → so use ɧɧʉ → ʄʉɺɪɧɧʉ\n\nStep 2: Note any grammar — we've deduced the rule for locative formation: vowel-conditioned suffix.\n\nStep 3: Compose the exact target form: in the house → ʄʉɺɪɧɧʉ\n\nThis is directly given in the evidence: ʄʉɺɪɧɧʉ → in the house\n\nQuery is \"in the house\" — so answer is precisely ʄʉɺɪɧɧʉ\n</analysis>\n<answers>\nʄʉɺɪɧɧʉ\n</answers>",
+  "answer_text": "ʄʉɺɪɧɧʉ",
+  "morphemes": [
+   "ʄʉɺɪ",
+   "ɧɧʉ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 9.1,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "finnish-harmony",
+  "query": 2,
+  "difficulty": "standard",
+  "prompt": "villages",
+  "gold": [
+   "ʁɘɺæ",
+   "ʄ"
+  ],
+  "gold_joined": "ʁɘɺæʄ",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n\nFrom the evidence:\n- ʄʉɺɪ → house\n- ʄʉɺɪʄ → houses → so ʄ marks plural for \"house\"\n- ʄʉɺɪɧɧʉ → in the house → so ɧɧʉ marks \"in the\" (locative for house)\n\nSimilarly:\n- ʁɘɺæ → village\n- ʁɘɺæʄ → villages → so ʄ marks plural for \"village\" too\n- ʁɘɺæɧɧæ → in the village → so ɧɧæ marks \"in the\" (locative for village)\n\nAnd:\n- ʁɪʌɺʌ → school\n- ʁɪʌɺʌʄ → schools → ʄ again marks plural\n- ʁɪʌɺʌɧɧʉ → in the school → ɧɧʉ for locative\n\nNotice:\n- For \"house\" and \"school\", the locative suffix is ɧɧʉ\n- For \"village\", the locative suffix is ɧɧæ\n\nWhat differentiates them? The vowel in the root:\n- house: ʄʉɺɪ → ends in ɪ → locative: ɧɧʉ\n- school: ʁɪʌɺʌ → ends in ʌ → locative: ɧɧʉ\n- village: ʁɘɺæ → ends in æ → locative: ɧɧæ\n\nSo the locative suffix agrees with the final vowel of the root:\n- if root ends in ɪ or ʌ → use ɧɧʉ\n- if root ends in æ → use ɧɧæ\n\nBut for plural, ALL use ʄ.\n\nQuery: \"villages\"\n\nRoot: ʁɘɺæ\nPlural suffix: ʄ → so ʁɘɺæ + ʄ = ʁɘɺæʄ\n\nWe are only asked for \"villages\", not \"in the villages\", so we do NOT need the locative.\n\nThus, the translation is ʁɘɺæʄ\n\nStep 2: Grammar notes:\n- Plural is marked uniformly by ʄ\n- No tense or agreement needed — these are nouns\n- The locative is irrelevant here since the query is just \"villages\"\n\nStep 3: The exact target form is ʁɘɺæʄ\n</analysis>\n<answers>\nʁɘɺæʄ\n</answers>",
+  "answer_text": "ʁɘɺæʄ",
+  "morphemes": [
+   "ʁɘɺæ",
+   "ʄ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 3.4,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "finnish-harmony",
+  "query": 3,
+  "difficulty": "curveball",
+  "prompt": "in the village",
+  "gold": [
+   "ʁɘɺæ",
+   "ɧɧæ"
+  ],
+  "gold_joined": "ʁɘɺæɧɧæ",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n\nFrom the evidence:\n- “ʄʉɺɪ” = house\n- “ʄʉɺɪʄ” = houses → so “ʄ” is plural marker\n- “ʄʉɺɪɧɧʉ” = in the house → so “ɧɧʉ” is the locative marker for “house”\n\nSimilarly:\n- “ʁɘɺæ” = village\n- “ʁɘɺæʄ” = villages → “ʄ” again is plural\n- “ʁɘɺæɧɧæ” = in the village → so “ɧɧæ” is locative for “village”\n\nAnd:\n- “ʁɪʌɺʌ” = school\n- “ʁɪʌɺʌʄ” = schools → “ʄ” plural\n- “ʁɪʌɺʌɧɧʉ” = in the school → “ɧɧʉ” locative for “school”\n\nObserving the locative suffixes:\n- For “house” and “school”, locative is “ɧɧʉ”\n- For “village”, locative is “ɧɧæ”\n\nNow, look at the root vowels:\n- “ʄʉɺɪ” ends in /i/ → locative: ɧɧʉ (ends in /u/)\n- “ʁɪʌɺʌ” ends in /ʌ/ → locative: ɧɧʉ (ends in /u/)\n- “ʁɘɺæ” ends in /æ/ → locative: ɧɧæ (ends in /æ/)\n\nPattern: The locative suffix matches the final vowel of the noun.\n- If noun ends in /i/ or /ʌ/ → use ɧɧʉ\n- If noun ends in /æ/ → use ɧɧæ\n\n“village” = ʁɘɺæ → ends in /æ/ → locative = ɧɧæ\n\nSo “in the village” = root + locative = ʁɘɺæ + ɧɧæ = ʁɘɺæɧɧæ\n\nStep 2: Note any grammar — no tense, no agreement. Just noun + locative suffix based on vowel harmony.\n\nStep 3: Compose exact target form: ʁɘɺæɧɧæ\n\nNo special notation like You_{sg} needed — query is “in the village”, a simple phrase.\n</analysis>\n<answers>\nʁɘɺæɧɧæ\n</answers>",
+  "answer_text": "ʁɘɺæɧɧæ",
+  "morphemes": [
+   "ʁɘɺæ",
+   "ɧɧæ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.8,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "finnish-harmony",
+  "query": 4,
+  "difficulty": "standard",
+  "prompt": "in the school",
+  "gold": [
+   "ʁɪʌɺʌ",
+   "ɧɧʉ"
+  ],
+  "gold_joined": "ʁɪʌɺʌɧɧʉ",
+  "raw": "<analysis>\nStep 1: From the evidence, we can extract word forms and their meanings:\n- ʄʉɺɪ → house\n- ʄʉɺɪʄ → houses (plural: -ʄ suffix)\n- ʄʉɺɪɧɧʉ → in the house (locative: -ɧɧʉ suffix)\n- ʁɘɺæ → village\n- ʁɘɺæʄ → villages (plural: -ʄ suffix)\n- ʁɘɺæɧɧæ → in the village (locative: -ɧɧæ suffix)\n- ʁɪʌɺʌ → school\n- ʁɪʌɺʌʄ → schools (plural: -ʄ suffix)\n- ʁɪʌɺʌɧɧʉ → in the school (locative: -ɧɧʉ suffix)\n\nWe observe:\n- The base noun is unmodified: ʄʉɺɪ, ʁɘɺæ, ʁɪʌɺʌ\n- Plural is formed by adding -ʄ\n- Locative (“in the X”) is formed by adding -ɧɧʉ for words ending in /ɪ/ or /ʌ/ (house, school), and -ɧɧæ for words ending in /æ/ (village)\n\nStep 2: Grammar pattern:\n- The locative suffix depends on the vowel of the last syllable of the noun root:\n  - If root ends in /ɪ/ or /ʌ/ → use -ɧɧʉ\n  - If root ends in /æ/ → use -ɧɧæ\n\nStep 3: “in the school” corresponds to the root ʁɪʌɺʌ + locative -ɧɧʉ → ʁɪʌɺʌɧɧʉ\n\nThis matches exactly one of the examples: ʁɪʌɺʌɧɧʉ → in the school\n</analysis>\n<answers>\nʁɪʌɺʌɧɧʉ\n</answers>",
+  "answer_text": "ʁɪʌɺʌɧɧʉ",
+  "morphemes": [
+   "ʁɪʌɺʌ",
+   "ɧɧʉ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.4,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "maori-pronouns",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "we two, not you",
+  "gold": [
+   "ɹɤ",
+   "ʉɘ"
+  ],
+  "gold_joined": "ɹɤʉɘ",
+  "raw": "<analysis>\nStep 1: From the evidence, we see that \"we two, not you\" is given as ɹɤʉɘ. The query is exactly \"we two, not you\", so we are being asked to translate that phrase using the morphemes provided.\n\nStep 2: We must deduce the structure. Let’s analyze the pronoun system:\n\n- Singulars:\n  - ɘʉ → I\n  - ɗɨə → you\n  - ɐɘ → he/she\n\n- Duals (two people):\n  - ɹɤʉɘ → we two, not you → “we two” excluding you\n  - ʒɤʉɘ → you and I → “we two” including you\n  - ɽɤʉɘ → they two\n\n- Plurals (three or more):\n  - ɹɤʒɨʉ → we, not you → plural exclusive\n  - ʒɤʒɨʉ → all of us, incl. you → plural inclusive\n  - ɽɤʒɨʉ → they all\n\nThe pattern seems to be:\n\n- Root for \"we\" group: ɹɤ (exclusive), ʒɤ (inclusive)\n- Dual marker: ʉɘ\n- Plural marker: ʒɨʉ\n\nSo:\n- ɹɤ + ʉɘ = we two, not you\n- ʒɤ + ʉɘ = you and I (dual inclusive)\n- ɹɤ + ʒɨʉ = we, not you (plural exclusive)\n- ʒɤ + ʒɨʉ = all of us, inclusive\n\nThus, the morpheme sequence for \"we two, not you\" is clearly ɹɤʉɘ, which is composed of ɹɤ and ʉɘ.\n\nThe available morphemes include both ɹɤ and ʉɘ.\n\nStep 3: The target is \"we two, not you\", which is given in the evidence as ɹɤʉɘ. So the answer is exactly that.\n\nWe do not need to reassemble or deduce further — the evidence directly gives it.\n</analysis>\n<answers>\nɹɤʉɘ\n</answers>",
+  "answer_text": "ɹɤʉɘ",
+  "morphemes": [
+   "ɹɤ",
+   "ʉɘ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.3,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "maori-pronouns",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "all of us, incl. you",
+  "gold": [
+   "ʒɤ",
+   "ʒɨʉ"
+  ],
+  "gold_joined": "ʒɤʒɨʉ",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n\nWe are given a set of pronouns and their meanings. Our goal is to find the morpheme sequence for \"all of us, incl. you\".\n\nFrom the evidence:\n\n- ɘʉ → I  \n- ɗɨə → you  \n- ɐɘ → he/she  \n- ɹɤʉɘ → we two, not you  \n- ʒɤʉɘ → you and I  \n- ɹɤʒɨʉ → we, not you  \n- ʒɤʒɨʉ → all of us, incl. you ← This is the target!  \n- ɽɤʉɘ → they two  \n- ɽɤʒɨʉ → they all\n\nWe are told the morphemes available are:  \nɘʉ, ɗɨə, ɐɘ, ɹɤ, ʒɤ, ɽɤ, ʉɘ, ʒɨʉ\n\nNotice:\n\n- \"we two, not you\" = ɹɤʉɘ → suggests ɹɤ + ʉɘ  \n- \"you and I\" = ʒɤʉɘ → suggests ʒɤ + ʉɘ  \n- \"we, not you\" = ɹɤʒɨʉ → ɹɤ + ʒɨʉ  \n- \"all of us, incl. you\" = ʒɤʒɨʉ → ʒɤ + ʒɨʉ  \n- \"they two\" = ɽɤʉɘ → ɽɤ + ʉɘ  \n- \"they all\" = ɽɤʒɨʉ → ɽɤ + ʒɨʉ\n\nSo the pattern is:\n\n- First part: root for the group:  \n  - ɹɤ = we (exclusive)  \n  - ʒɤ = we (inclusive)  \n  - ɽɤ = they  \n\n- Second part: number/inclusivity:  \n  - ʉɘ = two (dual)  \n  - ʒɨʉ = all (plural, inclusive)  \n\nTherefore:  \n- \"all of us, incl. you\" = ʒɤ (inclusive we) + ʒɨʉ (all) = ʒɤʒɨʉ\n\nWe are directly given \"ʒɤʒɨʉ → all of us, incl. you\" in the evidence.\n\nStep 2: Note any grammar — none needed beyond concatenation; morphemes are clear and combine directly.\n\nStep 3: The target \"all of us, incl. you\" is directly provided in the evidence.\n\nSo the answer is simply the morpheme sequence that corresponds to it: ʒɤʒɨʉ\n\nWe are to output the EXACT sequence as per the evidence.\n</analysis>\n<answers>\nʒɤʒɨʉ\n</answers>\nʒɤʒɨʉ",
+  "answer_text": "ʒɤʒɨʉ",
+  "morphemes": [
+   "ʒɤ",
+   "ʒɨʉ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 4.2,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "maori-pronouns",
+  "query": 2,
+  "difficulty": "standard",
+  "prompt": "they two",
+  "gold": [
+   "ɽɤ",
+   "ʉɘ"
+  ],
+  "gold_joined": "ɽɤʉɘ",
+  "raw": "<analysis>\nStep 1: Identify the source word for \"they two\" from the evidence list.\nFrom the evidence: \"ɽɤʉɘ → they two\"\nSo the direct translation of \"they two\" is \"ɽɤʉɘ\".\n\nStep 2: Note any grammar or structure.\nThe evidence shows a pattern where pronouns are built from:\n- A prefix for the group type: ɹɤ (we two, not you), ʒɤ (you and I), ɽɤ (they two or they all)\n- A suffix for number/inclusion: ʉɘ (two people, excluding you), ʒɨʉ (all including you)\n\nFor \"they two\": ɽɤ + ʉɘ → ɽɤʉɘ\nFor \"they all\": ɽɤ + ʒɨʉ → ɽɤʒɨʉ\n\nSo the pattern is:\n- ɽɤ = third person plural base (they)\n- ʉɘ = dual (two), exclusive of you (for third person: just two of them)\n- ʒɨʉ = plural inclusive (all of them, no need to specify \"including you\" for third person — but in this case it's used to distinguish dual vs. plural)\n\nThus, \"they two\" = ɽɤ + ʉɘ\n\nStep 3: Compose the exact target-language form.\nFrom evidence, \"they two\" is directly given as \"ɽɤʉɘ\".\n\nWe are not translating from the query into the language — the query \"they two\" is in English and we are to output its translation in the source language based on the evidence.\n\nSo the translation is exactly what is given: ɽɤʉɘ\n\nThe morphemes used are: ɽɤ and ʉɘ (both in the available list)\n</analysis>\n<answers>\nɽɤʉɘ\n</answers>\nɽɤʉɘ",
+  "answer_text": "ɽɤʉɘ",
+  "morphemes": [
+   "ɽɤ",
+   "ʉɘ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.9,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "maori-pronouns",
+  "query": 3,
+  "difficulty": "standard",
+  "prompt": "they all",
+  "gold": [
+   "ɽɤ",
+   "ʒɨʉ"
+  ],
+  "gold_joined": "ɽɤʒɨʉ",
+  "raw": "<analysis>\nStep 1: From the evidence, we see that:\n\n- ɘʉ = I  \n- ɗɨə = you  \n- ɐɘ = he/she  \n- ɹɤʉɘ = we two, not you → combines ɹɤ + ʉɘ  \n- ʒɤʉɘ = you and I → combines ʒɤ + ʉɘ  \n- ɹɤʒɨʉ = we, not you → combines ɹɤ + ʒɨʉ  \n- ʒɤʒɨʉ = all of us, incl. you → combines ʒɤ + ʒɨʉ  \n- ɽɤʉɘ = they two → combines ɽɤ + ʉɘ  \n- ɽɤʒɨʉ = they all → combines ɽɤ + ʒɨʉ  \n\nStep 2: Grammar pattern:  \n- The pronoun is two-part: a \"group identifier\" (ɹɤ, ʒɤ, ɽɤ) + a \"inclusion marker\" (ʉɘ or ʒɨʉ).  \n- ʉɘ = dual (two people)  \n- ʒɨʉ = plural (more than two, inclusive or exclusive)  \n- ɹɤ = we (exclusive of you)  \n- ʒɤ = we (inclusive of you)  \n- ɽɤ = they  \n\nStep 3: Question: “they all”  \nFrom example: ɽɤʒɨʉ = they all  \nThis matches exactly with the morphemes: ɽɤ + ʒɨʉ  \nBoth are in the tile bank.\n\nTherefore, the correct morpheme sequence is ɽɤʒɨʉ.\n</analysis>\n<answers>\nɽɤʒɨʉ\n</answers>",
+  "answer_text": "ɽɤʒɨʉ",
+  "morphemes": [
+   "ɽɤ",
+   "ʒɨʉ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.6,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "maori-pronouns",
+  "query": 4,
+  "difficulty": "standard",
+  "prompt": "we, not you",
+  "gold": [
+   "ɹɤ",
+   "ʒɨʉ"
+  ],
+  "gold_joined": "ɹɤʒɨʉ",
+  "raw": "<analysis>\nStep 1: From the evidence, identify morphemes and their meanings:\n\n- ɘʉ → I\n- ɗɨə → you\n- ɐɘ → he/she\n- ɹɤʉɘ → we two, not you → breaks into ɹɤ + ʉɘ? But ʉɘ is not in the tile bank — wait, the tile bank has ʉɘ listed? No — tile bank is: ɘʉ, ɗɨə, ɐɘ, ɹɤ, ʒɤ, ɽɤ, ʉɘ, ʒɨʉ → yes, ʉɘ is available.\n  So: ɹɤʉɘ = ɹɤ + ʉɘ → “we two, not you”\n- ʒɤʉɘ = ʒɤ + ʉɘ → “you and I” → so ʉɘ seems to mean “I” when combined? But ɘʉ is “I”. Contradiction? Not necessarily — perhaps ʉɘ is a different form.\n\nLet’s reexamine:\n\nNotice:\n\n- ɘʉ = I (base form)\n- ʉɘ = reverse? Maybe a different grammatical form.\n\nCompare:\n\n- ɹɤʉɘ → we two, not you → likely ɹɤ = “we two” + ʉɘ = “not you”? But that doesn’t match structure.\n\nAlternative approach: look for patterns in morpheme combinations.\n\nObserve:\n\n- ɹɤʉɘ → we two, not you\n- ʒɤʉɘ → you and I\n- ɹɤʒɨʉ → we, not you (plural)\n- ʒɤʒɨʉ → all of us, incl. you\n- ɽɤʉɘ → they two\n- ɽɤʒɨʉ → they all\n\nSo:\n\nThe pattern seems to be:\n\n- First part: pronoun root for group:\n  - ɹɤ → “we two, excluding you”\n  - ʒɤ → “we including you” (i.e., \"you and I\")\n  - ɽɤ → “they two”\n- Second part:\n  - ʉɘ → “two” (used in we two, they two)\n  - ʒɨʉ → “all” (plural inclusive) — but note ʒɤʒɨʉ = you and I + all → all of us incl. you\n\nWait — if ʉɘ means “two” (dual), then:\n\n- ɹɤʉɘ = we two (excluding you)\n- ʒɤʉɘ = you and I → dual including you\n- ɽɤʉɘ = they two\n\nThen:\n\n- ɹɤʒɨʉ = we (plural) excluding you → we, not you\n- ʒɤʒɨʉ = all of us including you → you and I + all → we all incl. you\n- ɽɤʒɨʉ = they (plural)\n\nSo ʒɨʉ = “all (inclusive)” — i.e., plural + inclusive\n\nAnd ʉɘ = “two” — dual\n\nThus:\n\n- ɹɤ = “we (dual, excluding you)”\n- ʒɤ = “we (dual, inclusive)” = “you and I”\n- ɽɤ = “they (dual)”\n- ʉɘ = dual suffix\n- ʒɨʉ = plural inclusive suffix\n\nNow, for the query: “we, not you” — this is the plural form excluding you → that is exactly ɹɤʒɨʉ → which we already have in the evidence: “ɹɤʒɨʉ → we, not you”\n\nSo the translation is directly given.\n\nStep 2: Grammar — no need to change, we are matching a given form.\n\nStep 3: The exact target form is ɹɤʒɨʉ.\n\nNote: ɹɤʒɨʉ is already in the evidence as “we, not you”.\n</analysis>\n<answers>\nɹɤʒɨʉ\n</answers>\nɹɤʒɨʉ",
+  "answer_text": "ɹɤʒɨʉ",
+  "morphemes": [
+   "ɹɤ",
+   "ʒɨʉ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 4.3,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "zulu-noun-class",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "boy",
+  "gold": [
+   "ɵʒ",
+   "ɱæɽæ"
+  ],
+  "gold_joined": "ɵʒɱæɽæ",
+  "raw": "<analysis>\nStep 1: Identify the source word for \"boy\" in the evidence.\nFrom the evidence: \"ɵʒɱæɽæ\" → \"boy\"\n\nStep 2: Note any grammar.\nObserve plural forms:\n- child → ɵʒɽʄƀæɽæ; children → æƃæɽʄƀæɽæ → plural prefix = æƃæ\n- boy → ɵʒɱæɽæ; boys → æƃæɱæɽæ → same pattern: plural prefix = æƃæ\n- school → ʉʜʉʛʚɴʚ; schools → ʉʈʉʛʚɴʚ → plural prefix = ʉʈʉ (not æƃæ) → different pluralization for different roots\n- student → ɵʒɱɵɽɫʉ; students → æƃæɱɵɽɫʉ → plural prefix = æƃæ\n\nSo: \n- Words starting with ɵʒ (child, boy, student) use æƃæ as plural prefix.\n- Words starting with ʉʜʉ (school) use ʉʈʉ as plural prefix.\n\nBut for the query, we only need the singular form of “boy”, which is directly given: ɵʒɱæɽæ\n\nStep 3: Compose the exact target form.\nThe morphemes for \"boy\" are: ɵʒ + ɱæɽæ\n\nWe are not asked for plural — just “boy”. So use the given singular form.\n\nNo grammar changes needed.\n</analysis>\n<answers>\nɵʒɱæɽæ\n</answers>",
+  "answer_text": "ɵʒɱæɽæ",
+  "morphemes": [
+   "ɵʒ",
+   "ɱæɽæ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.2,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "zulu-noun-class",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "children",
+  "gold": [
+   "æƃæ",
+   "ɽʄƀæɽæ"
+  ],
+  "gold_joined": "æƃæɽʄƀæɽæ",
+  "raw": "<analysis>\nStep 1: Analyze the evidence pairs to identify roots and plural markers.\n\nFrom the examples:\n- ɵʒɽʄƀæɽæ → child\n- æƃæɽʄƀæɽæ → children\n\nThe difference between \"child\" and \"children\" is the prefix: ɵʒ → æƃæ. So æƃæ is the plural marker.\n\nSimilarly:\n- ɵʒɱæɽæ → boy\n- æƃæɱæɽæ → boys\n\nAgain, ɵʒ becomes æƃæ for plural; the root ɱæɽæ remains unchanged.\n\nFor \"school\":\n- ʉʜʉʛʚɴʚ → school\n- ʉʈʉʛʚɴʚ → schools\n\nHere, ʉʜʉ → ʉʈʉ for plural, and ʛʚɴʚ is the root.\n\nFor \"student\":\n- ɵʒɱɵɽɫʉ → student\n- æƃæɱɵɽɫʉ → students\n\nAgain, ɵʒ → æƃæ for plural; root ɱɵɽɫʉ unchanged.\n\nSo we see two different plural patterns:\n- For words starting with ɵʒ: plural is formed by replacing ɵʒ with æƃæ\n- For words starting with ʉʜʉ: plural is formed by replacing ʉʜʉ with ʉʈʉ\n\nBut the query is \"children\" — which we already have in the evidence: æƃæɽʄƀæɽæ\n\nStep 2: Grammar note — the plural morpheme æƃæ is a prefix replacing the singular ɵʒ. No other affixes are involved.\n\nStep 3: The target is \"children\", which is directly given as æƃæɽʄƀæɽæ in the evidence.\n\nThus, the morpheme sequence for \"children\" is æƃæ + ɽʄƀæɽæ\n\nThe available morphemes include both  æƃæ and ɽʄƀæɽæ, so we use them directly.\n</analysis>\n<answers>\næƃæɽʄƀæɽæ\n</answers>",
+  "answer_text": "æƃæɽʄƀæɽæ",
+  "morphemes": [
+   "æƃæ",
+   "ɽʄƀæɽæ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 3.0,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "zulu-noun-class",
+  "query": 2,
+  "difficulty": "standard",
+  "prompt": "school",
+  "gold": [
+   "ʉʜʉ",
+   "ʛʚɴʚ"
+  ],
+  "gold_joined": "ʉʜʉʛʚɴʚ",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n\nWe are given the query \"school\" — we need to find the correct morpheme(s) for it in the source language.\n\nFrom the evidence:\n- ʉʜʉʛʚɴʚ → school (singular)\n- ʉʈʉʛʚɴʚ → schools (plural)\n\nSo the base form for \"school\" is ʉʜʉʛʚɴʚ, and the plural is formed by replacing ʉʜʉ with ʉʈʉ.\n\nSimilarly, compare:\n- ɵʒɽʄƀæɽæ → child (singular)\n- æƃæɽʄƀæɽæ → children (plural) → prefix æƃæ- added\n- ɵʒɱæɽæ → boy (singular)\n- æƃæɱæɽæ → boys (plural) → prefix æƃæ- added\n- ɵʒɱɵɽɫʉ → student (singular)\n- æƃæɱɵɽɫʉ → students (plural) → prefix æƃæ- added\n\nSo the pattern is:\n- Singular form: starts with ɵʒ (for child, boy, student) or ʉʜʉ (for school)\n- Plural form: same root but prefixed with æ濞æ\n\nBut note: \"school\" doesn't use ɵʒ — it uses ʉʜʉ for singular and ʉʈʉ for plural.\n\nSo the morpheme for singular \"school\" is ʉʜʉʛʚɴʚ, and for plural it's ʉʈʉʛʚɴʚ.\n\nTherefore, the morpheme for \"school\" (singular) is entirely ʉʜʉʛʚɴʚ.\n\nStep 2: Note any grammar.\n\nNo inflectional suffixes or internal changes beyond prefix replacement for plural. \"School\" is singular, so no plural prefix (æƃæ) is needed.\n\nThe morphemes available include:\n- ʉʜʉ\n- ʉʈʉ\n- ʛʚɴʚ\n\nAnd we see ʉʜʉʛʚɴʚ = school → so it’s a compound: ʉʜʉ + ʛʚɴʚ\n\nSimilarly, ʉʈʉʛʚɴʚ = schools → ʉʈʉ + ʛʚɴʚ\n\nSo the word \"school\" (singular) is composed of ʉʜʉ + ʛʚɴʚ\n\nStep 3: Compose the EXACT target-language form.\n\nThe query is \"school\" — singular.\n\nFrom the data: ʉʜʉʛʚɴʚ → school\n\nSo the exact form is: ʉʜʉʛʚɴʚ\n\nWe are given available morphemes: ʉʜʉ and ʛʚɴʚ are both in the tile bank — so we use them together.\n\nWe do not use ʉʈʉ (that’s plural), and we do not use æƃæ (that’s plural marker for other nouns, not used here).\n\nThus, the correct morpheme sequence for \"school\" is: ʉʜʉʛʚɴʚ\n</analysis>\n<answers>\nʉʜʉʛʚɴʚ\n</answers>",
+  "answer_text": "ʉʜʉʛʚɴʚ",
+  "morphemes": [
+   "ʉʜʉ",
+   "ʛʚɴʚ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 3.7,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "zulu-noun-class",
+  "query": 3,
+  "difficulty": "standard",
+  "prompt": "schools",
+  "gold": [
+   "ʉʈʉ",
+   "ʛʚɴʚ"
+  ],
+  "gold_joined": "ʉʈʉʛʚɴʚ",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n\nWe are given:\n\n- ɵʒɽʄƀæɽæ → child  \n- æƃæɽʄƀæɽæ → children  \n- ɵʒɱæɽæ → boy  \n- æƃæɱæɽæ → boys  \n- ʉʜʉʛʚɴʚ → school  \n- ʉʈʉʛʚɴʚ → schools  \n- ɵʒɱɵɽɫʉ → student  \n- æƃæɱɵɽɫʉ → students  \n\nWe observe a clear pattern:\n\nThe singular forms start with ɵʒ or ʉʜʉ or ɵʒ (for child, school, student)  \nThe plural forms start with æƃæ + the same root (children = æƃæ + ɽʄƀæɽæ, boys = æƃæ + ɱæɽæ, students = æƃæ + ɱɵɽɫʉ)\n\nSo the plural morpheme is æƃæ- prefixed to the singular noun root.\n\nNow, for the noun roots:\n\n- child: ɵʒɽʄƀæɽæ → root = ɵʒ + ɽʄƀæɽæ  \n- children: æƃæ + ɽʄƀæɽæ  \n- boy: ɵʒɱæɽæ → root = ɵʒ + ɱæɽæ  \n- boys: æƃæ + ɱæɽæ  \n- school: ʉʜʉʛʚɴʚ → root = ʉʜʉ + ʛʚɴʚ  \n- schools: ʉʈʉʛʚɴʚ → here’s the twist: not æƃæ, but ʉʈʉ instead of ʉʜʉ\n\nWait — so for “school” and “schools”, the pattern is not pluralization by prefixing æƃæ, but by changing the initial morpheme: ʉʜʉ → ʉʈʉ.\n\nBut look:\n\n- child → children: ɵʒ → æƃæɵʒ? No, it's ɵʒɽʄƀæɽæ → æƃæɽʄƀæɽæ — so the ɵʒ is replaced by æƃæ? Actually, no:\n\nWait — ɵʒɽʄƀæɽæ = child  \næƃæɽʄƀæɽæ = children → so the ɵʒ was dropped and æ萆æ inserted? That suggests ɵʒ is not part of the root — perhaps ɵʒ is singular marker, and æƃæ is plural marker.\n\nSimilarly:\n\nɵʒɱæɽæ = boy  \næƃæɱæɽæ = boys → same: ɵʒ → æƃæ\n\nBut then:\n\nʉʜʉʛʚɴʚ = school  \nʉʈʉʛʚɴʚ = schools\n\nHere, ʉʜʉ → ʉʈʉ changes, and no æ萆æ.\n\nThis breaks the pattern.\n\nSo perhaps there are two types of nouns?\n\nWait — look at the morphemes provided:\n\nAvailable morphemes: ɵʒ, æƃæ, ʉʜʉ, ʉʈʉ, ɽʄƀæɽæ, ɱæɽæ, ʛʚɴʚ, ɱɵɽɫʉ\n\nLet’s break down the words:\n\nchild = ɵʒ + ɽʄƀæɽæ  \nchildren = æƃæ + ɽʄƀæɽæ  \nboy = ɵʒ + ɱæɽæ  \nboys = æƃæ + ɱæɽæ  \nschool = ʉʜʉ + ʛʚɴʚ  \nschools = ʉʈʉ + ʛʚɴʚ  \nstudent = ɵʒ + ɱɵɽɫʉ  \nstudents = æƃæ + ɱɵɽɫʉ\n\nAh! Now it’s clear.\n\nFor “child”, “boy”, “student” — singular uses ɵʒ, plural uses æ萆æ, and they share the same root: ɽʄƀæɽæ, ɱæɽæ, ɱɵɽɫʉ\n\nFor “school” — singular: ʉʜʉ + ʛʚɴʚ  \nplural: ʉʈʉ + ʛʚɴʚ\n\nThat is, the root ʛʚɴʚ is shared, but the singular marker is ʉʜʉ, plural is ʉʈʉ.\n\nSo the morpheme choice for the determiner/classifier depends on the noun class.\n\nNow, we are asked to translate: “schools”\n\nFrom the evidence, “schools” = ʉʈʉʛʚɴʚ\n\nWe are to use only the given morphemes.\n\nSo: ʉʈʉ + ʛʚɴʚ\n\nThus, the correct morpheme sequence for “schools” is: ʉʈʉʛʚɴʚ\n\nThis matches the provided evidence exactly.\n\nStep 2: Note any grammar — no inflection of the root, no suffixes, just substitution of the initial morpheme: from ʉʜʉ to ʉʈʉ for plural of \"school\".\n\nStep 3: Compose the exact target-language form: ʉʈʉʛʚɴʚ\n</analysis>\n<answers>\nʉʈʉʛʚɴʚ\n</answers>",
+  "answer_text": "ʉʈʉʛʚɴʚ",
+  "morphemes": [
+   "ʉʈʉ",
+   "ʛʚɴʚ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 5.5,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "zulu-noun-class",
+  "query": 4,
+  "difficulty": "curveball",
+  "prompt": "students",
+  "gold": [
+   "æƃæ",
+   "ɱɵɽɫʉ"
+  ],
+  "gold_joined": "æƃæɱɵɽɫʉ",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n\nWe are given:\n\n- ɵʒɽʄƀæɽæ → child\n- æƃæɽʄƀæɽæ → children\n- ɵʒɱæɽæ → boy\n- æƃæɱæɽæ → boys\n- ʉʜʉʛʚɴʚ → school\n- ʉʈʉʛʚɴʚ → schools\n- ɵʒɱɵɽɫʉ → student\n- æƃæɱɵɽɫʉ → students\n\nWe observe a clear pattern:\n\nThe singular forms start with ɵʒ (child, boy, student) and the plural forms add æƃæ in front → æƃæ + singular = plural.\n\nSo:\n\n- child → ɵʒɽʄƀæɽæ\n- children → æƃæ + ɵʒɽʄƀæɽæ = æƃæɽʄƀæɽæ ✅\n\n- boy → ɵʒɱæɽæ\n- boys → æƃæ + ɵʒɱæɽæ = æƃæɱæɽæ ✅\n\n- school → ʉʜʉʛʚɴʚ\n- schools → ʉʈʉʛʚɴʚ — here, it’s not æƃæ, but ʉʜʉ → ʉʈʉ. So ʉʈʉ is the plural form of ʉʜʉ.\n\nWait — this breaks the previous pattern. So we have two different pluralization systems?\n\nLet’s reexamine:\n\nchild → ɵʒɽʄƀæɽæ  \nchildren → æbusters^æɽʄƀæɽæ → so æƃæ is a plural prefix for nouns starting with ɵʒ\n\nboy → ɵʒɱæɽæ  \nboys → æƃæɱæɽæ → again, æƃæ prefix\n\nstudent → ɵʒɱɵɽɫʉ  \nstudents → æƃæɱɵɽɫʉ → same pattern: æƃæ prefix\n\nBut school → ʉʜʉʛʚɴʚ  \nschools → ʉʈʉʛʚɴʚ → here, the first part changes from ʉʜʉ to ʉʈʉ, not adding a prefix.\n\nSo maybe ʉʜʉ and ʉʈʉ are pair forms — perhaps ʉʜʉ is singular, ʉʈʉ is plural? Or vice versa? The evidence says:\n\n- ʉʜʉʛʚɴʚ → school (singular)\n- ʉʈʉʛʚɴʚ → schools (plural)\n\nSo for this noun, the root ʉʜʉ becomes ʉʈʉ for plural — i.e., internal mutation, not prefix.\n\nBut for the other nouns (child, boy, student), plural is formed by PREFIXING æƃæ.\n\nSo we have two pluralization strategies:\n\n- Strategy A (for child, boy, student): prefix æƃæ → singular → plural\n- Strategy B (for school): internal change: ʉʜʉ → ʉʈʉ\n\nWe are asked to translate \"students\" — which from evidence is directly given as: æƃæɱɵɽɫʉ\n\nSo the answer is already in the evidence.\n\nStep 2: Note any grammar — we see that for “student”, singular is ɵʒɱɵɽɫʉ, plural is æƃæɱɵɽɫʉ. So the morpheme for “student” is ɱɵɽɫʉ, and the pluralizer for this class is æƃæ-.\n\nThe morphemes needed are:\n\n- ɵʒ → singular marker for child/boy/student\n- æƃæ → plural prefix for these nouns\n- ɱɵɽɫʉ → “student” root\n\nSo “students” = æƃæ + ɱɵɽɫʉ = æƃæɱɵɽɫʉ\n\nStep 3: Compose the exact target form — we are told the query is “students”, and the evidence gives us the direct translation: æƃæɱɵɽɫʉ\n\nWe do not need to derive it from scratch — it is directly given.\n\nThus the translation is: æƃæɱɵɽɫʉ\n</analysis>\n<answers>\næƃæɱɵɽɫʉ\n</answers>",
+  "answer_text": "æƃæɱɵɽɫʉ",
+  "morphemes": [
+   "æƃæ",
+   "ɱɵɽɫʉ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 5.8,
+  "model": "qwen3-next-80b-a3b-instruct",
+  "provider": "neon",
+  "prompt_variant": "no_hint",
+  "trial": 2,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ }
+]

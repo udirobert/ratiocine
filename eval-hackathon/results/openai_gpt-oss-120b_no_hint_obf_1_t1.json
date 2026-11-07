@@ -1,0 +1,1117 @@
+[
+ {
+  "puzzle": "apurina-verb-agreement",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "I am eating",
+  "gold": [
+   "ʡɗɪɪ",
+   "ɫəɳɪ",
+   "ɫɪ"
+  ],
+  "gold_joined": "ʡɗɪɪɫəɳɪɫɪ",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- The query “I am eating” matches the example sentence ʡɗɪɪɫəɳɪɫɪ, which is already given as the translation for “I am eating”.\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- The language uses a fixed verb suffix ɫɪ for the present progressive.  \n- The pronoun “I” is the morpheme ʡɗɪɪ.  \n- The verb stem for “eat” is ɫəɳɪ.  \n- The full form is therefore pronoun + verb stem + suffix.\n\nStep 3: Compose the EXACT target‑language form, preserving notation like You_{sg}, You_{pl}.\n- Concatenating the morphemes: ʡɗɪɪ + ɫəɳɪ + ɫɪ → ʡɗɪɪɫəɳɪɫɪ\n</analysis>\n<answers>\nʡɗɪɪɫəɳɪɫɪ\n</answers>\nʡɗɪɪɫəɳɪɫɪ",
+  "answer_text": "ʡɗɪɪɫəɳɪɫɪ",
+  "morphemes": [
+   "ʡɗɪɪ",
+   "ɫəɳɪ",
+   "ɫɪ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 6.0,
+  "model": "openai/gpt-oss-120b",
+  "provider": "groq",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "apurina-verb-agreement",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "we (everyone) are eating",
+  "gold": [
+   "ɫɪɪ",
+   "ɫəɳɪ",
+   "ɫɪ"
+  ],
+  "gold_joined": "ɫɪɪɫəɳɪɫɪ",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- Pronoun “we (everyone)” = ɫɪɪ (from “ɫɪɪƍʊɳɪɫɪ” = we are going).\n- Verb “eating” = ɫəɳɪ (from “ʡɗɪɪɫəɳɪɫɪ” = I am eating, etc.).\n- Sentence‑final morpheme = ɫɪ (present‑continuous marker common to all examples).\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- Word order is pronoun + verb‑stem + final‑marker.\n- No extra agreement morphology beyond the pronoun.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- Combine ɫɪɪ + ɫəɳɪ + ɫɪ → ɫɪɪɫəɳɪɫɪ\n</analysis>\n<answers>\nɫɪɪɫəɳɪɫɪ\n</answers>",
+  "answer_text": "ɫɪɪɫəɳɪɫɪ",
+  "morphemes": [
+   "ɫɪɪ",
+   "ɫəɳɪ",
+   "ɫɪ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 21.6,
+  "model": "openai/gpt-oss-120b",
+  "provider": "groq",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "apurina-verb-agreement",
+  "query": 2,
+  "difficulty": "standard",
+  "prompt": "you are speaking",
+  "gold": [
+   "ɯ",
+   "ʡøɫɪɳɪ",
+   "ɫɪ"
+  ],
+  "gold_joined": "ɯʡøɫɪɳɪɫɪ",
+  "raw": "<analysis>\nStep 1: Identify the source word for the query “you are speaking”. The evidence list contains the exact sentence “you are speaking” mapped to the morpheme string ɯʡøɫɪɳɪɫɪ.\nStep 2: The grammar shows a pattern: pronoun ɯ (you) + verb root ʡøɫɪɳɪ (speak) + suffix ɫɪ (present progressive). No additional case or agreement markers are needed.\nStep 3: The exact target‑language form is the concatenation of the three morphemes: ɯʡøɫɪɳɪɫɪ.\n</analysis>\n<answers>\nɯʡøɫɪɳɪɫɪ\n</answers>",
+  "answer_text": "ɯʡøɫɪɳɪɫɪ",
+  "morphemes": [
+   "ɯ",
+   "ʡøɫɪɳɪ",
+   "ɫɪ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 20.0,
+  "model": "openai/gpt-oss-120b",
+  "provider": "groq",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "apurina-verb-agreement",
+  "query": 3,
+  "difficulty": "standard",
+  "prompt": "we (everyone) are speaking",
+  "gold": [
+   "ɫɪɪ",
+   "ʡøɫɪɳɪ",
+   "ɫɪ"
+  ],
+  "gold_joined": "ɫɪɪʡøɫɪɳɪɫɪ",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- Subject morphemes: I = ʡɗɪɪ, you = ɯ, he/she = ɪ, we (everyone) = ɫɪɪ.\n- Verb stems: go = ƍʊɳɪ, eat = ɫəɳɪ, speak = ʡøɫɪɳɪ.\n- Common suffix for the present progressive: ɫɪ.\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- Word order is strictly Subject + Verb + Suffix, with each morpheme concatenated directly.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- For “we (everyone) are speaking”: subject = ɫɪɪ, verb = ʡøɫɪɳɪ, suffix = ɫɪ → ɫɪɪʡøɫɪɳɪɫɪ.\n</analysis>\n<answers>\nɫɪɪʡøɫɪɳɪɫɪ\n</answers>",
+  "answer_text": "ɫɪɪʡøɫɪɳɪɫɪ",
+  "morphemes": [
+   "ɫɪɪ",
+   "ʡøɫɪɳɪ",
+   "ɫɪ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 9.5,
+  "model": "openai/gpt-oss-120b",
+  "provider": "groq",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "apurina-verb-agreement",
+  "query": 4,
+  "difficulty": "standard",
+  "prompt": "he/she is going",
+  "gold": [
+   "ɪ",
+   "ƍʊɳɪ",
+   "ɫɪ"
+  ],
+  "gold_joined": "ɪƍʊɳɪɫɪ",
+  "raw": "<analysis>\nStep 1: Identify the source word for “he/she is going”. The evidence line “ɪƍʊɳɪɫɪ → he/she is going” directly provides the required form.\nStep 2: No additional grammatical modifications are needed; the form already encodes subject (third person singular) and present progressive.\nStep 3: Output the exact target-language string as given.\n</analysis>\n<answers>\nɪƍʊɳɪɫɪ\n</answers>",
+  "answer_text": "ɪƍʊɳɪɫɪ",
+  "morphemes": [
+   "ɪ",
+   "ƍʊɳɪ",
+   "ɫɪ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 15.9,
+  "model": "openai/gpt-oss-120b",
+  "provider": "groq",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "swahili-person-tense",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "I will like",
+  "gold": [
+   "ƒɞ",
+   "ʍʊ",
+   "ʠɪƒɺʊ"
+  ],
+  "gold_joined": "ƒɞʍʊʠɪƒɺʊ",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- Pronoun “I” = ƒɞ\n- Future tense marker = ʍʊ (appears after pronouns in “you will play” and “they will sing”)\n- Verb “like” = ʠɪƒɺʊ (root used in “I like” and “I liked”)\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- Word order in all sentences is: pronoun + tense marker + verb root.\n- For future tense, only the future marker (ʍʊ) is used; no present marker appears.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- Combine the morphemes in the required order: ƒɞ (I) + ʍʊ (future) + ʠɪƒɺʊ (like) → ƒɞʍʊʠɪƒɺʊ\n</analysis>\n<answers>\nƒɞʍʊʠɪƒɺʊ\n</answers>",
+  "answer_text": "ƒɞʍʊʠɪƒɺʊ",
+  "morphemes": [
+   "ƒɞ",
+   "ʍʊ",
+   "ʠɪƒɺʊ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 4.2,
+  "model": "openai/gpt-oss-120b",
+  "provider": "groq",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "swahili-person-tense",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "they read",
+  "gold": [
+   "ɱʊ",
+   "ƒʊ",
+   "ʡɔɗʊ"
+  ],
+  "gold_joined": "ɱʊƒʊʡɔɗʊ",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- Pronouns: I = ƒɞ, you = ɯ, we = ʍɯ, they = ɱʊ, he/she = ʊ.\n- Tense markers: present = ƒʊ, past = ƃɞ, future = ʍʊ.\n- Verb roots: like = ʠɪƒɺʊ, read = ʡɔɗʊ, play = ɲɫɪħʊ, sing = ɞɗʈʊ.\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- Sentence structure is: pronoun + tense‑marker + verb‑root.\n- “they read” is present tense, so use present marker ƒʊ.\n\nStep 3: Compose the EXACT target‑language form, preserving notation like You_{sg}, You_{pl}.\n- they = ɱʊ\n- present = ƒʊ\n- read = ʡɔɗʊ\n- Concatenate: ɱʊ + ƒʊ + ʡɔɗʊ → ɱʊƒʊʡɔɗʊ\n</analysis>\n<answers>\nɱʊƒʊʡɔɗʊ\n</answers>",
+  "answer_text": "ɱʊƒʊʡɔɗʊ",
+  "morphemes": [
+   "ɱʊ",
+   "ƒʊ",
+   "ʡɔɗʊ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 19.8,
+  "model": "openai/gpt-oss-120b",
+  "provider": "groq",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "swahili-person-tense",
+  "query": 2,
+  "difficulty": "curveball",
+  "prompt": "we sang",
+  "gold": [
+   "ʍɯ",
+   "ƃɞ",
+   "ɞɗʈʊ"
+  ],
+  "gold_joined": "ʍɯƃɞɞɗʈʊ",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- Pronoun “we” appears as ʍɯ (from ʍɯƃɞʡɔɗʊ “we read (past)”).\n- Past tense marker is ƃɞ (used in ƒɞƃɞʠɪƒɺʊ “I liked”, ʍɯƃɞʡɔɗʊ “we read (past)”).\n- Verb “sing” root is ɞɗʈʊ (from ʊƒʊɞɗʈʊ “he sings”, ɱʊʍʊɞɗʈʊ “they will sing”).\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- Sentence order is: pronoun + tense + verb root.\n- No additional affixes are needed for person/number beyond the pronoun.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- Combine the morphemes: ʍɯ (we) + ƃɞ (past) + ɞɗʈʊ (sing) → ʍɯƃɞɞɗʈʊ\n</analysis>\n<answers>\nʍɯƃɞɞɗʈʊ\n</answers>",
+  "answer_text": "ʍɯƃɞɞɗʈʊ",
+  "morphemes": [
+   "ʍɯ",
+   "ƃɞ",
+   "ɞɗʈʊ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 10.8,
+  "model": "openai/gpt-oss-120b",
+  "provider": "groq",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "turkish-vowel-harmony",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "eyes",
+  "gold": [
+   "ʜøɳ",
+   "ɸæŧ"
+  ],
+  "gold_joined": "ʜøɳɸæŧ",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- The query “eyes” corresponds to the singular noun “eye” whose morpheme is ʜøɳ (from the evidence list).\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- The plural is formed by attaching a plural suffix to the singular root.\n- From the evidence, nouns that are body parts (hand → æɸɸæŧ) use the suffix ɸæŧ. Since “eye” is also a body part, the same suffix should be used.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- Combine the root ʜøɳ with the plural suffix ɸæŧ: ʜøɳɸæŧ\n</analysis>\n<answers>\nʜøɳɸæŧ\n</answers>",
+  "answer_text": "ʜøɳɸæŧ",
+  "morphemes": [
+   "ʜøɳ",
+   "ɸæŧ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 18.6,
+  "model": "openai/gpt-oss-120b",
+  "provider": "groq",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "turkish-vowel-harmony",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "girls",
+  "gold": [
+   "ʟɱɳ",
+   "ɸœŧ"
+  ],
+  "gold_joined": "ʟɱɳɸœŧ",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- The singular “girl” is given as the morpheme ʟɱɳ.\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- Plural nouns are formed by adding the plural morpheme ɸæŧ or ɸœŧ to the singular stem.\n- The vowel in the plural suffix matches the prominent vowel of the stem. Stems with an explicit front vowel æ take ɸæŧ; stems with œ take ɸœŧ. The stem ʟɱɳ contains no overt vowel, so the default plural suffix ɸæŧ is used (as in “hand” æɸ → æɸɸæŧ).\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- Combine the singular stem ʟɱɳ with the plural suffix ɸæŧ: ʟɱɳɸæŧ.\n</analysis>\n<answers>\nʟɱɳɸæŧ\n</answers>",
+  "answer_text": "ʟɱɳɸæŧ",
+  "morphemes": [
+   "ʟɱɳ",
+   "ɸæŧ"
+  ],
+  "em_decomp": false,
+  "em_surface": false,
+  "chrf": 0.5667,
+  "morf1": 0.5,
+  "elapsed_s": 8.5,
+  "model": "openai/gpt-oss-120b",
+  "provider": "groq",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "turkish-vowel-harmony",
+  "query": 2,
+  "difficulty": "curveball",
+  "prompt": "days",
+  "gold": [
+   "ʜəɦ",
+   "ɸæŧ"
+  ],
+  "gold_joined": "ʜəɦɸæŧ",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- The query “days” corresponds to the singular noun “day”, which is given as ʜəɦ.\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- Plural formation adds a suffix morpheme. Nouns whose stem contains the vowel œ take the suffix ɸœŧ (e.g., œɠ → œɠɸœŧ, ʟɤɠœʛ → …ɸœŧ). Nouns with other vowels (æ) take the suffix ɸæŧ (e.g., æɽ → æɽɸæŧ, æɸ → æɸɸæŧ). “Day” (ʜəɦ) contains the central vowel ə, so the default suffix is ɸæŧ.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- Combine the stem ʜəɦ with the plural suffix ɸæŧ → ʜəɦɸæŧ.\n</analysis>\n<answers>\nʜəɦɸæŧ\n</answers>",
+  "answer_text": "ʜəɦɸæŧ",
+  "morphemes": [
+   "ʜəɦ",
+   "ɸæŧ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 19.0,
+  "model": "openai/gpt-oss-120b",
+  "provider": "groq",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "quechua-person-endings",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "I walk",
+  "gold": [
+   "ɮɐʋœ",
+   "ɧœ"
+  ],
+  "gold_joined": "ɮɐʋœɧœ",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- The verb “walk” appears in the example “he walks”: ɮɐʋœɧ. Therefore the verb root for “walk” is **ɮɐʋœ**.\n- The morpheme that marks first‑person singular (I) is the suffix **ɧœ**, as seen in “I speak” (ʋœɻɤɧœ) and “I see” (ʋœɺɐɧœ).\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- The language builds a clause by concatenating the verb root with a person‑number suffix. No additional morphemes are needed for “I walk”.\n\nStep 3: Compose the EXACT target‑language form, preserving notation like You_{sg}, You_{pl}.\n- Combine the walk root **ɮɐʋœ** with the 1sg suffix **ɧœ** → **ɮɐʋœɧœ**.\n</analysis>\n<answers>\nɮɐʋœɧœ\n</answers>",
+  "answer_text": "ɮɐʋœɧœ",
+  "morphemes": [
+   "ɮɐʋœ",
+   "ɧœ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 20.5,
+  "model": "openai/gpt-oss-120b",
+  "provider": "groq",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "quechua-person-endings",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "we (all of us) see",
+  "gold": [
+   "ʋœɺɐ",
+   "ɧɬʍœɺ"
+  ],
+  "gold_joined": "ʋœɺɐɧɬʍœɺ",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- The morpheme ʋœɻɤ = “speak”.\n- The morpheme ʋœɺɐ = “see”.\n- The morpheme ɻœɺʍɐ = “eat”.\n- The morpheme ɮɐʋœ = “walk”.\n- The suffix ɧœ = first‑person singular.\n- The suffix ɧɺœ = second‑person singular.\n- The suffix ɧ = third‑person singular.\n- The suffix ɧɬʍœɺ = first‑person plural inclusive (“we (all of us)”).\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- Verb form = root + ɧ + person/number suffix.\n- For “we (all of us)”, the suffix is ɧɬʍœɺ, which attaches directly after the root.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- Root for “see” = ʋœɺɐ.\n- Plural inclusive suffix = ɧɬʍœɺ.\n- Combine: ʋœɺɐ + ɧɬʍœɺ = ʋœɺɐɧɬʍœɺ.\n</analysis>\n<answers>\nʋœɺɐɧɬʍœɺ\n</answers>",
+  "answer_text": "ʋœɺɐɧɬʍœɺ",
+  "morphemes": [
+   "ʋœɺɐ",
+   "ɧɬʍœɺ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 20.3,
+  "model": "openai/gpt-oss-120b",
+  "provider": "groq",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "quechua-person-endings",
+  "query": 2,
+  "difficulty": "curveball",
+  "prompt": "she eats",
+  "gold": [
+   "ɻœɺʍɐ",
+   "ɧ"
+  ],
+  "gold_joined": "ɻœɺʍɐɧ",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- Verb “eat” appears in the strings ɻœɺʍɐɧɺœ (you eat) and ɻœɺʍɐɧɬʍœɺ (we eat). The common prefix ɻœɺʍɐ is the verb root “eat”.\n- The suffix that marks third‑person singular (she/he) is ɧ, seen in ʋœɻɤɧ (she speaks) and ɮɐʋœɧ (he walks).\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- The language forms a verb by concatenating the verb root with a person‑number suffix.\n- For third‑person singular the suffix is simply ɧ.\n\nStep 3: Compose the EXACT target‑language form, preserving notation like You_{sg}, You_{pl}.\n- Combine the “eat” root ɻœɺʍɐ with the 3sg suffix ɧ → ɻœɺʍɐɧ.\n</analysis>\n<answers>\nɻœɺʍɐɧ\n</answers>",
+  "answer_text": "ɻœɺʍɐɧ",
+  "morphemes": [
+   "ɻœɺʍɐ",
+   "ɧ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 9.4,
+  "model": "openai/gpt-oss-120b",
+  "provider": "groq",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "nahuatl-both-ends",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "I sing",
+  "gold": [
+   "ʝɵ",
+   "ƌæɵƌʉ"
+  ],
+  "gold_joined": "ʝɵƌæɵƌʉ",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- ʝɵ corresponds to the 1st‑person singular pronoun “I”.\n- ɽɵ corresponds to the 2nd‑person singular pronoun “you”.\n- ƌæɵƌʉ is the verb root meaning “sing”.\n- The morpheme ɾ is a plural suffix (used for “they” and “we”).\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- Simple present statements are formed by concatenating the pronoun (if any) + verb root.\n- For third‑person singular the pronoun is omitted.\n- The plural suffix ɾ is added after the verb when the subject is plural (“they”, “we”).\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- “I sing” → pronoun ʝɵ + verb root ƌæɵƌʉ, no plural suffix.\n- Result: ʝɵƌæɵƌʉ\n</analysis>\n<answers>\nʝɵƌæɵƌʉ\n</answers>",
+  "answer_text": "ʝɵƌæɵƌʉ",
+  "morphemes": [
+   "ʝɵ",
+   "ƌæɵƌʉ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 18.0,
+  "model": "openai/gpt-oss-120b",
+  "provider": "groq",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "nahuatl-both-ends",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "they cry",
+  "gold": [
+   "ƌɾɶƌʉ",
+   "ɾ"
+  ],
+  "gold_joined": "ƌɾɶƌʉɾ",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- The verb “cry” is represented by the morpheme sequence ƌɾɶƊʉ (found in “I cry”: ʝɵ ƌɾɶƊʉ).\n- The morpheme ɾ functions as a plural/agreement suffix (appears in “we sleep”: ʝɵ ƌɶƊɾɵ ɾ and “they sing”: ƌæɵƌʉ ɾ).\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- For third‑person plural subjects (“they”), the verb stem takes the plural suffix ɾ and no separate pronoun is used (as seen in “they sing”).\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- Combine the cry stem ƌɾɶƊʉ with the plural suffix ɾ → ƌɾɶƊʉɾ.\n</analysis>\n<answers>\nƌɾɶƊʉɾ\n</answers>",
+  "answer_text": "ƌɾɶƊʉɾ",
+  "morphemes": [
+   "ƌɾɶƊʉɾ"
+  ],
+  "em_decomp": false,
+  "em_surface": false,
+  "chrf": 0.4208,
+  "morf1": 0.0,
+  "elapsed_s": 2.2,
+  "model": "openai/gpt-oss-120b",
+  "provider": "groq",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "nahuatl-both-ends",
+  "query": 2,
+  "difficulty": "curveball",
+  "prompt": "we sing",
+  "gold": [
+   "ʝɵ",
+   "ƌæɵƌʉ",
+   "ɾ"
+  ],
+  "gold_joined": "ʝɵƌæɵƌʉɾ",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- Pronoun morphemes: ʝɵ = I, ɽɵ = you. The plural marker is ɾ, which attaches to the verb to indicate a plural subject (they, we).\n- Verb stems: ƌɶƌɾɵ = sleep, ƌɾɶƌʉ = cry, ƌæɵƌʉ = sing.\n- In “we” constructions, the pattern is I‑pronoun (ʝɵ) + verb + plural suffix ɾ, as seen in ʝɵƌɶƌɾɵɾ (“we sleep”).\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- To form “we sing”, use the first‑person singular pronoun ʝɵ, the verb stem for “sing” (ƌæɵƌʉ), and the plural suffix ɾ placed after the verb.\n\nStep 3: Compose the EXACT target‑language form, preserving notation like You_{sg}, You_{pl}.\n- Concatenate: ʝɵ + ƌæɵƌʉ + ɾ → ʝɵƌæɵƌʉɾ\n</analysis>\n<answers>\nʝɵƌæɵƌʉɾ\n</answers>",
+  "answer_text": "ʝɵƌæɵƌʉɾ",
+  "morphemes": [
+   "ʝɵ",
+   "ƌæɵƌʉ",
+   "ɾ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 18.2,
+  "model": "openai/gpt-oss-120b",
+  "provider": "groq",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "esperanto-tense",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "you learned",
+  "gold": [
+   "ɸø",
+   "ʂɶɬʜ",
+   "øɽ"
+  ],
+  "gold_joined": "ɸø ʂɶɬʜøɽ",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- The pronoun “you” corresponds to the morpheme ɸø (as in ɸø ʂɶɬʜəɽ → “you learn”).\n- The verb “learn” has the stem ʂɶɬʜ. Tense is marked by the final vowel before the final ɽ:\n  · present = əɽ (learn)\n  · past = øɽ (learned)\n  · future = ʌɽ (will learn)\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- To express “learned” we need the past suffix øɽ attached to the verb stem.\n- Word order in all examples is: [pronoun] [verb stem + tense suffix].\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- Combine the pronoun ɸø with the verb stem ʂɶɬʜ and the past suffix øɽ.\n\nResulting form: ɸø ʂɶɬʜøɽ\n</analysis>\n<answers>\nɸø ʂɶɬʜøɽ\n</answers>",
+  "answer_text": "ɸø ʂɶɬʜøɽ",
+  "morphemes": [
+   "ɸø",
+   "ʂɶɬʜ",
+   "øɽ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 0.696,
+  "morf1": 1.0,
+  "elapsed_s": 7.2,
+  "model": "openai/gpt-oss-120b",
+  "provider": "groq",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "esperanto-tense",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "we learned",
+  "gold": [
+   "ʜø",
+   "ʂɶɬʜ",
+   "øɽ"
+  ],
+  "gold_joined": "ʜø ʂɶɬʜøɽ",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- Subject pronoun for “we” = ʜø (from “ʜø ʂɶɬʜəɽ → we learn”).\n- Verb root for “learn” = ʂɶɬʜ (common to all learn sentences).\n- Past tense suffix = øɽ (from “ƒø ʂɶɬʜøɽ → I learned”).\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- The verb is formed by concatenating the root with the appropriate tense suffix. No additional agreement morphology appears; the subject pronoun stands alone before the verb.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- Combine subject pronoun ʜø with verb root ʂɶɬʜ and past suffix øɽ → “ʜø ʂɶɬʜøɽ”.\n</analysis>\n<answers>\nʜø ʂɶɬʜøɽ\n</answers>",
+  "answer_text": "ʜø ʂɶɬʜøɽ",
+  "morphemes": [
+   "ʜø",
+   "ʂɶɬʜ",
+   "øɽ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 0.696,
+  "morf1": 1.0,
+  "elapsed_s": 7.5,
+  "model": "openai/gpt-oss-120b",
+  "provider": "groq",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "esperanto-tense",
+  "query": 2,
+  "difficulty": "standard",
+  "prompt": "I will eat",
+  "gold": [
+   "ƒø",
+   "ƒəʜʡ",
+   "ʌɽ"
+  ],
+  "gold_joined": "ƒø ƒəʜʡʌɽ",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- The query “I will eat” uses the pronoun “I” (ƒø) and the verb “eat” (root ƒəʜʡ). From the evidence, the future tense suffix is ʌɽ (as in “I will learn”: ƒø ʂɶɬʜʌɽ).\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- The pronoun appears first, followed by the verb root plus the appropriate tense suffix, with no space between root and suffix.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- Combine ƒø (I) + space + ƒəʜʡ (eat) + ʌɽ (future) → ƒø ƒəʜʡʌɽ.\n</analysis>\n<answers>\nƒø ƒəʜʡʌɽ\n</answers>",
+  "answer_text": "ƒø ƒəʜʡʌɽ",
+  "morphemes": [
+   "ƒø",
+   "ƒəʜʡ",
+   "ʌɽ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 0.696,
+  "morf1": 1.0,
+  "elapsed_s": 16.9,
+  "model": "openai/gpt-oss-120b",
+  "provider": "groq",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "esperanto-tense",
+  "query": 3,
+  "difficulty": "standard",
+  "prompt": "they eat",
+  "gold": [
+   "øʂø",
+   "ƒəʜʡ",
+   "əɽ"
+  ],
+  "gold_joined": "øʂø ƒəʜʡəɽ",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- Subject pronouns: I = ƒø, you = ɸø, he = ʂø, we = ʜø, they = øʂø.\n- Verb “learn”: root = ʂɶɬʜ; tense suffixes: present = əɽ, past = øɽ, future = ʌɽ.\n- Verb “eat”: root = ƒəʜʡ (from “I eat”: ƒø ƒəʜʡəɽ); present tense suffix = əɽ.\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- Sentence structure: [subject pronoun] [verb root][tense suffix].\n- For “they eat” we need subject “they” (øʂø) + verb root “eat” (ƒəʜʡ) + present suffix (əɽ).\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- Resulting morpheme sequence: øʂø ƒəʜʡəɽ\n</analysis>\n<answers>\nøʂø ƒəʜʡəɽ\n</answers>",
+  "answer_text": "øʂø ƒəʜʡəɽ",
+  "morphemes": [
+   "øʂø",
+   "ƒəʜʡ",
+   "əɽ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 0.699,
+  "morf1": 1.0,
+  "elapsed_s": 2.7,
+  "model": "openai/gpt-oss-120b",
+  "provider": "groq",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "esperanto-tense",
+  "query": 4,
+  "difficulty": "standard",
+  "prompt": "he ate",
+  "gold": [
+   "ʂø",
+   "ƒəʜʡ",
+   "øɽ"
+  ],
+  "gold_joined": "ʂø ƒəʜʡøɽ",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- Subject pronouns: I = ƒø, you = ɸø, he = ʂø, we = ʜø, they = øʂø.\n- Verb roots: learn = ʂɶɬʜ, eat = ƒəʜʡ.\n- Tense/aspect suffixes: present = əɽ, past = øɽ, future = ʌɽ.\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- Sentence order is: subject‑pronoun + verb‑root + tense‑suffix (concatenated as one morpheme).\n- For “he ate” we need the subject pronoun for “he” (ʂø) and the past form of “eat” (verb root ƒəʜʡ + past suffix øɽ).\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- Combine subject and verb+suffix with a space: **ʂø ƒəʜʡøɽ**.\n</analysis>\n<answers>\nʂø ƒəʜʡøɽ\n</answers>",
+  "answer_text": "ʂø ƒəʜʡøɽ",
+  "morphemes": [
+   "ʂø",
+   "ƒəʜʡ",
+   "øɽ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 0.696,
+  "morf1": 1.0,
+  "elapsed_s": 3.4,
+  "model": "openai/gpt-oss-120b",
+  "provider": "groq",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "indonesian-plurals",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "I eat",
+  "gold": [
+   "ʠʊəʊ",
+   "ʂʊɮʊɺ"
+  ],
+  "gold_joined": "ʠʊəʊ ʂʊɮʊɺ",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- The phrase “I eat” appears in the evidence as **ʠʊəʊ ʂʊɮʊɺ**.\n- From the evidence, **ʠʊəʊ** corresponds to “I” and **ʂʊɮʊɺ** corresponds to “eat”.\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- The verb “eat” does not change with person; the same form **ʂʊɮʊɺ** is used for “I eat”, “they eat”, and “we eat”.\n- No additional affixes or particles are required for the first‑person singular subject.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- Combine the two morphemes in the same order as in the evidence: **ʠʊəʊ ʂʊɮʊɺ**.\n</analysis>\n<answers>\nʠʊəʊ ʂʊɮʊɺ\n</answers>",
+  "answer_text": "ʠʊəʊ ʂʊɮʊɺ",
+  "morphemes": [
+   "ʠʊəʊ",
+   "ʂʊɮʊɺ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 0.699,
+  "morf1": 1.0,
+  "elapsed_s": 17.1,
+  "model": "openai/gpt-oss-120b",
+  "provider": "groq",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "indonesian-plurals",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "children",
+  "gold": [
+   "ʊɺʊɮ-ʊɺʊɮ"
+  ],
+  "gold_joined": "ʊɺʊɮ-ʊɺʊɮ",
+  "raw": "<analysis>\nStep 1: Identify the source word for the query “children”. The evidence list includes the exact form “ʊɺʊɮ-ʊɺʊɮ → children”, so the source morpheme sequence is ʊɺʊɮ-ʊɺʊɮ.\nStep 2: No additional grammatical affixes are needed; the plural meaning is already encoded in the duplicated morpheme.\nStep 3: Produce the target-language form exactly as given: ʊɺʊɮ-ʊɺʊɮ.\n</analysis>\n<answers>\nʊɺʊɮ-ʊɺʊɮ\n</answers>",
+  "answer_text": "ʊɺʊɮ-ʊɺʊɮ",
+  "morphemes": [
+   "ʊɺʊɮ-ʊɺʊɮ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 76.4,
+  "model": "openai/gpt-oss-120b",
+  "provider": "groq",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "indonesian-plurals",
+  "query": 3,
+  "difficulty": "standard",
+  "prompt": "books",
+  "gold": [
+   "ɽɔɮɔ-ɽɔɮɔ"
+  ],
+  "gold_joined": "ɽɔɮɔ-ɽɔɮɔ",
+  "raw": "<analysis>\nStep 1: Identify the source word for the query “books”. The evidence shows that “book” → ɽɔɮɔ and “books” → ɽɔɮɔ-ɽɔɮɔ. Thus the morpheme sequence for “books” is ɽɔɮɔ-ɽɔɮɔ.\n\nStep 2: No additional grammar (case, tense, agreement) is required beyond the plural formation already encoded in the duplicated morpheme pattern.\n\nStep 3: The exact target-language form is the tile‑bank entry ɽɔɮɔ-ɽɔɮɔ.\n</analysis>\n<answers>\nɽɔɮɔ-ɽɔɮɔ\n</answers>",
+  "answer_text": "ɽɔɮɔ-ɽɔɮɔ",
+  "morphemes": [
+   "ɽɔɮɔ-ɽɔɮɔ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 76.8,
+  "model": "openai/gpt-oss-120b",
+  "provider": "groq",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "indonesian-plurals",
+  "query": 4,
+  "difficulty": "standard",
+  "prompt": "we eat",
+  "gold": [
+   "ɮʊʂɨ",
+   "ʂʊɮʊɺ"
+  ],
+  "gold_joined": "ɮʊʂɨ ʂʊɮʊɺ",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- The query is “we eat”. In the evidence list, the pair “ɮʊʂɨ ʂʊɮʊɺ → we eat” directly shows the morpheme sequence for this meaning.\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- No additional affixes appear to be required; the subject pronoun “we” and the verb “eat” are already encoded by the two morphemes shown.\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- The exact form is the two morphemes separated by a space: ɮʊʂɨ ʂʊɮʊɺ\n</analysis>\n<answers>\nɮʊʂɨ ʂʊɮʊɺ\n</answers>",
+  "answer_text": "ɮʊʂɨ ʂʊɮʊɺ",
+  "morphemes": [
+   "ɮʊʂɨ",
+   "ʂʊɮʊɺ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 0.699,
+  "morf1": 1.0,
+  "elapsed_s": 5347.0,
+  "model": "openai/gpt-oss-120b",
+  "provider": "groq",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "finnish-harmony",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "houses",
+  "gold": [
+   "ʄʉɺɪ",
+   "ʄ"
+  ],
+  "gold_joined": "ʄʉɺɪʄ",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- The word “houses” corresponds to the plural form of “house”. In the evidence, “house” is ʄʉɺɪ and its plural “houses” is ʄʉɺɪʄ.\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- Plural is formed by appending the morpheme ʄ to the singular noun stem.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- Combine the singular stem ʄʉɺɪ with the plural suffix ʄ to obtain ʄʉɺɪʄ.\n</analysis>\n<answers>\nʄʉɺɪʄ\n</answers>",
+  "answer_text": "ʄʉɺɪʄ",
+  "morphemes": [
+   "ʄʉɺɪ",
+   "ʄ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.3,
+  "model": "openai/gpt-oss-120b",
+  "provider": "groq",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "finnish-harmony",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "in the house",
+  "gold": [
+   "ʄʉɺɪ",
+   "ɧɧʉ"
+  ],
+  "gold_joined": "ʄʉɺɪɧɧʉ",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- The phrase “in the house” corresponds to the pattern noun + ɧɧ + vowel. For “house” (ʄʉɺɪ) the “in the” form is ʄʉɺɪɧɧʉ as shown in the evidence.\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- The “in the” construction is a suffix ɧɧ followed by a vowel that matches the noun’s class (here ʉ). No further changes are needed.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- The exact form for “in the house” is ʄʉɺɪɧɧʉ.\n</analysis>\n<answers>\nʄʉɺɪɧɧʉ\n</answers>",
+  "answer_text": "ʄʉɺɪɧɧʉ",
+  "morphemes": [
+   "ʄʉɺɪ",
+   "ɧɧʉ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.1,
+  "model": "openai/gpt-oss-120b",
+  "provider": "groq",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "finnish-harmony",
+  "query": 2,
+  "difficulty": "standard",
+  "prompt": "villages",
+  "gold": [
+   "ʁɘɺæ",
+   "ʄ"
+  ],
+  "gold_joined": "ʁɘɺæʄ",
+  "raw": "<analysis>\nStep 1: Identify the source word for “villages”. The base noun “village” corresponds to the morpheme ʁɘɺæ. The plural form in the evidence is created by adding the morpheme ʄ to the singular noun (e.g., ʁɘɺæ → ʁɘɺæʄ, ʄʉɺɪ → ʄʉɺɪʄ). Therefore, “villages” = ʁɘɺæ + ʄ.\nStep 2: No additional grammatical affixes (case, tense, etc.) are required for the plain plural noun.\nStep 3: Concatenate the morphemes in the order they appear: ʁɘɺæʄ.\n</analysis>\n<answers>\nʁɘɺæʄ\n</answers>",
+  "answer_text": "ʁɘɺæʄ",
+  "morphemes": [
+   "ʁɘɺæ",
+   "ʄ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 1.4,
+  "model": "openai/gpt-oss-120b",
+  "provider": "groq",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "finnish-harmony",
+  "query": 3,
+  "difficulty": "curveball",
+  "prompt": "in the village",
+  "gold": [
+   "ʁɘɺæ",
+   "ɧɧæ"
+  ],
+  "gold_joined": "ʁɘɺæɧɧæ",
+  "raw": "<analysis>\nStep 1: Identify the source word for the query “in the village”. The evidence shows that the phrase “in the village” is represented by the morpheme sequence ʁɘɺæɧɧæ.\nStep 2: No additional grammatical modifications are needed; the prepositional phrase is formed by attaching the locative morpheme ɧɧæ to the noun “village” (ʁɘɺæ).\nStep 3: Produce the exact target-language form preserving the morphemes as given.\n</analysis>\n<answers>\nʁɘɺæɧɧæ\n</answers>",
+  "answer_text": "ʁɘɺæɧɧæ",
+  "morphemes": [
+   "ʁɘɺæ",
+   "ɧɧæ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 0.8,
+  "model": "openai/gpt-oss-120b",
+  "provider": "groq",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "finnish-harmony",
+  "query": 4,
+  "difficulty": "standard",
+  "prompt": "in the school",
+  "gold": [
+   "ʁɪʌɺʌ",
+   "ɧɧʉ"
+  ],
+  "gold_joined": "ʁɪʌɺʌɧɧʉ",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- The query is “in the school”. From the evidence, the form for “in the school” is already given as ʁɪʌɺʌɧɧʉ.\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- The locative construction adds the suffix ɧɧʉ to the noun root. No additional morphology is needed.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- The correct morpheme sequence is the root ʁɪʌɺʌ (school) followed by the locative suffix ɧɧʉ.\n</analysis>\n<answers>\nʁɪʌɺʌɧɧʉ\n</answers>",
+  "answer_text": "ʁɪʌɺʌɧɧʉ",
+  "morphemes": [
+   "ʁɪʌɺʌ",
+   "ɧɧʉ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 1.2,
+  "model": "openai/gpt-oss-120b",
+  "provider": "groq",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "maori-pronouns",
+  "query": 0,
+  "difficulty": "tutorial",
+  "prompt": "we two, not you",
+  "gold": [
+   "ɹɤ",
+   "ʉɘ"
+  ],
+  "gold_joined": "ɹɤʉɘ",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- The query “we two, not you” corresponds to the example form ɹɤʉɘ, which is explicitly given in the evidence list.\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- The form is a simple pronoun phrase; no additional grammatical markers are needed beyond the morphemes already present.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- The required morpheme sequence is exactly ɹɤʉɘ.\n</analysis>\n<answers>\nɹɤʉɘ\n</answers>",
+  "answer_text": "ɹɤʉɘ",
+  "morphemes": [
+   "ɹɤ",
+   "ʉɘ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 1.5,
+  "model": "openai/gpt-oss-120b",
+  "provider": "groq",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "maori-pronouns",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "all of us, incl. you",
+  "gold": [
+   "ʒɤ",
+   "ʒɨʉ"
+  ],
+  "gold_joined": "ʒɤʒɨʉ",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- The evidence list directly maps morpheme strings to English meanings.\n- The meaning “all of us, incl. you” appears in evidence #7 as the morpheme sequence **ʒɤʒɨʉ**.\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- The target meaning already matches the grammatical category (first‑person plural inclusive) of the given morpheme string; no additional affixes are required.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- The required form is exactly the morpheme sequence from the evidence: **ʒɤʒɨʉ**.\n</analysis>\n<answers>\nʒɤʒɨʉ\n</answers>",
+  "answer_text": "ʒɤʒɨʉ",
+  "morphemes": [
+   "ʒɤ",
+   "ʒɨʉ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 1.6,
+  "model": "openai/gpt-oss-120b",
+  "provider": "groq",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "maori-pronouns",
+  "query": 3,
+  "difficulty": "standard",
+  "prompt": "they all",
+  "gold": [
+   "ɽɤ",
+   "ʒɨʉ"
+  ],
+  "gold_joined": "ɽɤʒɨʉ",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- The query “they all” matches the evidence entry “ɽɤʒɨʉ → they all”.\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- The morpheme sequence already encodes the correct plural and inclusive/exclusive meaning; no additional affixes are required.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- The exact form is the morpheme string from the evidence: ɽɤʒɨʉ.\n</analysis>\n<answers>\nɽɤʒɨʉ\n</answers>",
+  "answer_text": "ɽɤʒɨʉ",
+  "morphemes": [
+   "ɽɤ",
+   "ʒɨʉ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 1.2,
+  "model": "openai/gpt-oss-120b",
+  "provider": "groq",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "maori-pronouns",
+  "query": 4,
+  "difficulty": "standard",
+  "prompt": "we, not you",
+  "gold": [
+   "ɹɤ",
+   "ʒɨʉ"
+  ],
+  "gold_joined": "ɹɤʒɨʉ",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- The query “we, not you” corresponds to the example mapping ɹɤʒɨʉ → we, not you.\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- The form is a combination of the base pronoun ɹɤ (“we” exclusive) and the plural exclusive suffix ʒɨʉ.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- Concatenate the morphemes: ɹɤ + ʒɨʉ → ɹɤʒɨʉ.\n</analysis>\n<answers>\nɹɤʒɨʉ\n</answers>",
+  "answer_text": "ɹɤʒɨʉ",
+  "morphemes": [
+   "ɹɤ",
+   "ʒɨʉ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 3.2,
+  "model": "openai/gpt-oss-120b",
+  "provider": "groq",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "zulu-noun-class",
+  "query": 1,
+  "difficulty": "standard",
+  "prompt": "children",
+  "gold": [
+   "æƃæ",
+   "ɽʄƀæɽæ"
+  ],
+  "gold_joined": "æƃæɽʄƀæɽæ",
+  "raw": "<analysis>\nStep 1: Identify the source word for “children”. The evidence list shows the alien form æƃæɽʄƀæɽæ corresponds to “children”.\nStep 2: From the tile bank, the word can be segmented into the morphemes æƃæ and ɽʄƀæɽæ, both of which are provided.\nStep 3: The required morpheme sequence is therefore the concatenation of these two tiles, preserving their order.\n</analysis>\n<answers>\næƃæ ɽʄƀæɽæ\n</answers>",
+  "answer_text": "æƃæ ɽʄƀæɽæ",
+  "morphemes": [
+   "æƃæ",
+   "ɽʄƀæɽæ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 1.7,
+  "model": "openai/gpt-oss-120b",
+  "provider": "groq",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "zulu-noun-class",
+  "query": 2,
+  "difficulty": "standard",
+  "prompt": "school",
+  "gold": [
+   "ʉʜʉ",
+   "ʛʚɴʚ"
+  ],
+  "gold_joined": "ʉʜʉʛʚɴʚ",
+  "raw": "<analysis>\nStep 1: Identify the source word for the query “school”. The singular form “school” appears in the evidence as ʉʜʉʛʚɴʚ.\nStep 2: Note the grammar: nouns are built from a number‑prefix morpheme (singular vs. plural) followed by a noun‑root morpheme. For “school” the singular prefix is ʉʜʉ and the root is ʛʚɴʚ.\nStep 3: Compose the exact target‑language form by concatenating the singular prefix with the root: ʉʜʉʛʚɴʚ.\n</analysis>\n<answers>\nʉʜʉʛʚɴʚ\n</answers>",
+  "answer_text": "ʉʜʉʛʚɴʚ",
+  "morphemes": [
+   "ʉʜʉ",
+   "ʛʚɴʚ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 3.2,
+  "model": "openai/gpt-oss-120b",
+  "provider": "groq",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "zulu-noun-class",
+  "query": 3,
+  "difficulty": "standard",
+  "prompt": "schools",
+  "gold": [
+   "ʉʈʉ",
+   "ʛʚɴʚ"
+  ],
+  "gold_joined": "ʉʈʉʛʚɴʚ",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- The word “schools” appears in the evidence as ʉʈʉʛʚɴʚ, which maps directly to “schools”.\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- No additional grammatical modifications are required; the plural form is already encoded by the prefix ʉʈʉ attached to the root ʛʚɴʚ.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- The exact morpheme sequence is ʉʈʉʛʚɴʚ.\n</analysis>\n<answers>\nʉʈʉʛʚɴʚ\n</answers>",
+  "answer_text": "ʉʈʉʛʚɴʚ",
+  "morphemes": [
+   "ʉʈʉ",
+   "ʛʚɴʚ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.6,
+  "model": "openai/gpt-oss-120b",
+  "provider": "groq",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ },
+ {
+  "puzzle": "zulu-noun-class",
+  "query": 4,
+  "difficulty": "curveball",
+  "prompt": "students",
+  "gold": [
+   "æƃæ",
+   "ɱɵɽɫʉ"
+  ],
+  "gold_joined": "æƃæɱɵɽɫʉ",
+  "raw": "<analysis>\nStep 1: Identify the source word for each numbered item and look up its meaning from the examples.\n- The query is “students”. In the evidence list, the form for “students” is given as æƃæɱɵɽɫʉ.\n\nStep 2: Note any grammar (case, tense, agreement) that must be applied.\n- The language uses a plural prefix æƃæ combined with the noun root ɱɵɽɫʉ (“student”). No additional grammatical affixes appear in the examples.\n\nStep 3: Compose the EXACT target-language form, preserving notation like You_{sg}, You_{pl}.\n- Concatenate the plural prefix æƃæ with the root ɱɵɽɫʉ to obtain the correct morpheme sequence: æƃæɱɵɽɫʉ.\n</analysis>\n<answers>\næƃæɱɵɽɫʉ\n</answers>",
+  "answer_text": "æƃæɱɵɽɫʉ",
+  "morphemes": [
+   "æƃæ",
+   "ɱɵɽɫʉ"
+  ],
+  "em_decomp": true,
+  "em_surface": true,
+  "chrf": 1.0,
+  "morf1": 1.0,
+  "elapsed_s": 2.9,
+  "model": "openai/gpt-oss-120b",
+  "provider": "groq",
+  "prompt_variant": "no_hint",
+  "trial": 1,
+  "puzzles_file": "eval-hackathon/data/puzzles_obf_1.json",
+  "shuffle_seed": 0
+ }
+]
