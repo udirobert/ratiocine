@@ -120,7 +120,17 @@ def main() -> None:
             grouped[(model, cond)][t] = recs
 
     models = sorted({m for m, _ in grouped})
-    conds = ["canonical", "obf1", "min1", "gen1", "gen2", "gen3", "seg", "shuf1"]
+    conds = [
+        "canonical",
+        "obf1",
+        "min1",
+        "gen1",
+        "gen2",
+        "gen3",
+        "gen4",
+        "seg",
+        "shuf1",
+    ]
 
     if args.markdown:
         print(

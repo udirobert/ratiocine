@@ -101,6 +101,26 @@ fixed in gen3, so scores are conservative lower bounds):**
 | gen1 (18 puzzles) | 0.683 | 0.729 | 0.767 |
 | gen2 (30 puzzles) | 0.662 | 0.787 | 0.805 |
 
+**`puzzles_gen4.json` (seed 31, "hard" profile: 24 puzzles / ~184
+queries)** — identical to gen3 except the harmony family is replaced by
+`vharmx`: the harmony class is an *arbitrary subset of initial
+consonants*, not vowel quality, removing the phonetic front/back
+shortcut. EM-decomp, 2 trials:
+
+| Model | Overall | consonant-harmony | noun-class | suppletion |
+|---|---|---|---|---|
+| claude-opus-4-8 | 0.778 | **0.698** | 0.848 | 0.777 |
+| gpt-5-6-sol | 0.890 | 0.823 | 0.991 | 0.847 |
+| gemini-3-1-pro | 0.963 | 0.896 | 1.000 | 0.982 |
+
+Read: `vharmx` is mildly but consistently harder than `vharm` —
+claude drops 0.760→0.698 and gemini 0.958→0.896 on the harmony family
+specifically, while noun-class and suppletion move within seed noise.
+Overall gen4 ≈ gen3 difficulty: arbitrary consonant-class conditioning
+costs frontier models a few points, not a cliff. Gemini remains near
+saturation (0.963), confirming the family set sits at a stable
+difficulty band for the strongest models.
+
 Failure taxonomy on gen3 (`analyze_failures.py`): claude's errors are
 36% wrong suppletive stem (suppletion), 20% harmony allomorph
 (vowel-harmony), 13%+4% agreement prefix/suffix (noun-class) — models
