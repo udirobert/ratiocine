@@ -50,7 +50,9 @@ split (160 problems, 5 task types) via `run_linguni_eval.py`.
 `data/puzzles_gen3.json` — 24 puzzles / 184 queries produced by
 `scripts/gen_puzzles.py`, a procedural generator for languages that do
 not exist (random morphemes, random phoneme inventories, seedable).
-Three grammar families isolate distinct induction skills:
+`puzzles_gen4.json`/`puzzles_gen5.json` are harder profiles adding
+consonant-class harmony and polypersonal agreement.
+Four grammar families isolate distinct induction skills:
 
 - `vharm` — vowel harmony incl. long-distance harmony (question enclitic
   harmonizes with the tense suffix's vowel)

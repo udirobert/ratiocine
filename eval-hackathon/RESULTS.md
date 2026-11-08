@@ -121,6 +121,28 @@ costs frontier models a few points, not a cliff. Gemini remains near
 saturation (0.963), confirming the family set sits at a stable
 difficulty band for the strongest models.
 
+**`puzzles_gen5.json` (seed 43, hardest profile: 24 puzzles / 186
+queries)** — adds a fourth family, `syn` (polypersonal agreement): the
+verb prefix is keyed by (subject-noun class × tense) where class reads
+the noun's FINAL sound, and the suffix by (object-noun class × tense)
+where class reads the noun's INITIAL sound — asymmetric conditioning on
+two nouns at once, with tense fused inside both affixes and no dedicated
+tense morpheme. EM-decomp, 2 trials:
+
+| Model | Overall | vharmx | noun-class | suppletion | **polypersonal** |
+|---|---|---|---|---|---|
+| claude-opus-4-8 | 0.818 | 0.778 | 0.893 | 0.869 | **0.726** |
+| gpt-5-6-sol | 0.914 | 0.931 | 0.952 | 0.948 | **0.818** |
+| gemini-3-1-pro | 0.963 | 0.931 | 1.000 | 1.000 | **0.917** |
+
+`syn` is the hardest family for **every** frontier model — including
+Gemini, which drops to 0.917 (its lowest family score across all gen
+sets; curveball items 0.875). This is the first generated family to push
+the strongest model meaningfully below saturation: conjunctive
+two-slot conditioning with fused tense is where even Gemini's induction
+breaks. Claude's syn curveball score (0.667) is the single weakest
+family×difficulty cell in the generated suite.
+
 Failure taxonomy on gen3 (`analyze_failures.py`): claude's errors are
 36% wrong suppletive stem (suppletion), 20% harmony allomorph
 (vowel-harmony), 13%+4% agreement prefix/suffix (noun-class) — models

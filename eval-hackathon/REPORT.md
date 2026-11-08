@@ -77,7 +77,10 @@ conditioning depth).
 Gold is deterministic; every query's required morphemes are verified
 attested in evidence (`puzzles_gen3.json`, seed 23: 24 puzzles / 184
 queries; `gen1`/`gen2` are earlier seeds — ~7% underdetermined items
-were found and fixed in gen3).
+were found and fixed in gen3). `puzzles_gen5.json` (seed 43) adds a
+fourth family — polypersonal agreement with conjunctive conditioning —
+under the hard profile; it is the hardest family for every frontier
+model tested, including Gemini (0.917).
 
 **Results (EM-decomp, 2 trials, `no_hint` prompt):**
 

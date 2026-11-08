@@ -128,6 +128,7 @@ def main() -> None:
         "gen2",
         "gen3",
         "gen4",
+        "gen5",
         "seg",
         "shuf1",
     ]
