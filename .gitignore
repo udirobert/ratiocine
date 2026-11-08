@@ -103,3 +103,4 @@ nox/
 
 # --- Local Neutron monorepo clone (app source of truth lives in ration-app/) ---
 /neutron/
+swarm_eval/results/

@@ -280,7 +280,10 @@ def run_episode(
     board = []
     transcript = []
     t0 = time.time()
-    for r in range(rounds):
+    # soloshard: no board rounds — each agent answers from its shard
+    # alone. The ablation that isolates the value of communication.
+    effective_rounds = 0 if condition == "soloshard" else rounds
+    for r in range(effective_rounds):
         for a in range(n):
             msgs = agent_messages(
                 puzzle, a, n, shards[a], board, a == n - 1 and is_monitor
@@ -352,7 +355,7 @@ def run_episode(
         "model": model,
         "provider": provider or "failover",
         "n_agents": n,
-        "rounds": rounds,
+        "rounds": effective_rounds,
         "corrupted_rows": corrupted,
         "elapsed_s": round(time.time() - t0, 1),
         "board": [{"agent": a, "msg": m} for a, m in board],

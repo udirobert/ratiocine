@@ -145,7 +145,38 @@ Each episode runs one puzzle under one condition and seed:
 
 ## 6. Limitations and Dual-Use / Ethical Considerations
 
-{LIMITATIONS}
+**Limitations.**
+
+- *Topology and scale.* One board, fixed posting order, 4–5 agents,
+  one task domain. Results may not transfer to hierarchical,
+  negotiated, or larger swarms — though the HF incident itself was a
+  flat shared-directory topology, which is what we model.
+- *Information vs. coordination.* With 3–4 pairs per agent the task
+  may be information-limited rather than coordination-limited. We
+  report agent-EM and oracle-EM alongside swarm-EM to separate "the
+  swarm failed to coordinate" from "no agent had enough evidence" —
+  but a shard-only single-agent baseline (no board) would sharpen
+  this further and is future work.
+- *Attack surface.* Poison is data-level corruption only: no
+  instruction-level injection, no adversarial objectives, no
+  collusion-for-gain. It measures whether bad *data* propagates, not
+  whether agents with goals would *choose* to deceive.
+- *Oversight realism.* The monitor is a peer with a role prompt and
+  its own shard — cheap oversight, not a privileged audit channel.
+  Real deployments need stronger guarantees.
+- *Statistical power.* 9 puzzles × 2 seeds per model-condition cell;
+  episode-level variance is substantial, so condition differences
+  below ~0.15 EM should be read as directional.
+
+**Dual-use.** This is a defensive evaluation: it measures how
+corrupted evidence and weak oversight degrade swarm performance on a
+task with public ground truth. The same harness could in principle be
+repurposed to probe evasion (e.g., poisoned agents that hide their
+claims), which is precisely why we release transcripts — defenders
+need to see what propagation looks like. We release no attack
+capability beyond what the conditions already describe, and all model
+calls use standard chat APIs with no agent scaffolding beyond the
+prompts in the repository.
 
 ## References
 
