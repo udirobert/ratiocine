@@ -217,6 +217,16 @@ To create more training data:
 
 10. **PyPI is reachable**: The sandbox has no internet for HF Hub, but `pip install` still works. Useful for installing bitsandbytes for 4-bit inference if needed.
 
+## Hackathon eval projects
+
+Two deterministic-grading eval codebases live alongside the main pipeline; both reuse `scripts/gen_puzzles.py`, `scripts/llm_providers.py` (provider registry: arkor → openrouter → groq → google), and the Linguini-derived puzzle datasets.
+
+- **`eval-hackathon/`** — micro1 Eval Hackathon submission: single-agent morpheme-induction eval with scaffold ablations, per-model leaderboards, failure taxonomy (`REPORT.md`, `RESULTS.md`, `regrade.py` for offline re-grading). Has its own `video/` pipeline (Playwright scene recording + ElevenLabs narration).
+- **`swarm_eval/`** — Apart Research Swarm Alignment Hackathon (submitted Nov 2026): multi-agent testbed where 4 agents get disjoint evidence shards, discuss over a shared board, and majority-vote answers. Conditions: `clean` / `poison` (one shard's glosses silently swapped) / `monitor` (5th verifier agent) / `soloshard` (no-board ablation). Headline results: board communication ~2–4× EM over shard-only; poison propagates (−.12 to −.18 EM on 2/3 frontier models, corrupted glosses quoted by other agents ~40% of episodes); monitor helps one model, hurts two. See `swarm_eval/README.md` for usage and `swarm_eval/REPORT.md` (+ `report.pdf`) for the submission report.
+  - `swarm_eval/video/` — the submission video pipeline: HTML scenes (`scenes/`, brand system in `scenes/brand.css` pulled from `showcase/app/globals.css` tokens) recorded via Playwright+Chrome (`record.mjs`, `record_fix.mjs`, `rec_dash.mjs`), ElevenLabs narration (`audio/`), word-timed captions (`make_captions.py` → burned ASS + SRT), FLUX 3 Max backdrop plates (`footage/gen/`, prompts in `FLUX_PROMPTS.md`), final assembly `assemble_final.sh` (needs the `~/.local/bin/ffmpeg` build for libass). Final cut: `output/swarm-alignment.mp4` (~3:46).
+  - Provider gotcha already fixed: claude via Neon rejects `temperature` — `llm_providers.py` zeroes it for that provider.
+  - Neon credits ran out mid-sweep: gemini truncated at 37/54 episodes, gpt-5 missing 2 monitor cells, claude seed-1 only — all disclosed in the report. `run_swarm.py --append` fills missing cells if credits return.
+
 ## The daily game (showcase/app/play)
 
 The showcase is a daily linguistics deduction game: study evidence rows → compose answers from morpheme tiles → compare against the 14B model (same EM grading). Key facts:
@@ -281,6 +291,9 @@ ratiocine/
 │   │       └── answer/     # Voronoi explosion + 3D answer reveal (Text3D)
 │   ├── components/         # SceneNav, GridBackground, Wordmark
 │   └── public/             # mac.glb, inter.json (font for Text3D), grid.svg
+├── eval-hackathon/         # micro1 eval: single-agent induction benchmark
+├── swarm_eval/             # Apart swarm-alignment eval + submission video
+├── neutron/                # gitignored local clone of github.com/infu/neutron (Ration track)
 ├── notebooks/              # Exploration
 ├── .env.example            # Tracked template for env vars
 ├── .gitignore
