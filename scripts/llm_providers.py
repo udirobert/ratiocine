@@ -128,7 +128,8 @@ def build_payload(
         return payload
     if max_tokens is not None:
         payload["max_tokens"] = max_tokens
-    if temperature is not None:
+    # Claude via the Neon gateway rejects the temperature parameter.
+    if temperature is not None and "claude" not in model:
         payload["temperature"] = temperature
     return payload
 
