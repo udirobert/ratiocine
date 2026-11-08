@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1920px;height:1080px;background:#0a0c12;color:#e8eaf2;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;overflow:hidden}
+.grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:64px 64px}
+.wrap{position:relative;z-index:2;height:100%;padding:80px 110px;display:flex;flex-direction:column}
+h2{font-family:ui-sans-serif,system-ui,sans-serif;font-size:52px;font-weight:800;letter-spacing:-.02em;margin-bottom:40px;opacity:0;animation:fadein .8s .2s forwards}
+h2 em{font-style:normal;color:#a78bfa}
+.conds{display:grid;grid-template-columns:1fr 1fr;gap:26px;flex:1}
+.card{border:1px solid #333a55;border-radius:16px;padding:30px 34px;background:rgba(255,255,255,.02);opacity:0;animation:rise .9s forwards;position:relative;overflow:hidden}
+.card .tag{font-size:15px;letter-spacing:.3em;text-transform:uppercase;margin-bottom:12px}
+.card h3{font-family:ui-sans-serif,system-ui,sans-serif;font-size:34px;font-weight:800;margin-bottom:12px}
+.card p{font-size:21px;color:#9aa3c0;line-height:1.45}
+.card code{color:#e8eaf2;background:rgba(255,255,255,.06);padding:2px 8px;border-radius:6px;font-size:19px}
+.c1 .tag{color:#4c78a8}.c1 h3{color:#4c78a8}
+.c2 .tag,.c2 h3{color:#f58518}
+.c3 .tag,.c3 h3{color:#54a24b}
+.c4 .tag,.c4 h3{color:#e45756}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+@keyframes rise{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+</style></head><body>
+<div class="grid"></div>
+<div class="wrap">
+  <h2>Four conditions, <em>one variable each</em></h2>
+  <div class="conds">
+    <div class="card c1" style="animation-delay:.4s"><div class="tag">baseline</div><h3>clean</h3><p>All shards correct. The swarm's best case — pure coordination on good evidence.</p></div>
+    <div class="card c2" style="animation-delay:.9s"><div class="tag">adversarial data</div><h3>poison</h3><p>One agent's shard has <code>2 glosses silently swapped</code> for plausible wrong English. No announcement. Does bad data propagate?</p></div>
+    <div class="card c3" style="animation-delay:1.4s"><div class="tag">oversight</div><h3>monitor</h3><p>A 5th agent with a verifier role prompt joins the board — flags claims its own shard contradicts.</p></div>
+    <div class="card c4" style="animation-delay:1.9s"><div class="tag">ablation</div><h3>soloshard</h3><p>No board rounds. Agents answer from their shard alone — the no-communication floor.</p></div>
+  </div>
+</div></body></html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1920px;height:1080px;background:#0a0c12;color:#e8eaf2;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;overflow:hidden}
+.grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:64px 64px}
+.wrap{position:relative;z-index:2;height:100%;padding:80px 110px;display:flex;flex-direction:column}
+h2{font-family:ui-sans-serif,system-ui,sans-serif;font-size:52px;font-weight:800;letter-spacing:-.02em;margin-bottom:14px;opacity:0;animation:fadein .8s .2s forwards}
+h2 em{font-style:normal;color:#a78bfa}
+.lede{font-size:26px;color:#9aa3c0;margin-bottom:40px;opacity:0;animation:fadein .8s .8s forwards}
+.flow{display:flex;align-items:stretch;gap:0;margin-top:10px}
+.node{flex:1;border:1px solid #333a55;border-radius:14px;padding:26px 20px;text-align:center;background:rgba(255,255,255,.02);opacity:0;animation:rise .9s forwards}
+.node .big{font-family:ui-sans-serif,system-ui,sans-serif;font-size:52px;font-weight:800;color:#a78bfa}
+.node .lbl{font-size:19px;color:#c6cbdd;margin-top:8px;line-height:1.35}
+.node .sub2{font-size:15px;color:#7b84a3;margin-top:6px}
+.arrow{display:flex;align-items:center;padding:0 14px;color:#5b6280;font-size:34px;opacity:0;animation:fadein .6s forwards}
+.board{border:2px solid #54a24b!important;background:rgba(84,162,75,.06)!important}
+.board .big{color:#54a24b!important}
+.vote{margin-top:34px;text-align:center;font-size:24px;color:#9aa3c0;opacity:0;animation:fadein .8s 3.4s forwards}
+.vote b{color:#e8eaf2}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+@keyframes rise{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+</style></head><body>
+<div class="grid"></div>
+<div class="wrap">
+  <h2>The testbed: <em>forced information pooling</em></h2>
+  <div class="lede">Languages that don't exist — procedurally generated, seeded, contamination-proof.</div>
+  <div class="flow">
+    <div class="node" style="animation-delay:.4s"><div class="big">4</div><div class="lbl">agents</div><div class="sub2">disjoint evidence shards</div></div>
+    <div class="arrow" style="animation-delay:1s">→</div>
+    <div class="node" style="animation-delay:1.3s"><div class="big">3–4</div><div class="lbl">pairs each</div><div class="sub2">no agent can solve alone</div></div>
+    <div class="arrow" style="animation-delay:1.9s">→</div>
+    <div class="node board" style="animation-delay:2.2s"><div class="big">4 rounds</div><div class="lbl">shared board</div><div class="sub2">post hypotheses, agree, correct</div></div>
+    <div class="arrow" style="animation-delay:2.8s">→</div>
+    <div class="node" style="animation-delay:3.1s"><div class="big">majority</div><div class="lbl">vote per query</div><div class="sub2">exact morpheme-match grading</div></div>
+  </div>
+  <div class="vote">Every board message, per-agent answer, vote and grade is logged — <b>fully re-gradeable, zero API cost</b>.</div>
+</div></body></html>

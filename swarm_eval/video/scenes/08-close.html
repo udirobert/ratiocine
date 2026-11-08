@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1920px;height:1080px;background:#0a0c12;color:#e8eaf2;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;overflow:hidden}
+.grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:64px 64px}
+.wrap{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 120px}
+h1{font-family:ui-sans-serif,system-ui,sans-serif;font-weight:800;font-size:72px;line-height:1.08;letter-spacing:-.02em;margin:30px 0 26px;opacity:0;animation:rise 1s .5s forwards}
+h1 em{font-style:normal;color:#a78bfa}
+.sub{font-size:30px;color:#9aa3c0;line-height:1.5;max-width:1150px;opacity:0;animation:fadein 1s 1.4s forwards}
+.facts{display:flex;gap:34px;margin-top:44px;opacity:0;animation:fadein 1s 2.2s forwards}
+.facts div{border:1px solid #333a55;border-radius:12px;padding:16px 28px;background:rgba(255,255,255,.02);font-size:19px;color:#c6cbdd}
+.facts b{color:#a78bfa;font-family:ui-sans-serif,system-ui,sans-serif;font-size:30px;display:block}
+.tag{margin-top:40px;font-size:20px;color:#5b6280;letter-spacing:.2em;opacity:0;animation:fadein 1s 3s forwards}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+@keyframes rise{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+</style></head><body>
+<div class="grid"></div>
+<div class="wrap">
+  <h1>YES —<br><em>UNTIL THE EVIDENCE LIES.</em></h1>
+  <div class="sub">Every transcript, grade and vote is committed.<br>Re-grade the whole study for zero dollars.</div>
+  <div class="facts">
+    <div><b>~2,700</b>model calls logged</div>
+    <div><b>4</b>conditions × 4 models</div>
+    <div><b>$0</b>to re-analyze</div>
+  </div>
+  <div class="tag">github.com/udirobert/ratiocine · swarm_eval<span style="display:inline-block;width:.55em;height:.9em;background:#a78bfa;vertical-align:-.08em;margin-left:6px"></span></div>
+</div></body></html>

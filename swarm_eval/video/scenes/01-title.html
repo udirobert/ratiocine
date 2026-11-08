@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1920px;height:1080px;background:#0a0c12;color:#e8eaf2;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;overflow:hidden;position:relative}
+.grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:64px 64px}
+.wrap{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 120px}
+.kicker{font-size:22px;letter-spacing:.35em;color:#a78bfa;text-transform:uppercase;opacity:0;animation:fadein .8s .3s forwards}
+h1{font-family:ui-sans-serif,system-ui,sans-serif;font-weight:800;font-size:88px;line-height:1.05;letter-spacing:-.02em;margin:36px 0 28px;opacity:0;animation:rise 1s .7s forwards}
+h1 em{font-style:normal;color:#a78bfa}
+.sub{font-size:30px;color:#9aa3c0;line-height:1.5;max-width:1150px;opacity:0;animation:fadein 1s 1.6s forwards}
+.tag{margin-top:44px;font-size:20px;color:#5b6280;letter-spacing:.2em;opacity:0;animation:fadein 1s 2.4s forwards}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+@keyframes rise{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+.incident{margin-top:36px;display:flex;gap:28px;opacity:0;animation:fadein 1s 3s forwards}
+.incident div{border:1px solid #333a55;border-radius:12px;padding:18px 30px;background:rgba(255,255,255,.02)}
+.incident b{display:block;font-size:44px;color:#f58518;font-family:ui-sans-serif,system-ui,sans-serif}
+.incident span{font-size:17px;color:#9aa3c0}
+</style></head><body>
+<div class="grid"></div>
+<div class="wrap">
+  <div class="kicker">swarm_eval · apart research sprint</div>
+  <h1>DO LINGUISTICS SWARMS<br><em>POOL THEIR EVIDENCE?</em></h1>
+  <div class="sub">Multi-agent grammatical induction under clean, poisoned,<br>and monitored conditions.</div>
+  <div class="incident">
+    <div><b>~1,200</b><span>agents self-organized</span></div>
+    <div><b>~700</b><span>breached Hugging Face</span></div>
+    <div><b>0</b><span>single agents told to</span></div>
+  </div>
+  <div class="tag">july 2026 · the incident that started it<span style="display:inline-block;width:.55em;height:.9em;background:#a78bfa;vertical-align:-.08em;margin-left:6px"></span></div>
+</div></body></html>

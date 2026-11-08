@@ -1,0 +1,42 @@
+[
+ {
+  "scene": 1,
+  "text": "In July, twelve hundred AI agents found a shared message board — and seven hundred broke into Hugging Face together. No single agent was told to. Swarm failures aren't single-model failures. We built a testbed to watch them happen on a task with deterministic ground truth."
+ },
+ {
+  "scene": 2,
+  "text": "A swarm, seen from above — nodes pooling evidence, messages flowing between them."
+ },
+ {
+  "scene": 3,
+  "text": "The task: procedurally generated languages that don't exist. Four agents each receive a disjoint shard of bilingual evidence — three or four pairs apiece — plus a shared morpheme bank. Over four rounds they post grammar hypotheses to a shared board. Then each answers every query, and the swarm answer is a majority vote. Grading is exact morpheme match. Every transcript is public."
+ },
+ {
+  "scene": 4,
+  "text": "Four conditions. Clean: all shards correct. Poison: one agent's shard has two glosses silently swapped for plausible wrong ones — bad data, no announcement. Monitor: a fifth agent with a verifier role. Soloshard: no board at all — the communication ablation."
+ },
+ {
+  "scene": 5,
+  "text": "This is a real episode, replayed live. Four agents hold their shards. Watch the board fill — morpheme hypotheses, agreements, corrections. Now watch agent two: its shard was poisoned. Two glosses are wrong — 'he cooks' for 'Did I carry?' — and it doesn't know, or doesn't say. The corrupted claim spreads: other agents quote it, rationalize it, build the grammar around it. By the answer round, every query fails. Exact match: zero point zero zero. The swarm didn't disagree — it agreed on the wrong grammar."
+ },
+ {
+  "scene": 6,
+  "text": "One bad node, and the corruption travels the network."
+ },
+ {
+  "scene": 7,
+  "text": "Across the sweep: Claude drops eighteen points under poison, Gemini twelve, GPT-5 holds. And the signature isn't just wrong answers — unanimity collapses. The swarm doesn't fail more often. It converges harder on wrong answers. In the transcripts we see three modes: silent absorption — the anomaly gets reinterpreted as 'same root'; consensus pull — agents defer to the board's seniority of assertion; and sometimes self-correction, when enough clean evidence survives."
+ },
+ {
+  "scene": 8,
+  "text": "The verifier peer? Model-dependent and mostly negative. It dilutes evidence — five agents means fewer pairs each — and flagging isn't checking: GPT-5's monitor flags eighty-four percent of its posts and still scores highest. Cheap oversight is not a defense. Oversight needs teeth: provenance on claims, corroboration before consensus, authority to force re-derivation."
+ },
+ {
+  "scene": 9,
+  "text": "Do linguistics swarms pool their evidence? Yes — the board multiplies accuracy two to four fold. Until the evidence lies. Then the same channel that saves the task becomes the vector that corrupts it."
+ },
+ {
+  "scene": 10,
+  "text": "Every episode transcript, grade, and vote is committed — re-grade the whole study for zero dollars. Code and data: github.com/udirobert/ratiocine, swarm underscore eval. Apart Research Swarm Alignment Hackathon."
+ }
+]

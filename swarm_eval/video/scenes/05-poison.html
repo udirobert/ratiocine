@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1920px;height:1080px;background:#0a0c12;color:#e8eaf2;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;overflow:hidden}
+.grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:64px 64px}
+.wrap{position:relative;z-index:2;height:100%;padding:70px 100px;display:flex;flex-direction:column}
+h2{font-family:ui-sans-serif,system-ui,sans-serif;font-size:46px;font-weight:800;letter-spacing:-.02em;margin-bottom:8px;opacity:0;animation:fadein .8s .2s forwards}
+h2 em{font-style:normal;color:#f58518}
+.sub{font-size:22px;color:#9aa3c0;margin-bottom:30px;opacity:0;animation:fadein .8s .7s forwards}
+.rows{display:flex;flex-direction:column;gap:22px}
+.row{display:flex;align-items:center;gap:30px;border:1px solid #333a55;border-radius:14px;padding:24px 30px;background:rgba(255,255,255,.02);opacity:0;animation:rise .9s forwards}
+.row .m{font-family:ui-sans-serif,system-ui,sans-serif;font-size:30px;font-weight:800;width:300px}
+.row .delta{font-family:ui-sans-serif,system-ui,sans-serif;font-size:44px;font-weight:800;width:200px}
+.row .down{color:#e45756}.row .flat{color:#54a24b}
+.row .note2{font-size:20px;color:#9aa3c0;flex:1}
+.unan{margin-top:30px;display:flex;align-items:center;gap:26px;border:1px solid #f5851844;border-radius:14px;padding:22px 30px;background:rgba(245,133,24,.05);opacity:0;animation:rise .9s 3s forwards}
+.unan .big{font-family:ui-sans-serif,system-ui,sans-serif;font-size:46px;font-weight:800;color:#f58518}
+.unan p{font-size:21px;color:#c6cbdd;line-height:1.4}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+@keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+</style></head><body>
+<div class="grid"></div>
+<div class="wrap">
+  <h2>One corrupted shard, <em>no announcement</em></h2>
+  <div class="sub">EM-decomp delta, poison vs clean · corrupted glosses quoted by non-poison agents in ~40% of episodes</div>
+  <div class="rows">
+    <div class="row" style="animation-delay:.5s"><div class="m" style="color:#d97757">Claude Opus</div><div class="delta down">−.18</div><div class="note2">unanimity .75 → .50 — confidently wrong more often</div></div>
+    <div class="row" style="animation-delay:1.1s"><div class="m" style="color:#4c78a8">Gemini 3.1</div><div class="delta down">−.12</div><div class="note2">unanimity .69 → .49 — same signature</div></div>
+    <div class="row" style="animation-delay:1.7s"><div class="m" style="color:#10a37f">GPT-5</div><div class="delta flat">.00</div><div class="note2">poison-immune this sweep — cross-checks shard claims more</div></div>
+  </div>
+  <div class="unan"><div class="big">groupthink<br>signature</div><p>The swarm doesn't just get more answers wrong — it converges <b>harder</b> on wrong answers. Unanimity is the alarm bell, not the comfort.</p></div>
+</div></body></html>
