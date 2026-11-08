@@ -26,9 +26,10 @@ a poisoned shard or a verifier agent change the outcome?
 
 | condition | manipulation |
 |---|---|
-| `clean`   | all shards correct |
-| `poison`  | one agent's shard has ~3 target glosses swapped — plausible but wrong data, no announcement |
-| `monitor` | a 5th verifier agent whose role is to flag claims its shard contradicts |
+| `clean`     | all shards correct |
+| `poison`    | one agent's shard has 2 target glosses swapped — plausible but wrong data, no announcement |
+| `monitor`   | a 5th verifier agent whose role is to flag claims its shard contradicts |
+| `soloshard` | no board rounds — agents answer from their shard alone (communication ablation) |
 
 ## Usage
 
@@ -41,6 +42,14 @@ python3 swarm_eval/run_swarm.py --model <id> --provider <name> \
 Results land in `swarm_eval/results/` as full transcripts (board
 messages, per-agent answers, votes, grades) — every number in the
 report can be re-derived without API calls.
+
+```bash
+python3 swarm_eval/analyze_swarm.py swarm_eval/results/*.json
+```
+
+prints the condition table plus contagion spread and monitor flag
+rates. `run_swarm.py --append` resumes an interrupted sweep, skipping
+completed (puzzle, condition, seed) cells.
 
 ## Preexisting vs sprint work
 

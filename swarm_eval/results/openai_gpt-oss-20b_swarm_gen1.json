@@ -1,0 +1,1943 @@
+[
+ {
+  "puzzle": "gen-000",
+  "language": "Selatu",
+  "family": "Generated/vowel-harmony",
+  "condition": "clean",
+  "seed": 1,
+  "model": "openai/gpt-oss-20b",
+  "provider": "groq",
+  "n_agents": 4,
+  "rounds": 4,
+  "corrupted_rows": [],
+  "elapsed_s": 490.7,
+  "board": [
+   {
+    "agent": 0,
+    "msg": "**Morpheme list (from evidence)**  \n| Morpheme | Meaning |\n|----------|---------|\n| **lamja** | first‑person singular “I” (subject) |\n| **majwi** | second‑person singular “you” |\n| **pujwi** | third‑person plural “they” |\n| **wejwi** | first‑person plural “we” |\n| **jew**   | root verb “carry” |\n| **jwi**   | root verb “call” |\n| **‑eli**  | past‑tense marker (used with “carry”) |\n| **‑uwa**  | present‑tense marker (used with “call”) |\n| **‑alu**  | past‑tense marker (used with “call”) |\n| **‑salu** | interrogative marker (turns a statement into “Do…?”) |\n\n**Patterns observed**  \n1. **Subject‑verb‑tense‑(question)** order.  \n2. **Tense** indicated by a final suffix: *‑eli* (carry‑past), *‑uwa* (call‑present), *‑alu* (call‑past).  \n3. **Question** formed by adding *‑salu* to a present‑tense"
+   },
+   {
+    "agent": 1,
+    "msg": "**Morpheme → meaning (evidence‑based)**  \n| Morpheme | Meaning | Source |\n|----------|---------|--------|\n| **majwi** | you (sg.) | *majjajewe* → “you carried” |\n| **wejwi** | we (sg.) | *wejwumiweli*, *wejwumiwe* |\n| **pujwi** | they (pl.) | *pujwumiseli* |\n| **jew**   | carry (root) | *majjajewe* (carry‑past) |\n| **jwu**   | wait (root) | *wejwumiweli*, *wejwumiwe* |\n| **‑eli**  | past‑tense (carry) | *majjajewe* |\n| **‑mi**   | past‑tense (wait) | *wejwumiwe* |\n| **‑uwa**  | present‑tense (call) | from shared board |\n| **‑alu**  | past‑tense (call) | from shared board |\n| **‑salu** | interrogative marker (Do…?) | *wejwumiweli*, *pujwumiseli* |\n\n**Observed patterns**  \n1. **Order:** subject – verb – tense – (question marker).  \n2. **Tense:** final suffix indicates tense; each verb has it"
+   },
+   {
+    "agent": 2,
+    "msg": "**Agent 2 (140 w)**  \n\n**Morpheme‑meaning list (only from your evidence)**  \n| Morpheme | Meaning | Source |\n|----------|---------|--------|\n| **pujwi** | “they” (3rd‑person plural subject) | *pujwijuwa* |\n| **wejwi** | “we” (1st‑person plural subject) | *wejwijusa* |\n| **majwi** | “you” (2nd‑person singular subject) | *majwijusa* |\n| **jwi**   | “call” (root) | all three pairs |\n| **‑uwa**  | present‑tense marker (attached to *jwi*) | all three pairs |\n\n**Patterns**  \n1. **Order**: *subject‑verb‑tense* (no overt object).  \n2. **Tense**: final suffix on the verb root; here *‑uwa* signals present.  \n3. **Question formation**: none of the provided forms include a question marker (*‑salu* is not seen here).  \n4. **Agreement**: subject morpheme attaches directly before the verb root; no inflec"
+   },
+   {
+    "agent": 3,
+    "msg": "**Morpheme→Meaning (from your 3 pairs)**  \n- **juw** = *he* (3rd‑sg. subject) – implied by “juwrupise” = “he talks”, “juwjajese” = “he carries”  \n- **jwi** = *call* (root verb) – appears in all three forms  \n- **jew** = *carry* (root verb) – “juwjajese” = “he carries”  \n- **‑uwa** = present‑tense – attaches to verb root (seen in all three)  \n- **‑eli** = past‑tense (for *carry*) – “juwjajeseli” = “Does he carry?” (question form, but still past)  \n\n**Patterns**  \n1. **Word order**: *subject + verb root + tense marker + (optional interrogative)*.  \n2. **Tense**: final suffix indicates tense; each verb has its own tense marker (*‑uwa* for *jwi*, *‑eli* for *jew*).  \n3. **Question**: add *‑salu* after the tense marker (e.g., *juwjajeseli‑salu* would mean “Does he carry?”).  \n4. **Agreement**: "
+   },
+   {
+    "agent": 0,
+    "msg": "**Agent 0 (final)**  \n*Evidence‑based morphemes (only from the four pairs)*  \n\n| Morpheme | Meaning | Source |\n|----------|---------|--------|\n| **lamja** | first‑person singular “I” | lamjajeweli |\n| **majwi** | second‑person singular “you” | majwijusalu |\n| **pujwi** | third‑person plural “they” | pujwijuwalu |\n| **wejwi** | first‑person plural “we” | wejwijuwa |\n| **jew** | root verb “carry” | lamjajeweli |\n| **jwi** | root verb “call” | majwijusalu, pujwijuwalu, wejwijuwa |\n| **‑eli** | past‑tense marker (carry) | lamjajeweli |\n| **‑uwa** | present‑tense marker (call) | wejwijuwa, majwijusalu, pujwijuwalu |\n| **‑alu** | past‑tense marker (call) | pujwijuwalu |\n| **‑salu** | interrogative marker (turns a statement into “Do…?”) | majwijusalu, pujwijuwalu |\n\n**Observed patterns**\n\n1. **Wo"
+   },
+   {
+    "agent": 1,
+    "msg": "**Morpheme → meaning (from the four pairs)**  \n| Morpheme | Meaning | Source |\n|----------|---------|--------|\n| **majwi** | 2nd‑sg “you” | *majjajewe* |\n| **wejwi** | 1st‑pl “we” | *wejwumiwe* |\n| **pujwi** | 3rd‑pl “they” | *pujwumiseli* |\n| **jew**   | verb root “carry” | *majjajewe* |\n| **jwu**   | verb root “wait” | *wejwumiwe*, *wejwumiweli* |\n| **‑eli** | past‑tense marker for “carry” | *majjajewe* |\n| **‑mi**  | past‑tense marker for “wait” | *wejwumiwe* |\n| **‑uwa** | present‑tense marker for “call” | (from shared board) |\n| **‑alu** | past‑tense marker for “call” | (from shared board) |\n| **‑salu**| interrogative marker (“Do…?”) | *wejwumiweli*, *pujwumiseli* |\n\n**Patterns (converged)**  \n1. **Order**: *subject–verb‑root–tense‑(question)*.  \n2. **Tense**: final suffix indicates t"
+   },
+   {
+    "agent": 2,
+    "msg": "**Board Post (Agent 2)**  \n\n**Morpheme‑meaning list (from the three pairs only)**  \n\n| Morpheme | Meaning | Source |\n|----------|---------|--------|\n| **pujwi** | “they” (3rd‑pl subject) | *pujwijuwa* |\n| **wejwi** | “we” (1st‑pl subject) | *wejwijusa* |\n| **majwi** | “you” (2nd‑sg subject) | *majwijusa* |\n| **jwi**   | “call” (verb root) | all three pairs |\n| **‑uwa**  | present‑tense marker (attached to *jwi*) | all three pairs |\n\n**Patterns observed**  \n\n1. **Word order**: *subject – verb root – tense marker*.  \n2. **Tense**: the final suffix on the verb root marks tense; here *‑uwa* indicates present.  \n3. **Agreement**: subject morpheme precedes the verb root and does not change form with tense.  \n\n**Convergence notes**  \n\n- Agent 0’s list of subject morphemes matches ours (pujwi, wej"
+   },
+   {
+    "agent": 3,
+    "msg": "**Morpheme–meaning (evidence‑based)**  \n\n| Morpheme | Meaning | Source |\n|----------|---------|--------|\n| **juw** | 3rd‑sg “he” (subject) | juwrupise, juwjajese |\n| **jew** | root “carry” | juwjajese |\n| **jwi** | root “call” | juwrupise |\n| **‑eli** | past‑tense (carry) | juwjajeseli |\n| **‑uwa** | present‑tense (call) | juwrupise |\n| **‑salu** | interrogative marker (Do…?) | implied in *juwjajeseli* (question) |\n\n**Patterns**  \n\n1. **Order** – Subject + Verb‑root + Tense‑marker + (Question).  \n2. **Tense** – Final suffix on the verb root: *‑eli* = carry‑past; *‑uwa* = call‑present.  \n3. **Question** – Add *‑salu* after the tense marker to form “Do he verb?”; *juwjajeseli‑salu* would be “Does he carry?”  \n4. **Agreement** – Subject morpheme (*juw*) is independent of tense and precedes th"
+   },
+   {
+    "agent": 0,
+    "msg": "**Board post – Agent 0**\n\n| Morpheme | Meaning | Evidence |\n|----------|---------|----------|\n| **lamja** | 1SG subject “I” | lamjajeweli |\n| **majwi** | 2SG subject “you” | majwijusalu |\n| **pujwi** | 3PL subject “they” | pujwijuwalu |\n| **wejwi** | 1PL subject “we” | wejwijuwa |\n| **jew**   | root “carry” | lamjajeweli |\n| **jwi**   | root “call” | majwijusalu, pujwijuwalu, wejwijuwa |\n| **‑eli**  | past‑tense (carry) | lamjajeweli |\n| **‑uwa**  | present‑tense (call) | wejwijuwa, majwijusalu, pujwijuwalu |\n| **‑alu**  | past‑tense (call) | pujwijuwalu |\n| **‑salu** | interrogative marker | majwijusalu, pujwijuwalu |\n\n**Patterns (converged)**\n1. **Order:** *subject – verb root – tense marker – (optional –salu)*.  \n2. **Tense:** final suffix marks tense; each verb has its own marker (carr"
+   },
+   {
+    "agent": 1,
+    "msg": "**Morpheme → Meaning (evidence‑only)**  \n- **majwi** – 2SG “you” (majjajewe)  \n- **wejwi** – 1PL “we” (wejwumiwe, wejwumiweli)  \n- **pujwi** – 3PL “they” (pujwumiseli)  \n- **jew** – root “carry” (majjajewe)  \n- **jwu** – root “wait” (wejwumiwe, wejwumiweli)  \n- **‑eli** – past‑tense for “carry” (majjajewe)  \n- **‑mi** – past‑tense for “wait” (wejwumiwe)  \n- **‑salu** – interrogative marker (wejwumiweli, pujwumiseli)  \n\n**Confirmed patterns**  \n1. **Order**: *subject + verb root + tense marker (+ salu)*.  \n2. **Tense**: final suffix indicates tense; each verb has its own marker.  \n3. **Question**: add **‑salu** after the tense marker.  \n\n**Discrepancies**  \n- Agents 0,2,3 list extra morphemes (*‑uwa, ‑alu, ‑ela, lamja, juw*) not supported by the four given pairs; we omit them until further "
+   },
+   {
+    "agent": 2,
+    "msg": "**Evidence‑based morpheme list**  \n| Morpheme | Meaning | Source | Notes |\n|----------|---------|--------|-------|\n| **pujwi** | they (3PL subject) | pujwijuwa | |\n| **wejwi** | we (1PL subject) | wejwijusa | |\n| **majwi** | you (2SG subject) | majwijusa | |\n| **jwi**   | call (verb root) | all 3 pairs | |\n| **‑uwa**  | present‑tense marker (attached to *jwi*) | all 3 pairs | |\n\n**Observed patterns**  \n1. **Word order**: *subject + verb‑root + tense suffix* (no overt object).  \n2. **Tense**: final suffix marks tense; here *‑uwa* = present.  \n3. **Agreement**: subject morpheme precedes the verb and remains unchanged with tense.  \n\n**Convergence**  \n- Agents 0,1,3 list extra morphemes (lamja, juw, -salu, -alu, etc.) that are not attested in the four pairs we hold. Until additional evidence a"
+   },
+   {
+    "agent": 3,
+    "msg": "**Board post – Agent 3**\n\n| Morpheme | Meaning | Evidence |\n|----------|---------|----------|\n| **juw** | 3rd‑sg “he” (subject) | *juwrupise*, *juwjajese* |\n| **jwi** | root “call” | *juwrupise* |\n| **jew** | root “carry” | *juwjajese* |\n| **‑uwa** | present‑tense marker (attached to a verb root) | *juwrupise* |\n| **‑eli** | past‑tense marker (for “carry”) | *juwjajeseli* |\n| **‑salu** | interrogative marker (“Do …?”) | implied in *juwjajeseli* (question) |\n\n**Patterns (confirmed from all four pairs)**\n\n1. **Order** – Subject + Verb‑root + Tense‑marker + (optional –salu).  \n2. **Tense** – Final suffix indicates tense; each verb has its own suffix (*‑uwa* for present “call”, *‑eli* for past “carry”).  \n3. **Question** – Add **‑salu** after the tense marker to form an interrogative.  \n4. **A"
+   },
+   {
+    "agent": 0,
+    "msg": "**Board – Agent 0 (consolidated)**  \n\n**Evidence‑supported morphemes**\n\n| Morpheme | Meaning | Example |\n|----------|---------|---------|\n| **lamja** | 1SG subject “I” | lamjajeweli |\n| **majwi** | 2SG subject “you” | majwijusalu |\n| **pujwi** | 3PL subject “they” | pujwijuwalu |\n| **wejwi** | 1PL subject “we” | wejwijuwa |\n| **jew** | root “carry” | lamjajeweli |\n| **jwi** | root “call” | majwijusalu, pujwijuwalu, wejwijuwa |\n| **‑eli** | past‑tense (carry) | lamjajeweli |\n| **‑uwa** | present‑tense (call) | wejwijuwa, majwijusalu, pujwijuwalu |\n| **‑alu** | past‑tense (call) | pujwijuwalu |\n| **‑salu** | interrogative marker (“Do…?”) | majwijusalu, pujwijuwalu |\n\n**Patterns**\n\n1. **Order** – *subject – verb‑root – tense‑marker – (optional ‑salu)*.  \n2. **Tense** – final suffix specifies "
+   },
+   {
+    "agent": 1,
+    "msg": "**Evidence‑supported morphemes** (from the 4 pairs)\n\n| Morpheme | Meaning | Example |\n|----------|---------|---------|\n| **majwi** | 2SG “you” | majjajewe → *you carried* |\n| **wejwi** | 1PL “we” | wejwumiwe → *we waited* |\n| **pujwi** | 3PL “they” | pujwumiseli → *Do they wait?* |\n| **jew**   | root “carry” | majjajewe |\n| **jwu**   | root “wait” | wejwumiwe / wejwumiweli |\n| **‑eli** | past‑tense for “carry” | majjajewe |\n| **‑mi**  | past‑tense for “wait” | wejwumiwe |\n| **‑salu**| interrogative marker (“Do…?”) | wejwumiweli, pujwumiseli |\n\n**Patterns confirmed**\n\n1. **Order** – *subject – verb‑root – tense‑suffix – (optional ‑salu)*.  \n2. **Tense** – the final suffix on the verb root marks tense; each verb has its own marker (*‑eli* for carry‑past, *‑mi* for wait‑past).  \n3. **Question"
+   },
+   {
+    "agent": 2,
+    "msg": "**Evidence‑supported morphemes** (from our four pairs only)  \n\n| Morpheme | Meaning | Example |\n|----------|---------|---------|\n| **pujwi** | they (3PL subject) | pujwijuwa – “they call” |\n| **wejwi** | we (1PL subject) | wejwijusa – “we call” |\n| **majwi** | you (2SG subject) | majwijusa – “you call” |\n| **jwi**   | root “call” | all three pairs |\n| **‑uwa**  | present‑tense marker (attached to *jwi*) | all three pairs |\n\n**Patterns**\n\n1. **Order**: *subject – verb‑root – tense‑suffix*.  \n2. **Tense**: final suffix on the verb root signals tense; here **‑uwa** = present. No past or interrogative forms appear in the evidence.  \n3. **Agreement**: the subject morpheme precedes the verb and does not change with tense.  \n\n**Convergence with other agents**\n\n- Agents 0,1,3 list morphemes (*‑eli"
+   },
+   {
+    "agent": 3,
+    "msg": "**Evidence‑supported morphemes (from the 3 pairs I have)**  \n\n| Morpheme | Meaning | Example |\n|----------|---------|---------|\n| **juw** | 3rd‑sg “he” (subject) | *juwrupise*, *juwjajese* |\n| **jwi** | root “call” | *juwrupise* |\n| **jew** | root “carry” | *juwjajese* |\n| **‑uwa** | present‑tense marker (used with *jwi*) | *juwrupise* |\n| **‑eli** | past‑tense marker (used with *jew*) | *juwjajeseli* |\n\n**Patterns I see**\n\n1. **Word order**: *subject + verb‑root + tense‑suffix*.  \n2. **Tense**: the final suffix on the verb root encodes tense; each verb has its own marker (*‑uwa* for present *jwi*, *‑eli* for past *jew*).  \n3. **Agreement**: the subject morpheme is separate from the verb and does not change with tense.  \n4. **Question**: not directly attested in these forms; we cannot clai"
+   }
+  ],
+  "queries": [
+   {
+    "qid": 0,
+    "difficulty": "tutorial",
+    "prompt": "he carries",
+    "gold": [
+     "juw",
+     "jaje",
+     "se"
+    ],
+    "swarm": [
+     "juw",
+     "jew"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.4088,
+    "morf1": 0.4,
+    "votes": {
+     "juw jew": 2,
+     "juw jew -eli": 1,
+     "juw jew -uwa": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 1,
+    "difficulty": "standard",
+    "prompt": "they walk",
+    "gold": [
+     "puj",
+     "pupa",
+     "sa"
+    ],
+    "swarm": [
+     "pujwi",
+     "jwi"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.1861,
+    "morf1": 0.0,
+    "votes": {
+     "pujwi jwi": 1,
+     "puwwi jwu -uwa": 1,
+     "puj ruli": 1,
+     "pujwi ruli -uwa": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 2,
+    "difficulty": "standard",
+    "prompt": "you waited",
+    "gold": [
+     "maj",
+     "wumi",
+     "we"
+    ],
+    "swarm": [
+     "majwi",
+     "jwu",
+     "mi"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.6949,
+    "morf1": 0.0,
+    "votes": {
+     "majwi jwu mi": 2,
+     "majwi jwu -mi": 2
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 3,
+    "difficulty": "standard",
+    "prompt": "Did they talk?",
+    "gold": [
+     "puj",
+     "rupi",
+     "we",
+     "li"
+    ],
+    "swarm": [
+     "pujwi",
+     "jwi",
+     "alu",
+     "sa",
+     "lu"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.2413,
+    "morf1": 0.0,
+    "votes": {
+     "pujwi jwi alu sa lu": 1,
+     "puwwi jwu sa lu": 1,
+     "pujwi rupi sa lu": 1,
+     "pujwi rupi -alu sa lu": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 4,
+    "difficulty": "standard",
+    "prompt": "we help",
+    "gold": [
+     "wej",
+     "mura",
+     "sa"
+    ],
+    "swarm": [
+     "wejwi",
+     "jwi"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.1861,
+    "morf1": 0.0,
+    "votes": {
+     "wejwi jwi": 1,
+     "wejwi jwi -uwa": 1,
+     "wejwi ruli": 1,
+     "wejwi wumi -uwa": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 5,
+    "difficulty": "curveball",
+    "prompt": "Do you walk?",
+    "gold": [
+     "maj",
+     "pupa",
+     "sa",
+     "lu"
+    ],
+    "swarm": [
+     "majwi",
+     "jwi",
+     "uwa",
+     "sa",
+     "lu"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.4885,
+    "morf1": 0.4444,
+    "votes": {
+     "majwi jwi uwa sa lu": 1,
+     "majwi jwu sa lu": 1,
+     "majwi ruli sa lu": 1,
+     "majwi ruli -uwa sa lu": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 6,
+    "difficulty": "curveball",
+    "prompt": "Do they call?",
+    "gold": [
+     "puj",
+     "wiju",
+     "sa",
+     "lu"
+    ],
+    "swarm": [
+     "pujwi",
+     "jwi",
+     "uwa",
+     "sa",
+     "lu"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.6851,
+    "morf1": 0.4444,
+    "votes": {
+     "pujwi jwi uwa sa lu": 2,
+     "pujwi jwi -uwa": 1,
+     "pujwi jwi -uwa sa lu": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   }
+  ],
+  "transcript": [
+   {
+    "round": 0,
+    "agent": 0,
+    "msg": "**Morpheme list (from evidence)**  \n| Morpheme | Meaning |\n|----------|---------|\n| **lamja** | first‑person singular “I” (subject) |\n| **majwi** | second‑person singular “you” |\n| **pujwi** | third‑person plural “they” |\n| **wejwi** | first‑person plural “we” |\n| **jew**   | root verb “carry” |\n| **jwi**   | root verb “call” |\n| **‑eli**  | past‑tense marker (used with “carry”) |\n| **‑uwa**  | present‑tense marker (used with “call”) |\n| **‑alu**  | past‑tense marker (used with “call”) |\n| **‑salu** | interrogative marker (turns a statement into “Do…?”) |\n\n**Patterns observed**  \n1. **Subject‑verb‑tense‑(question)** order.  \n2. **Tense** indicated by a final suffix: *‑eli* (carry‑past), *‑uwa* (call‑present), *‑alu* (call‑past).  \n3. **Question** formed by adding *‑salu* to a present‑tense"
+   },
+   {
+    "round": 0,
+    "agent": 1,
+    "msg": "**Morpheme → meaning (evidence‑based)**  \n| Morpheme | Meaning | Source |\n|----------|---------|--------|\n| **majwi** | you (sg.) | *majjajewe* → “you carried” |\n| **wejwi** | we (sg.) | *wejwumiweli*, *wejwumiwe* |\n| **pujwi** | they (pl.) | *pujwumiseli* |\n| **jew**   | carry (root) | *majjajewe* (carry‑past) |\n| **jwu**   | wait (root) | *wejwumiweli*, *wejwumiwe* |\n| **‑eli**  | past‑tense (carry) | *majjajewe* |\n| **‑mi**   | past‑tense (wait) | *wejwumiwe* |\n| **‑uwa**  | present‑tense (call) | from shared board |\n| **‑alu**  | past‑tense (call) | from shared board |\n| **‑salu** | interrogative marker (Do…?) | *wejwumiweli*, *pujwumiseli* |\n\n**Observed patterns**  \n1. **Order:** subject – verb – tense – (question marker).  \n2. **Tense:** final suffix indicates tense; each verb has it"
+   },
+   {
+    "round": 0,
+    "agent": 2,
+    "msg": "**Agent 2 (140 w)**  \n\n**Morpheme‑meaning list (only from your evidence)**  \n| Morpheme | Meaning | Source |\n|----------|---------|--------|\n| **pujwi** | “they” (3rd‑person plural subject) | *pujwijuwa* |\n| **wejwi** | “we” (1st‑person plural subject) | *wejwijusa* |\n| **majwi** | “you” (2nd‑person singular subject) | *majwijusa* |\n| **jwi**   | “call” (root) | all three pairs |\n| **‑uwa**  | present‑tense marker (attached to *jwi*) | all three pairs |\n\n**Patterns**  \n1. **Order**: *subject‑verb‑tense* (no overt object).  \n2. **Tense**: final suffix on the verb root; here *‑uwa* signals present.  \n3. **Question formation**: none of the provided forms include a question marker (*‑salu* is not seen here).  \n4. **Agreement**: subject morpheme attaches directly before the verb root; no inflec"
+   },
+   {
+    "round": 0,
+    "agent": 3,
+    "msg": "**Morpheme→Meaning (from your 3 pairs)**  \n- **juw** = *he* (3rd‑sg. subject) – implied by “juwrupise” = “he talks”, “juwjajese” = “he carries”  \n- **jwi** = *call* (root verb) – appears in all three forms  \n- **jew** = *carry* (root verb) – “juwjajese” = “he carries”  \n- **‑uwa** = present‑tense – attaches to verb root (seen in all three)  \n- **‑eli** = past‑tense (for *carry*) – “juwjajeseli” = “Does he carry?” (question form, but still past)  \n\n**Patterns**  \n1. **Word order**: *subject + verb root + tense marker + (optional interrogative)*.  \n2. **Tense**: final suffix indicates tense; each verb has its own tense marker (*‑uwa* for *jwi*, *‑eli* for *jew*).  \n3. **Question**: add *‑salu* after the tense marker (e.g., *juwjajeseli‑salu* would mean “Does he carry?”).  \n4. **Agreement**: "
+   },
+   {
+    "round": 1,
+    "agent": 0,
+    "msg": "**Agent 0 (final)**  \n*Evidence‑based morphemes (only from the four pairs)*  \n\n| Morpheme | Meaning | Source |\n|----------|---------|--------|\n| **lamja** | first‑person singular “I” | lamjajeweli |\n| **majwi** | second‑person singular “you” | majwijusalu |\n| **pujwi** | third‑person plural “they” | pujwijuwalu |\n| **wejwi** | first‑person plural “we” | wejwijuwa |\n| **jew** | root verb “carry” | lamjajeweli |\n| **jwi** | root verb “call” | majwijusalu, pujwijuwalu, wejwijuwa |\n| **‑eli** | past‑tense marker (carry) | lamjajeweli |\n| **‑uwa** | present‑tense marker (call) | wejwijuwa, majwijusalu, pujwijuwalu |\n| **‑alu** | past‑tense marker (call) | pujwijuwalu |\n| **‑salu** | interrogative marker (turns a statement into “Do…?”) | majwijusalu, pujwijuwalu |\n\n**Observed patterns**\n\n1. **Wo"
+   },
+   {
+    "round": 1,
+    "agent": 1,
+    "msg": "**Morpheme → meaning (from the four pairs)**  \n| Morpheme | Meaning | Source |\n|----------|---------|--------|\n| **majwi** | 2nd‑sg “you” | *majjajewe* |\n| **wejwi** | 1st‑pl “we” | *wejwumiwe* |\n| **pujwi** | 3rd‑pl “they” | *pujwumiseli* |\n| **jew**   | verb root “carry” | *majjajewe* |\n| **jwu**   | verb root “wait” | *wejwumiwe*, *wejwumiweli* |\n| **‑eli** | past‑tense marker for “carry” | *majjajewe* |\n| **‑mi**  | past‑tense marker for “wait” | *wejwumiwe* |\n| **‑uwa** | present‑tense marker for “call” | (from shared board) |\n| **‑alu** | past‑tense marker for “call” | (from shared board) |\n| **‑salu**| interrogative marker (“Do…?”) | *wejwumiweli*, *pujwumiseli* |\n\n**Patterns (converged)**  \n1. **Order**: *subject–verb‑root–tense‑(question)*.  \n2. **Tense**: final suffix indicates t"
+   },
+   {
+    "round": 1,
+    "agent": 2,
+    "msg": "**Board Post (Agent 2)**  \n\n**Morpheme‑meaning list (from the three pairs only)**  \n\n| Morpheme | Meaning | Source |\n|----------|---------|--------|\n| **pujwi** | “they” (3rd‑pl subject) | *pujwijuwa* |\n| **wejwi** | “we” (1st‑pl subject) | *wejwijusa* |\n| **majwi** | “you” (2nd‑sg subject) | *majwijusa* |\n| **jwi**   | “call” (verb root) | all three pairs |\n| **‑uwa**  | present‑tense marker (attached to *jwi*) | all three pairs |\n\n**Patterns observed**  \n\n1. **Word order**: *subject – verb root – tense marker*.  \n2. **Tense**: the final suffix on the verb root marks tense; here *‑uwa* indicates present.  \n3. **Agreement**: subject morpheme precedes the verb root and does not change form with tense.  \n\n**Convergence notes**  \n\n- Agent 0’s list of subject morphemes matches ours (pujwi, wej"
+   },
+   {
+    "round": 1,
+    "agent": 3,
+    "msg": "**Morpheme–meaning (evidence‑based)**  \n\n| Morpheme | Meaning | Source |\n|----------|---------|--------|\n| **juw** | 3rd‑sg “he” (subject) | juwrupise, juwjajese |\n| **jew** | root “carry” | juwjajese |\n| **jwi** | root “call” | juwrupise |\n| **‑eli** | past‑tense (carry) | juwjajeseli |\n| **‑uwa** | present‑tense (call) | juwrupise |\n| **‑salu** | interrogative marker (Do…?) | implied in *juwjajeseli* (question) |\n\n**Patterns**  \n\n1. **Order** – Subject + Verb‑root + Tense‑marker + (Question).  \n2. **Tense** – Final suffix on the verb root: *‑eli* = carry‑past; *‑uwa* = call‑present.  \n3. **Question** – Add *‑salu* after the tense marker to form “Do he verb?”; *juwjajeseli‑salu* would be “Does he carry?”  \n4. **Agreement** – Subject morpheme (*juw*) is independent of tense and precedes th"
+   },
+   {
+    "round": 2,
+    "agent": 0,
+    "msg": "**Board post – Agent 0**\n\n| Morpheme | Meaning | Evidence |\n|----------|---------|----------|\n| **lamja** | 1SG subject “I” | lamjajeweli |\n| **majwi** | 2SG subject “you” | majwijusalu |\n| **pujwi** | 3PL subject “they” | pujwijuwalu |\n| **wejwi** | 1PL subject “we” | wejwijuwa |\n| **jew**   | root “carry” | lamjajeweli |\n| **jwi**   | root “call” | majwijusalu, pujwijuwalu, wejwijuwa |\n| **‑eli**  | past‑tense (carry) | lamjajeweli |\n| **‑uwa**  | present‑tense (call) | wejwijuwa, majwijusalu, pujwijuwalu |\n| **‑alu**  | past‑tense (call) | pujwijuwalu |\n| **‑salu** | interrogative marker | majwijusalu, pujwijuwalu |\n\n**Patterns (converged)**\n1. **Order:** *subject – verb root – tense marker – (optional –salu)*.  \n2. **Tense:** final suffix marks tense; each verb has its own marker (carr"
+   },
+   {
+    "round": 2,
+    "agent": 1,
+    "msg": "**Morpheme → Meaning (evidence‑only)**  \n- **majwi** – 2SG “you” (majjajewe)  \n- **wejwi** – 1PL “we” (wejwumiwe, wejwumiweli)  \n- **pujwi** – 3PL “they” (pujwumiseli)  \n- **jew** – root “carry” (majjajewe)  \n- **jwu** – root “wait” (wejwumiwe, wejwumiweli)  \n- **‑eli** – past‑tense for “carry” (majjajewe)  \n- **‑mi** – past‑tense for “wait” (wejwumiwe)  \n- **‑salu** – interrogative marker (wejwumiweli, pujwumiseli)  \n\n**Confirmed patterns**  \n1. **Order**: *subject + verb root + tense marker (+ salu)*.  \n2. **Tense**: final suffix indicates tense; each verb has its own marker.  \n3. **Question**: add **‑salu** after the tense marker.  \n\n**Discrepancies**  \n- Agents 0,2,3 list extra morphemes (*‑uwa, ‑alu, ‑ela, lamja, juw*) not supported by the four given pairs; we omit them until further "
+   },
+   {
+    "round": 2,
+    "agent": 2,
+    "msg": "**Evidence‑based morpheme list**  \n| Morpheme | Meaning | Source | Notes |\n|----------|---------|--------|-------|\n| **pujwi** | they (3PL subject) | pujwijuwa | |\n| **wejwi** | we (1PL subject) | wejwijusa | |\n| **majwi** | you (2SG subject) | majwijusa | |\n| **jwi**   | call (verb root) | all 3 pairs | |\n| **‑uwa**  | present‑tense marker (attached to *jwi*) | all 3 pairs | |\n\n**Observed patterns**  \n1. **Word order**: *subject + verb‑root + tense suffix* (no overt object).  \n2. **Tense**: final suffix marks tense; here *‑uwa* = present.  \n3. **Agreement**: subject morpheme precedes the verb and remains unchanged with tense.  \n\n**Convergence**  \n- Agents 0,1,3 list extra morphemes (lamja, juw, -salu, -alu, etc.) that are not attested in the four pairs we hold. Until additional evidence a"
+   },
+   {
+    "round": 2,
+    "agent": 3,
+    "msg": "**Board post – Agent 3**\n\n| Morpheme | Meaning | Evidence |\n|----------|---------|----------|\n| **juw** | 3rd‑sg “he” (subject) | *juwrupise*, *juwjajese* |\n| **jwi** | root “call” | *juwrupise* |\n| **jew** | root “carry” | *juwjajese* |\n| **‑uwa** | present‑tense marker (attached to a verb root) | *juwrupise* |\n| **‑eli** | past‑tense marker (for “carry”) | *juwjajeseli* |\n| **‑salu** | interrogative marker (“Do …?”) | implied in *juwjajeseli* (question) |\n\n**Patterns (confirmed from all four pairs)**\n\n1. **Order** – Subject + Verb‑root + Tense‑marker + (optional –salu).  \n2. **Tense** – Final suffix indicates tense; each verb has its own suffix (*‑uwa* for present “call”, *‑eli* for past “carry”).  \n3. **Question** – Add **‑salu** after the tense marker to form an interrogative.  \n4. **A"
+   },
+   {
+    "round": 3,
+    "agent": 0,
+    "msg": "**Board – Agent 0 (consolidated)**  \n\n**Evidence‑supported morphemes**\n\n| Morpheme | Meaning | Example |\n|----------|---------|---------|\n| **lamja** | 1SG subject “I” | lamjajeweli |\n| **majwi** | 2SG subject “you” | majwijusalu |\n| **pujwi** | 3PL subject “they” | pujwijuwalu |\n| **wejwi** | 1PL subject “we” | wejwijuwa |\n| **jew** | root “carry” | lamjajeweli |\n| **jwi** | root “call” | majwijusalu, pujwijuwalu, wejwijuwa |\n| **‑eli** | past‑tense (carry) | lamjajeweli |\n| **‑uwa** | present‑tense (call) | wejwijuwa, majwijusalu, pujwijuwalu |\n| **‑alu** | past‑tense (call) | pujwijuwalu |\n| **‑salu** | interrogative marker (“Do…?”) | majwijusalu, pujwijuwalu |\n\n**Patterns**\n\n1. **Order** – *subject – verb‑root – tense‑marker – (optional ‑salu)*.  \n2. **Tense** – final suffix specifies "
+   },
+   {
+    "round": 3,
+    "agent": 1,
+    "msg": "**Evidence‑supported morphemes** (from the 4 pairs)\n\n| Morpheme | Meaning | Example |\n|----------|---------|---------|\n| **majwi** | 2SG “you” | majjajewe → *you carried* |\n| **wejwi** | 1PL “we” | wejwumiwe → *we waited* |\n| **pujwi** | 3PL “they” | pujwumiseli → *Do they wait?* |\n| **jew**   | root “carry” | majjajewe |\n| **jwu**   | root “wait” | wejwumiwe / wejwumiweli |\n| **‑eli** | past‑tense for “carry” | majjajewe |\n| **‑mi**  | past‑tense for “wait” | wejwumiwe |\n| **‑salu**| interrogative marker (“Do…?”) | wejwumiweli, pujwumiseli |\n\n**Patterns confirmed**\n\n1. **Order** – *subject – verb‑root – tense‑suffix – (optional ‑salu)*.  \n2. **Tense** – the final suffix on the verb root marks tense; each verb has its own marker (*‑eli* for carry‑past, *‑mi* for wait‑past).  \n3. **Question"
+   },
+   {
+    "round": 3,
+    "agent": 2,
+    "msg": "**Evidence‑supported morphemes** (from our four pairs only)  \n\n| Morpheme | Meaning | Example |\n|----------|---------|---------|\n| **pujwi** | they (3PL subject) | pujwijuwa – “they call” |\n| **wejwi** | we (1PL subject) | wejwijusa – “we call” |\n| **majwi** | you (2SG subject) | majwijusa – “you call” |\n| **jwi**   | root “call” | all three pairs |\n| **‑uwa**  | present‑tense marker (attached to *jwi*) | all three pairs |\n\n**Patterns**\n\n1. **Order**: *subject – verb‑root – tense‑suffix*.  \n2. **Tense**: final suffix on the verb root signals tense; here **‑uwa** = present. No past or interrogative forms appear in the evidence.  \n3. **Agreement**: the subject morpheme precedes the verb and does not change with tense.  \n\n**Convergence with other agents**\n\n- Agents 0,1,3 list morphemes (*‑eli"
+   },
+   {
+    "round": 3,
+    "agent": 3,
+    "msg": "**Evidence‑supported morphemes (from the 3 pairs I have)**  \n\n| Morpheme | Meaning | Example |\n|----------|---------|---------|\n| **juw** | 3rd‑sg “he” (subject) | *juwrupise*, *juwjajese* |\n| **jwi** | root “call” | *juwrupise* |\n| **jew** | root “carry” | *juwjajese* |\n| **‑uwa** | present‑tense marker (used with *jwi*) | *juwrupise* |\n| **‑eli** | past‑tense marker (used with *jew*) | *juwjajeseli* |\n\n**Patterns I see**\n\n1. **Word order**: *subject + verb‑root + tense‑suffix*.  \n2. **Tense**: the final suffix on the verb root encodes tense; each verb has its own marker (*‑uwa* for present *jwi*, *‑eli* for past *jew*).  \n3. **Agreement**: the subject morpheme is separate from the verb and does not change with tense.  \n4. **Question**: not directly attested in these forms; we cannot clai"
+   },
+   {
+    "round": "answer",
+    "agent": 0,
+    "raw": "ANSWER 0: juw jew  \nANSWER 1: pujwi jwi  \nANSWER 2: majwi jwu mi  \nANSWER 3: pujwi jwi alu salu  \nANSWER 4: wejwi jwi  \nANSWER 5: majwi jwi uwa salu  \nANSWER 6: pujwi jwi uwa salu"
+   },
+   {
+    "round": "answer",
+    "agent": 1,
+    "raw": "ANSWER 0: juw jew -eli  \nANSWER 1: puwwi jwu -uwa  \nANSWER 2: majwi jwu -mi  \nANSWER 3: puwwi jwu -salu  \nANSWER 4: wejwi jwi -uwa  \nANSWER 5: majwi jwu -salu  \nANSWER 6: pujwi jwi -uwa"
+   },
+   {
+    "round": "answer",
+    "agent": 2,
+    "raw": "ANSWER 0: juw jew  \nANSWER 1: puj ruli  \nANSWER 2: majwi jwu mi  \nANSWER 3: pujwi rupi salu  \nANSWER 4: wejwi ruli  \nANSWER 5: majwi ruli salu  \nANSWER 6: pujwi jwi uwa salu"
+   },
+   {
+    "round": "answer",
+    "agent": 3,
+    "raw": "ANSWER 0: juw jew -uwa  \nANSWER 1: pujwi ruli -uwa  \nANSWER 2: majwi jwu -mi  \nANSWER 3: pujwi rupi -alu -salu  \nANSWER 4: wejwi wumi -uwa  \nANSWER 5: majwi ruli -uwa -salu  \nANSWER 6: pujwi jwi -uwa -salu"
+   }
+  ]
+ },
+ {
+  "puzzle": "gen-000",
+  "language": "Selatu",
+  "family": "Generated/vowel-harmony",
+  "condition": "clean",
+  "seed": 2,
+  "model": "openai/gpt-oss-20b",
+  "provider": "groq",
+  "n_agents": 4,
+  "rounds": 4,
+  "corrupted_rows": [],
+  "elapsed_s": 722.8,
+  "board": [
+   {
+    "agent": 0,
+    "msg": "**Findings (Agent 0)**  \n\n| Morpheme | Suggested meaning | Occurrence |\n|----------|------------------|------------|\n| **juw** | 3rd‑person singular “he” | `juw‑jaj‑ese` |\n| **wej** | 1st‑person plural “we” | `wej‑wij‑usa` |\n| **ma**  | 2nd‑person singular “you” (question form) | `ma‑j‑wij‑us‑alu` |\n| **wij** | root “call” | all four sentences |\n| **usa** | present tense marker | `wej‑wij‑usa` (“we call”) |\n| **uwa** | past tense marker | `wej‑wi‑ju‑wa` (“we called”) |\n| **alu** | question particle (forms “Do …?”) | `ma‑j‑wij‑us‑alu` |\n\n**Patterns**\n\n1. **Tense** – *‑usa* = present, *‑uwa* = past (seen in “we call” vs “we called”).\n2. **Subject agreement** – a pronoun prefix precedes the root (*juw‑*, *wej‑*, *ma‑*).\n3. **Question** – the particle *‑alu* follows the verb to form an interro"
+   },
+   {
+    "agent": 1,
+    "msg": "**Agent 1 Findings**\n\n| Morpheme | Meaning (supported by evidence) | Occurrence |\n|----------|----------------------------------|------------|\n| **ma**   | 2nd‑person singular “you” (statement) | `maj‑wij‑usa`, `maj‑jaj‑e‑we` |\n| **maj‑** | prefix “you‑” (used for all 2nd‑person forms) | see above |\n| **jaj‑** | 3rd‑person singular “he‑” | `juwjajeseli` (he‑carry‑?‑?‑li) |\n| **juw‑** | 3rd‑person singular “he‑” (alternative form) | `juwjajeseli` |\n| **wej‑** | 1st‑person plural “we‑” | `wejwumiwe` |\n| **wij** | root “call / carry / wait” (shared root “wij” or “jaj”?) | all four |\n| **usa** | present‑tense marker (‑us‑a) | `maj‑wij‑usa`, `wej‑wij‑usa` |\n| **uwa** | past‑tense marker (‑uw‑i‑) | appears in `we‑wu‑mi‑we` → past “waited” |\n| **alu** | question particle (‑alu) | `juw‑jaj‑es‑eli`"
+   },
+   {
+    "agent": 2,
+    "msg": "**Agent 2 – concise findings**  \n(150 words)\n\n| Morpheme | Suggested meaning (evidence) | Occurrences |\n|----------|------------------------------|-------------|\n| **juw‑** | 3rd‑person singular “he” | `juwrupise` |\n| **wej‑** | 1st‑person plural “we” | `wejwumiweli` |\n| **puj‑** | 3rd‑person plural “they” | `pujwijuwa` |\n| **‑ri‑** | root “talk” | `juwrupise` (ju‑w‑ri‑p‑i‑se) |\n| **‑wi‑** | root “wait” | `wejwumiweli` (wej‑wi‑mi‑we‑li) |\n| **‑juwa‑** | root “call” | `pujwijuwa` (puj‑wi‑juwa) |\n| **‑se** | present‑tense marker | `juwrupise` (ends with *‑se*) |\n| **‑eli** | question particle (forms “Did …?”) | `wejwumiweli` (ends with *‑eli*) |\n| **‑wu‑** | past‑tense marker (used with *‑mi* in “waited”) | `wejwumiweli` (contains *‑wi‑mi‑we‑li* → *‑mi‑we* = past “waited”) |\n\n**Patterns**\n\n1"
+   },
+   {
+    "agent": 3,
+    "msg": "**Agent 3 Findings (≤150 words)**  \n\n| Morpheme | Meaning (supported by the 3 sentences) | Occurrence |\n|----------|----------------------------------------|------------|\n| **puj‑** | 3rd‑person plural “they” | `pujwumiseli`, `pujwijuwalu` |\n| **juw‑** | 3rd‑person singular “he/they” (context‑dependent) | `pujwumiseli` (they‑wait‑?‑li) |\n| **wi‑** | root “wait” | `pujwumiseli` |\n| **ju‑** | root “call” (variant of *wij*) | `pujwijuwalu` |\n| **-us‑** | present‑tense marker | `pujwumiseli` |\n| **-wa‑** | past‑tense marker | `pujwijuwalu` |\n| **-eli** | question particle (forms “Did …?”) | `pujwumiseli`, `pujwijuwalu` |\n\n**Patterns**  \n1. **Tense**: *‑us‑* = present, *‑wa‑* = past (Agent 0’s *‑usa/‑uwa* fit when we truncate the final *a*).  \n2. **Subject agreement**: a pronoun prefix (*puj‑*,"
+   },
+   {
+    "agent": 0,
+    "msg": "**Agent 0: Consolidated Findings (≤150 w)**  \n\n| Morpheme | Suggested meaning | Occurrence |\n|----------|------------------|------------|\n| **juw‑** | 3rd‑person singular “he” (subject prefix) | `juw‑jaj‑ese` |\n| **wej‑** | 1st‑person plural “we” (subject prefix) | `wej‑wij‑usa`, `wej‑wi‑ju‑wa` |\n| **maj‑** | 2nd‑person singular “you” (question‑prefix) | `maj‑wij‑us‑alu` |\n| **wij** | root “call” | all four sentences |\n| **usa** | present‑tense suffix | `wej‑wij‑usa` |\n| **uwa** | past‑tense suffix | `wej‑wi‑ju‑wa` |\n| **alu** | question particle (forms “Do …?”) | `maj‑wij‑us‑alu` |\n\n**Patterns**\n\n1. **Tense** – *‑usa* = present, *‑uwa* = past.  \n2. **Subject agreement** – a pronoun prefix precedes *wij*.  \n3. **Question** – *‑alu* follows the verb to form a yes/no interrogative.\n\nThese ag"
+   },
+   {
+    "agent": 1,
+    "msg": "**Agent 1 (concise 150 w)**  \nMorpheme → meaning (supported by our 4 pairs)\n\n| Morpheme | Meaning | Occurrence |\n|----------|---------|------------|\n| **maj** | 2nd‑sg “you” (statement) | `maj‑wij‑usa` |\n| **juw** | 3rd‑sg “he” | `juwjajeseli` |\n| **wej** | 1st‑pl “we” | `wejwumiwe` |\n| **wij** | root “call / carry / wait” (shared root) | all sentences |\n| **usa** | present‑tense suffix | `maj‑wij‑usa`, `wej‑wij‑usa` |\n| **uwa** | past‑tense suffix | `wejwumiwe` (implied *‑uwa* in “we waited”) |\n| **alu** | question particle (yes/no) | `maj‑wij‑us‑alu` |\n\n**Patterns**\n\n1. **Tense:** *‑usa* = present, *‑uwa* = past (consistent with “we call” vs. “we waited”).  \n2. **Subject agreement:** a pronoun prefix (maj/juw/wej) precedes the root.  \n3. **Question:** *‑alu* follows the verb to form a ye"
+   },
+   {
+    "agent": 2,
+    "msg": "**Agent 2 Findings (≤150 w)**  \n\n| Morpheme | Meaning (supported by the 3 pairs) | Occurrence |\n|----------|-----------------------------------|------------|\n| **juw‑** | 3rd‑person singular “he” | `juwrupise` |\n| **wej‑** | 1st‑person plural “we” | `wejwumiweli` |\n| **puj‑** | 3rd‑person plural “they” | `pujwijuwa` |\n| **‑ri‑** | root “talk” | `juwrupise` (ju‑w‑ri‑p‑i‑se) |\n| **‑wi‑** | root “wait” | `wejwumiweli` (wej‑wi‑mi‑we‑li) |\n| **‑juwa‑** | root “call” | `pujwijuwa` (puj‑wi‑juwa) |\n| **‑se** | present‑tense marker | `juwrupise` (ends with *‑se*) |\n| **‑eli** | question particle (forms “Did …?”) | `wejwumiweli` (ends with *‑eli*) |\n\n**Patterns**\n\n1. **Tense** – *‑se* = present, *‑eli* appears only on the question, so past tense is not yet observed (no *‑wu‑* evidence in the 3 pairs"
+   },
+   {
+    "agent": 3,
+    "msg": "**Agent 3 Findings (≤150 words)**  \n\n| Morpheme | Meaning (supported by 3 pairs) | Occurrence |\n|----------|------------------------------|------------|\n| **puj‑** | 3rd‑person plural “they” | `pujwumiseli`, `pujwijuwalu` |\n| **juw‑** | 3rd‑person singular “he” (same form as **puj‑** in *pujwumiseli* – a homophonous prefix) | `pujwumiseli` (they‑wait‑…‑li) |\n| **wi‑** | root “wait” | `pujwumiseli` |\n| **ju‑** | root “call” (variant of *wij*) | `pujwijuwalu` |\n| **‑us‑** | present‑tense marker (Agent 0’s *‑usa* truncates to *‑us‑*) | `pujwumiseli` |\n| **‑wa‑** | past‑tense marker (Agent 0’s *‑uwa* truncates to *‑wa‑*) | `pujwijuwalu` |\n| **‑eli** | question particle “Did …?” | `pujwumiseli`, `pujwijuwalu` |\n\n**Patterns**\n\n1. **Tense** – *‑us‑* = present, *‑wa‑* = past (consistent with Agent"
+   },
+   {
+    "agent": 0,
+    "msg": "**Agent 0 (consolidated, ≤150 w)**  \n\n| Morpheme | Meaning (supported by the 4 pairs) | Occurrence |\n|----------|-----------------------------------|------------|\n| **juw‑** | 3rd‑person singular “he” (subject prefix) | `juw‑jaj‑ese` |\n| **wej‑** | 1st‑person plural “we” (subject prefix) | `wej‑wij‑usa`, `wej‑wi‑ju‑wa` |\n| **maj‑** | 2nd‑person singular “you” (subject prefix) | `maj‑wij‑us‑alu` |\n| **wij** | root “call” (shared in 3 of 4 sentences) | all except first |\n| **usa** | present‑tense suffix | `wej‑wij‑usa` |\n| **uwa** | past‑tense suffix | `wej‑wi‑ju‑wa` |\n| **alu** | yes/no question particle (attaches after tense) | `maj‑wij‑us‑alu` |\n\n**Patterns**\n\n1. **Pronoun agreement** – a subject prefix (juw/​wej/​maj) precedes the root.  \n2. **Tense** – *‑usa* = present, *‑uwa* = past.  "
+   },
+   {
+    "agent": 1,
+    "msg": "**Agent 1 (≈140 w)**  \n\n*Morphs (supported by the 4 pairs)*  \n\n| Morpheme | Meaning | Occurrence |\n|----------|---------|------------|\n| **maj‑** | 2nd‑sg “you” (subject prefix) | `maj‑wij‑us‑alu`, `maj‑jaj‑e‑we` |\n| **juw‑** | 3rd‑sg “he” (subject prefix) | `juwjajeseli` |\n| **wej‑** | 1st‑pl “we” (subject prefix) | `wejwumiwe` |\n| **wij** | root “call / carry / wait” (shared) | all four |\n| **usa** | present‑tense suffix | `maj‑wij‑us‑alu`, `wej‑wij‑usa` |\n| **uwa** | past‑tense suffix | implied in `wejwumiwe` (waited) |\n| **alu** | yes/no question particle | `maj‑wij‑us‑alu` |\n\n*Patterns*  \n\n1. **Pronoun agreement** – a subject prefix (maj/juw/wej) precedes the root.  \n2. **Tense** – *‑usa* = present, *‑uwa* = past (seen in “we call” vs. “we waited”).  \n3. **Question** – *‑alu* follows "
+   },
+   {
+    "agent": 2,
+    "msg": "**New Morpheme List (supported by the three pairs)**  \n\n| Morpheme | Suggested meaning | Occurrence |\n|----------|------------------|------------|\n| **juw‑** | 3rd‑sg “he” (subject prefix) | `juwrupise` |\n| **wej‑** | 1st‑pl “we” (subject prefix) | `wejwumiweli` |\n| **puj‑** | 3rd‑pl “they” (subject prefix) | `pujwijuwa` |\n| **ri‑** | root “talk” | `juwrupise` (ju‑w‑ri‑p‑i‑se) |\n| **wi‑** | root “wait” | `wejwumiweli` (wej‑wi‑mi‑we‑li) |\n| **juwa‑** | root “call” | `pujwijuwa` (puj‑wi‑juwa) |\n| **‑se** | present‑tense marker | `juwrupise` (ends *‑se*) |\n| **‑eli** | past‑question marker (“Did …?”) | `wejwumiweli` (ends *‑eli*) |\n\n**Patterns (converging the team)**  \n\n1. **Pronoun agreement** – a subject prefix (*juw‑, wej‑, puj‑, maj‑* if 2nd‑sg is needed) precedes the root.  \n2. **Root‑ve"
+   },
+   {
+    "agent": 3,
+    "msg": "**Agent 3 Findings (≤150 w)**  \n\n| Morpheme | Meaning (supported by the 3 pairs) | Occurrence |\n|----------|----------------------------------|------------|\n| **puj‑** | 3rd‑person plural “they” | `pujwumiseli`, `pujwijuwalu` |\n| **juw‑** | 3rd‑person singular “he” (context‑dependent, same phoneme as *puj‑* in the first pair) | `pujwumiseli` (they‑wait‑?‑li) |\n| **wi‑** | root “wait” | `pujwumiseli` |\n| **ju‑** | root “call” (variant of *wij*) | `pujwijuwalu` |\n| **‑us‑** | present‑tense marker (Agent 0’s *‑usa* truncated) | `pujwumiseli` |\n| **‑wa‑** | past‑tense marker (Agent 0’s *‑uwa* truncated) | `pujwijuwalu` |\n| **‑eli** | yes/no question particle “Did …?” | `pujwumiseli`, `pujwijuwalu` |\n\n**Patterns**\n\n1. **Tense:** *‑us‑* = present, *‑wa‑* = past (consistent with Agent 0’s *‑usa/‑"
+   },
+   {
+    "agent": 0,
+    "msg": "**Agent 0 (consolidated, 147 w)**  \n\n| Morpheme | Meaning (evidence) | Occurrence |\n|----------|--------------------|------------|\n| **juw‑** | 3rd‑person singular “he” (subject prefix) | `juw‑jaj‑ese` |\n| **wej‑** | 1st‑person plural “we” (subject prefix) | `wej‑wij‑usa`, `wej‑wi‑ju‑wa` |\n| **maj‑** | 2nd‑person singular “you” (question prefix) | `maj‑wij‑us‑alu` |\n| **wij** | root “call” (shared in 3/4 sentences) | all except first |\n| **usa** | present‑tense suffix | `wej‑wij‑usa` |\n| **uwa** | past‑tense suffix | `wej‑wi‑ju‑wa` |\n| **alu** | yes/no question particle (post‑verb) | `maj‑wij‑us‑alu` |\n\n**Patterns**  \n1. **Pronoun agreement** – a subject prefix (juw/​wej/​maj) precedes the root.  \n2. **Tense** – *‑usa* = present, *‑uwa* = past.  \n3. **Question** – *‑alu* follows the tense "
+   },
+   {
+    "agent": 1,
+    "msg": "**Consolidated Morpheme List (4‑pair evidence)**  \n\n| Morpheme | Meaning | Occurrence |\n|----------|---------|------------|\n| **maj‑** | 2nd‑sg “you” (subject prefix) | `maj‑wij‑us‑alu` |\n| **juw‑** | 3rd‑sg “he” (subject prefix) | `juw‑jaj‑ese` |\n| **wej‑** | 1st‑pl “we” (subject prefix) | `wej‑wij‑usa`, `wej‑wi‑ju‑wa` |\n| **wij** | root “call” (also used for carry/wait in this corpus) | all except first |\n| **usa** | present‑tense marker | `wej‑wij‑usa` |\n| **uwa** | past‑tense marker | `wej‑wi‑ju‑wa` |\n| **alu** | yes/no question particle (post‑verb) | `maj‑wij‑us‑alu` |\n\n**Patterns**  \n1. **Subject agreement** – a prefix (maj/juw/wej) precedes the root.  \n2. **Tense** – *‑usa* = present, *‑uwa* = past (consistent across the “we call” vs “we waited” pair).  \n3. **Question formation** – "
+   },
+   {
+    "agent": 2,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198184, Req]"
+   },
+   {
+    "agent": 3,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198009, Req]"
+   }
+  ],
+  "queries": [
+   {
+    "qid": 0,
+    "difficulty": "tutorial",
+    "prompt": "he carries",
+    "gold": [
+     "juw",
+     "jaje",
+     "se"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 4
+    },
+    "unanimous": true,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 1,
+    "difficulty": "standard",
+    "prompt": "they walk",
+    "gold": [
+     "puj",
+     "pupa",
+     "sa"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 4
+    },
+    "unanimous": true,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 2,
+    "difficulty": "standard",
+    "prompt": "you waited",
+    "gold": [
+     "maj",
+     "wumi",
+     "we"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 4
+    },
+    "unanimous": true,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 3,
+    "difficulty": "standard",
+    "prompt": "Did they talk?",
+    "gold": [
+     "puj",
+     "rupi",
+     "we",
+     "li"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 4
+    },
+    "unanimous": true,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 4,
+    "difficulty": "standard",
+    "prompt": "we help",
+    "gold": [
+     "wej",
+     "mura",
+     "sa"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 4
+    },
+    "unanimous": true,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 5,
+    "difficulty": "curveball",
+    "prompt": "Do you walk?",
+    "gold": [
+     "maj",
+     "pupa",
+     "sa",
+     "lu"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 4
+    },
+    "unanimous": true,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 6,
+    "difficulty": "curveball",
+    "prompt": "Do they call?",
+    "gold": [
+     "puj",
+     "wiju",
+     "sa",
+     "lu"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 4
+    },
+    "unanimous": true,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   }
+  ],
+  "transcript": [
+   {
+    "round": 0,
+    "agent": 0,
+    "msg": "**Findings (Agent 0)**  \n\n| Morpheme | Suggested meaning | Occurrence |\n|----------|------------------|------------|\n| **juw** | 3rd‑person singular “he” | `juw‑jaj‑ese` |\n| **wej** | 1st‑person plural “we” | `wej‑wij‑usa` |\n| **ma**  | 2nd‑person singular “you” (question form) | `ma‑j‑wij‑us‑alu` |\n| **wij** | root “call” | all four sentences |\n| **usa** | present tense marker | `wej‑wij‑usa` (“we call”) |\n| **uwa** | past tense marker | `wej‑wi‑ju‑wa` (“we called”) |\n| **alu** | question particle (forms “Do …?”) | `ma‑j‑wij‑us‑alu` |\n\n**Patterns**\n\n1. **Tense** – *‑usa* = present, *‑uwa* = past (seen in “we call” vs “we called”).\n2. **Subject agreement** – a pronoun prefix precedes the root (*juw‑*, *wej‑*, *ma‑*).\n3. **Question** – the particle *‑alu* follows the verb to form an interro"
+   },
+   {
+    "round": 0,
+    "agent": 1,
+    "msg": "**Agent 1 Findings**\n\n| Morpheme | Meaning (supported by evidence) | Occurrence |\n|----------|----------------------------------|------------|\n| **ma**   | 2nd‑person singular “you” (statement) | `maj‑wij‑usa`, `maj‑jaj‑e‑we` |\n| **maj‑** | prefix “you‑” (used for all 2nd‑person forms) | see above |\n| **jaj‑** | 3rd‑person singular “he‑” | `juwjajeseli` (he‑carry‑?‑?‑li) |\n| **juw‑** | 3rd‑person singular “he‑” (alternative form) | `juwjajeseli` |\n| **wej‑** | 1st‑person plural “we‑” | `wejwumiwe` |\n| **wij** | root “call / carry / wait” (shared root “wij” or “jaj”?) | all four |\n| **usa** | present‑tense marker (‑us‑a) | `maj‑wij‑usa`, `wej‑wij‑usa` |\n| **uwa** | past‑tense marker (‑uw‑i‑) | appears in `we‑wu‑mi‑we` → past “waited” |\n| **alu** | question particle (‑alu) | `juw‑jaj‑es‑eli`"
+   },
+   {
+    "round": 0,
+    "agent": 2,
+    "msg": "**Agent 2 – concise findings**  \n(150 words)\n\n| Morpheme | Suggested meaning (evidence) | Occurrences |\n|----------|------------------------------|-------------|\n| **juw‑** | 3rd‑person singular “he” | `juwrupise` |\n| **wej‑** | 1st‑person plural “we” | `wejwumiweli` |\n| **puj‑** | 3rd‑person plural “they” | `pujwijuwa` |\n| **‑ri‑** | root “talk” | `juwrupise` (ju‑w‑ri‑p‑i‑se) |\n| **‑wi‑** | root “wait” | `wejwumiweli` (wej‑wi‑mi‑we‑li) |\n| **‑juwa‑** | root “call” | `pujwijuwa` (puj‑wi‑juwa) |\n| **‑se** | present‑tense marker | `juwrupise` (ends with *‑se*) |\n| **‑eli** | question particle (forms “Did …?”) | `wejwumiweli` (ends with *‑eli*) |\n| **‑wu‑** | past‑tense marker (used with *‑mi* in “waited”) | `wejwumiweli` (contains *‑wi‑mi‑we‑li* → *‑mi‑we* = past “waited”) |\n\n**Patterns**\n\n1"
+   },
+   {
+    "round": 0,
+    "agent": 3,
+    "msg": "**Agent 3 Findings (≤150 words)**  \n\n| Morpheme | Meaning (supported by the 3 sentences) | Occurrence |\n|----------|----------------------------------------|------------|\n| **puj‑** | 3rd‑person plural “they” | `pujwumiseli`, `pujwijuwalu` |\n| **juw‑** | 3rd‑person singular “he/they” (context‑dependent) | `pujwumiseli` (they‑wait‑?‑li) |\n| **wi‑** | root “wait” | `pujwumiseli` |\n| **ju‑** | root “call” (variant of *wij*) | `pujwijuwalu` |\n| **-us‑** | present‑tense marker | `pujwumiseli` |\n| **-wa‑** | past‑tense marker | `pujwijuwalu` |\n| **-eli** | question particle (forms “Did …?”) | `pujwumiseli`, `pujwijuwalu` |\n\n**Patterns**  \n1. **Tense**: *‑us‑* = present, *‑wa‑* = past (Agent 0’s *‑usa/‑uwa* fit when we truncate the final *a*).  \n2. **Subject agreement**: a pronoun prefix (*puj‑*,"
+   },
+   {
+    "round": 1,
+    "agent": 0,
+    "msg": "**Agent 0: Consolidated Findings (≤150 w)**  \n\n| Morpheme | Suggested meaning | Occurrence |\n|----------|------------------|------------|\n| **juw‑** | 3rd‑person singular “he” (subject prefix) | `juw‑jaj‑ese` |\n| **wej‑** | 1st‑person plural “we” (subject prefix) | `wej‑wij‑usa`, `wej‑wi‑ju‑wa` |\n| **maj‑** | 2nd‑person singular “you” (question‑prefix) | `maj‑wij‑us‑alu` |\n| **wij** | root “call” | all four sentences |\n| **usa** | present‑tense suffix | `wej‑wij‑usa` |\n| **uwa** | past‑tense suffix | `wej‑wi‑ju‑wa` |\n| **alu** | question particle (forms “Do …?”) | `maj‑wij‑us‑alu` |\n\n**Patterns**\n\n1. **Tense** – *‑usa* = present, *‑uwa* = past.  \n2. **Subject agreement** – a pronoun prefix precedes *wij*.  \n3. **Question** – *‑alu* follows the verb to form a yes/no interrogative.\n\nThese ag"
+   },
+   {
+    "round": 1,
+    "agent": 1,
+    "msg": "**Agent 1 (concise 150 w)**  \nMorpheme → meaning (supported by our 4 pairs)\n\n| Morpheme | Meaning | Occurrence |\n|----------|---------|------------|\n| **maj** | 2nd‑sg “you” (statement) | `maj‑wij‑usa` |\n| **juw** | 3rd‑sg “he” | `juwjajeseli` |\n| **wej** | 1st‑pl “we” | `wejwumiwe` |\n| **wij** | root “call / carry / wait” (shared root) | all sentences |\n| **usa** | present‑tense suffix | `maj‑wij‑usa`, `wej‑wij‑usa` |\n| **uwa** | past‑tense suffix | `wejwumiwe` (implied *‑uwa* in “we waited”) |\n| **alu** | question particle (yes/no) | `maj‑wij‑us‑alu` |\n\n**Patterns**\n\n1. **Tense:** *‑usa* = present, *‑uwa* = past (consistent with “we call” vs. “we waited”).  \n2. **Subject agreement:** a pronoun prefix (maj/juw/wej) precedes the root.  \n3. **Question:** *‑alu* follows the verb to form a ye"
+   },
+   {
+    "round": 1,
+    "agent": 2,
+    "msg": "**Agent 2 Findings (≤150 w)**  \n\n| Morpheme | Meaning (supported by the 3 pairs) | Occurrence |\n|----------|-----------------------------------|------------|\n| **juw‑** | 3rd‑person singular “he” | `juwrupise` |\n| **wej‑** | 1st‑person plural “we” | `wejwumiweli` |\n| **puj‑** | 3rd‑person plural “they” | `pujwijuwa` |\n| **‑ri‑** | root “talk” | `juwrupise` (ju‑w‑ri‑p‑i‑se) |\n| **‑wi‑** | root “wait” | `wejwumiweli` (wej‑wi‑mi‑we‑li) |\n| **‑juwa‑** | root “call” | `pujwijuwa` (puj‑wi‑juwa) |\n| **‑se** | present‑tense marker | `juwrupise` (ends with *‑se*) |\n| **‑eli** | question particle (forms “Did …?”) | `wejwumiweli` (ends with *‑eli*) |\n\n**Patterns**\n\n1. **Tense** – *‑se* = present, *‑eli* appears only on the question, so past tense is not yet observed (no *‑wu‑* evidence in the 3 pairs"
+   },
+   {
+    "round": 1,
+    "agent": 3,
+    "msg": "**Agent 3 Findings (≤150 words)**  \n\n| Morpheme | Meaning (supported by 3 pairs) | Occurrence |\n|----------|------------------------------|------------|\n| **puj‑** | 3rd‑person plural “they” | `pujwumiseli`, `pujwijuwalu` |\n| **juw‑** | 3rd‑person singular “he” (same form as **puj‑** in *pujwumiseli* – a homophonous prefix) | `pujwumiseli` (they‑wait‑…‑li) |\n| **wi‑** | root “wait” | `pujwumiseli` |\n| **ju‑** | root “call” (variant of *wij*) | `pujwijuwalu` |\n| **‑us‑** | present‑tense marker (Agent 0’s *‑usa* truncates to *‑us‑*) | `pujwumiseli` |\n| **‑wa‑** | past‑tense marker (Agent 0’s *‑uwa* truncates to *‑wa‑*) | `pujwijuwalu` |\n| **‑eli** | question particle “Did …?” | `pujwumiseli`, `pujwijuwalu` |\n\n**Patterns**\n\n1. **Tense** – *‑us‑* = present, *‑wa‑* = past (consistent with Agent"
+   },
+   {
+    "round": 2,
+    "agent": 0,
+    "msg": "**Agent 0 (consolidated, ≤150 w)**  \n\n| Morpheme | Meaning (supported by the 4 pairs) | Occurrence |\n|----------|-----------------------------------|------------|\n| **juw‑** | 3rd‑person singular “he” (subject prefix) | `juw‑jaj‑ese` |\n| **wej‑** | 1st‑person plural “we” (subject prefix) | `wej‑wij‑usa`, `wej‑wi‑ju‑wa` |\n| **maj‑** | 2nd‑person singular “you” (subject prefix) | `maj‑wij‑us‑alu` |\n| **wij** | root “call” (shared in 3 of 4 sentences) | all except first |\n| **usa** | present‑tense suffix | `wej‑wij‑usa` |\n| **uwa** | past‑tense suffix | `wej‑wi‑ju‑wa` |\n| **alu** | yes/no question particle (attaches after tense) | `maj‑wij‑us‑alu` |\n\n**Patterns**\n\n1. **Pronoun agreement** – a subject prefix (juw/​wej/​maj) precedes the root.  \n2. **Tense** – *‑usa* = present, *‑uwa* = past.  "
+   },
+   {
+    "round": 2,
+    "agent": 1,
+    "msg": "**Agent 1 (≈140 w)**  \n\n*Morphs (supported by the 4 pairs)*  \n\n| Morpheme | Meaning | Occurrence |\n|----------|---------|------------|\n| **maj‑** | 2nd‑sg “you” (subject prefix) | `maj‑wij‑us‑alu`, `maj‑jaj‑e‑we` |\n| **juw‑** | 3rd‑sg “he” (subject prefix) | `juwjajeseli` |\n| **wej‑** | 1st‑pl “we” (subject prefix) | `wejwumiwe` |\n| **wij** | root “call / carry / wait” (shared) | all four |\n| **usa** | present‑tense suffix | `maj‑wij‑us‑alu`, `wej‑wij‑usa` |\n| **uwa** | past‑tense suffix | implied in `wejwumiwe` (waited) |\n| **alu** | yes/no question particle | `maj‑wij‑us‑alu` |\n\n*Patterns*  \n\n1. **Pronoun agreement** – a subject prefix (maj/juw/wej) precedes the root.  \n2. **Tense** – *‑usa* = present, *‑uwa* = past (seen in “we call” vs. “we waited”).  \n3. **Question** – *‑alu* follows "
+   },
+   {
+    "round": 2,
+    "agent": 2,
+    "msg": "**New Morpheme List (supported by the three pairs)**  \n\n| Morpheme | Suggested meaning | Occurrence |\n|----------|------------------|------------|\n| **juw‑** | 3rd‑sg “he” (subject prefix) | `juwrupise` |\n| **wej‑** | 1st‑pl “we” (subject prefix) | `wejwumiweli` |\n| **puj‑** | 3rd‑pl “they” (subject prefix) | `pujwijuwa` |\n| **ri‑** | root “talk” | `juwrupise` (ju‑w‑ri‑p‑i‑se) |\n| **wi‑** | root “wait” | `wejwumiweli` (wej‑wi‑mi‑we‑li) |\n| **juwa‑** | root “call” | `pujwijuwa` (puj‑wi‑juwa) |\n| **‑se** | present‑tense marker | `juwrupise` (ends *‑se*) |\n| **‑eli** | past‑question marker (“Did …?”) | `wejwumiweli` (ends *‑eli*) |\n\n**Patterns (converging the team)**  \n\n1. **Pronoun agreement** – a subject prefix (*juw‑, wej‑, puj‑, maj‑* if 2nd‑sg is needed) precedes the root.  \n2. **Root‑ve"
+   },
+   {
+    "round": 2,
+    "agent": 3,
+    "msg": "**Agent 3 Findings (≤150 w)**  \n\n| Morpheme | Meaning (supported by the 3 pairs) | Occurrence |\n|----------|----------------------------------|------------|\n| **puj‑** | 3rd‑person plural “they” | `pujwumiseli`, `pujwijuwalu` |\n| **juw‑** | 3rd‑person singular “he” (context‑dependent, same phoneme as *puj‑* in the first pair) | `pujwumiseli` (they‑wait‑?‑li) |\n| **wi‑** | root “wait” | `pujwumiseli` |\n| **ju‑** | root “call” (variant of *wij*) | `pujwijuwalu` |\n| **‑us‑** | present‑tense marker (Agent 0’s *‑usa* truncated) | `pujwumiseli` |\n| **‑wa‑** | past‑tense marker (Agent 0’s *‑uwa* truncated) | `pujwijuwalu` |\n| **‑eli** | yes/no question particle “Did …?” | `pujwumiseli`, `pujwijuwalu` |\n\n**Patterns**\n\n1. **Tense:** *‑us‑* = present, *‑wa‑* = past (consistent with Agent 0’s *‑usa/‑"
+   },
+   {
+    "round": 3,
+    "agent": 0,
+    "msg": "**Agent 0 (consolidated, 147 w)**  \n\n| Morpheme | Meaning (evidence) | Occurrence |\n|----------|--------------------|------------|\n| **juw‑** | 3rd‑person singular “he” (subject prefix) | `juw‑jaj‑ese` |\n| **wej‑** | 1st‑person plural “we” (subject prefix) | `wej‑wij‑usa`, `wej‑wi‑ju‑wa` |\n| **maj‑** | 2nd‑person singular “you” (question prefix) | `maj‑wij‑us‑alu` |\n| **wij** | root “call” (shared in 3/4 sentences) | all except first |\n| **usa** | present‑tense suffix | `wej‑wij‑usa` |\n| **uwa** | past‑tense suffix | `wej‑wi‑ju‑wa` |\n| **alu** | yes/no question particle (post‑verb) | `maj‑wij‑us‑alu` |\n\n**Patterns**  \n1. **Pronoun agreement** – a subject prefix (juw/​wej/​maj) precedes the root.  \n2. **Tense** – *‑usa* = present, *‑uwa* = past.  \n3. **Question** – *‑alu* follows the tense "
+   },
+   {
+    "round": 3,
+    "agent": 1,
+    "msg": "**Consolidated Morpheme List (4‑pair evidence)**  \n\n| Morpheme | Meaning | Occurrence |\n|----------|---------|------------|\n| **maj‑** | 2nd‑sg “you” (subject prefix) | `maj‑wij‑us‑alu` |\n| **juw‑** | 3rd‑sg “he” (subject prefix) | `juw‑jaj‑ese` |\n| **wej‑** | 1st‑pl “we” (subject prefix) | `wej‑wij‑usa`, `wej‑wi‑ju‑wa` |\n| **wij** | root “call” (also used for carry/wait in this corpus) | all except first |\n| **usa** | present‑tense marker | `wej‑wij‑usa` |\n| **uwa** | past‑tense marker | `wej‑wi‑ju‑wa` |\n| **alu** | yes/no question particle (post‑verb) | `maj‑wij‑us‑alu` |\n\n**Patterns**  \n1. **Subject agreement** – a prefix (maj/juw/wej) precedes the root.  \n2. **Tense** – *‑usa* = present, *‑uwa* = past (consistent across the “we call” vs “we waited” pair).  \n3. **Question formation** – "
+   },
+   {
+    "round": 3,
+    "agent": 2,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198184, Req]"
+   },
+   {
+    "round": 3,
+    "agent": 3,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198009, Req]"
+   },
+   {
+    "round": "answer",
+    "agent": 0,
+    "raw": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 197834, Req]"
+   },
+   {
+    "round": "answer",
+    "agent": 1,
+    "raw": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 197659, Req]"
+   },
+   {
+    "round": "answer",
+    "agent": 2,
+    "raw": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 197484, Req]"
+   },
+   {
+    "round": "answer",
+    "agent": 3,
+    "raw": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 197309, Req]"
+   }
+  ]
+ },
+ {
+  "puzzle": "gen-000",
+  "language": "Selatu",
+  "family": "Generated/vowel-harmony",
+  "condition": "poison",
+  "seed": 1,
+  "model": "openai/gpt-oss-20b",
+  "provider": "groq",
+  "n_agents": 4,
+  "rounds": 4,
+  "corrupted_rows": [
+   {
+    "row": 1,
+    "source": "lamjajeweli",
+    "was": "Did I carry?",
+    "now": "he cooks"
+   },
+   {
+    "row": 2,
+    "source": "majjajewe",
+    "was": "you carried",
+    "now": "the goat carried"
+   }
+  ],
+  "elapsed_s": 2029.5,
+  "board": [
+   {
+    "agent": 0,
+    "msg": "**Board**  \n\n| Morpheme | Meaning (my evidence) |\n|----------|-----------------------|\n| *p* | past tense marker |\n| *ju* | 3rd‑person singular subject (“he/ she”) |\n| *w* | verb root “call / carry” |\n| *j* | nominalizer / question particle (“does / did”) |\n| *i* | interrogative suffix (“…?”) |\n| *sa* | present‑tense “call” (as in *we call*) |\n| *su* | present‑tense “carry” (as in *he carries*) |\n| *walu* | plural/3rd‑person “they” subject |\n| *je* | copular “does / does he” (used with *ju* for questions) |\n| *jeseli* | auxiliary “does” + subject “he” + verb “carry” + question‑ending “i” |\n| *jeseli* (short) | “he carries” (no question, no past) |\n\n**Patterns**  \n1. **Tense** – *p* + root + *walu* = past plural (“Did they call?”).  \n2. **Question** – prefix *ju* + root + *je* + *i* = 3rd‑s"
+   },
+   {
+    "agent": 1,
+    "msg": "**Agent 1 Update (≤150 words)**  \n\n**Morpheme list (from my 4 pairs)**  \n| Morpheme | Tentative meaning (supported by evidence) |\n|----------|-------------------------------------------|\n| *puj* | “do they / did they” – question‑marker + 3rd‑pl. subject |\n| *we* | 1st‑pl. subject “we” |\n| *ma* | 2nd‑sg. subject “you” |\n| *ju* | 3rd‑sg. subject “he/she/it” (appears in *pujwumiseli* as “they”‑marker, so maybe plural/3rd‑pl. “they”) |\n| *w* | verb root (either “wait” or “call”; context decides) |\n| *u* | past‑tense marker (in *jwijuwa* and *jwumiweli*) |\n| *i* | interrogative/ending “?” (only in questions) |\n| *sa* | present‑tense form of the root (as in *majwijusa* “you call” – *sa* = “present”) |\n| *li* | present‑tense form of the root (as in *pujwumiseli* “do they wait?”) |\n| *m* | optiona"
+   },
+   {
+    "agent": 2,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199294, Req]"
+   },
+   {
+    "agent": 3,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199119, Req]"
+   },
+   {
+    "agent": 0,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198944, Req]"
+   },
+   {
+    "agent": 1,
+    "msg": "**Agent 1 (update)**  \n\n| Morpheme | Meaning (supported by all four pairs) |\n|----------|--------------------------------------|\n| *pu* | plural‑3rd‑person subject (“they”) |\n| *j* | interrogative / question‑particle |\n| *w* | verb root (common to “wait” / “call”) |\n| *u* | past‑tense marker (appears before root in past) |\n| *m* | 1st‑pl. subject “we” (from *wejwijuwa*) |\n| *ma* | 2nd‑sg. subject “you” (from *majwijusa*) |\n| *sa* | present‑tense form of the root (as in *majwijusa*) |\n| *li* | present‑tense form of the root (as in *pujwumiseli*) |\n| *i* | question‑ending (only in questions) |\n\n**Patterns**\n\n1. **Subject prefix**: *pu‑* (they), *ma‑* (you), *m‑* (we).  \n2. **Tense**: *u* precedes the root for past; absence → present.  \n3. **Question**: *j* + *i* surround the clause; *j* can "
+   },
+   {
+    "agent": 2,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199825, Req]"
+   },
+   {
+    "agent": 3,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199650, Req]"
+   },
+   {
+    "agent": 0,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199475, Req]"
+   },
+   {
+    "agent": 1,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199300, Req]"
+   },
+   {
+    "agent": 2,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199125, Req]"
+   },
+   {
+    "agent": 3,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198950, Req]"
+   },
+   {
+    "agent": 0,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198775, Req]"
+   },
+   {
+    "agent": 1,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198600, Req]"
+   },
+   {
+    "agent": 2,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198425, Req]"
+   },
+   {
+    "agent": 3,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198250, Req]"
+   }
+  ],
+  "queries": [
+   {
+    "qid": 0,
+    "difficulty": "tutorial",
+    "prompt": "he carries",
+    "gold": [
+     "juw",
+     "jaje",
+     "se"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 3,
+     "juw li": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 1,
+    "difficulty": "standard",
+    "prompt": "they walk",
+    "gold": [
+     "puj",
+     "pupa",
+     "sa"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 3,
+     "pu su li": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 2,
+    "difficulty": "standard",
+    "prompt": "you waited",
+    "gold": [
+     "maj",
+     "wumi",
+     "we"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 3,
+     "ma w u li": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 3,
+    "difficulty": "standard",
+    "prompt": "Did they talk?",
+    "gold": [
+     "puj",
+     "rupi",
+     "we",
+     "li"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 3,
+     "pu j w u li i": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 4,
+    "difficulty": "standard",
+    "prompt": "we help",
+    "gold": [
+     "wej",
+     "mura",
+     "sa"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 3,
+     "m w li": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 5,
+    "difficulty": "curveball",
+    "prompt": "Do you walk?",
+    "gold": [
+     "maj",
+     "pupa",
+     "sa",
+     "lu"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 3,
+     "ma j w li i": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 6,
+    "difficulty": "curveball",
+    "prompt": "Do they call?",
+    "gold": [
+     "puj",
+     "wiju",
+     "sa",
+     "lu"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 3,
+     "pu j w li i": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   }
+  ],
+  "transcript": [
+   {
+    "round": 0,
+    "agent": 0,
+    "msg": "**Board**  \n\n| Morpheme | Meaning (my evidence) |\n|----------|-----------------------|\n| *p* | past tense marker |\n| *ju* | 3rd‑person singular subject (“he/ she”) |\n| *w* | verb root “call / carry” |\n| *j* | nominalizer / question particle (“does / did”) |\n| *i* | interrogative suffix (“…?”) |\n| *sa* | present‑tense “call” (as in *we call*) |\n| *su* | present‑tense “carry” (as in *he carries*) |\n| *walu* | plural/3rd‑person “they” subject |\n| *je* | copular “does / does he” (used with *ju* for questions) |\n| *jeseli* | auxiliary “does” + subject “he” + verb “carry” + question‑ending “i” |\n| *jeseli* (short) | “he carries” (no question, no past) |\n\n**Patterns**  \n1. **Tense** – *p* + root + *walu* = past plural (“Did they call?”).  \n2. **Question** – prefix *ju* + root + *je* + *i* = 3rd‑s"
+   },
+   {
+    "round": 0,
+    "agent": 1,
+    "msg": "**Agent 1 Update (≤150 words)**  \n\n**Morpheme list (from my 4 pairs)**  \n| Morpheme | Tentative meaning (supported by evidence) |\n|----------|-------------------------------------------|\n| *puj* | “do they / did they” – question‑marker + 3rd‑pl. subject |\n| *we* | 1st‑pl. subject “we” |\n| *ma* | 2nd‑sg. subject “you” |\n| *ju* | 3rd‑sg. subject “he/she/it” (appears in *pujwumiseli* as “they”‑marker, so maybe plural/3rd‑pl. “they”) |\n| *w* | verb root (either “wait” or “call”; context decides) |\n| *u* | past‑tense marker (in *jwijuwa* and *jwumiweli*) |\n| *i* | interrogative/ending “?” (only in questions) |\n| *sa* | present‑tense form of the root (as in *majwijusa* “you call” – *sa* = “present”) |\n| *li* | present‑tense form of the root (as in *pujwumiseli* “do they wait?”) |\n| *m* | optiona"
+   },
+   {
+    "round": 0,
+    "agent": 2,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199294, Req]"
+   },
+   {
+    "round": 0,
+    "agent": 3,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199119, Req]"
+   },
+   {
+    "round": 1,
+    "agent": 0,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198944, Req]"
+   },
+   {
+    "round": 1,
+    "agent": 1,
+    "msg": "**Agent 1 (update)**  \n\n| Morpheme | Meaning (supported by all four pairs) |\n|----------|--------------------------------------|\n| *pu* | plural‑3rd‑person subject (“they”) |\n| *j* | interrogative / question‑particle |\n| *w* | verb root (common to “wait” / “call”) |\n| *u* | past‑tense marker (appears before root in past) |\n| *m* | 1st‑pl. subject “we” (from *wejwijuwa*) |\n| *ma* | 2nd‑sg. subject “you” (from *majwijusa*) |\n| *sa* | present‑tense form of the root (as in *majwijusa*) |\n| *li* | present‑tense form of the root (as in *pujwumiseli*) |\n| *i* | question‑ending (only in questions) |\n\n**Patterns**\n\n1. **Subject prefix**: *pu‑* (they), *ma‑* (you), *m‑* (we).  \n2. **Tense**: *u* precedes the root for past; absence → present.  \n3. **Question**: *j* + *i* surround the clause; *j* can "
+   },
+   {
+    "round": 1,
+    "agent": 2,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199825, Req]"
+   },
+   {
+    "round": 1,
+    "agent": 3,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199650, Req]"
+   },
+   {
+    "round": 2,
+    "agent": 0,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199475, Req]"
+   },
+   {
+    "round": 2,
+    "agent": 1,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199300, Req]"
+   },
+   {
+    "round": 2,
+    "agent": 2,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199125, Req]"
+   },
+   {
+    "round": 2,
+    "agent": 3,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198950, Req]"
+   },
+   {
+    "round": 3,
+    "agent": 0,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198775, Req]"
+   },
+   {
+    "round": 3,
+    "agent": 1,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198600, Req]"
+   },
+   {
+    "round": 3,
+    "agent": 2,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198425, Req]"
+   },
+   {
+    "round": 3,
+    "agent": 3,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198250, Req]"
+   },
+   {
+    "round": "answer",
+    "agent": 0,
+    "raw": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198075, Req]"
+   },
+   {
+    "round": "answer",
+    "agent": 1,
+    "raw": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 197900, Req]"
+   },
+   {
+    "round": "answer",
+    "agent": 2,
+    "raw": "ANSWER 0: ju w li  \nANSWER 1: pu su li  \nANSWER 2: ma w u li  \nANSWER 3: pu j w u li i  \nANSWER 4: m w li  \nANSWER 5: ma j w li i  \nANSWER 6: pu j w li i"
+   },
+   {
+    "round": "answer",
+    "agent": 3,
+    "raw": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198552, Req]"
+   }
+  ]
+ },
+ {
+  "puzzle": "gen-000",
+  "language": "Selatu",
+  "family": "Generated/vowel-harmony",
+  "condition": "poison",
+  "seed": 2,
+  "model": "openai/gpt-oss-20b",
+  "provider": "groq",
+  "n_agents": 4,
+  "rounds": 4,
+  "corrupted_rows": [
+   {
+    "row": 0,
+    "source": "wejwijusa",
+    "was": "we call",
+    "now": "they jumped"
+   },
+   {
+    "row": 1,
+    "source": "lamjajeweli",
+    "was": "Did I carry?",
+    "now": "the crab jumped"
+   }
+  ],
+  "elapsed_s": 1439.2,
+  "board": [
+   {
+    "agent": 0,
+    "msg": "**Board Entry (Agent 0)**  \n\n**Morpheme → meaning (supported by evidence)**  \n| Morpheme | Meaning | Evidence |\n|----------|---------|----------|\n| **puj** | subject marker “they” (or a general subject prefix) | “pujwijuwa” → *they called* |\n| **we**  | subject marker “we” | “wejwijuwa” → *we called* |\n| **wumi**| root “wait” | “pujwumiseli” → *wait* |\n| **wijuwa**| root “call” + past‑tense marker (juwa) | “pujwijuwa” & “wejwijuwa” → *called* |\n| **seli**| subject marker “they” (used in question form) | “pujwumiseli” → *do they wait?* |\n| **puj‑** (first element when followed by a question) | question particle “Do” | “pujwumiseli” → question |\n\n**Patterns / Grammar Notes**\n\n1. **Pronoun + Root + Tense**  \n   - *we* + *wijuwa* = *we called*  \n   - *puj* + *wijuwa* = *they called*  \n\n2. **Qu"
+   },
+   {
+    "agent": 1,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199809, Req]"
+   },
+   {
+    "agent": 2,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199634, Req]"
+   },
+   {
+    "agent": 3,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199458, Req]"
+   },
+   {
+    "agent": 0,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199283, Req]"
+   },
+   {
+    "agent": 1,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199108, Req]"
+   },
+   {
+    "agent": 2,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198933, Req]"
+   },
+   {
+    "agent": 3,
+    "msg": "**Board Entry (Agent 3)**  \n\n**Morpheme → meaning (evidence)**  \n| Morpheme | Meaning | Evidence |\n|----------|---------|----------|\n| **maj**  | 2nd‑person singular “you” | majwijusa – *you call*; majjajewe – *you carried* |\n| **wija** | root “call” | majwijusa |\n| **wiju** | root “carry” (present) | juwjajeseli – *Does he carry?* |\n| **jaj**  | past‑tense marker | majjajewe – *you carried*; juwjajeseli – *Does he carry?* (present) |\n| **seli** | question particle “Do …?” (applies to 3rd‑person singular) | juwjajeseli – *Does he carry?* |\n| **we**   | 1st‑person plural “we” | *wejwijuwa* – *we called* (from shared) |\n| **puj**  | 3rd‑person plural “they” (or general subject) | *pujwijuwa* – *they called*; *pujwumiseli* – *do they wait?* |\n\n**Patterns / Grammar**\n\n1. **Pronoun + Root + (Te"
+   },
+   {
+    "agent": 0,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199826, Req]"
+   },
+   {
+    "agent": 1,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199651, Req]"
+   },
+   {
+    "agent": 2,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199476, Req]"
+   },
+   {
+    "agent": 3,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199300, Req]"
+   },
+   {
+    "agent": 0,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199126, Req]"
+   },
+   {
+    "agent": 1,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198951, Req]"
+   },
+   {
+    "agent": 2,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198872, Req]"
+   },
+   {
+    "agent": 3,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198697, Req]"
+   }
+  ],
+  "queries": [
+   {
+    "qid": 0,
+    "difficulty": "tutorial",
+    "prompt": "he carries",
+    "gold": [
+     "juw",
+     "jaje",
+     "se"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 4
+    },
+    "unanimous": true,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 1,
+    "difficulty": "standard",
+    "prompt": "they walk",
+    "gold": [
+     "puj",
+     "pupa",
+     "sa"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 4
+    },
+    "unanimous": true,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 2,
+    "difficulty": "standard",
+    "prompt": "you waited",
+    "gold": [
+     "maj",
+     "wumi",
+     "we"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 4
+    },
+    "unanimous": true,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 3,
+    "difficulty": "standard",
+    "prompt": "Did they talk?",
+    "gold": [
+     "puj",
+     "rupi",
+     "we",
+     "li"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 4
+    },
+    "unanimous": true,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 4,
+    "difficulty": "standard",
+    "prompt": "we help",
+    "gold": [
+     "wej",
+     "mura",
+     "sa"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 4
+    },
+    "unanimous": true,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 5,
+    "difficulty": "curveball",
+    "prompt": "Do you walk?",
+    "gold": [
+     "maj",
+     "pupa",
+     "sa",
+     "lu"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 4
+    },
+    "unanimous": true,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 6,
+    "difficulty": "curveball",
+    "prompt": "Do they call?",
+    "gold": [
+     "puj",
+     "wiju",
+     "sa",
+     "lu"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 4
+    },
+    "unanimous": true,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   }
+  ],
+  "transcript": [
+   {
+    "round": 0,
+    "agent": 0,
+    "msg": "**Board Entry (Agent 0)**  \n\n**Morpheme → meaning (supported by evidence)**  \n| Morpheme | Meaning | Evidence |\n|----------|---------|----------|\n| **puj** | subject marker “they” (or a general subject prefix) | “pujwijuwa” → *they called* |\n| **we**  | subject marker “we” | “wejwijuwa” → *we called* |\n| **wumi**| root “wait” | “pujwumiseli” → *wait* |\n| **wijuwa**| root “call” + past‑tense marker (juwa) | “pujwijuwa” & “wejwijuwa” → *called* |\n| **seli**| subject marker “they” (used in question form) | “pujwumiseli” → *do they wait?* |\n| **puj‑** (first element when followed by a question) | question particle “Do” | “pujwumiseli” → question |\n\n**Patterns / Grammar Notes**\n\n1. **Pronoun + Root + Tense**  \n   - *we* + *wijuwa* = *we called*  \n   - *puj* + *wijuwa* = *they called*  \n\n2. **Qu"
+   },
+   {
+    "round": 0,
+    "agent": 1,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199809, Req]"
+   },
+   {
+    "round": 0,
+    "agent": 2,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199634, Req]"
+   },
+   {
+    "round": 0,
+    "agent": 3,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199458, Req]"
+   },
+   {
+    "round": 1,
+    "agent": 0,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199283, Req]"
+   },
+   {
+    "round": 1,
+    "agent": 1,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199108, Req]"
+   },
+   {
+    "round": 1,
+    "agent": 2,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198933, Req]"
+   },
+   {
+    "round": 1,
+    "agent": 3,
+    "msg": "**Board Entry (Agent 3)**  \n\n**Morpheme → meaning (evidence)**  \n| Morpheme | Meaning | Evidence |\n|----------|---------|----------|\n| **maj**  | 2nd‑person singular “you” | majwijusa – *you call*; majjajewe – *you carried* |\n| **wija** | root “call” | majwijusa |\n| **wiju** | root “carry” (present) | juwjajeseli – *Does he carry?* |\n| **jaj**  | past‑tense marker | majjajewe – *you carried*; juwjajeseli – *Does he carry?* (present) |\n| **seli** | question particle “Do …?” (applies to 3rd‑person singular) | juwjajeseli – *Does he carry?* |\n| **we**   | 1st‑person plural “we” | *wejwijuwa* – *we called* (from shared) |\n| **puj**  | 3rd‑person plural “they” (or general subject) | *pujwijuwa* – *they called*; *pujwumiseli* – *do they wait?* |\n\n**Patterns / Grammar**\n\n1. **Pronoun + Root + (Te"
+   },
+   {
+    "round": 2,
+    "agent": 0,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199826, Req]"
+   },
+   {
+    "round": 2,
+    "agent": 1,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199651, Req]"
+   },
+   {
+    "round": 2,
+    "agent": 2,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199476, Req]"
+   },
+   {
+    "round": 2,
+    "agent": 3,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199300, Req]"
+   },
+   {
+    "round": 3,
+    "agent": 0,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199126, Req]"
+   },
+   {
+    "round": 3,
+    "agent": 1,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198951, Req]"
+   },
+   {
+    "round": 3,
+    "agent": 2,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198872, Req]"
+   },
+   {
+    "round": 3,
+    "agent": 3,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198697, Req]"
+   },
+   {
+    "round": "answer",
+    "agent": 0,
+    "raw": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198522, Req]"
+   },
+   {
+    "round": "answer",
+    "agent": 1,
+    "raw": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198348, Req]"
+   },
+   {
+    "round": "answer",
+    "agent": 2,
+    "raw": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198173, Req]"
+   },
+   {
+    "round": "answer",
+    "agent": 3,
+    "raw": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 197998, Req]"
+   }
+  ]
+ },
+ {
+  "puzzle": "gen-000",
+  "language": "Selatu",
+  "family": "Generated/vowel-harmony",
+  "condition": "monitor",
+  "seed": 1,
+  "model": "openai/gpt-oss-20b",
+  "provider": "groq",
+  "n_agents": 5,
+  "rounds": 4,
+  "corrupted_rows": [],
+  "elapsed_s": 1817.2,
+  "board": [
+   {
+    "agent": 0,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199292, Req]"
+   },
+   {
+    "agent": 1,
+    "msg": "**Agent 1’s Update (≤150 words)**\n\n**Morpheme inventory (supported by evidence):**  \n- **pu‑** = 3rd‑person plural subject (“they”)  \n- **ju‑** = 3rd‑person singular subject (“he”)  \n- **we‑** = 1st‑person plural subject (“we”)  \n- **wumi** = root “wait”  \n- **wrup** = root “talk”  \n- **‑ise** = present‑tense / default aspect marker (used after *wrup* in “he talks”)  \n- **‑weli** = past‑tense marker (appears after *wumi* in “Did we wait?”)  \n- **‑seli** = yes/no question marker (after *wumi* in “Do they wait?”)\n\n**Pattern observations:**  \n1. Word order: [SUBJ‑PREFIX][ROOT][TENSE/ASPECT][QUESTION]  \n2. Tense: *‑weli* = past, absence of tense morpheme = present.  \n3. Question: *‑seli* signals a yes/no question; absent in statements.  \n4. Agreement: subject prefixes encode person/number; roo"
+   },
+   {
+    "agent": 2,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199826, Req]"
+   },
+   {
+    "agent": 3,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199651, Req]"
+   },
+   {
+    "agent": 4,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199476, Req]"
+   },
+   {
+    "agent": 0,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199301, Req]"
+   },
+   {
+    "agent": 1,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199126, Req]"
+   },
+   {
+    "agent": 2,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198951, Req]"
+   },
+   {
+    "agent": 3,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198776, Req]"
+   },
+   {
+    "agent": 4,
+    "msg": "**Morpheme inventory (supported by my shard)**  \n- **ma‑** = second‑person singular subject “you” (appears in both pairs)  \n- **-a** = default (present‑tense) predicate ending (in “majwijusa”)  \n- **-lu** = yes/no question marker (adds to the present ending in “majwijusalu”)  \n\n**Pattern observations**  \n1. **Word order**: [SUBJECT PREFIX + ROOT + TENSE/ASPECT + QUESTION]  \n2. **Tense/Aspect**: -a indicates a present‑tense statement.  \n3. **Question**: -lu attaches after the tense marker to form a yes/no question.  \n4. **Agreement**: Subject prefix “ma‑” marks the second‑person singular.  \n\n**Comparison to other agents**  \n- Agent 1’s inventory includes many morphemes (pu‑, ju‑, etc.) that are not attested in my two pairs; I have no evidence for them, so those claims cannot be confirmed by"
+   },
+   {
+    "agent": 0,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199826, Req]"
+   },
+   {
+    "agent": 1,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199650, Req]"
+   },
+   {
+    "agent": 2,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199475, Req]"
+   },
+   {
+    "agent": 3,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199301, Req]"
+   },
+   {
+    "agent": 4,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199126, Req]"
+   },
+   {
+    "agent": 0,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198951, Req]"
+   },
+   {
+    "agent": 1,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198775, Req]"
+   },
+   {
+    "agent": 2,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198600, Req]"
+   },
+   {
+    "agent": 3,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198425, Req]"
+   },
+   {
+    "agent": 4,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198250, Req]"
+   }
+  ],
+  "queries": [
+   {
+    "qid": 0,
+    "difficulty": "tutorial",
+    "prompt": "he carries",
+    "gold": [
+     "juw",
+     "jaje",
+     "se"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 4,
+     "ju-juw-a": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 1,
+    "difficulty": "standard",
+    "prompt": "they walk",
+    "gold": [
+     "puj",
+     "pupa",
+     "sa"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 4,
+     "pu-lam-a": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 2,
+    "difficulty": "standard",
+    "prompt": "you waited",
+    "gold": [
+     "maj",
+     "wumi",
+     "we"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 4,
+     "ma-wumi-weli": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 3,
+    "difficulty": "standard",
+    "prompt": "Did they talk?",
+    "gold": [
+     "puj",
+     "rupi",
+     "we",
+     "li"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 4,
+     "pu-rupi-weli-lu": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 4,
+    "difficulty": "standard",
+    "prompt": "we help",
+    "gold": [
+     "wej",
+     "mura",
+     "sa"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 4,
+     "we-mese-a": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 5,
+    "difficulty": "curveball",
+    "prompt": "Do you walk?",
+    "gold": [
+     "maj",
+     "pupa",
+     "sa",
+     "lu"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 4,
+     "ma-lam-a-lu": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 6,
+    "difficulty": "curveball",
+    "prompt": "Do they call?",
+    "gold": [
+     "puj",
+     "wiju",
+     "sa",
+     "lu"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 4,
+     "pu-wiju-a-lu": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false,
+     false
+    ]
+   }
+  ],
+  "transcript": [
+   {
+    "round": 0,
+    "agent": 0,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199292, Req]"
+   },
+   {
+    "round": 0,
+    "agent": 1,
+    "msg": "**Agent 1’s Update (≤150 words)**\n\n**Morpheme inventory (supported by evidence):**  \n- **pu‑** = 3rd‑person plural subject (“they”)  \n- **ju‑** = 3rd‑person singular subject (“he”)  \n- **we‑** = 1st‑person plural subject (“we”)  \n- **wumi** = root “wait”  \n- **wrup** = root “talk”  \n- **‑ise** = present‑tense / default aspect marker (used after *wrup* in “he talks”)  \n- **‑weli** = past‑tense marker (appears after *wumi* in “Did we wait?”)  \n- **‑seli** = yes/no question marker (after *wumi* in “Do they wait?”)\n\n**Pattern observations:**  \n1. Word order: [SUBJ‑PREFIX][ROOT][TENSE/ASPECT][QUESTION]  \n2. Tense: *‑weli* = past, absence of tense morpheme = present.  \n3. Question: *‑seli* signals a yes/no question; absent in statements.  \n4. Agreement: subject prefixes encode person/number; roo"
+   },
+   {
+    "round": 0,
+    "agent": 2,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199826, Req]"
+   },
+   {
+    "round": 0,
+    "agent": 3,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199651, Req]"
+   },
+   {
+    "round": 0,
+    "agent": 4,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199476, Req]"
+   },
+   {
+    "round": 1,
+    "agent": 0,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199301, Req]"
+   },
+   {
+    "round": 1,
+    "agent": 1,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199126, Req]"
+   },
+   {
+    "round": 1,
+    "agent": 2,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198951, Req]"
+   },
+   {
+    "round": 1,
+    "agent": 3,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198776, Req]"
+   },
+   {
+    "round": 1,
+    "agent": 4,
+    "msg": "**Morpheme inventory (supported by my shard)**  \n- **ma‑** = second‑person singular subject “you” (appears in both pairs)  \n- **-a** = default (present‑tense) predicate ending (in “majwijusa”)  \n- **-lu** = yes/no question marker (adds to the present ending in “majwijusalu”)  \n\n**Pattern observations**  \n1. **Word order**: [SUBJECT PREFIX + ROOT + TENSE/ASPECT + QUESTION]  \n2. **Tense/Aspect**: -a indicates a present‑tense statement.  \n3. **Question**: -lu attaches after the tense marker to form a yes/no question.  \n4. **Agreement**: Subject prefix “ma‑” marks the second‑person singular.  \n\n**Comparison to other agents**  \n- Agent 1’s inventory includes many morphemes (pu‑, ju‑, etc.) that are not attested in my two pairs; I have no evidence for them, so those claims cannot be confirmed by"
+   },
+   {
+    "round": 2,
+    "agent": 0,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199826, Req]"
+   },
+   {
+    "round": 2,
+    "agent": 1,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199650, Req]"
+   },
+   {
+    "round": 2,
+    "agent": 2,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199475, Req]"
+   },
+   {
+    "round": 2,
+    "agent": 3,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199301, Req]"
+   },
+   {
+    "round": 2,
+    "agent": 4,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199126, Req]"
+   },
+   {
+    "round": 3,
+    "agent": 0,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198951, Req]"
+   },
+   {
+    "round": 3,
+    "agent": 1,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198775, Req]"
+   },
+   {
+    "round": 3,
+    "agent": 2,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198600, Req]"
+   },
+   {
+    "round": 3,
+    "agent": 3,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198425, Req]"
+   },
+   {
+    "round": 3,
+    "agent": 4,
+    "msg": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198250, Req]"
+   },
+   {
+    "round": "answer",
+    "agent": 0,
+    "raw": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198075, Req]"
+   },
+   {
+    "round": "answer",
+    "agent": 1,
+    "raw": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 197900, Req]"
+   },
+   {
+    "round": "answer",
+    "agent": 2,
+    "raw": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 197725, Req]"
+   },
+   {
+    "round": "answer",
+    "agent": 3,
+    "raw": "[call failed: groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kfrf6zqwf3pt5hyrtapvtrke` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 197550, Req]"
+   },
+   {
+    "round": "answer",
+    "agent": 4,
+    "raw": "ANSWER 0: ju-juw-a  \nANSWER 1: pu-lam-a  \nANSWER 2: ma-wumi-weli  \nANSWER 3: pu-rupi-weli-lu  \nANSWER 4: we-mese-a  \nANSWER 5: ma-lam-a-lu  \nANSWER 6: pu-wiju-a-lu"
+   }
+  ]
+ }
+]

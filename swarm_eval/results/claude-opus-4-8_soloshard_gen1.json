@@ -1,0 +1,5277 @@
+[
+ {
+  "puzzle": "gen-000",
+  "language": "Selatu",
+  "family": "Generated/vowel-harmony",
+  "condition": "soloshard",
+  "seed": 1,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "n_agents": 4,
+  "rounds": 0,
+  "corrupted_rows": [],
+  "elapsed_s": 37.1,
+  "board": [],
+  "queries": [
+   {
+    "qid": 0,
+    "difficulty": "tutorial",
+    "prompt": "he carries",
+    "gold": [
+     "juw",
+     "jaje",
+     "se"
+    ],
+    "swarm": [
+     "wep",
+     "jaje",
+     "se"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.6186,
+    "morf1": 0.6667,
+    "votes": {
+     "wep jaje se": 1,
+     "juw jaje se": 1,
+     "wej jaje we": 1,
+     "juw mura se": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     true,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 1,
+    "difficulty": "standard",
+    "prompt": "they walk",
+    "gold": [
+     "puj",
+     "pupa",
+     "sa"
+    ],
+    "swarm": [
+     "puj",
+     "mura",
+     "se"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.2961,
+    "morf1": 0.3333,
+    "votes": {
+     "puj mura se": 1,
+     "maj mese sa": 1,
+     "puj lam wa": 1,
+     "puj mese se": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 2,
+    "difficulty": "standard",
+    "prompt": "you waited",
+    "gold": [
+     "maj",
+     "wumi",
+     "we"
+    ],
+    "swarm": [
+     "maj",
+     "mese",
+     "we"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.2961,
+    "morf1": 0.6667,
+    "votes": {
+     "maj mese we": 1,
+     "wep wumi we": 1,
+     "maj mura wa": 1,
+     "maj wumi we": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     true
+    ]
+   },
+   {
+    "qid": 3,
+    "difficulty": "standard",
+    "prompt": "Did they talk?",
+    "gold": [
+     "puj",
+     "rupi",
+     "we",
+     "li"
+    ],
+    "swarm": [
+     "puj",
+     "wumi",
+     "wa",
+     "lu"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.2619,
+    "morf1": 0.25,
+    "votes": {
+     "puj wumi wa lu": 1,
+     "maj mura we li": 1,
+     "puj mese sa li": 1,
+     "puj rupi se li": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 4,
+    "difficulty": "standard",
+    "prompt": "we help",
+    "gold": [
+     "wej",
+     "mura",
+     "sa"
+    ],
+    "swarm": [
+     "wej",
+     "ruli",
+     "se"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.2649,
+    "morf1": 0.3333,
+    "votes": {
+     "wej ruli se": 1,
+     "wej ruli sa": 1,
+     "wep pupa we": 1,
+     "wej jaje se": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 5,
+    "difficulty": "curveball",
+    "prompt": "Do you walk?",
+    "gold": [
+     "maj",
+     "pupa",
+     "sa",
+     "lu"
+    ],
+    "swarm": [
+     "maj",
+     "mura",
+     "sa",
+     "lu"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.5282,
+    "morf1": 0.75,
+    "votes": {
+     "maj mura sa lu": 1,
+     "wep mese se li": 1,
+     "maj lam sa lu": 1,
+     "maj mese se li": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 6,
+    "difficulty": "curveball",
+    "prompt": "Do they call?",
+    "gold": [
+     "puj",
+     "wiju",
+     "sa",
+     "lu"
+    ],
+    "swarm": [
+     "puj",
+     "wiju",
+     "se",
+     "li"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.7025,
+    "morf1": 0.5,
+    "votes": {
+     "puj wiju wa lu": 1,
+     "maj wiju se li": 1,
+     "puj wiju se li": 2
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   }
+  ],
+  "transcript": [
+   {
+    "round": "answer",
+    "agent": 0,
+    "raw": "Let me analyze my evidence:\n\n- pujwijuwalu → Did they call? = puj + wiju + wa + lu\n- lamjajeweli → Did I carry? = lam + jaje + we + li\n- majjajewe → you carried = maj + jaje + we\n- wejwijuwa → we called = wej + wiju + wa\n\nAnalysis:\n- Subjects (prefix): puj=they, lam=I, maj=you, wej=we\n- Verbs: wiju=call, jaje=carry\n- Tense: we=past, wa=? (wa appears in both \"we called\" past and \"did they call\")\n  - Actually \"we called\" = wej+wiju+wa, \"Did they call?\" = puj+wiju+wa+lu\n  - So wa = past tense, we = past tense too? Let me reconsider.\n  - jaje+we = carry past; wiju+wa = call past. So verb-specific tense vowel? we/wa are past markers.\n- Question marker: lu (end) = \"Did...?\" and li (end) = \"Did I...?\" — li/lu are question particles agreeing with subject? lu with they, li with I.\n\nQuestion particle: suffix at end. lu (they), li (I).\n\nNeed more morphemes from bank: se, sa, mura, pupa, ruli, rupi, wumi, mese, puj, wej, maj, lam, wep.\n\nFor queries I'll infer:\n- he=? Only have they/I/you/we. Remaining subject-like: wep could be \"he\".\n- walk/talk/help/wait: verbs = wiju(call), jaje(carry). Others: mura, pupa, ruli, rupi, wumi, mese likely verbs.\n\nTense/aspect: past = we/wa. Present (he carries, he walks) = probably no past marker or different vowel. Likely present uses different vowel like \"li/lu\"? No those are questions. Let me guess present = bare or \"sa/se\".\n\nI'll assign present marker. Given we/wa past, present could be se/sa.\n\nANSWER 0: wep jaje se\nANSWER 1: puj mura se\nANSWER 2: maj mese we\nANSWER 3: puj wumi wa lu\nANSWER 4: wej ruli se\nANSWER 5: maj mura sa lu\nANSWER 6: puj wiju wa lu"
+   },
+   {
+    "round": "answer",
+    "agent": 1,
+    "raw": "Analyzing my evidence:\n\n- juw jaje se → he carries (juw=he, jaje=carry, se=present?)\n- juw jaje se li → Does he carry? (li=question)\n- wej wumi we li → Did we wait? (wej=we, wumi=wait, we=past?, li=question)\n- wej wiju sa → we call (wej=we, wiju=call, sa=?)\n\nSo: juw=he, wej=we, jaje=carry, wumi=wait, wiju=call\nse=present (he carries), we=past (waited), li=question\nsa appears with \"we call\" — maybe present tense marker variant, or tense depends.\n\n\"we call\" = wej wiju sa; \"he carries\" = juw jaje se. Both present. So tense marker differs: se vs sa — likely agreement with subject (he=se, we=sa).\n\nSo present: he→se, we→sa. Past: we→we (wej wumi we li).\n\nQueries:\n0: he carries → juw jaje se\n1: they walk → need \"they\" and \"walk\" morphemes (unknown to me)\n2: you waited → \"you\" + wumi + past\n3: Did they talk? → they + talk + past? + li\n4: we help → wej + help + sa\n5: Do you walk? → you + walk + present + li\n6: Do they call? → they + wiju + present + li\n\nI'll commit with what's known; others fill unknowns.\n\nANSWER 0: juw jaje se\nANSWER 1: maj mese sa\nANSWER 2: wep wumi we\nANSWER 3: maj mura we li\nANSWER 4: wej ruli sa\nANSWER 5: wep mese se li\nANSWER 6: maj wiju se li"
+   },
+   {
+    "round": "answer",
+    "agent": 2,
+    "raw": "Analyzing my evidence:\n\n- pujwijuwa → they called: puj=they, wiju=call, wa=past? → puj+wiju+wa\n- pujwumiseli → Do they wait?: puj=they, wumi=wait, se+li=question? → puj+wumi+se+li\n- majwijusalu → Do you call?: maj=you, wiju=call, sa+lu=? → maj+wiju+sa+lu\n\nSo: puj=they, maj=you\nwiju=call, wumi=wait\nTense/mood markers: wa=past(statement), -li=question marker\n\"Do they wait?\" = puj+wumi+se+li (present question)\n\"Do you call?\" = maj+wiju+sa+lu\n\nHmm, two question forms: seli and salu. Subject-based agreement? puj(they)→se+li, maj(you)→sa+lu.\nSo question suffix: present with subject agreement. \"they\"→se+li, \"you\"→sa+lu.\n\n\"they called\" = statement past = puj+wiju+wa. So wa=past statement.\nPresent statement likely uses sa/se without li/lu? Let me guess: statement present uses just subject vowel.\n\nLet me post findings to board.\n\n```\nBoard: puj=they, maj=you, wiju=call, wumi=wait\nwa=past statement; question=present (se/sa + li/lu by subject)\nthey→se+li, you→sa+lu\n```\n\nApplying to queries (need more morphemes — guessing from bank):\n- lam, wej, wep, jaje, mese, mura, pupa, ruli, rupi = verbs (walk, carry, help, talk, wait...)\n- maj=you, puj=they; need he/we subjects\n\nPronoun guesses: he/we from bank? Possibly within morphemes. Limited evidence.\n\nANSWER 0: wej jaje we\nANSWER 1: puj lam wa\nANSWER 2: maj mura wa\nANSWER 3: puj mese sa li\nANSWER 4: wep pupa we\nANSWER 5: maj lam sa lu\nANSWER 6: puj wiju se li"
+   },
+   {
+    "round": "answer",
+    "agent": 3,
+    "raw": "My evidence analysis:\n\n- juwrupise → he talks: juw=he, rupi=talk, se=present? \n- wejwumiwe → we waited: wej=we, wumi=wait, we=past\n- majwijusa → you call: maj=you, wiju=call, sa=present/you?\n\nPattern: SUBJECT + VERB + TENSE\n- juw=he, wej=we, maj=you\n- rupi=talk, wumi=wait, wiju=call\n- se, we, sa = suffixes. se seems present (talks). we=past (waited). sa with \"call\" (you call) — present too.\n\nLikely: se=present (he talks), sa=present variant. Actually \"you call\" and \"he talks\" both present. Difference may be subject-agreement. Let me treat -se and -sa as present, -we as past.\n\nNeed more morphemes: lam, puj, wep, jaje, mese, mura, pupa, ruli, li, lu, wa.\n- Probably: puj/wep=they, carry/walk/help verbs among jaje/mese/mura/pupa/ruli.\n- li/lu/wa = question or other tense markers.\n\nGuesses: they=puj, carry=mura, walk=mese, help=jaje, talk=rupi.\nQuestion marker = li (sentence final).\n\nANSWER 0: juw mura se\nANSWER 1: puj mese se\nANSWER 2: maj wumi we\nANSWER 3: puj rupi se li\nANSWER 4: wej jaje se\nANSWER 5: maj mese se li\nANSWER 6: puj wiju se li"
+   }
+  ]
+ },
+ {
+  "puzzle": "gen-000",
+  "language": "Selatu",
+  "family": "Generated/vowel-harmony",
+  "condition": "soloshard",
+  "seed": 2,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "n_agents": 4,
+  "rounds": 0,
+  "corrupted_rows": [],
+  "elapsed_s": 31.1,
+  "board": [],
+  "queries": [
+   {
+    "qid": 0,
+    "difficulty": "tutorial",
+    "prompt": "he carries",
+    "gold": [
+     "juw",
+     "jaje",
+     "se"
+    ],
+    "swarm": [
+     "juw",
+     "jaje",
+     "se"
+    ],
+    "em_decomp": true,
+    "em_surface": true,
+    "chrf": 1.0,
+    "morf1": 1.0,
+    "votes": {
+     "pupa jaje sa": 1,
+     "juw jaje se": 2,
+     "maj wiju sa": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     true,
+     false,
+     true
+    ]
+   },
+   {
+    "qid": 1,
+    "difficulty": "standard",
+    "prompt": "they walk",
+    "gold": [
+     "puj",
+     "pupa",
+     "sa"
+    ],
+    "swarm": [
+     "puj",
+     "mura",
+     "sa"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.3909,
+    "morf1": 0.6667,
+    "votes": {
+     "puj mura sa": 2,
+     "puj lam se": 1,
+     "wej mura se": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 2,
+    "difficulty": "standard",
+    "prompt": "you waited",
+    "gold": [
+     "maj",
+     "wumi",
+     "we"
+    ],
+    "swarm": [
+     "maj",
+     "wumi",
+     "wa"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.8636,
+    "morf1": 0.6667,
+    "votes": {
+     "maj wumi wa": 1,
+     "maj wumi we": 1,
+     "wep jaje wa": 1,
+     "maj ruli we": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     true,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 3,
+    "difficulty": "standard",
+    "prompt": "Did they talk?",
+    "gold": [
+     "puj",
+     "rupi",
+     "we",
+     "li"
+    ],
+    "swarm": [
+     "puj",
+     "ruli",
+     "we",
+     "li"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.7189,
+    "morf1": 0.75,
+    "votes": {
+     "puj ruli we li": 1,
+     "li puj mese wa": 1,
+     "puj mese wa lu": 1,
+     "wej rupi se li": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 4,
+    "difficulty": "standard",
+    "prompt": "we help",
+    "gold": [
+     "wej",
+     "mura",
+     "sa"
+    ],
+    "swarm": [
+     "wej",
+     "rupi",
+     "sa"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.3239,
+    "morf1": 0.6667,
+    "votes": {
+     "wej rupi sa": 1,
+     "wej mura se": 1,
+     "wej ruli sa": 1,
+     "wep pupa se": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 5,
+    "difficulty": "curveball",
+    "prompt": "Do you walk?",
+    "gold": [
+     "maj",
+     "pupa",
+     "sa",
+     "lu"
+    ],
+    "swarm": [
+     "maj",
+     "mura",
+     "sa",
+     "lu"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.5282,
+    "morf1": 0.75,
+    "votes": {
+     "maj mura sa lu": 1,
+     "li maj lam sa": 1,
+     "puj mura se li": 1,
+     "maj mura se li": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 6,
+    "difficulty": "curveball",
+    "prompt": "Do they call?",
+    "gold": [
+     "puj",
+     "wiju",
+     "sa",
+     "lu"
+    ],
+    "swarm": [
+     "puj",
+     "wiju",
+     "sa",
+     "lu"
+    ],
+    "em_decomp": true,
+    "em_surface": true,
+    "chrf": 1.0,
+    "morf1": 1.0,
+    "votes": {
+     "puj wiju sa lu": 1,
+     "li puj wiju sa": 1,
+     "puj wiju wa lu": 1,
+     "wej wiju se li": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     true,
+     false,
+     false,
+     false
+    ]
+   }
+  ],
+  "transcript": [
+   {
+    "round": "answer",
+    "agent": 0,
+    "raw": "Let me analyze my evidence.\n\n- wejwumiweli → Did we wait? = wej + wumi + we + li\n- majwijusalu → Do you call? = maj + wiju + sa + lu\n- pujwijuwa → they called = puj + wiju + wa\n- wejwijusa → we call = wej + wiju + sa\n\nAnalysis:\n- wej = we, maj = you, puj = they\n- wiju = call, wumi = wait\n- sa = present/plain, wa = past\n- lu = question marker (Do you call? has lu)\n- we li = \"Did... ?\" — li = question, we = past? \"Did we wait\" = wej + wumi + we + li. So \"we\" here is past marker, \"li\" question.\n\nSubject prefixes: wej=we, maj=you, puj=they. Need \"he\" → from bank, maybe \"pupa\" or similar unknown. Candidates: lam, wep, jaje, mese, mura, pupa, ruli, rupi. \"he\" — guess pupa.\n\nVerbs: call=wiju, wait=wumi. Need carry, walk, talk, help. From bank: juw, lam, jaje, mese, mura, pupa, ruli, rupi. Guesses: walk=mura, talk=ruli, help=rupi, carry=jaje.\n\nTense/aspect: sa=present plain, wa=past, \"we\"=past marker (in question), lu/li=question. Present question uses sa+lu; past question uses we+li.\n\n- he carries (present plain): pupa + jaje + sa\n- they walk: puj + mura + sa\n- you waited (past): maj + wumi + wa\n- Did they talk? (past Q): puj + ruli + we + li\n- we help: wej + rupi + sa\n- Do you walk? (present Q): maj + mura + sa + lu\n- Do they call? (present Q): puj + wiju + sa + lu\n\nANSWER 0: pupa jaje sa\nANSWER 1: puj mura sa\nANSWER 2: maj wumi wa\nANSWER 3: puj ruli we li\nANSWER 4: wej rupi sa\nANSWER 5: maj mura sa lu\nANSWER 6: puj wiju sa lu"
+   },
+   {
+    "round": "answer",
+    "agent": 1,
+    "raw": "Let me analyze my evidence.\n\n- juwjajese → he carries: juw + jaje + se\n- wejwijuwa → we called: wej + wiju + wa\n- wejwumiwe → we waited: wej + wumi + we\n- majwijusa → you call: maj + wiju + sa\n\nPatterns:\n- Subject prefix: juw=he, wej=we, maj=you\n- Verb root: jaje=carry, wiju=call, wumi=wait\n- Tense/agreement suffix: se (he-present?), wa (we-past), we (we-?), sa (you-present)\n\nFrom \"we called\"(wa) vs \"we waited\"(we): both past? Maybe wa/we differ. \"you call\"(sa) present, \"he carries\"(se) present.\n\nHypothesis: suffix = tense. se/sa = present, wa/we = past. Possibly varies by root/subject. Let me post findings.\n\nANSWER 0: juw jaje se\nANSWER 1: puj lam se\nANSWER 2: maj wumi we\nANSWER 3: li puj mese wa\nANSWER 4: wej mura se\nANSWER 5: li maj lam sa\nANSWER 6: li puj wiju sa"
+   },
+   {
+    "round": "answer",
+    "agent": 2,
+    "raw": "Let me analyze my evidence.\n\n- pujwijuwalu → Did they call?\n- pujwumiseli → Do they wait?\n- lamjajeweli → Did I carry?\n\nSegmenting:\n- puj-wiju-wa-lu → Did they call?\n- puj-wumi-se-li → Do they wait?\n- lam-jaje-we-li → Did I carry?\n\nSo:\n- **puj** = question marker (prefix); **lam** = also question? No—lam appears in \"Did I carry\". puj in questions too. Both questions. Maybe puj=they-related? No, lam+jaje+we+li = Did I carry.\n\nLet me reconsider. Common prefix puj in two \"they\" sentences. lam in \"I\" sentence.\n- puj = they\n- lam = I\n\nRoots: wiju=call, wumi=wait, jaje=carry.\n\nSuffixes: \n- wa-lu (Did...call, past)\n- se-li (Do...wait, present)\n- we-li (Did...carry, past)\n\nTense vowel: wa=past?, se/we=? \"li\" appears in present and past. \"lu\" in past.\n- walu: past\n- seli: present(Do)\n- weli: past(Did I)\n\nHmm, wa=past marker, we=past marker? Both past use different. Let me split: maybe -li = question/present, -lu = question/past... but weli is past.\n\nLet me treat: aspect vowel + question particle.\n- call(past): wiju + wa + lu\n- wait(pres): wumi + se + li\n- carry(past): jaje + we + li\n\nli appears with both. lu only once. Tentatively: se=present, we/wa=past. Question suffix li/lu.\n\nPosting findings to board.\n\nANSWER 0: maj wiju sa\nANSWER 1: puj mura sa\nANSWER 2: wep jaje wa\nANSWER 3: puj mese wa lu\nANSWER 4: wej ruli sa\nANSWER 5: puj mura se li\nANSWER 6: puj wiju wa lu"
+   },
+   {
+    "round": "answer",
+    "agent": 3,
+    "raw": "Let me analyze my evidence.\n\n- juwjajeseli → Does he carry? = juw + jaje + se + li\n- majjajewe → you carried = maj + jaje + we\n- juwrupise → he talks = juw + rupi + se\n\nSo:\n- juw = he\n- maj = you\n- jaje = carry\n- rupi = talk\n- se = present/3rd? Let's see: \"he talks\" = juw rupi se; \"Does he carry?\" = juw jaje se li; \"you carried\" = maj jaje we\n\nMorphemes:\n- se = present tense marker (he talks, does he carry)\n- we = past tense marker (you carried)\n- li = question marker (Does he carry?)\n\nPronouns: juw = he, maj = you. Need: they, we.\n\nVerbs: jaje = carry, rupi = talk. Need: walk, wait, help, call.\nFrom bank: mese, mura, pupa, ruli, wiju, wumi could be verbs.\n\nLet me post findings and make guesses.\n\nANSWER 0: juw jaje se\nANSWER 1: wej mura se\nANSWER 2: maj ruli we\nANSWER 3: wej rupi se li\nANSWER 4: wep pupa se\nANSWER 5: maj mura se li\nANSWER 6: wej wiju se li"
+   }
+  ]
+ },
+ {
+  "puzzle": "gen-001",
+  "language": "Numusi",
+  "family": "Generated/noun-class-agreement",
+  "condition": "soloshard",
+  "seed": 1,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "n_agents": 4,
+  "rounds": 0,
+  "corrupted_rows": [],
+  "elapsed_s": 40.4,
+  "board": [],
+  "queries": [
+   {
+    "qid": 0,
+    "difficulty": "tutorial",
+    "prompt": "the goat jumped",
+    "gold": [
+     "nupun",
+     "no",
+     "meri",
+     "sa",
+     "su"
+    ],
+    "swarm": [
+     "nupun",
+     "no",
+     "meri",
+     "sa",
+     "su"
+    ],
+    "em_decomp": true,
+    "em_surface": true,
+    "chrf": 0.832,
+    "morf1": 1.0,
+    "votes": {
+     "nupun no pa sa su": 1,
+     "nupun no meri sa su": 2,
+     "nupun no nelo sa su": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     true,
+     true,
+     false
+    ]
+   },
+   {
+    "qid": 1,
+    "difficulty": "standard",
+    "prompt": "the cat called",
+    "gold": [
+     "pinuu",
+     "wo",
+     "liwi",
+     "sa",
+     "la"
+    ],
+    "swarm": [
+     "pinuu",
+     "wo",
+     "meri",
+     "sa",
+     "la"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.5287,
+    "morf1": 0.8,
+    "votes": {
+     "pinuu wo meri sa la": 1,
+     "pinuu wo nelo la la": 1,
+     "mamok no nelo li su": 1,
+     "mamok no liwi li pa": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 2,
+    "difficulty": "standard",
+    "prompt": "the goat jumps",
+    "gold": [
+     "nupun",
+     "no",
+     "meri",
+     "li",
+     "su"
+    ],
+    "swarm": [
+     "nupun",
+     "no",
+     "meri",
+     "li",
+     "su"
+    ],
+    "em_decomp": true,
+    "em_surface": true,
+    "chrf": 0.832,
+    "morf1": 1.0,
+    "votes": {
+     "nupun no pa li su": 1,
+     "nupun no meri li su": 2,
+     "nupun no mumi li su": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     true,
+     true,
+     false
+    ]
+   },
+   {
+    "qid": 3,
+    "difficulty": "standard",
+    "prompt": "the crab plays",
+    "gold": [
+     "lorun",
+     "no",
+     "nelo",
+     "li",
+     "su"
+    ],
+    "swarm": [
+     "lorun",
+     "lomumililo"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.3688,
+    "morf1": 0.2857,
+    "votes": {
+     "lorun lomumililo": 1,
+     "rapok wo liwi li la": 1,
+     "lorun no liwi li su": 1,
+     "lorun no rese li su": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 4,
+    "difficulty": "standard",
+    "prompt": "the bird waits",
+    "gold": [
+     "runan",
+     "no",
+     "nepe",
+     "li",
+     "su"
+    ],
+    "swarm": [
+     "wepik",
+     "womamolilo"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.1287,
+    "morf1": 0.0,
+    "votes": {
+     "wepik womamolilo": 1,
+     "wanua wo nepe li la": 1,
+     "pinuu no nepe li su": 1,
+     "pinuu no wepik li su": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 5,
+    "difficulty": "standard",
+    "prompt": "the deer talked",
+    "gold": [
+     "rapok",
+     "ru",
+     "rese",
+     "sa",
+     "pa"
+    ],
+    "swarm": [
+     "supoe",
+     "sorunasasu"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.21,
+    "morf1": 0.0,
+    "votes": {
+     "supoe sorunasasu": 1,
+     "lorun wo rese sa la": 1,
+     "rapok no rese la sa": 1,
+     "rapok no rese li sa su": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 6,
+    "difficulty": "curveball",
+    "prompt": "the dog jumped",
+    "gold": [
+     "mamok",
+     "ru",
+     "meri",
+     "sa",
+     "pa"
+    ],
+    "swarm": [
+     "runan",
+     "rorunasasu"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.1604,
+    "morf1": 0.0,
+    "votes": {
+     "runan rorunasasu": 1,
+     "mamok wo meri sa la": 1,
+     "runan no meri sa su": 1,
+     "mamok ru liwi li pa": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 7,
+    "difficulty": "curveball",
+    "prompt": "the deer jumped",
+    "gold": [
+     "rapok",
+     "ru",
+     "meri",
+     "sa",
+     "pa"
+    ],
+    "swarm": [
+     "supoe",
+     "sorunasasu"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.1773,
+    "morf1": 0.0,
+    "votes": {
+     "supoe sorunasasu": 1,
+     "lorun wo meri sa la": 1,
+     "supoe no meri sa su": 1,
+     "runan no nelo sa su": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   }
+  ],
+  "transcript": [
+   {
+    "round": "answer",
+    "agent": 0,
+    "raw": "Let me analyze my evidence:\n\n- wanua woresesala → the newt talked\n- wanua wonepesala → the newt waited\n- nupun noresesasu → the goat talked\n- pinuu wonepelila → the cat waits\n\nNouns: wanua=newt, nupun=goat, pinuu=cat\n\nVerb word structure:\n- woresesala = wo+rese+sa+la (talked)\n- wonepesala = wo+nepe+sa+la (waited)\n- noresesasu = no+rese+sa+su (talked)\n- wonepelila = wo+nepe+li+la (waits)\n\nMorphemes:\n- rese = talk, nepe = wait\n- sa = past, li = present\n- Prefix wo/no agrees with subject (wo with wanua/pinuu, no with nupun)\n- la/su = final suffix agreeing with subject\n\nSo pattern: NOUN  PREFIX+VERB+TENSE+SUFFIX\n\nAgreement: wanua→wo...la, pinuu→wo...la, nupun→no...su\n\nI need other verbs/nouns from other agents. Let me post findings and give best guesses.\n\nFor queries I need: goat(nupun→no...su), cat(pinuu→wo...la), crab, bird, deer, dog, and verbs jump, call, play.\n\nUsing my known agreements and placeholder for unknowns:\n\nANSWER 0: nupun nopasasu\nANSWER 1: pinuu womerisala\nANSWER 2: nupun nopalisu\nANSWER 3: lorun lomumililo\nANSWER 4: wepik womamolilo\nANSWER 5: supoe sorunasasu\nANSWER 6: runan rorunasasu\nANSWER 7: supoe sorunasasu"
+   },
+   {
+    "round": "answer",
+    "agent": 1,
+    "raw": "Let me analyze my evidence:\n\n- pinuu womerilila → the cat jumps\n- pinuu woresesala → the cat talked\n- supoe wonepelila → the fish waits\n- nupun nonepelisu → the goat waits\n\nNouns: pinuu=cat, supoe=fish, nupun=goat.\n\nVerb structure: prefix + root + marker + tense-suffix\n\n- womerilila: wo-meri-li-la (jumps - present)\n- woresesala: wo-rese-sa-la (talked - past)\n- wonepelila: wo-nepe-li-la (waits - present)\n- nonepelisu: no-nepe-li-su (waits - different... goat)\n\nRoots: meri=jump, rese=talk, nepe=wait.\nPrefix: wo- vs no- — agrees with noun (pinuu/supoe use wo, nupun uses no).\n\nMarker before tense: li (present-ish) vs sa. Suffix: la vs su — su with nupun/no.\n\nSo agreement prefix+suffix pair: wo...la, no...su.\n\nTense/aspect: present=li, past=sa.\n- womerilila (jumps/present): meri+li+la\n- woresesala (talked/past): rese+sa+la\n- nonepelisu (waits present): no+nepe+li+su\n\nSo: CLASS-prefix + ROOT + TENSE + CLASS-suffix.\nPresent=li, Past=sa.\n\nNow queries need words not in my evidence (bird, crab, deer, dog, play, call, jump-past). I'll apply patterns with available morphemes.\n\nKnown: jump=meri, talk=rese, wait=nepe. Need: play, call. From bank roots: liwi, mumi, nelo. Guess call=nelo, play=liwi/mumi.\n\nClass agreement: nupun(goat)=no/su class. pinuu,supoe=wo/la. Assume other nouns default wo/la unless goat-like.\n\nANSWER 0: nupun nomerisasu\nANSWER 1: pinuu wonelolala\nANSWER 2: nupun nomerilisu\nANSWER 3: rapok woliwilila\nANSWER 4: wanua wonepelila\nANSWER 5: lorun woresesala\nANSWER 6: mamok womerisala\nANSWER 7: lorun womerisala"
+   },
+   {
+    "round": "answer",
+    "agent": 2,
+    "raw": "Let me analyze my evidence.\n\n- nupun nomerisasu → the goat jumped\n- wepik rumerisapa → the wolf jumped\n- wanua woreselila → the newt talks\n- lorun nomumilisu → the crab smiles\n\nNouns: nupun=goat, wepik=wolf, wanua=newt, lorun=crab\n\nVerb words:\n- nomerisasu = jumped (goat): no-meri-sa-su\n- rumerisapa = jumped (wolf): ru-meri-sa-pa\n- woreselila = talks (newt): wo-rese-li-la\n- nomumilisu = smiles (crab): no-mumi-li-su\n\nPrefixes no/ru/wo appear to agree with subject (noun class). nupun→no, wepik→ru, wanua→wo, lorun→no.\n\nVerb roots: meri=jump, rese=talk, mumi=smile.\n\nTense/aspect: \n- jumped: meri-sa (past = sa)\n- talks: rese-li (present = li)\n- smiles: mumi-li (present = li)\n\nSuffixes su/pa/la: these seem to track subject class again (agreement suffix).\n- goat: no...su\n- wolf: ru...pa\n- newt: wo...la\n- crab: no...su\n\nSo prefix+suffix agree: no↔su, ru↔pa, wo↔la.\n\nStructure: NOUN [class-prefix][root][tense][class-suffix]\n\nTense: sa=past, li=present.\n\nQueries need: goat, cat, goat(present), crab, bird, deer, dog.\nOnly know goat(no/su), wolf(ru/pa), newt(wo/la), crab(no/su). Others unknown — use best guess with available morphemes.\n\nQuery nouns: goat=nupun(no/su), crab=lorun(no/su). Others (cat, bird, deer, dog) not in evidence. Remaining nouns: mamok, pinuu, rapok, runan, supoe. I'll assign and use default class no/su.\n\nVerbs: jump=meri, talk=rese, smile=mumi. \"called\",\"plays\",\"waits\" unknown → use remaining roots liwi/nelo/nepe.\n\nANSWER 0: nupun nomerisasu\nANSWER 1: mamok nonelolisu\nANSWER 2: nupun nomerilisu\nANSWER 3: lorun noliwilisu\nANSWER 4: pinuu nonepelisu\nANSWER 5: rapok noreselasa\nANSWER 6: runan nomerisasu\nANSWER 7: supoe nomerisasu"
+   },
+   {
+    "round": "answer",
+    "agent": 3,
+    "raw": "Let me analyze my evidence.\n\nNouns:\n- lorun = crab\n- mamok = dog\n- nupun = goat\n\nVerbs structure (second word):\n- noreselisu → talks (the crab talks)\n- ruliwilipa → calls (the dog calls)\n- nonelosasu → played (the crab played)\n- nomumilisu → smiles (the goat smiles)\n\nBreaking down:\n- noreselisu = no-rese-li-su\n- nonelosasu = no-nelo-sa-su\n- nomumilisu = no-mumi-li-su\n- ruliwilipa = ru-liwi-li-pa\n\nPrefixes: no, ru, wo (tense/aspect markers)\nVerb roots: rese=talk, nelo=play, mumi=smile, liwi=call\n\nSuffixes: li, sa, su, pa\n- \"talks\" noreselisu: li-su\n- \"played\" nonelosasu: sa-su (past = sa)\n- \"smiles\" nomumilisu: li-su (present = li)\n- \"calls\" ruliwilipa: li-pa\n\nSo li = present tense, sa = past tense.\nSuffix su vs pa vs: su appears with no-prefix, pa with ru-prefix. These seem agreement/mood markers tied to prefix. Hmm.\n\nPrefix \"no\" = present/general, \"ru\" = ? Let me guess prefixes = tense. But li/sa also tense. Possibly prefix=aspect/person.\n\nLet me assume: no- used with crab/goat verbs, ru- with dog. Perhaps prefix agrees with subject class. I'll use \"no\" generally.\n\nTense: li=present/non-past, sa=past.\nEnding: su (default), pa (dog's).\n\nFor queries, I need unknown nouns/verbs — I'll rely on teammates. I'll provide my best using known morphemes.\n\nKnown verb roots: talk=rese, play=nelo, call=liwi, smile=mumi, jump=? wait=?\n\nANSWER 0: nupun nonelosasu\nANSWER 1: mamok noliwilipa\nANSWER 2: nupun nomumilisu\nANSWER 3: lorun noreselisu\nANSWER 4: pinuu nowepikli su\nANSWER 5: rapok noreselisasu\nANSWER 6: mamok ruliwilipa\nANSWER 7: runan nonelosasu"
+   }
+  ]
+ },
+ {
+  "puzzle": "gen-001",
+  "language": "Numusi",
+  "family": "Generated/noun-class-agreement",
+  "condition": "soloshard",
+  "seed": 2,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "n_agents": 4,
+  "rounds": 0,
+  "corrupted_rows": [],
+  "elapsed_s": 52.4,
+  "board": [],
+  "queries": [
+   {
+    "qid": 0,
+    "difficulty": "tutorial",
+    "prompt": "the goat jumped",
+    "gold": [
+     "nupun",
+     "no",
+     "meri",
+     "sa",
+     "su"
+    ],
+    "swarm": [
+     "nupun",
+     "no",
+     "meri",
+     "sa",
+     "su"
+    ],
+    "em_decomp": true,
+    "em_surface": true,
+    "chrf": 0.832,
+    "morf1": 1.0,
+    "votes": {
+     "nupun no meri sa su": 2,
+     "nupun no pa su": 1,
+     "rapok ru meri sa pa": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     true,
+     true,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 1,
+    "difficulty": "standard",
+    "prompt": "the cat called",
+    "gold": [
+     "pinuu",
+     "wo",
+     "liwi",
+     "sa",
+     "la"
+    ],
+    "swarm": [
+     "pinuu",
+     "wo",
+     "liwi",
+     "sa",
+     "la"
+    ],
+    "em_decomp": true,
+    "em_surface": true,
+    "chrf": 0.832,
+    "morf1": 1.0,
+    "votes": {
+     "pinuu wo liwi sa la": 1,
+     "pinuu wo nelo sa la": 1,
+     "ru meri li": 1,
+     "mamok nonelisu": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     true,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 2,
+    "difficulty": "standard",
+    "prompt": "the goat jumps",
+    "gold": [
+     "nupun",
+     "no",
+     "meri",
+     "li",
+     "su"
+    ],
+    "swarm": [
+     "nupun",
+     "no",
+     "meri",
+     "li",
+     "su"
+    ],
+    "em_decomp": true,
+    "em_surface": true,
+    "chrf": 0.832,
+    "morf1": 1.0,
+    "votes": {
+     "nupun no meri li su": 2,
+     "nupun no pa li su": 1,
+     "rapok ru meri li pa": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     true,
+     true,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 3,
+    "difficulty": "standard",
+    "prompt": "the crab plays",
+    "gold": [
+     "lorun",
+     "no",
+     "nelo",
+     "li",
+     "su"
+    ],
+    "swarm": [
+     "rapok",
+     "mumi",
+     "li"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.1012,
+    "morf1": 0.25,
+    "votes": {
+     "rapok mumi li": 1,
+     "lorun no nepe li su": 1,
+     "ru nelo li": 1,
+     "lorun noneloilisu": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 4,
+    "difficulty": "standard",
+    "prompt": "the bird waits",
+    "gold": [
+     "runan",
+     "no",
+     "nepe",
+     "li",
+     "su"
+    ],
+    "swarm": [
+     "wepik",
+     "wo",
+     "nepe",
+     "li",
+     "la"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.3966,
+    "morf1": 0.4,
+    "votes": {
+     "wepik wo nepe li la": 1,
+     "wepik wo liwi li la": 1,
+     "ru nepe li": 1,
+     "nupun wo nepe li la": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 5,
+    "difficulty": "standard",
+    "prompt": "the deer talked",
+    "gold": [
+     "rapok",
+     "ru",
+     "rese",
+     "sa",
+     "pa"
+    ],
+    "swarm": [
+     "lorun",
+     "loresesala"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.3906,
+    "morf1": 0.0,
+    "votes": {
+     "lorun loresesala": 1,
+     "supoe wo rese sa la": 1,
+     "ru rese sa": 1,
+     "pinuu no rese li su": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 6,
+    "difficulty": "curveball",
+    "prompt": "the dog jumped",
+    "gold": [
+     "mamok",
+     "ru",
+     "meri",
+     "sa",
+     "pa"
+    ],
+    "swarm": [
+     "mamok",
+     "ru",
+     "meri",
+     "sa",
+     "pa"
+    ],
+    "em_decomp": true,
+    "em_surface": true,
+    "chrf": 0.832,
+    "morf1": 1.0,
+    "votes": {
+     "mamok ru meri sa pa": 1,
+     "rapok no meri sa su": 1,
+     "ru pa sa": 1,
+     "runan ru meri sa pa": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     true,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 7,
+    "difficulty": "curveball",
+    "prompt": "the deer jumped",
+    "gold": [
+     "rapok",
+     "ru",
+     "meri",
+     "sa",
+     "pa"
+    ],
+    "swarm": [
+     "lorun",
+     "lomerisala"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.3906,
+    "morf1": 0.0,
+    "votes": {
+     "lorun lomerisala": 1,
+     "runan no meri sa su": 1,
+     "ru pa sa": 1,
+     "pinuu ru meri sa pa": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   }
+  ],
+  "transcript": [
+   {
+    "round": "answer",
+    "agent": 0,
+    "raw": "Let me analyze my evidence.\n\nNouns:\n- pinuu = cat\n- mamok = dog\n- nupun = goat\n\nVerbs (second word structure):\n- woresesala → the cat talked\n- ruliwilipa → the dog calls\n- nonepelisu → the goat waits\n- wonepelila → the cat waits\n\nLet me break down verbs:\n- woresesala: wo-rese-sa-la\n- ruliwilipa: ru-liwi-li-pa\n- nonepelisu: no-nepe-li-su\n- wonepelila: wo-nepe-li-la\n\nVerb roots:\n- rese = talk\n- liwi = call\n- nepe = wait\n\nPrefixes (tense/aspect?):\n- wo = ? (talked, waits with pinuu)\n- ru = ? (calls)\n- no = ? (waits with nupun)\n\n\"woresesala\" = talked, \"wonepelila\" = waits. Both have wo- prefix and -la suffix.\n\"nonepelisu\" = waits (goat), no- prefix, -su suffix.\n\"ruliwilipa\" = calls (dog), ru- prefix, -pa suffix.\n\nSuffixes seem to correlate with noun/subject:\n- pinuu (cat) → -la\n- mamok (dog) → -pa\n- nupun (goat) → -su\n\nSo suffix = subject agreement! wo-/no-/ru- prefixes.\n- pinuu → wo-...-la\n- nupun → no-...-su\n- mamok → ru-...-pa\n\nSo prefix AND suffix agree with subject. Tense not clear yet — need other agents. \"talked\" vs \"waits\" both with pinuu use wo-rese-sa-la and wo-nepe-li-la. The difference: -sa- vs -li-. \n\n- talked: ...-sa-...\n- waits/calls: ...-li-...\n\nSo \"li\" = present, \"sa\" = past tense infix!\n- woresesala = wo-rese-sa-la (cat-talk-PAST-cat)\n- ruliwilipa = ru-liwi-li-pa (dog-call-PRES-dog)\n- nonepelisu = no-nepe-li-su (goat-wait-PRES-goat)\n- wonepelila = wo-nepe-li-la (cat-wait-PRES-cat)\n\nNow the queries need new nouns/verbs (jump, play, crab, bird, deer) which I don't have. I'll use my known structure.\n\nKnown: cat=pinuu(wo/la), dog=mamok(ru/pa), goat=nupun(no/su)\nRoots: talk=rese, call=liwi, wait=nepe. Tense: past=sa, pres=li.\n\nUnknown roots (jump, play) and nouns (crab, bird, deer) from bank: lorun, rapok, runan, supoe, wanua, wepik + verb morphemes meri, mumi, nelo. I'll guess assignments.\n\nANSWER 0: nupun nojump-sa-su\nANSWER 1: pinuu woliwisala\nANSWER 2: nupun nojump-li-su\nANSWER 3: crab play\nANSWER 4: bird wonepeli(subj)\nANSWER 5: deer rese-sa\nANSWER 6: mamok rujumpsapa\nANSWER 7: deer jump-sa\n\nCommitting with best guesses using bank (jump=meri, play=mumi, deer=lorun, crab=rapok, bird=wepik):\n\nANSWER 0: nupun nomerisasu\nANSWER 1: pinuu woliwisala\nANSWER 2: nupun nomerilisu\nANSWER 3: rapok mumili\nANSWER 4: wepik wonepelila\nANSWER 5: lorun loresesala\nANSWER 6: mamok rumerisapa\nANSWER 7: lorun lomerisala"
+   },
+   {
+    "round": "answer",
+    "agent": 1,
+    "raw": "Let me analyze my evidence.\n\nNouns:\n- pinuu = cat\n- nupun = goat\n- lorun = crab\n- wanua = newt\n\nVerbs (prefix wo/no + root + suffix):\n- womerilila → cat jumps: wo-meri-li-la\n- nomerisasu → goat jumped: no-meri-sa-su\n- nomumilisu → crab smiles: no-mumi-li-su\n- woresesala → newt talked: wo-rese-sa-la\n\nLet me parse structure. Verb = prefix + root + aspect + ?\n\n\"jumps\" = wo meri li la\n\"jumped\" = no meri sa su\nRoot \"meri\" = jump.\n\n\"smiles\" = no mumi li su → mumi = smile\n\"talked\" = wo rese sa la → rese = talk\n\nPrefixes wo/no: unclear — not tense since jumps(wo) vs jumped(no), but smiles(no) and talked(wo). So wo/no not tense.\n\nTense markers: \n- jumps: li, la\n- jumped: sa, su\n- smiles: li, su\n- talked: sa, la\n\nPresent/non-past seems to involve \"li\"; past involves \"sa\".\n- jumps(present): li...la\n- smiles(present): li...su\n- jumped(past): sa...su\n- talked(past): sa...la\n\nSo position 1 (li/sa) = tense: li=present, sa=past. ✓\nPosition 2 (la/su): varies with... jumps=la, smiles=su, jumped=su, talked=la. Correlates with prefix: wo→la, no→su.\n- womeri(wo)→la ✓\n- nomeri(no)→su ✓\n- nomumi(no)→su ✓\n- worese(wo)→la ✓\n\nSo prefix wo pairs with suffix la, no pairs with su. These likely agree with noun class/subject.\n\n- cat(pinuu): wo...la\n- goat(nupun): no...su\n- crab(lorun): no...su\n- newt(wanua): wo...la\n\nVerb = prefix(agreement) + root + tense(li=pres/sa=past) + suffix(agreement)\n\nQueries:\n0: goat jumped → nupun no-meri-sa-su = nomerisasu\n2: goat jumps → nupun no-meri-li-su = nomerilisu\n\nQuery 1: cat called — need \"call\" root; not in evidence. Use morpheme bank: nelo/nepe/liwi? \"meri\"=jump,\"mumi\"=smile,\"rese\"=talk. Remaining verb roots: liwi, nelo, nepe. Guess call=nelo (uncertain). Cat=wo...la: pinuu wo-nelo-sa-la.\nQuery 3: crab plays — crab=lorun(no...su), play root guess=nepe: lorun no-nepe-li-su.\nQuery 4: bird waits — unknown noun. Nouns bank: mamok,rapok,runan,supoe,wepik. Guess bird, need agreement unknown—default wo...la or no...su? Unknown, guess.\n\nI'll commit, flag uncertainties for team.\n\nANSWER 0: nupun no meri sa su\nANSWER 1: pinuu wo nelo sa la\nANSWER 2: nupun no meri li su\nANSWER 3: lorun no nepe li su\nANSWER 4: wepik wo liwi li la\nANSWER 5: supoe wo rese sa la\nANSWER 6: rapok no meri sa su\nANSWER 7: runan no meri sa su"
+   },
+   {
+    "round": "answer",
+    "agent": 2,
+    "raw": "Let me analyze my evidence:\n\n- nupun noresesasu → the goat talked\n- wanua wonepesala → the newt waited\n- wanua woreselila → the newt talks\n- nupun nomumilisu → the goat smiles\n\n**Nouns:** nupun = goat, wanua = newt\n\n**Verb prefix:** no- appears with nupun (goat), wo- with wanua (newt). So prefix agrees with subject: no=goat, wo=newt.\n\n**Verb parsing:**\n- noresesasu = no + rese + sa + su → talk + sa + su = talked\n- wonepesala = wo + nepe + sa + la → wait + sa + la = waited\n- woreselila = wo + rese + li + la → talk + li + la = talks\n- nomumilisu = no + mumi + li + su → smile + li + su = smiles\n\n**Roots:** rese=talk, nepe=wait, mumi=smile\n\n**Tense:** sa=past (talked/waited), li=present (talks/smiles)\n\n**Suffix su/la:** su with goat (nupun), la with newt (wanua). So su/la also agrees with subject? su=goat-suffix, la=newt-suffix.\n\nOrder: PREFIX + ROOT + TENSE + SUBJ-SUFFIX\n\nI need other roots/nouns from the bank for queries. Let me post findings.\n\n**Board post:**\n- no=goat-prefix, wo=newt-prefix (subject agreement prefix)\n- su=goat-suffix, la=newt-suffix (subject agreement suffix)\n- Roots: rese=talk, nepe=wait, mumi=smile\n- Tense: sa=past, li=present\n- Structure: NOUN [prefix-root-tense-suffix]\n\nI lack morphemes for: jump, call, play, cat, crab, bird, deer, dog, and their agreement affixes. Other agents must supply these.\n\nBased on available evidence, I can only answer queries with known roots/nouns. For now I'll construct best guesses using known patterns, leaving unknowns as plausible bank items.\n\nANSWER 0: nupun no pa su\nANSWER 1: ru meri li\nANSWER 2: nupun no pa li su\nANSWER 3: ru nelo li\nANSWER 4: ru nepe li\nANSWER 5: ru rese sa\nANSWER 6: ru pa sa\nANSWER 7: ru pa sa"
+   },
+   {
+    "round": "answer",
+    "agent": 3,
+    "raw": "Analyzing my evidence:\n\n- supoe wonepelila → the fish waits (present)\n- lorun noreselisu → the crab talks (present)\n- lorun nonelosasu → the crab played (past)\n- wepik rumerisapa → the wolf jumped (past)\n\nNouns: supoe=fish, lorun=crab, wepik=wolf\n\nVerb breakdown:\n- wonepelila = wo-nepe-li-la (wait, present)\n- noreselisu = no-rese-li-su (talk, present)\n- nonelosasu = no-nelo-sa-su (play, past)\n- rumerisapa = ru-meri-sa-pa (jump, past)\n\nVerb roots: nepe=wait, rese=talk, nelo=play, meri=jump\nTense/aspect: li=present, sa=past\nPrefixes: wo, no, ru — seem to agree with subject/verb class\nSuffixes: la, su, pa — final markers (possibly subject agreement)\n\nPattern: PREFIX-ROOT-TENSE-SUFFIX\n- fish: wo...la → ru? Let me map by subject.\n- crab: no...su (both crab examples use no-...-su)\n- wolf: ru...pa\n- fish: wo...la\n\nSo prefix+suffix is a noun-class agreement. Crab=no/su, wolf=ru/pa, fish=wo/la.\n\nFor unknown animals (goat, cat, bird, deer, dog) I lack class info — defaulting to a generic pattern. I'll use the jump root structure where known.\n\n**Known roots:** jump=meri(ru/pa class via wolf), wait=nepe, talk=rese, play=nelo, call=? (unknown)\n\nANSWER 0: rapok rumerisapa\nANSWER 1: mamok nonelisu\nANSWER 2: rapok rumerilipa\nANSWER 3: lorun noneloilisu\nANSWER 4: nupun wonepelila\nANSWER 5: pinuu noreselisu\nANSWER 6: runan rumerisapa\nANSWER 7: pinuu rumerisapa"
+   }
+  ]
+ },
+ {
+  "puzzle": "gen-002",
+  "language": "Rawutu",
+  "family": "Generated/conditioned-suppletion",
+  "condition": "soloshard",
+  "seed": 1,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "n_agents": 4,
+  "rounds": 0,
+  "corrupted_rows": [],
+  "elapsed_s": 34.3,
+  "board": [],
+  "queries": [
+   {
+    "qid": 0,
+    "difficulty": "tutorial",
+    "prompt": "they wait",
+    "gold": [
+     "wire",
+     "pinu",
+     "lo"
+    ],
+    "swarm": [
+     "tula",
+     "nawo",
+     "lo"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.1806,
+    "morf1": 0.3333,
+    "votes": {
+     "tula nawo lo": 1,
+     "wire pinu lo": 1,
+     "tula pinu lo": 1,
+     "tula li lo": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     true,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 1,
+    "difficulty": "standard",
+    "prompt": "I walk",
+    "gold": [
+     "lewo",
+     "pika",
+     "lo"
+    ],
+    "swarm": [
+     "lewo",
+     "pake",
+     "lo"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.5291,
+    "morf1": 0.6667,
+    "votes": {
+     "lewo pake lo": 2,
+     "lewo pika lo": 1,
+     "jawp jino lo": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     true,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 2,
+    "difficulty": "standard",
+    "prompt": "he watches",
+    "gold": [
+     "tula",
+     "woja",
+     "lo"
+    ],
+    "swarm": [
+     "tula",
+     "woja",
+     "lo"
+    ],
+    "em_decomp": true,
+    "em_surface": true,
+    "chrf": 1.0,
+    "morf1": 1.0,
+    "votes": {
+     "tula woja lo": 1,
+     "li woja lo": 1,
+     "pika woja lo": 1,
+     "wire li lo": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     true,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 3,
+    "difficulty": "standard",
+    "prompt": "you all cleaned",
+    "gold": [
+     "nawa",
+     "jiti",
+     "pu"
+    ],
+    "swarm": [
+     "nawa",
+     "kaki",
+     "pu"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.4434,
+    "morf1": 0.6667,
+    "votes": {
+     "nawa kaki pu": 2,
+     "nawa wije pu": 1,
+     "pake nawa pu": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 4,
+    "difficulty": "standard",
+    "prompt": "he walks",
+    "gold": [
+     "tula",
+     "pika",
+     "lo"
+    ],
+    "swarm": [
+     "tula",
+     "pake",
+     "lo"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.5291,
+    "morf1": 0.6667,
+    "votes": {
+     "tula pake lo": 1,
+     "li pika lo": 1,
+     "pika pake lo": 1,
+     "jawp li lo": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 5,
+    "difficulty": "standard",
+    "prompt": "he smiles",
+    "gold": [
+     "tula",
+     "liro",
+     "lo"
+    ],
+    "swarm": [
+     "tula",
+     "liro",
+     "lo"
+    ],
+    "em_decomp": true,
+    "em_surface": true,
+    "chrf": 1.0,
+    "morf1": 1.0,
+    "votes": {
+     "tula liro lo": 1,
+     "li liro lo": 1,
+     "pika liro lo": 1,
+     "rape li lo": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     true,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 6,
+    "difficulty": "curveball",
+    "prompt": "he walked",
+    "gold": [
+     "tula",
+     "pika",
+     "pu"
+    ],
+    "swarm": [
+     "tula",
+     "pake",
+     "pu"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.5291,
+    "morf1": 0.6667,
+    "votes": {
+     "tula pake pu": 1,
+     "li pika pu": 1,
+     "pika pake pu": 1,
+     "jawp li pu": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 7,
+    "difficulty": "curveball",
+    "prompt": "he smiled",
+    "gold": [
+     "tula",
+     "liro",
+     "pu"
+    ],
+    "swarm": [
+     "tula",
+     "liro",
+     "pu"
+    ],
+    "em_decomp": true,
+    "em_surface": true,
+    "chrf": 1.0,
+    "morf1": 1.0,
+    "votes": {
+     "tula liro pu": 1,
+     "li liro pu": 1,
+     "pika liro pu": 1,
+     "rape li pu": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     true,
+     false,
+     false,
+     false
+    ]
+   }
+  ],
+  "transcript": [
+   {
+    "round": "answer",
+    "agent": 0,
+    "raw": "Let me analyze my evidence.\n\n- lewowijelo → I cook\n- jawpnawolo → you watch\n- tulawojapu → he watched\n- nawaliropu → you all smiled\n\nBreaking down:\n- lewo-wije-lo = I cook. \"lo\" = present? \n- jawp-nawo-lo = you watch. \"lo\" present, \"jawp\"=you, \"nawo\"=watch\n- tula-woja-pu = he watched. \"pu\" = past, \"tula\"=he, \"woja\"=watch\n- nawa-liro-pu = you all smiled. \"pu\"=past, \"nawa\"=you all, \"liro\"=smile\n\nSo subject prefix comes first, then verb, then tense suffix.\n- Subjects: lewo=I, jawp=you, tula=he, nawa=you all\n- Verbs: wije=cook, nawo/woja=watch(?), liro=smile\n- Tense: lo=present, pu=past\n\nWait, \"nawo\" vs \"woja\" both watch? jawp-nawo-lo (you watch) vs tula-woja-pu (he watched). Possibly watch present stem \"nawo\", past stem \"woja\"? Or one is wait. Let me keep nawo=watch(pres), woja=watch(past), uncertain.\n\nNeed: wait, walk, watch, clean, smile.\n- smile = liro\n- watch: woja (from \"he watched\"). Query 2 \"he watches\" → tula woja lo.\n- Need morphemes for wait, walk, clean from bank: jala, jino, jiti, jori, kaki, koka, lare, nawo, pake, pika, pinu, rape, tiwa.\n\nI'll post findings and make best guesses pending other agents.\n\nANSWER 0: tula nawo lo\nANSWER 1: lewo pake lo\nANSWER 2: tula woja lo\nANSWER 3: nawa kaki pu\nANSWER 4: tula pake lo\nANSWER 5: tula liro lo\nANSWER 6: tula pake pu\nANSWER 7: tula liro pu"
+   },
+   {
+    "round": "answer",
+    "agent": 1,
+    "raw": "Let me analyze my evidence:\n\n- nawalirolo → you all smile: nawa + liro + lo\n- lewowojapu → I watched: lewo + woja + pu\n- wirepikapu → they walked: wire + pika + pu\n- wirepinulo → they wait: wire + pinu + lo\n\nPatterns:\n- **Subjects (prefix):** nawa = you all, lewo = I, wire = they\n- **Verbs (root):** liro = smile, woja = watch, pika = walk, pinu = wait\n- **Tense/aspect (suffix):** lo = present, pu = past\n\nNeed: \"he\" pronoun, \"cleaned\" verb. From morpheme bank, candidates for \"he\" and \"clean\" unknown to me — other agents likely have them. I'll use placeholders based on bank guesses but commit to best known grammar.\n\nFor now, with my evidence:\n- \"he\" = unknown (guess from bank, possibly \"li\" or \"pe\")\n- \"cleaned\" = unknown verb\n\nPresent=lo, Past=pu. \"he smiles/walks\" present → lo; \"walked/smiled/cleaned\" past → pu.\n\nI'll guess \"he\" = li (short pronoun form) and \"clean\" = unknown; using \"kaki\" as placeholder clean root.\n\nANSWER 0: wire pinu lo\nANSWER 1: lewo pika lo\nANSWER 2: li woja lo\nANSWER 3: nawa kaki pu\nANSWER 4: li pika lo\nANSWER 5: li liro lo\nANSWER 6: li pika pu\nANSWER 7: li liro pu"
+   },
+   {
+    "round": "answer",
+    "agent": 2,
+    "raw": "Let me analyze my evidence:\n\n- lewolirolo → I smile: lewo + liro + lo\n- nipiwojapu → we watched: nipi + woja + pu\n- jawplarepu → you cooked: jawp + lare + pu\n- nawawijepu → you all cooked: nawa + wije + pu\n\nPatterns:\n- Subject prefix first: lewo=I, nipi=we, jawp=you, nawa=you all\n- Verb root middle: liro=smile, woja=watch, lare=cook, wije=cook(?)\n- Suffix/tense last: lo=present?, pu=past\n\nWait, lare and wije both \"cooked\"? jawp=you cook, nawa=you all. Different roots — maybe cook has variants or wije=clean. \"you all cooked\" vs \"you all cleaned\"... Let me assume lare=cook, wije could be another verb. But both said \"cooked\". Possibly agreement affects root. I'll note lare=cook.\n\nTense: lo=present (I smile), pu=past (watched/cooked).\n\nNeed: he=?, walk=?, wait=?, clean=?, he pronoun unknown from my evidence. Need board input, but I'm first. I'll make best guesses from morpheme bank.\n\nSubjects known: lewo=I, nipi=we, jawp=you, nawa=you all. \"he/they\" unknown — candidates: tula, wire, jino, jiti, jori, kaki, koka, nawo, pake, pika, pinu, tiwa.\n\nRoots: liro=smile, woja=watch, lare=cook, wije=cook/clean. walk/wait unknown.\n\nGiven uncertainty, provisional guesses (he=pika, they=tula, walk=pake, wait=pinu, watch=woja, clean=wije, smile=liro):\n\nANSWER 0: tula pinu lo\nANSWER 1: lewo pake lo\nANSWER 2: pika woja lo\nANSWER 3: nawa wije pu\nANSWER 4: pika pake lo\nANSWER 5: pika liro lo\nANSWER 6: pika pake pu\nANSWER 7: pika liro pu"
+   },
+   {
+    "round": "answer",
+    "agent": 3,
+    "raw": "Let me analyze my evidence.\n\n- jawpjoripu → you walked: jawp=walk, jori=?, pu=past? \n- lewojinopu → I carried: lewo=carry, jino=?, pu=past\n- nawakakilo → you all play: nawa=?, kaki=play, lo=present\n- nawawijelo → you all cook: nawa=?, wije=cook, lo=present\n\nSo nawa=you all, lo=present tense, pu=past tense.\n\njawpjoripu: jawp=walk, jori=you(subject?), pu=past → \"you walked\"\nSo jori=you (singular).\n\nlewojinopu: lewo=carry, jino=I, pu=past → \"I carried\"\nSo jino=I.\n\nPattern: VERB + SUBJECT + TENSE\n- nawakakilo: kaki? Wait order differs. \"nawa kaki lo\" — subject first here? nawa=you all comes first.\n\nHmm. Let me reconsider. nawakakilo = you all play. nawa=you all (subject), kaki=play, lo=present.\njawpjoripu = you walked: jawp=walk, jori=you, pu=past — subject AFTER verb.\n\nInconsistent order. Maybe jori is not \"you\". Let me reconsider: maybe subject order varies, or nawa differs.\n\nActually maybe: SUBJECT comes as prefix for plural, suffix otherwise? Uncertain. Let me post findings.\n\nMorphemes known: jawp=walk, lewo=carry, kaki=play, wije=cook, nawa=you all, lo=present, pu=past, jino=I, jori=you(sg).\n\nI need \"he/they/smiles/watches/waits/cleaned/smiled/walks\". Not in my evidence — rely on teammates.\n\nLet me commit best guesses with structure VERB+SUBJECT+TENSE:\n\nANSWER 0: tula li lo\nANSWER 1: jawp jino lo\nANSWER 2: wire li lo\nANSWER 3: pake nawa pu\nANSWER 4: jawp li lo\nANSWER 5: rape li lo\nANSWER 6: jawp li pu\nANSWER 7: rape li pu"
+   }
+  ]
+ },
+ {
+  "puzzle": "gen-002",
+  "language": "Rawutu",
+  "family": "Generated/conditioned-suppletion",
+  "condition": "soloshard",
+  "seed": 2,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "n_agents": 4,
+  "rounds": 0,
+  "corrupted_rows": [],
+  "elapsed_s": 31.1,
+  "board": [],
+  "queries": [
+   {
+    "qid": 0,
+    "difficulty": "tutorial",
+    "prompt": "they wait",
+    "gold": [
+     "wire",
+     "pinu",
+     "lo"
+    ],
+    "swarm": [
+     "nawo",
+     "wire",
+     "lo"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.3843,
+    "morf1": 0.6667,
+    "votes": {
+     "nawo wire lo": 1,
+     "wire pinu lo": 1,
+     "nipi wire li": 1,
+     "wire pika lo": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     true,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 1,
+    "difficulty": "standard",
+    "prompt": "I walk",
+    "gold": [
+     "lewo",
+     "pika",
+     "lo"
+    ],
+    "swarm": [
+     "lewo",
+     "pika",
+     "lo"
+    ],
+    "em_decomp": true,
+    "em_surface": true,
+    "chrf": 1.0,
+    "morf1": 1.0,
+    "votes": {
+     "nipi tiwa lo": 1,
+     "lewo pika lo": 2,
+     "lewo jori li": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     true,
+     false,
+     true
+    ]
+   },
+   {
+    "qid": 2,
+    "difficulty": "standard",
+    "prompt": "he watches",
+    "gold": [
+     "tula",
+     "woja",
+     "lo"
+    ],
+    "swarm": [
+     "pake",
+     "woja",
+     "lo"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.546,
+    "morf1": 0.6667,
+    "votes": {
+     "pake woja lo": 1,
+     "pe jawp lo": 1,
+     "tula woja li": 1,
+     "nawa woja lo": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 3,
+    "difficulty": "standard",
+    "prompt": "you all cleaned",
+    "gold": [
+     "nawa",
+     "jiti",
+     "pu"
+    ],
+    "swarm": [
+     "nawa",
+     "kaki",
+     "pu"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.4434,
+    "morf1": 0.6667,
+    "votes": {
+     "nawa pika pu": 1,
+     "nawa kaki pu": 2,
+     "tula wije pu": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 4,
+    "difficulty": "standard",
+    "prompt": "he walks",
+    "gold": [
+     "tula",
+     "pika",
+     "lo"
+    ],
+    "swarm": [
+     "pake",
+     "tiwa",
+     "lo"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.2868,
+    "morf1": 0.3333,
+    "votes": {
+     "pake tiwa lo": 1,
+     "pe pika lo": 1,
+     "tula jori li": 1,
+     "nawa pika lo": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 5,
+    "difficulty": "standard",
+    "prompt": "he smiles",
+    "gold": [
+     "tula",
+     "liro",
+     "lo"
+    ],
+    "swarm": [
+     "pake",
+     "pinu",
+     "lo"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.1806,
+    "morf1": 0.3333,
+    "votes": {
+     "pake pinu lo": 1,
+     "pe liro lo": 1,
+     "tula liro li": 1,
+     "nawa liro lo": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 6,
+    "difficulty": "curveball",
+    "prompt": "he walked",
+    "gold": [
+     "tula",
+     "pika",
+     "pu"
+    ],
+    "swarm": [
+     "pake",
+     "tiwa",
+     "pu"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.2868,
+    "morf1": 0.3333,
+    "votes": {
+     "pake tiwa pu": 1,
+     "pe pika pu": 1,
+     "tula jori pu": 1,
+     "nawa pika pu": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 7,
+    "difficulty": "curveball",
+    "prompt": "he smiled",
+    "gold": [
+     "tula",
+     "liro",
+     "pu"
+    ],
+    "swarm": [
+     "pake",
+     "pinu",
+     "pu"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.1528,
+    "morf1": 0.3333,
+    "votes": {
+     "pake pinu pu": 1,
+     "pe liro pu": 1,
+     "tula liro pu": 1,
+     "nawa liro pu": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     true,
+     false
+    ]
+   }
+  ],
+  "transcript": [
+   {
+    "round": "answer",
+    "agent": 0,
+    "raw": "Let me analyze my evidence:\n\n- nawawijelo → you all cook: nawa=you all, wije=cook, lo=present\n- nawawijepu → you all cooked: wije=cook, pu=past\n- jawplarepu → you cooked: jawp=you, lare=?, pu=past... but lare≠wije for cook\n- nawakakilo → you all play: nawa=you all, kaki=play, lo=present\n\nPattern: [subject][verb][tense]\n- nawa = you all\n- jawp = you (singular)\n- lo = present, pu = past\n- wije = cook, kaki = play\n\nFor \"jawplarepu\" = you cooked — lare appears where verb goes. But wije=cook. Possibly lare is a different stem. I'll trust lare=cook here may be dialectal; I'll just note uncertainty. Need other agents for more subjects/verbs.\n\nPosting findings for the board:\n- Order: SUBJECT + VERB + TENSE\n- nawa = you all, jawp = you (sg)\n- lo = present, pu = past\n- wije = cook, kaki = play\n\nQueries need: they, I, he (subjects); wait, walk, watch, clean, smile (verbs). I don't have these morphemes confirmed. Making best guesses from bank — \"he\" and other subjects unknown to me.\n\nBased only on confident morphemes, I'll provide tense/order structure and guess verbs from bank:\n\nANSWER 0: nawo wire lo\nANSWER 1: nipi tiwa lo\nANSWER 2: pake woja lo\nANSWER 3: nawa pika pu\nANSWER 4: pake tiwa lo\nANSWER 5: pake pinu lo\nANSWER 6: pake tiwa pu\nANSWER 7: pake pinu pu"
+   },
+   {
+    "round": "answer",
+    "agent": 1,
+    "raw": "Let me analyze my evidence.\n\n- jawpnawolo → you watch: jawp=watch, nawo=you, lo=?\n- nawalirolo → you all smile: nawa=you all, liro=smile, lo=present\n- lewojinopu → I carried: lewo=I, jino=carry, pu=past\n- wirepinulo → they wait: wire=they, pinu=wait, lo=present\n\nSo: verb+subject order seems mixed. Let me check structure:\n- jawp(watch) + nawo(you) + lo(pres) → V-S-tense\n- nawa(you all) + liro(smile) + lo → S-V-tense\n- lewo(I) + jino(carry) + pu(past) → S-V-tense\n- wire(they) + pinu(wait) + lo → S-V-tense\n\nMost are S-V-tense. \"jawp nawo lo\" seems V-S but could be reanalyzed. Likely order is S-V-T but \"you watch\" = jawp+nawo could be exception. Let me treat standard as S-V-T.\n\nMorphemes known: lewo=I, nawa=you all, wire=they, nawo=you\nVerbs: watch=jawp, smile=liro, carry=jino, wait=pinu\nTense: lo=present/non-past, pu=past\n\nPosting to board:\n- Subjects: lewo=I, nawa=you all, wire=they, nawo=you(sg)\n- Verbs: jawp=watch, liro=smile, jino=carry, pinu=wait\n- Tense: lo=present, pu=past\n- Order: S-V-Tense (jawpnawolo may be V-S-T anomaly)\n\nNeed \"he\", \"walk\", \"clean\" — not in my evidence. Guessing from bank: pika/pake/jala could be walk; kaki/koka clean. \"he\" subject pronoun unknown. I'll make provisional guesses pending other agents.\n\nANSWER 0: wire pinu lo\nANSWER 1: lewo pika lo\nANSWER 2: pe jawp lo\nANSWER 3: nawa kaki pu\nANSWER 4: pe pika lo\nANSWER 5: pe liro lo\nANSWER 6: pe pika pu\nANSWER 7: pe liro pu"
+   },
+   {
+    "round": "answer",
+    "agent": 2,
+    "raw": "Let me analyze my evidence:\n\n- nawaliropu → you all smiled: nawa=you all, liro=smile, pu=past\n- jawpjoripu → you walked: jawp=you, jori=walk, pu=past\n- tulawojapu → he watched: tula=he, woja=watch, pu=past\n- lewowojapu → I watched: lewo=I, woja=watch, pu=past\n\nSo morphemes:\n- Subjects: nawa=you all, jawp=you, tula=he, lewo=I\n- Verbs: liro=smile, jori=walk, woja=watch\n- Tense: pu=past\n\nStructure: SUBJECT-VERB-TENSE\n\nI don't have present tense or \"they\"/\"wait\"/\"clean\" yet. Let me post findings and make best guesses.\n\n- \"they\" = unknown (maybe nipi/wire?)\n- \"wait\" = unknown\n- \"clean\" = unknown\n- present tense = unknown (maybe li, lo, or pe, or no marker)\n\nGiven pu=past, present might be another suffix. I'll guess present marker. Without more evidence, I'll guess present = no suffix or a different particle. Let me use \"li\" tentatively for present/non-past.\n\nANSWER 0: nipi wire li\nANSWER 1: lewo jori li\nANSWER 2: tula woja li\nANSWER 3: nawa kaki pu\nANSWER 4: tula jori li\nANSWER 5: tula liro li\nANSWER 6: tula jori pu\nANSWER 7: tula liro pu"
+   },
+   {
+    "round": "answer",
+    "agent": 3,
+    "raw": "Analyzing my evidence:\n\n- lewolirolo → I smile: lewo (I) + liro (smile) + lo\n- nipiwojapu → we watched: nipi (we) + woja (watch) + pu (past)\n- lewowijelo → I cook: lewo (I) + wije (cook) + lo\n- wirepikapu → they walked: wire (they) + pika (walk) + pu (past)\n\nPatterns:\n- lewo = I, nipi = we, wire = they\n- Suffix: lo = present(?), pu = past\n- liro = smile, woja = watch, wije = cook, pika = walk\n\nI need pronouns for \"he\" and \"you all\". Not in my evidence — hoping other agents have them. From bank, candidates: nawa, tula, jala, jino, etc.\n\nLet me post findings and make best guesses.\n\nANSWER 0: wire pika lo\nANSWER 1: lewo pika lo\nANSWER 2: nawa woja lo\nANSWER 3: tula wije pu\nANSWER 4: nawa pika lo\nANSWER 5: nawa liro lo\nANSWER 6: nawa pika pu\nANSWER 7: nawa liro pu"
+   }
+  ]
+ },
+ {
+  "puzzle": "gen-003",
+  "language": "Sosoma",
+  "family": "Generated/vowel-harmony",
+  "condition": "soloshard",
+  "seed": 1,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "n_agents": 4,
+  "rounds": 0,
+  "corrupted_rows": [],
+  "elapsed_s": 34.9,
+  "board": [],
+  "queries": [
+   {
+    "qid": 0,
+    "difficulty": "tutorial",
+    "prompt": "Does he carry?",
+    "gold": [
+     "rel",
+     "meti",
+     "ni",
+     "je"
+    ],
+    "swarm": [
+     "rel",
+     "meti",
+     "ni",
+     "je"
+    ],
+    "em_decomp": true,
+    "em_surface": true,
+    "chrf": 1.0,
+    "morf1": 1.0,
+    "votes": {
+     "rel meti ni je": 1,
+     "rel meti ni jo": 1,
+     "rel meti je": 1,
+     "ret meti ja": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     true,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 1,
+    "difficulty": "standard",
+    "prompt": "Do you all talk?",
+    "gold": [
+     "nan",
+     "milo",
+     "na",
+     "jo"
+    ],
+    "swarm": [
+     "tam",
+     "milo",
+     "jajo",
+     "jo"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.4052,
+    "morf1": 0.5,
+    "votes": {
+     "tam milo jajo jo": 1,
+     "nan milo na jo": 1,
+     "ret milo je": 1,
+     "ret malo ni": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     true,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 2,
+    "difficulty": "standard",
+    "prompt": "you called",
+    "gold": [
+     "tam",
+     "nama",
+     "ja"
+    ],
+    "swarm": [
+     "nan",
+     "nama",
+     "na"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.3735,
+    "morf1": 0.3333,
+    "votes": {
+     "nan nama na": 1,
+     "na kiko ji": 1,
+     "tam malo ja": 1,
+     "til milo na": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 3,
+    "difficulty": "standard",
+    "prompt": "Do we wait?",
+    "gold": [
+     "til",
+     "malo",
+     "na",
+     "jo"
+    ],
+    "swarm": [
+     "rel",
+     "malo",
+     "ji",
+     "je"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.4049,
+    "morf1": 0.25,
+    "votes": {
+     "rel malo ji je": 1,
+     "til malo na jo": 1,
+     "nan kijo je": 1,
+     "ret kijo ji": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     true,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 4,
+    "difficulty": "standard",
+    "prompt": "Do they call?",
+    "gold": [
+     "ret",
+     "nama",
+     "na",
+     "jo"
+    ],
+    "swarm": [
+     "rel",
+     "nama",
+     "ja",
+     "je"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.3936,
+    "morf1": 0.25,
+    "votes": {
+     "rel nama ja je": 1,
+     "ret kiko na jo": 1,
+     "til malo je": 1,
+     "ret nama ni": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 5,
+    "difficulty": "curveball",
+    "prompt": "Did they clean?",
+    "gold": [
+     "ret",
+     "kiko",
+     "ja",
+     "jo"
+    ],
+    "swarm": [
+     "nan",
+     "til",
+     "ja"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.1228,
+    "morf1": 0.2857,
+    "votes": {
+     "nan til ja": 1,
+     "ret nama ji je": 1,
+     "til kiko ja": 1,
+     "til kiko ni jajo": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 6,
+    "difficulty": "curveball",
+    "prompt": "Do you all play?",
+    "gold": [
+     "nan",
+     "jajo",
+     "na",
+     "jo"
+    ],
+    "swarm": [
+     "tam",
+     "kijo",
+     "jajo",
+     "jo"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.3326,
+    "morf1": 0.5,
+    "votes": {
+     "tam kijo jajo jo": 1,
+     "nan niro na jo": 1,
+     "ret jajo je": 1,
+     "ret nan ni": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   }
+  ],
+  "transcript": [
+   {
+    "round": "answer",
+    "agent": 0,
+    "raw": "Let me analyze my evidence:\n\n- relmetinije → Does he carry? = rel + meti + ni + je\n- tamnironajo → Do you cook? = tam + niro + na + jo\n- tammilona → you talk = tam + milo + na\n- nanmilojajo → Did you all talk? = nan + milo + jajo\n\nAnalysis:\n- **rel** = question prefix (present?); **tam** = question prefix too? Both appear in questions.\n- Wait: \"tammilona → you talk\" (statement) has tam but no question. \"tamnironajo → Do you cook?\" is a question.\n- **nan** = past tense marker (\"Did\")\n- Verbs: meti=carry, niro=cook, milo=talk\n- Pronouns/subjects: **ni**=he, **na**=you, **jajo**=you all\n- **je** = present question?, **jo** = question marker\n\nLet me reconsider:\n- relmetinije: rel + meti + ni + je → \"Does he carry?\" rel=do-question, je=present/3rd\n- tamnironajo: tam + niro + na + jo → \"Do you cook?\" na=you\n- tammilona: tam + milo + na → \"you talk\" (statement, no question suffix)\n- nanmilojajo: nan + milo + jajo → \"Did you all talk?\" nan=past, jajo=you-all\n\nSo question marker seems to be suffix **jo**/**je**. tam vs rel = present question prefixes.\n- ni=he, na=you, jajo=you all\n\nBuilding grammar (prefix + verb + subject + Q-suffix):\nQ0 Does he carry: rel meti ni je\nQ1 Do you all talk: tam milo jajo jo\nQ2 you called: statement, no Q — need \"call\"=nama?, past=nan: nan nama na\nQ3 Do we wait: wait=malo?, we=? Use \"ji\": rel malo ji je\nQ4 Do they call: call=nama, they=ja: rel nama ja je\nQ5 Did they clean: past nan, clean=til?, they=ja: nan til ja\nQ6 Do you all play: play=kijo? tam ... jajo jo\n\nANSWER 0: rel meti ni je\nANSWER 1: tam milo jajo jo\nANSWER 2: nan nama na\nANSWER 3: rel malo ji je\nANSWER 4: rel nama ja je\nANSWER 5: nan til ja\nANSWER 6: tam kijo jajo jo"
+   },
+   {
+    "round": "answer",
+    "agent": 1,
+    "raw": "Let me analyze my evidence:\n\n- relmetini → he carries: rel+meti+ni = (he?)+carry+(present?)\n- relmetijije → Did he carry? = rel+meti+ji+je (past+question?)\n- tammilonajo → Do you talk? = tam+milo+na+jo (you+question?)\n- nankijona → you all jump = nan+kijo+na\n\nAnalysis:\n- meti = carry, milo = talk, kijo = jump\n- rel = he, tam = ? , nan = you all, na = you\n- ni = present (he carries)\n- \"na\" appears in \"you talk\" and \"you all jump\" — likely \"you/you all\" marker\n- Reconsider: tammilonajo (Do you talk) = tam+milo+na+jo; nankijona (you all jump) = nan+kijo+na\n- \"jo\" = question marker (Do you talk?), \"je\" also question (Did he carry?)\n- ji = past tense (relmetijije: meti+ji+je = carried + past + question)\n- So je/jo = question, ji = past, ni = present\n- Subject prefixes: rel=he, nan=you all, tam=? na=you\n- tammilonajo: tam+milo+na+jo — \"na\" could be you-subject, tam=present-ish? Actually \"nan\"=you all, \"na\"=you\n\nLet me set: rel=he, nan=you all, na=you. tam? \n- tammilonajo = tam + milo + na + jo? But na=you. So \"you talk\" has na. tam may be a prefix. Let's say verb stem milo, subject na(you), jo question.\n\nMorphemes needed:\n- carry=meti, talk=milo, jump=kijo, call=kiko(or kijo?), wait=malo, clean=nama, play=niro, called...\n- call=kiko, jump=kijo; clean=nama, wait=malo, play=niro\n- we=til, they=ret\n\nQuestion=jo, past=ji, present=ni/na\n\nANSWER 0: rel meti ni jo\nANSWER 1: nan milo na jo\nANSWER 2: na kiko ji\nANSWER 3: til malo na jo\nANSWER 4: ret kiko na jo\nANSWER 5: ret nama ji je\nANSWER 6: nan niro na jo"
+   },
+   {
+    "round": "answer",
+    "agent": 2,
+    "raw": "My evidence analysis:\n\n- notniroja → I cooked: `not`=I, `niro`=cook, `ja`=past?\n- tammiloja → you talked: `tam`=you, `milo`=talk, `ja`=past\n- relmetiji → he carried: `rel`=he, `meti`=carry, `ji`=?\n\nSo: `not`=I, `tam`=you, `rel`=he. Verbs: `niro`=cook, `milo`=talk, `meti`=carry.\n\nTense/suffix: `ja` appears for \"I/you\" past, `ji` for \"he\" past. These may be agreement+tense. Possibly `ja`=past(non-3rd), `ji`=past(3rd). Or suffix encodes subject agreement.\n\nMORPHEME BANK clues for other pronouns/verbs:\n- `nan`, `ret`, `til`, `nama`, `na`, `ni`, `je`, `jo`, `malo`, `kijo`, `kiko`, `jajo`, `nama`\n- Likely pronouns: we, you-all, they, she — among nan/ret/til/nama\n- `ja`/`ji`/`je`/`jo`/`na`/`ni` are suffix set (tense/mood).\n\nI'll post my findings and await Agents 3/4 for the remaining pronouns and verbs (call, wait, clean, play, carry questions).\n\nANSWER 0: rel meti je\nANSWER 1: ret milo je\nANSWER 2: tam malo ja\nANSWER 3: nan kijo je\nANSWER 4: til malo je\nANSWER 5: til kiko ja\nANSWER 6: ret jajo je"
+   },
+   {
+    "round": "answer",
+    "agent": 3,
+    "raw": "My evidence analysis:\n\n- tilmetiji → we carried: til=past, meti=carry, ji=we\n- retmetini → they carry: ret=present?, meti=carry, ni=they\n- relkikojajo → Did he clean?: rel=?, kiko=clean, ja=he, jajo=question(past)?\n\nSo:\n- til = past tense\n- ret = present tense\n- meti = carry\n- kiko = clean\n- ji = we, ni = they, ja = he\n- jajo = question marker (past)\n\nLet me post findings and make best guesses pending other agents.\n\nANSWER 0: ret meti ja\nANSWER 1: ret malo ni\nANSWER 2: til milo na\nANSWER 3: ret kijo ji\nANSWER 4: ret nama ni\nANSWER 5: til kiko ni jajo\nANSWER 6: ret nan ni"
+   }
+  ]
+ },
+ {
+  "puzzle": "gen-003",
+  "language": "Sosoma",
+  "family": "Generated/vowel-harmony",
+  "condition": "soloshard",
+  "seed": 2,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "n_agents": 4,
+  "rounds": 0,
+  "corrupted_rows": [],
+  "elapsed_s": 39.4,
+  "board": [],
+  "queries": [
+   {
+    "qid": 0,
+    "difficulty": "tutorial",
+    "prompt": "Does he carry?",
+    "gold": [
+     "rel",
+     "meti",
+     "ni",
+     "je"
+    ],
+    "swarm": [
+     "tam",
+     "ja",
+     "meti",
+     "jo"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.3004,
+    "morf1": 0.25,
+    "votes": {
+     "tam ja meti jo": 1,
+     "rel meti ni je": 1,
+     "rel kijo jo": 1,
+     "rel meti ji na": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     true,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 1,
+    "difficulty": "standard",
+    "prompt": "Do you all talk?",
+    "gold": [
+     "nan",
+     "milo",
+     "na",
+     "jo"
+    ],
+    "swarm": [
+     "tam",
+     "nan",
+     "malo",
+     "jo"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.4083,
+    "morf1": 0.5,
+    "votes": {
+     "tam nan malo jo": 1,
+     "nan milo ni je": 1,
+     "tam milo ni jo": 1,
+     "rel milo nan na": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 2,
+    "difficulty": "standard",
+    "prompt": "you called",
+    "gold": [
+     "tam",
+     "nama",
+     "ja"
+    ],
+    "swarm": [
+     "na",
+     "kiko",
+     "ji"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.1173,
+    "morf1": 0.0,
+    "votes": {
+     "na kiko ji": 1,
+     "ret nama ja": 1,
+     "malo na ji": 1,
+     "tam kijo ja": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 3,
+    "difficulty": "standard",
+    "prompt": "Do we wait?",
+    "gold": [
+     "til",
+     "malo",
+     "na",
+     "jo"
+    ],
+    "swarm": [
+     "tam",
+     "til",
+     "milo",
+     "jo"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.4083,
+    "morf1": 0.5,
+    "votes": {
+     "tam til milo jo": 1,
+     "tam kijo ni je": 1,
+     "til nan jo": 1,
+     "rel malo nama na": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 4,
+    "difficulty": "standard",
+    "prompt": "Do they call?",
+    "gold": [
+     "ret",
+     "nama",
+     "na",
+     "jo"
+    ],
+    "swarm": [
+     "tam",
+     "ret",
+     "kiko",
+     "jo"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.2815,
+    "morf1": 0.5,
+    "votes": {
+     "tam ret kiko jo": 1,
+     "til nama ni je": 1,
+     "malo niro jo": 1,
+     "rel kijo niro na": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 5,
+    "difficulty": "curveball",
+    "prompt": "Did they clean?",
+    "gold": [
+     "ret",
+     "kiko",
+     "ja",
+     "jo"
+    ],
+    "swarm": [
+     "tam",
+     "ret",
+     "jajo",
+     "ji"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.4376,
+    "morf1": 0.25,
+    "votes": {
+     "tam ret jajo ji": 1,
+     "til kiko jajo": 1,
+     "niro kiko jajo": 1,
+     "rel kiko niro je": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 6,
+    "difficulty": "curveball",
+    "prompt": "Do you all play?",
+    "gold": [
+     "nan",
+     "jajo",
+     "na",
+     "jo"
+    ],
+    "swarm": [
+     "tam",
+     "nan",
+     "nama",
+     "jo"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.3555,
+    "morf1": 0.5,
+    "votes": {
+     "tam nan nama jo": 1,
+     "nan malo ni je": 1,
+     "tam nama ni jo": 1,
+     "rel jajo nan na": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   }
+  ],
+  "transcript": [
+   {
+    "round": "answer",
+    "agent": 0,
+    "raw": "Let me analyze my evidence:\n\n- tilmetiji → we carried: til + meti + ji = we + carry + past? Let me check\n- retmetini → they carry: ret + meti + ni = they + carry + present\n- tamnironajo → Do you cook?: tam + niro + na + jo = question + cook + you + ?\n- nankijona → you all jump: nan + kijo + na = you all + jump + you?\n\nLet me parse:\n- meti = carry\n- ret = they, til = we\n- ni = they/present marker (retmetini = they carry → ret=they, ni=?)\n- tilmetiji: til=we, meti=carry, ji=past (we carried)\n- retmetini: ret=they, meti=carry, ni=present (they carry)\n- tamnironajo: tam=question(Do), niro=cook, na=you, jo=present? → \"Do you cook?\"\n- nankijona: nan=you all, kijo=jump, na=present? \n\nReconciling: subject prefixes: til=we, ret=they, na=you, nan=you all. \nTense/aspect suffix: ji=past, ni/na=present. tam=question prefix.\n\nLet me use: present=ni (from retmetini), but tamnironajo ends in \"jo\" and nankijona ends in \"na\". \n- nankijona: nan+kijo+na → na=present? \n- tamnironajo: tam+niro+na+jo → na=you, jo=present\n\nSo subject can be prefix (nan) or suffix (na=you). Present marker = jo, past = ji.\n\nPosting findings:\n- meti=carry, niro=cook, kijo=jump\n- til=we, ret=they, nan=you all, na=you\n- jo=present, ji=past, tam=question(Do), ni=present(they)\n\nNeed: talk, wait, call, clean, play. From bank: jajo, kiko, malo, milo, nama. he/she=? \nLet me assign reasonably: kiko=call(called), malo=talk, milo=wait, nama=play, jajo=clean.\nhe/she = ja; \"Do\"=tam, \"Did\"=tam+ji\n\nANSWER 0: tam ja meti jo\nANSWER 1: tam nan malo jo\nANSWER 2: na kiko ji\nANSWER 3: tam til milo jo\nANSWER 4: tam ret kiko jo\nANSWER 5: tam ret jajo ji\nANSWER 6: tam nan nama jo"
+   },
+   {
+    "round": "answer",
+    "agent": 1,
+    "raw": "Let me analyze my evidence:\n\n- nanmilojajo → Did you all talk? = nan + milo + jajo\n- relmetini → he carries = rel + meti + ni\n- notniroja → I cooked = not + niro + ja\n- relmetinije → Does he carry? = rel + meti + ni + je\n\nDeductions:\n- **rel** = he, **not** = I, **nan** = you all\n- **meti** = carry, **niro** = cook, **milo** = talk\n- **ni** = present (\"carries\"), **ja** = past (\"cooked\")\n- **je** = question marker (Does he carry? = statement + je)\n- **jajo** = past + question? (Did you all talk?) — jajo = ja + jo, so **jo** = question (past context); \"je\" present question\n\nSo question marker depends on tense: **je** = present Q, **jo** = past Q.\nStatement: present = ni, past = ja.\n\nNow queries:\n\n0: Does he carry? = rel + meti + ni + je\n1: Do you all talk? = nan + milo + ni + je\n2: you called → need \"you\" (sing) and \"call\". Unknown pronoun/verb from bank. Guess later.\n3: Do we wait? → need \"we\", \"wait\"\n4: Do they call? → need \"they\", \"call\"\n5: Did they clean? → need \"they\", \"clean\"\n6: Do you all play? → nan + ? + ni + je\n\nPronouns from bank (candidates): nan(you all), not(I), rel(he), ret, tam, til. Likely **ret**=you, **tam**=we/they, **til**=they.\nVerbs: meti, niro, milo, nama, kijo, kiko, malo, (niro=cook). Candidates for call/wait/clean/play: nama, kijo, kiko, malo.\n\nGuesses: call=nama, wait=kijo, clean=kiko, play=malo.\n\nANSWER 0: rel meti ni je\nANSWER 1: nan milo ni je\nANSWER 2: ret nama ja\nANSWER 3: tam kijo ni je\nANSWER 4: til nama ni je\nANSWER 5: til kiko ja jo\nANSWER 6: nan malo ni je"
+   },
+   {
+    "round": "answer",
+    "agent": 2,
+    "raw": "Let me analyze my evidence:\n\n- tammilonajo → Do you talk? = tam + milo + na + jo\n- relmetiji → he carried = rel + meti + ji\n- relkikojajo → Did he clean? = rel + kiko + jajo\n\nDeductions:\n- tam = talk, milo = ? (but \"talk\" seems tam... let me reconsider)\n- Actually: tam-milo-na-jo \"Do you talk?\" \n- rel-meti-ji \"he carried\"\n- rel-kiko-jajo \"Did he clean?\"\n\nPattern: rel = he (subject prefix). ji = past tense. jajo = past question.\n- meti = carry, kiko = clean, milo = talk? but tam also present.\n- \"Do you talk?\" = tam(?) milo(talk) na(you) jo(question/present)\n- na = you, jo = present question marker\n\nSo: subject markers: rel=he, na=you. \n- tam = ? maybe present tense marker, milo = talk\n- jo = question marker (present)\n- jajo = past question, ji = past statement\n\nLet me post to board:\n- rel=he, na=you, ja=? \n- jo = present question, jajo = past question, ji = past statement\n- milo=talk, meti=carry, kiko=clean\n- tam = present tense marker (statement would differ)\n\nFor queries, I'll use my best grammar. Structure: [tense?] + verb + subject + question-marker. From tammilonajo = tam+milo+na+jo, \"tam\" prefix + verb + subject + jo.\n\nNeed: malo=call?, til=wait?, nama=play?, kijo=carry? Subjects: na=you, ni=you all?, nan=we?, niro=they?\n\nANSWER 0: rel kijo jo\nANSWER 1: tam milo ni jo\nANSWER 2: malo na ji\nANSWER 3: til nan jo\nANSWER 4: malo niro jo\nANSWER 5: niro kiko jajo\nANSWER 6: tam nama ni jo"
+   },
+   {
+    "round": "answer",
+    "agent": 3,
+    "raw": "Let me analyze my evidence:\n\n- relmetijije → Did he carry? (rel + meti + ji + je)\n- tammiloja → you talked (tam + milo + ja)\n- tammilona → you talk (tam + milo + na)\n\nFrom this:\n- **tam** = you (subject marker)\n- **milo** = talk\n- **meti** = carry\n- **ja** = past tense (\"talked\")\n- **na** = present tense (\"talk\")\n- **rel** = question marker (Did...?)\n- **ji** = he (subject marker)\n- **je** = ? (past, with question; \"Did he carry\")\n\nSo structure: [rel/question] + [verb] + [subject] + [tense]\n- relmetijije: rel + meti + ji + je → je = past tense (question context)\n- Wait, tammiloja: subject-verb-tense = tam + milo + ja (you talk-past)\n\nTwo orderings differ. Let me reconcile with board help needed, but I'll propose:\n- Statement: SUBJ + VERB + TENSE (tam milo ja)\n- Question: rel + VERB + SUBJ + TENSE (rel meti ji je)\n\nTense: ja/je = past, na/ni... = present. je may be past-question variant.\n\nSubjects: ji=he, tam=you. Need others (you all, we, they) from bank: nan, ret, niro, nama, kijo, kiko, jajo, malo, til, not, ni, jo.\n\n**Queries:**\n- 0: Does he carry? → rel + meti + ji + na\n- 1: Do you all talk? → rel + milo + [you all] + na\n- 2: you called → tam + [call] + ja\n- 3: Do we wait? → rel + [wait] + [we] + na\n- 4: Do they call? → rel + [call] + [they] + na\n- 5: Did they clean? → rel + [clean] + [they] + je\n- 6: Do you all play? → rel + [play] + [you all] + na\n\nUsing bank guesses: you all=tam+plural? use nan; call=kijo; wait=malo; they=niro; clean=kiko; play=jajo; we=nama.\n\nANSWER 0: rel meti ji na\nANSWER 1: rel milo nan na\nANSWER 2: tam kijo ja\nANSWER 3: rel malo nama na\nANSWER 4: rel kijo niro na\nANSWER 5: rel kiko niro je\nANSWER 6: rel jajo nan na"
+   }
+  ]
+ },
+ {
+  "puzzle": "gen-004",
+  "language": "Kukato",
+  "family": "Generated/noun-class-agreement",
+  "condition": "soloshard",
+  "seed": 1,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "n_agents": 4,
+  "rounds": 0,
+  "corrupted_rows": [],
+  "elapsed_s": 38.1,
+  "board": [],
+  "queries": [
+   {
+    "qid": 0,
+    "difficulty": "tutorial",
+    "prompt": "the newt cooked",
+    "gold": [
+     "netap",
+     "se",
+     "pewu",
+     "ke",
+     "wa"
+    ],
+    "swarm": [
+     "netap",
+     "ni",
+     "pewu",
+     "ke",
+     "ti"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.5505,
+    "morf1": 0.6,
+    "votes": {
+     "ni make ke ti": 1,
+     "netap ni pewu ke ti": 2,
+     "netap se pewu ke wa": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     true
+    ]
+   },
+   {
+    "qid": 1,
+    "difficulty": "standard",
+    "prompt": "the bear talked",
+    "gold": [
+     "manin",
+     "po",
+     "rame",
+     "ke",
+     "pu"
+    ],
+    "swarm": [
+     "manin",
+     "ni",
+     "rame",
+     "ke",
+     "ti"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.5505,
+    "morf1": 0.6,
+    "votes": {
+     "ni rame ke ti": 1,
+     "manin ni rame ke ti": 2,
+     "manin po nope te pu": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 2,
+    "difficulty": "standard",
+    "prompt": "the dog walked",
+    "gold": [
+     "sesup",
+     "se",
+     "tawu",
+     "ke",
+     "wa"
+    ],
+    "swarm": [
+     "po",
+     "tawu",
+     "ke",
+     "pu"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.3675,
+    "morf1": 0.4444,
+    "votes": {
+     "po tawu ke pu": 1,
+     "sesup se tawu ke wa": 1,
+     "puton ni nawu ke ti": 1,
+     "kisuo ni rame ke ti": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     true,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 3,
+    "difficulty": "standard",
+    "prompt": "the lion watches",
+    "gold": [
+     "naruo",
+     "ni",
+     "nope",
+     "te",
+     "ti"
+    ],
+    "swarm": [
+     "naruo",
+     "po",
+     "nope",
+     "te",
+     "pu"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.5505,
+    "morf1": 0.6,
+    "votes": {
+     "ni wa te ti": 1,
+     "naruo ni nope te ti": 1,
+     "naruo po nope te pu": 2
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     true,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 4,
+    "difficulty": "standard",
+    "prompt": "the wolf talks",
+    "gold": [
+     "seson",
+     "po",
+     "rame",
+     "te",
+     "pu"
+    ],
+    "swarm": [
+     "ni",
+     "rame",
+     "te",
+     "ti"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.3506,
+    "morf1": 0.4444,
+    "votes": {
+     "ni rame te ti": 1,
+     "seson po nawu te ti": 1,
+     "seson po rame te pu": 1,
+     "puton ni tawu te ti": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     true,
+     false
+    ]
+   },
+   {
+    "qid": 5,
+    "difficulty": "standard",
+    "prompt": "the lion talked",
+    "gold": [
+     "naruo",
+     "ni",
+     "rame",
+     "ke",
+     "ti"
+    ],
+    "swarm": [
+     "naruo",
+     "ni",
+     "rame",
+     "ke",
+     "ti"
+    ],
+    "em_decomp": true,
+    "em_surface": true,
+    "chrf": 0.832,
+    "morf1": 1.0,
+    "votes": {
+     "ni rame ke ti": 1,
+     "naruo ni rame ke ti": 2,
+     "naruo ni tawu ke ti": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     true,
+     true,
+     false
+    ]
+   },
+   {
+    "qid": 6,
+    "difficulty": "curveball",
+    "prompt": "the newt walked",
+    "gold": [
+     "netap",
+     "se",
+     "tawu",
+     "ke",
+     "wa"
+    ],
+    "swarm": [
+     "ni",
+     "make",
+     "ke",
+     "ti"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.1376,
+    "morf1": 0.2222,
+    "votes": {
+     "ni make ke ti": 1,
+     "netap se tawu ke wa": 1,
+     "netap ni nawu ke ti": 1,
+     "netap ni rame ke ti": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     true,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 7,
+    "difficulty": "curveball",
+    "prompt": "the bird walked",
+    "gold": [
+     "supop",
+     "se",
+     "tawu",
+     "ke",
+     "wa"
+    ],
+    "swarm": [
+     "po",
+     "tawu",
+     "ke",
+     "pu"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.4194,
+    "morf1": 0.4444,
+    "votes": {
+     "po tawu ke pu": 1,
+     "puton se tawu ke wa": 1,
+     "rimou ni nawu ke ti": 1,
+     "seson ni rame ke ti": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   }
+  ],
+  "transcript": [
+   {
+    "round": "answer",
+    "agent": 0,
+    "raw": "Let me analyze my evidence:\n\n- kisuo nirameteti → the goat talks\n- puton potawutepu → the fish walks\n- kisuo ninawuketi → the goat helped\n- rimou nirameteti → the frog talks\n\nNouns: kisuo=goat, puton=fish, rimou=frog\n\nVerb structures:\n- nirameteti = talks: ni-rame-te-ti\n- potawutepu = walks: po-tawu-te-pu\n- ninawuketi = helped: ni-nawu-ke-ti\n\nBreaking down:\n- rame=talk, tawu=walk, nawu=help\n- ni-...-ti vs po-...-pu — appears to be agreement prefix/suffix pairs\n- te = present marker? (rameteti=talks, tawutepu=walks both have \"te\")\n- ke = past marker (nawuketi=helped has \"ke\")\n\nSo: ni-ROOT-TENSE-ti pattern.\n- Present: te, Past: ke\n- Prefix ni / po and suffix ti / pu seem to pair by noun class (kisuo/rimou→ni...ti; puton→po...pu)\n\nI need other agents' noun/verb mappings (newt, bear, dog, lion, wolf, bird, cook, watch) — I'll post what I have and make best guesses.\n\nBased on my evidence, general verb form: PREFIX-root-TENSE-SUFFIX.\n\nANSWER 0: ni make ke ti\nANSWER 1: ni rame ke ti\nANSWER 2: po tawu ke pu\nANSWER 3: ni wa te ti\nANSWER 4: ni rame te ti\nANSWER 5: ni rame ke ti\nANSWER 6: ni make ke ti\nANSWER 7: po tawu ke pu"
+   },
+   {
+    "round": "answer",
+    "agent": 1,
+    "raw": "Analyzing my evidence:\n\n- rimou nirameketi → the frog talked: rimou=frog, ni-rame-ke-ti\n- kisuo nipewuteti → the goat cooks: kisuo=goat, ni-pewu-te-ti\n- seson ponawukepu → the wolf helped: seson=wolf, po-nawu-ke-pu\n- sesup semakekewa → the dog called: sesup=dog, se-make-ke-wa\n\nPatterns:\n- Roots: rame=talk, pewu=cook, nawu=help, make=call\n- Prefixes: ni-, po-, se- (verb class markers, tied to final suffix)\n- ke = appears in all (past/aspect marker?)\n- Suffixes: ti, pu, wa (agreement with prefix ni/po/se)\n- Tense: \"cooks\" = ni-pewu-te-ti (te = present?), \"talked/helped/called\" have -ke- (past)\n\nSo:\n- Present: prefix-root-te-suffix (pewu-te-ti)\n- Past: prefix-root-ke-suffix (rame-ke-ti, nawu-ke-pu, make-ke-wa)\n\nPrefix/suffix pairs: ni...ti, po...pu, se...wa. These seem to be verb conjugation classes. Need to map roots to classes. Each root has fixed class:\n- rame → ni/ti\n- pewu → ni/ti\n- nawu → po/pu\n- make → se/wa\n\nNeed more roots: walk, watch. From bank: tawu, nope likely. Guessing tawu=walk, nope=watch.\n\nNouns needed (newt, bear, lion, bird): from bank: manin, naruo, netap, puton, supop. I'll assign tentatively.\n\nPOST TO BOARD: rimou=frog, kisuo=goat, seson=wolf, sesup=dog. Verb roots: rame=talk, pewu=cook, nawu=help, make=call. ke=past, te=present. Conjugation classes: ni-...-ti, po-...-pu, se-...-wa. Need other agents' noun/verb mappings.\n\nANSWER 0: netap nipewuketi\nANSWER 1: manin nirameketi\nANSWER 2: sesup setawukewa\nANSWER 3: naruo ninopeteti\nANSWER 4: seson ponawuteti\nANSWER 5: naruo nirameketi\nANSWER 6: netap setawukewa\nANSWER 7: puton setawukewa"
+   },
+   {
+    "round": "answer",
+    "agent": 2,
+    "raw": "Let me analyze my evidence.\n\n**Nouns:**\n- manin = bear\n- seson = wolf\n- kisuo = goat\n- naruo = lion\n\n**Verbs structure:**\n- popewutepu = cooks → po-pewu-te-pu\n- ponopetepu = watches → po-nope-te-pu\n- nipewuketi = cooked → ni-pewu-ke-ti\n- nimakeketi = called → ni-make-ke-ti\n\n**Morpheme breakdown:**\n- Verb roots: pewu = cook, nope = watch, make = call\n- Prefix: po- = present?, ni- = past?\n- Suffix patterns: present → -te-pu, past → -ke-ti\n\nSo:\n- Present: po-ROOT-te-pu\n- Past: ni-ROOT-ke-ti\n\n**Needed roots for queries:**\n- cook = pewu ✓\n- talk/talks = ? (rame? nawu? tawu?)\n- walk = ?\n- watch = nope ✓\n\nCandidate roots in bank: make, nawu, nope, pewu, rame, tawu.\n- nope = watch, pewu = cook, make = call\n- Remaining: nawu, rame, tawu for talk, walk, and one more.\n\nGuessing: talk = rame, walk = tawu (or nawu). Let me pick talk = rame, walk = nawu.\n\n**Needed nouns:** newt, dog, bird.\nRemaining nouns: netap, puton, rimou, sesup, supop.\nGuessing: newt=netap, dog=puton, bird=rimou (arbitrary but consistent).\n\nQuery answers:\n\n0: newt cooked (past) → netap ni pewu ke ti\n1: bear talked (past) → manin ni rame ke ti\n2: dog walked (past) → puton ni nawu ke ti\n3: lion watches (present) → naruo po nope te pu\n4: wolf talks (present) → seson po rame te pu\n5: lion talked (past) → naruo ni rame ke ti\n6: newt walked (past) → netap ni nawu ke ti\n7: bird walked (past) → rimou ni nawu ke ti\n\nANSWER 0: netap ni pewu ke ti\nANSWER 1: manin ni rame ke ti\nANSWER 2: puton ni nawu ke ti\nANSWER 3: naruo po nope te pu\nANSWER 4: seson po rame te pu\nANSWER 5: naruo ni rame ke ti\nANSWER 6: netap ni nawu ke ti\nANSWER 7: rimou ni nawu ke ti"
+   },
+   {
+    "round": "answer",
+    "agent": 3,
+    "raw": "Analyzing my evidence:\n\n- netap sepewukewa → the newt cooked\n- rimou nimakeketi → the frog called\n- manin ponopetepu → the bear watches\n- naruo nimaketeti → the lion calls\n\nNouns: netap=newt, rimou=frog, manin=bear, naruo=lion\n\nVerbs break down (prefix + root + tense/aspect):\n- sepewukewa = se+pewu+ke+wa → \"cook\" root=pewu, prefix se, past=wa+ke?\n- nimakeketi = ni+make+ke+ti → \"call\" past? root=make\n- ponopetepu = po+nope+te+pu → \"watch\" present, root=nope, prefix po\n- nimaketeti = ni+make+te+ti → \"call\" present, root=make, prefix ni\n\nComparing call: past=nimakeketi (ke), present=nimaketeti (te). So **ke=past, te=present**.\nWatch present = ponopetepu: po+nope+te+pu. So suffix pu with po prefix.\nCall present = nimaketeti: ni+make+te+ti. suffix ti with ni prefix.\n\nSo verb = PREFIX + ROOT + TENSE(ke/te) + SUFFIX(matches prefix: se→wa, ni→ti, po→pu).\n- se...wa (cook: sepewukewa = se+pewu+ke+wa) — past with ke. ✓\n- ni...ti (call)\n- po...pu (watch)\n\nPrefix/suffix likely agree with noun class or verb class.\n\nRoots from bank: pewu=cook, make=call, nope=watch, nawu, rame, tawu(=walk?), puton. Need talk/walk.\nLikely: tawu=talk, rame=walk (guessing). Let me assign: walk=rame, talk=tawu.\n\nVerb class markers: cook used se/wa; need consistent choice. Default use ni/ti pattern for new verbs.\n\nANSWER 0: netap se pewu ke wa\nANSWER 1: manin po nope te pu\nANSWER 2: kisuo ni rame ke ti\nANSWER 3: naruo po nope te pu\nANSWER 4: puton ni tawu te ti\nANSWER 5: naruo ni tawu ke ti\nANSWER 6: netap ni rame ke ti\nANSWER 7: seson ni rame ke ti"
+   }
+  ]
+ },
+ {
+  "puzzle": "gen-004",
+  "language": "Kukato",
+  "family": "Generated/noun-class-agreement",
+  "condition": "soloshard",
+  "seed": 2,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "n_agents": 4,
+  "rounds": 0,
+  "corrupted_rows": [],
+  "elapsed_s": 42.1,
+  "board": [],
+  "queries": [
+   {
+    "qid": 0,
+    "difficulty": "tutorial",
+    "prompt": "the newt cooked",
+    "gold": [
+     "netap",
+     "se",
+     "pewu",
+     "ke",
+     "wa"
+    ],
+    "swarm": [
+     "netap",
+     "ni",
+     "pewu",
+     "ke",
+     "ti"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.5505,
+    "morf1": 0.6,
+    "votes": {
+     "netap ni pewu ke ti": 1,
+     "netap se pewu ke wa": 1,
+     "netap se pewu ke te wa": 1,
+     "puton po pewu ke pu": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     true,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 1,
+    "difficulty": "standard",
+    "prompt": "the bear talked",
+    "gold": [
+     "manin",
+     "po",
+     "rame",
+     "ke",
+     "pu"
+    ],
+    "swarm": [
+     "manin",
+     "ni",
+     "rame",
+     "ke",
+     "ti"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.5505,
+    "morf1": 0.6,
+    "votes": {
+     "manin ni rame ke ti": 2,
+     "manin po rame te ke pu": 1,
+     "manin po pewu ke te pu": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 2,
+    "difficulty": "standard",
+    "prompt": "the dog walked",
+    "gold": [
+     "sesup",
+     "se",
+     "tawu",
+     "ke",
+     "wa"
+    ],
+    "swarm": [
+     "seson",
+     "po",
+     "tawu",
+     "ke",
+     "pu"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.4415,
+    "morf1": 0.4,
+    "votes": {
+     "seson po tawu ke pu": 1,
+     "puton ni pu ke ti": 1,
+     "sesup se tawu ke wa": 1,
+     "naruo po make ke pu": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     true,
+     false
+    ]
+   },
+   {
+    "qid": 3,
+    "difficulty": "standard",
+    "prompt": "the lion watches",
+    "gold": [
+     "naruo",
+     "ni",
+     "nope",
+     "te",
+     "ti"
+    ],
+    "swarm": [
+     "naruo",
+     "ni",
+     "nope",
+     "te",
+     "ti"
+    ],
+    "em_decomp": true,
+    "em_surface": true,
+    "chrf": 0.832,
+    "morf1": 1.0,
+    "votes": {
+     "naruo ni nope te ti": 1,
+     "naruo nitaweketi": 1,
+     "puton po nope te pu": 1,
+     "netap po nope te pu": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     true,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 4,
+    "difficulty": "standard",
+    "prompt": "the wolf talks",
+    "gold": [
+     "seson",
+     "po",
+     "rame",
+     "te",
+     "pu"
+    ],
+    "swarm": [
+     "sesup",
+     "ni",
+     "rame",
+     "te",
+     "ti"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.4573,
+    "morf1": 0.4,
+    "votes": {
+     "sesup ni rame te ti": 1,
+     "seson ni rame ke ti": 1,
+     "naruo ni rame te ti": 1,
+     "seson po rame te pu": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     true
+    ]
+   },
+   {
+    "qid": 5,
+    "difficulty": "standard",
+    "prompt": "the lion talked",
+    "gold": [
+     "naruo",
+     "ni",
+     "rame",
+     "ke",
+     "ti"
+    ],
+    "swarm": [
+     "naruo",
+     "ni",
+     "rame",
+     "ke",
+     "ti"
+    ],
+    "em_decomp": true,
+    "em_surface": true,
+    "chrf": 0.832,
+    "morf1": 1.0,
+    "votes": {
+     "naruo ni rame ke ti": 2,
+     "puton po rame te ke pu": 1,
+     "netap po rame ke pu": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     true,
+     true,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 6,
+    "difficulty": "curveball",
+    "prompt": "the newt walked",
+    "gold": [
+     "netap",
+     "se",
+     "tawu",
+     "ke",
+     "wa"
+    ],
+    "swarm": [
+     "netap",
+     "po",
+     "tawu",
+     "ke",
+     "pu"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.5505,
+    "morf1": 0.6,
+    "votes": {
+     "netap po tawu ke pu": 1,
+     "netap se pu ke wa": 1,
+     "netap se tawu ke wa": 1,
+     "puton po make ke pu": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     true,
+     false
+    ]
+   },
+   {
+    "qid": 7,
+    "difficulty": "curveball",
+    "prompt": "the bird walked",
+    "gold": [
+     "supop",
+     "se",
+     "tawu",
+     "ke",
+     "wa"
+    ],
+    "swarm": [
+     "supop",
+     "po",
+     "tawu",
+     "ke",
+     "pu"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.5505,
+    "morf1": 0.6,
+    "votes": {
+     "supop po tawu ke pu": 1,
+     "sesup ni pu ke ti": 1,
+     "rimou se tawu ke wa": 1,
+     "kisuo po make ke pu": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   }
+  ],
+  "transcript": [
+   {
+    "round": "answer",
+    "agent": 0,
+    "raw": "My evidence analysis:\n\n- naruo = lion, rimou = frog, kisuo = goat, puton = fish\n- nimaketeti = calls, nimakeketi = called, nipewuteti = cooks, potawutepu = walks\n\nBreaking down verbs:\n- \"ni...teti\" present, \"ni...keti\" past (ke = past marker before ti)\n- nimaketeti = ni-make-te-ti (call, present)\n- nimakeketi = ni-make-ke-ti (call, past)\n- nipewuteti = ni-pewu-te-ti (cook, present)\n- potawutepu = po-tawu-te-pu (walk)\n\nPatterns:\n- Prefix ni- vs po- (verb class?), suffix -ti vs -pu\n- make=call, pewu=cook, tawu=walk\n- te = present/nonpast, ke = past\n- Order: PREFIX-ROOT-TENSE-SUFFIX\n\nFish/walk uses po-...-pu; others use ni-...-ti. Walk root (tawu) takes po/pu class.\n\nVerb roots in bank: make(call), nawu, nope, pewu(cook), rame, tawu(walk). Likely talk=rame, watch=nope.\n\nNouns needed: newt, bear, dog, wolf, bird, lion(naruo). From bank: manin, netap, seson, sesup, supop — guessing assignments (uncertain, waiting for team).\n\nTentative noun guesses: newt=netap, bear=manin, dog=seson, wolf=sesup, bird=supop.\n\nANSWER 0: netap nipewuketi\nANSWER 1: manin nirameketi\nANSWER 2: seson potawukepu\nANSWER 3: naruo ninopeteti\nANSWER 4: sesup nirameteti\nANSWER 5: naruo nirameketi\nANSWER 6: netap potawukepu\nANSWER 7: supop potawukepu"
+   },
+   {
+    "round": "answer",
+    "agent": 1,
+    "raw": "My evidence analysis:\n\n- rimou nirameketi → the frog talked: rimou=frog, ni-rame-ke-ti\n- netap sepewukewa → the newt cooked: netap=newt, se-pewu-ke-wa\n- kisuo nipewuketi → the goat cooked: kisuo=goat, ni-pewu-ke-ti\n- naruo nimakeketi → the lion called: naruo=lion, ni-make-ke-ti\n\nMorpheme breakdown:\n- Nouns: rimou=frog, netap=newt, kisuo=goat, naruo=lion\n- Verb roots: rame=talk, pewu=cook, make=call\n- ke = suffix (past/aspect?) appears in all\n- ti vs wa: both appear in \"cooked\" (nipewuketi vs sepewukewa) — ni-...-ti vs se-...-wa are different conjugation prefixes/suffixes\n\nSo verb = PREFIX-root-ke-SUFFIX. Two patterns: ni-...-ti and se-...-wa.\n\nOther roots from bank: nawu, nope, tawu, pu (walk?), te, make=call.\n\nLet me post findings for the team.\n\nBoard contributions:\n- Nouns known: frog=rimou, newt=netap, goat=kisuo, lion=naruo\n- Verbs: talk=rame, cook=pewu, call=make\n- Need: walk, watch; nouns: bear, dog, wolf, bird\n- Structure: NOUN [ni-ROOT-ke-ti] (one conjugation); also se-ROOT-ke-wa variant for netap (newt) cooked.\n\nNetap(newt) uses se-...-wa; others use ni-...-ti. Possibly noun-class agreement. So newt queries use se/wa.\n\nBest guesses for unknown roots: walk, watch, talk present. Using \"rame\"=talk.\n\nANSWER 0: netap sepewukewa\nANSWER 1: manin nirameketi\nANSWER 2: puton nipuketi\nANSWER 3: naruo nitaweketi\nANSWER 4: seson nirameketi\nANSWER 5: naruo nirameketi\nANSWER 6: netap sepukewa\nANSWER 7: sesup nipuketi"
+   },
+   {
+    "round": "answer",
+    "agent": 2,
+    "raw": "Let me analyze my evidence:\n\n- manin ponopetepu → the bear watches\n- kisuo ninawuketi → the goat helped\n- kisuo nirameteti → the goat talks\n- sesup semakekewa → the dog called\n\nNouns: manin=bear, kisuo=goat, sesup=dog\n\nVerb analysis:\n- ponopetepu: po-nope-te-pu (watches, present)\n- ninawuketi: ni-nawu-ke-ti (helped, past)\n- nirameteti: ni-rame-te-ti (talks, present)\n- semakekewa: se-make-ke-wa (called, past)\n\nRoots: nope=watch, nawu=help, rame=talk, make=call\n\nPrefixes: po, ni, se — likely agreement/class markers tied to noun.\n- manin→po, kisuo→ni, sesup→se\n\nTense/aspect suffixes:\n- watches(pres): -te-pu\n- helped(past): -ke-ti\n- talks(pres): -te-ti\n- called(past): -ke-wa\n\nSo \"te\" appears in present, \"ke\" appears in past. te=present, ke=past marker.\nThen final suffix: pu, ti, wa vary — likely agreement again matching noun class (po-class→pu, ni-class→ti, se-class→wa).\n\nCheck: manin(po) watches → po...te...pu ✓\nkisuo(ni) helped → ni...ke...ti ✓\nkisuo(ni) talks → ni...te...ti ✓\nsesup(se) called → se...ke...wa ✓\n\nPattern: [noun] [prefix-root-tense-suffix], where prefix&suffix match noun class.\n\nNow I need other nouns/verbs from bank. Known roots: nope=watch, nawu=help, rame=talk, make=call. Other verb roots: pewu, tawu (cooked, walked?). Other nouns: naruo, netap, puton, rimou, seson, supop.\n\nI'll make reasonable guesses: walk, cook needed. Verbs unknown: pewu, tawu. Let me assign tawu=walk, pewu=cook (tentative).\n\nNouns needed: newt, lion, wolf, bird. Unknown nouns: naruo, netap, puton, rimou, seson, supop. I'll need the team for class prefixes.\n\nFor now, using po/pu, ni/ti, se/wa classes — I'll assign unknown nouns tentatively. Let me guess based on sound similarity: sesup→se; seson→se; supop→? \n\nWithout more, I'll use \"se\" class default for unknowns and note uncertainty.\n\nANSWER 0: netap sepewuketewa\nANSWER 1: manin porametekepu\nANSWER 2: sesup setawukewa\nANSWER 3: puton ponopetepu\nANSWER 4: naruo nirameteti\nANSWER 5: puton porametekepu\nANSWER 6: netap setawukewa\nANSWER 7: rimou setawukewa"
+   },
+   {
+    "round": "answer",
+    "agent": 3,
+    "raw": "Analyzing my evidence:\n\n- seson = wolf, manin = bear, rimou = frog\n- ponopetepu → watches; ponawukepu → helped\n- popewutepu → cooks; nirameteti → talks\n\nBreaking down verbs:\n- \"watches\" ponopetepu: po-nope-te-pu\n- \"helped\" ponawukepu: po-nawu-ke-pu\n- \"cooks\" popewutepu: po-pewu-te-pu\n- \"talks\" nirameteti: ni-rame-te-ti\n\nPatterns:\n- Roots: nope=watch, pewu=cook, nawu=help, rame=talk\n- Tense/aspect: te=present, ke=past\n- Suffix: pu vs ti — ending marker\n- Prefix: po vs ni — subject/class prefix\n\nSo \"watches\" = po-nope-te-pu, \"helped\"=po-nawu-ke-pu (past uses ke), present uses te.\n\nFor talk: ni-rame-te-ti (present). Past would be ni-rame-ke-ti.\n\nNote \"pu\" ending with po-prefix verbs, \"ti\" ending with ni-prefix. Prefix likely agrees with subject class. Frog=rimou uses ni/ti. Wolf/bear use po/pu.\n\nNeed: walk root, plus animal names. Bank: make, tawu, puton, naruo, netap, kisuo, sesup, supop.\nRoots likely: make, tawu for walk. Animals: puton, naruo, netap, kisuo, sesup, supop.\n\nVerb roots available: nope(watch), pewu(cook), rame(talk), nawu(help) + make/tawu (walk/one is walk).\n\nLet me assume walk = make. Animals needed: newt, dog, lion, bird.\nAssign: kisuo, naruo, netap, puton, sesup, supop to newt/dog/lion/bird (uncertain, pick plausibly).\n\nI'll use po/pu class for most, keep structure consistent:\n\nANSWER 0: puton popewukepu\nANSWER 1: manin popewuketepu\nANSWER 2: naruo pomakekepu\nANSWER 3: netap ponopetepu\nANSWER 4: seson poramete pu\nANSWER 5: netap poramekepu\nANSWER 6: puton pomakekepu\nANSWER 7: kisuo pomakekepu"
+   }
+  ]
+ },
+ {
+  "puzzle": "gen-005",
+  "language": "Kapatu",
+  "family": "Generated/conditioned-suppletion",
+  "condition": "soloshard",
+  "seed": 1,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "n_agents": 4,
+  "rounds": 0,
+  "corrupted_rows": [],
+  "elapsed_s": 29.1,
+  "board": [],
+  "queries": [
+   {
+    "qid": 0,
+    "difficulty": "tutorial",
+    "prompt": "you all called",
+    "gold": [
+     "pose",
+     "nawi",
+     "ju"
+    ],
+    "swarm": [
+     "pose",
+     "nawi",
+     "ju"
+    ],
+    "em_decomp": true,
+    "em_surface": true,
+    "chrf": 1.0,
+    "morf1": 1.0,
+    "votes": {
+     "pose nawi ju": 2,
+     "nawi koko ju": 1,
+     "sepi lano li": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     true,
+     true,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 1,
+    "difficulty": "standard",
+    "prompt": "they carry",
+    "gold": [
+     "sepi",
+     "musi",
+     "lo"
+    ],
+    "swarm": [
+     "sepi",
+     "kaki",
+     "lo"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.4434,
+    "morf1": 0.6667,
+    "votes": {
+     "sepi kaki lo": 1,
+     "lano wape lo": 1,
+     "jowo musi je": 1,
+     "jiwe musi lo": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 2,
+    "difficulty": "standard",
+    "prompt": "you jump",
+    "gold": [
+     "lesn",
+     "juki",
+     "lo"
+    ],
+    "swarm": [
+     "saka",
+     "lano",
+     "lo"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.1778,
+    "morf1": 0.3333,
+    "votes": {
+     "saka lano lo": 1,
+     "soki lupu lo": 1,
+     "sepi lupu je": 1,
+     "sewe pose lo": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 3,
+    "difficulty": "standard",
+    "prompt": "you all cook",
+    "gold": [
+     "pose",
+     "jiwe",
+     "lo"
+    ],
+    "swarm": [
+     "pose",
+     "koko",
+     "ju"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.3315,
+    "morf1": 0.3333,
+    "votes": {
+     "pose koko ju": 1,
+     "pose jiwe lo": 1,
+     "nawi jiwe je": 1,
+     "sepi koko lo": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     true,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 4,
+    "difficulty": "standard",
+    "prompt": "we waited",
+    "gold": [
+     "saka",
+     "lumi",
+     "ju"
+    ],
+    "swarm": [
+     "lesn",
+     "wipo",
+     "ju"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.1528,
+    "morf1": 0.3333,
+    "votes": {
+     "lesn wipo ju": 1,
+     "saka mesa ju": 1,
+     "saka wape ju": 1,
+     "saka wape li": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 5,
+    "difficulty": "standard",
+    "prompt": "you all walk",
+    "gold": [
+     "pose",
+     "sima",
+     "lo"
+    ],
+    "swarm": [
+     "pose",
+     "jiwe",
+     "lo"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.3843,
+    "morf1": 0.6667,
+    "votes": {
+     "pose jiwe lo": 1,
+     "pose lumi lo": 1,
+     "nawi sima je": 1,
+     "sewe lumi lo": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 6,
+    "difficulty": "curveball",
+    "prompt": "they cooked",
+    "gold": [
+     "sepi",
+     "jiwe",
+     "ju"
+    ],
+    "swarm": [
+     "sepi",
+     "koko",
+     "ju"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.3593,
+    "morf1": 0.6667,
+    "votes": {
+     "sepi koko ju": 1,
+     "lano jiwe ju": 1,
+     "jowo jiwe ju": 1,
+     "jiwe koko li": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 7,
+    "difficulty": "curveball",
+    "prompt": "they jumped",
+    "gold": [
+     "sepi",
+     "jowo",
+     "ju"
+    ],
+    "swarm": [
+     "sepi",
+     "lano",
+     "ju"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.4434,
+    "morf1": 0.6667,
+    "votes": {
+     "sepi lano ju": 1,
+     "lano lupu ju": 1,
+     "jowo lupu ju": 1,
+     "jiwe pose li": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   }
+  ],
+  "transcript": [
+   {
+    "round": "answer",
+    "agent": 0,
+    "raw": "Let me analyze my evidence:\n\n- sewenawilo → he calls: sewe + nawi + lo\n- posesokiju → you all cleaned: pose + soki + ju\n- sepisojolo → they smile: sepi + sojo + lo\n- posesojoju → you all smiled: pose + sojo + ju\n\nPatterns:\n- **Subject prefixes**: sewe = he, pose = you all, sepi = they\n- **Verb roots**: nawi = call, soki = clean, sojo = smile/smiled?\n- Wait: posesojoju = you all smiled, sepisojolo = they smile. So sojo = smile root.\n- **Tense suffixes**: lo = present, ju = past\n\nOrder: SUBJECT + ROOT + TENSE\n\nPosting to board:\n- Prefixes: sewe(he), pose(you all), sepi(they)\n- Suffixes: lo(present), ju(past)\n- Roots: nawi(call), soki(clean), sojo(smile)\n\nNeed more roots/prefixes from other agents: you, we, carry, jump, cook, wait, walk.\n\nLet me make best guesses from bank for unknowns. Known: call=nawi, present=lo, past=ju.\n\n- 0: you all called → pose + nawi + ju\n- 6: they cooked → sepi + [cook] + ju\n- 7: they jumped → sepi + [jump] + ju\n\nANSWER 0: pose nawi ju\nANSWER 1: sepi kaki lo\nANSWER 2: saka lano lo\nANSWER 3: pose koko ju\nANSWER 4: lesn wipo ju\nANSWER 5: pose jiwe lo\nANSWER 6: sepi koko ju\nANSWER 7: sepi lano ju"
+   },
+   {
+    "round": "answer",
+    "agent": 1,
+    "raw": "Let me analyze my evidence:\n\n- sakasojolo → we smile: saka+sojo+lo\n- posenawiju → you all called: pose+nawi+ju\n- sewenawiju → he called: sewe+nawi+ju\n- kakijiwelo → I cook: kaki+jiwe+lo\n\nPatterns:\n- Root first, then verb stem, then suffix\n- \"we smile\": saka=we?, sojo=smile, lo=present/nonpast\n- \"you all called\": pose=you all, nawi=call, ju=past\n- \"he called\": sewe=he, nawi=call, ju=past\n- \"I cook\": kaki=I, jiwe=cook, lo=present\n\nSo: subject-prefix + verb-root + tense(lo=nonpast, ju=past)\n\nSubjects: saka=we, pose=you all, sewe=he, kaki=I\nVerbs: sojo=smile, nawi=call, jiwe=cook\n\nNeed: they, you, carry, jump, walk, wait.\nGuessing from bank: sepi/soki/lano/etc for subjects/verbs. I'll make best guesses.\n\nANSWER 0: pose nawi ju\nANSWER 1: lano wape lo\nANSWER 2: soki lupu lo\nANSWER 3: pose jiwe lo\nANSWER 4: saka mesa ju\nANSWER 5: pose lumi lo\nANSWER 6: lano jiwe ju\nANSWER 7: lano lupu ju"
+   },
+   {
+    "round": "answer",
+    "agent": 2,
+    "raw": "Let me analyze my evidence:\n\n- sakasimaju → we walked: saka=we, sima=walk, ju=past\n- sakajiweju → we cooked: saka=we, jiwe=cook, ju=past\n- kakimusiju → I carried: kaki=I, musi=carry, ju=past\n- sewesimaju → he walked: sewe=he, sima=walk, ju=past\n\nSo structure = SUBJECT + VERB + TENSE.\n- saka=we, sewe=he, kaki=I\n- sima=walk, jiwe=cook, musi=carry\n- ju=past\n\nNeed other subjects/verbs/tenses from bank. Candidates: subjects likely sepi, jowo, etc. Verbs: pose, kalo, lano, lumi, lupu, mesa, sojo, soki, wape, wipo, nawi, koko, lesn...\n\nTense markers: ju=past. Others likely je=present?, li, lo. Present/future.\n\nQueries need: you (sg), you all, they. Pronouns unknown. Guesses from bank: sepi, jowo, soki... Let me assign plausibly.\n\nSubjects: saka=we, sewe=he, kaki=I. Need you, you all, they. Likely sepi=you, nawi=you all, jowo=they (guesses).\n\nVerbs needed: call, carry, jump, cook, wait, walk. Known: musi=carry, jiwe=cook, sima=walk. Need call, jump, wait. Guess: koko=call, lupu=jump, wape=wait.\n\nTense: ju=past, je=present (non-past).\n\nANSWER 0: nawi koko ju\nANSWER 1: jowo musi je\nANSWER 2: sepi lupu je\nANSWER 3: nawi jiwe je\nANSWER 4: saka wape ju\nANSWER 5: nawi sima je\nANSWER 6: jowo jiwe ju\nANSWER 7: jowo lupu ju"
+   },
+   {
+    "round": "answer",
+    "agent": 3,
+    "raw": "Analyzing my evidence:\n- sakamusilo = we carry → saka(we) + musi(carry) + lo\n- kakimusilo = I carry → kaki(I) + musi(carry) + lo\n- kakinawilo = I call → kaki(I) + nawi(call) + lo\n- sakasokilo = we clean → saka(we) + soki(clean) + lo\n\nSo: saka=we, kaki=I, lo=present tense suffix. Verbs: musi=carry, nawi=call, soki=clean.\n\nI need other pronouns (you, you all, they) and verbs (jump, cook, wait, walk) plus past tense. These must come from other agents' evidence. Making best guesses from morpheme bank for subjects and verbs.\n\nPosting findings to board. With limited data, I'll guess: likely \"sepi/sewe/jiwe\" type for you/they, \"li\" or \"ju/je\" as past marker.\n\nBest attempt using available patterns (lo=present, guessing li=past):\n\nANSWER 0: sepi lano li\nANSWER 1: jiwe musi lo\nANSWER 2: sewe pose lo\nANSWER 3: sepi koko lo\nANSWER 4: saka wape li\nANSWER 5: sewe lumi lo\nANSWER 6: jiwe koko li\nANSWER 7: jiwe pose li"
+   }
+  ]
+ },
+ {
+  "puzzle": "gen-005",
+  "language": "Kapatu",
+  "family": "Generated/conditioned-suppletion",
+  "condition": "soloshard",
+  "seed": 2,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "n_agents": 4,
+  "rounds": 0,
+  "corrupted_rows": [],
+  "elapsed_s": 29.4,
+  "board": [],
+  "queries": [
+   {
+    "qid": 0,
+    "difficulty": "tutorial",
+    "prompt": "you all called",
+    "gold": [
+     "pose",
+     "nawi",
+     "ju"
+    ],
+    "swarm": [
+     "pose",
+     "nawi",
+     "ju"
+    ],
+    "em_decomp": true,
+    "em_surface": true,
+    "chrf": 1.0,
+    "morf1": 1.0,
+    "votes": {
+     "pose koko ju": 1,
+     "pose nawi ju": 2,
+     "sepi kalo ju": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     true,
+     true,
+     false
+    ]
+   },
+   {
+    "qid": 1,
+    "difficulty": "standard",
+    "prompt": "they carry",
+    "gold": [
+     "sepi",
+     "musi",
+     "lo"
+    ],
+    "swarm": [
+     "lano",
+     "musi",
+     "lo"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.521,
+    "morf1": 0.6667,
+    "votes": {
+     "lano musi lo": 1,
+     "sepi wape lo": 1,
+     "sepi musi lo": 1,
+     "jowo musi lo": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     true,
+     false
+    ]
+   },
+   {
+    "qid": 2,
+    "difficulty": "standard",
+    "prompt": "you jump",
+    "gold": [
+     "lesn",
+     "juki",
+     "lo"
+    ],
+    "swarm": [
+     "sewe",
+     "lupu",
+     "lo"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.1778,
+    "morf1": 0.3333,
+    "votes": {
+     "sewe lupu lo": 1,
+     "sewe juki lo": 1,
+     "wape juki lo": 1,
+     "saka juki lo": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 3,
+    "difficulty": "standard",
+    "prompt": "you all cook",
+    "gold": [
+     "pose",
+     "jiwe",
+     "lo"
+    ],
+    "swarm": [
+     "pose",
+     "mesa",
+     "lo"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.3843,
+    "morf1": 0.6667,
+    "votes": {
+     "pose mesa lo": 1,
+     "pose jiwe lo": 1,
+     "pose koko lo": 1,
+     "sepi kalo lo": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     true,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 4,
+    "difficulty": "standard",
+    "prompt": "we waited",
+    "gold": [
+     "saka",
+     "lumi",
+     "ju"
+    ],
+    "swarm": [
+     "saka",
+     "wipo",
+     "ju"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.3843,
+    "morf1": 0.6667,
+    "votes": {
+     "saka wipo ju": 3,
+     "jiwe koko ju": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 5,
+    "difficulty": "standard",
+    "prompt": "you all walk",
+    "gold": [
+     "pose",
+     "sima",
+     "lo"
+    ],
+    "swarm": [
+     "pose",
+     "sima",
+     "lo"
+    ],
+    "em_decomp": true,
+    "em_surface": true,
+    "chrf": 1.0,
+    "morf1": 1.0,
+    "votes": {
+     "pose sima lo": 1,
+     "sepi lano lo": 1,
+     "pose lano lo": 1,
+     "sepi sima lo": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     true,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 6,
+    "difficulty": "curveball",
+    "prompt": "they cooked",
+    "gold": [
+     "sepi",
+     "jiwe",
+     "ju"
+    ],
+    "swarm": [
+     "lano",
+     "mesa",
+     "ju"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.1278,
+    "morf1": 0.3333,
+    "votes": {
+     "lano mesa ju": 1,
+     "sepi jiwe ju": 1,
+     "sepi koko ju": 1,
+     "jowo kalo ju": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     true,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 7,
+    "difficulty": "curveball",
+    "prompt": "they jumped",
+    "gold": [
+     "sepi",
+     "jowo",
+     "ju"
+    ],
+    "swarm": [
+     "sepi",
+     "juki",
+     "ju"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.4791,
+    "morf1": 0.6667,
+    "votes": {
+     "lano lupu ju": 1,
+     "sepi juki ju": 2,
+     "jowo juki ju": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   }
+  ],
+  "transcript": [
+   {
+    "round": "answer",
+    "agent": 0,
+    "raw": "Let me analyze my evidence:\n\n- kakimusiju → I carried: kaki(I) + musi(carry) + ju(past)\n- sakasokilo → we clean: saka(we) + soki(clean) + lo(present)\n- posesojoju → you all smiled: pose(you all) + sojo(smile) + ju(past)\n- sakasimaju → we walked: saka(we) + sima(walk) + ju(past)\n\nPatterns:\n- Subjects: kaki=I, saka=we, pose=you all\n- Tense suffixes: ju=past, lo=present\n- Verbs: musi=carry, soki=clean, sojo=smile, sima=walk\n\nNeed: they, you (sing), present/future markers, and verbs: call, jump, cook, wait.\n\nFrom morpheme bank, likely subjects: lano/nawi/wape etc. Present=lo. Need \"you\" singular and \"they\". Let me post findings to board and make best guesses.\n\nSubjects known: kaki(I), saka(we), pose(you all). For you(sing) and they, I'll guess from bank. Common verbs from bank: kalo, koko, lumi, lupu, mesa, nawi, wipo, jiwe, jowo, juki, lesn, sepi, sewe, wape, lano.\n\nTense: ju=past, lo=present. Default present where tense unmarked ambiguous — use lo for present.\n\nMaking reasonable assignments (limited data, best guesses):\n- you(sing)=sewe, they=lano\n- call=koko, jump=lupu, cook=mesa, wait=wipo\n\nANSWER 0: pose koko ju\nANSWER 1: lano musi lo\nANSWER 2: sewe lupu lo\nANSWER 3: pose mesa lo\nANSWER 4: saka wipo ju\nANSWER 5: pose sima lo\nANSWER 6: lano mesa ju\nANSWER 7: lano lupu ju"
+   },
+   {
+    "round": "answer",
+    "agent": 1,
+    "raw": "Let me analyze my evidence:\n\n- sakasojolo → we smile: saka=we, sojo=smile, lo=present\n- posenawiju → you all called: pose=you all, nawi=call, ju=past\n- kakijiwelo → I cook: kaki=I, jiwe=cook, lo=present\n- sakajiweju → we cooked: saka=we, jiwe=cook, ju=past\n\nSo: subject + verb + tense\n- saka=we, pose=you all, kaki=I\n- jiwe=cook, nawi=call, sojo=smile\n- lo=present, ju=past\n\nNeed more subjects: \"they\", \"you\". From bank: likely sepi, sewe, etc.\n\nNow queries:\n\n0: you all called = pose nawi ju\n3: you all cook = pose jiwe lo\n\nFor others I need \"they\", \"you\", and verbs carry/jump/waited/walk. These aren't in my evidence, so I'll use best guesses from the bank for unknowns.\n\nANSWER 0: pose nawi ju\nANSWER 1: sepi wape lo\nANSWER 2: sewe juki lo\nANSWER 3: pose jiwe lo\nANSWER 4: saka wipo ju\nANSWER 5: sepi lano lo\nANSWER 6: sepi jiwe ju\nANSWER 7: sepi juki ju"
+   },
+   {
+    "round": "answer",
+    "agent": 2,
+    "raw": "Let me analyze my evidence:\n\n- posesokiju → you all cleaned: pose + soki + ju (you all + clean + past?)\n- sakamusilo → we carry: saka + musi + lo (we + carry + present?)\n- sewenawiju → he called: sewe + nawi + ju (he + call + past)\n- sepisojolo → they smile: sepi + sojo + lo (they + smile + present)\n\nPattern: SUBJECT + VERB + TENSE\n- pose = you all\n- saka = we\n- sewe = he\n- sepi = they\n- soki = clean, musi = carry, nawi = call, sojo = smile\n- ju = past, lo = present\n\nNow queries:\n\n0: you all called → pose + nawi + ju\n1: they carry → sepi + musi + lo\n2: you jump → ? (you=unknown, jump=unknown) need \"you\" singular and \"jump\"\n3: you all cook → pose + ? + lo (cook unknown)\n4: we waited → saka + ? + ju (wait unknown)\n5: you all walk → pose + ? + lo (walk unknown)\n6: they cooked → sepi + ? + ju\n7: they jumped → sepi + ? + ju\n\nI'll use best guesses from morpheme bank for unknowns. \"you\" singular could be \"posesoki\"... but likely another subject morpheme. Remaining subject-like: kaki, lesn, jiwe, jowo, juki, kalo, koko, lano, lumi, lupu, mesa, sima, wape, wipo. Verbs needed: jump, cook, wait, walk.\n\nI'll make provisional guesses pending other agents.\n\nANSWER 0: pose nawi ju\nANSWER 1: sepi musi lo\nANSWER 2: wape juki lo\nANSWER 3: pose koko lo\nANSWER 4: saka wipo ju\nANSWER 5: pose lano lo\nANSWER 6: sepi koko ju\nANSWER 7: sepi juki ju"
+   },
+   {
+    "round": "answer",
+    "agent": 3,
+    "raw": "Let me analyze my evidence.\n\n- sewe-sima-ju → he walked\n- sewe-nawi-lo → he calls\n- kaki-nawi-lo → I call\n- kaki-musi-lo → I carry\n\nSo: sewe = he, kaki = I\nnawi = call, musi = carry, sima = walk\n-lo = present, -ju = past\n\nStructure: SUBJECT-VERB-TENSE\n\nNeed more pronouns and verbs. From morpheme bank guesses:\n- jump, cook, wait verbs unknown; \"you\", \"you all\", \"we\", \"they\" pronouns unknown.\n\nLet me post findings and make best guesses.\n\nSubject prefixes known: sewe=he, kaki=I. Others unknown — I'll guess from bank: likely saka, sepi, jiwe, jowo, juki, kalo, koko, lano, lumi, lupu, mesa, sojo, soki, wape, wipo, pose, lesn.\n\nVerbs needed: jump, cook, wait. Tense: -lo present, -ju past.\n\nWithout more data, I'll assign plausible morphemes:\n- you = saka, you all = sepi, we = jiwe, they = jowo\n- jump = juki, cook = kalo, wait = koko\n\nANSWER 0: sepi kalo ju\nANSWER 1: jowo musi lo\nANSWER 2: saka juki lo\nANSWER 3: sepi kalo lo\nANSWER 4: jiwe koko ju\nANSWER 5: sepi sima lo\nANSWER 6: jowo kalo ju\nANSWER 7: jowo juki ju"
+   }
+  ]
+ },
+ {
+  "puzzle": "gen-006",
+  "language": "Werimi",
+  "family": "Generated/vowel-harmony",
+  "condition": "soloshard",
+  "seed": 1,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "n_agents": 4,
+  "rounds": 0,
+  "corrupted_rows": [],
+  "elapsed_s": 28.5,
+  "board": [],
+  "queries": [
+   {
+    "qid": 0,
+    "difficulty": "tutorial",
+    "prompt": "you carried",
+    "gold": [
+     "pij",
+     "teje",
+     "ki"
+    ],
+    "swarm": [
+     "jit",
+     "ta",
+     "ko"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.1163,
+    "morf1": 0.0,
+    "votes": {
+     "jit ta ko": 1,
+     "jit teje ki": 1,
+     "pij teje ki": 1,
+     "lit teje ko": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     true,
+     false
+    ]
+   },
+   {
+    "qid": 1,
+    "difficulty": "standard",
+    "prompt": "you all played",
+    "gold": [
+     "jit",
+     "poje",
+     "ki"
+    ],
+    "swarm": [
+     "lit",
+     "poje",
+     "ko"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.7272,
+    "morf1": 0.3333,
+    "votes": {
+     "lit poje ko": 1,
+     "pij poje ki": 1,
+     "pij teje ki": 1,
+     "jit pij ki": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 2,
+    "difficulty": "standard",
+    "prompt": "we carry",
+    "gold": [
+     "ral",
+     "teje",
+     "ki"
+    ],
+    "swarm": [
+     "jon",
+     "teje",
+     "ki"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.5908,
+    "morf1": 0.6667,
+    "votes": {
+     "ral ta ko": 1,
+     "jon teje ki": 2,
+     "pij teje ki": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 3,
+    "difficulty": "standard",
+    "prompt": "you all walk",
+    "gold": [
+     "jit",
+     "pone",
+     "ki"
+    ],
+    "swarm": [
+     "lit",
+     "pole",
+     "ko"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.4048,
+    "morf1": 0.0,
+    "votes": {
+     "lit pole ko": 1,
+     "pij pole ko": 1,
+     "pij teje ki": 1,
+     "jit pole ki": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 4,
+    "difficulty": "standard",
+    "prompt": "we carried",
+    "gold": [
+     "ral",
+     "teje",
+     "ki"
+    ],
+    "swarm": [
+     "ral",
+     "ta",
+     "ko"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.3646,
+    "morf1": 0.3333,
+    "votes": {
+     "ral ta ko": 1,
+     "jon pole ki": 1,
+     "pij teje ki": 1,
+     "jon teje ko": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 5,
+    "difficulty": "curveball",
+    "prompt": "Did you smile?",
+    "gold": [
+     "pij",
+     "nope",
+     "ki",
+     "te"
+    ],
+    "swarm": [
+     "jit",
+     "tali",
+     "ki",
+     "te"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.2982,
+    "morf1": 0.5,
+    "votes": {
+     "jit tali ki te": 1,
+     "jit tali ki ta": 1,
+     "pij teje ki te": 1,
+     "lit pone ki te": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 6,
+    "difficulty": "curveball",
+    "prompt": "Do they walk?",
+    "gold": [
+     "jer",
+     "pone",
+     "ki",
+     "te"
+    ],
+    "swarm": [
+     "pij",
+     "pole",
+     "ki",
+     "te"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.4527,
+    "morf1": 0.5,
+    "votes": {
+     "pij pole ki te": 1,
+     "jer pole ko ta": 1,
+     "jer teje ki te": 1,
+     "jer pole ki te": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   }
+  ],
+  "transcript": [
+   {
+    "round": "answer",
+    "agent": 0,
+    "raw": "Analyzing my evidence:\n\n- raltaloko → we jump: ral=we, talo=jump/root, ko=present?\n- jontaloko → he jumped: jon=he, talo=? wait, \"jump\" vs \"jumped\"\n\nLet me reconsider. raltaloko (we jump) vs jontaloko (he jumped).\n- ral=we, jon=he\n- talo = jump root\n- ko = tense... but one is present, one past. Same ending \"ko\"? \n\nralpojekite (Do/Did we play): ral=we, poje=play, ki, te. \"te\" likely question marker. Ambiguous tense Do/Did.\n\nSo:\n- ral=we, jon=he\n- talo=jump, poje=play\n- ko=verb ending (declarative), -ki-te = question\n- te=question marker\n\nPronouns: jer, jit, jon, lit, pij — candidates. \"you\", \"you all\", \"they\", \"I\".\n- jon=he\nPosting findings to board.\n\nANSWER 0: jit ta ko\nANSWER 1: lit poje ko\nANSWER 2: ral ta ko\nANSWER 3: lit pole ko\nANSWER 4: ral ta ko\nANSWER 5: jit tali ki te\nANSWER 6: pij pole ki te"
+   },
+   {
+    "round": "answer",
+    "agent": 1,
+    "raw": "Let me analyze my evidence:\n\n- jertalokota → Do they jump? (question)\n- jertaloko → they jump\n- jertejeki → they carry\n- jertaloko → they jumped (same as present, so tense maybe unmarked or ambiguous)\n\nBreaking down:\n- jer = they (subject prefix)\n- talo = jump (root)\n- ko = present/verb marker\n- teje = carry (root)\n- ki = verb marker (variant?)\n- ta = question suffix (jertaloko + ta = question)\n\nSo structure: SUBJECT + ROOT + ASPECT/MARKER (+ QUESTION)\n\nFrom bank: subject prefixes likely jer=they, others jit/jon/lit/pij/ral. Roots: talo=jump, teje=carry. Markers: ko, ki, ta, te.\n\nI'll post preliminary findings but must answer queries now with best guesses using the bank.\n\nGuesses:\n- Question marker = ta (suffix)\n- Verb/aspect markers: ko, ki, te\n\nANSWER 0: jit teje ki\nANSWER 1: pij poje ki\nANSWER 2: jon teje ki\nANSWER 3: pij pole ko\nANSWER 4: jon pole ki\nANSWER 5: jit tali ki ta\nANSWER 6: jer pole ko ta"
+   },
+   {
+    "round": "answer",
+    "agent": 2,
+    "raw": "My evidence analysis:\n\n- jontejeki → he carries: jon + teje + ki\n- jertejekite → Did they carry?: jer + teje + ki + te\n- pijtejeki → you carried: pij + teje + ki\n\nMorphemes:\n- teje = carry (root)\n- jon = he, jer = they, pij = you\n- ki = present/base aspect marker\n- te = question marker (suffix)\n\nWait: \"pijtejeki\" = you carried (past) but same form as present? jontejeki=he carries (present). Both use \"ki\". Maybe ki is just verb/aspect; tense unmarked or context. Let me assume ki = default marker.\n\nFor past vs present — pij+teje+ki = you carried; jon+teje+ki = he carries. Tense ambiguous in my data. I'll propose \"ki\" is neutral; need other agents for tense/subject morphemes.\n\nPronoun guesses: you = pij. Need \"you all\", \"we\".\n\nANSWER 0: pij teje ki\nANSWER 1: pij teje ki\nANSWER 2: pij teje ki\nANSWER 3: pij teje ki\nANSWER 4: pij teje ki\nANSWER 5: pij teje ki te\nANSWER 6: jer teje ki te"
+   },
+   {
+    "round": "answer",
+    "agent": 3,
+    "raw": "Let me analyze my evidence:\n\n- jittaliki → you all talked: jit=you all, tali=talk, ki=past\n- littalokota → Did I jump?: lit=I, talo=jump, ko=?, ta=question\n- jittejekite → Do you all carry?: jit=you all, teje=carry, ki=present?, te=question\n\nSo:\n- jit = you all, lit = I\n- tali = talk, talo = jump, teje = carry\n- ki = tense marker (past in jittaliki, but present in jittejekite?)\n\nLet me reconsider. jittaliki = jit+tali+ki (past). jittejekite = jit+teje+ki+te (question). So ki might be verb aspect, and te = question marker.\n\nFor littalokota = lit+talo+ko+ta: ko = past?, ta = question. Hmm, two question possibilities.\n\nLet me posit: ki = present, ko = past. \"you all talked\" uses ki though — contradiction. Maybe tali already past? Let me keep ki=non-past, ko=past tentatively. Questions: te or ta suffix.\n\nI'll share findings and give best guesses. Need subject morphemes for \"you\", \"we\", \"they\" — likely among jer/jon/pij/ral or pole/pone/poje. I lack those; using placeholders from bank best guess.\n\nANSWER 0: lit teje ko\nANSWER 1: jit pij ki\nANSWER 2: jon teje ki\nANSWER 3: jit pole ki\nANSWER 4: jon teje ko\nANSWER 5: lit pone ki te\nANSWER 6: jer pole ki te"
+   }
+  ]
+ },
+ {
+  "puzzle": "gen-006",
+  "language": "Werimi",
+  "family": "Generated/vowel-harmony",
+  "condition": "soloshard",
+  "seed": 2,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "n_agents": 4,
+  "rounds": 0,
+  "corrupted_rows": [],
+  "elapsed_s": 30.9,
+  "board": [],
+  "queries": [
+   {
+    "qid": 0,
+    "difficulty": "tutorial",
+    "prompt": "you carried",
+    "gold": [
+     "pij",
+     "teje",
+     "ki"
+    ],
+    "swarm": [
+     "jit",
+     "teje",
+     "ko"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.5099,
+    "morf1": 0.3333,
+    "votes": {
+     "jit teje ko": 2,
+     "pij teje ki": 1,
+     "jer lata ta": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     true,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 1,
+    "difficulty": "standard",
+    "prompt": "you all played",
+    "gold": [
+     "jit",
+     "poje",
+     "ki"
+    ],
+    "swarm": [
+     "jit",
+     "talo",
+     "ko"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.2371,
+    "morf1": 0.3333,
+    "votes": {
+     "jit talo ko": 1,
+     "jit poje ki": 1,
+     "pij pole ko": 1,
+     "jon poje ta": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     true,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 2,
+    "difficulty": "standard",
+    "prompt": "we carry",
+    "gold": [
+     "ral",
+     "teje",
+     "ki"
+    ],
+    "swarm": [
+     "jon",
+     "teje",
+     "ko"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.4544,
+    "morf1": 0.3333,
+    "votes": {
+     "jon teje ko": 1,
+     "ral teje ko": 1,
+     "ral teje ki": 1,
+     "ral lata te": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     true,
+     false
+    ]
+   },
+   {
+    "qid": 3,
+    "difficulty": "standard",
+    "prompt": "you all walk",
+    "gold": [
+     "jit",
+     "pone",
+     "ki"
+    ],
+    "swarm": [
+     "jit",
+     "talo",
+     "ko"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.2371,
+    "morf1": 0.3333,
+    "votes": {
+     "jit talo ko": 1,
+     "jit pole ko": 1,
+     "pij pone ki": 1,
+     "jon tali te": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 4,
+    "difficulty": "standard",
+    "prompt": "we carried",
+    "gold": [
+     "ral",
+     "teje",
+     "ki"
+    ],
+    "swarm": [
+     "jon",
+     "teje",
+     "ko"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.4544,
+    "morf1": 0.3333,
+    "votes": {
+     "jon teje ko": 1,
+     "ral teje ki": 1,
+     "ral teje ko": 1,
+     "ral lata ta": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     true,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 5,
+    "difficulty": "curveball",
+    "prompt": "Did you smile?",
+    "gold": [
+     "pij",
+     "nope",
+     "ki",
+     "te"
+    ],
+    "swarm": [
+     "jit",
+     "teje",
+     "ki",
+     "te"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.4049,
+    "morf1": 0.5,
+    "votes": {
+     "jit teje ki te": 1,
+     "pij pone ki ta": 1,
+     "ta jit poje ko": 1,
+     "jer nope ta ki": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 6,
+    "difficulty": "curveball",
+    "prompt": "Do they walk?",
+    "gold": [
+     "jer",
+     "pone",
+     "ki",
+     "te"
+    ],
+    "swarm": [
+     "jer",
+     "talo",
+     "ki",
+     "te"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.4214,
+    "morf1": 0.75,
+    "votes": {
+     "jer talo ki te": 1,
+     "jer pole ko ta": 1,
+     "ta jer pone ki": 1,
+     "pij tali te ki": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   }
+  ],
+  "transcript": [
+   {
+    "round": "answer",
+    "agent": 0,
+    "raw": "Let me analyze my evidence:\n\n- jittejekite → Do you all carry?\n- jertejekite → Did they carry?\n- jertaloko → they jump\n- jontaloko → he jumped\n\nComparing:\n- jit = you all, jer = they, jon = he\n- \"teje\" = carry, \"talo\" = jump\n- jertejekite vs jittejekite: both \"...kite\", differ only in subject → kite = question marker (yes/no)\n- jertaloko / jontaloko: \"...ko\" ending for statements\n- jertaloko (they jump, present) vs jontaloko (he jumped, past)\n\nSo jer=they, jon=he → jer is present, jon past? No, subject differs too. Let me compare:\n- jer+talo+ko = they jump (present)\n- jon+talo+ko = he jumped (past)\n\njer could be present-they, jon past-he. Tense might be in the subject prefix vowel: je=present, jo=past? Then jit=you-all, with -r-/-n-? \n\nLet me treat: ji/je/jo = subject root, next consonant = tense.\n- jer = je+r (they, present?), jon = jo+n (he, past)\n- jit = ji+t\n\nHmm. \"kite\" = Q + past? jertejekite=\"Did they carry\"(past), jittejekite=\"Do you all carry\"(present). Both have \"kite\". So kite=question marker regardless of tense. Tense shown elsewhere — but subjects differ.\n\nGiven limited evidence, I'll post findings for the team.\n\nANSWER 0: jit teje ko\nANSWER 1: jit talo ko\nANSWER 2: jon teje ko\nANSWER 3: jit talo ko\nANSWER 4: jon teje ko\nANSWER 5: jit teje kite\nANSWER 6: jer talo kite"
+   },
+   {
+    "round": "answer",
+    "agent": 1,
+    "raw": "Let me analyze my evidence:\n\n- raltaloko → we jump: ral=we, talo=jump, ko=present?\n- pijtejeki → you carried: pij=you, teje=carry, ki=past\n- jertalokota → Do they jump?: jer=they(?), talo=jump, ko=pres, ta=question\n- jittaliki → you all talked: jit=you all, tali=talk, ki=past\n\nSo:\n- Subjects: ral=we, pij=you, jer=they, jit=you all\n- Verbs: talo=jump, teje=carry, tali=talk\n- ki=past, ko=present, ta=question marker\n\nQueries:\n0: you carried → pij teje ki\n1: you all played → jit + play? unknown verb. Candidates: lata, poje, pole, pone... \"play\" uncertain. Guess poje=play → jit poje ki\n2: we carry → ral teje ko\n3: you all walk → jit + walk + ko. walk=? guess pole → jit pole ko\n4: we carried → ral teje ki\n5: Did you smile? → pij + smile + ki + ta. smile guess pone → pij pone ki ta\n6: Do they walk? → jer pole ko ta\n\nANSWER 0: pij teje ki\nANSWER 1: jit poje ki\nANSWER 2: ral teje ko\nANSWER 3: jit pole ko\nANSWER 4: ral teje ki\nANSWER 5: pij pone ki ta\nANSWER 6: jer pole ko ta"
+   },
+   {
+    "round": "answer",
+    "agent": 2,
+    "raw": "My evidence analysis:\n\n- jertaloko → they jumped: jer=they, talo=jump, ko=past\n- jontejeki → he carries: jon=he, teje=carry, ki=present\n- jertejeki → they carry: jer=they, teje=carry, ki=present\n\nSo structure: SUBJECT + VERB + TENSE\n- jer = they, jon = he\n- teje = carry, talo = jump\n- ki = present, ko = past\n\nNeed subjects: you, you all, we. Candidates from bank: jit, lit, pij, ral.\nNeed verbs: play, walk, smile. Candidates: lata, nope, poje, pole, pone, tali.\n\nLet me guess subject assignments: jit=you, pij=you all, ral=we (tentative).\nVerbs: pole=play, pone=walk, poje=smile (tentative).\n\nQuestion marker: \"ta\" or \"te\" perhaps for questions. Use \"ta\" for question.\n\nANSWER 0: jit teje ko\nANSWER 1: pij pole ko\nANSWER 2: ral teje ki\nANSWER 3: pij pone ki\nANSWER 4: ral teje ko\nANSWER 5: ta jit poje ko\nANSWER 6: ta jer pone ki"
+   },
+   {
+    "round": "answer",
+    "agent": 3,
+    "raw": "Let me analyze my evidence.\n\nralpojekite → Do we play? / Did we play?\nSegment: ral-poje-ki-te\n- ral = we\n- poje = play\n- ki-te = question marker (both present/past, so tense ambiguous here)\n\nlittalokota → Did I jump?\nSegment: lit-talo-ko-ta\n- lit = I\n- talo = jump\n- ko-ta = ?\n\nComparing: ralpojekite (ki-te) vs littalokota (ko-ta)\n- \"ki\" vs \"ko\", \"te\" vs \"ta\" differ.\n\nralpojekite = question (\"Do/Did we play?\"). littalokota = \"Did I jump?\" also a question.\n\nSo the question element differs. Perhaps:\n- ki/ko = question marker\n- te/ta = tense (te=present/ambiguous, ta=past)\n\nIn ralpojekite covering both Do and Did → te might be unmarked/present and ambiguous. In littalokota = \"Did I jump\" (past) → ta = past.\n\nSo:\n- ta = past, te = present\n- ki/ko = question (vowel harmony? ki with poje, ko with talo)\n\nLet me post findings for the team.\n\nPronouns: ral=we, lit=I. Verbs: poje=play, talo=jump.\n\nFor queries I'll guess using bank. Subjects: I=lit, we=ral. Others (you, you all, they) unknown — candidates: jer, jit, jon, pij, pole, pone, tali.\n\nVerbs: play=poje, jump=talo. Need: carry, walk, smile, played. Candidates: lata, nope, pole, pone, tali, jit, jon, pij.\n\nTense: te=present, ta=past. Question: ki/ko.\n\nI'll make best guesses:\n- carry=lata, walk=tali, smile=nope, played=poje+ta\n- you=jer, you all=jon, they=pij\n\nANSWER 0: jer lata ta\nANSWER 1: jon poje ta\nANSWER 2: ral lata te\nANSWER 3: jon tali te\nANSWER 4: ral lata ta\nANSWER 5: jer nope ta ki\nANSWER 6: pij tali te ki"
+   }
+  ]
+ },
+ {
+  "puzzle": "gen-007",
+  "language": "Kunule",
+  "family": "Generated/noun-class-agreement",
+  "condition": "soloshard",
+  "seed": 1,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "n_agents": 4,
+  "rounds": 0,
+  "corrupted_rows": [],
+  "elapsed_s": 41.7,
+  "board": [],
+  "queries": [
+   {
+    "qid": 0,
+    "difficulty": "tutorial",
+    "prompt": "the cat jumps",
+    "gold": [
+     "tumom",
+     "mo",
+     "runi",
+     "ke",
+     "ji"
+    ],
+    "swarm": [
+     "jetit",
+     "ka",
+     "neka",
+     "ke",
+     "na"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.1118,
+    "morf1": 0.2,
+    "votes": {
+     "jetit ka neka ke na": 1,
+     "tumom monekeji": 1,
+     "tumom mo runi ke ji": 1,
+     "lorua ra runi ke mu": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     true,
+     false
+    ]
+   },
+   {
+    "qid": 1,
+    "difficulty": "standard",
+    "prompt": "the bird cleans",
+    "gold": [
+     "manom",
+     "mo",
+     "neka",
+     "ke",
+     "ji"
+    ],
+    "swarm": [
+     "manom",
+     "mo",
+     "runi",
+     "ke",
+     "ji"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.4742,
+    "morf1": 0.8,
+    "votes": {
+     "manom mo runi ke ji": 1,
+     "manom mo neka ke ji": 1,
+     "nenet mo wili ke ji": 1,
+     "jetit ra neka ke mu": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     true,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 2,
+    "difficulty": "standard",
+    "prompt": "the bear walked",
+    "gold": [
+     "rijio",
+     "ra",
+     "wili",
+     "re",
+     "mu"
+    ],
+    "swarm": [
+     "tumom",
+     "ka",
+     "re",
+     "na",
+     "na"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.1148,
+    "morf1": 0.2,
+    "votes": {
+     "tumom ka re na na": 1,
+     "nenet monewilireji": 1,
+     "manom ka neka mu na": 1,
+     "manom ra wili re mu": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 3,
+    "difficulty": "standard",
+    "prompt": "the cat called",
+    "gold": [
+     "tumom",
+     "mo",
+     "tojo",
+     "re",
+     "ji"
+    ],
+    "swarm": [
+     "jetit",
+     "ka",
+     "tojo",
+     "re",
+     "na"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.3579,
+    "morf1": 0.4,
+    "votes": {
+     "jetit ka tojo re na": 1,
+     "tumom mo tojo re ji": 1,
+     "tumom ka tojo ke ji na": 1,
+     "jetit ra tojo re mu": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     true,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 4,
+    "difficulty": "standard",
+    "prompt": "the goat cleaned",
+    "gold": [
+     "lorua",
+     "ra",
+     "neka",
+     "re",
+     "mu"
+    ],
+    "swarm": [
+     "lorua",
+     "ra",
+     "runi",
+     "re",
+     "ji"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.3857,
+    "morf1": 0.6,
+    "votes": {
+     "lorua ra runi re ji": 1,
+     "lorua mo neka re ji": 1,
+     "lorua ka lale ke mu na": 1,
+     "lorua ra neka re mu": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     true
+    ]
+   },
+   {
+    "qid": 5,
+    "difficulty": "standard",
+    "prompt": "the goat walked",
+    "gold": [
+     "lorua",
+     "ra",
+     "wili",
+     "re",
+     "mu"
+    ],
+    "swarm": [
+     "lorua",
+     "ra",
+     "wili",
+     "re",
+     "na"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.6913,
+    "morf1": 0.8,
+    "votes": {
+     "lorua ra wili re na": 1,
+     "lorua mo wili re ji": 1,
+     "lorua ka neka mu na": 1,
+     "lorua ra wili re mu": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     true
+    ]
+   },
+   {
+    "qid": 6,
+    "difficulty": "curveball",
+    "prompt": "the newt jumped",
+    "gold": [
+     "retut",
+     "ka",
+     "runi",
+     "re",
+     "na"
+    ],
+    "swarm": [
+     "retut",
+     "ka",
+     "runi",
+     "ke",
+     "na"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.6499,
+    "morf1": 0.8,
+    "votes": {
+     "retut ka neka re na": 1,
+     "retut ka runi ke na": 2,
+     "nilom ra lale re mu": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 7,
+    "difficulty": "curveball",
+    "prompt": "the newt cleaned",
+    "gold": [
+     "retut",
+     "ka",
+     "neka",
+     "re",
+     "na"
+    ],
+    "swarm": [
+     "retut",
+     "ka",
+     "runi",
+     "re",
+     "na"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.5092,
+    "morf1": 0.8,
+    "votes": {
+     "retut ka runi re na": 1,
+     "retut ka neka ke na": 1,
+     "retut ka lale ke na": 1,
+     "nilom ra neka re mu": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   }
+  ],
+  "transcript": [
+   {
+    "round": "answer",
+    "agent": 0,
+    "raw": "Let me analyze my evidence:\n\n- manom molalekeji → the bird talks\n- manom molalereji → the bird talked\n- lorua ralaluremu → the goat carried\n- retut kawilirena → the newt walked\n\n**Nouns:** manom=bird, lorua=goat, retut=newt\n\n**Verb structure:** [prefix][root][tense][suffix]\n\n- molalekeji: mo-lale-ke-ji → talk (present \"talks\")\n- molalereji: mo-lale-re-ji → talk (past \"talked\")\n  - So root=lale=\"talk\", ke=present, re=past, mo=prefix, ji=suffix\n- ralaluremu: ra-lalu-re-mu → carry past. root=lalu=\"carry\", ra=prefix, re=past, mu=suffix\n- kawilirena: ka-wili-re-na → walk past. root=wili=\"walk\", ka=prefix, re=past, na=suffix\n\n**Pattern:** prefix + root + tense + suffix, where prefix/suffix agree with the verb (verb-class/conjugation markers).\n- \"talk\": mo-...-ji\n- \"carry\": ra-...-mu\n- \"walk\": ka-...-na\n\nTense: ke=present, re=past.\n\n**Need more roots** from bank: neka, runi, tojo for jump/clean/call. And nouns jetit, mowea, nenet, nilom, rijio, tumom for cat/bear.\n\nWithout more evidence I'll assign remaining verb roots: jump=neka, clean=runi, call=tojo (guesses). Each needs a prefix/suffix class — unknown, I'll reuse a plausible default pattern per verb.\n\nLet me post findings and commit best guesses.\n\nFINDINGS:\n- Noun first, then verb.\n- Verb = classPrefix + root + tense + classSuffix\n- Prefixes: ka/mo/ra; Suffixes: na/ji/mu; Tense: ke=pres, re=past\n- Roots: lale=talk, lalu=carry, wili=walk, remaining neka/runi/tojo = jump/clean/call\n- Nouns: manom=bird, lorua=goat, retut=newt; others = cat/bear etc.\n\nANSWER 0: jetit kanekakena\nANSWER 1: manom morunikeji\nANSWER 2: tumom karenana\nANSWER 3: jetit katojorena\nANSWER 4: lorua rarunireji\nANSWER 5: lorua rawilirena\nANSWER 6: retut kanekarena\nANSWER 7: retut karunirena"
+   },
+   {
+    "round": "answer",
+    "agent": 1,
+    "raw": "Let me analyze my evidence:\n\n- manom mowilireji → the bird walked\n- nilom morunikeji → the lion jumps\n- retut katojokena → the newt calls\n- tumom monekareji → the cat cleaned\n\nNouns: manom=bird, nilom=lion, retut=newt, tumom=cat\n\nVerbs (middle morpheme): wili=walk, runi=jump, tojo=call, neka=clean\n\nPrefix: mo- and ka- appear before verb root. Suffix structure:\n- mowilireji = mo+wili+re+ji (walked) → re=past? ji=?\n- morunikeji = mo+runi+ke+ji (jumps) → ke=present?\n- katojokena = ka+tojo+ke+na (calls) → ke=present, na=?\n- monekareji = mo+neka+re+ji (cleaned) → re=past\n\nSo: ke=present/non-past, re=past. ji vs na seems to be aspect/agreement marker. \n\nmo vs ka prefix: mo with manom/nilom/tumom, ka with retut. Could be noun class agreement. retut takes ka, and suffix na (not ji). So two classes: class-mo→ji, class-ka→na.\n\nVerb structure: [prefix] + root + [tense: ke=present/re=past] + [class suffix: ji/na]\n\nQueries:\n- newt=retut (ka class, na suffix)\n- Need: bear, goat, cat(tumom), bird(manom)\n\nUnknown nouns bear, goat — from bank: jetit, lorua, mowea, nenet, rijio. I'll guess but must use what's reasonable. I'll flag for team.\n\nANSWER 0: tumom monekeji\nANSWER 1: manom monekakeji\nANSWER 2: nenet monewilireji\nANSWER 3: tumom motojoreji\nANSWER 4: lorua monekareji\nANSWER 5: lorua mowilireji\nANSWER 6: retut karunikena\nANSWER 7: retut kanekakena"
+   },
+   {
+    "round": "answer",
+    "agent": 2,
+    "raw": "Let me analyze my evidence:\n\n- tumom morunikeji → the cat jumps: tumom=cat, mo-runi-ke-ji (jump, present)\n- lorua ralalukemu → the goat carries: lorua=goat, ra-lalu-ke-mu (carry)\n- retut katojorena → the newt called: retut=newt, ka-tojo-re-na (call, past)\n- tumom motojokeji → the cat calls: tumom=cat, mo-tojo-ke-ji (call, present)\n\nLet me break down structure. Verb word = prefix + root + ke + tense/suffix.\n\nRoots: runi=jump, lalu=carry, tojo=call.\nTense: present seems marked by -ji (cat present jumps/calls), past by -na (newt called). \nPrefixes: mo (cat present), ka (newt past), ra (goat).\n\nSo prefix agrees with subject? cat=mo, newt=ka, goat=ra. But also tense differs.\n\nActually mo-...-ji appears twice with cat present. ka-...-na with newt past. Hmm, prefix may be tense/aspect marker not subject.\n\nLet me hypothesize: present prefix=mo, suffix=ji; past prefix=ka, suffix=na. Goat example \"carries\" (present) uses ra-...-mu — inconsistent. Maybe suffix agrees with subject: cat=ji, goat=mu, newt=na.\n\nPrefix = tense: present=mo? but goat present=ra. Unclear. I'll post findings.\n\nNouns: tumom=cat, lorua=goat, retut=newt. Need bird, bear from bank: jetit, manom, mowea, nenet, nilom, rijio.\n\nNew verb roots needed: clean, walk, jump(runi known). Bank roots: lale, neka, wili, tojo, runi, lalu.\n\nPosting to board; other agents have more data. Best guesses:\n\nANSWER 0: tumom morunikeji\nANSWER 1: nenet mowilikeji\nANSWER 2: manom kanekamuna\nANSWER 3: tumom katojokejina\nANSWER 4: lorua kalalekemuna\nANSWER 5: lorua kanekamuna\nANSWER 6: retut karunikena\nANSWER 7: retut kalalekena"
+   },
+   {
+    "round": "answer",
+    "agent": 3,
+    "raw": "Let me analyze my evidence:\n\n- mowea ralaleremu → the crab talked\n- lorua rarunikemu → the goat jumps\n- nenet kalalurena → the wolf carried\n- mowea ratojoremu → the crab called\n\n**Nouns:** mowea=crab, lorua=goat, nenet=wolf\n\n**Verb structure:** Second word breaks into prefix + root + tense suffix\n\n- ralaleremu: ra-lale-re-mu → \"talked\"\n- rarunikemu: ra-runi-ke-mu → \"jumps\"\n- kalalurena: ka-lalu-re-na → \"carried\"\n- ratojoremu: ra-tojo-re-mu → \"called\"\n\n**Prefixes:** ra, ka (subject/agreement markers)\n**Roots:** lale=talk, runi=jump, lalu=carry, tojo=call\n**Tense:** re (past?), ke (present?)\n**Suffix:** mu, na (final marker)\n\nPatterns:\n- jumps (present): ra-runi-**ke**-mu\n- talked/called (past): ra-ROOT-**re**-mu\n- carried (past): ka-lalu-**re**-na\n\nSo **ke**=present, **re**=past. Final -mu vs -na differs: mowea/lorua take -mu, nenet takes -na. Likely noun-class agreement affecting both prefix (ra vs ka) and suffix (mu vs na).\n\n**Morpheme bank hints for queries:** need roots for clean(neka?), walk(wili?), and more nouns (jetit, manom, nilom, retut, rijio, tumom = cat, bird, bear, newt...).\n\nGuessing roots: neka=clean, wili=walk.\n\nWithout full noun mappings, I'll use ra-/-mu as default class (most common) and apply tenses: present=ke, past=re.\n\nANSWER 0: lorua rarunikemu\nANSWER 1: jetit ranekakemu\nANSWER 2: manom rawiliremu\nANSWER 3: jetit ratojoremu\nANSWER 4: lorua ranekaremu\nANSWER 5: lorua rawiliremu\nANSWER 6: nilom ralaleremu\nANSWER 7: nilom ranekaremu"
+   }
+  ]
+ },
+ {
+  "puzzle": "gen-007",
+  "language": "Kunule",
+  "family": "Generated/noun-class-agreement",
+  "condition": "soloshard",
+  "seed": 2,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "n_agents": 4,
+  "rounds": 0,
+  "corrupted_rows": [],
+  "elapsed_s": 46.8,
+  "board": [],
+  "queries": [
+   {
+    "qid": 0,
+    "difficulty": "tutorial",
+    "prompt": "the cat jumps",
+    "gold": [
+     "tumom",
+     "mo",
+     "runi",
+     "ke",
+     "ji"
+    ],
+    "swarm": [
+     "tumom",
+     "mo",
+     "runi",
+     "ke",
+     "ji"
+    ],
+    "em_decomp": true,
+    "em_surface": true,
+    "chrf": 0.832,
+    "morf1": 1.0,
+    "votes": {
+     "mo runi ke ji": 1,
+     "ka tojo re na": 1,
+     "tumom mo runi ke ji": 2
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     true,
+     true
+    ]
+   },
+   {
+    "qid": 1,
+    "difficulty": "standard",
+    "prompt": "the bird cleans",
+    "gold": [
+     "manom",
+     "mo",
+     "neka",
+     "ke",
+     "ji"
+    ],
+    "swarm": [
+     "mowea",
+     "mo",
+     "neka",
+     "ke",
+     "ji"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.6394,
+    "morf1": 0.8,
+    "votes": {
+     "mowea mo neka ke ji": 1,
+     "mo neka re ji": 1,
+     "manom mo neka ke ji": 1,
+     "nilom morunekeji": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     true,
+     false
+    ]
+   },
+   {
+    "qid": 2,
+    "difficulty": "standard",
+    "prompt": "the bear walked",
+    "gold": [
+     "rijio",
+     "ra",
+     "wili",
+     "re",
+     "mu"
+    ],
+    "swarm": [
+     "retut",
+     "mo",
+     "wili",
+     "re",
+     "ji"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.4223,
+    "morf1": 0.4,
+    "votes": {
+     "retut mo wili re ji": 1,
+     "ka runi re na": 1,
+     "nenet ka wili re na": 1,
+     "nenet ra wili re mu": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 3,
+    "difficulty": "standard",
+    "prompt": "the cat called",
+    "gold": [
+     "tumom",
+     "mo",
+     "tojo",
+     "re",
+     "ji"
+    ],
+    "swarm": [
+     "mo",
+     "tojo",
+     "re",
+     "ji"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.6367,
+    "morf1": 0.8889,
+    "votes": {
+     "mo tojo re ji": 1,
+     "ka tojo re na": 1,
+     "tumom mo tojo re ji": 1,
+     "tumom ka tojo ke na": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     true,
+     false
+    ]
+   },
+   {
+    "qid": 4,
+    "difficulty": "standard",
+    "prompt": "the goat cleaned",
+    "gold": [
+     "lorua",
+     "ra",
+     "neka",
+     "re",
+     "mu"
+    ],
+    "swarm": [
+     "ra",
+     "neka",
+     "re",
+     "mu"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.6367,
+    "morf1": 0.8889,
+    "votes": {
+     "ra neka re mu": 1,
+     "ka neka re na": 1,
+     "lorua mo neka re ji": 1,
+     "lorua ra neka re mu": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     true
+    ]
+   },
+   {
+    "qid": 5,
+    "difficulty": "standard",
+    "prompt": "the goat walked",
+    "gold": [
+     "lorua",
+     "ra",
+     "wili",
+     "re",
+     "mu"
+    ],
+    "swarm": [
+     "ra",
+     "wili",
+     "re",
+     "mu"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.6367,
+    "morf1": 0.8889,
+    "votes": {
+     "ra wili re mu": 1,
+     "ka wili re na": 1,
+     "lorua ka wili re na": 1,
+     "lorua ra wili re mu": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     true
+    ]
+   },
+   {
+    "qid": 6,
+    "difficulty": "curveball",
+    "prompt": "the newt jumped",
+    "gold": [
+     "retut",
+     "ka",
+     "runi",
+     "re",
+     "na"
+    ],
+    "swarm": [
+     "nenet",
+     "mo",
+     "runi",
+     "re",
+     "ji"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.3917,
+    "morf1": 0.4,
+    "votes": {
+     "nenet mo runi re ji": 1,
+     "ka runi re na": 1,
+     "retut mo runi re ji": 1,
+     "retut mo runi ji": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 7,
+    "difficulty": "curveball",
+    "prompt": "the newt cleaned",
+    "gold": [
+     "retut",
+     "ka",
+     "neka",
+     "re",
+     "na"
+    ],
+    "swarm": [
+     "nenet",
+     "mo",
+     "neka",
+     "re",
+     "ji"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.3917,
+    "morf1": 0.4,
+    "votes": {
+     "nenet mo neka re ji": 1,
+     "ka neka re na": 1,
+     "retut mo neka re ji": 1,
+     "retut ra neka re mu": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   }
+  ],
+  "transcript": [
+   {
+    "round": "answer",
+    "agent": 0,
+    "raw": "Let me analyze my evidence.\n\n**Nouns:**\n- lorua = goat\n- nilom = lion\n- tumom = cat\n\n**Verbs (middle structure):**\n- rarunikemu → goat jumps: ra-runi-ke-mu\n- morunikeji → lion jumps: mo-runi-ke-ji\n- monekareji → cat cleaned: mo-neka-re-ji\n- ralaluremu → goat carried: ra-lalu-re-mu\n\n**Breaking down:**\n- Prefix: ra- vs mo- → agreement with subject? goat→ra, lion→mo, cat→mo. Hmm, goat=ra, cat=mo, lion=mo. Could be noun-class agreement (lorua→ra, nilom/tumom→mo). Both nilom, tumom end in -om → mo; lorua ends -ua → ra.\n- Root: runi = jump, neka = clean, lalu = carry\n- Suffix before final: ke vs re → tense? jumps=ke(present?), cleaned=re, carried=re → re = past, ke = present\n- Final: mu vs ji → mu with lorua(ra-class), ji with mo-class. So final agrees with subject class too: ra-class→mu, mo-class→ji.\n\nSo structure: [class-prefix][root][tense][class-suffix]\n\nClass agreement: ra...mu for lorua-type, mo...ji for -om nouns.\n\n**Morpheme bank nouns:** jetit, manom, mowea, nenet, retut, rijio (plus known). Need: bird, bear, newt, cat(tumom).\n- manom ends -om → mo-class\n- nenet, jetit, retut, mowea, rijio — unknown class. Default guess by ending.\n\nTense: ke=present, re=past. \"walked\"=past, \"called\"=past, \"jumps\"=present.\nRoots available: runi=jump, neka=clean, lalu=carry. Need: walk(wili?), call(tojo?), and others: lale, ka, na.\n\nLet me map remaining roots: wili=walk, tojo=call, lale=?, neka=clean.\n\n**Queries:**\n\n0: the cat jumps → tumom, mo-class: mo-runi-ke-ji\n1: the bird cleans → bird unknown. Guess bird=mowea? Present clean. Need class. I'll assign bird a guess.\n2: the bear walked → bear unknown, past walk=wili\n3: the cat called → tumom, mo-class, past tojo: mo-tojo-re-ji\n4: the goat cleaned → lorua, ra-class, past: ra-neka-re-mu\n5: the goat walked → ra-wili-re-mu\n6: the newt jumped → newt, past jump\n7: the newt cleaned → newt, past clean\n\nFor unknown nouns, I'll guess by -om pattern (mo-class) else ra-class. jetit,nenet,retut,mowea,rijio,manom. manom→mo-class. Assign: bird=mowea, bear=retut, newt=nenet. These don't end -om, I'll default ra-class... but uncertain. Let me use mo-class default actually needs more data—I'll pick based on ending match to known classes (-ua→ra). None match, default mo.\n\nANSWER 0: mo runi ke ji\nANSWER 1: mowea mo neka ke ji\nANSWER 2: retut mo wili re ji\nANSWER 3: mo tojo re ji\nANSWER 4: ra neka re mu\nANSWER 5: ra wili re mu\nANSWER 6: nenet mo runi re ji\nANSWER 7: nenet mo neka re ji"
+   },
+   {
+    "round": "answer",
+    "agent": 1,
+    "raw": "Let me analyze my evidence.\n\n- retut katojorena → the newt called\n- nenet kalalurena → the wolf carried\n- mowea ratojoremu → the crab called\n- manom mowilireji → the bird walked\n\nNouns: retut=newt, nenet=wolf, mowea=crab, manom=bird\n\nVerb structure: [prefix][root][re][suffix]\n- katojorena: ka+tojo+re+na = called\n- kalalurena: ka+lalu+re+na = carried\n- ratojoremu: ra+tojo+re+mu = called\n- mowilireji: mo+wili+re+ji = walked\n\nRoots: tojo=call, lalu=carry, wili=walk\nSuffix -na vs -mu vs -ji... tense/aspect?\n\n\"called\" appears with -na (retut) and -mu (mowea). Both past \"called\". Prefix ka vs ra vs mo differs. Maybe prefix agrees with noun class.\n- retut→ka, nenet→ka, mowea→ra, manom→mo\n\nSuffix: -na (newt/wolf), -mu (crab), -ji (bird/walked). Possibly suffix also agrees with noun class. retut→na, nenet→na, mowea→mu, manom→ji.\n\nSo prefix+suffix both class markers. Verb = CLASSprefix + root + re + CLASSsuffix.\n\nNeed tense marker. \"re\" present in all. \"walked\" vs \"called\" both past-ish. Limited data. I'll propose \"re\" = tense (past). For other tenses need more evidence from other agents.\n\nLet me post findings.\n\nRoots known: tojo=call, lalu=carry, wili=walk. Need jump, clean, etc. from morpheme bank: lale, lorua, neka, runi, tumom, rijio, jetit, nilom...\n\nGuessing: clean, jump roots unknown. I'll make best guesses but flag.\n\nANSWER 0: ka tojo re na\nANSWER 1: mo neka re ji\nANSWER 2: ka runi re na\nANSWER 3: ka tojo re na\nANSWER 4: ka neka re na\nANSWER 5: ka wili re na\nANSWER 6: ka runi re na\nANSWER 7: ka neka re na"
+   },
+   {
+    "round": "answer",
+    "agent": 2,
+    "raw": "My evidence analysis:\n\n- manom = bird, tumom = cat, retut = newt\n- molalekeji → mo-lale-ke-ji = talks (present), molalereji → mo-lale-re-ji = talked (past)\n- So: mo = ?, lale = talk, ke = present, re = past, ji = suffix\n- kawilirena → ka-wili-re-na = walked (newt), wili = walk, re = past, na = suffix\n- motojokeji → mo-tojo-ke-ji = calls, tojo = call, ke = present\n\nPatterns:\n- Verb prefix varies: mo (talk, call), ka (walk)\n- Suffix: ji (with mo-prefix), na (with ka-prefix)\n- Tense infix: ke = present, re = past\n\nPosting to board:\n- Nouns: manom=bird, tumom=cat, retut=newt\n- Verbs: lale=talk, tojo=call, wili=walk\n- Structure: NOUN [prefix]-VERB-TENSE-[suffix]\n- mo...ji and ka...na are verb class agreement patterns\n- ke=present, re=past\n\nNeed other agents for: jump, clean, bear, goat. From morpheme bank remaining nouns: jetit, lorua, mowea, nenet, nilom, rijio. Remaining verbs likely: lalu, neka, runi (and prefixes ra, mu; suffixes mu, na).\n\nBest guesses given uncertainty — using wili-pattern (ka...na) for walk is confirmed. For unknown verbs, I'll default to mo...ji class.\n\nANSWER 0: tumom mo runi ke ji\nANSWER 1: manom mo neka ke ji\nANSWER 2: nenet ka wili re na\nANSWER 3: tumom mo tojo re ji\nANSWER 4: lorua mo neka re ji\nANSWER 5: lorua ka wili re na\nANSWER 6: retut mo runi re ji\nANSWER 7: retut mo neka re ji"
+   },
+   {
+    "round": "answer",
+    "agent": 3,
+    "raw": "Let me analyze my evidence:\n\n- mowea ralaleremu → the crab talked\n- tumom morunikeji → the cat jumps\n- retut katojokena → the newt calls\n- lorua ralalukemu → the goat carries\n\n**Nouns (first word):**\n- mowea = crab\n- tumom = cat\n- retut = newt\n- lorua = goat\n\n**Second word breakdown:**\n- ra-lale-re-mu = talked (crab)\n- mo-runi-ke-ji = jumps (cat)\n- ka-tojo-ke-na = calls (newt)\n- ra-lalu-ke-mu = carries (goat)\n\n**Tense/aspect prefixes:** ra, mo, ka appear first.\n- talked (past), carries (present), jumps (present), calls (present)\n\n**Verb roots (middle):**\n- lale = talk\n- runi = jump\n- tojo = call\n- lalu = carry\n\n**Suffixes:** -re-mu, -ke-ji, -ke-na, -ke-mu\n- talked: re + mu\n- jumps: ke + ji\n- calls: ke + na\n- carries: ke + mu\n\nTense seems encoded in prefix + suffix. Past \"talked\" = ra...re...mu. Present \"jumps/calls/carries\" = ...ke...\n\nLet me post findings to board:\n\n**FINDINGS (Agent 3):**\n- Nouns: mowea=crab, tumom=cat, retut=newt, lorua=goat\n- Verb roots: lale=talk, runi=jump, tojo=call, lalu=carry\n- Prefixes: ra/mo/ka/... ; \"ke\"=present marker, \"re\"=past marker(?)\n- Suffixes vary: mu, ji, na — may be agreement/subject class.\n\nI lack: bird, bear nouns; walk, clean roots. Need other agents' data.\n\nGiven incomplete info, my best guesses for shared roots:\n- cat=tumom, newt=retut, goat=lorua\n- jump=runi, call=tojo\n\nPresent uses \"ke\"; past likely replaces aspect marker. From \"talked\": ra-lale-re-mu, so past = re (instead of ke).\n\nQuery attempts (using known pieces, placeholders from bank for unknowns: nenet/nilom/jetit/manom=bird/bear; wili/neka=walk/clean):\n\nANSWER 0: tumom morunikeji\nANSWER 1: nilom morunekeji\nANSWER 2: nenet rawiliremu\nANSWER 3: tumom katojokena\nANSWER 4: lorua ranekaremu\nANSWER 5: lorua rawiliremu\nANSWER 6: retut moruniji\nANSWER 7: retut ranekaremu"
+   }
+  ]
+ },
+ {
+  "puzzle": "gen-008",
+  "language": "Milupi",
+  "family": "Generated/conditioned-suppletion",
+  "condition": "soloshard",
+  "seed": 1,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "n_agents": 4,
+  "rounds": 0,
+  "corrupted_rows": [],
+  "elapsed_s": 37.6,
+  "board": [],
+  "queries": [
+   {
+    "qid": 0,
+    "difficulty": "tutorial",
+    "prompt": "I carried",
+    "gold": [
+     "nana",
+     "loni",
+     "ri"
+    ],
+    "swarm": [
+     "tona",
+     "putu",
+     "ri"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.2083,
+    "morf1": 0.3333,
+    "votes": {
+     "tona putu ri": 1,
+     "nana tupu ri": 1,
+     "nana loni ri": 1,
+     "nana putu ri": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     true,
+     false
+    ]
+   },
+   {
+    "qid": 1,
+    "difficulty": "standard",
+    "prompt": "you all wait",
+    "gold": [
+     "suno",
+     "ruwa",
+     "pi"
+    ],
+    "swarm": [
+     "suno",
+     "ruwa",
+     "pi"
+    ],
+    "em_decomp": true,
+    "em_surface": true,
+    "chrf": 1.0,
+    "morf1": 1.0,
+    "votes": {
+     "loni wajo pi": 1,
+     "suno ruwa pi": 2,
+     "putu puta ra": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     true,
+     false,
+     true
+    ]
+   },
+   {
+    "qid": 2,
+    "difficulty": "standard",
+    "prompt": "we watch",
+    "gold": [
+     "repa",
+     "wajo",
+     "pi"
+    ],
+    "swarm": [
+     "repa",
+     "toti",
+     "pi"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.3843,
+    "morf1": 0.6667,
+    "votes": {
+     "suno riru pi": 1,
+     "repa toti pi": 2,
+     "repa suno ra": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 3,
+    "difficulty": "standard",
+    "prompt": "you all watch",
+    "gold": [
+     "suno",
+     "wajo",
+     "pi"
+    ],
+    "swarm": [
+     "suno",
+     "wajo",
+     "pi"
+    ],
+    "em_decomp": true,
+    "em_surface": true,
+    "chrf": 1.0,
+    "morf1": 1.0,
+    "votes": {
+     "suno wajo pi": 1,
+     "repa toti pi": 1,
+     "putu suno ra": 1,
+     "suno toti pi": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     true,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 4,
+    "difficulty": "standard",
+    "prompt": "we talk",
+    "gold": [
+     "repa",
+     "jene",
+     "pi"
+    ],
+    "swarm": [
+     "tewo",
+     "riru",
+     "pi"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.1278,
+    "morf1": 0.3333,
+    "votes": {
+     "tewo riru pi": 1,
+     "repa tona pi": 1,
+     "repa jene ra": 1,
+     "repa wuso pi": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 5,
+    "difficulty": "standard",
+    "prompt": "he carried",
+    "gold": [
+     "puta",
+     "loni",
+     "ri"
+    ],
+    "swarm": [
+     "tona",
+     "tupu",
+     "ri"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.2833,
+    "morf1": 0.3333,
+    "votes": {
+     "tona tupu ri": 1,
+     "puta tupu ri": 1,
+     "julo loni ri": 1,
+     "puta putu ri": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 6,
+    "difficulty": "curveball",
+    "prompt": "they helped",
+    "gold": [
+     "rire",
+     "tupu",
+     "ri"
+    ],
+    "swarm": [
+     "puta",
+     "toti",
+     "ri"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.2333,
+    "morf1": 0.3333,
+    "votes": {
+     "puta toti ri": 1,
+     "rire loni ri": 1,
+     "rire tiwi ri": 1,
+     "rire tupu ri": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     true
+    ]
+   },
+   {
+    "qid": 7,
+    "difficulty": "curveball",
+    "prompt": "they watched",
+    "gold": [
+     "rire",
+     "wajo",
+     "ri"
+    ],
+    "swarm": [
+     "rire",
+     "toti",
+     "ri"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.3843,
+    "morf1": 0.6667,
+    "votes": {
+     "suno toti ri": 1,
+     "rire toti ri": 2,
+     "rire suno ri": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   }
+  ],
+  "transcript": [
+   {
+    "round": "answer",
+    "agent": 0,
+    "raw": "Let me analyze my evidence:\n\n- putatupupi → he helps: puta=help, tupu=he?, pi=present?\n- repariruri → we called: repa=call, riru=we?, ri=past?\n- werpjotapi → you walk: werp=walk?, jota=you?, pi=present\n- sunowajori → you all watched: suno=watch, wajo=you all?, ri=past\n\nLet me parse structure: STEM + SUBJECT + TENSE\n\n- puta-tupu-pi: help-he-PRES\n- repa-riru-ri: call-we-PAST\n- werp-jota-pi: walk-you-PRES\n- suno-wajo-ri: watch-youall-PAST\n\nMorphemes:\n- Stems: puta=help, repa=call, werp=walk, suno=watch\n- Subjects: tupu=he, riru=we, jota=you, wajo=you all\n- Tense: pi=present, ri=past\n\nNeed more morphemes from bank for: carry, wait, talk, they. Candidates from bank: nana, rire, jene, julo, loni, lonu, noti, putu, ruwa, tewo, tiwi, tona, toti, pe, ra.\n\nI'll make reasonable guesses:\n- carry: tona (guess)\n- wait: loni (guess)\n- talk: tewo (guess)\n- they: toti (guess)\n- \"I\": putu (guess)\n\nPresent marker pi, past ri. Order: STEM-SUBJECT-TENSE.\n\nANSWER 0: tona putu ri\nANSWER 1: loni wajo pi\nANSWER 2: suno riru pi\nANSWER 3: suno wajo pi\nANSWER 4: tewo riru pi\nANSWER 5: tona tupu ri\nANSWER 6: puta toti ri\nANSWER 7: suno toti ri"
+   },
+   {
+    "round": "answer",
+    "agent": 1,
+    "raw": "Let me analyze my evidence.\n\n- putaruwari → he waited: puta=he, ruwa=wait, ri=past\n- nanawajopi → I watch: nana=I, wajo=watch, pi=present\n- nanaruwari → I waited: nana=I, ruwa=wait, ri=past\n- werptotiri → you watched: werp=you, toti=watch? \n\nWait, wajo=watch but werp+toti+ri = you watched. Conflict. Let me reconsider.\n\nnanawajopi = I watch (present). werptotiri = you watched (past, ri).\nSo wajo and toti both relate to watch? Maybe wajo=watch, and werp=you, but what's toti? Perhaps toti=watched differently... or wajo is a different verb.\n\nLet me reconsider: maybe \"watch\" appears twice differently. Possibly:\n- Subject prefixes: nana=I, puta=he, werp=you\n- Tense: pi=present/nonpast, ri=past\n- Verbs: ruwa=wait, wajo=watch, toti=watch?\n\nTwo words for watch is odd. Maybe nanawajopi is \"I watch\" but wajo is actually a different root. Given toti+ri = watched (past), toti=watch. Then wajo might be another verb. But prompt says \"I watch\". \n\nPossibly I misparse: werp-toti-ri. And nana-wajo-pi. Both glossed watch — contradiction to resolve with team. I'll post findings:\n\n- Subject: nana=I, puta=he, werp=you\n- Tense: ri=past, pi=nonpast\n- Root: ruwa=wait\n- watch=? (wajo or toti) — uncertain\n\nFor queries, I need plural subjects and other verbs (carry, talk, help) from other agents. I'll guess using morpheme bank: maybe pe=plural marker. Let me commit best effort.\n\nSubjects: I=nana, he=puta, you=werp. Plural \"you all\", \"we\", \"they\" likely other prefixes. Guessing from bank: we=repa?, they=rire?, you all=suno?\n\nVerbs: wait=ruwa, watch=toti/wajo, carry=?, talk=?, help=?. From bank: tona=talk?, tupu=carry?, loni=help?\n\nI'll commit reasonable guesses.\n\nANSWER 0: nana tupu ri\nANSWER 1: suno ruwa pi\nANSWER 2: repa toti pi\nANSWER 3: repa toti pi\nANSWER 4: repa tona pi\nANSWER 5: puta tupu ri\nANSWER 6: rire loni ri\nANSWER 7: rire toti ri"
+   },
+   {
+    "round": "answer",
+    "agent": 2,
+    "raw": "Let me analyze my evidence.\n\n- werpjotari → you walked: werp=walk, jota=you, ri=past? ...ari?\n- nanaloniri → I carried: loni=carry, nana=I, ri=past\n- rirejeneri → they talked: jene=talk, rire=they, ri=past\n- repaloniri → we carried: loni=carry, repa=we, ri=past\n\nPattern: ROOT + SUBJECT + TENSE\n\n- loni=carry, jene=talk, werp=walk\n- nana=I, repa=we, rire=they, jota=you\n- ri=past\n\nFor werpjotari: werp+jota+ri = werpjotari ✓\n\nNeed other subjects/tenses. \"you all\", \"he\", present tense unknown.\n\nMorpheme bank has: pe, pi, ra, ri — likely tense/aspect markers. ri=past. Maybe ra=present, pi/pe=plural/person.\n\nSubjects known: nana=I, repa=we, rire=they, jota=you. Need \"you all\", \"he\". Candidates: puta, putu, riru, ruwa, tewo, tiwi, tona, toti, tupu, wajo, wuso, suno, julo, lonu, noti.\n\nRoots known: loni=carry, jene=talk, werp=walk. Need wait, watch, help.\n\nI'll guess present=ra, and make reasonable assignments.\n\nANSWER 0: nana loni ri\nANSWER 1: putu puta ra\nANSWER 2: repa suno ra\nANSWER 3: putu suno ra\nANSWER 4: repa jene ra\nANSWER 5: julo loni ri\nANSWER 6: rire tiwi ri\nANSWER 7: rire suno ri"
+   },
+   {
+    "round": "answer",
+    "agent": 3,
+    "raw": "Let me analyze my evidence:\n\n- putatupuri → he helped: puta=?, tupu=help?, ri=he, pi... let me break it\n- rireruwapi → they wait: rire=they, ruwa=wait, pi=present?\n- sunotiwipi → you all cook: suno=you all, tiwi=cook, pi\n- riretewopi → they walk: rire=they, tewo=walk, pi\n\nSo: rire=they, suno=you all\nSubject prefix. Verb root in middle. Suffix pi.\n\nputatupuri → he helped: puta=he?, tupu=help, ri=past?\nSo pi=present/nonpast, ri=past\n\nhe = puta (subject prefix)\nrire=they, suno=you all, puta=he\n\nRoots: ruwa=wait, tiwi=cook, tewo=walk, tupu=help\n\nStructure: SUBJECT + ROOT + TENSE\n\nPosting to board:\n- Subjects: puta=he, rire=they, suno=you all\n- Roots: tupu=help, ruwa=wait, tiwi=cook, tewo=walk\n- Tense: pi=present, ri=past\n\nNeed from bank: I, we, watch, carried(carry), talk, watched.\nFrom bank unknowns — I'll guess \"carry\", \"watch\", \"talk\" roots. Available: nana, repa, werp, jene, jota, julo, loni, lonu, noti, putu, riru, tona, toti, wajo, wuso. Subjects I/we unknown.\n\nI'll make reasonable assignments but mark uncertainty. For now using placeholders from bank.\n\nANSWER 0: nana putu ri\nANSWER 1: suno ruwa pi\nANSWER 2: repa toti pi\nANSWER 3: suno toti pi\nANSWER 4: repa wuso pi\nANSWER 5: puta putu ri\nANSWER 6: rire tupu ri\nANSWER 7: rire toti ri"
+   }
+  ]
+ },
+ {
+  "puzzle": "gen-008",
+  "language": "Milupi",
+  "family": "Generated/conditioned-suppletion",
+  "condition": "soloshard",
+  "seed": 2,
+  "model": "claude-opus-4-8",
+  "provider": "neon",
+  "n_agents": 4,
+  "rounds": 0,
+  "corrupted_rows": [],
+  "elapsed_s": 27.6,
+  "board": [],
+  "queries": [
+   {
+    "qid": 0,
+    "difficulty": "tutorial",
+    "prompt": "I carried",
+    "gold": [
+     "nana",
+     "loni",
+     "ri"
+    ],
+    "swarm": [
+     "nana",
+     "loni",
+     "ri"
+    ],
+    "em_decomp": true,
+    "em_surface": true,
+    "chrf": 1.0,
+    "morf1": 1.0,
+    "votes": {
+     "nana ruwa ri": 1,
+     "nana loni ri": 2,
+     "nana tona ri": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     true,
+     false,
+     true
+    ]
+   },
+   {
+    "qid": 1,
+    "difficulty": "standard",
+    "prompt": "you all wait",
+    "gold": [
+     "suno",
+     "ruwa",
+     "pi"
+    ],
+    "swarm": [
+     "suno",
+     "riru",
+     "pi"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.5318,
+    "morf1": 0.6667,
+    "votes": {
+     "suno riru pi": 1,
+     "suno ruwa pi": 1,
+     "repa ruwa pi": 1,
+     "puta ruwa pi": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     true,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 2,
+    "difficulty": "standard",
+    "prompt": "we watch",
+    "gold": [
+     "repa",
+     "wajo",
+     "pi"
+    ],
+    "swarm": [
+     "repa",
+     "wajo",
+     "pi"
+    ],
+    "em_decomp": true,
+    "em_surface": true,
+    "chrf": 1.0,
+    "morf1": 1.0,
+    "votes": {
+     "repa wajo pi": 1,
+     "repa jota pi": 1,
+     "suno toti pi": 1,
+     "repa noti pi": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     true,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 3,
+    "difficulty": "standard",
+    "prompt": "you all watch",
+    "gold": [
+     "suno",
+     "wajo",
+     "pi"
+    ],
+    "swarm": [
+     "suno",
+     "wajo",
+     "pi"
+    ],
+    "em_decomp": true,
+    "em_surface": true,
+    "chrf": 1.0,
+    "morf1": 1.0,
+    "votes": {
+     "suno wajo pi": 1,
+     "suno jota pi": 1,
+     "repa toti pi": 1,
+     "puta noti pi": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     true,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 4,
+    "difficulty": "standard",
+    "prompt": "we talk",
+    "gold": [
+     "repa",
+     "jene",
+     "pi"
+    ],
+    "swarm": [
+     "repa",
+     "tiwi",
+     "pi"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.3593,
+    "morf1": 0.6667,
+    "votes": {
+     "repa tiwi pi": 1,
+     "repa jene pi": 1,
+     "suno jene pi": 1,
+     "repa tewo pi": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     true,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 5,
+    "difficulty": "standard",
+    "prompt": "he carried",
+    "gold": [
+     "puta",
+     "loni",
+     "ri"
+    ],
+    "swarm": [
+     "puta",
+     "ruwa",
+     "ri"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.3593,
+    "morf1": 0.6667,
+    "votes": {
+     "puta ruwa ri": 1,
+     "puta loni ri": 1,
+     "puta tona ri": 1,
+     "suno loni ri": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     true,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 6,
+    "difficulty": "curveball",
+    "prompt": "they helped",
+    "gold": [
+     "rire",
+     "tupu",
+     "ri"
+    ],
+    "swarm": [
+     "rire",
+     "tupu",
+     "ri"
+    ],
+    "em_decomp": true,
+    "em_surface": true,
+    "chrf": 1.0,
+    "morf1": 1.0,
+    "votes": {
+     "rire tupu ri": 1,
+     "rire wajo ri": 1,
+     "rire tewo ri": 1,
+     "rire tona ri": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     true,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 7,
+    "difficulty": "curveball",
+    "prompt": "they watched",
+    "gold": [
+     "rire",
+     "wajo",
+     "ri"
+    ],
+    "swarm": [
+     "rire",
+     "wajo",
+     "ri"
+    ],
+    "em_decomp": true,
+    "em_surface": true,
+    "chrf": 1.0,
+    "morf1": 1.0,
+    "votes": {
+     "rire wajo ri": 1,
+     "rire jota ri": 1,
+     "rire toti ri": 1,
+     "rire noti ri": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     true,
+     false,
+     false,
+     false
+    ]
+   }
+  ],
+  "transcript": [
+   {
+    "round": "answer",
+    "agent": 0,
+    "raw": "Let me analyze my evidence:\n\n- sunowajori → you all watched: suno + wajo + ri\n- putatupuri → he helped: puta + tupu + ri\n- nanawajopi → I watch: nana + wajo + pi\n- putatupupi → he helps: puta + tupu + pi\n\nPatterns:\n- suno = you all\n- puta = he\n- nana = I\n- wajo = watch\n- tupu = help\n- ri = past tense\n- pi = present tense\n\nStructure: subject + verb + tense\n\nNow queries. Need morphemes for: carried, wait, we, talk, they.\n\nFrom bank: likely \"pe\" = plural/past variant? Let me use:\n- we = ? need a subject. Candidates: repa, rire, werp, jene... \n- they = ?\n- carry = ?\n- wait = ?\n- talk = ?\n\nI'll post findings and make best guesses for unknowns from the bank.\n\nANSWER 0: nana ruwa ri\nANSWER 1: suno riru pi\nANSWER 2: repa wajo pi\nANSWER 3: suno wajo pi\nANSWER 4: repa tiwi pi\nANSWER 5: puta ruwa ri\nANSWER 6: rire tupu ri\nANSWER 7: rire wajo ri"
+   },
+   {
+    "round": "answer",
+    "agent": 1,
+    "raw": "Let me analyze my evidence:\n\n- riretewopi → they walk: rire + tewo + pi\n- nanaruwari → I waited: nana + ruwa + ri\n- repaloniri → we carried: repa + loni + ri\n- sunotiwipi → you all cook: suno + tiwi + pi\n\nPattern: SUBJECT + VERB + TENSE/suffix\n\nSubjects:\n- rire = they\n- nana = I\n- repa = we\n- suno = you all\n\nVerbs:\n- tewo = walk\n- ruwa = wait\n- loni = carry\n- tiwi = cook\n\nSuffixes:\n- pi = present (they walk, you all cook)\n- ri = past (I waited, we carried)\n\nSo \"ri\" = past, \"pi\" = present.\n\nFor queries needing new morphemes (watch, talk, help, he), I'll guess from bank:\n- he: likely \"puta\" or similar. Guessing \"puta\" = he\n- watch: guessing \"jota\"\n- talk: guessing \"jene\"\n- help: guessing \"wajo\"\n\nThese are uncertain — flagging for other agents.\n\nANSWER 0: nana loni ri\nANSWER 1: suno ruwa pi\nANSWER 2: repa jota pi\nANSWER 3: suno jota pi\nANSWER 4: repa jene pi\nANSWER 5: puta loni ri\nANSWER 6: rire wajo ri\nANSWER 7: rire jota ri"
+   },
+   {
+    "round": "answer",
+    "agent": 2,
+    "raw": "Let me analyze my evidence:\n\n- werptotiri → you watched = werp + toti + ri\n- werpjotapi → you walk = werp + jota + pi\n- rirejeneri → they talked = rire + jene + ri\n- putaruwari → he waited = puta + ruwa + ri\n\nAnalysis:\n- werp = you (subject prefix), appears in \"you watched\" and \"you walk\"\n- rire = they\n- puta = he\n- toti = watch, jota = walk, jene = talk, ruwa = wait (verb roots)\n- ri = past tense suffix (watched, talked, waited)\n- pi = present tense (walk)\n\nSo structure: SUBJECT + VERB + TENSE\n\nSubjects: werp=you, rire=they, puta=he. Need: I, we, you all.\nTense: ri=past, pi=present.\n\nLet me post findings to board.\n\nFINDINGS:\n- werp=you, rire=they, puta=he\n- roots: toti=watch, jota=walk, jene=talk, ruwa=wait\n- ri=past, pi=present\n- order: SUBJ + ROOT + TENSE\n- Unknown subjects: I, we, you all; unknown roots: carry, help\n\nGuessing from morpheme bank for unknowns (best effort):\n- carry = tona, help = tewo (placeholder)\n- I = nana, we = suno, you all = repa (placeholders)\n\nANSWER 0: nana tona ri\nANSWER 1: repa ruwa pi\nANSWER 2: suno toti pi\nANSWER 3: repa toti pi\nANSWER 4: suno jene pi\nANSWER 5: puta tona ri\nANSWER 6: rire tewo ri\nANSWER 7: rire toti ri"
+   },
+   {
+    "round": "answer",
+    "agent": 3,
+    "raw": "Let me analyze my evidence:\n\n- werp-jota-ri → you walked\n- nana-loni-ri → I carried\n- repa-riru-ri → we called\n- rire-ruwa-pi → they wait\n\nBreaking down:\n- Root first: werp=walk, nana=carry? wait, let me check. \"nana loni\" = I carried\n- Actually: nana=I, loni=carried? repa=we, riru=called? rire=they, ruwa=wait\n\nPattern: SUBJECT-VERB-TENSE\n- werp-jota-ri: werp=you, jota=walk, ri=past\n- nana-loni-ri: nana=I, loni=carry, ri=past\n- repa-riru-ri: repa=we, riru=call, ri=past\n- rire-ruwa-pi: rire=they, ruwa=wait, pi=present\n\nSo:\n- Subjects: nana=I, werp=you, repa=we, rire=they\n- Verbs: jota=walk, loni=carry, riru=call, ruwa=wait\n- Tense: ri=past, pi=present\n\nNeed more subjects (he, you all) and verbs (watch, talk, help) — from morpheme bank. Guessing:\n- Subjects remaining: suno, puta, putu, jene, julo... \"you all\", \"he\"\n- Verbs remaining: watch, talk, help\n\nBest guesses from bank for unknown roots:\n- he, you all, watch, talk, help\n\nI'll commit using available morphemes (others may refine):\n\nANSWER 0: nana loni ri\nANSWER 1: puta ruwa pi\nANSWER 2: repa noti pi\nANSWER 3: puta noti pi\nANSWER 4: repa tewo pi\nANSWER 5: suno loni ri\nANSWER 6: rire tona ri\nANSWER 7: rire noti ri"
+   }
+  ]
+ }
+]

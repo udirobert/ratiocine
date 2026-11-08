@@ -1,0 +1,4811 @@
+[
+ {
+  "puzzle": "gen-000",
+  "language": "Selatu",
+  "family": "Generated/vowel-harmony",
+  "condition": "soloshard",
+  "seed": 1,
+  "model": "openai/gpt-oss-20b",
+  "provider": "groq",
+  "n_agents": 4,
+  "rounds": 0,
+  "corrupted_rows": [],
+  "elapsed_s": 38.5,
+  "board": [],
+  "queries": [
+   {
+    "qid": 0,
+    "difficulty": "tutorial",
+    "prompt": "he carries",
+    "gold": [
+     "juw",
+     "jaje",
+     "se"
+    ],
+    "swarm": [
+     "puj",
+     "jaje",
+     "we"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.4291,
+    "morf1": 0.3333,
+    "votes": {
+     "puj jaje we": 1,
+     "juw jaje se": 1,
+     "pupa wa": 1,
+     "juw ruli se": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     true,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 1,
+    "difficulty": "standard",
+    "prompt": "they walk",
+    "gold": [
+     "puj",
+     "pupa",
+     "sa"
+    ],
+    "swarm": [
+     "puj",
+     "ruli"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.22,
+    "morf1": 0.4,
+    "votes": {
+     "puj ruli": 1,
+     "maj pupa se": 1,
+     "puj wep": 1,
+     "wej ruli se": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 2,
+    "difficulty": "standard",
+    "prompt": "you waited",
+    "gold": [
+     "maj",
+     "wumi",
+     "we"
+    ],
+    "swarm": [
+     "maj",
+     "jaje",
+     "mese"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.2263,
+    "morf1": 0.3333,
+    "votes": {
+     "maj jaje mese": 1,
+     "wep j wumi": 1,
+     "maj wumi sa": 1,
+     "maj wumi se": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 3,
+    "difficulty": "standard",
+    "prompt": "Did they talk?",
+    "gold": [
+     "puj",
+     "rupi",
+     "we",
+     "li"
+    ],
+    "swarm": [
+     "puj",
+     "wi",
+     "pupa",
+     "lu"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.2846,
+    "morf1": 0.25,
+    "votes": {
+     "puj wi pupa lu": 1,
+     "maj j pupa li": 1,
+     "se puj wiju lu": 1,
+     "wej rupi se": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 4,
+    "difficulty": "standard",
+    "prompt": "we help",
+    "gold": [
+     "wej",
+     "mura",
+     "sa"
+    ],
+    "swarm": [
+     "wej",
+     "wumi"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.249,
+    "morf1": 0.4,
+    "votes": {
+     "wej wumi": 1,
+     "wej wi mura": 1,
+     "we ruli": 1,
+     "we ruli se": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 5,
+    "difficulty": "curveball",
+    "prompt": "Do you walk?",
+    "gold": [
+     "maj",
+     "pupa",
+     "sa",
+     "lu"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 1,
+     "wep wi pupa li": 1,
+     "se maj wep lu": 1,
+     "maj ruli": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 6,
+    "difficulty": "curveball",
+    "prompt": "Do they call?",
+    "gold": [
+     "puj",
+     "wiju",
+     "sa",
+     "lu"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 1,
+     "maj wiju sa li": 1,
+     "se puj wiju lu": 1,
+     "wej wiju se": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   }
+  ],
+  "transcript": [
+   {
+    "round": "answer",
+    "agent": 0,
+    "raw": "ANSWER 0: puj jaje we  \nANSWER 1: puj ruli  \nANSWER 2: maj jaje mese  \nANSWER 3: puj wi pupa lu  \nANSWER 4: wej wumi  \nANSWER 5"
+   },
+   {
+    "round": "answer",
+    "agent": 1,
+    "raw": "ANSWER 0: juw jaje se\nANSWER 1: maj pupa se\nANSWER 2: wep j wumi\nANSWER 3: maj j pupa li\nANSWER 4: wej wi mura\nANSWER 5: wep wi pupa li\nANSWER 6: maj wi jusa li"
+   },
+   {
+    "round": "answer",
+    "agent": 2,
+    "raw": "ANSWER 0: pupa wa\nANSWER 1: puj wep\nANSWER 2: maj wumi sa\nANSWER 3: se puj wiju lu\nANSWER 4: we ruli\nANSWER 5: se maj wep lu\nANSWER 6: se puj wiju lu"
+   },
+   {
+    "round": "answer",
+    "agent": 3,
+    "raw": "ANSWER 0: juw ruli se\nANSWER 1: wej ruli se\nANSWER 2: maj wumi se\nANSWER 3: wej rupi se\nANSWER 4: we ruli se\nANSWER 5: maj ruli\nANSWER 6: wej wiju se"
+   }
+  ]
+ },
+ {
+  "puzzle": "gen-000",
+  "language": "Selatu",
+  "family": "Generated/vowel-harmony",
+  "condition": "soloshard",
+  "seed": 2,
+  "model": "openai/gpt-oss-20b",
+  "provider": "groq",
+  "n_agents": 4,
+  "rounds": 0,
+  "corrupted_rows": [],
+  "elapsed_s": 54.2,
+  "board": [],
+  "queries": [
+   {
+    "qid": 0,
+    "difficulty": "tutorial",
+    "prompt": "he carries",
+    "gold": [
+     "juw",
+     "jaje",
+     "se"
+    ],
+    "swarm": [
+     "juw",
+     "jaje",
+     "se"
+    ],
+    "em_decomp": true,
+    "em_surface": true,
+    "chrf": 1.0,
+    "morf1": 1.0,
+    "votes": {
+     "pupa": 1,
+     "juw jaje se": 2,
+     "puj jaje se": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     true,
+     false,
+     true
+    ]
+   },
+   {
+    "qid": 1,
+    "difficulty": "standard",
+    "prompt": "they walk",
+    "gold": [
+     "puj",
+     "pupa",
+     "sa"
+    ],
+    "swarm": [
+     "pu",
+     "ruli"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.1231,
+    "morf1": 0.0,
+    "votes": {
+     "pu ruli": 1,
+     "pupa ruli se": 1,
+     "puj wiju se": 1,
+     "puj ruli se": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 2,
+    "difficulty": "standard",
+    "prompt": "you waited",
+    "gold": [
+     "maj",
+     "wumi",
+     "we"
+    ],
+    "swarm": [
+     "maj",
+     "wumi",
+     "li"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.7272,
+    "morf1": 0.6667,
+    "votes": {
+     "maj wumi li": 1,
+     "maj wumi we": 1,
+     "puj wumi we": 1,
+     "maj wep we": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     true,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 3,
+    "difficulty": "standard",
+    "prompt": "Did they talk?",
+    "gold": [
+     "puj",
+     "rupi",
+     "we",
+     "li"
+    ],
+    "swarm": [
+     "pu",
+     "rupi",
+     "li"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.4187,
+    "morf1": 0.5714,
+    "votes": {
+     "pu rupi li": 1,
+     "pupa wiju wa": 1,
+     "puj wiju wa li": 1,
+     "puj rupi we li": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     true
+    ]
+   },
+   {
+    "qid": 4,
+    "difficulty": "standard",
+    "prompt": "we help",
+    "gold": [
+     "wej",
+     "mura",
+     "sa"
+    ],
+    "swarm": [
+     "we",
+     "ruli"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.1528,
+    "morf1": 0.0,
+    "votes": {
+     "we ruli": 1,
+     "wej mura se": 1,
+     "": 1,
+     "mura pupa se": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 5,
+    "difficulty": "curveball",
+    "prompt": "Do you walk?",
+    "gold": [
+     "maj",
+     "pupa",
+     "sa",
+     "lu"
+    ],
+    "swarm": [
+     "maj",
+     "ruli",
+     "se"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.2227,
+    "morf1": 0.2857,
+    "votes": {
+     "maj ruli lu": 1,
+     "maj ruli se": 2,
+     "": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 6,
+    "difficulty": "curveball",
+    "prompt": "Do they call?",
+    "gold": [
+     "puj",
+     "wiju",
+     "sa",
+     "lu"
+    ],
+    "swarm": [
+     "pu",
+     "wiju",
+     "sa",
+     "lu"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.7663,
+    "morf1": 0.75,
+    "votes": {
+     "pu wiju sa lu": 1,
+     "pupa wiju se": 1,
+     "puj wiju": 1,
+     "puj rupi se li": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   }
+  ],
+  "transcript": [
+   {
+    "round": "answer",
+    "agent": 0,
+    "raw": "ANSWER 0: pupa  \nANSWER 1: pu ruli  \nANSWER 2: maj wumi li  \nANSWER 3: pu rupi li  \nANSWER 4: we ruli  \nANSWER 5: maj ruli lu  \nANSWER 6: pu wijusa lu"
+   },
+   {
+    "round": "answer",
+    "agent": 1,
+    "raw": "ANSWER 0: juw jaje se\nANSWER 1: pupa ruli se\nANSWER 2: maj wumi we\nANSWER 3: pupa wiju wa\nANSWER 4: wej mura se\nANSWER 5: maj ruli se\nANSWER 6: pupa wiju se"
+   },
+   {
+    "round": "answer",
+    "agent": 2,
+    "raw": "ANSWER 0: puj jaje se  \nANSWER 1: puj wiju se  \nANSWER 2: puj wumi we  \nANSWER 3: puj wiju wa li  \nANSWER 4: ?  \nANSWER 5: ?  \nANSWER 6: pujwiju?"
+   },
+   {
+    "round": "answer",
+    "agent": 3,
+    "raw": "ANSWER 0: juw jaje se\nANSWER 1: puj ruli se\nANSWER 2: maj wep we\nANSWER 3: puj rupi we li\nANSWER 4: mura pupa se\nANSWER 5: maj ruli se\nANSWER 6: puj rupi se li"
+   }
+  ]
+ },
+ {
+  "puzzle": "gen-001",
+  "language": "Numusi",
+  "family": "Generated/noun-class-agreement",
+  "condition": "soloshard",
+  "seed": 1,
+  "model": "openai/gpt-oss-20b",
+  "provider": "groq",
+  "n_agents": 4,
+  "rounds": 0,
+  "corrupted_rows": [],
+  "elapsed_s": 71.0,
+  "board": [],
+  "queries": [
+   {
+    "qid": 0,
+    "difficulty": "tutorial",
+    "prompt": "the goat jumped",
+    "gold": [
+     "nupun",
+     "no",
+     "meri",
+     "sa",
+     "su"
+    ],
+    "swarm": [
+     "nupun",
+     "ru",
+     "esala"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.3503,
+    "morf1": 0.25,
+    "votes": {
+     "nupun ru esala": 1,
+     "nupun womeresala": 1,
+     "nupun no meri sa su": 1,
+     "nupun rapok sa su": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     true,
+     false
+    ]
+   },
+   {
+    "qid": 1,
+    "difficulty": "standard",
+    "prompt": "the cat called",
+    "gold": [
+     "pinuu",
+     "wo",
+     "liwi",
+     "sa",
+     "la"
+    ],
+    "swarm": [
+     "pinuu",
+     "mamok",
+     "esala"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.4256,
+    "morf1": 0.25,
+    "votes": {
+     "pinuu mamok esala": 1,
+     "pinuu womeresala": 1,
+     "mamok meri sa": 1,
+     "runan ru liwi li pa": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 2,
+    "difficulty": "standard",
+    "prompt": "the goat jumps",
+    "gold": [
+     "nupun",
+     "no",
+     "meri",
+     "li",
+     "su"
+    ],
+    "swarm": [
+     "nupun",
+     "ru",
+     "elila"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.3679,
+    "morf1": 0.25,
+    "votes": {
+     "nupun ru elila": 1,
+     "pinuu wo meri li la": 1,
+     "nupun meri sa": 1,
+     "nupun ru liwi li pa": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 3,
+    "difficulty": "standard",
+    "prompt": "the crab plays",
+    "gold": [
+     "lorun",
+     "no",
+     "nelo",
+     "li",
+     "su"
+    ],
+    "swarm": [
+     "rapok",
+     "su",
+     "elila"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.1844,
+    "morf1": 0.25,
+    "votes": {
+     "rapok su elila": 1,
+     "": 1,
+     "lorun meri sa": 1,
+     "lorun no nelo sa su": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 4,
+    "difficulty": "standard",
+    "prompt": "the bird waits",
+    "gold": [
+     "runan",
+     "no",
+     "nepe",
+     "li",
+     "su"
+    ],
+    "swarm": [
+     "wepik",
+     "wo",
+     "nepe",
+     "li",
+     "la"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.3966,
+    "morf1": 0.4,
+    "votes": {
+     "wepik wo nepe li la": 1,
+     "": 1,
+     "runan res": 1,
+     "wepik su": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 5,
+    "difficulty": "standard",
+    "prompt": "the deer talked",
+    "gold": [
+     "rapok",
+     "ru",
+     "rese",
+     "sa",
+     "pa"
+    ],
+    "swarm": [
+     "nelo",
+     "wo",
+     "rese",
+     "sa",
+     "la"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.3469,
+    "morf1": 0.4,
+    "votes": {
+     "nelo wo rese sa la": 1,
+     "": 1,
+     "pinuu elila": 1,
+     "rapok no rese li su": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 6,
+    "difficulty": "curveball",
+    "prompt": "the dog jumped",
+    "gold": [
+     "mamok",
+     "ru",
+     "meri",
+     "sa",
+     "pa"
+    ],
+    "swarm": [
+     "mumi",
+     "ru",
+     "esala"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.2036,
+    "morf1": 0.25,
+    "votes": {
+     "mumi ru esala": 1,
+     "": 1,
+     "rapok no meri sa su": 1,
+     "mamok rapok sa su": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 7,
+    "difficulty": "curveball",
+    "prompt": "the deer jumped",
+    "gold": [
+     "rapok",
+     "ru",
+     "meri",
+     "sa",
+     "pa"
+    ],
+    "swarm": [
+     "nelo",
+     "ru",
+     "esala"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.1524,
+    "morf1": 0.25,
+    "votes": {
+     "nelo ru esala": 1,
+     "": 1,
+     "pinuu ru meri sa pa": 1,
+     "rapok sa su": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   }
+  ],
+  "transcript": [
+   {
+    "round": "answer",
+    "agent": 0,
+    "raw": "ANSWER 0: nupun ru esala  \nANSWER 1: pinuu mamok esala  \nANSWER 2: nupun ru elila  \nANSWER 3: rapok su elila  \nANSWER 4: wepik wonep elila  \nANSWER 5: nelo wores esala  \nANSWER 6: mumi ru esala  \nANSWER 7: nelo ru esala"
+   },
+   {
+    "round": "answer",
+    "agent": 1,
+    "raw": "ANSWER 0: nupun womeresala\nANSWER 1: pinuu womeresala\nANSWER 2: pinuu womerilila\nANSWER 3: ??? \nANSWER 4: ??? \nANSWER 5: ??? \nANSWER 6: ??? \nANSWER 7: ???"
+   },
+   {
+    "round": "answer",
+    "agent": 2,
+    "raw": "ANSWER 0: nupun nomerisasu\nANSWER 1: mamok merisa\nANSWER 2: nupun merisa\nANSWER 3: lorun merisa\nANSWER 4: runan res\nANSWER 5: pinuu elila\nANSWER 6: rapok nomerisasu\nANSWER 7: pinuu rumerisapa"
+   },
+   {
+    "round": "answer",
+    "agent": 3,
+    "raw": "ANSWER 0: nupun rapoksasu\nANSWER 1: runan ruliwilipa\nANSWER 2: nupun ruliwilipa\nANSWER 3: lorun nonelosasu\nANSWER 4: wepik su\nANSWER 5: rapok noreselisu\nANSWER 6: mamok rapoksasu\nANSWER 7: rapok sasu"
+   }
+  ]
+ },
+ {
+  "puzzle": "gen-001",
+  "language": "Numusi",
+  "family": "Generated/noun-class-agreement",
+  "condition": "soloshard",
+  "seed": 2,
+  "model": "openai/gpt-oss-20b",
+  "provider": "groq",
+  "n_agents": 4,
+  "rounds": 0,
+  "corrupted_rows": [],
+  "elapsed_s": 75.2,
+  "board": [],
+  "queries": [
+   {
+    "qid": 0,
+    "difficulty": "tutorial",
+    "prompt": "the goat jumped",
+    "gold": [
+     "nupun",
+     "no",
+     "meri",
+     "sa",
+     "su"
+    ],
+    "swarm": [
+     "ANSWER",
+     "1"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.107,
+    "morf1": 0.0,
+    "votes": {
+     "ANSWER 1": 2,
+     "nupun no meri sa su": 1,
+     "mamok ru meri sa pa": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     true,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 1,
+    "difficulty": "standard",
+    "prompt": "the cat called",
+    "gold": [
+     "pinuu",
+     "wo",
+     "liwi",
+     "sa",
+     "la"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 2,
+     "UNKNOWN": 1,
+     "nupun no rese li su": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 2,
+    "difficulty": "standard",
+    "prompt": "the goat jumps",
+    "gold": [
+     "nupun",
+     "no",
+     "meri",
+     "li",
+     "su"
+    ],
+    "swarm": [
+     "ANSWER",
+     "3"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0894,
+    "morf1": 0.0,
+    "votes": {
+     "ANSWER 3": 2,
+     "pinuu wo meri li la": 1,
+     "mamok ru meri sa pa": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 3,
+    "difficulty": "standard",
+    "prompt": "the crab plays",
+    "gold": [
+     "lorun",
+     "no",
+     "nelo",
+     "li",
+     "su"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 2,
+     "UNKNOWN": 1,
+     "lorun no nelo sa su": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 4,
+    "difficulty": "standard",
+    "prompt": "the bird waits",
+    "gold": [
+     "runan",
+     "no",
+     "nepe",
+     "li",
+     "su"
+    ],
+    "swarm": [
+     "ANSWER",
+     "5"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.107,
+    "morf1": 0.0,
+    "votes": {
+     "ANSWER 5": 1,
+     "UNKNOWN": 1,
+     "": 1,
+     "pinuu wo nepe li la": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 5,
+    "difficulty": "standard",
+    "prompt": "the deer talked",
+    "gold": [
+     "rapok",
+     "ru",
+     "rese",
+     "sa",
+     "pa"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 2,
+     "UNKNOWN": 1,
+     "rapok no rese li su": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 6,
+    "difficulty": "curveball",
+    "prompt": "the dog jumped",
+    "gold": [
+     "mamok",
+     "ru",
+     "meri",
+     "sa",
+     "pa"
+    ],
+    "swarm": [
+     "ANSWER",
+     "7"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0894,
+    "morf1": 0.0,
+    "votes": {
+     "ANSWER 7": 1,
+     "UNKNOWN": 1,
+     "": 1,
+     "runan ru meri sa pa": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 7,
+    "difficulty": "curveball",
+    "prompt": "the deer jumped",
+    "gold": [
+     "rapok",
+     "ru",
+     "meri",
+     "sa",
+     "pa"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 2,
+     "UNKNOWN": 1,
+     "rapok ru meri sa pa": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     true
+    ]
+   }
+  ],
+  "transcript": [
+   {
+    "round": "answer",
+    "agent": 0,
+    "raw": "ANSWER 0: \nANSWER 1: \nANSWER 2: \nANSWER 3: \nANSWER 4: \nANSWER 5: \nANSWER 6: \nANSWER 7:"
+   },
+   {
+    "round": "answer",
+    "agent": 1,
+    "raw": "ANSWER 0: nupun nomerisasu\nANSWER 1: UNKNOWN\nANSWER 2: pinuu womerilila\nANSWER 3: UNKNOWN\nANSWER 4: UNKNOWN\nANSWER 5: UNKNOWN\nANSWER 6: UNKNOWN\nANSWER 7: UNKNOWN"
+   },
+   {
+    "round": "answer",
+    "agent": 2,
+    "raw": "ANSWER 0:\nANSWER 1:\nANSWER 2:\nANSWER 3:\nANSWER"
+   },
+   {
+    "round": "answer",
+    "agent": 3,
+    "raw": "ANSWER 0: mamok rumerisapa  \nANSWER 1: nupun noreselisu  \nANSWER 2: mamok rumerisapa  \nANSWER 3: lorun nonelosasu  \nANSWER 4: pinuu wonepelila  \nANSWER 5: rapok noreselisu  \nANSWER 6: runan rumerisapa  \nANSWER 7: rapok rumerisapa"
+   }
+  ]
+ },
+ {
+  "puzzle": "gen-002",
+  "language": "Rawutu",
+  "family": "Generated/conditioned-suppletion",
+  "condition": "soloshard",
+  "seed": 1,
+  "model": "openai/gpt-oss-20b",
+  "provider": "groq",
+  "n_agents": 4,
+  "rounds": 0,
+  "corrupted_rows": [],
+  "elapsed_s": 59.6,
+  "board": [],
+  "queries": [
+   {
+    "qid": 0,
+    "difficulty": "tutorial",
+    "prompt": "they wait",
+    "gold": [
+     "wire",
+     "pinu",
+     "lo"
+    ],
+    "swarm": [
+     "ANSWER",
+     "1"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.1064,
+    "morf1": 0.0,
+    "votes": {
+     "ANSWER 1": 1,
+     "wire pinu lo": 1,
+     "tula wire lo": 1,
+     "nawo pake pu": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     true,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 1,
+    "difficulty": "standard",
+    "prompt": "I walk",
+    "gold": [
+     "lewo",
+     "pika",
+     "lo"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 1,
+     "lewo pika lo": 1,
+     "lewo jori lo": 1,
+     "lewo jori": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     true,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 2,
+    "difficulty": "standard",
+    "prompt": "he watches",
+    "gold": [
+     "tula",
+     "woja",
+     "lo"
+    ],
+    "swarm": [
+     "ANSWER",
+     "3"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0532,
+    "morf1": 0.0,
+    "votes": {
+     "ANSWER 3": 1,
+     "ji woja lo": 1,
+     "liwa woja pu": 1,
+     "koka pake pu": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 3,
+    "difficulty": "standard",
+    "prompt": "you all cleaned",
+    "gold": [
+     "nawa",
+     "jiti",
+     "pu"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 1,
+     "nawa pake pu": 1,
+     "nawa wije lo": 1,
+     "nawa joro pu": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 4,
+    "difficulty": "standard",
+    "prompt": "he walks",
+    "gold": [
+     "tula",
+     "pika",
+     "lo"
+    ],
+    "swarm": [
+     "ANSWER",
+     "5"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0266,
+    "morf1": 0.0,
+    "votes": {
+     "ANSWER 5": 1,
+     "ji pika lo": 1,
+     "liwa jori lo": 1,
+     "koka jori pu": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 5,
+    "difficulty": "standard",
+    "prompt": "he smiles",
+    "gold": [
+     "tula",
+     "liro",
+     "lo"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 1,
+     "ji liro lo": 1,
+     "lewo liro pu": 1,
+     "koka jiti pu": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 6,
+    "difficulty": "curveball",
+    "prompt": "he walked",
+    "gold": [
+     "tula",
+     "pika",
+     "pu"
+    ],
+    "swarm": [
+     "ANSWER",
+     "7"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0266,
+    "morf1": 0.0,
+    "votes": {
+     "ANSWER 7": 1,
+     "ji pika pu": 1,
+     "liwa jori pu": 1,
+     "koka jori pu": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 7,
+    "difficulty": "curveball",
+    "prompt": "he smiled",
+    "gold": [
+     "tula",
+     "liro",
+     "pu"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 1,
+     "ji liro pu": 1,
+     "lewo liro pu": 1,
+     "koka jiti pu": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   }
+  ],
+  "transcript": [
+   {
+    "round": "answer",
+    "agent": 0,
+    "raw": "ANSWER 0: \nANSWER 1: \nANSWER 2: \nANSWER 3: \nANSWER 4: \nANSWER 5: \nANSWER 6: \nANSWER 7:"
+   },
+   {
+    "round": "answer",
+    "agent": 1,
+    "raw": "ANSWER 0: wire pinu lo\nANSWER 1: lewo pika lo\nANSWER 2: ji woja lo\nANSWER 3: nawa pake pu\nANSWER 4: ji pika lo\nANSWER 5: ji liro lo\nANSWER 6: ji pika pu\nANSWER 7: ji liro pu"
+   },
+   {
+    "round": "answer",
+    "agent": 2,
+    "raw": "ANSWER 0: tula wire lo  \nANSWER 1: lewo jori lo  \nANSWER 2: liwa woja pu  \nANSWER 3: nawa wije lo  \nANSWER 4: liwa jori lo  \nANSWER 5: lewo liro pu  \nANSWER 6: liwa jori pu  \nANSWER 7: lewo liro pu"
+   },
+   {
+    "round": "answer",
+    "agent": 3,
+    "raw": "ANSWER 0: nawo pake pu\nANSWER 1: lewo jori\nANSWER 2: koka pake pu\nANSWER 3: nawa joro pu\nANSWER 4: koka jori pu\nANSWER 5: koka jiti pu\nANSWER 6: koka jori pu\nANSWER 7: koka jiti pu"
+   }
+  ]
+ },
+ {
+  "puzzle": "gen-002",
+  "language": "Rawutu",
+  "family": "Generated/conditioned-suppletion",
+  "condition": "soloshard",
+  "seed": 2,
+  "model": "openai/gpt-oss-20b",
+  "provider": "groq",
+  "n_agents": 4,
+  "rounds": 0,
+  "corrupted_rows": [],
+  "elapsed_s": 61.5,
+  "board": [],
+  "queries": [
+   {
+    "qid": 0,
+    "difficulty": "tutorial",
+    "prompt": "they wait",
+    "gold": [
+     "wire",
+     "pinu",
+     "lo"
+    ],
+    "swarm": [
+     "ANSWER",
+     "1"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.1064,
+    "morf1": 0.0,
+    "votes": {
+     "ANSWER 1": 1,
+     "wire pinu lo": 1,
+     "nawa wire pu": 1,
+     "wire tula lo": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     true,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 1,
+    "difficulty": "standard",
+    "prompt": "I walk",
+    "gold": [
+     "lewo",
+     "pika",
+     "lo"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 1,
+     "lewo kaka lo": 1,
+     "lewo jori pu": 1,
+     "lewo pika lo": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     true
+    ]
+   },
+   {
+    "qid": 2,
+    "difficulty": "standard",
+    "prompt": "he watches",
+    "gold": [
+     "tula",
+     "woja",
+     "lo"
+    ],
+    "swarm": [
+     "ANSWER",
+     "3"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0532,
+    "morf1": 0.0,
+    "votes": {
+     "ANSWER 3": 1,
+     "tiwa nawo lo lo": 1,
+     "tula woja pu": 1,
+     "nawa japu lo": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 3,
+    "difficulty": "standard",
+    "prompt": "you all cleaned",
+    "gold": [
+     "nawa",
+     "jiti",
+     "pu"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 1,
+     "nawa pake lo": 1,
+     "nawa pake pu": 1,
+     "li pake lo": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 4,
+    "difficulty": "standard",
+    "prompt": "he walks",
+    "gold": [
+     "tula",
+     "pika",
+     "lo"
+    ],
+    "swarm": [
+     "ANSWER",
+     "5"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0266,
+    "morf1": 0.0,
+    "votes": {
+     "ANSWER 5": 1,
+     "tiwa kaka lo": 1,
+     "tula jori pu": 1,
+     "nawa pika lo": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 5,
+    "difficulty": "standard",
+    "prompt": "he smiles",
+    "gold": [
+     "tula",
+     "liro",
+     "lo"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 1,
+     "tiwa liro lo": 1,
+     "tula liro pu": 1,
+     "nawa liro lo": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 6,
+    "difficulty": "curveball",
+    "prompt": "he walked",
+    "gold": [
+     "tula",
+     "pika",
+     "pu"
+    ],
+    "swarm": [
+     "ANSWER",
+     "7"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0266,
+    "morf1": 0.0,
+    "votes": {
+     "ANSWER 7": 1,
+     "tiwa kaka pu": 1,
+     "tula jori pu": 1,
+     "nawa pika pu": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 7,
+    "difficulty": "curveball",
+    "prompt": "he smiled",
+    "gold": [
+     "tula",
+     "liro",
+     "pu"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 1,
+     "tiwa liro pu": 1,
+     "tula liro pu": 1,
+     "nawa liro pu": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     true,
+     false
+    ]
+   }
+  ],
+  "transcript": [
+   {
+    "round": "answer",
+    "agent": 0,
+    "raw": "ANSWER 0: \nANSWER 1: \nANSWER 2: \nANSWER 3: \nANSWER 4: \nANSWER 5: \nANSWER 6: \nANSWER 7:"
+   },
+   {
+    "round": "answer",
+    "agent": 1,
+    "raw": "ANSWER 0: wire pinu lo  \nANSWER 1: lewo kaka lo  \nANSWER 2: tiwa nawolo lo  \nANSWER 3: nawa pake lo  \nANSWER 4: tiwa kaka lo  \nANSWER 5: tiwa liro lo  \nANSWER 6: tiwa kaka pu  \nANSWER 7: tiwa liro pu"
+   },
+   {
+    "round": "answer",
+    "agent": 2,
+    "raw": "ANSWER 0: nawa wire pu  \nANSWER 1: lewo jori pu  \nANSWER 2: tula woja pu  \nANSWER 3: nawa pake pu  \nANSWER 4: tula jori pu  \nANSWER 5: tula liro pu  \nANSWER 6: tula jori pu  \nANSWER 7: tula liro pu"
+   },
+   {
+    "round": "answer",
+    "agent": 3,
+    "raw": "ANSWER 0: wire tula lo\nANSWER 1: lewo pika lo\nANSWER 2: nawa japu lo\nANSWER 3: li pake lo\nANSWER 4: nawa pika lo\nANSWER 5: nawa liro lo\nANSWER 6: nawa pika pu\nANSWER 7: nawa liro pu"
+   }
+  ]
+ },
+ {
+  "puzzle": "gen-003",
+  "language": "Sosoma",
+  "family": "Generated/vowel-harmony",
+  "condition": "soloshard",
+  "seed": 1,
+  "model": "openai/gpt-oss-20b",
+  "provider": "groq",
+  "n_agents": 4,
+  "rounds": 0,
+  "corrupted_rows": [],
+  "elapsed_s": 64.6,
+  "board": [],
+  "queries": [
+   {
+    "qid": 0,
+    "difficulty": "tutorial",
+    "prompt": "Does he carry?",
+    "gold": [
+     "rel",
+     "meti",
+     "ni",
+     "je"
+    ],
+    "swarm": [
+     "rel",
+     "meti",
+     "ni",
+     "je"
+    ],
+    "em_decomp": true,
+    "em_surface": true,
+    "chrf": 1.0,
+    "morf1": 1.0,
+    "votes": {
+     "rel meti ni je": 1,
+     "rel meti jo": 1,
+     "rel meti ji": 1,
+     "rel meti ni": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     true,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 1,
+    "difficulty": "standard",
+    "prompt": "Do you all talk?",
+    "gold": [
+     "nan",
+     "milo",
+     "na",
+     "jo"
+    ],
+    "swarm": [
+     "tam",
+     "nan",
+     "milo",
+     "jajo"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.6768,
+    "morf1": 0.5,
+    "votes": {
+     "tam nan milo jajo": 1,
+     "nan mil na jo": 1,
+     "tam milo ja": 1,
+     "ret milo ini": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 2,
+    "difficulty": "standard",
+    "prompt": "you called",
+    "gold": [
+     "tam",
+     "nama",
+     "ja"
+    ],
+    "swarm": [
+     "nan",
+     "milo",
+     "ji"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.1424,
+    "morf1": 0.0,
+    "votes": {
+     "nan milo ji": 1,
+     "tam kiko niro": 1,
+     "tam kijo ja": 1,
+     "ret kiko ji": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 3,
+    "difficulty": "standard",
+    "prompt": "Do we wait?",
+    "gold": [
+     "til",
+     "malo",
+     "na",
+     "jo"
+    ],
+    "swarm": [
+     "tam",
+     "ret",
+     "i",
+     "na"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.1936,
+    "morf1": 0.25,
+    "votes": {
+     "tam ret i na": 1,
+     "nama malo na jo": 1,
+     "not malo ja": 1,
+     "til malo ini": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 4,
+    "difficulty": "standard",
+    "prompt": "Do they call?",
+    "gold": [
+     "ret",
+     "nama",
+     "na",
+     "jo"
+    ],
+    "swarm": [
+     "tam",
+     "ret",
+     "i",
+     "je"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.2487,
+    "morf1": 0.25,
+    "votes": {
+     "tam ret i je": 1,
+     "ret kiko na jo": 1,
+     "rel kijo ji": 1,
+     "ret kiko ini": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 5,
+    "difficulty": "curveball",
+    "prompt": "Did they clean?",
+    "gold": [
+     "ret",
+     "kiko",
+     "ja",
+     "jo"
+    ],
+    "swarm": [
+     "nan",
+     "ret",
+     "i",
+     "je"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.2227,
+    "morf1": 0.25,
+    "votes": {
+     "nan ret i je": 1,
+     "ret malo ji je": 1,
+     "not malo ji": 1,
+     "ret kiko jajo": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 6,
+    "difficulty": "curveball",
+    "prompt": "Do you all play?",
+    "gold": [
+     "nan",
+     "jajo",
+     "na",
+     "jo"
+    ],
+    "swarm": [
+     "tam",
+     "nan",
+     "mil",
+     "i",
+     "o"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.1914,
+    "morf1": 0.2222,
+    "votes": {
+     "tam nan mil i o": 1,
+     "": 1,
+     "tam milo ja": 1,
+     "ret nama ini": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   }
+  ],
+  "transcript": [
+   {
+    "round": "answer",
+    "agent": 0,
+    "raw": "ANSWER 0: rel meti n i je\nANSWER 1: tam nan mil o jajo\nANSWER 2: nan mil o ji\nANSWER 3: tam ret i na\nANSWER 4: tam ret i je\nANSWER 5: nan ret i je\nANSWER 6: tam nan mil i o\n"
+   },
+   {
+    "round": "answer",
+    "agent": 1,
+    "raw": "ANSWER 0: rel meti jo\nANSWER 1: nan mil na jo\nANSWER 2: tam kiko niro\nANSWER 3: nama malo na jo\nANSWER 4: ret kiko na jo\nANSWER 5: ret malo jije\n"
+   },
+   {
+    "round": "answer",
+    "agent": 2,
+    "raw": "ANSWER 0: relmeti ji\nANSWER 1: tammiloja\nANSWER 2: tamkijo ja\nANSWER 3: notmalo ja\nANSWER 4: relkijo ji\nANSWER 5: notmalo ji\nANSWER 6: tammiloja"
+   },
+   {
+    "round": "answer",
+    "agent": 3,
+    "raw": "ANSWER 0: rel met ini\nANSWER 1: ret milo ini\nANSWER 2: ret kiko ji\nANSWER 3: til malo ini\nANSWER 4: ret kiko ini\nANSWER 5: ret ki ko jajo\nANSWER 6: ret nama ini"
+   }
+  ]
+ },
+ {
+  "puzzle": "gen-003",
+  "language": "Sosoma",
+  "family": "Generated/vowel-harmony",
+  "condition": "soloshard",
+  "seed": 2,
+  "model": "openai/gpt-oss-20b",
+  "provider": "groq",
+  "n_agents": 4,
+  "rounds": 0,
+  "corrupted_rows": [],
+  "elapsed_s": 54.2,
+  "board": [],
+  "queries": [
+   {
+    "qid": 0,
+    "difficulty": "tutorial",
+    "prompt": "Does he carry?",
+    "gold": [
+     "rel",
+     "meti",
+     "ni",
+     "je"
+    ],
+    "swarm": [
+     "ret",
+     "meti",
+     "ni"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.56,
+    "morf1": 0.5714,
+    "votes": {
+     "ret meti ni": 1,
+     "rel meti ni je": 1,
+     "tam rel meti jo": 1,
+     "ret meti ji": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     true,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 1,
+    "difficulty": "standard",
+    "prompt": "Do you all talk?",
+    "gold": [
+     "nan",
+     "milo",
+     "na",
+     "jo"
+    ],
+    "swarm": [
+     "nan",
+     "kiko",
+     "na"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.3274,
+    "morf1": 0.5714,
+    "votes": {
+     "nan kiko na": 1,
+     "nan milo ni je": 1,
+     "tam til milo jo": 1,
+     "ret tam milo ja": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 2,
+    "difficulty": "standard",
+    "prompt": "you called",
+    "gold": [
+     "tam",
+     "nama",
+     "ja"
+    ],
+    "swarm": [
+     "til",
+     "milo",
+     "ji"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0833,
+    "morf1": 0.0,
+    "votes": {
+     "til milo ji": 1,
+     "na kijo ja": 1,
+     "na kijo ji": 1,
+     "rel meti tam": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 3,
+    "difficulty": "standard",
+    "prompt": "Do we wait?",
+    "gold": [
+     "til",
+     "malo",
+     "na",
+     "jo"
+    ],
+    "swarm": [
+     "til",
+     "malo",
+     "ji"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.6219,
+    "morf1": 0.5714,
+    "votes": {
+     "til malo ji": 1,
+     "nan malo ni je": 1,
+     "tam ret malo jo": 1,
+     "ret nama malo": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 4,
+    "difficulty": "standard",
+    "prompt": "Do they call?",
+    "gold": [
+     "ret",
+     "nama",
+     "na",
+     "jo"
+    ],
+    "swarm": [
+     "ret",
+     "milo",
+     "ji"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.2227,
+    "morf1": 0.2857,
+    "votes": {
+     "ret milo ji": 1,
+     "til kijo ni je": 1,
+     "tam nama kijo jo": 1,
+     "ret jajo milo": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 5,
+    "difficulty": "curveball",
+    "prompt": "Did they clean?",
+    "gold": [
+     "ret",
+     "kiko",
+     "ja",
+     "jo"
+    ],
+    "swarm": [
+     "ret",
+     "malo",
+     "ji"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.2723,
+    "morf1": 0.2857,
+    "votes": {
+     "ret malo ji": 1,
+     "til kiko jajo": 1,
+     "nama kiko ji jo": 1,
+     "rel jajo malo": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 6,
+    "difficulty": "curveball",
+    "prompt": "Do you all play?",
+    "gold": [
+     "nan",
+     "jajo",
+     "na",
+     "jo"
+    ],
+    "swarm": [
+     "nan",
+     "kiko",
+     "na"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.3038,
+    "morf1": 0.5714,
+    "votes": {
+     "nan kiko na": 1,
+     "nan kijo ni je": 1,
+     "tam til milo jo": 1,
+     "ret tam milo ja": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   }
+  ],
+  "transcript": [
+   {
+    "round": "answer",
+    "agent": 0,
+    "raw": "ANSWER 0: ret meti ni\nANSWER 1: nan kiko na\nANSWER 2: til milo ji\nANSWER 3: til malo ji\nANSWER 4: ret milo ji\nANSWER 5: ret malo ji\nANSWER 6: nan kiko na"
+   },
+   {
+    "round": "answer",
+    "agent": 1,
+    "raw": "ANSWER 0: rel meti ni je\nANSWER 1: nan milo ni je\nANSWER 2: na kijo ja\nANSWER 3: nan malo ni je\nANSWER 4: til kijo ni je\nANSWER 5: til kiko jajo\nANSWER 6: nan kijo ni je"
+   },
+   {
+    "round": "answer",
+    "agent": 2,
+    "raw": "ANSWER 0: tam rel meti jo  \nANSWER 1: tam til milo jo  \nANSWER 2: na kijo ji  \nANSWER 3: tam ret malo jo  \nANSWER 4: tam nama kijo jo  \nANSWER 5: nama kiko ji jo  \nANSWER 6: tam til milo jo"
+   },
+   {
+    "round": "answer",
+    "agent": 3,
+    "raw": "ANSWER 0: ret meti ji\nANSWER 1: ret tam milo ja\nANSWER 2: rel meti tam\nANSWER 3: ret nama malo\nANSWER 4: ret jajo milo\nANSWER 5: rel jajo malo\nANSWER 6: ret tam milo ja"
+   }
+  ]
+ },
+ {
+  "puzzle": "gen-004",
+  "language": "Kukato",
+  "family": "Generated/noun-class-agreement",
+  "condition": "soloshard",
+  "seed": 1,
+  "model": "openai/gpt-oss-20b",
+  "provider": "groq",
+  "n_agents": 4,
+  "rounds": 0,
+  "corrupted_rows": [],
+  "elapsed_s": 42.5,
+  "board": [],
+  "queries": [
+   {
+    "qid": 0,
+    "difficulty": "tutorial",
+    "prompt": "the newt cooked",
+    "gold": [
+     "netap",
+     "se",
+     "pewu",
+     "ke",
+     "wa"
+    ],
+    "swarm": [
+     "UNKNOWN"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0704,
+    "morf1": 0.0,
+    "votes": {
+     "UNKNOWN": 1,
+     "ANSWER 1": 1,
+     "<unknown>": 1,
+     "netap se pewu ke wa": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     true
+    ]
+   },
+   {
+    "qid": 1,
+    "difficulty": "standard",
+    "prompt": "the bear talked",
+    "gold": [
+     "manin",
+     "po",
+     "rame",
+     "ke",
+     "pu"
+    ],
+    "swarm": [
+     "UNKNOWN"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.088,
+    "morf1": 0.0,
+    "votes": {
+     "UNKNOWN": 1,
+     "": 1,
+     "<unknown>": 1,
+     "manin peti": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 2,
+    "difficulty": "standard",
+    "prompt": "the dog walked",
+    "gold": [
+     "sesup",
+     "se",
+     "tawu",
+     "ke",
+     "wa"
+    ],
+    "swarm": [
+     "UNKNOWN"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0528,
+    "morf1": 0.0,
+    "votes": {
+     "UNKNOWN": 1,
+     "ANSWER 3": 1,
+     "<unknown>": 1,
+     "po tawu ti": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 3,
+    "difficulty": "standard",
+    "prompt": "the lion watches",
+    "gold": [
+     "naruo",
+     "ni",
+     "nope",
+     "te",
+     "ti"
+    ],
+    "swarm": [
+     "UNKNOWN"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.107,
+    "morf1": 0.0,
+    "votes": {
+     "UNKNOWN": 1,
+     "": 1,
+     "<unknown>": 1,
+     "naruo po nope te pu": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 4,
+    "difficulty": "standard",
+    "prompt": "the wolf talks",
+    "gold": [
+     "seson",
+     "po",
+     "rame",
+     "te",
+     "pu"
+    ],
+    "swarm": [
+     "UNKNOWN"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0528,
+    "morf1": 0.0,
+    "votes": {
+     "UNKNOWN": 1,
+     "ANSWER 5": 1,
+     "<unknown>": 1,
+     "pe peti": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 5,
+    "difficulty": "standard",
+    "prompt": "the lion talked",
+    "gold": [
+     "naruo",
+     "ni",
+     "rame",
+     "ke",
+     "ti"
+    ],
+    "swarm": [
+     "UNKNOWN"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.088,
+    "morf1": 0.0,
+    "votes": {
+     "UNKNOWN": 1,
+     "": 1,
+     "<unknown>": 1,
+     "naruo peti": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 6,
+    "difficulty": "curveball",
+    "prompt": "the newt walked",
+    "gold": [
+     "netap",
+     "se",
+     "tawu",
+     "ke",
+     "wa"
+    ],
+    "swarm": [
+     "UNKNOWN"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0704,
+    "morf1": 0.0,
+    "votes": {
+     "UNKNOWN": 1,
+     "ANSWER 7": 1,
+     "<unknown>": 1,
+     "netap tawu ti": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 7,
+    "difficulty": "curveball",
+    "prompt": "the bird walked",
+    "gold": [
+     "supop",
+     "se",
+     "tawu",
+     "ke",
+     "wa"
+    ],
+    "swarm": [
+     "UNKNOWN"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0704,
+    "morf1": 0.0,
+    "votes": {
+     "UNKNOWN": 1,
+     "": 1,
+     "<unknown>": 1,
+     "po tawu ti": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   }
+  ],
+  "transcript": [
+   {
+    "round": "answer",
+    "agent": 0,
+    "raw": "ANSWER 0: UNKNOWN\nANSWER 1: UNKNOWN\nANSWER 2: UNKNOWN\nANSWER 3: UNKNOWN\nANSWER 4: UNKNOWN\nANSWER 5: UNKNOWN\nANSWER 6: UNKNOWN\nANSWER 7: UNKNOWN"
+   },
+   {
+    "round": "answer",
+    "agent": 1,
+    "raw": "ANSWER 0:  \nANSWER 1:  \nANSWER 2:  \nANSWER 3:  \nANSWER 4:  \nANSWER 5:  \nANSWER 6:  \nANSWER 7:"
+   },
+   {
+    "round": "answer",
+    "agent": 2,
+    "raw": "ANSWER 0: <unknown>\nANSWER 1: <unknown>\nANSWER 2: <unknown>\nANSWER 3: <unknown>\nANSWER 4: <unknown>\nANSWER 5: <unknown>\nANSWER 6: <unknown>\nANSWER 7: <unknown>"
+   },
+   {
+    "round": "answer",
+    "agent": 3,
+    "raw": "ANSWER 0: netap sepewukewa  \nANSWER 1: manin peti  \nANSWER 2: po tawuti  \nANSWER 3: naruo ponopetepu  \nANSWER 4: pe peti  \nANSWER 5: naruo peti  \nANSWER 6: netap tawuti  \nANSWER 7: po tawuti"
+   }
+  ]
+ },
+ {
+  "puzzle": "gen-004",
+  "language": "Kukato",
+  "family": "Generated/noun-class-agreement",
+  "condition": "soloshard",
+  "seed": 2,
+  "model": "openai/gpt-oss-20b",
+  "provider": "groq",
+  "n_agents": 4,
+  "rounds": 0,
+  "corrupted_rows": [],
+  "elapsed_s": 22735.3,
+  "board": [],
+  "queries": [
+   {
+    "qid": 0,
+    "difficulty": "tutorial",
+    "prompt": "the newt cooked",
+    "gold": [
+     "netap",
+     "se",
+     "pewu",
+     "ke",
+     "wa"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "sesup ni pewu ke ti": 1,
+     "": 3
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 1,
+    "difficulty": "standard",
+    "prompt": "the bear talked",
+    "gold": [
+     "manin",
+     "po",
+     "rame",
+     "ke",
+     "pu"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "seson ni make ke ti": 1,
+     "": 3
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 2,
+    "difficulty": "standard",
+    "prompt": "the dog walked",
+    "gold": [
+     "sesup",
+     "se",
+     "tawu",
+     "ke",
+     "wa"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "supop po tawu te pu": 1,
+     "": 3
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 3,
+    "difficulty": "standard",
+    "prompt": "the lion watches",
+    "gold": [
+     "naruo",
+     "ni",
+     "nope",
+     "te",
+     "ti"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "naruo ni make te ti": 1,
+     "": 3
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 4,
+    "difficulty": "standard",
+    "prompt": "the wolf talks",
+    "gold": [
+     "seson",
+     "po",
+     "rame",
+     "te",
+     "pu"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "manin ni make te ti": 1,
+     "": 3
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 5,
+    "difficulty": "standard",
+    "prompt": "the lion talked",
+    "gold": [
+     "naruo",
+     "ni",
+     "rame",
+     "ke",
+     "ti"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "naruo ni make ke ti": 1,
+     "": 3
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 6,
+    "difficulty": "curveball",
+    "prompt": "the newt walked",
+    "gold": [
+     "netap",
+     "se",
+     "tawu",
+     "ke",
+     "wa"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "sesup po tawu te pu": 1,
+     "": 3
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 7,
+    "difficulty": "curveball",
+    "prompt": "the bird walked",
+    "gold": [
+     "supop",
+     "se",
+     "tawu",
+     "ke",
+     "wa"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "tawu po tawu te pu": 1,
+     "": 3
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   }
+  ],
+  "transcript": [
+   {
+    "round": "answer",
+    "agent": 0,
+    "raw": "ANSWER 0: sesup nipewuketi\nANSWER 1: seson nimakeketi\nANSWER 2: supop potawutepu\nANSWER 3: naruo nimaketeti\nANSWER 4: manin nimaketeti\nANSWER 5: naruo nimakeketi\nANSWER 6: sesup potawutepu\nANSWER 7: tawu potawutepu"
+   },
+   {
+    "round": "answer",
+    "agent": 1,
+    "raw": ""
+   },
+   {
+    "round": "answer",
+    "agent": 2,
+    "raw": "[call failed: groq network error: <urlopen error [Errno 8] nodename nor servname provided, or not known>]"
+   },
+   {
+    "round": "answer",
+    "agent": 3,
+    "raw": "[call failed: groq network error: <urlopen error [Errno 8] nodename nor servname provided, or not known>]"
+   }
+  ]
+ },
+ {
+  "puzzle": "gen-005",
+  "language": "Kapatu",
+  "family": "Generated/conditioned-suppletion",
+  "condition": "soloshard",
+  "seed": 1,
+  "model": "openai/gpt-oss-20b",
+  "provider": "groq",
+  "n_agents": 4,
+  "rounds": 0,
+  "corrupted_rows": [],
+  "elapsed_s": 1698.4,
+  "board": [],
+  "queries": [
+   {
+    "qid": 0,
+    "difficulty": "tutorial",
+    "prompt": "you all called",
+    "gold": [
+     "pose",
+     "nawi",
+     "ju"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 4
+    },
+    "unanimous": true,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 1,
+    "difficulty": "standard",
+    "prompt": "they carry",
+    "gold": [
+     "sepi",
+     "musi",
+     "lo"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 4
+    },
+    "unanimous": true,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 2,
+    "difficulty": "standard",
+    "prompt": "you jump",
+    "gold": [
+     "lesn",
+     "juki",
+     "lo"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 4
+    },
+    "unanimous": true,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 3,
+    "difficulty": "standard",
+    "prompt": "you all cook",
+    "gold": [
+     "pose",
+     "jiwe",
+     "lo"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 4
+    },
+    "unanimous": true,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 4,
+    "difficulty": "standard",
+    "prompt": "we waited",
+    "gold": [
+     "saka",
+     "lumi",
+     "ju"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 4
+    },
+    "unanimous": true,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 5,
+    "difficulty": "standard",
+    "prompt": "you all walk",
+    "gold": [
+     "pose",
+     "sima",
+     "lo"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 4
+    },
+    "unanimous": true,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 6,
+    "difficulty": "curveball",
+    "prompt": "they cooked",
+    "gold": [
+     "sepi",
+     "jiwe",
+     "ju"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 4
+    },
+    "unanimous": true,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 7,
+    "difficulty": "curveball",
+    "prompt": "they jumped",
+    "gold": [
+     "sepi",
+     "jowo",
+     "ju"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 4
+    },
+    "unanimous": true,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   }
+  ],
+  "transcript": [
+   {
+    "round": "answer",
+    "agent": 0,
+    "raw": "[call failed: groq network error: <urlopen error [Errno 8] nodename nor servname provided, or not known>]"
+   },
+   {
+    "round": "answer",
+    "agent": 1,
+    "raw": "[call failed: groq network error: <urlopen error [Errno 8] nodename nor servname provided, or not known>]"
+   },
+   {
+    "round": "answer",
+    "agent": 2,
+    "raw": "[call failed: groq network error: <urlopen error [Errno 8] nodename nor servname provided, or not known>]"
+   },
+   {
+    "round": "answer",
+    "agent": 3,
+    "raw": "[call failed: groq network error: <urlopen error [Errno 8] nodename nor servname provided, or not known>]"
+   }
+  ]
+ },
+ {
+  "puzzle": "gen-005",
+  "language": "Kapatu",
+  "family": "Generated/conditioned-suppletion",
+  "condition": "soloshard",
+  "seed": 2,
+  "model": "openai/gpt-oss-20b",
+  "provider": "groq",
+  "n_agents": 4,
+  "rounds": 0,
+  "corrupted_rows": [],
+  "elapsed_s": 300.8,
+  "board": [],
+  "queries": [
+   {
+    "qid": 0,
+    "difficulty": "tutorial",
+    "prompt": "you all called",
+    "gold": [
+     "pose",
+     "nawi",
+     "ju"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 4
+    },
+    "unanimous": true,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 1,
+    "difficulty": "standard",
+    "prompt": "they carry",
+    "gold": [
+     "sepi",
+     "musi",
+     "lo"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 4
+    },
+    "unanimous": true,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 2,
+    "difficulty": "standard",
+    "prompt": "you jump",
+    "gold": [
+     "lesn",
+     "juki",
+     "lo"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 4
+    },
+    "unanimous": true,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 3,
+    "difficulty": "standard",
+    "prompt": "you all cook",
+    "gold": [
+     "pose",
+     "jiwe",
+     "lo"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 4
+    },
+    "unanimous": true,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 4,
+    "difficulty": "standard",
+    "prompt": "we waited",
+    "gold": [
+     "saka",
+     "lumi",
+     "ju"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 4
+    },
+    "unanimous": true,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 5,
+    "difficulty": "standard",
+    "prompt": "you all walk",
+    "gold": [
+     "pose",
+     "sima",
+     "lo"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 4
+    },
+    "unanimous": true,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 6,
+    "difficulty": "curveball",
+    "prompt": "they cooked",
+    "gold": [
+     "sepi",
+     "jiwe",
+     "ju"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 4
+    },
+    "unanimous": true,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 7,
+    "difficulty": "curveball",
+    "prompt": "they jumped",
+    "gold": [
+     "sepi",
+     "jowo",
+     "ju"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 4
+    },
+    "unanimous": true,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   }
+  ],
+  "transcript": [
+   {
+    "round": "answer",
+    "agent": 0,
+    "raw": "[call failed: groq network error: <urlopen error [Errno 8] nodename nor servname provided, or not known>]"
+   },
+   {
+    "round": "answer",
+    "agent": 1,
+    "raw": "[call failed: groq network error: <urlopen error [Errno 8] nodename nor servname provided, or not known>]"
+   },
+   {
+    "round": "answer",
+    "agent": 2,
+    "raw": "[call failed: groq network error: <urlopen error [Errno 8] nodename nor servname provided, or not known>]"
+   },
+   {
+    "round": "answer",
+    "agent": 3,
+    "raw": "[call failed: groq network error: <urlopen error [Errno 8] nodename nor servname provided, or not known>]"
+   }
+  ]
+ },
+ {
+  "puzzle": "gen-006",
+  "language": "Werimi",
+  "family": "Generated/vowel-harmony",
+  "condition": "soloshard",
+  "seed": 1,
+  "model": "openai/gpt-oss-20b",
+  "provider": "groq",
+  "n_agents": 4,
+  "rounds": 0,
+  "corrupted_rows": [],
+  "elapsed_s": 300.6,
+  "board": [],
+  "queries": [
+   {
+    "qid": 0,
+    "difficulty": "tutorial",
+    "prompt": "you carried",
+    "gold": [
+     "pij",
+     "teje",
+     "ki"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 4
+    },
+    "unanimous": true,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 1,
+    "difficulty": "standard",
+    "prompt": "you all played",
+    "gold": [
+     "jit",
+     "poje",
+     "ki"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 4
+    },
+    "unanimous": true,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 2,
+    "difficulty": "standard",
+    "prompt": "we carry",
+    "gold": [
+     "ral",
+     "teje",
+     "ki"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 4
+    },
+    "unanimous": true,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 3,
+    "difficulty": "standard",
+    "prompt": "you all walk",
+    "gold": [
+     "jit",
+     "pone",
+     "ki"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 4
+    },
+    "unanimous": true,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 4,
+    "difficulty": "standard",
+    "prompt": "we carried",
+    "gold": [
+     "ral",
+     "teje",
+     "ki"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 4
+    },
+    "unanimous": true,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 5,
+    "difficulty": "curveball",
+    "prompt": "Did you smile?",
+    "gold": [
+     "pij",
+     "nope",
+     "ki",
+     "te"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 4
+    },
+    "unanimous": true,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 6,
+    "difficulty": "curveball",
+    "prompt": "Do they walk?",
+    "gold": [
+     "jer",
+     "pone",
+     "ki",
+     "te"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 4
+    },
+    "unanimous": true,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   }
+  ],
+  "transcript": [
+   {
+    "round": "answer",
+    "agent": 0,
+    "raw": "[call failed: groq network error: <urlopen error [Errno 8] nodename nor servname provided, or not known>]"
+   },
+   {
+    "round": "answer",
+    "agent": 1,
+    "raw": "[call failed: groq network error: <urlopen error [Errno 8] nodename nor servname provided, or not known>]"
+   },
+   {
+    "round": "answer",
+    "agent": 2,
+    "raw": "[call failed: groq network error: <urlopen error [Errno 8] nodename nor servname provided, or not known>]"
+   },
+   {
+    "round": "answer",
+    "agent": 3,
+    "raw": "[call failed: groq network error: <urlopen error [Errno 8] nodename nor servname provided, or not known>]"
+   }
+  ]
+ },
+ {
+  "puzzle": "gen-006",
+  "language": "Werimi",
+  "family": "Generated/vowel-harmony",
+  "condition": "soloshard",
+  "seed": 2,
+  "model": "openai/gpt-oss-20b",
+  "provider": "groq",
+  "n_agents": 4,
+  "rounds": 0,
+  "corrupted_rows": [],
+  "elapsed_s": 157.0,
+  "board": [],
+  "queries": [
+   {
+    "qid": 0,
+    "difficulty": "tutorial",
+    "prompt": "you carried",
+    "gold": [
+     "pij",
+     "teje",
+     "ki"
+    ],
+    "swarm": [
+     "ANSWER",
+     "1"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0291,
+    "morf1": 0.0,
+    "votes": {
+     "": 1,
+     "pij teje ki": 1,
+     "ANSWER 1": 2
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     true,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 1,
+    "difficulty": "standard",
+    "prompt": "you all played",
+    "gold": [
+     "jit",
+     "poje",
+     "ki"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 3,
+     "jit poje ki": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     true,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 2,
+    "difficulty": "standard",
+    "prompt": "we carry",
+    "gold": [
+     "ral",
+     "teje",
+     "ki"
+    ],
+    "swarm": [
+     "ANSWER",
+     "3"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0872,
+    "morf1": 0.0,
+    "votes": {
+     "": 1,
+     "ral te ko": 1,
+     "ANSWER 3": 2
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 3,
+    "difficulty": "standard",
+    "prompt": "you all walk",
+    "gold": [
+     "jit",
+     "pone",
+     "ki"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 3,
+     "jit nope ko": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 4,
+    "difficulty": "standard",
+    "prompt": "we carried",
+    "gold": [
+     "ral",
+     "teje",
+     "ki"
+    ],
+    "swarm": [
+     "ANSWER",
+     "5"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0872,
+    "morf1": 0.0,
+    "votes": {
+     "": 1,
+     "ral teje ki": 1,
+     "ANSWER 5": 2
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     true,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 5,
+    "difficulty": "curveball",
+    "prompt": "Did you smile?",
+    "gold": [
+     "pij",
+     "nope",
+     "ki",
+     "te"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 3,
+     "pij pole ki ta": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 6,
+    "difficulty": "curveball",
+    "prompt": "Do they walk?",
+    "gold": [
+     "jer",
+     "pone",
+     "ki",
+     "te"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 3,
+     "jer nope ko ta": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   }
+  ],
+  "transcript": [
+   {
+    "round": "answer",
+    "agent": 0,
+    "raw": "[call failed: groq network error: <urlopen error [Errno 8] nodename nor servname provided, or not known>]"
+   },
+   {
+    "round": "answer",
+    "agent": 1,
+    "raw": "ANSWER 0: pij teje ki  \nANSWER 1: jit poje ki  \nANSWER 2: ral te ko  \nANSWER 3: jit nope ko  \nANSWER 4: ral te je ki  \nANSWER 5: pij pole ki ta  \nANSWER 6: jer nope ko ta"
+   },
+   {
+    "round": "answer",
+    "agent": 2,
+    "raw": "ANSWER 0:  \nANSWER 1:  \nANSWER 2:  \nANSWER 3:  \nANSWER 4:  \nANSWER 5:  \nANSWER 6:"
+   },
+   {
+    "round": "answer",
+    "agent": 3,
+    "raw": "ANSWER 0: \nANSWER 1: \nANSWER 2: \nANSWER 3: \nANSWER 4: \nANSWER 5: \nANSWER 6:"
+   }
+  ]
+ },
+ {
+  "puzzle": "gen-007",
+  "language": "Kunule",
+  "family": "Generated/noun-class-agreement",
+  "condition": "soloshard",
+  "seed": 1,
+  "model": "openai/gpt-oss-20b",
+  "provider": "groq",
+  "n_agents": 4,
+  "rounds": 0,
+  "corrupted_rows": [],
+  "elapsed_s": 50.2,
+  "board": [],
+  "queries": [
+   {
+    "qid": 0,
+    "difficulty": "tutorial",
+    "prompt": "the cat jumps",
+    "gold": [
+     "tumom",
+     "mo",
+     "runi",
+     "ke",
+     "ji"
+    ],
+    "swarm": [
+     "tumom",
+     "mo",
+     "runi",
+     "ke",
+     "ji"
+    ],
+    "em_decomp": true,
+    "em_surface": true,
+    "chrf": 0.832,
+    "morf1": 1.0,
+    "votes": {
+     "ANSWER 1": 1,
+     "tumom mo runi ke ji": 2,
+     "manom ra runi ke mu": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     true,
+     true,
+     false
+    ]
+   },
+   {
+    "qid": 1,
+    "difficulty": "standard",
+    "prompt": "the bird cleans",
+    "gold": [
+     "manom",
+     "mo",
+     "neka",
+     "ke",
+     "ji"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 1,
+     "manom mo neka re ji": 1,
+     "lale ralaukemu": 1,
+     "nilom retut": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 2,
+    "difficulty": "standard",
+    "prompt": "the bear walked",
+    "gold": [
+     "rijio",
+     "ra",
+     "wili",
+     "re",
+     "mu"
+    ],
+    "swarm": [
+     "ANSWER",
+     "3"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0704,
+    "morf1": 0.0,
+    "votes": {
+     "ANSWER 3": 1,
+     "neka mo wili re ji": 1,
+     "runi motejokeji": 1,
+     "retut nenet re mu": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 3,
+    "difficulty": "standard",
+    "prompt": "the cat called",
+    "gold": [
+     "tumom",
+     "mo",
+     "tojo",
+     "re",
+     "ji"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 1,
+     "kota mo neka re ji": 1,
+     "mo tojo re na": 1,
+     "manom ra tojo re mu": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 4,
+    "difficulty": "standard",
+    "prompt": "the goat cleaned",
+    "gold": [
+     "lorua",
+     "ra",
+     "neka",
+     "re",
+     "mu"
+    ],
+    "swarm": [
+     "ANSWER",
+     "5"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0894,
+    "morf1": 0.0,
+    "votes": {
+     "ANSWER 5": 1,
+     "kota mo neka re ji": 1,
+     "lale ra lalu ke mu": 1,
+     "lorua retut": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 5,
+    "difficulty": "standard",
+    "prompt": "the goat walked",
+    "gold": [
+     "lorua",
+     "ra",
+     "wili",
+     "re",
+     "mu"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 1,
+     "kota mo wili re ji": 1,
+     "runi motejokeji": 1,
+     "lorua nenet re mu": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 6,
+    "difficulty": "curveball",
+    "prompt": "the newt jumped",
+    "gold": [
+     "retut",
+     "ka",
+     "runi",
+     "re",
+     "na"
+    ],
+    "swarm": [
+     "retut",
+     "mo",
+     "runi",
+     "ke",
+     "ji"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.4415,
+    "morf1": 0.4,
+    "votes": {
+     "ANSWER 7": 1,
+     "retut mo runi ke ji": 2,
+     "rijio ra runi ke mu": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 7,
+    "difficulty": "curveball",
+    "prompt": "the newt cleaned",
+    "gold": [
+     "retut",
+     "ka",
+     "neka",
+     "re",
+     "na"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 1,
+     "retut mo neka re ji": 1,
+     "retut ralaukemu": 1,
+     "rijio retut": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   }
+  ],
+  "transcript": [
+   {
+    "round": "answer",
+    "agent": 0,
+    "raw": "ANSWER 0:\nANSWER 1:\nANSWER 2:\nANSWER 3:\nANSWER 4:\nANSWER 5:\nANSWER 6:\nANSWER 7:"
+   },
+   {
+    "round": "answer",
+    "agent": 1,
+    "raw": "ANSWER 0: tumom morunikeji\nANSWER 1: manom monekareji\nANSWER 2: neka mowilireji\nANSWER 3: kota monekareji\nANSWER 4: kota monekareji\nANSWER 5: kota mowilireji\nANSWER 6: retut morunikeji\nANSWER 7: retut monekareji"
+   },
+   {
+    "round": "answer",
+    "agent": 2,
+    "raw": "ANSWER 0: tumom morunikeji\nANSWER 1: lale ralaukemu\nANSWER 2: runi motejokeji\nANSWER 3: motojorena\nANSWER 4: lale ralalukemu\nANSWER 5: runi motejokeji\nANSWER 6: retut morunikeji\nANSWER 7: retut ralaukemu"
+   },
+   {
+    "round": "answer",
+    "agent": 3,
+    "raw": "ANSWER 0: manom rarunikemu\nANSWER 1: nilom retut\nANSWER 2: retut nenet remu\nANSWER 3: manom ratojoremu\nANSWER 4: lorua retut\nANSWER 5: lorua nenet remu\nANSWER 6: rijio rarunikemu\nANSWER 7: rijio retut"
+   }
+  ]
+ },
+ {
+  "puzzle": "gen-007",
+  "language": "Kunule",
+  "family": "Generated/noun-class-agreement",
+  "condition": "soloshard",
+  "seed": 2,
+  "model": "openai/gpt-oss-20b",
+  "provider": "groq",
+  "n_agents": 4,
+  "rounds": 0,
+  "corrupted_rows": [],
+  "elapsed_s": 97.1,
+  "board": [],
+  "queries": [
+   {
+    "qid": 0,
+    "difficulty": "tutorial",
+    "prompt": "the cat jumps",
+    "gold": [
+     "tumom",
+     "mo",
+     "runi",
+     "ke",
+     "ji"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 1,
+     "<unknown>": 1,
+     "tumom tojo ke ji": 1,
+     "tumom mo runi ke ji": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     true
+    ]
+   },
+   {
+    "qid": 1,
+    "difficulty": "standard",
+    "prompt": "the bird cleans",
+    "gold": [
+     "manom",
+     "mo",
+     "neka",
+     "ke",
+     "ji"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 2,
+     "<unknown>": 1,
+     "manom lale ke ji": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 2,
+    "difficulty": "standard",
+    "prompt": "the bear walked",
+    "gold": [
+     "rijio",
+     "ra",
+     "wili",
+     "re",
+     "mu"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 2,
+     "<unknown>": 1,
+     "nilom ka wili re na": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 3,
+    "difficulty": "standard",
+    "prompt": "the cat called",
+    "gold": [
+     "tumom",
+     "mo",
+     "tojo",
+     "re",
+     "ji"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 2,
+     "<unknown>": 1,
+     "tumom mo tojo re ji": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     true,
+     false
+    ]
+   },
+   {
+    "qid": 4,
+    "difficulty": "standard",
+    "prompt": "the goat cleaned",
+    "gold": [
+     "lorua",
+     "ra",
+     "neka",
+     "re",
+     "mu"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 2,
+     "<unknown>": 1,
+     "nenet lalerji": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 5,
+    "difficulty": "standard",
+    "prompt": "the goat walked",
+    "gold": [
+     "lorua",
+     "ra",
+     "wili",
+     "re",
+     "mu"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 2,
+     "<unknown>": 1,
+     "nenet ka wili re na": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 6,
+    "difficulty": "curveball",
+    "prompt": "the newt jumped",
+    "gold": [
+     "retut",
+     "ka",
+     "runi",
+     "re",
+     "na"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 2,
+     "<unknown>": 1,
+     "retut tojo ra ji": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 7,
+    "difficulty": "curveball",
+    "prompt": "the newt cleaned",
+    "gold": [
+     "retut",
+     "ka",
+     "neka",
+     "re",
+     "na"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 2,
+     "<unknown>": 1,
+     "retut lalerji": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   }
+  ],
+  "transcript": [
+   {
+    "round": "answer",
+    "agent": 0,
+    "raw": ""
+   },
+   {
+    "round": "answer",
+    "agent": 1,
+    "raw": "ANSWER 0: <unknown>\nANSWER 1: <unknown>\nANSWER 2: <unknown>\nANSWER 3: <unknown>\nANSWER 4: <unknown>\nANSWER 5: <unknown>\nANSWER 6: <unknown>\nANSWER 7: <unknown>"
+   },
+   {
+    "round": "answer",
+    "agent": 2,
+    "raw": "ANSWER 0: tumom tojokeji\nANSWER 1: manom lalekeji\nANSWER 2: nilom kawilirena\nANSWER 3: tumom motojoreji\nANSWER 4: nenet lalerji\nANSWER 5: nenet kawilirena\nANSWER 6: retut tojoraji\nANSWER 7: retut lalerji"
+   },
+   {
+    "round": "answer",
+    "agent": 3,
+    "raw": "ANSWER 0: tumom morunikeji\nANSWER 1: ?\nANSWER 2: ?\nANSWER 3: ?\nANSWER 4: ?\nANSWER 5: ?\nANSWER 6: ?\nANSWER 7: ?"
+   }
+  ]
+ },
+ {
+  "puzzle": "gen-008",
+  "language": "Milupi",
+  "family": "Generated/conditioned-suppletion",
+  "condition": "soloshard",
+  "seed": 1,
+  "model": "openai/gpt-oss-20b",
+  "provider": "groq",
+  "n_agents": 4,
+  "rounds": 0,
+  "corrupted_rows": [],
+  "elapsed_s": 81.4,
+  "board": [],
+  "queries": [
+   {
+    "qid": 0,
+    "difficulty": "tutorial",
+    "prompt": "I carried",
+    "gold": [
+     "nana",
+     "loni",
+     "ri"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 1,
+     "nana ru ri": 1,
+     "nan loni ri": 1,
+     "pe tupu ri": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 1,
+    "difficulty": "standard",
+    "prompt": "you all wait",
+    "gold": [
+     "suno",
+     "ruwa",
+     "pi"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 1,
+     "werp war ri": 1,
+     "werp tewo ni": 1,
+     "suno ruwa pi": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     true
+    ]
+   },
+   {
+    "qid": 2,
+    "difficulty": "standard",
+    "prompt": "we watch",
+    "gold": [
+     "repa",
+     "wajo",
+     "pi"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 1,
+     "pe to jopi": 1,
+     "rep ra ri": 1,
+     "loni tewo pi": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 3,
+    "difficulty": "standard",
+    "prompt": "you all watch",
+    "gold": [
+     "suno",
+     "wajo",
+     "pi"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 1,
+     "werp to jopi": 1,
+     "werp ra ni": 1,
+     "suno tewo pi": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 4,
+    "difficulty": "standard",
+    "prompt": "we talk",
+    "gold": [
+     "repa",
+     "jene",
+     "pi"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 1,
+     "pe suno jopi": 1,
+     "rep jene ri": 1,
+     "loni repa pi": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 5,
+    "difficulty": "standard",
+    "prompt": "he carried",
+    "gold": [
+     "puta",
+     "loni",
+     "ri"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 1,
+     "puta ru ri": 1,
+     "ri": 1,
+     "puta tupu ri": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 6,
+    "difficulty": "curveball",
+    "prompt": "they helped",
+    "gold": [
+     "rire",
+     "tupu",
+     "ri"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 1,
+     "loni jene ri": 1,
+     "ri": 1,
+     "ri ri putu pi": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 7,
+    "difficulty": "curveball",
+    "prompt": "they watched",
+    "gold": [
+     "rire",
+     "wajo",
+     "ri"
+    ],
+    "swarm": [],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.0,
+    "morf1": 0.0,
+    "votes": {
+     "": 1,
+     "loni to ri": 1,
+     "ri": 1,
+     "ri ri tewo pi": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   }
+  ],
+  "transcript": [
+   {
+    "round": "answer",
+    "agent": 0,
+    "raw": "I’m sorry, but with the information provided I can’t confidently determine the morpheme sequences for the requested queries."
+   },
+   {
+    "round": "answer",
+    "agent": 1,
+    "raw": "ANSWER 0: nana ru ri  \nANSWER 1: werp war ri  \nANSWER 2: pe to jopi  \nANSWER 3: werp to jopi  \nANSWER 4: pe suno jopi  \nANSWER 5: puta ru ri  \nANSWER 6: loni jene ri  \nANSWER 7: loni to ri"
+   },
+   {
+    "round": "answer",
+    "agent": 2,
+    "raw": "ANSWER 0: nan loni ri\nANSWER 1: werp tewo ni\nANSWER 2: rep ra ri\nANSWER 3: werp ra ni\nANSWER 4: rep jene ri\nANSWER 5: ??? ri\nANSWER 6: ??? ri\nANSWER 7: ??? ri"
+   },
+   {
+    "round": "answer",
+    "agent": 3,
+    "raw": "ANSWER 0: pe tupuri\nANSWER 1: suno ruwa pi\nANSWER 2: loni tewo pi\nANSWER 3: suno tewo pi\nANSWER 4: loni repa pi\nANSWER 5: puta tupuri\nANSWER 6: riri putu pi\nANSWER 7: riri tewo pi"
+   }
+  ]
+ },
+ {
+  "puzzle": "gen-008",
+  "language": "Milupi",
+  "family": "Generated/conditioned-suppletion",
+  "condition": "soloshard",
+  "seed": 2,
+  "model": "openai/gpt-oss-20b",
+  "provider": "groq",
+  "n_agents": 4,
+  "rounds": 0,
+  "corrupted_rows": [],
+  "elapsed_s": 65.5,
+  "board": [],
+  "queries": [
+   {
+    "qid": 0,
+    "difficulty": "tutorial",
+    "prompt": "I carried",
+    "gold": [
+     "nana",
+     "loni",
+     "ri"
+    ],
+    "swarm": [
+     "ra",
+     "wa",
+     "pi"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.1087,
+    "morf1": 0.0,
+    "votes": {
+     "ra wa pi": 1,
+     "repa wari ri": 1,
+     "ANSWER 1": 1,
+     "nana loni ri": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     true
+    ]
+   },
+   {
+    "qid": 1,
+    "difficulty": "standard",
+    "prompt": "you all wait",
+    "gold": [
+     "suno",
+     "ruwa",
+     "pi"
+    ],
+    "swarm": [
+     "ti",
+     "wa",
+     "pi"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.3103,
+    "morf1": 0.3333,
+    "votes": {
+     "ti wa pi": 1,
+     "nanaru tiwi": 1,
+     "": 1,
+     "werp rua pi": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 2,
+    "difficulty": "standard",
+    "prompt": "we watch",
+    "gold": [
+     "repa",
+     "wajo",
+     "pi"
+    ],
+    "swarm": [
+     "nana",
+     "toti",
+     "pi"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.1528,
+    "morf1": 0.3333,
+    "votes": {
+     "nana toti pi": 1,
+     "unknown": 1,
+     "ANSWER 3": 1,
+     "repa tewo uri": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 3,
+    "difficulty": "standard",
+    "prompt": "you all watch",
+    "gold": [
+     "suno",
+     "wajo",
+     "pi"
+    ],
+    "swarm": [
+     "suno",
+     "wa",
+     "pi"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.6281,
+    "morf1": 0.6667,
+    "votes": {
+     "suno wa pi": 1,
+     "unknown": 1,
+     "": 1,
+     "werp tewo pi": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 4,
+    "difficulty": "standard",
+    "prompt": "we talk",
+    "gold": [
+     "repa",
+     "jene",
+     "pi"
+    ],
+    "swarm": [
+     "pe",
+     "toti",
+     "pi"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.1332,
+    "morf1": 0.3333,
+    "votes": {
+     "pe toti pi": 1,
+     "unknown": 1,
+     "ANSWER 5": 1,
+     "repa tona uri": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 5,
+    "difficulty": "standard",
+    "prompt": "he carried",
+    "gold": [
+     "puta",
+     "loni",
+     "ri"
+    ],
+    "swarm": [
+     "ra",
+     "tu",
+     "ri"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.1664,
+    "morf1": 0.3333,
+    "votes": {
+     "ra tu ri": 1,
+     "unknown": 1,
+     "": 1,
+     "pe loni ri": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 6,
+    "difficulty": "curveball",
+    "prompt": "they helped",
+    "gold": [
+     "rire",
+     "tupu",
+     "ri"
+    ],
+    "swarm": [
+     "puta",
+     "noti",
+     "ri"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.2333,
+    "morf1": 0.3333,
+    "votes": {
+     "puta noti ri": 1,
+     "unknown": 1,
+     "ANSWER 7": 1,
+     "rire tiwi pi": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   {
+    "qid": 7,
+    "difficulty": "curveball",
+    "prompt": "they watched",
+    "gold": [
+     "rire",
+     "wajo",
+     "ri"
+    ],
+    "swarm": [
+     "suno",
+     "noti",
+     "ri"
+    ],
+    "em_decomp": false,
+    "em_surface": false,
+    "chrf": 0.1556,
+    "morf1": 0.3333,
+    "votes": {
+     "suno noti ri": 1,
+     "unknown": 1,
+     "": 1,
+     "rire tewo pi": 1
+    },
+    "unanimous": false,
+    "agent_em_decomp": [
+     false,
+     false,
+     false,
+     false
+    ]
+   }
+  ],
+  "transcript": [
+   {
+    "round": "answer",
+    "agent": 0,
+    "raw": "ANSWER 0: ra wa pi  \nANSWER 1: ti wa pi  \nANSWER 2: nana toti pi  \nANSWER 3: suno wa pi  \nANSWER 4: pe toti pi  \nANSWER 5: ra tu ri  \nANSWER 6: puta noti ri  \nANSWER 7: suno noti ri"
+   },
+   {
+    "round": "answer",
+    "agent": 1,
+    "raw": "ANSWER 0: repa wari ri\nANSWER 1: nanaru tiwi\nANSWER 2: unknown\nANSWER 3: unknown\nANSWER 4: unknown\nANSWER 5: unknown\nANSWER 6: unknown\nANSWER 7: unknown"
+   },
+   {
+    "round": "answer",
+    "agent": 2,
+    "raw": "ANSWER 0: \nANSWER 1: \nANSWER 2: \nANSWER 3: \nANSWER 4: \nANSWER 5: \nANSWER 6: \nANSWER 7:"
+   },
+   {
+    "round": "answer",
+    "agent": 3,
+    "raw": "ANSWER 0: nana loni ri\nANSWER 1: werp rua pi\nANSWER 2: repa tewo uri\nANSWER 3: werp tewo pi\nANSWER 4: repa tona uri\nANSWER 5: pe loni ri\nANSWER 6: rire tiwi pi\nANSWER 7: rire tewo pi"
+   }
+  ]
+ }
+]
