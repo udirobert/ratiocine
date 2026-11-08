@@ -12,10 +12,16 @@ rm -f "$ZIP"
 mkdir -p "$STAGE"/{scripts,hf-pipeline/submission,data,eval-hackathon}
 
 cp scripts/llm_providers.py scripts/run_models_for_ltb.py scripts/obfuscate_puzzles.py \
-   scripts/gen_puzzles.py scripts/make_min_pairs.py "$STAGE/scripts/"
+   scripts/gen_puzzles.py scripts/gen_cot_data.py scripts/gen_showcase_puzzles.py \
+   scripts/make_min_pairs.py "$STAGE/scripts/"
 cp hf-pipeline/submission/prompts.py "$STAGE/hf-pipeline/submission/"
 cp data/puzzles.json "$STAGE/data/"
 cp -R eval-hackathon/. "$STAGE/eval-hackathon/"
+# video build artifacts are large binaries — sources stay, media goes
+rm -rf "$STAGE/eval-hackathon/video/footage" \
+       "$STAGE/eval-hackathon/video/output" \
+       "$STAGE/eval-hackathon/video/audio/scenes" \
+       "$STAGE/eval-hackathon/video/node_modules"
 find "$STAGE" -name "__pycache__" -type d -exec rm -rf {} + 2>/dev/null || true
 find "$STAGE" -name "*.pyc" -delete
 cp .env.example "$STAGE/"
