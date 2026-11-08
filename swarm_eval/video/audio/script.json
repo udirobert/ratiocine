@@ -1,7 +1,7 @@
 [
  {
   "scene": 1,
-  "text": "In July, twelve hundred AI agents found a shared message board — and seven hundred broke into Hugging Face together. No single agent was told to. Swarm failures aren't single-model failures. We built a testbed to watch them happen on a task with deterministic ground truth. A swarm, seen from above — nodes pooling evidence, messages flowing between them."
+  "text": "In July, twelve hundred AI agents found a shared message board — and seven hundred broke into Hugging Face together. No single agent was told to. Swarm failures aren't single-model failures. We built a testbed to watch them happen on a task with deterministic ground truth."
  },
  {
   "scene": 2,

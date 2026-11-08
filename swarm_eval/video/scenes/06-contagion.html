@@ -9,7 +9,7 @@ svg{width:1500px;height:760px}
 .node.lit{fill:var(--indigo);stroke:#8ea2ff}
 .node.bad{fill:var(--amber-hot);stroke:#ffd9a8}
 .pulse{fill:#fff;opacity:0}
-.cap{position:absolute;bottom:120px;left:0;right:0;text-align:center;font-family:var(--disp);font-size:44px;font-weight:500;color:var(--ink);opacity:0;animation:fadein 1s 8.5s forwards}
+.cap{position:absolute;bottom:120px;left:0;right:0;text-align:center;font-family:var(--disp);font-size:44px;font-weight:500;color:var(--ink);opacity:0;animation:fadein 1s 5.6s forwards}
 .cap em{color:var(--amber);font-style:italic}
 .lbl{position:absolute;top:70px;left:0;right:0;text-align:center;font-family:var(--mono);font-size:18px;letter-spacing:.35em;color:var(--dim2);text-transform:uppercase;opacity:0;animation:fadein 1s .4s forwards}
 </style></head><body>
@@ -47,14 +47,14 @@ svg{width:1500px;height:760px}
 const seq=[['e1',900,'n1'],['e2',1400,'n2'],['e3',1900,'n3'],['e4',2300,'n4'],['e5',2700,'n2'],['e6',3200,'n5'],['e7',3600,'n6'],['e8',3900,'n4'],['e9',4300,'n7'],['e10',4600,'n6']];
 seq.forEach(([eid,t,node])=>{
   setTimeout(()=>{document.getElementById(eid).classList.add('hot');},t);
-  if(node)setTimeout(()=>{const n=document.getElementById(node);if(n&&!n.classList.contains('bad'))n.setAttribute('fill','#e5a84b'),n.setAttribute('stroke','#ffd9a8');},t+500);
+  if(node)setTimeout(()=>{const n=document.getElementById(node);if(n&&!n.classList.contains('bad'))n.classList.add('bad');},t+500);
 });
 </script>
 <style>
 .edge{stroke-dasharray:1;stroke-dashoffset:1;animation:edraw 1.2s ease forwards}
 @keyframes edraw{to{stroke-dashoffset:0}}
 .edge.e1{animation-delay:.8s}.edge.e2{animation-delay:1.1s}.edge.e3{animation-delay:1.5s}.edge.e4{animation-delay:1.8s}.edge.e5{animation-delay:2.2s}.edge.e6{animation-delay:2.7s}.edge.e7{animation-delay:3.1s}.edge.e8{animation-delay:3.5s}.edge.e9{animation-delay:3.9s}.edge.e10{animation-delay:4.2s}
-.node{opacity:0;animation:pop .8s cubic-bezier(.2,1.4,.35,1) forwards}
+.draw .node{opacity:0;stroke-dasharray:none;stroke-dashoffset:0;animation:pop .8s cubic-bezier(.2,1.4,.35,1) forwards}
 #n0{animation-delay:.3s}#n1{animation-delay:.6s}#n2{animation-delay:.9s}#n3{animation-delay:1.2s}#n4{animation-delay:1.5s}#n5{animation-delay:1.8s}#n6{animation-delay:2.1s}#n7{animation-delay:2.4s}
 </style>
 </div>

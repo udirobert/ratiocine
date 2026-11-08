@@ -3,7 +3,7 @@ const browser = await chromium.launch({ executablePath: "/Applications/Google Ch
 const ctx = await browser.newContext({ viewport: { width: 1920, height: 1080 }, recordVideo: { dir: "/Users/udingethe/Dev/ratiocine/swarm_eval/video/footage", size: { width: 1920, height: 1080 } } });
 const page = await ctx.newPage();
 await page.goto("file:///Users/udingethe/Dev/ratiocine/swarm_eval/video/dashboard.html");
-await page.waitForTimeout(62000);
+await page.waitForTimeout(41500);
 const v = page.video();
 await ctx.close();
 if (v) console.log("video:", await v.path());

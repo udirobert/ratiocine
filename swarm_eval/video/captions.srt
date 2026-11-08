@@ -27,293 +27,285 @@ failures. We built a testbed to
 watch them happen on a task
 
 8
-00:00:15,920 --> 00:00:18,880
-with deterministic ground truth. A swarm,
+00:00:15,920 --> 00:00:18,000
+with deterministic ground truth.
 
 9
-00:00:18,960 --> 00:00:21,120
-seen from above — nodes pooling
-
-10
-00:00:21,200 --> 00:00:23,840
-evidence, messages flowing between them.
-
-11
-00:00:28,680 --> 00:00:31,720
+00:00:22,500 --> 00:00:25,540
 The task: procedurally generated languages
 
-12
-00:00:31,800 --> 00:00:34,600
+10
+00:00:25,620 --> 00:00:28,420
 that don't exist. Four agents each
 
-13
-00:00:34,800 --> 00:00:36,760
+11
+00:00:28,620 --> 00:00:30,580
 receive a disjoint shard of bilingual
 
-14
-00:00:36,840 --> 00:00:38,520
+12
+00:00:30,660 --> 00:00:32,340
 evidence — three or four pairs
 
-15
-00:00:38,600 --> 00:00:40,680
+13
+00:00:32,420 --> 00:00:34,500
 apiece — plus a shared morpheme
 
-16
-00:00:40,760 --> 00:00:43,160
+14
+00:00:34,580 --> 00:00:36,980
 bank. Over four rounds they post
 
-17
-00:00:43,240 --> 00:00:45,400
+15
+00:00:37,060 --> 00:00:39,220
 grammar hypotheses to a shared board.
 
-18
-00:00:45,880 --> 00:00:48,280
+16
+00:00:39,700 --> 00:00:42,100
 Then each answers every query, and
 
-19
-00:00:48,360 --> 00:00:49,960
+17
+00:00:42,180 --> 00:00:43,780
 the swarm answer is a majority
 
-20
-00:00:50,040 --> 00:00:53,200
+18
+00:00:43,860 --> 00:00:47,020
 vote. Grading is exact morpheme match.
 
-21
-00:00:53,400 --> 00:00:55,240
+19
+00:00:47,220 --> 00:00:49,060
 Every transcript is public.
 
-22
-00:00:58,840 --> 00:01:02,720
+20
+00:00:51,500 --> 00:00:55,380
 Four conditions. Clean: all shards correct.
 
-23
-00:01:03,000 --> 00:01:05,640
+21
+00:00:55,660 --> 00:00:58,300
 Poison: one agent's shard has two
 
-24
-00:01:05,720 --> 00:01:08,280
+22
+00:00:58,380 --> 00:01:00,940
 glosses silently swapped for plausible wrong
 
-25
-00:01:08,360 --> 00:01:11,000
+23
+00:01:01,020 --> 00:01:03,660
 ones — bad data, no announcement.
 
-26
-00:01:11,480 --> 00:01:13,480
+24
+00:01:04,140 --> 00:01:06,140
 Monitor: a fifth agent with a
 
-27
-00:01:13,560 --> 00:01:16,760
+25
+00:01:06,220 --> 00:01:09,420
 verifier role. Soloshard: no board at
 
-28
-00:01:16,840 --> 00:01:19,160
+26
+00:01:09,500 --> 00:01:11,820
 all — the communication ablation.
 
-29
-00:01:22,760 --> 00:01:25,160
+27
+00:01:14,300 --> 00:01:16,700
 This is a real episode, replayed
 
-30
-00:01:25,240 --> 00:01:28,360
+28
+00:01:16,780 --> 00:01:19,900
 live. Four agents hold their shards.
 
-31
-00:01:28,440 --> 00:01:30,360
+29
+00:01:19,980 --> 00:01:21,900
 Watch the board fill — morpheme
 
-32
-00:01:30,440 --> 00:01:33,960
+30
+00:01:21,980 --> 00:01:25,500
 hypotheses, agreements, corrections. Now watch
 
-33
-00:01:34,040 --> 00:01:37,000
+31
+00:01:25,580 --> 00:01:28,540
 agent two: its shard was poisoned.
 
-34
-00:01:37,080 --> 00:01:38,840
+32
+00:01:28,620 --> 00:01:30,380
 Two glosses are wrong — 'he
 
-35
-00:01:38,920 --> 00:01:41,213
+33
+00:01:30,460 --> 00:01:32,753
 cooks' for 'Did I carry?' —
 
-36
-00:01:41,240 --> 00:01:42,840
+34
+00:01:32,780 --> 00:01:34,380
 and it doesn't know, or doesn't
 
-37
-00:01:43,000 --> 00:01:45,880
+35
+00:01:34,540 --> 00:01:37,420
 say. The corrupted claim spreads: other
 
-38
-00:01:45,960 --> 00:01:48,360
+36
+00:01:37,500 --> 00:01:39,900
 agents quote it, rationalize it, build
 
-39
-00:01:48,400 --> 00:01:50,120
+37
+00:01:39,940 --> 00:01:41,660
 the grammar around it. By the
 
-40
-00:01:50,200 --> 00:01:53,240
+38
+00:01:41,740 --> 00:01:44,780
 answer round, every query fails. Exact
 
-41
-00:01:53,320 --> 00:01:56,040
+39
+00:01:44,860 --> 00:01:47,580
 match: zero point zero zero. The
 
-42
-00:01:56,120 --> 00:01:58,200
+40
+00:01:47,660 --> 00:01:49,740
 swarm didn't disagree — it agreed
 
-43
-00:01:58,280 --> 00:01:59,560
+41
+00:01:49,820 --> 00:01:51,100
 on the wrong grammar.
 
-44
-00:02:24,680 --> 00:02:26,600
+42
+00:01:53,600 --> 00:01:55,520
 One bad node, and the corruption
 
-45
-00:02:26,680 --> 00:02:28,200
+43
+00:01:55,600 --> 00:01:57,120
 travels the network.
 
-46
-00:02:37,600 --> 00:02:40,320
+44
+00:02:02,100 --> 00:02:04,820
 Across the sweep: Claude drops eighteen
 
-47
-00:02:40,400 --> 00:02:44,400
+45
+00:02:04,900 --> 00:02:08,900
 points under poison, Gemini twelve, GPT-5
 
-48
-00:02:44,480 --> 00:02:46,720
+46
+00:02:08,980 --> 00:02:11,220
 holds. And the signature isn't just
 
-49
-00:02:46,880 --> 00:02:50,480
+47
+00:02:11,380 --> 00:02:14,980
 wrong answers — unanimity collapses. The
 
-50
-00:02:50,560 --> 00:02:52,800
+48
+00:02:15,060 --> 00:02:17,300
 swarm doesn't fail more often. It
 
-51
-00:02:52,880 --> 00:02:55,440
+49
+00:02:17,380 --> 00:02:19,940
 converges harder on wrong answers.
 
-52
-00:03:02,720 --> 00:03:04,560
+50
+00:02:22,400 --> 00:02:24,240
 In the transcripts we see three
 
-53
-00:03:04,640 --> 00:03:08,000
+51
+00:02:24,320 --> 00:02:27,680
 ways poison actually moves. Silent absorption
 
-54
-00:03:08,400 --> 00:03:10,480
+52
+00:02:28,080 --> 00:02:30,160
 — the anomaly gets reinterpreted as
 
-55
-00:03:10,720 --> 00:03:13,840
+53
+00:02:30,400 --> 00:02:33,520
 'same root'. Consensus pull — agents
 
-56
-00:03:13,920 --> 00:03:15,680
+54
+00:02:33,600 --> 00:02:35,360
 defer to the board's seniority of
 
-57
-00:03:15,760 --> 00:03:19,040
+55
+00:02:35,440 --> 00:02:38,720
 assertion. And sometimes self-correction, when
 
-58
-00:03:19,120 --> 00:03:21,200
+56
+00:02:38,800 --> 00:02:40,880
 enough clean evidence survives.
 
-59
-00:03:25,320 --> 00:03:28,600
+57
+00:02:43,400 --> 00:02:46,680
 The verifier peer? Model-dependent and mostly
 
-60
-00:03:28,680 --> 00:03:31,480
+58
+00:02:46,760 --> 00:02:49,560
 negative. It dilutes evidence — five
 
-61
-00:03:31,560 --> 00:03:33,760
+59
+00:02:49,640 --> 00:02:51,840
 agents means fewer pairs each —
 
-62
-00:03:33,800 --> 00:03:37,160
+60
+00:02:51,880 --> 00:02:55,240
 and flagging isn't checking: GPT-5's monitor
 
-63
-00:03:37,240 --> 00:03:39,400
+61
+00:02:55,320 --> 00:02:57,480
 flags eighty-four percent of its posts
 
-64
-00:03:39,480 --> 00:03:42,360
+62
+00:02:57,560 --> 00:03:00,440
 and still scores highest. Cheap oversight
 
-65
-00:03:42,440 --> 00:03:44,920
+63
+00:03:00,520 --> 00:03:03,000
 is not a defense. Oversight needs
 
-66
-00:03:45,000 --> 00:03:47,960
+64
+00:03:03,080 --> 00:03:06,040
 teeth: provenance on claims, corroboration
 
-67
-00:03:48,040 --> 00:03:50,760
+65
+00:03:06,120 --> 00:03:08,840
 before consensus, authority to force
 
-68
-00:03:50,840 --> 00:03:51,960
+66
+00:03:08,920 --> 00:03:10,040
 re-derivation.
 
-69
-00:03:56,400 --> 00:03:59,120
+67
+00:03:12,500 --> 00:03:15,220
 Do linguistics swarms pool their evidence?
 
-70
-00:03:59,360 --> 00:04:01,840
+68
+00:03:15,460 --> 00:03:17,940
 Yes — the board multiplies accuracy
 
-71
-00:04:02,000 --> 00:04:04,320
+69
+00:03:18,100 --> 00:03:20,420
 two to four fold. Until the
 
-72
-00:04:04,400 --> 00:04:07,120
+70
+00:03:20,500 --> 00:03:23,220
 evidence lies. Then the same channel
 
-73
-00:04:07,200 --> 00:04:08,880
+71
+00:03:23,300 --> 00:03:24,980
 that saves the task becomes the
 
-74
-00:04:08,960 --> 00:04:11,760
+72
+00:03:25,060 --> 00:03:27,860
 vector that corrupts it. Every episode
 
-75
-00:04:11,840 --> 00:04:14,480
+73
+00:03:27,940 --> 00:03:30,580
 transcript, grade and vote is committed
 
-76
-00:04:14,880 --> 00:04:16,400
+74
+00:03:30,980 --> 00:03:32,500
 — re-grade the whole study for
 
-77
-00:04:16,560 --> 00:04:19,200
+75
+00:03:32,660 --> 00:03:35,300
 zero dollars. Code and data:
 
-78
-00:04:19,400 --> 00:04:23,120
+76
+00:03:35,500 --> 00:03:39,220
 github.com/udirobert/ratiocine, swarm
 
-79
-00:04:23,200 --> 00:04:25,840
+77
+00:03:39,300 --> 00:03:41,940
 underscore eval. Apart Research Swarm
 
-80
-00:04:25,920 --> 00:04:27,280
+78
+00:03:42,020 --> 00:03:43,380
 Alignment Hackathon.

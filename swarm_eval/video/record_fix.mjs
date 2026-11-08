@@ -14,8 +14,7 @@ const CHROME =
   "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
 
 const JOBS = [
-  ["01-title.html", 19],
-  ["05-poison.html", 36],
+  ["06-contagion.html", 9.5],
 ];
 
 const browser = await chromium.launch({ executablePath: CHROME, headless: true });

@@ -80,8 +80,11 @@ h.display{font-family:var(--disp);font-weight:600;letter-spacing:-.015em;line-he
 /* ─── v3 motion system ─────────────────────────────────────────────────── */
 
 /* camera drift — every scene is a shot, not a slide */
-.cam{position:fixed;inset:-6%;z-index:1;animation:camdrift 38s ease-in-out infinite alternate;will-change:transform}
-@keyframes camdrift{from{transform:scale(1.0) translate(0,0)}to{transform:scale(1.065) translate(-.9%,-.7%)}}
+.cam{position:fixed;inset:0;z-index:1;animation:camdrift 38s ease-in-out infinite alternate;will-change:transform}
+@keyframes camdrift{from{transform:scale(1.0) translate(0,0)}to{transform:scale(1.03) translate(-.6%,-.4%)}}
+
+/* scene content must fit the 1080 viewport — .wrap padding was adding ~140px past it */
+.wrap{box-sizing:border-box}
 
 /* FLUX plate backdrop — dimmed, blurred, scrimmed for readability */
 .bgplate{position:absolute;inset:-3%;width:106%;height:106%;object-fit:cover;opacity:.30;filter:blur(4px) saturate(.75) brightness(.5);z-index:0}

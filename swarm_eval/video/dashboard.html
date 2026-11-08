@@ -122,7 +122,7 @@ async function main(){
     const ev=DATA.contagion.find(c=>posts.lastElementChild&&c.agent===b.agent);
     if(ev){document.getElementById('ev').textContent='"'+ev.src+'" quoted by AGENT '+ev.agent+(ev.poison?' (poison shard)':' (clean shard)')+' — corrupted gloss spreading';
       document.getElementById('ev').style.opacity=1;}
-    await sleep(1900);
+    await sleep(1250);
   }
   await sleep(600);
   // queries
@@ -146,7 +146,7 @@ async function main(){
     while(qs.children.length>5)qs.removeChild(qs.firstChild);
     if(q.em)hits++;
     document.getElementById('meta').innerHTML=DATA.title+'<br>'+DATA.model+' · EM '+hits+'/'+DATA.queries.length+' queries resolved';
-    await sleep(2600);
+    await sleep(1600);
   }
   document.getElementById('ev').textContent='episode complete — EM 0.00 · poisoned gloss absorbed into consensus grammar';
 }
