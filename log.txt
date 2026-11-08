@@ -41,3 +41,4 @@
 - Human baseline not done (needs a human solver).
 [2026-11-07 20:14] UX polish: sealed evidence gating (~8 visible pairs), synthetic lore/badge, archive All/Classics/Generated filters; committed d7a833c, pushed to main; gen4 sweep still running (gpt t2 in progress)
 [2026-11-07 22:05] gen4 sweep complete: claude 0.778 / gpt 0.890 / gemini 0.963; vharmx mildly harder on harmony family; RESULTS.md updated, aggregate.py gen4 fix, zip rebuilt, pushed 62d53a3
+2026-11-08T01:21:41Z gen5 sweep complete (claude .818 / gpt .914 / gemini .963; syn hardest for all). Zip rebuilt 3.2MB clean-room verified, pushed.
