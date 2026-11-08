@@ -33,6 +33,7 @@ FLAG_RE = re.compile(
 
 
 def mean(xs):
+    xs = list(xs)
     return sum(xs) / len(xs) if xs else 0.0
 
 
