@@ -32,14 +32,25 @@ table { border-collapse: collapse; width: 100%; margin: 8pt 0;
 th, td { border: 1px solid #999; padding: 3pt 6pt; text-align: left; }
 th { background: #f0f0f0; }
 code { font-family: Menlo, monospace; font-size: 9pt; }
+img { max-width: 100%; display: block; margin: 10pt auto; }
 .subtitle { color: #444; font-size: 11pt; margin-bottom: 10pt; }
 """
 
 
-def md_to_html(md_text: str) -> str:
+def md_to_html(md_text: str, base: Path) -> str:
     body = markdown.markdown(
         md_text, extensions=["tables", "fenced_code", "sane_lists"]
     )
+
+    # resolve relative image paths against the markdown file's directory —
+    # the HTML itself is rendered from a temp file
+    def abs_src(m):
+        src = m.group(1)
+        if src.startswith(("http", "data:", "/")):
+            return m.group(0)
+        return f'src="{(base / src).resolve().as_uri()}"'
+
+    body = re.sub(r'src="([^"#]+)"', abs_src, body)
     # strip the leading h1 — we render our own title block
     body = re.sub(r"^<h1>.*?</h1>", "", body, count=1, flags=re.S)
     return f"""<!doctype html><html><head><meta charset="utf-8">
@@ -57,7 +68,7 @@ def main():
     lines = md_text.splitlines()
     title = lines[0].lstrip("# ").strip() if lines else "Report"
     rest = "\n".join(lines[1:])
-    html_doc = md_to_html(rest)
+    html_doc = md_to_html(rest, args.md.parent)
     html_doc = html_doc.replace(
         "<body>",
         f"<body><h1>{html.escape(title)}</h1>",

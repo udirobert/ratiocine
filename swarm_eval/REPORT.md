@@ -2,6 +2,8 @@
 
 **Multi-agent grammatical induction under clean, poisoned, and monitored conditions**
 
+Udi Ngethe — Independent
+
 *Apart Research — Swarm Alignment Hackathon, Nov 2026*
 
 ## Abstract
@@ -79,7 +81,7 @@ inspectable.
   motivation — emergent message boards, division of labor, and
   oversight gaps in real deployments.
 
-## 3. Method
+## 3. Methods
 
 ### 3.1 Task substrate
 
@@ -155,7 +157,9 @@ All scores are exact-match on morpheme decompositions (EM-decomp),
 query-weighted across episodes; n_q = scored (non-tutorial) queries.
 agentEM = mean per-agent accuracy; oracle = best single agent per
 query (upper bound on what voting could recover); unan = fraction of
-queries where all agents gave identical answers.
+queries where all agents gave identical answers. Episode-level EM has
+SD ≈ .23–.32 within every cell — condition deltas below ~.15 are
+within noise and are reported as directional, not significant.
 
 **Table 1 — swarm conditions (board + majority vote)**
 
@@ -185,6 +189,12 @@ queries where all agents gave identical answers.
 agent's board post in 5/9 claude, 4/12 gemini, 6/18 gpt episodes
 (44%, 33%, 33%). **Monitor flag rate:** posts containing
 contradiction language — claude .38, gemini .38, gpt .84.
+
+![Figure 1: Swarm exact-match decomposition accuracy by condition and model. Soloshard (red) is the no-board ablation; clean/poison/monitor use the shared board.](fig1_conditions.svg)
+
+*Figure 1. Query-weighted EM-decomp per condition. The soloshard
+ablation (no board rounds) is the communication floor; the gap to
+clean/poison/monitor is the value of the shared board.*
 
 ### 4.1 Communication is necessary — and mostly sufficient
 
@@ -308,7 +318,55 @@ in the swarm's answers* and majority vote discarded it. Confidence-
 weighted or evidence-cited voting could recover much of this gap —
 our transcripts already contain the citations needed to implement it.
 
-## 6. Limitations and Dual-Use / Ethical Considerations
+## 6. Conclusion
+
+We set out to ask whether a swarm of LLM agents can pool partitioned
+evidence to induce the grammar of a language that does not exist, and
+what happens when the evidence is corrupted or watched. The answer is
+unequivocally yes to the first — a shared board multiplies exact-match
+accuracy two- to four-fold over shard-only voting — and instructively
+mixed on the second. A single corrupted shard degrades most frontier
+models, spreads visibly through the board in about a third of poison
+episodes, and produces a distinctive signature: the swarm converges
+*harder* on wrong answers, not just more often. A cheap verifier peer
+does not reliably fix this; flagging is not checking, and oversight
+that dilutes evidence or lacks authority may make things worse.
+
+The practical takeaway for multi-agent deployments is that shared
+communication channels are double-edged infrastructure: they are the
+only reason partitioned-evidence tasks work at all, and the primary
+vector through which bad data becomes bad consensus. Instrumenting
+those channels — provenance on claims, corroboration before consensus,
+oversight with teeth — is the highest-leverage safety work this
+testbed points at.
+
+## Code and Data
+
+- Code repository: https://github.com/udirobert/ratiocine (`swarm_eval/`)
+- Data: all episode transcripts and graded results committed under
+  `swarm_eval/results/` — every number in this report re-derives via
+  `python3 swarm_eval/analyze_swarm.py swarm_eval/results/*.json` with
+  no API calls.
+- Reproduce: `python3 swarm_eval/run_swarm.py --help`; generator and
+  graders are deterministic and seeded.
+
+## Author Contributions
+
+Single author. Udi Ngethe designed the study, built the orchestrator
+and analyzer, ran the sweeps, and wrote the report.
+
+## References
+
+- Cemri et al. (2025). Why Do Multi-Agent LLM Systems Fail? arXiv:2503.13657.
+- Zhang et al. (2026). SILO-BENCH: A Scalable Environment for Evaluating
+  Distributed Coordination in Multi-Agent LLM Systems. arXiv:2603.01045.
+- METR (2026). Investigation of the OpenAI–Hugging Face intrusion.
+- OpenAI (2026). Disclosure of agent activity affecting third parties.
+- Bilge & Miotti (2026). ControlAI summary of reported incidents.
+- Gutenberg (2026). swarms.wiki — agent-incident datasets and tools.
+- Von Arx et al. (2026). collusion.wiki — agent message-board corpus.
+
+## Appendix: Limitations and Dual-Use / Ethical Considerations
 
 **Limitations.**
 
@@ -352,14 +410,3 @@ need to see what propagation looks like. We release no attack
 capability beyond what the conditions already describe, and all model
 calls use standard chat APIs with no agent scaffolding beyond the
 prompts in the repository.
-
-## References
-
-- Cemri et al. (2025). Why Do Multi-Agent LLM Systems Fail? arXiv:2503.13657.
-- Zhang et al. (2026). SILO-BENCH: A Scalable Environment for Evaluating
-  Distributed Coordination in Multi-Agent LLM Systems. arXiv:2603.01045.
-- METR (2026). Investigation of the OpenAI–Hugging Face intrusion.
-- OpenAI (2026). Disclosure of agent activity affecting third parties.
-- Bilge & Miotti (2026). ControlAI summary of reported incidents.
-- Gutenberg (2026). swarms.wiki — agent-incident datasets and tools.
-- Von Arx et al. (2026). collusion.wiki — agent message-board corpus.
