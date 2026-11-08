@@ -9,16 +9,15 @@ HERE = Path(__file__).resolve().parent
 SCENES = HERE / "scenes"
 # scene durations must match record.mjs / assemble order
 DURS = {
-    1: 19.00,
-    2: 10.00,
-    3: 25.84,
-    4: 22.08,
-    5: 63.72,
-    6: 12.00,
-    7: 35.88,
-    8: 29.76,
-    9: 23.84,
-    10: 19.92,
+    1: 28.68,
+    2: 30.16,
+    3: 23.92,
+    4: 61.92,
+    5: 12.92,
+    6: 25.12,
+    7: 22.60,
+    8: 31.08,
+    9: 35.36,
 }
 ORDER = sorted(DURS)
 

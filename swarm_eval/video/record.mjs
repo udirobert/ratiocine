@@ -15,13 +15,14 @@ const CHROME =
 
 // scene file -> duration seconds (narration + padding)
 const DURS = {
-  "01-title.html": 15,
-  "02-testbed.html": 26,
-  "03-conditions.html": 22,
-  "05-poison.html": 26,
-  "06-failures.html": 30,
-  "07-monitor.html": 24,
-  "08-close.html": 20,
+  "01-title.html": 26,
+  "02-testbed.html": 29,
+  "03-conditions.html": 23,
+  "05-poison.html": 24,
+  "06-contagion.html": 12,
+  "06-failures.html": 22,
+  "07-monitor.html": 30,
+  "08-close.html": 34,
 };
 
 const files = readdirSync(SCENES).filter((f) => f.endsWith(".html")).sort();

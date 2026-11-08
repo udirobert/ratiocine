@@ -1,30 +1,36 @@
 <!DOCTYPE html>
-<html><head><meta charset="utf-8"><style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{width:1920px;height:1080px;background:#0a0c12;color:#e8eaf2;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;overflow:hidden;position:relative}
-.grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:64px 64px}
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="brand.css"><style>
+body{width:1920px;height:1080px;background:var(--stage);color:var(--ink);font-family:var(--sans);overflow:hidden;position:relative}
 .wrap{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 120px}
-.kicker{font-size:22px;letter-spacing:.35em;color:#a78bfa;text-transform:uppercase;opacity:0;animation:fadein .8s .3s forwards}
-h1{font-family:ui-sans-serif,system-ui,sans-serif;font-weight:800;font-size:88px;line-height:1.05;letter-spacing:-.02em;margin:36px 0 28px;opacity:0;animation:rise 1s .7s forwards}
-h1 em{font-style:normal;color:#a78bfa}
-.sub{font-size:30px;color:#9aa3c0;line-height:1.5;max-width:1150px;opacity:0;animation:fadein 1s 1.6s forwards}
-.tag{margin-top:44px;font-size:20px;color:#5b6280;letter-spacing:.2em;opacity:0;animation:fadein 1s 2.4s forwards}
-@keyframes fadein{from{opacity:0}to{opacity:1}}
-@keyframes rise{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
-.incident{margin-top:36px;display:flex;gap:28px;opacity:0;animation:fadein 1s 3s forwards}
-.incident div{border:1px solid #333a55;border-radius:12px;padding:18px 30px;background:rgba(255,255,255,.02)}
-.incident b{display:block;font-size:44px;color:#f58518;font-family:ui-sans-serif,system-ui,sans-serif}
-.incident span{font-size:17px;color:#9aa3c0}
+h1{font-size:92px;margin:38px 0 30px}
+h1 .amber{color:var(--amber);font-style:italic}
+.sub{font-size:31px;color:var(--dim);line-height:1.5;max-width:1200px}
+.incident{margin-top:50px;display:flex;gap:30px}
+.incident .card{padding:22px 36px;min-width:250px}
+.incident b{display:block;font-family:var(--disp);font-size:52px;font-weight:600;color:var(--amber)}
+.incident span{font-size:18px;color:var(--dim)}
+.tag{margin-top:50px;font-family:var(--mono);font-size:19px;color:var(--dim2);letter-spacing:.22em}
+.tag i{display:inline-block;width:10px;height:14px;background:var(--amber);border-radius:2px;margin-left:8px;vertical-align:-2px}
 </style></head><body>
-<div class="grid"></div>
+<div class="cam">
+<video class="bgplate" src="../footage/gen/plateA-manuscript.mp4" autoplay muted loop playsinline preload="auto"></video>
+<div class="scrim"></div>
+<div class="aurora a"></div><div class="aurora b"></div><div class="grid"></div>
+<div class="ember" style="left:8%;bottom:-10px;--peak:.5;--sway:3vw;animation-duration:11s"></div>
+<div class="ember" style="left:48%;bottom:-10px;--peak:.55;--sway:2vw;animation-duration:12s;animation-delay:6s"></div>
+<div class="ember" style="left:88%;bottom:-10px;--peak:.45;--sway:2vw;animation-duration:10s;animation-delay:8s"></div>
+<div class="wipe"></div>
 <div class="wrap">
-  <div class="kicker">swarm_eval · apart research sprint</div>
-  <h1>DO LINGUISTICS SWARMS<br><em>POOL THEIR EVIDENCE?</em></h1>
-  <div class="sub">Multi-agent grammatical induction under clean, poisoned,<br>and monitored conditions.</div>
+  <div class="kicker fade" style="animation-delay:.3s">swarm_eval · apart research sprint</div>
+  <h1 class="display rise" style="animation-delay:.7s">Do linguistics swarms<br><span class="amber">pool their evidence?</span></h1>
+  <div class="sub rise" style="animation-delay:15.6s">Multi-agent grammatical induction under clean,<br>poisoned, and monitored conditions.</div>
   <div class="incident">
-    <div><b>~1,200</b><span>agents self-organized</span></div>
-    <div><b>~700</b><span>breached Hugging Face</span></div>
-    <div><b>0</b><span>single agents told to</span></div>
+    <div class="card rise" style="animation-delay:.9s"><b>~1,200</b><span>agents self-organized</span></div>
+    <div class="card rise" style="animation-delay:4.6s"><b>~700</b><span>breached Hugging Face</span></div>
+    <div class="card rise" style="animation-delay:8s"><b>0</b><span>agents were told to</span></div>
   </div>
-  <div class="tag">july 2026 · the incident that started it<span style="display:inline-block;width:.55em;height:.9em;background:#a78bfa;vertical-align:-.08em;margin-left:6px"></span></div>
-</div></body></html>
+  <div class="tag fade" style="animation-delay:19.1s">the july 2026 incident · a swarm, seen from above<i></i></div>
+</div>
+</div>
+<script>document.querySelector('.bgplate').playbackRate=.55</script>
+</body></html>

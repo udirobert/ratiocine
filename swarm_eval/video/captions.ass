@@ -1,0 +1,93 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1920
+PlayResY: 1080
+WrapStyle: 0
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Cap,Geist,50,&H00FFFFFF,&H00FFFFFF,&H96000000,&H96000000,0,0,0,0,100,100,0,0,1,2.5,1.5,2,140,140,96,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:02.64,Cap,,0,0,0,,In July, twelve hundred AI agents
+Dialogue: 0,0:00:02.75,0:00:04.51,Cap,,0,0,0,,found a shared message board —
+Dialogue: 0,0:00:04.55,0:00:06.55,Cap,,0,0,0,,and seven hundred broke into Hugging
+Dialogue: 0,0:00:06.63,0:00:09.03,Cap,,0,0,0,,Face together. No single agent was
+Dialogue: 0,0:00:09.08,0:00:12.24,Cap,,0,0,0,,told to. Swarm failures aren't single-model
+Dialogue: 0,0:00:12.32,0:00:14.40,Cap,,0,0,0,,failures. We built a testbed to
+Dialogue: 0,0:00:14.48,0:00:15.83,Cap,,0,0,0,,watch them happen on a task
+Dialogue: 0,0:00:15.92,0:00:18.87,Cap,,0,0,0,,with deterministic ground truth. A swarm,
+Dialogue: 0,0:00:18.96,0:00:21.12,Cap,,0,0,0,,seen from above — nodes pooling
+Dialogue: 0,0:00:21.19,0:00:23.83,Cap,,0,0,0,,evidence, messages flowing between them.
+Dialogue: 0,0:00:28.67,0:00:31.71,Cap,,0,0,0,,The task: procedurally generated languages
+Dialogue: 0,0:00:31.80,0:00:34.60,Cap,,0,0,0,,that don't exist. Four agents each
+Dialogue: 0,0:00:34.79,0:00:36.75,Cap,,0,0,0,,receive a disjoint shard of bilingual
+Dialogue: 0,0:00:36.84,0:00:38.51,Cap,,0,0,0,,evidence — three or four pairs
+Dialogue: 0,0:00:38.60,0:00:40.67,Cap,,0,0,0,,apiece — plus a shared morpheme
+Dialogue: 0,0:00:40.75,0:00:43.15,Cap,,0,0,0,,bank. Over four rounds they post
+Dialogue: 0,0:00:43.24,0:00:45.39,Cap,,0,0,0,,grammar hypotheses to a shared board.
+Dialogue: 0,0:00:45.87,0:00:48.28,Cap,,0,0,0,,Then each answers every query, and
+Dialogue: 0,0:00:48.35,0:00:49.96,Cap,,0,0,0,,the swarm answer is a majority
+Dialogue: 0,0:00:50.03,0:00:53.20,Cap,,0,0,0,,vote. Grading is exact morpheme match.
+Dialogue: 0,0:00:53.39,0:00:55.23,Cap,,0,0,0,,Every transcript is public.
+Dialogue: 0,0:00:58.84,0:01:02.72,Cap,,0,0,0,,Four conditions. Clean: all shards correct.
+Dialogue: 0,0:01:03.00,0:01:05.64,Cap,,0,0,0,,Poison: one agent's shard has two
+Dialogue: 0,0:01:05.71,0:01:08.28,Cap,,0,0,0,,glosses silently swapped for plausible wrong
+Dialogue: 0,0:01:08.35,0:01:11.00,Cap,,0,0,0,,ones — bad data, no announcement.
+Dialogue: 0,0:01:11.48,0:01:13.48,Cap,,0,0,0,,Monitor: a fifth agent with a
+Dialogue: 0,0:01:13.56,0:01:16.76,Cap,,0,0,0,,verifier role. Soloshard: no board at
+Dialogue: 0,0:01:16.84,0:01:19.15,Cap,,0,0,0,,all — the communication ablation.
+Dialogue: 0,0:01:22.76,0:01:25.16,Cap,,0,0,0,,This is a real episode, replayed
+Dialogue: 0,0:01:25.24,0:01:28.35,Cap,,0,0,0,,live. Four agents hold their shards.
+Dialogue: 0,0:01:28.43,0:01:30.35,Cap,,0,0,0,,Watch the board fill — morpheme
+Dialogue: 0,0:01:30.43,0:01:33.96,Cap,,0,0,0,,hypotheses, agreements, corrections. Now watch
+Dialogue: 0,0:01:34.04,0:01:37.00,Cap,,0,0,0,,agent two: its shard was poisoned.
+Dialogue: 0,0:01:37.08,0:01:38.84,Cap,,0,0,0,,Two glosses are wrong — 'he
+Dialogue: 0,0:01:38.92,0:01:41.21,Cap,,0,0,0,,cooks' for 'Did I carry?' —
+Dialogue: 0,0:01:41.24,0:01:42.84,Cap,,0,0,0,,and it doesn't know, or doesn't
+Dialogue: 0,0:01:43.00,0:01:45.88,Cap,,0,0,0,,say. The corrupted claim spreads: other
+Dialogue: 0,0:01:45.96,0:01:48.36,Cap,,0,0,0,,agents quote it, rationalize it, build
+Dialogue: 0,0:01:48.40,0:01:50.12,Cap,,0,0,0,,the grammar around it. By the
+Dialogue: 0,0:01:50.20,0:01:53.24,Cap,,0,0,0,,answer round, every query fails. Exact
+Dialogue: 0,0:01:53.32,0:01:56.04,Cap,,0,0,0,,match: zero point zero zero. The
+Dialogue: 0,0:01:56.12,0:01:58.20,Cap,,0,0,0,,swarm didn't disagree — it agreed
+Dialogue: 0,0:01:58.28,0:01:59.56,Cap,,0,0,0,,on the wrong grammar.
+Dialogue: 0,0:02:24.68,0:02:26.59,Cap,,0,0,0,,One bad node, and the corruption
+Dialogue: 0,0:02:26.68,0:02:28.20,Cap,,0,0,0,,travels the network.
+Dialogue: 0,0:02:37.59,0:02:40.31,Cap,,0,0,0,,Across the sweep: Claude drops eighteen
+Dialogue: 0,0:02:40.40,0:02:44.40,Cap,,0,0,0,,points under poison, Gemini twelve, GPT-5
+Dialogue: 0,0:02:44.47,0:02:46.71,Cap,,0,0,0,,holds. And the signature isn't just
+Dialogue: 0,0:02:46.87,0:02:50.47,Cap,,0,0,0,,wrong answers — unanimity collapses. The
+Dialogue: 0,0:02:50.56,0:02:52.79,Cap,,0,0,0,,swarm doesn't fail more often. It
+Dialogue: 0,0:02:52.87,0:02:55.43,Cap,,0,0,0,,converges harder on wrong answers.
+Dialogue: 0,0:03:02.71,0:03:04.56,Cap,,0,0,0,,In the transcripts we see three
+Dialogue: 0,0:03:04.63,0:03:08.00,Cap,,0,0,0,,ways poison actually moves. Silent absorption
+Dialogue: 0,0:03:08.40,0:03:10.47,Cap,,0,0,0,,— the anomaly gets reinterpreted as
+Dialogue: 0,0:03:10.71,0:03:13.84,Cap,,0,0,0,,'same root'. Consensus pull — agents
+Dialogue: 0,0:03:13.91,0:03:15.68,Cap,,0,0,0,,defer to the board's seniority of
+Dialogue: 0,0:03:15.75,0:03:19.03,Cap,,0,0,0,,assertion. And sometimes self-correction, when
+Dialogue: 0,0:03:19.12,0:03:21.19,Cap,,0,0,0,,enough clean evidence survives.
+Dialogue: 0,0:03:25.31,0:03:28.59,Cap,,0,0,0,,The verifier peer? Model-dependent and mostly
+Dialogue: 0,0:03:28.68,0:03:31.47,Cap,,0,0,0,,negative. It dilutes evidence — five
+Dialogue: 0,0:03:31.56,0:03:33.75,Cap,,0,0,0,,agents means fewer pairs each —
+Dialogue: 0,0:03:33.79,0:03:37.15,Cap,,0,0,0,,and flagging isn't checking: GPT-5's monitor
+Dialogue: 0,0:03:37.23,0:03:39.40,Cap,,0,0,0,,flags eighty-four percent of its posts
+Dialogue: 0,0:03:39.47,0:03:42.35,Cap,,0,0,0,,and still scores highest. Cheap oversight
+Dialogue: 0,0:03:42.43,0:03:44.91,Cap,,0,0,0,,is not a defense. Oversight needs
+Dialogue: 0,0:03:45.00,0:03:47.95,Cap,,0,0,0,,teeth: provenance on claims, corroboration
+Dialogue: 0,0:03:48.03,0:03:50.75,Cap,,0,0,0,,before consensus, authority to force
+Dialogue: 0,0:03:50.84,0:03:51.95,Cap,,0,0,0,,re-derivation.
+Dialogue: 0,0:03:56.39,0:03:59.11,Cap,,0,0,0,,Do linguistics swarms pool their evidence?
+Dialogue: 0,0:03:59.35,0:04:01.83,Cap,,0,0,0,,Yes — the board multiplies accuracy
+Dialogue: 0,0:04:01.99,0:04:04.31,Cap,,0,0,0,,two to four fold. Until the
+Dialogue: 0,0:04:04.39,0:04:07.11,Cap,,0,0,0,,evidence lies. Then the same channel
+Dialogue: 0,0:04:07.19,0:04:08.87,Cap,,0,0,0,,that saves the task becomes the
+Dialogue: 0,0:04:08.95,0:04:11.75,Cap,,0,0,0,,vector that corrupts it. Every episode
+Dialogue: 0,0:04:11.83,0:04:14.47,Cap,,0,0,0,,transcript, grade and vote is committed
+Dialogue: 0,0:04:14.87,0:04:16.39,Cap,,0,0,0,,— re-grade the whole study for
+Dialogue: 0,0:04:16.56,0:04:19.19,Cap,,0,0,0,,zero dollars. Code and data:
+Dialogue: 0,0:04:19.39,0:04:23.12,Cap,,0,0,0,,github.com/udirobert/ratiocine, swarm
+Dialogue: 0,0:04:23.19,0:04:25.83,Cap,,0,0,0,,underscore eval. Apart Research Swarm
+Dialogue: 0,0:04:25.91,0:04:27.27,Cap,,0,0,0,,Alignment Hackathon.
