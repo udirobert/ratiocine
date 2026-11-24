@@ -195,3 +195,17 @@ By the end of Phase 3 (6 weeks), we should have:
 - ✅ **5+ citations** in other researchers' IOL-AI work
 
 This positions us as **the reference implementation** for IOL-AI research, not just a one-off competition entry.
+
+---
+
+## Addendum — model competitions (2026-11-23)
+
+Live model/weights venues that reuse the hf-pipeline: **Delta League** (LoRA /
+weight-diff submissions on Qwen3.5-0.8B — no prize, private-test leaderboard) and the
+**LTB model leaderboard** (rolling through end-2026, alongside the existing problem
+contributions). See `docs/model-competitions.md` for the RTX6000 canary gates and the
+explicitly-closed list.
+
+Naming note: the live dataset is **LTBv1** (contributions accepted prior to Sept 2026);
+"LTB V2" in Phases 2 and 4 above refers to the next rolling release our contributions
+would land in, not an existing dataset.
