@@ -164,6 +164,30 @@ model soup (GRPO seed-soup x layer-soup blend)". 1/3 daily submissions used;
   a6eb9f13's GRPO seed soup) stacked gains — consistent with the board's
   weight-surgery meta where complementary edits compose.
 
+### Iteration 2 (2026-11-24, same day)
+
+Pulled two board ingredients: `b338518d` (mean of 6 independent GRPO deltas,
+248 tensors all layers) and `5a701d1b` (a6eb9f13 + 3-tensor L23 MLP
+`gate/up/down_proj` graft "neurons 1998/3529", the board's 2nd-best val 48.45).
+
+| candidate | recipe | local lik. mean | mmlu | gsm8k probe | server result |
+|---|---|---|---|---|---|
+| soup2g | soup2 + full L23 graft Δ | 53.52 | 48.25 | 87.5/62.5 | **rank 19 — test 52.80, val 47.69** |
+| soup2h | soup2 + 0.5× graft Δ | 53.95 | 47.37 | 87.5 | not submitted |
+| soup3 | ⅓·917d6b4f+⅓·a6eb9f13+⅓·b338518d | 53.91 | 47.37 | 37.5/25 | not submitted (gsm8k collapse) |
+| s3lite | 0.4·917d6b4f+0.4·a6eb9f13+0.2·b338518d | **54.88** | 47.37 | 50.0 | submitted 14:43 UTC (pending) |
+
+**Key finding:** the L23 graft that adds +0.5 val on a6eb9f13 does *not*
+transfer to a blended L23 — server-side it cost −2.0 test / −1.9 val vs soup2.
+Phase-gating edits are composition-sensitive; a graft calibrated on one base
+overshoots when applied on top of a 50/50 soup. Local eval did not predict this
+(soup2g was noise-neutral locally) — small surgical patches need server-side
+verification.
+
+Box terminated after ~5.7h (~$15.69). Grant spend to date ≈ $21, ~$29 left.
+2/3 daily submissions scored; s3lite pending (server eval is independent of
+our box).
+
 ## Last Translation Benchmark — https://last-translation-benchmark.vilda.net/
 
 - **What:** live benchmark collecting rolling submissions through end-2026; also hosts a
