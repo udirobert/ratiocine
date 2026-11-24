@@ -151,6 +151,19 @@ sparse diff 246 tensors / 91 MB (`delta patch build --parent v-917d6b4f
 model soup (GRPO seed-soup x layer-soup blend)". 1/3 daily submissions used;
 7200 GPU-s reserved for server eval.
 
+**Verified result (2026-11-24, ~40 min server eval): rank 1.**
+
+- test **54.80** (SE ±1.57) vs prior rank-1 `917d6b4f` at 54.70 — margin inside
+  the error bar, but the leaderboard ranks us #1 on the qwen35-08b-v1 board.
+- validation **49.59** — the highest validation score on the board (prior best
+  ~47.95), a stronger signal of real improvement than the test delta.
+- Server-side per-benchmark (validation): gsm8k 64.06, arc_easy 71.88, piqa
+  73.44, winogrande 65.62, ifeval 78.13, math500 54.69, mmlu_pro 37.14.
+- Private suite: 500 items, 283 passed, 7.8% truncation rate.
+- Takeaway: blending two orthogonal delta families (rank-1's L0–22 layer soup ×
+  a6eb9f13's GRPO seed soup) stacked gains — consistent with the board's
+  weight-surgery meta where complementary edits compose.
+
 ## Last Translation Benchmark — https://last-translation-benchmark.vilda.net/
 
 - **What:** live benchmark collecting rolling submissions through end-2026; also hosts a
