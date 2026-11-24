@@ -185,8 +185,32 @@ overshoots when applied on top of a 50/50 soup. Local eval did not predict this
 verification.
 
 Box terminated after ~5.7h (~$15.69). Grant spend to date ≈ $21, ~$29 left.
-2/3 daily submissions scored; s3lite pending (server eval is independent of
-our box).
+
+**s3lite verified: new rank 1** — test **54.90** / val 48.5. Our entries hold
+ranks 1 and 2 (soup2: 54.80 / 49.59). The three-family blend at 0.2 weight
+beat the two-family 50/50 — more ingredient diversity wins *on test*, while
+soup2 still holds the best *validation* on the board among soups.
+
+### Delta-graph mining (2026-11-24)
+
+Pulled 11 board checkpoints, computed per-layer tensor diffs vs declared
+parents (`data/delta/delta-graph.json`):
+
+- `04280ef5`/`0dbe1a9e` — 270 tensors all layers: 4B→0.8B MC-loglik
+  distillation at 0.3x/0.4x on a6eb9f13. **val 50.3 = highest on board.**
+  A trained-delta family orthogonal to all soup/graft edits.
+- `7d3b9549` — 125 tensors L0–11 only ("layer-tilted" = heavier early-layer
+  soup weight).
+- `0e43269d` — exactly 3 tensors @ L11/15/19 (query-norm surgery).
+- `8d02ce02` — 75 tensors but only the L23 pair carries real weight.
+- `a6eb9f13` and `917d6b4f` share the same diff *shape* vs eff1e1b7 (all
+  layers, similar per-layer l2 profile) — both GRPO-flavored; 917d6b4f skips
+  L23, a6eb9f13 doesn't.
+
+**Next candidate recipe (unsubmitted):** `soup2 + (04280ef5 − a6eb9f13)` —
+transplant the 4B-distillation delta onto our rank-2 blend. Unlike the L23
+graft, this is a smooth trained delta — better transfer odds, but the graft
+lesson says verify server-side regardless.
 
 ## Last Translation Benchmark — https://last-translation-benchmark.vilda.net/
 
