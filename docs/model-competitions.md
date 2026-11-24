@@ -212,6 +212,40 @@ transplant the 4B-distillation delta onto our rank-2 blend. Unlike the L23
 graft, this is a smooth trained delta — better transfer odds, but the graft
 lesson says verify server-side regardless.
 
+### Iteration 3 (2026-11-24 evening, new 2×L40 box)
+
+Built and locally eval'd the distill transplant. **Biggest local signal yet** —
+consistent across benchmarks, far beyond noise:
+
+| bench | soup2 | s3lite | sd (soup2+distill) | s3d (s3lite+distill) |
+|---|---|---|---|---|
+| arc_easy | 73.44 | 70.31 | **78.12** | **78.12** |
+| arc_challenge | 26.56 | 26.56 | 34.38 | **35.94** |
+| boolq | 64.06 | 64.06 | **81.25** | **81.25** |
+| commonsense_qa | 54.69 | 56.25 | **68.75** | 67.19 |
+| piqa | 71.88 | 73.44 | 75.0 | 75.0 |
+| hellaswag | 45.31 | 45.31 | 46.88 | 46.88 |
+| winogrande | 62.50 | 60.94 | 65.62 | 65.62 |
+| openbookqa | 35.94 | 34.38 | 32.81 | 32.81 |
+| **mean** | 54.30 | 53.91 | 60.31 | **60.35** |
+| mmlu | 46.49 | 47.37 | 53.51 | **54.39** |
+| gsm8k | 100/62.5 | 50.0 | 62.5 | 62.5 |
+
+The 4B→0.8B MC-loglik distillation delta (`04280ef5 − a6eb9f13`, 270 tensors)
+transfers cleanly to both blends — unlike the surgical L23 graft. Trained
+deltas are portable; surgical patches are base-specific.
+
+**s3d patch built** (271 tensors, 1.29 GB — dense blend ≈ full-size diff) and
+staged locally at `~/delta-submit/` with the box's auth.json (now at
+`~/.config/deltaleague/auth.json` — `delta` CLI on the Mac authenticates as
+udirobert). Box terminated (~$4 billed). Submit on quota reset.
+
+Env notes for future rebuilds: eval venv needs `deltaleague` itself +
+`langdetect`; numpy 2 + pyarrow 26 + datasets 5.2 work together (the old
+numpy<2 pin broke pyarrow — bfcl is the only thing that wanted 1.x and we
+don't run it locally). Always bind vLLM to `127.0.0.1` — port 8000 is
+internet-exposed on AGH partner VMs and gets probed.
+
 ## Last Translation Benchmark — https://last-translation-benchmark.vilda.net/
 
 - **What:** live benchmark collecting rolling submissions through end-2026; also hosts a
