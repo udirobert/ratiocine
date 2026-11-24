@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     description:
       "A daily linguistics deduction puzzle. You and a 14B-parameter model, graded by the same algorithm. Built from our IOL-AI 2026 competition entry.",
     url: "https://ratiocine.vercel.app",
-    // Images resolve via the app/opengraph-image.tsx convention route.
+    // Images resolve via the app/opengraph-image.png convention route.
   },
   twitter: {
     card: "summary_large_image",

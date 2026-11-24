@@ -2,12 +2,16 @@
 
 **Logical reasoning from linguistic fragments. Rat-i-o-cine: the process of reasoning.**
 
+![ratiocine](docs/articles/assets/cover-crane-brand.png)
+
+**Latest: rank 1 and rank 2 on the [Delta League](https://deltaleague.ai) qwen35-08b-v1 weight-editing leaderboard** — zero training, ~$25 of compute. Writeup: [Rank 1 on a model-editing leaderboard with $25 and zero training](https://dev.to/papajams/rank-1-on-a-model-editing-leaderboard-with-25-and-zero-training-4el2). The delta-graph we mined from the board (per-tensor recipe forensics on 11 checkpoints) is open at [`data/delta/delta-graph.json`](data/delta/delta-graph.json); the full method is in [`docs/model-competitions.md`](docs/model-competitions.md).
+
 An AI that solves International Linguistics Olympiad (IOL) problems — deducing
 grammar, vocabulary, and structure from a handful of examples in unfamiliar
-languages. It ships two things:
+languages. It ships three things:
 
 1. **A competition solver and playable showcase** — IOL-AI 2026 entry
-   (Qwen2.5-14B, best public score 0.1141) plus a daily linguistics deduction
+   (Qwen2.5-14B, **2nd of 48 teams** on the private split) plus a daily linguistics deduction
    game — 10 rotating puzzles with an AI-vs-human verdict — at
    [`ratiocine.vercel.app`](https://ratiocine.vercel.app).
 2. **Ration, a verifiable evaluation logbook** — a Neutron app that, when
@@ -17,6 +21,9 @@ languages. It ships two things:
    approximately 272 KB) has been submitted; the public Ration landing and
    unsigned solve preview are at
    [`ratiocine.trustfall.xyz`](https://ratiocine.trustfall.xyz).
+3. **Weight-space model research** — delta forensics, model soups, and edit
+   composition on small open models (Qwen3.5-0.8B), with reproducible local
+   eval runners in [`scripts/delta/`](scripts/delta/).
 
 The submission, the live browser-to-Modal preview, and the local PocketIC
 attestation demo are verified separately. The Ration canister is live on ICP
@@ -27,6 +34,7 @@ certificate-aware verifier is still on the roadmap.
 ## Quick links
 
 - **Architecture, deployment evidence & trust boundaries** → [`docs/architecture.md`](docs/architecture.md)
+- **Model competitions** (Delta League forensics, results, recipes) → [`docs/model-competitions.md`](docs/model-competitions.md)
 - **IOL-AI competition** (pipeline, results, lessons) → [`docs/iolai-competition.md`](docs/iolai-competition.md)
 - **Neutron / Ration hackathon submission and plan** → [`docs/neutron-plan.md`](docs/neutron-plan.md)
 

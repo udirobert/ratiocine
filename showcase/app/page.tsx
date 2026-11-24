@@ -356,12 +356,12 @@ const Home = () => {
                 <div className="flex flex-wrap items-end justify-between gap-x-6 gap-y-2">
                   <div>
                     <p className="font-mono text-[10px] uppercase tracking-widest text-white/45">
-                      Our best submission
+                      Final standing — private split
                     </p>
-                    <p className="mt-1 text-3xl font-bold text-amber-300">0.1141</p>
+                    <p className="mt-1 text-3xl font-bold text-amber-300">2nd of 48</p>
                   </div>
                   <p className="font-mono text-xs text-white/55">
-                    chrF 0.2314 · EM 0.0563
+                    score 0.192 · 0.006 behind first
                   </p>
                 </div>
                 <p className="mt-4 text-sm leading-relaxed text-white/65">
@@ -372,6 +372,27 @@ const Home = () => {
                   to hedge the undisclosed split.
                 </p>
               </div>
+
+              <a
+                href="https://dev.to/papajams/rank-1-on-a-model-editing-leaderboard-with-25-and-zero-training-4el2"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 block rounded-xl border border-emerald-300/20 bg-emerald-300/[0.04] px-6 py-4 transition-colors hover:border-emerald-300/40"
+              >
+                <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-2">
+                  <div>
+                    <p className="font-mono text-[10px] uppercase tracking-widest text-emerald-300/70">
+                      Since then · Delta League qwen35-08b-v1
+                    </p>
+                    <p className="mt-1 text-xl font-bold text-emerald-300">
+                      Rank 1 &amp; 2 — zero training
+                    </p>
+                  </div>
+                  <p className="font-mono text-xs text-white/55">
+                    weight diffs, not models →
+                  </p>
+                </div>
+              </a>
 
               <details className="group mt-4 rounded-xl border border-white/10 bg-white/[0.03] px-6 py-4">
                 <summary className="flex cursor-pointer items-center justify-between text-sm font-semibold text-white/85">
